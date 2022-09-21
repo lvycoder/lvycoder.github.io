@@ -1,6 +1,6 @@
 # Docker 运行时部署k3s
 
-参考地址：https://docs.rancher.cn/docs/k3s/quick-start/_index
+
 
 ## 基础环境
 
@@ -73,3 +73,6 @@ curl -sfL https://rancher-mirror.oss-cn-beijing.aliyuncs.com/k3s/k3s-install.sh 
 
 ## 卸载k3s
 这里可以通过[k3s](https://docs.rancher.cn/docs/k3s/installation/uninstall/_index)官方方式删除
+
+文章参考: 
+- 参考地址：https://docs.rancher.cn/docs/k3s/quick-start/_index
