@@ -1,5 +1,6 @@
 site_name: Kubernetes 进阶训练营
 repo_name: "GitHub"
+repo_url: https://github.com/lixie021/lixie021.github.io
 site_description: Project documentation with Markdown.
 site_author: Li
 
