@@ -202,7 +202,7 @@ rbd: map failed: (6) No such device or address
 </code></pre></div></p> <p>默认mgr创建了⼀个admin的⽤户，其密码存放在rook-ceph-dashboard-password的secrets对象中，通过如下⽅式可以获取到</p> <div class=highlight><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl get secrets -n rook-ceph rook-ceph-dashboard-password -oyaml</span><span class=w></span>
 <span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class=w> </span><span class="l l-Scalar l-Scalar-Plain">v1</span><span class=w></span>
 <span class=nt>data</span><span class=p>:</span><span class=w></span>
-<span class=w>  </span><span class=nt>password</span><span class=p>:</span><span class=w> </span><span class="l l-Scalar l-Scalar-Plain">XTBndS0iREN1bE9UMGpQY2JQSSE=</span><span class=w>   </span><span class=c1># 采用base64加密 </span><span class=w></span>
+<span class=w>  </span><span class=nt>password</span><span class=p>:</span><span class=w> </span><span class="l l-Scalar l-Scalar-Plain">XTBndSx0iRxxxEN1xbE9Uxxxx2JQSSE=</span><span class=w>   </span><span class=c1># 采用base64加密 </span><span class=w></span>
 <span class=nt>kind</span><span class=p>:</span><span class=w> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span><span class=w></span>
 <span class=nt>metadata</span><span class=p>:</span><span class=w></span>
 <span class=w>  </span><span class=nt>creationTimestamp</span><span class=p>:</span><span class=w> </span><span class=s>&quot;2020-12-16T18:01:16Z&quot;</span><span class=w></span>
@@ -220,7 +220,7 @@ rbd: map failed: (6) No such device or address
 <span class=nt>type</span><span class=p>:</span><span class=w> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes.io/rook</span><span class=w></span>
 </code></pre></div> <p>base64 解密 <div class=highlight><pre><span></span><code>$ echo XTBndS0iREN1bE9UMGpQY2JQSSE=  | base64 -d
 ]0gu-&quot;DCulOT0jPcbPI!%
-</code></pre></div></p> <div class="admonition success"> <p class=admonition-title>测试登陆</p> <ul> <li>URL: http://106.75.119.241:31926/ </li> <li>帐号: admin </li> <li>密码: ]0gu-"DCulOT0jPcbPI! </li> </ul> </div> <p>进入就可以看到一下界面</p> <p><img alt=ceph src=/Users/beiyiwangdejiyi/hugo/docs/src/ceph-dashboard.png></p> <h3 id=dashboard-ceph><strong>Dashboard 监控ceph</strong><a class=headerlink href=#dashboard-ceph title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code>$ k get svc -n rook-ceph
+</code></pre></div></p> <div class="admonition success"> <p class=admonition-title>测试登陆</p> <ul> <li>URL: http://xxxxxxxxx:31926/ </li> <li>帐号: admin </li> <li>密码: xxxxxxxxxx</li> </ul> </div> <p>进入就可以看到一下界面</p> <p><img alt=ceph src=/Users/beiyiwangdejiyi/hugo/docs/src/ceph-dashboard.png></p> <h3 id=dashboard-ceph><strong>Dashboard 监控ceph</strong><a class=headerlink href=#dashboard-ceph title="Permanent link">&para;</a></h3> <div class=highlight><pre><span></span><code>$ k get svc -n rook-ceph
 NAME                                    TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)             AGE
 csi-cephfsplugin-metrics                ClusterIP   10.97.7.142    &lt;none&gt;        8080/TCP,8081/TCP   580d
 csi-rbdplugin-metrics                   ClusterIP   10.97.0.194    &lt;none&gt;        8080/TCP,8081/TCP   580d
