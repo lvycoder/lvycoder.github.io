@@ -241,7 +241,7 @@ kubectl create -f prometheus-service.yaml
 
 访问：http://localhost:3000/
 帐号：admin
-密码：strongpassword
+密码：xxxxxxxxxxx
 </code></pre></div></p> <div class="admonition info"> <p class=admonition-title>监控展板</p> <ul> <li>Ceph - Cluster：https://grafana.com/grafana/dashboards/2842</li> <li>Ceph - OSD ： https://grafana.com/grafana/dashboards/5336</li> <li>Ceph - Pools： https://grafana.com/grafana/dashboards/5342</li> </ul> </div> <h3 id=_4><strong>对象存储</strong><a class=headerlink href=#_4 title="Permanent link">&para;</a></h3> <h4 id=rgw><strong>部署RGW对象存储</strong><a class=headerlink href=#rgw title="Permanent link">&para;</a></h4> <div class=highlight><pre><span></span><code>$ k apply -f object.yaml
 
 <span class=o>[</span>ucloud<span class=o>]</span> root@master0:~/.kube# kubectl  get svc -n rook-ceph
@@ -294,8 +294,8 @@ objectbucketclaim.objectbucket.io/ceph-delete-bucket created
 </code></pre></div> <p>拿到secrets</p> <div class=highlight><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ k get secrets  ceph-delete-bucket -o yaml</span><span class=w></span>
 <span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class=w> </span><span class="l l-Scalar l-Scalar-Plain">v1</span><span class=w></span>
 <span class=nt>data</span><span class=p>:</span><span class=w></span>
-<span class=hll><span class=w>  </span><span class=nt>AWS_ACCESS_KEY_ID</span><span class=p>:</span><span class=w> </span><span class="l l-Scalar l-Scalar-Plain">Rk9JSjBJNlg0NDVNUVVMVkpGMzc=</span><span class=w></span>
-</span><span class=hll><span class=w>  </span><span class=nt>AWS_SECRET_ACCESS_KEY</span><span class=p>:</span><span class=w> </span><span class="l l-Scalar l-Scalar-Plain">SVdjaElaeVdUbTNGNkRyZ29UcUQ0R1gzOVlhczR4S1ZmWExERHNYeA==</span><span class=w></span>
+<span class=hll><span class=w>  </span><span class=nt>AWS_ACCESS_KEY_ID</span><span class=p>:</span><span class=w> </span><span class="l l-Scalar l-Scalar-Plain">Rk9JSjxxBJNlg0NDVNUVVMVkpGMzc=</span><span class=w></span>
+</span><span class=hll><span class=w>  </span><span class=nt>AWS_SECRET_ACCESS_KEY</span><span class=p>:</span><span class=w> </span><span class="l l-Scalar l-Scalar-Plain">xxxxxxxxxxxxxxxxxxxxxxxxx==</span><span class=w></span>
 </span><span class=nt>kind</span><span class=p>:</span><span class=w> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span><span class=w></span>
 <span class=nt>metadata</span><span class=p>:</span><span class=w></span>
 <span class=w>  </span><span class=nt>creationTimestamp</span><span class=p>:</span><span class=w> </span><span class=s>&quot;2022-08-05T08:24:27Z&quot;</span><span class=w></span>
@@ -316,11 +316,11 @@ objectbucketclaim.objectbucket.io/ceph-delete-bucket created
 <span class=w>  </span><span class=nt>uid</span><span class=p>:</span><span class=w> </span><span class="l l-Scalar l-Scalar-Plain">1b0af759-7c7d-4fe4-9a80-ea2615fa8fef</span><span class=w></span>
 <span class=nt>type</span><span class=p>:</span><span class=w> </span><span class="l l-Scalar l-Scalar-Plain">Opaque</span><span class=w></span>
 </code></pre></div> <p>base64 解密 <div class=highlight><pre><span></span><code>$ <span class=nb>echo</span> <span class=nv>Rk9JSjBJNlg0NDVNUVVMVkpGMzc</span><span class=o>=</span> <span class=p>|</span>base64 -d
-FOIJ0I6X445MQULVJF37%
+FOIJ0I6X4xxxxxxx45MQULVJF37%
 
 <span class=c1># beiyiwangdejiyi @ beiyiwangdejiyideMacBook-Pro in ~/note-work/hugo on git:main x [14:28:13]</span>
-$ <span class=nb>echo</span> <span class=nv>SVdjaElaeVdUbTNGNkRyZ29UcUQ0R1gzOVlhczR4S1ZmWExERHNYeA</span><span class=o>==</span> <span class=p>|</span>base64 -d
-IWchIZyWTm3F6DrgoTqD4GX39Yas4xKVfXLDDsXx%
+$ <span class=nb>echo</span> <span class=nv>SVdjaElaeVdUbTNGNkRyZ29UcxxxxxxxUQ0R1gzOVlhczR4S1ZmWExERHNYeA</span><span class=o>==</span> <span class=p>|</span>base64 -d
+IWchxxxxxxxxxxxxxxxxxxxx%
 </code></pre></div></p> <p>fio --name=sequential-read --directory=/config --rw=read --refill_buffers --bs=4K --size=200M</p> <div class=highlight><pre><span></span><code>root@nginx-run-685fdf6467-mdl9v:/# fio --name<span class=o>=</span>sequential-read --directory<span class=o>=</span>/config --rw<span class=o>=</span><span class=nb>read</span> --refill_buffers --bs<span class=o>=</span>4K --size<span class=o>=</span>200M
 sequential-read: <span class=o>(</span><span class=nv>g</span><span class=o>=</span><span class=m>0</span><span class=o>)</span>: <span class=nv>rw</span><span class=o>=</span>read, <span class=nv>bs</span><span class=o>=(</span>R<span class=o>)</span> 4096B-4096B, <span class=o>(</span>W<span class=o>)</span> 4096B-4096B, <span class=o>(</span>T<span class=o>)</span> 4096B-4096B, <span class=nv>ioengine</span><span class=o>=</span>psync, <span class=nv>iodepth</span><span class=o>=</span><span class=m>1</span>
 fio-3.25
