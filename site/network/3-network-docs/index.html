@@ -17,7 +17,7 @@
     
     
       
-        <title>frp 内网穿透 - Kubernetes 进阶训练营</title>
+        <title>kubernetes 网络组件 - Kubernetes 进阶训练营</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#frp" class="md-skip">
+        <a href="#flannel" class="md-skip">
           跳转至
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              frp 内网穿透
+              kubernetes 网络组件
             
           </span>
         </div>
@@ -963,6 +963,20 @@
               
   
   
+  
+    <li class="md-nav__item">
+      <a href="../frp/" class="md-nav__link">
+        frp 内网穿透
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
     
   
   
@@ -973,12 +987,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          frp 内网穿透
+          kubernetes 网络组件
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        frp 内网穿透
+        kubernetes 网络组件
       </a>
       
         
@@ -995,172 +1009,84 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#frp" class="md-nav__link">
-    一、内网穿透Frp：
+  <a href="#flannel" class="md-nav__link">
+    flannel介绍:
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#11" class="md-nav__link">
-    1.1、概述：
-  </a>
-  
-    <nav class="md-nav" aria-label="1.1、概述：">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#111frp" class="md-nav__link">
-    1.1.1：frp内网穿透工具：
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#112frp" class="md-nav__link">
-    1.1.2：frp的作用：
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#21" class="md-nav__link">
-    2.1、项目思路及重难点内容
-  </a>
-  
-    <nav class="md-nav" aria-label="2.1、项目思路及重难点内容">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#211" class="md-nav__link">
-    2.1.1：项目拓扑图：
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#212" class="md-nav__link">
-    2.1.2：实验思路：
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#213frp" class="md-nav__link">
-    2.1.3：frp配置文件说明：
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#31frp" class="md-nav__link">
-    3.1、Frp部署：
-  </a>
-  
-    <nav class="md-nav" aria-label="3.1、Frp部署：">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#311frps" class="md-nav__link">
-    3.1.1：部署frps：
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#312frpc" class="md-nav__link">
-    3.1.2：部署frpc：
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#313nj192165020" class="md-nav__link">
-    3.1.3：nj地区：192.165.0.20
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#314bj" class="md-nav__link">
-    3.1.4：bj地区：
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#41vpn" class="md-nav__link">
-    4.1、vpn部署：
-  </a>
-  
-    <nav class="md-nav" aria-label="4.1、vpn部署：">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#441vpn" class="md-nav__link">
-    4.4.1：vpn部署脚本：
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#442" class="md-nav__link">
-    4.4.2：新增用户脚本：
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#443iptables" class="md-nav__link">
-    4.4.3：部署iptables：
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#444" class="md-nav__link">
-    4.4.4：准备客户端证书：
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#51" class="md-nav__link">
-    5.1：其他案例配置：
-  </a>
-  
-    <nav class="md-nav" aria-label="5.1：其他案例配置：">
+    <nav class="md-nav" aria-label="flannel介绍:">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    附件：
+    网络模式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flannel_1" class="md-nav__link">
+    Flannel组件的说明:
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flannel_2" class="md-nav__link">
+    flannel 的系统文件及目录:
+  </a>
+  
+    <nav class="md-nav" aria-label="flannel 的系统文件及目录:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vxlan" class="md-nav__link">
+    VXLAN 原生模式:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directrouting" class="md-nav__link">
+    DirectRouting模式:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#host-gw" class="md-nav__link">
+    host-gw 模式：
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#caclio" class="md-nav__link">
+    网络组件caclio
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    不同组件压测调研
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    网络性能测试对比
+  </a>
   
 </li>
       
@@ -1168,20 +1094,6 @@
   
 </nav>
       
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../3-network-docs/" class="md-nav__link">
-        kubernetes 网络组件
-      </a>
     </li>
   
 
@@ -1824,172 +1736,84 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#frp" class="md-nav__link">
-    一、内网穿透Frp：
+  <a href="#flannel" class="md-nav__link">
+    flannel介绍:
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#11" class="md-nav__link">
-    1.1、概述：
-  </a>
-  
-    <nav class="md-nav" aria-label="1.1、概述：">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#111frp" class="md-nav__link">
-    1.1.1：frp内网穿透工具：
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#112frp" class="md-nav__link">
-    1.1.2：frp的作用：
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#21" class="md-nav__link">
-    2.1、项目思路及重难点内容
-  </a>
-  
-    <nav class="md-nav" aria-label="2.1、项目思路及重难点内容">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#211" class="md-nav__link">
-    2.1.1：项目拓扑图：
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#212" class="md-nav__link">
-    2.1.2：实验思路：
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#213frp" class="md-nav__link">
-    2.1.3：frp配置文件说明：
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#31frp" class="md-nav__link">
-    3.1、Frp部署：
-  </a>
-  
-    <nav class="md-nav" aria-label="3.1、Frp部署：">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#311frps" class="md-nav__link">
-    3.1.1：部署frps：
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#312frpc" class="md-nav__link">
-    3.1.2：部署frpc：
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#313nj192165020" class="md-nav__link">
-    3.1.3：nj地区：192.165.0.20
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#314bj" class="md-nav__link">
-    3.1.4：bj地区：
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#41vpn" class="md-nav__link">
-    4.1、vpn部署：
-  </a>
-  
-    <nav class="md-nav" aria-label="4.1、vpn部署：">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#441vpn" class="md-nav__link">
-    4.4.1：vpn部署脚本：
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#442" class="md-nav__link">
-    4.4.2：新增用户脚本：
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#443iptables" class="md-nav__link">
-    4.4.3：部署iptables：
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#444" class="md-nav__link">
-    4.4.4：准备客户端证书：
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#51" class="md-nav__link">
-    5.1：其他案例配置：
-  </a>
-  
-    <nav class="md-nav" aria-label="5.1：其他案例配置：">
+    <nav class="md-nav" aria-label="flannel介绍:">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    附件：
+    网络模式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flannel_1" class="md-nav__link">
+    Flannel组件的说明:
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flannel_2" class="md-nav__link">
+    flannel 的系统文件及目录:
+  </a>
+  
+    <nav class="md-nav" aria-label="flannel 的系统文件及目录:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vxlan" class="md-nav__link">
+    VXLAN 原生模式:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directrouting" class="md-nav__link">
+    DirectRouting模式:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#host-gw" class="md-nav__link">
+    host-gw 模式：
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#caclio" class="md-nav__link">
+    网络组件caclio
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    不同组件压测调研
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    网络性能测试对比
+  </a>
   
 </li>
       
@@ -2007,387 +1831,183 @@
                 
                   
 
-  <a href="https://github.com/lixie021/lixie021.github.io/edit/master/docs/network/frp.md" title="编辑此页" class="md-content__button md-icon">
+  <a href="https://github.com/lixie021/lixie021.github.io/edit/master/docs/network/3-network-docs.md" title="编辑此页" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-  <h1>frp 内网穿透</h1>
+  <h1>kubernetes 网络组件</h1>
 
-<h3 id="frp">一、内网穿透Frp：</h3>
-<p><strong>下载地址：</strong><a href="https://github.com/fatedier/frp/releases">https://github.com/fatedier/frp/releases</a></p>
-<h3 id="11">1.1、概述：</h3>
-<h4 id="111frp">1.1.1：frp内网穿透工具：</h4>
-<p>是一个高性能的反向代理应用，可以帮助您轻松地进行内网穿透，对外网提供服务，支持 tcp, http, https 等协议类型，并且 web 服务支持根据域名进行路由转发。</p>
-<h4 id="112frp">1.1.2：frp的作用：</h4>
-<p>利用处于内网或防火墙后的机器，对外网环境提供 http 或 https 服务。
-对于 http 服务支持基于域名的虚拟主机，支持自定义域名绑定，使多个域名可以共用一个80端口。
-利用处于内网或防火墙后的机器，对外网环境提供 tcp 服务，例如在家里通过 ssh 访问处于公司内网环境内的主机。
-可查看通过代理的所有 http 请求和响应的详细信息。（待开发）</p>
-<h3 id="21">2.1、项目思路及重难点内容</h3>
-<p>!!! warning "温馨提示"
-    - 以下步骤只针对针对于centos 操作系统</p>
-<h4 id="211">2.1.1：项目拓扑图：</h4>
-<h4 id="212">2.1.2：实验思路：</h4>
-<table>
-<thead>
-<tr>
-<th>第一步</th>
-<th>购买一台云服务器作为frp-server端，主要是需要一个固定公网地址，如果公司有固定公网地址最好</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>第二步</td>
-<td>在公司或者内网准备一台主机作为frp-client端</td>
-</tr>
-<tr>
-<td>第三步</td>
-<td>在公司或者内网准备一台主机来部署vpn</td>
-</tr>
-<tr>
-<td>第四步</td>
-<td>利用穿透来实现连接VPN</td>
-</tr>
-</tbody>
-</table>
-<h4 id="213frp">2.1.3：frp配置文件说明：</h4>
-<pre><code class="language-shell">[root@localhost frpc]# ll
-总用量 21136
--rwxr-xr-x 1 root root 10466752 8月  18 2021 frpc
--rw-r--r-- 1 root root     6818 8月  18 2021 frpc_full.ini
--rw-r--r-- 1 root root      283 5月   2 23:35 frpc.ini
--rwxr-xr-x 1 root root 11133376 8月  18 2021 frps
--rw-r--r-- 1 root root     2199 8月  18 2021 frps_full.ini
--rw-r--r-- 1 root root       26 8月  18 2021 frps.ini
--rw-r--r-- 1 root root    11358 8月  18 2021 LICENSE
--rw-r--r-- 1 root root       21 8月  18 2021 run.sh
-drwxrwxr-x 2 root root       88 8月  18 2021 systemd
-
-文件说明：
-frpc                    # 客户端二进制文件
-frpc_full.ini           # 客户端配置文件完整示例
-frpc.ini                # 客户端配置文件
-frps                    # 服务端二进制文件
-frps_full.ini           # 服务端配置文件完整示例
-frps.in1                # 服务端配置文件
+<p>网络通信基础：</p>
+<p>CNI 通常有三种实现模式</p>
+<p><img alt="" src="https://pic.imgdb.cn/item/6392a1c4b1fccdcd3625917c.jpg" /></p>
+<p>官网: https://kubernetes.io/zh-cn/docs/concepts/cluster-administration/networking/</p>
+<h2 id="flannel">flannel介绍:</h2>
+<h3 id="_1"><strong>网络模式</strong></h3>
+<p>github 地址: https://github.com/flannel-io/flannel/blob/master/Documentation/backends.md
+flannel 的网络模型（后端）：目前有三种方式实现UDP/VXLAN/host-gw</p>
+<ul>
+<li>
+<p>UDP : 在最早期flannel使用UDP封装来完成报文的跨主机转发,安全性和性能略有不足(已废弃)</p>
+</li>
+<li>
+<p>VXLAN: Linux内核在在2012年底的v3.7.0之后加入了VXLAN协议支持，因此新版本的Flanne1也有UDP转换为VXLAN, VXLAN本质上是一种
+tunnel (隧道)协议，用来基于3层网络实现虚拟的2层网络，目前flannel的网络模型已经是基于VXLAN的叠加(覆盖)网络，目前推荐使用
+vxlan作为其网络模型。(使用最多)</p>
+</li>
+<li>
+<p>Host-gw:也就是Host GateWay, 通过在node节点上创建到达各目标容器地址的路由表而完成报文的转发，因此这种方式要求各node节点本身
+必须处于同一个局域网(二层网络)中，因此不适用于网络变动频繁或比较大型的网络环境，但是其性能较好。</p>
+</li>
+</ul>
+<h3 id="flannel_1">Flannel组件的说明:</h3>
+<p>Cni0:网桥设备，每创建一个pod都会创建对veth pair, 其中一端是pod中的eth0,另一端是Cni0网桥中的端口(网卡) ，Pod中从网卡
+eth0发出的流量都会发送到Cni0网桥设备的端口(网卡)上，Cni0设备获得的ip地址是该节点分配到的网段的第一个地址。</p>
+<p>原生模式:
+Flannel.1: overlay网络的设备，用来进行vxlan报文的处理(封包和解包)， 不同node之间的pod数据流量都从overlay设备以隧道的形式
+发送到对端。</p>
+<h2 id="flannel_2">flannel 的系统文件及目录:</h2>
+<pre><code class="language-shell">root@node2:~# find / -name flannel
 </code></pre>
-<h3 id="31frp">3.1、Frp部署：</h3>
-<h4 id="311frps">3.1.1：部署frps：</h4>
-<blockquote>
-<p>注释：一般frps 是公网上的一台云服务器，这里可以是任意的云平台，注意一定记得开安全组！！！</p>
-</blockquote>
-<pre><code class="language-shell">[root@VM-16-9-centos frps]# cat frps.ini 
-[common]
-bind_port = 50070
-vhost_http_port = 50080
-vhost_https_port = 50443
-token = $pF@7zz^LDuh7^xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx    这个token是用于服务端和客户端连接
-
-
-
-# 启动
-./frps -c ./frps.ini
+<h3 id="vxlan">VXLAN 原生模式:</h3>
+<p>k3s 默认的 flannel 也默认vxlan,但是从v1.26 开始移除了 wireguard 后端，从而支持 Flannel 原生的 wireguard-native 后端
+https://docs.k3s.io/installation/network-options</p>
+<p><img alt="" src="https://pic.imgdb.cn/item/638da221b1fccdcd3640ea59.jpg" /></p>
+<p>sshd主机上的容器访问别的容器,首先通过网桥判断目的地址是访问当前的地址还是其他主机,如果当前主机的容器不走flannel.1就直接返回了,如果是访问其他
+有两种场景;</p>
+<p>场景一:
+  访问别的 node 上的容器,这时他的主机上就会有对应路由表,例如上图中,可能他要访问的吓一跳就是172.16.78.0/21,那么就会走flannel.1来做报文的封装;这时就走隧道了,不会在物理网卡来做报文的封装.</p>
+<p>场景二:
+  如果目的地址不是 k8s 的环境,而是外网,那么就会匹配路由的时候就不会走隧道设备,在内核做物理网卡的封装,通过宿主机出去.</p>
+<p>不同的主机的容器通信需要通过flannel.1 进行封装和解封</p>
+<p>好处: 可以跨子网通信</p>
+<p>缺点: 性能差点</p>
+<h3 id="directrouting">DirectRouting模式:</h3>
+<p>VXLAN DirectRoutinghost-gw（布尔值）：当主机位于同一子网上时启用直接路由（如）。VXLAN 将仅用于封装数据包到不同子网上的主机。默认为false. Windows 不支持 DirectRouting</p>
+<p>开启了这个模式,那网络就会提升,原因就是在同网段不进行封装,只有跨子网才进行封装.</p>
+<p>监听端口:</p>
+<pre><code class="language-shell">[openbayes-enflame] root@node1:~# ss -auntp |grep 8472
+udp  UNCONN    0      0                     0.0.0.0:8472                0.0.0.0:*
 </code></pre>
-<h4 id="312frpc">3.1.2：部署frpc：</h4>
-<pre><code class="language-shell">[root@moban frp_0.38.0_linux_amd64]# cat frpc.ini
-[common]
-server_addr = 115.29.189.57
-# server_addr表示与frps连接的地址
-server_port = 50081
-# 与frps连接的端口
-token = pass@word1
-# 配置token用来验证
-
-[openvpn]
-type = udp
-local_ip = 192.168.8.82
-local_port = 51194
-remote_port = 51194
-
-# remote_port表示用户访问公网地址+端口,就反向代理到local_ip+端口
-
-
-# 启动
-./frps -c ./frps.ini
-</code></pre>
-<h4 id="313nj192165020">3.1.3：nj地区：192.165.0.20</h4>
-<pre><code class="language-shell">[root@moban frp_0.26.0_linux_amd64]# cat frpc.ini
-[common]
-tls_enable=true
-server_addr = 39.104.160.84
-server_port = 50070
-token = $pF@xxxxxx
-[openvpn-nj]
-type=udp
-local_ip=192.165.0.21
-local_port=31194
-remote_port=31194
-
-
-[root@moban frp_0.26.0_linux_amd64]# cat frp.sh 
-./frpc -c ./frpc.ini
-
-</code></pre>
-<h4 id="314bj">3.1.4：bj地区：</h4>
-<pre><code class="language-shell">[root@frp-40 frpc]# cat frpc.ini
-[common]
-tls_enable=true
-server_addr = 39.104.160.84
-server_port = 50070
-token = $pF@7zz^LDuh7^X0Uxxxxx
-
-</code></pre>
-<h3 id="41vpn">4.1、vpn部署：</h3>
-<h4 id="441vpn">4.4.1：vpn部署脚本：</h4>
-<pre><code class="language-shell">#!/bin/bash
-# 搭建vpenvpn脚本
-# 作者:lixie
-# 日期:2021-10-19
-
-
-# openvpn是服务端,easy-rsa是证书管理工具
-
-yum -y install wget
-mkdir -p /etc/yum.repos.d/backup
-mv /etc/yum.repos.d/*.repo /etc/yum.repos.d/backup/
-wget -O /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-7.repo
-wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
-
-yum -y install openvpn easy-rsa &amp;&gt; /dev/null
-
-# 获取openvpn和easy-rsa的版本
-OPENVER=$(rpm -qi openvpn  |awk -F&quot;: &quot;  'NR==2{print $2}')
-EASYVER=$(rpm -qi easy-rsa  |awk -F&quot;: &quot;  'NR==2{print $2}')
-
-#echo &quot;openvpn-$OPENVER&quot;
-#echo &quot;easy-rsa-$EASYVER&quot;
-
-#生成服务器配置文件
-#cp /usr/share/doc/openvpn-$OPENVER/sample/sample-config-files/server.conf  /etc/openvpn/
-
-cat &lt;&lt; EOF &gt;&gt;  /etc/openvpn/server/server.conf
-local 0.0.0.0
-port 41194
-proto udp
-dev tun
-ca /etc/openvpn/certs/ca.crt
-cert /etc/openvpn/certs/server.crt
-dh /etc/openvpn/certs/dh.pem
-push &quot;route 192.168.0.0 255.255.0.0&quot;
-server 10.10.0.0 255.255.255.0
-ifconfig-pool-persist /var/log/openvpn/ipp.txt
-client-to-client
-keepalive 10 120
-comp-lzo
-max-clients 100
-persist-key
-persist-tun
-status /var/log/openvpn/openvpn-status.log
-log-append  /var/log/openvpn/openvpn.log
-verb 3
-key /etc/openvpn/certs/server.key
-cipher AES-256-CBC
-client-config-dir /etc/openvpn/ccd
-auth-user-pass-verify /etc/openvpn/checkpsw.sh via-env
-username-as-common-name
-script-security 3
-verify-client-cert none
-
-
-EOF
-
-# 注意！！！ 这里创建完配置文件后，需要做个配置文件的软连接，因为当前版本的 openvpn systemd 启动文件中读取的是.service.conf配置
-cd /etc/openvpn/server/ &amp;&amp; ln -sf server.conf .service.conf
-
-
-#准备证书签发相关文件
-
-cp -r /usr/share/easy-rsa/ /etc/openvpn/easy-rsa-server
-
-#准备签发证书相关变量的配置文件
-cp /usr/share/doc/easy-rsa-$EASYVER/vars.example /etc/openvpn/easy-rsa-server/3/vars
-
-
-#CA的证书有效期默为为10年,可以适当延长,比如:36500天
-sed -i '/3650/ s/3650/36500/g' /etc/openvpn/easy-rsa-server/3/vars
-
-#服务器证书默为为825天
-sed -i '/825/ s/825/82500/g' /etc/openvpn/easy-rsa-server/3/vars
-
-
- 初始化数据,在当前目录下生成pki目录及相关文件
-cd /etc/openvpn/easy-rsa-server/3/
-pwd
-./easyrsa init-pki
-
-
- 创建CA机构
-cd /etc/openvpn/easy-rsa-server/3
-./easyrsa build-ca nopass &lt;&lt;EOF
-
-
-EOF
-
-
-# 创建服务端证书申请
-
-cd /etc/openvpn/easy-rsa-server/3
-./easyrsa gen-req server nopass &lt;&lt;EOF
-
-
-EOF
-
-## 颁发服务端证书
-#
-cd /etc/openvpn/easy-rsa-server/3
-./easyrsa sign server server &lt;&lt;EOF
-yes
-
-EOF
-
-
-
-# 创建 Diffie-Hellman 密钥,这个步骤完了服务器部分就完成了
-cd /etc/openvpn/easy-rsa-server/3
-./easyrsa gen-dh
-
-
-#为客户端准备证书环境
-cp -r /usr/share/easy-rsa/ /etc/openvpn/easy-rsa-client
-cp /usr/share/doc/easy-rsa-$EASYVER/vars.example /etc/openvpn/easy-rsa-client/3/vars
-cd /etc/openvpn/easy-rsa-client/3/
-./easyrsa init-pki
-
-
-# 将CA和服务器证书相关文件复制到服务器相应的目录
-
-mkdir /etc/openvpn/certs
-cp /etc/openvpn/easy-rsa-server/3/pki/ca.crt  /etc/openvpn/certs/
-cp /etc/openvpn/easy-rsa-server/3/pki/issued/server.crt  /etc/openvpn/certs/
-cp /etc/openvpn/easy-rsa-server/3/pki/private/server.key  /etc/openvpn/certs/
-cp /etc/openvpn/easy-rsa-server/3/pki/dh.pem  /etc/openvpn/certs/
-
-
-# 修改服务器端配置文件
-
-
-# 创建日志目录
-
-mkdir /etc/openvpn/ccd
-mkdir /var/log/openvpn
-chown openvpn.openvpn /var/log/openvpn
-
-cat &lt;&lt;EOF&gt;&gt; /etc/openvpn/psw-file
-LIXIE ABC123,
-EOF
-chmod 600 /etc/openvpn/psw-file
-chown openvpn:openvpn /etc/openvpn/psw-file
-
-
-
-
-
-chmod +x /etc/openvpn/checkpsw.sh
-chown -R openvpn:openvpn /etc/openvpn/
-
-
-#在服务器开启ip_forward转发功能
-echo net.ipv4.ip_forward = 1 &gt;&gt; /etc/sysctl.conf &amp;&amp; sysctl -p &amp;&gt; /dev/null
-echo 'iptables -t nat -A POSTROUTING -s 10.10.0.0/24 -j MASQUERADE' &gt;&gt; /etc/rc.d/rc.local
-chmod +x /etc/rc.d/rc.local
-/etc/rc.d/rc.local
-
-
-
-systemctl daemon-reload
-systemctl start openvpn-server@.service.service
-systemctl enable openvpn-server@.service.service
-</code></pre>
-<h4 id="442">4.4.2：新增用户脚本：</h4>
-<pre><code class="language-shell">cat &lt;&lt;EOF&gt;&gt; /etc/openvpn/checkpsw.sh
-#!/bin/sh
-###########################################################
-# checkpsw.sh (C) 2004 Mathias Sundman &lt;mathias@openvpn.se&gt;
-#
-# This script will authenticate OpenVPN users against
-# a plain text file. The passfile should simply contain
-# one row per user with the username first followed by
-# one or more space(s) or tab(s) and then the password.
-PASSFILE=&quot;/etc/openvpn/psw-file&quot;
-LOG_FILE=&quot;/var/log/openvpn/password.log&quot;
-TIME_STAMP=`date &quot;+%Y-%m-%d %T&quot;`
-###########################################################
-if [ ! -r &quot;${PASSFILE}&quot; ]; then
-  echo &quot;${TIME_STAMP}: Could not open password file \&quot;${PASSFILE}\&quot; for reading.&quot; &gt;&gt;  ${LOG_FILE}
-  exit 1
-fi
-CORRECT_PASSWORD=`awk '!/^;/&amp;&amp;!/^#/&amp;&amp;$1==&quot;'${username}'&quot;{print $2;exit}' ${PASSFILE}`
-if [ &quot;${CORRECT_PASSWORD}&quot; = &quot;&quot; ]; then
-  echo &quot;${TIME_STAMP}: User does not exist: username=\&quot;${username}\&quot;, password=
-\&quot;${password}\&quot;.&quot; &gt;&gt; ${LOG_FILE}
-  exit 1
-fi
-if [ &quot;${password}&quot; = &quot;${CORRECT_PASSWORD}&quot; ]; then
-  echo &quot;${TIME_STAMP}: Successful authentication: username=\&quot;${username}\&quot;.&quot; &gt;&gt; ${LOG_FILE}
-  exit 0
-fi
-echo &quot;${TIME_STAMP}: Incorrect password: username=\&quot;${username}\&quot;, password=
-\&quot;${password}\&quot;.&quot; &gt;&gt; ${LOG_FILE}
-exit 1
-EOF
-</code></pre>
-<blockquote>
-<p>注意：需要给这个脚本一个执行权限</p>
-</blockquote>
-<h4 id="443iptables">4.4.3：部署iptables：</h4>
-<blockquote>
-<p>防火墙配置（firewalld配置或者iptables配置选一个）</p>
-</blockquote>
-<pre><code class="language-shell"># firewalld配置
-firewall-cmd --permanent --add-masquerade
-firewall-cmd --permanent --add-service=openvpn
-# 或者添加自定义端口
-# firewall-cmd --permanent  --add-port=1194/tcp
-firewall-cmd --permanent --direct --passthrough ipv4 -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
-firewall-cmd --reload
-# iptables （和上面的网段配置不同，修改下面的网段即可）
-yum install iptables-services
-systemctl enable iptables
-iptables -X
-iptables -F
-iptables -Z
-iptables -P INPUT ACCEPT
-iptables -P OUTPUT ACCEPT
-iptables -P FORWARD ACCEPT
-service iptables save
-iptables -t nat -A POSTROUTING -s 10.10.0.0/255.255.255.0 -o eth0 -j MASQUERADE
-iptables -A FORWARD -s 10.10.0.0/24 -d 192.168.0.0/24 -i tun0 -j ACCEPT
-iptables -A FORWARD -s 192.168.0.0/24 -d 10.10.0.0/24 -i eth0 -j ACCEPT
-service iptables save
-</code></pre>
-<h4 id="444">4.4.4：准备客户端证书：</h4>
-<p>备注：安装openvpn客户端软件：config配置文件中添加ca证书和.opvn</p>
-<pre><code class="language-shell">client
-dev tun
-proto udp
-# 公网ip需要修改
-remote  公网地址  41194       
-resolv-retry infinite
-nobind
-persist-key
-persist-tun
-ca ca.crt
-
-comp-lzo
-verb 3
-cipher AES-256-CBC
-auth-user-pass
-</code></pre>
-<h3 id="51">5.1：其他案例配置：</h3>
-<h4 id="_1"><strong>附件：</strong></h4>
-<p>学习博客：<a href="https://www.jianshu.com/p/09603d9e0b6c">https://www.jianshu.com/p/09603d9e0b6c</a></p>
+<h2 id="host-gw">host-gw 模式：</h2>
+<p>和DirectRouting类似,但是不能跨子网
+Use host-gw to create IP routes to subnets via remote machine IPs. Requires direct layer2 connectivity between hosts running flannel.</p>
+<p>host-gw provides good performance, with few dependencies, and easy set up.</p>
+<p>flannel 总结: 推荐使用VXLAN DirectRouting
+相同的 node 子网通信,不需要overlay封装和解封装,而且还可以支持 node 跨子网</p>
+<h2 id="caclio">网络组件caclio</h2>
+<p>官网地址: https://projectcalico.docs.tigera.io</p>
+<p>GitHub 地址: https://github.com/projectcalico/calico</p>
+<p>Calico是一个纯三层的网络解决方案，为容器提供多node间的访问通信，calico将每一个node节点都当做为一个路由器(router), 各节点通过BGP(Border Gateway Protocol)边界网关协议学习并在node节点生成路由规则，从而将不同node节点上的pod连接起来进行通信。</p>
+<p>Calico 介绍:
+网络通过第3层路由技术(如静态路由或BGP路由分配)或第2层地址学习来感知工作负载IP地址。因此它们可以将未封装的流量路由到作为最终目的地的端点的正确主机。但是并非所有网络都能够路由工作负载IP地址。例如公共云环境、跨VPC子网边界的AWS,以及无法通过BGP 、Calico对应到under lay网络或无法轻松配置静态路由的其他场景，这就是为什么Calico支持封装，因此您可以在工作负载之间发送流量，而无需底层网络知道工作负载IP地址。</p>
+<p>calico封装类型:
+Calico支持两种类型的封装: VXLAN和IP-in-IP, VXLAN在IP中没有 IP的某些环境中受支持(例如Azure)，VXLAN的每 数据包开销稍高，因为报头较大，但除非您运行的是网络密集型工作负载，否则您通常不会注意到这种差异。这两种封装之间的另一个小差异是Cal ico的VXLAN实现不使用BGP, Calico的IP-in-IP是在Calico节点之间使用BGP协议实现跨子网。</p>
+<p>Calico两种网络模式</p>
+<p>Calico本身支持多种网络模式，从overlay和underlay上区分。Calico overlay 模式，一般也称Calico IPIP或VXLAN模式，不同Node间Pod使用IPIP或VXLAN隧道进行通信。Calico underlay 模式，一般也称calico BGP模式，不同Node Pod使用直接路由进行通信。在overlay和underlay都有nodetonode mesh(全网互联)和Route Reflector(路由反射器)。如果有安全组策略需要开放IPIP协议；要求Node允许BGP协议，如果有安全组策略需要开放TCP 179端口；官方推荐使用在Node小于100的集群，我们在使用的过程中已经通过IPIP模式支撑了100-200规模的集群稳定运行。</p>
+<p>BGP是一个去中心化的协议，它通过自动学习和维护路由表实现网络的可用性，但是并不是所有的网络都支持BGP,另外为了跨网络
+实现更大规模的网络管理，calico 还支持IP-in-IP的叠加模型，简称IPIP, IPIP可以实现跨不同网段建立 路由通信，但是会存在安全性问题，其在内核内置，可以通过Calico的配置文件设置是否启用IPIP， 在公司内部如果k8s的node节点没有跨越网段建议关闭IPIP。</p>
+<p>IPIP是一-种将各Node的路由之间做一个tunnel, 再把两个网络连接起来的模式。启用IPIP模式时，Calico将在各Node上创建一个名为" tun10"的虚拟网络接口。
+BGP模式则直接使用物理机作为虚拟路由路(vRouter) ，不再创建额外的tunnel.</p>
+<p>Calio 架构:</p>
+<p><img alt="" src="https://pic.imgdb.cn/item/6392c81db1fccdcd365f5388.jpg" /></p>
+<p>Calio 组件:</p>
+<ul>
+<li>
+<p>Felix: calico的agent, 运行在每一台node节点上， 其主要是维护路由规则、汇报当前节点状态以确保pod的夸主机通信。</p>
+</li>
+<li>
+<p>BGP Client: 每台node都运行，其主要负责监听node节点上由felix生成的路由信息，然后通过BGP协议广播至其他剩余的node节点，从而相互学习路由实现pod通信。</p>
+</li>
+<li>
+<p>Route Reflector:集中式的路由反射器，calico v3.3开始支持，当Calico BGP客户端将路由从其FIB(Forward InformationdataBase,转发信息库)通告到Route Reflector时，Route Reflector 会将这些路由通告给部署集群中的其他节点，Route Reflector专门用于管理BGP网络路由规则，不会产生pod数据通信。</p>
+</li>
+</ul>
+<p>注: calico默认工作模式是BGP的node- to-node mesh,如果要使用Route Reflector 需要进行相关配置。
+https://docs.projectcalico.org/v3.4/usage/routereflector
+https://docs.projectcalico.org/v3.2/usage/routereflector/calico-routereflector</p>
+<p>https://blog.kelu.org/category/tech.html
+https://blog.kelu.org/tech/2020/01/11/calico-series-3-calico-components-and-arch.html</p>
+<p><img alt="" src="https://pic.imgdb.cn/item/638deb6fb1fccdcd36b39ff8.jpg" /></p>
+<p>开启 ip-ip 模式,可以看到后面有个隧道tunl0 (兼容性好,可以跨子网)
+<img alt="" src="https://pic.imgdb.cn/item/638dbf48b1fccdcd366e5290.jpg" /></p>
+<p><img alt="" src="https://pic.imgdb.cn/item/63920dc6b1fccdcd3688ce25.jpg" /></p>
+<p><img alt="" src="https://pic.imgdb.cn/item/63921500b1fccdcd36928490.jpg" /></p>
+<p>总结:</p>
+<p>原则使用:</p>
+<ol>
+<li>
+<p>自建机房优先使用 caclio 
+  caclio 支持网络策略
+  性能高于 flannel</p>
+</li>
+<li>
+<p>使用启用overlay
+  考虑后期的网络扩展,node 节点是否存在跨子网的问题</p>
+</li>
+<li>
+<p>不启用 overlay
+    flannel host-gw
+    caclio bgp (直接路由)</p>
+</li>
+<li>
+<p>启用 overlay
+    caclio IPIP
+    flannel vxlan</p>
+</li>
+<li>CrossSubnet: 表示（ipip-bgp混合模式），指“同子网内路由采用bgp，跨子网路由采用ipip</li>
+</ol>
+<p>在使用场景上当主机节点处于不同网络分段，需要跨网段通信时，BGP模式将会失效，此时要使用IPIP模式。 Calico的BGP Mesh模式适合在小规模集群(节点数量小于100个)中直接互联，由于随着集群节点数量的增加，路由规则将成指数级增长会给集群网络带来很大压力。大规模集群需要使用BGP Route Reflector</p>
+<p>GitHub 地址: https://github.com/projectcalico/calico/blob/79b442a53adb7d7f1fd62927d9322daf87dce9de/calico/reference/public-cloud/aws.md</p>
+<h2 id="_2">不同组件压测调研</h2>
+<p>调研不同网络组件对网络的影响:(同等配置下)</p>
+<p>docker-compose 就不需要做 overlay 的封装和解封装,性能是最好的.
+<img alt="" src="https://pic.imgdb.cn/item/6391ff44b1fccdcd36702740.jpg" /></p>
+<p>压测调研:
+<img alt="" src="https://pic.imgdb.cn/item/63920012b1fccdcd36714ead.jpg" /></p>
+<p>flannel 网络组件
+<img alt="" src="https://pic.imgdb.cn/item/63920049b1fccdcd3671b07d.jpg" />
+压测调研:
+<img alt="" src="https://pic.imgdb.cn/item/63920120b1fccdcd36732eab.jpg" /></p>
+<p>DirectRouting模式:
+<img alt="" src="https://pic.imgdb.cn/item/6392079eb1fccdcd367dff6f.jpg" /></p>
+<p>升级系统
+<img alt="" src="https://pic.imgdb.cn/item/63920808b1fccdcd367ea518.jpg" /></p>
+<p>calico 组件:</p>
+<p><img alt="" src="https://pic.imgdb.cn/item/63920844b1fccdcd367ef497.jpg" /></p>
+<p><img alt="" src="https://pic.imgdb.cn/item/63920888b1fccdcd367fd2f3.jpg" /></p>
+<p><img alt="" src="https://pic.imgdb.cn/item/639208b2b1fccdcd36800790.jpg" /></p>
+<p>关闭 IPIP
+<img alt="" src="https://pic.imgdb.cn/item/6392090fb1fccdcd36807566.jpg" />
+使用 BGP
+<img alt="" src="https://pic.imgdb.cn/item/63920951b1fccdcd3680c7c3.jpg" /></p>
+<p>但是这个结果还是达不到预期的效果,最后的解决方案是单机多副本</p>
+<p><img alt="" src="https://pic.imgdb.cn/item/639209fcb1fccdcd36819c37.jpg" /></p>
+<p><img alt="" src="https://pic.imgdb.cn/item/63920a27b1fccdcd3681f608.jpg" /></p>
+<h2 id="_3">网络性能测试对比</h2>
+<p><img alt="" src="https://pic.imgdb.cn/item/638db721b1fccdcd3660cabd.jpg" /></p>
+<p>自己压测:
+caclio 的IPIP模式:
+<img alt="" src="https://pic.imgdb.cn/item/63a018f9b1fccdcd36593df3.jpg" /></p>
+<p>文章参考: </p>
+<ul>
+<li>
+<p>https://system51.github.io/2020/05/27/using-calico/</p>
+</li>
+<li>
+<p>https://projectcalico.docs.tigera.io/</p>
+</li>
+<li>
+<p>https://blog.frognew.com/2021/07/relearning-container-22.html#%E5%8F%82%E8%80%83</p>
+</li>
+<li>
+<p>https://kiddie92.github.io/2019/01/23/kubernetes-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95%E7%AE%80%E4%BB%8B/</p>
+</li>
+<li>
+<p>https://gist.github.com/baymaxium/7797f226fe03d38461f33fdd02145b11</p>
+</li>
+</ul>
 
 
 
@@ -2413,7 +2033,7 @@ auth-user-pass
     <nav class="md-footer__inner md-grid" aria-label="页脚" >
       
         
-        <a href="../ZeroTier/" class="md-footer__link md-footer__link--prev" aria-label="上一页: ZeroTier组网" rel="prev">
+        <a href="../frp/" class="md-footer__link md-footer__link--prev" aria-label="上一页: frp 内网穿透" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -2422,20 +2042,20 @@ auth-user-pass
               <span class="md-footer__direction">
                 上一页
               </span>
-              ZeroTier组网
+              frp 内网穿透
             </div>
           </div>
         </a>
       
       
         
-        <a href="../3-network-docs/" class="md-footer__link md-footer__link--next" aria-label="下一页: kubernetes 网络组件" rel="next">
+        <a href="../4-network-docs/" class="md-footer__link md-footer__link--next" aria-label="下一页: 科学上网" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 下一页
               </span>
-              kubernetes 网络组件
+              科学上网
             </div>
           </div>
           <div class="md-footer__button md-icon">

@@ -17,7 +17,7 @@
     
     
       
-        <title>frp 内网穿透 - Kubernetes 进阶训练营</title>
+        <title>科学上网 - Kubernetes 进阶训练营</title>
       
     
     
@@ -73,11 +73,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#frp" class="md-skip">
-          跳转至
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -109,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              frp 内网穿透
+              科学上网
             
           </span>
         </div>
@@ -963,211 +958,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          frp 内网穿透
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../frp/" class="md-nav__link">
         frp 内网穿透
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#frp" class="md-nav__link">
-    一、内网穿透Frp：
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#11" class="md-nav__link">
-    1.1、概述：
-  </a>
-  
-    <nav class="md-nav" aria-label="1.1、概述：">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#111frp" class="md-nav__link">
-    1.1.1：frp内网穿透工具：
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#112frp" class="md-nav__link">
-    1.1.2：frp的作用：
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#21" class="md-nav__link">
-    2.1、项目思路及重难点内容
-  </a>
-  
-    <nav class="md-nav" aria-label="2.1、项目思路及重难点内容">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#211" class="md-nav__link">
-    2.1.1：项目拓扑图：
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#212" class="md-nav__link">
-    2.1.2：实验思路：
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#213frp" class="md-nav__link">
-    2.1.3：frp配置文件说明：
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#31frp" class="md-nav__link">
-    3.1、Frp部署：
-  </a>
-  
-    <nav class="md-nav" aria-label="3.1、Frp部署：">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#311frps" class="md-nav__link">
-    3.1.1：部署frps：
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#312frpc" class="md-nav__link">
-    3.1.2：部署frpc：
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#313nj192165020" class="md-nav__link">
-    3.1.3：nj地区：192.165.0.20
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#314bj" class="md-nav__link">
-    3.1.4：bj地区：
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#41vpn" class="md-nav__link">
-    4.1、vpn部署：
-  </a>
-  
-    <nav class="md-nav" aria-label="4.1、vpn部署：">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#441vpn" class="md-nav__link">
-    4.4.1：vpn部署脚本：
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#442" class="md-nav__link">
-    4.4.2：新增用户脚本：
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#443iptables" class="md-nav__link">
-    4.4.3：部署iptables：
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#444" class="md-nav__link">
-    4.4.4：准备客户端证书：
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#51" class="md-nav__link">
-    5.1：其他案例配置：
-  </a>
-  
-    <nav class="md-nav" aria-label="5.1：其他案例配置：">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    附件：
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1191,11 +986,19 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../4-network-docs/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         科学上网
       </a>
+      
     </li>
   
 
@@ -1817,184 +1620,6 @@
   
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#frp" class="md-nav__link">
-    一、内网穿透Frp：
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#11" class="md-nav__link">
-    1.1、概述：
-  </a>
-  
-    <nav class="md-nav" aria-label="1.1、概述：">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#111frp" class="md-nav__link">
-    1.1.1：frp内网穿透工具：
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#112frp" class="md-nav__link">
-    1.1.2：frp的作用：
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#21" class="md-nav__link">
-    2.1、项目思路及重难点内容
-  </a>
-  
-    <nav class="md-nav" aria-label="2.1、项目思路及重难点内容">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#211" class="md-nav__link">
-    2.1.1：项目拓扑图：
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#212" class="md-nav__link">
-    2.1.2：实验思路：
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#213frp" class="md-nav__link">
-    2.1.3：frp配置文件说明：
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#31frp" class="md-nav__link">
-    3.1、Frp部署：
-  </a>
-  
-    <nav class="md-nav" aria-label="3.1、Frp部署：">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#311frps" class="md-nav__link">
-    3.1.1：部署frps：
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#312frpc" class="md-nav__link">
-    3.1.2：部署frpc：
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#313nj192165020" class="md-nav__link">
-    3.1.3：nj地区：192.165.0.20
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#314bj" class="md-nav__link">
-    3.1.4：bj地区：
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#41vpn" class="md-nav__link">
-    4.1、vpn部署：
-  </a>
-  
-    <nav class="md-nav" aria-label="4.1、vpn部署：">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#441vpn" class="md-nav__link">
-    4.4.1：vpn部署脚本：
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#442" class="md-nav__link">
-    4.4.2：新增用户脚本：
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#443iptables" class="md-nav__link">
-    4.4.3：部署iptables：
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#444" class="md-nav__link">
-    4.4.4：准备客户端证书：
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#51" class="md-nav__link">
-    5.1：其他案例配置：
-  </a>
-  
-    <nav class="md-nav" aria-label="5.1：其他案例配置：">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    附件：
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -2007,387 +1632,26 @@
                 
                   
 
-  <a href="https://github.com/lixie021/lixie021.github.io/edit/master/docs/network/frp.md" title="编辑此页" class="md-content__button md-icon">
+  <a href="https://github.com/lixie021/lixie021.github.io/edit/master/docs/network/4-network-docs.md" title="编辑此页" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-  <h1>frp 内网穿透</h1>
-
-<h3 id="frp">一、内网穿透Frp：</h3>
-<p><strong>下载地址：</strong><a href="https://github.com/fatedier/frp/releases">https://github.com/fatedier/frp/releases</a></p>
-<h3 id="11">1.1、概述：</h3>
-<h4 id="111frp">1.1.1：frp内网穿透工具：</h4>
-<p>是一个高性能的反向代理应用，可以帮助您轻松地进行内网穿透，对外网提供服务，支持 tcp, http, https 等协议类型，并且 web 服务支持根据域名进行路由转发。</p>
-<h4 id="112frp">1.1.2：frp的作用：</h4>
-<p>利用处于内网或防火墙后的机器，对外网环境提供 http 或 https 服务。
-对于 http 服务支持基于域名的虚拟主机，支持自定义域名绑定，使多个域名可以共用一个80端口。
-利用处于内网或防火墙后的机器，对外网环境提供 tcp 服务，例如在家里通过 ssh 访问处于公司内网环境内的主机。
-可查看通过代理的所有 http 请求和响应的详细信息。（待开发）</p>
-<h3 id="21">2.1、项目思路及重难点内容</h3>
-<p>!!! warning "温馨提示"
-    - 以下步骤只针对针对于centos 操作系统</p>
-<h4 id="211">2.1.1：项目拓扑图：</h4>
-<h4 id="212">2.1.2：实验思路：</h4>
-<table>
-<thead>
-<tr>
-<th>第一步</th>
-<th>购买一台云服务器作为frp-server端，主要是需要一个固定公网地址，如果公司有固定公网地址最好</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>第二步</td>
-<td>在公司或者内网准备一台主机作为frp-client端</td>
-</tr>
-<tr>
-<td>第三步</td>
-<td>在公司或者内网准备一台主机来部署vpn</td>
-</tr>
-<tr>
-<td>第四步</td>
-<td>利用穿透来实现连接VPN</td>
-</tr>
-</tbody>
-</table>
-<h4 id="213frp">2.1.3：frp配置文件说明：</h4>
-<pre><code class="language-shell">[root@localhost frpc]# ll
-总用量 21136
--rwxr-xr-x 1 root root 10466752 8月  18 2021 frpc
--rw-r--r-- 1 root root     6818 8月  18 2021 frpc_full.ini
--rw-r--r-- 1 root root      283 5月   2 23:35 frpc.ini
--rwxr-xr-x 1 root root 11133376 8月  18 2021 frps
--rw-r--r-- 1 root root     2199 8月  18 2021 frps_full.ini
--rw-r--r-- 1 root root       26 8月  18 2021 frps.ini
--rw-r--r-- 1 root root    11358 8月  18 2021 LICENSE
--rw-r--r-- 1 root root       21 8月  18 2021 run.sh
-drwxrwxr-x 2 root root       88 8月  18 2021 systemd
-
-文件说明：
-frpc                    # 客户端二进制文件
-frpc_full.ini           # 客户端配置文件完整示例
-frpc.ini                # 客户端配置文件
-frps                    # 服务端二进制文件
-frps_full.ini           # 服务端配置文件完整示例
-frps.in1                # 服务端配置文件
-</code></pre>
-<h3 id="31frp">3.1、Frp部署：</h3>
-<h4 id="311frps">3.1.1：部署frps：</h4>
-<blockquote>
-<p>注释：一般frps 是公网上的一台云服务器，这里可以是任意的云平台，注意一定记得开安全组！！！</p>
-</blockquote>
-<pre><code class="language-shell">[root@VM-16-9-centos frps]# cat frps.ini 
-[common]
-bind_port = 50070
-vhost_http_port = 50080
-vhost_https_port = 50443
-token = $pF@7zz^LDuh7^xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx    这个token是用于服务端和客户端连接
-
-
-
-# 启动
-./frps -c ./frps.ini
-</code></pre>
-<h4 id="312frpc">3.1.2：部署frpc：</h4>
-<pre><code class="language-shell">[root@moban frp_0.38.0_linux_amd64]# cat frpc.ini
-[common]
-server_addr = 115.29.189.57
-# server_addr表示与frps连接的地址
-server_port = 50081
-# 与frps连接的端口
-token = pass@word1
-# 配置token用来验证
-
-[openvpn]
-type = udp
-local_ip = 192.168.8.82
-local_port = 51194
-remote_port = 51194
-
-# remote_port表示用户访问公网地址+端口,就反向代理到local_ip+端口
-
-
-# 启动
-./frps -c ./frps.ini
-</code></pre>
-<h4 id="313nj192165020">3.1.3：nj地区：192.165.0.20</h4>
-<pre><code class="language-shell">[root@moban frp_0.26.0_linux_amd64]# cat frpc.ini
-[common]
-tls_enable=true
-server_addr = 39.104.160.84
-server_port = 50070
-token = $pF@xxxxxx
-[openvpn-nj]
-type=udp
-local_ip=192.165.0.21
-local_port=31194
-remote_port=31194
-
-
-[root@moban frp_0.26.0_linux_amd64]# cat frp.sh 
-./frpc -c ./frpc.ini
-
-</code></pre>
-<h4 id="314bj">3.1.4：bj地区：</h4>
-<pre><code class="language-shell">[root@frp-40 frpc]# cat frpc.ini
-[common]
-tls_enable=true
-server_addr = 39.104.160.84
-server_port = 50070
-token = $pF@7zz^LDuh7^X0Uxxxxx
-
-</code></pre>
-<h3 id="41vpn">4.1、vpn部署：</h3>
-<h4 id="441vpn">4.4.1：vpn部署脚本：</h4>
-<pre><code class="language-shell">#!/bin/bash
-# 搭建vpenvpn脚本
-# 作者:lixie
-# 日期:2021-10-19
-
-
-# openvpn是服务端,easy-rsa是证书管理工具
-
-yum -y install wget
-mkdir -p /etc/yum.repos.d/backup
-mv /etc/yum.repos.d/*.repo /etc/yum.repos.d/backup/
-wget -O /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-7.repo
-wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
-
-yum -y install openvpn easy-rsa &amp;&gt; /dev/null
-
-# 获取openvpn和easy-rsa的版本
-OPENVER=$(rpm -qi openvpn  |awk -F&quot;: &quot;  'NR==2{print $2}')
-EASYVER=$(rpm -qi easy-rsa  |awk -F&quot;: &quot;  'NR==2{print $2}')
-
-#echo &quot;openvpn-$OPENVER&quot;
-#echo &quot;easy-rsa-$EASYVER&quot;
-
-#生成服务器配置文件
-#cp /usr/share/doc/openvpn-$OPENVER/sample/sample-config-files/server.conf  /etc/openvpn/
-
-cat &lt;&lt; EOF &gt;&gt;  /etc/openvpn/server/server.conf
-local 0.0.0.0
-port 41194
-proto udp
-dev tun
-ca /etc/openvpn/certs/ca.crt
-cert /etc/openvpn/certs/server.crt
-dh /etc/openvpn/certs/dh.pem
-push &quot;route 192.168.0.0 255.255.0.0&quot;
-server 10.10.0.0 255.255.255.0
-ifconfig-pool-persist /var/log/openvpn/ipp.txt
-client-to-client
-keepalive 10 120
-comp-lzo
-max-clients 100
-persist-key
-persist-tun
-status /var/log/openvpn/openvpn-status.log
-log-append  /var/log/openvpn/openvpn.log
-verb 3
-key /etc/openvpn/certs/server.key
-cipher AES-256-CBC
-client-config-dir /etc/openvpn/ccd
-auth-user-pass-verify /etc/openvpn/checkpsw.sh via-env
-username-as-common-name
-script-security 3
-verify-client-cert none
-
-
-EOF
-
-# 注意！！！ 这里创建完配置文件后，需要做个配置文件的软连接，因为当前版本的 openvpn systemd 启动文件中读取的是.service.conf配置
-cd /etc/openvpn/server/ &amp;&amp; ln -sf server.conf .service.conf
-
-
-#准备证书签发相关文件
-
-cp -r /usr/share/easy-rsa/ /etc/openvpn/easy-rsa-server
-
-#准备签发证书相关变量的配置文件
-cp /usr/share/doc/easy-rsa-$EASYVER/vars.example /etc/openvpn/easy-rsa-server/3/vars
-
-
-#CA的证书有效期默为为10年,可以适当延长,比如:36500天
-sed -i '/3650/ s/3650/36500/g' /etc/openvpn/easy-rsa-server/3/vars
-
-#服务器证书默为为825天
-sed -i '/825/ s/825/82500/g' /etc/openvpn/easy-rsa-server/3/vars
-
-
- 初始化数据,在当前目录下生成pki目录及相关文件
-cd /etc/openvpn/easy-rsa-server/3/
-pwd
-./easyrsa init-pki
-
-
- 创建CA机构
-cd /etc/openvpn/easy-rsa-server/3
-./easyrsa build-ca nopass &lt;&lt;EOF
-
-
-EOF
-
-
-# 创建服务端证书申请
-
-cd /etc/openvpn/easy-rsa-server/3
-./easyrsa gen-req server nopass &lt;&lt;EOF
-
-
-EOF
-
-## 颁发服务端证书
-#
-cd /etc/openvpn/easy-rsa-server/3
-./easyrsa sign server server &lt;&lt;EOF
-yes
-
-EOF
-
-
-
-# 创建 Diffie-Hellman 密钥,这个步骤完了服务器部分就完成了
-cd /etc/openvpn/easy-rsa-server/3
-./easyrsa gen-dh
-
-
-#为客户端准备证书环境
-cp -r /usr/share/easy-rsa/ /etc/openvpn/easy-rsa-client
-cp /usr/share/doc/easy-rsa-$EASYVER/vars.example /etc/openvpn/easy-rsa-client/3/vars
-cd /etc/openvpn/easy-rsa-client/3/
-./easyrsa init-pki
-
-
-# 将CA和服务器证书相关文件复制到服务器相应的目录
-
-mkdir /etc/openvpn/certs
-cp /etc/openvpn/easy-rsa-server/3/pki/ca.crt  /etc/openvpn/certs/
-cp /etc/openvpn/easy-rsa-server/3/pki/issued/server.crt  /etc/openvpn/certs/
-cp /etc/openvpn/easy-rsa-server/3/pki/private/server.key  /etc/openvpn/certs/
-cp /etc/openvpn/easy-rsa-server/3/pki/dh.pem  /etc/openvpn/certs/
-
-
-# 修改服务器端配置文件
-
-
-# 创建日志目录
-
-mkdir /etc/openvpn/ccd
-mkdir /var/log/openvpn
-chown openvpn.openvpn /var/log/openvpn
-
-cat &lt;&lt;EOF&gt;&gt; /etc/openvpn/psw-file
-LIXIE ABC123,
-EOF
-chmod 600 /etc/openvpn/psw-file
-chown openvpn:openvpn /etc/openvpn/psw-file
-
-
-
-
-
-chmod +x /etc/openvpn/checkpsw.sh
-chown -R openvpn:openvpn /etc/openvpn/
-
-
-#在服务器开启ip_forward转发功能
-echo net.ipv4.ip_forward = 1 &gt;&gt; /etc/sysctl.conf &amp;&amp; sysctl -p &amp;&gt; /dev/null
-echo 'iptables -t nat -A POSTROUTING -s 10.10.0.0/24 -j MASQUERADE' &gt;&gt; /etc/rc.d/rc.local
-chmod +x /etc/rc.d/rc.local
-/etc/rc.d/rc.local
-
-
-
-systemctl daemon-reload
-systemctl start openvpn-server@.service.service
-systemctl enable openvpn-server@.service.service
-</code></pre>
-<h4 id="442">4.4.2：新增用户脚本：</h4>
-<pre><code class="language-shell">cat &lt;&lt;EOF&gt;&gt; /etc/openvpn/checkpsw.sh
-#!/bin/sh
-###########################################################
-# checkpsw.sh (C) 2004 Mathias Sundman &lt;mathias@openvpn.se&gt;
-#
-# This script will authenticate OpenVPN users against
-# a plain text file. The passfile should simply contain
-# one row per user with the username first followed by
-# one or more space(s) or tab(s) and then the password.
-PASSFILE=&quot;/etc/openvpn/psw-file&quot;
-LOG_FILE=&quot;/var/log/openvpn/password.log&quot;
-TIME_STAMP=`date &quot;+%Y-%m-%d %T&quot;`
-###########################################################
-if [ ! -r &quot;${PASSFILE}&quot; ]; then
-  echo &quot;${TIME_STAMP}: Could not open password file \&quot;${PASSFILE}\&quot; for reading.&quot; &gt;&gt;  ${LOG_FILE}
-  exit 1
-fi
-CORRECT_PASSWORD=`awk '!/^;/&amp;&amp;!/^#/&amp;&amp;$1==&quot;'${username}'&quot;{print $2;exit}' ${PASSFILE}`
-if [ &quot;${CORRECT_PASSWORD}&quot; = &quot;&quot; ]; then
-  echo &quot;${TIME_STAMP}: User does not exist: username=\&quot;${username}\&quot;, password=
-\&quot;${password}\&quot;.&quot; &gt;&gt; ${LOG_FILE}
-  exit 1
-fi
-if [ &quot;${password}&quot; = &quot;${CORRECT_PASSWORD}&quot; ]; then
-  echo &quot;${TIME_STAMP}: Successful authentication: username=\&quot;${username}\&quot;.&quot; &gt;&gt; ${LOG_FILE}
-  exit 0
-fi
-echo &quot;${TIME_STAMP}: Incorrect password: username=\&quot;${username}\&quot;, password=
-\&quot;${password}\&quot;.&quot; &gt;&gt; ${LOG_FILE}
-exit 1
-EOF
-</code></pre>
-<blockquote>
-<p>注意：需要给这个脚本一个执行权限</p>
-</blockquote>
-<h4 id="443iptables">4.4.3：部署iptables：</h4>
-<blockquote>
-<p>防火墙配置（firewalld配置或者iptables配置选一个）</p>
-</blockquote>
-<pre><code class="language-shell"># firewalld配置
-firewall-cmd --permanent --add-masquerade
-firewall-cmd --permanent --add-service=openvpn
-# 或者添加自定义端口
-# firewall-cmd --permanent  --add-port=1194/tcp
-firewall-cmd --permanent --direct --passthrough ipv4 -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
-firewall-cmd --reload
-# iptables （和上面的网段配置不同，修改下面的网段即可）
-yum install iptables-services
-systemctl enable iptables
-iptables -X
-iptables -F
-iptables -Z
-iptables -P INPUT ACCEPT
-iptables -P OUTPUT ACCEPT
-iptables -P FORWARD ACCEPT
-service iptables save
-iptables -t nat -A POSTROUTING -s 10.10.0.0/255.255.255.0 -o eth0 -j MASQUERADE
-iptables -A FORWARD -s 10.10.0.0/24 -d 192.168.0.0/24 -i tun0 -j ACCEPT
-iptables -A FORWARD -s 192.168.0.0/24 -d 10.10.0.0/24 -i eth0 -j ACCEPT
-service iptables save
-</code></pre>
-<h4 id="444">4.4.4：准备客户端证书：</h4>
-<p>备注：安装openvpn客户端软件：config配置文件中添加ca证书和.opvn</p>
-<pre><code class="language-shell">client
-dev tun
-proto udp
-# 公网ip需要修改
-remote  公网地址  41194       
-resolv-retry infinite
-nobind
-persist-key
-persist-tun
-ca ca.crt
-
-comp-lzo
-verb 3
-cipher AES-256-CBC
-auth-user-pass
-</code></pre>
-<h3 id="51">5.1：其他案例配置：</h3>
-<h4 id="_1"><strong>附件：</strong></h4>
-<p>学习博客：<a href="https://www.jianshu.com/p/09603d9e0b6c">https://www.jianshu.com/p/09603d9e0b6c</a></p>
+  <h1>科学上网</h1>
+
+<p>科学上网</p>
+<p>我是一名技术人员，平时每天需要大量的Google去看一些文章，当然也回去油管逛逛，那么国内上网的环境并不是很理想，而且资源也有限，
+所以需要科学上网，那么我推荐一个比较好用的机场。</p>
+<p><img alt="" src="https://pic.imgdb.cn/item/63a3d41fb1fccdcd36701698.jpg" />
+WgetCloud （原GaCloud ）是一家精品机场，线路数量不算多，但都是十分优质的低延迟BGP中转线路。</p>
+<p>WgetCloud 同时有香港自建机房，线路独享，可以保证高峰期稳定翻墙，所有代理服务器都支持流畅解锁当地流媒体服务。</p>
+<p>如何在iPhone、安卓手机和电脑上使用 WgetCloud 全球加速？</p>
+<p>WgetCloud 也是目前个人使用后觉得最稳定的翻墙服务，但套餐流量不多，价格最低￥468一年，享受流量翻倍200G每月，由于稳定性出色，非常适合商务办公外贸群体。</p>
+<p>我个人使用测试过，还是很给力,给工作和生活带来了很大便利</p>
+<ul>
+<li>WgetCloud推荐: https://invite.wgetcloud.ltd/auth/register?code=Apl0</li>
+</ul>
 
 
 
@@ -2413,7 +1677,7 @@ auth-user-pass
     <nav class="md-footer__inner md-grid" aria-label="页脚" >
       
         
-        <a href="../ZeroTier/" class="md-footer__link md-footer__link--prev" aria-label="上一页: ZeroTier组网" rel="prev">
+        <a href="../3-network-docs/" class="md-footer__link md-footer__link--prev" aria-label="上一页: kubernetes 网络组件" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -2422,20 +1686,20 @@ auth-user-pass
               <span class="md-footer__direction">
                 上一页
               </span>
-              ZeroTier组网
+              kubernetes 网络组件
             </div>
           </div>
         </a>
       
       
         
-        <a href="../3-network-docs/" class="md-footer__link md-footer__link--next" aria-label="下一页: kubernetes 网络组件" rel="next">
+        <a href="../../Storage/rook-ceph/" class="md-footer__link md-footer__link--next" aria-label="下一页: rook-ceph简介" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 下一页
               </span>
-              kubernetes 网络组件
+              rook-ceph简介
             </div>
           </div>
           <div class="md-footer__button md-icon">
