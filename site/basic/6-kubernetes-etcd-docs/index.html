@@ -17,7 +17,7 @@
     
     
       
-        <title>ZeroTier组网 - Kubernetes 进阶训练营</title>
+        <title>ETCD 简介与使用 - Kubernetes 进阶训练营</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#zerotier" class="md-skip">
+        <a href="#etcd" class="md-skip">
           跳转至
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ZeroTier组网
+              ETCD 简介与使用
             
           </span>
         </div>
@@ -245,13 +245,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../basic/cncf/" class="md-tabs__link">
+      <a href="../cncf/" class="md-tabs__link md-tabs__link--active">
         基础
       </a>
     </li>
@@ -293,15 +295,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="./" class="md-tabs__link md-tabs__link--active">
+      <a href="../../network/ZeroTier/" class="md-tabs__link">
         网络
       </a>
     </li>
@@ -659,12 +659,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
       
       
       
@@ -709,7 +711,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../basic/cncf/" class="md-nav__link">
+      <a href="../cncf/" class="md-nav__link">
         云原生简介
       </a>
     </li>
@@ -737,7 +739,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../basic/3-k8s-systeminit-docs/" class="md-nav__link">
+      <a href="../3-k8s-systeminit-docs/" class="md-nav__link">
         集群部署
       </a>
     </li>
@@ -751,7 +753,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../basic/k8s-update/" class="md-nav__link">
+      <a href="../k8s-update/" class="md-nav__link">
         K8S升级
       </a>
     </li>
@@ -763,11 +765,69 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../basic/6-kubernetes-etcd-docs/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          ETCD 简介与使用
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         ETCD 简介与使用
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#etcd" class="md-nav__link">
+    ETCD 特性:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    硬件推荐
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etcd_1" class="md-nav__link">
+    ETCD 客户端使用
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etcd_2" class="md-nav__link">
+    ETCD备份恢复
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -807,7 +867,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../basic/5-kubernetes-UI-docs/" class="md-nav__link">
+      <a href="../5-kubernetes-UI-docs/" class="md-nav__link">
         Kubernetes UI
       </a>
     </li>
@@ -821,7 +881,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../basic/7-kubernetes-update-docs.md" class="md-nav__link">
+      <a href="../7-kubernetes-update-docs.md" class="md-nav__link">
         Kubernetes 节点维护
       </a>
     </li>
@@ -835,7 +895,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../basic/4-ansible-install-k8s/" class="md-nav__link">
+      <a href="../4-ansible-install-k8s/" class="md-nav__link">
         项目一
       </a>
     </li>
@@ -959,14 +1019,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
       
       
       
@@ -997,80 +1055,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          ZeroTier组网
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../network/ZeroTier/" class="md-nav__link">
         ZeroTier组网
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    背景
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    原理
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#linux-debrpm" class="md-nav__link">
-    Linux (DEB/RPM)
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#macos" class="md-nav__link">
-    macOS
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    安装
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1082,7 +1071,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../frp/" class="md-nav__link">
+      <a href="../../network/frp/" class="md-nav__link">
         frp 内网穿透
       </a>
     </li>
@@ -1096,7 +1085,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../3-network-docs/" class="md-nav__link">
+      <a href="../../network/3-network-docs/" class="md-nav__link">
         kubernetes 网络组件
       </a>
     </li>
@@ -1110,7 +1099,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4-network-docs/" class="md-nav__link">
+      <a href="../../network/4-network-docs/" class="md-nav__link">
         科学上网
       </a>
     </li>
@@ -1733,8 +1722,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1743,36 +1730,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#etcd" class="md-nav__link">
+    ETCD 特性:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    背景
+    硬件推荐
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    原理
+  <a href="#etcd_1" class="md-nav__link">
+    ETCD 客户端使用
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#linux-debrpm" class="md-nav__link">
-    Linux (DEB/RPM)
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#macos" class="md-nav__link">
-    macOS
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    安装
+  <a href="#etcd_2" class="md-nav__link">
+    ETCD备份恢复
   </a>
   
 </li>
@@ -1791,49 +1771,105 @@
                 
                   
 
-  <a href="https://github.com/lixie021/lixie021.github.io/edit/master/docs/network/ZeroTier.md" title="编辑此页" class="md-content__button md-icon">
+  <a href="https://github.com/lixie021/lixie021.github.io/edit/master/docs/basic/6-kubernetes-etcd-docs.md" title="编辑此页" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-<h1 id="zerotier">ZeroTier 内网</h1>
-<h2 id="_1"><strong>背景</strong></h2>
-<p>随着互联网的普及，可用的公网 IPv4 地址越来越少，现在的运营商基本不给家用宽带分配公网 IP 了。如果你想通过外网访问到内网的资源，目前只能采用内网穿透的软件来实现。常见的内网穿透如: frp 这样的工具，但是如果要使用这样的工具需要有一台具备公网地址的服务器才可以。</p>
-<p>做为一名优秀的技术人员，当然是能白嫖就白嫖，下面主要来介绍一款不需要公网的P2P工具ZeroTier
-<img alt="" src="https://pic1.imgdb.cn/item/63355b9316f2c2beb149496a.jpg" /></p>
-<h2 id="_2"><strong>原理</strong></h2>
-<p>ZeroTier 这一类 P2P VPN 是在互联网的基础上将自己的所有设备组成一个私有的网络，可以理解为互联网连接的局域网。</p>
-<p>大白话就是一堆服务器安装上这个软件就组建了一个内网，大家通过这个特定网段内网可以互相访问。</p>
-<p>!!! info "优点"
-    - 内网穿透工具（免费）
-    - ZeroTier 支持 Windows、macOS、Linux 三大主流平台，iOS、Android 两大移动平台</p>
-<p>我们正在逐步用 Tailscale 替换掉 ZeroTier 网络，ZeroTier 将作为 Tailscale 不可用时的备选方案</p>
-<p>官网地址: https://www.zerotier.com/</p>
-<p>下载客户端: https://www.zerotier.com/download/</p>
-<h2 id="linux-debrpm"><strong>Linux (DEB/RPM)</strong></h2>
-<pre><code class="language-bash">curl -s https://install.zerotier.com | sudo bash
-</code></pre>
-<h2 id="macos"><strong>macOS</strong></h2>
-<p>可选择官方的 DMG 安装，或从 Homebrew 进行安装：</p>
-<pre><code class="language-bash">brew cask install zerotier-one
-</code></pre>
+  <h1>ETCD 简介与使用</h1>
+
+<p>官网: https://etcd.io/</p>
+<p>Github地址: https://github.com/etcd-io/etcd</p>
+<p><img alt="" src="https://pic.imgdb.cn/item/63a49d2f08b68301634b3f0a.jpg" /></p>
+<h2 id="etcd">ETCD 特性:</h2>
+<p><img alt="" src="https://pic.imgdb.cn/item/63a49e7408b68301634c8022.jpg" /></p>
+<ul>
+<li>完全复制: 集群中的每个节点都可以使用完整的存档</li>
+<li>高可用性: ETCD可以避免硬件的单点故障和网络问题</li>
+<li>一致性: 每次写入都会返回跨多主机的最新写入</li>
+<li>简单: 包括一个定义良好,面向用户的API</li>
+<li>安全: 实现了带有可选的客户端证书身份验证的自动化TLS</li>
+<li>快速: 每秒一万次写入的基准速度</li>
+<li>可靠: 使用Raft算法实现存储的合理分布在etcd的工作原理</li>
+</ul>
+<h2 id="_1">硬件推荐</h2>
+<p>ETCD 主要考虑内存，CPU，磁盘</p>
+<p>官网硬件(推荐): https://etcd.io/docs/v3.5/op-guide/hardware/</p>
 <p>!!! warning "温馨提示"
-    我这边主要是以使用linux和mac为主，其他平台请直接访问上方的 Zerotier 官网进行下载</p>
-<h2 id="_3"><strong>安装</strong></h2>
-<p>!!! info "操作步骤"
-    - Linux或者Mac安装zerotier
-    - 加入到zerotier网络
-    - zerotier的UI界面勾选刚刚添加的节点</p>
-<p><strong>安装:</strong> <a href="https://www.zerotier.com/download/">参考官网</a></p>
-<pre><code class="language-shell">curl -s https://install.zerotier.com | sudo bash
+    官方提供的硬件有些过于保守，正式的生产环境最好高于官方推荐的1.5-2倍比较合理</p>
+<p><img alt="" src="https://pic.imgdb.cn/item/63a51b7308b6830163c7130c.jpg" /></p>
+<p><img alt="" src="https://pic.imgdb.cn/item/63a51ba608b6830163c75744.jpg" /></p>
+<h2 id="etcd_1">ETCD 客户端使用</h2>
+<pre><code class="language-shell">root@m1-pre:~# etcdctl member list
+4469cb53324fe68b, started, etcd-192.168.1.102, https://192.168.1.102:2380, https://192.168.1.102:2379, false
+9f5e0acc1f346641, started, etcd-192.168.1.101, https://192.168.1.101:2380, https://192.168.1.101:2379, false
+e519401c4b995768, started, etcd-192.168.1.103, https://192.168.1.103:2380, https://192.168.1.103:2379, false
 </code></pre>
-<p>节点加入zerotier网络，加入网络之前需要提前创建这个网络</p>
-<pre><code class="language-shell">root@user:/home/user# zerotier-cli join b15644912ebd050d
-200 join OK
+<p>验证当前所有ETCD成员状态</p>
+<pre><code class="language-shell">root@m1-pre:~# export NODE_IPS=&quot;192.168.1.101 192.168.1.102 192.168.1.103&quot;
+root@m1-pre:~# for ip in ${NODE_IPS};do ETCDCTL_API=3 /usr/bin/etcdctl --endpoints=https://${ip}:2379 --cacert=/etc/kubernetes/ssl/ca.pem --cert=/etc/kubernetes/ssl/etcd.pem --key=/etc/kubernetes/ssl/etcd-key.pem endpoint health;done
+https://192.168.1.101:2379 is healthy: successfully committed proposal: took = 17.871745ms
+https://192.168.1.102:2379 is healthy: successfully committed proposal: took = 12.499902ms
+https://192.168.1.103:2379 is healthy: successfully committed proposal: took = 10.525834ms
 </code></pre>
-<p><img alt="" src="https://pic1.imgdb.cn/item/63355da416f2c2beb14ba07e.jpg" />
-登陆自己的zerotier帐号，勾选允许对应机器就可以了，这里推荐使用github帐号。</p>
+<p>显示详细信息</p>
+<pre><code class="language-shell">root@m1-pre:~# for ip in ${NODE_IPS};do ETCDCTL_API=3 /usr/bin/etcdctl --write-out=table endpoint status  --endpoints=https://${ip}:2379 --cacert=/etc/kubernetes/ssl/ca.pem --cert=/etc/kubernetes/ssl/etcd.pem --key=/etc/kubernetes/ssl/etcd-key.pem;done
++----------------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+|          ENDPOINT          |        ID        | VERSION | DB SIZE | IS LEADER | IS LEARNER | RAFT TERM | RAFT INDEX | RAFT APPLIED INDEX | ERRORS |
++----------------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+| https://192.168.1.101:2379 | 9f5e0acc1f346641 |  3.4.13 |  2.5 MB |      true |      false |       128 |     259947 |             259947 |        |
++----------------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
++----------------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+|          ENDPOINT          |        ID        | VERSION | DB SIZE | IS LEADER | IS LEARNER | RAFT TERM | RAFT INDEX | RAFT APPLIED INDEX | ERRORS |
++----------------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+| https://192.168.1.102:2379 | 4469cb53324fe68b |  3.4.13 |  2.5 MB |     false |      false |       128 |     259947 |             259947 |        |
++----------------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
++----------------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+|          ENDPOINT          |        ID        | VERSION | DB SIZE | IS LEADER | IS LEARNER | RAFT TERM | RAFT INDEX | RAFT APPLIED INDEX | ERRORS |
++----------------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+| https://192.168.1.103:2379 | e519401c4b995768 |  3.4.13 |  2.5 MB |     false |      false |       128 |     259947 |             259947 |        |
++----------------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+</code></pre>
+<p>查看ETCD数据</p>
+<pre><code class="language-shell">$ etcdctl get / --prefix  --keys-only
+$ etcdctl get /registry/pods/default/test
+$ etcdctl get / --prefix  --keys-only |grep namespace
+$ etcdctl get / --prefix  --keys-only |grep calico
+$ etcdctl get / --prefix  --keys-only |grep deployment
+
+$ ETCDCTL_API=3 etcdctl put /name &quot;linux60&quot;  //增
+$ ETCDCTL_API=3 etcdctl get /name            //查
+$ ETCDCTL_API=3 etcdctl del /name            //删
+
+$ ETCDCTL_API=3 etcdctl watch /data //无key也可以进行watch
+</code></pre>
+<p>watch 如同所示:</p>
+<p><img alt="" src="https://pic.imgdb.cn/item/63a5244408b6830163d22164.jpg" /></p>
+<h2 id="etcd_2">ETCD备份恢复</h2>
+<p>WAL顾名思义，在真正执行写操作之前先写一个日志，预写日志
+WAL 存放了预写日志，最大的作用是记录了整个数据变化的的全部历程。在etcd中，所有数据的修改在提交前都要先写入WAL中</p>
+<p>V3 版本备份数据</p>
+<pre><code class="language-shell">ETCDCTL_API=3 etcdctl  snapshot save &lt;filename&gt;
+
+</code></pre>
+<p>自动备份数据</p>
+<pre><code class="language-shell">$ mkdir /data/etcd-backup
+
+$ cat etcd-backup.sh
+#!/bin/bash
+source /etc/profile
+DATE=`date +%Y%m%d-%H%M`
+ETCDCTL_API=3 /usr/bin/etcdctl snapshot save /data/etcd-backup/etcd-snapshot-${DATE}.db
+ETCDFILE=`find /data/etcd-backup -mtime +30 -name etcd-*|wc -l`
+if [ ${ETCDFILE} -gt 30 ];then
+    find /data/etcd-backup -mtime +30 -name etcd-* -exec rm -f {} \;
+fi
+</code></pre>
+<p>V3 版本恢复数据</p>
+<pre><code class="language-shell">ETCDCTL_API=3 etcdctl  snapshot restore /data/etcd/etcd.db --data-dir=/opt/data // 恢复的目录必须不存在，否则会报错
+</code></pre>
+<p>f0a7ab039a6bd4c8b5c4af97b6e243cc</p>
 
 
 
@@ -1859,7 +1895,7 @@
     <nav class="md-footer__inner md-grid" aria-label="页脚" >
       
         
-        <a href="../../k8s/mysql-operator/1-install-mysql-operator/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Mysql-operator" rel="prev">
+        <a href="../k8s-update/" class="md-footer__link md-footer__link--prev" aria-label="上一页: K8S升级" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1868,20 +1904,20 @@
               <span class="md-footer__direction">
                 上一页
               </span>
-              Mysql-operator
+              K8S升级
             </div>
           </div>
         </a>
       
       
         
-        <a href="../frp/" class="md-footer__link md-footer__link--next" aria-label="下一页: frp 内网穿透" rel="next">
+        <a href="../../k8s/yaml/yaml/" class="md-footer__link md-footer__link--next" aria-label="下一页: 资源清单" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 下一页
               </span>
-              frp 内网穿透
+              资源清单
             </div>
           </div>
           <div class="md-footer__button md-icon">
