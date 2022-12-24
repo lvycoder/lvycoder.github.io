@@ -1781,88 +1781,96 @@
   </a>
 
 
-<h1 id="juicefs"><strong>Juicefs机器学习存储方案</strong></h1>
-<p>!!! info "环境要求"
-    - docker环境
-    - k3s 环境安装
-    - redis数据库
-    - rook-ceph存储</p>
-<h2 id="juicefs_1"><strong>juicefs 环境部署</strong></h2>
+<h1 id="juicefs"><strong>Juicefs机器学习存储方案</strong><a class="headerlink" href="#juicefs" title="Permanent link">&para;</a></h1>
+<div class="admonition info">
+<p class="admonition-title">环境要求</p>
+<ul>
+<li>docker环境</li>
+<li>k3s 环境安装</li>
+<li>redis数据库</li>
+<li>rook-ceph存储</li>
+</ul>
+</div>
+<h2 id="juicefs_1"><strong>juicefs 环境部署</strong><a class="headerlink" href="#juicefs_1" title="Permanent link">&para;</a></h2>
 <p>参考文章: <a href="https://juicefs.com/docs/zh/community/juicefs_on_k3s">Juicefs官网</a> 进行部署</p>
-<p>!!! wanring "温馨提示"
-    - 如果是生产环境需要考虑redis的高可用，以及原数据的备份。</p>
-<h2 id="cephfsjuicefs"><strong>Cephfs和juicefs性能对比</strong></h2>
-<h3 id="_1"><strong>基准测试对比</strong></h3>
+<div class="admonition wanring">
+<p class="admonition-title">温馨提示</p>
+<ul>
+<li>如果是生产环境需要考虑redis的高可用，以及原数据的备份。</li>
+</ul>
+</div>
+<h2 id="cephfsjuicefs"><strong>Cephfs和juicefs性能对比</strong><a class="headerlink" href="#cephfsjuicefs" title="Permanent link">&para;</a></h2>
+<h3 id="_1"><strong>基准测试对比</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
 <ul>
 <li>cephfs 基准测试</li>
 </ul>
-<pre><code class="language-shell">root@nginx-run-7877759d45-484kx:/data# fio --name=big-file-multi-read --directory=$PWD --rw=read --refill_buffers --bs=4K --size=200M --numjobs=5
-big-file-multi-read: (g=0): rw=read, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=psync, iodepth=1
+<div class="highlight"><pre><span></span><code>root@nginx-run-7877759d45-484kx:/data# fio --name<span class="o">=</span>big-file-multi-read --directory<span class="o">=</span><span class="nv">$PWD</span> --rw<span class="o">=</span><span class="nb">read</span> --refill_buffers --bs<span class="o">=</span>4K --size<span class="o">=</span>200M --numjobs<span class="o">=</span><span class="m">5</span>
+big-file-multi-read: <span class="o">(</span><span class="nv">g</span><span class="o">=</span><span class="m">0</span><span class="o">)</span>: <span class="nv">rw</span><span class="o">=</span>read, <span class="nv">bs</span><span class="o">=(</span>R<span class="o">)</span> 4096B-4096B, <span class="o">(</span>W<span class="o">)</span> 4096B-4096B, <span class="o">(</span>T<span class="o">)</span> 4096B-4096B, <span class="nv">ioengine</span><span class="o">=</span>psync, <span class="nv">iodepth</span><span class="o">=</span><span class="m">1</span>
 ...
 fio-3.25
-Starting 5 processes
-Jobs: 5 (f=5)
-big-file-multi-read: (groupid=0, jobs=1): err= 0: pid=816: Mon Aug 15 09:48:26 2022
-  read: IOPS=33.5k, BW=131MiB/s (137MB/s)(200MiB/1527msec)
-    clat (nsec): min=570, max=248033k, avg=29131.89, stdev=2094821.44
-     lat (nsec): min=605, max=248033k, avg=29167.63, stdev=2094821.43
-    clat percentiles (nsec):
-     |  1.00th=[     644],  5.00th=[     708], 10.00th=[     732],
-     | 20.00th=[     748], 30.00th=[     756], 40.00th=[     780],
-     | 50.00th=[     796], 60.00th=[     828], 70.00th=[     892],
-     | 80.00th=[     940], 90.00th=[    1048], 95.00th=[    1160],
-     | 99.00th=[    1416], 99.50th=[    1752], 99.90th=[   23168],
-     | 99.95th=[ 2899968], 99.99th=[93847552]
-   bw (  KiB/s): min=73728, max=196608, per=21.37%, avg=135168.00, stdev=86889.28, samples=2
-   iops        : min=18432, max=49152, avg=33792.00, stdev=21722.32, samples=2
-  lat (nsec)   : 750=23.25%, 1000=63.18%
-  lat (usec)   : 2=13.14%, 4=0.15%, 10=0.12%, 20=0.04%, 50=0.02%
-  lat (usec)   : 100=0.01%, 250=0.01%, 500=0.01%
-  lat (msec)   : 2=0.01%, 4=0.02%, 10=0.01%, 20=0.01%, 50=0.01%
-  lat (msec)   : 100=0.01%, 250=0.01%
-  cpu          : usr=0.72%, sys=6.55%, ctx=81, majf=0, minf=16
-  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, &gt;=64=0.0%
-     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, &gt;=64=0.0%
-     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, &gt;=64=0.0%
-     issued rwts: total=51200,0,0,0 short=0,0,0,0 dropped=0,0,0,0
-     latency   : target=0, window=0, percentile=100.00%, depth=1
+Starting <span class="m">5</span> processes
+Jobs: <span class="m">5</span> <span class="o">(</span><span class="nv">f</span><span class="o">=</span><span class="m">5</span><span class="o">)</span>
+big-file-multi-read: <span class="o">(</span><span class="nv">groupid</span><span class="o">=</span><span class="m">0</span>, <span class="nv">jobs</span><span class="o">=</span><span class="m">1</span><span class="o">)</span>: <span class="nv">err</span><span class="o">=</span> <span class="m">0</span>: <span class="nv">pid</span><span class="o">=</span><span class="m">816</span>: Mon Aug <span class="m">15</span> <span class="m">09</span>:48:26 <span class="m">2022</span>
+  read: <span class="nv">IOPS</span><span class="o">=</span><span class="m">33</span>.5k, <span class="nv">BW</span><span class="o">=</span>131MiB/s <span class="o">(</span>137MB/s<span class="o">)(</span>200MiB/1527msec<span class="o">)</span>
+    clat <span class="o">(</span>nsec<span class="o">)</span>: <span class="nv">min</span><span class="o">=</span><span class="m">570</span>, <span class="nv">max</span><span class="o">=</span>248033k, <span class="nv">avg</span><span class="o">=</span><span class="m">29131</span>.89, <span class="nv">stdev</span><span class="o">=</span><span class="m">2094821</span>.44
+     lat <span class="o">(</span>nsec<span class="o">)</span>: <span class="nv">min</span><span class="o">=</span><span class="m">605</span>, <span class="nv">max</span><span class="o">=</span>248033k, <span class="nv">avg</span><span class="o">=</span><span class="m">29167</span>.63, <span class="nv">stdev</span><span class="o">=</span><span class="m">2094821</span>.43
+    clat percentiles <span class="o">(</span>nsec<span class="o">)</span>:
+     <span class="p">|</span>  <span class="m">1</span>.00th<span class="o">=[</span>     <span class="m">644</span><span class="o">]</span>,  <span class="m">5</span>.00th<span class="o">=[</span>     <span class="m">708</span><span class="o">]</span>, <span class="m">10</span>.00th<span class="o">=[</span>     <span class="m">732</span><span class="o">]</span>,
+     <span class="p">|</span> <span class="m">20</span>.00th<span class="o">=[</span>     <span class="m">748</span><span class="o">]</span>, <span class="m">30</span>.00th<span class="o">=[</span>     <span class="m">756</span><span class="o">]</span>, <span class="m">40</span>.00th<span class="o">=[</span>     <span class="m">780</span><span class="o">]</span>,
+     <span class="p">|</span> <span class="m">50</span>.00th<span class="o">=[</span>     <span class="m">796</span><span class="o">]</span>, <span class="m">60</span>.00th<span class="o">=[</span>     <span class="m">828</span><span class="o">]</span>, <span class="m">70</span>.00th<span class="o">=[</span>     <span class="m">892</span><span class="o">]</span>,
+     <span class="p">|</span> <span class="m">80</span>.00th<span class="o">=[</span>     <span class="m">940</span><span class="o">]</span>, <span class="m">90</span>.00th<span class="o">=[</span>    <span class="m">1048</span><span class="o">]</span>, <span class="m">95</span>.00th<span class="o">=[</span>    <span class="m">1160</span><span class="o">]</span>,
+     <span class="p">|</span> <span class="m">99</span>.00th<span class="o">=[</span>    <span class="m">1416</span><span class="o">]</span>, <span class="m">99</span>.50th<span class="o">=[</span>    <span class="m">1752</span><span class="o">]</span>, <span class="m">99</span>.90th<span class="o">=[</span>   <span class="m">23168</span><span class="o">]</span>,
+     <span class="p">|</span> <span class="m">99</span>.95th<span class="o">=[</span> <span class="m">2899968</span><span class="o">]</span>, <span class="m">99</span>.99th<span class="o">=[</span><span class="m">93847552</span><span class="o">]</span>
+   bw <span class="o">(</span>  KiB/s<span class="o">)</span>: <span class="nv">min</span><span class="o">=</span><span class="m">73728</span>, <span class="nv">max</span><span class="o">=</span><span class="m">196608</span>, <span class="nv">per</span><span class="o">=</span><span class="m">21</span>.37%, <span class="nv">avg</span><span class="o">=</span><span class="m">135168</span>.00, <span class="nv">stdev</span><span class="o">=</span><span class="m">86889</span>.28, <span class="nv">samples</span><span class="o">=</span><span class="m">2</span>
+   iops        : <span class="nv">min</span><span class="o">=</span><span class="m">18432</span>, <span class="nv">max</span><span class="o">=</span><span class="m">49152</span>, <span class="nv">avg</span><span class="o">=</span><span class="m">33792</span>.00, <span class="nv">stdev</span><span class="o">=</span><span class="m">21722</span>.32, <span class="nv">samples</span><span class="o">=</span><span class="m">2</span>
+  lat <span class="o">(</span>nsec<span class="o">)</span>   : <span class="nv">750</span><span class="o">=</span><span class="m">23</span>.25%, <span class="nv">1000</span><span class="o">=</span><span class="m">63</span>.18%
+  lat <span class="o">(</span>usec<span class="o">)</span>   : <span class="nv">2</span><span class="o">=</span><span class="m">13</span>.14%, <span class="nv">4</span><span class="o">=</span><span class="m">0</span>.15%, <span class="nv">10</span><span class="o">=</span><span class="m">0</span>.12%, <span class="nv">20</span><span class="o">=</span><span class="m">0</span>.04%, <span class="nv">50</span><span class="o">=</span><span class="m">0</span>.02%
+  lat <span class="o">(</span>usec<span class="o">)</span>   : <span class="nv">100</span><span class="o">=</span><span class="m">0</span>.01%, <span class="nv">250</span><span class="o">=</span><span class="m">0</span>.01%, <span class="nv">500</span><span class="o">=</span><span class="m">0</span>.01%
+  lat <span class="o">(</span>msec<span class="o">)</span>   : <span class="nv">2</span><span class="o">=</span><span class="m">0</span>.01%, <span class="nv">4</span><span class="o">=</span><span class="m">0</span>.02%, <span class="nv">10</span><span class="o">=</span><span class="m">0</span>.01%, <span class="nv">20</span><span class="o">=</span><span class="m">0</span>.01%, <span class="nv">50</span><span class="o">=</span><span class="m">0</span>.01%
+  lat <span class="o">(</span>msec<span class="o">)</span>   : <span class="nv">100</span><span class="o">=</span><span class="m">0</span>.01%, <span class="nv">250</span><span class="o">=</span><span class="m">0</span>.01%
+  cpu          : <span class="nv">usr</span><span class="o">=</span><span class="m">0</span>.72%, <span class="nv">sys</span><span class="o">=</span><span class="m">6</span>.55%, <span class="nv">ctx</span><span class="o">=</span><span class="m">81</span>, <span class="nv">majf</span><span class="o">=</span><span class="m">0</span>, <span class="nv">minf</span><span class="o">=</span><span class="m">16</span>
+  IO depths    : <span class="nv">1</span><span class="o">=</span><span class="m">100</span>.0%, <span class="nv">2</span><span class="o">=</span><span class="m">0</span>.0%, <span class="nv">4</span><span class="o">=</span><span class="m">0</span>.0%, <span class="nv">8</span><span class="o">=</span><span class="m">0</span>.0%, <span class="nv">16</span><span class="o">=</span><span class="m">0</span>.0%, <span class="nv">32</span><span class="o">=</span><span class="m">0</span>.0%, &gt;<span class="o">=</span><span class="nv">64</span><span class="o">=</span><span class="m">0</span>.0%
+     submit    : <span class="nv">0</span><span class="o">=</span><span class="m">0</span>.0%, <span class="nv">4</span><span class="o">=</span><span class="m">100</span>.0%, <span class="nv">8</span><span class="o">=</span><span class="m">0</span>.0%, <span class="nv">16</span><span class="o">=</span><span class="m">0</span>.0%, <span class="nv">32</span><span class="o">=</span><span class="m">0</span>.0%, <span class="nv">64</span><span class="o">=</span><span class="m">0</span>.0%, &gt;<span class="o">=</span><span class="nv">64</span><span class="o">=</span><span class="m">0</span>.0%
+     <span class="nb">complete</span>  : <span class="nv">0</span><span class="o">=</span><span class="m">0</span>.0%, <span class="nv">4</span><span class="o">=</span><span class="m">100</span>.0%, <span class="nv">8</span><span class="o">=</span><span class="m">0</span>.0%, <span class="nv">16</span><span class="o">=</span><span class="m">0</span>.0%, <span class="nv">32</span><span class="o">=</span><span class="m">0</span>.0%, <span class="nv">64</span><span class="o">=</span><span class="m">0</span>.0%, &gt;<span class="o">=</span><span class="nv">64</span><span class="o">=</span><span class="m">0</span>.0%
+     issued rwts: <span class="nv">total</span><span class="o">=</span><span class="m">51200</span>,0,0,0 <span class="nv">short</span><span class="o">=</span><span class="m">0</span>,0,0,0 <span class="nv">dropped</span><span class="o">=</span><span class="m">0</span>,0,0,0
+     latency   : <span class="nv">target</span><span class="o">=</span><span class="m">0</span>, <span class="nv">window</span><span class="o">=</span><span class="m">0</span>, <span class="nv">percentile</span><span class="o">=</span><span class="m">100</span>.00%, <span class="nv">depth</span><span class="o">=</span><span class="m">1</span>
 
-root@nginx-run-7877759d45-484kx:/data# fio --name=big-file-multi-read --directory=$PWD --rw=read --refill_buffers --bs=4K --size=200M --numjobs=5
-big-file-multi-read: (g=0): rw=read, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=psync, iodepth=1
+root@nginx-run-7877759d45-484kx:/data# fio --name<span class="o">=</span>big-file-multi-read --directory<span class="o">=</span><span class="nv">$PWD</span> --rw<span class="o">=</span><span class="nb">read</span> --refill_buffers --bs<span class="o">=</span>4K --size<span class="o">=</span>200M --numjobs<span class="o">=</span><span class="m">5</span>
+big-file-multi-read: <span class="o">(</span><span class="nv">g</span><span class="o">=</span><span class="m">0</span><span class="o">)</span>: <span class="nv">rw</span><span class="o">=</span>read, <span class="nv">bs</span><span class="o">=(</span>R<span class="o">)</span> 4096B-4096B, <span class="o">(</span>W<span class="o">)</span> 4096B-4096B, <span class="o">(</span>T<span class="o">)</span> 4096B-4096B, <span class="nv">ioengine</span><span class="o">=</span>psync, <span class="nv">iodepth</span><span class="o">=</span><span class="m">1</span>
 ...
 fio-3.25
-Starting 5 processes
-Jobs: 5 (f=5)
-big-file-multi-read: (groupid=0, jobs=1): err= 0: pid=823: Mon Aug 15 09:48:31 2022
-  read: IOPS=41.1k, BW=161MiB/s (168MB/s)(200MiB/1246msec)
-    clat (nsec): min=620, max=346202k, avg=23787.02, stdev=1805527.05
-     lat (nsec): min=654, max=346202k, avg=23822.73, stdev=1805527.05
-    clat percentiles (nsec):
-     |  1.00th=[     692],  5.00th=[     740], 10.00th=[     748],
-     | 20.00th=[     764], 30.00th=[     780], 40.00th=[     804],
-     | 50.00th=[     828], 60.00th=[     876], 70.00th=[     924],
-     | 80.00th=[     980], 90.00th=[    1128], 95.00th=[    1192],
-     | 99.00th=[    1464], 99.50th=[    1672], 99.90th=[   11712],
-     | 99.95th=[ 2899968], 99.99th=[63700992]
-   bw (  KiB/s): min=159960, max=224614, per=26.87%, avg=192287.00, stdev=45717.28, samples=2
-   iops        : min=39990, max=56153, avg=48071.50, stdev=11428.97, samples=2
-  lat (nsec)   : 750=9.15%, 1000=72.77%
-  lat (usec)   : 2=17.78%, 4=0.09%, 10=0.10%, 20=0.04%, 50=0.01%
-  lat (usec)   : 100=0.01%, 250=0.01%, 500=0.01%
-  lat (msec)   : 2=0.01%, 4=0.02%, 10=0.01%, 20=0.01%, 50=0.01%
-  lat (msec)   : 100=0.01%, 500=0.01%
-  cpu          : usr=0.88%, sys=8.19%, ctx=88, majf=0, minf=15
-  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, &gt;=64=0.0%
-     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, &gt;=64=0.0%
-     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, &gt;=64=0.0%
-     issued rwts: total=51200,0,0,0 short=0,0,0,0 dropped=0,0,0,0
-     latency   : target=0, window=0, percentile=100.00%, depth=1
-big-file-multi-read: (groupid=0, jobs=1): err= 0: pid=824: Mon Aug 15 09:48:31 2022
-</code></pre>
+Starting <span class="m">5</span> processes
+Jobs: <span class="m">5</span> <span class="o">(</span><span class="nv">f</span><span class="o">=</span><span class="m">5</span><span class="o">)</span>
+big-file-multi-read: <span class="o">(</span><span class="nv">groupid</span><span class="o">=</span><span class="m">0</span>, <span class="nv">jobs</span><span class="o">=</span><span class="m">1</span><span class="o">)</span>: <span class="nv">err</span><span class="o">=</span> <span class="m">0</span>: <span class="nv">pid</span><span class="o">=</span><span class="m">823</span>: Mon Aug <span class="m">15</span> <span class="m">09</span>:48:31 <span class="m">2022</span>
+  read: <span class="nv">IOPS</span><span class="o">=</span><span class="m">41</span>.1k, <span class="nv">BW</span><span class="o">=</span>161MiB/s <span class="o">(</span>168MB/s<span class="o">)(</span>200MiB/1246msec<span class="o">)</span>
+    clat <span class="o">(</span>nsec<span class="o">)</span>: <span class="nv">min</span><span class="o">=</span><span class="m">620</span>, <span class="nv">max</span><span class="o">=</span>346202k, <span class="nv">avg</span><span class="o">=</span><span class="m">23787</span>.02, <span class="nv">stdev</span><span class="o">=</span><span class="m">1805527</span>.05
+     lat <span class="o">(</span>nsec<span class="o">)</span>: <span class="nv">min</span><span class="o">=</span><span class="m">654</span>, <span class="nv">max</span><span class="o">=</span>346202k, <span class="nv">avg</span><span class="o">=</span><span class="m">23822</span>.73, <span class="nv">stdev</span><span class="o">=</span><span class="m">1805527</span>.05
+    clat percentiles <span class="o">(</span>nsec<span class="o">)</span>:
+     <span class="p">|</span>  <span class="m">1</span>.00th<span class="o">=[</span>     <span class="m">692</span><span class="o">]</span>,  <span class="m">5</span>.00th<span class="o">=[</span>     <span class="m">740</span><span class="o">]</span>, <span class="m">10</span>.00th<span class="o">=[</span>     <span class="m">748</span><span class="o">]</span>,
+     <span class="p">|</span> <span class="m">20</span>.00th<span class="o">=[</span>     <span class="m">764</span><span class="o">]</span>, <span class="m">30</span>.00th<span class="o">=[</span>     <span class="m">780</span><span class="o">]</span>, <span class="m">40</span>.00th<span class="o">=[</span>     <span class="m">804</span><span class="o">]</span>,
+     <span class="p">|</span> <span class="m">50</span>.00th<span class="o">=[</span>     <span class="m">828</span><span class="o">]</span>, <span class="m">60</span>.00th<span class="o">=[</span>     <span class="m">876</span><span class="o">]</span>, <span class="m">70</span>.00th<span class="o">=[</span>     <span class="m">924</span><span class="o">]</span>,
+     <span class="p">|</span> <span class="m">80</span>.00th<span class="o">=[</span>     <span class="m">980</span><span class="o">]</span>, <span class="m">90</span>.00th<span class="o">=[</span>    <span class="m">1128</span><span class="o">]</span>, <span class="m">95</span>.00th<span class="o">=[</span>    <span class="m">1192</span><span class="o">]</span>,
+     <span class="p">|</span> <span class="m">99</span>.00th<span class="o">=[</span>    <span class="m">1464</span><span class="o">]</span>, <span class="m">99</span>.50th<span class="o">=[</span>    <span class="m">1672</span><span class="o">]</span>, <span class="m">99</span>.90th<span class="o">=[</span>   <span class="m">11712</span><span class="o">]</span>,
+     <span class="p">|</span> <span class="m">99</span>.95th<span class="o">=[</span> <span class="m">2899968</span><span class="o">]</span>, <span class="m">99</span>.99th<span class="o">=[</span><span class="m">63700992</span><span class="o">]</span>
+   bw <span class="o">(</span>  KiB/s<span class="o">)</span>: <span class="nv">min</span><span class="o">=</span><span class="m">159960</span>, <span class="nv">max</span><span class="o">=</span><span class="m">224614</span>, <span class="nv">per</span><span class="o">=</span><span class="m">26</span>.87%, <span class="nv">avg</span><span class="o">=</span><span class="m">192287</span>.00, <span class="nv">stdev</span><span class="o">=</span><span class="m">45717</span>.28, <span class="nv">samples</span><span class="o">=</span><span class="m">2</span>
+   iops        : <span class="nv">min</span><span class="o">=</span><span class="m">39990</span>, <span class="nv">max</span><span class="o">=</span><span class="m">56153</span>, <span class="nv">avg</span><span class="o">=</span><span class="m">48071</span>.50, <span class="nv">stdev</span><span class="o">=</span><span class="m">11428</span>.97, <span class="nv">samples</span><span class="o">=</span><span class="m">2</span>
+  lat <span class="o">(</span>nsec<span class="o">)</span>   : <span class="nv">750</span><span class="o">=</span><span class="m">9</span>.15%, <span class="nv">1000</span><span class="o">=</span><span class="m">72</span>.77%
+  lat <span class="o">(</span>usec<span class="o">)</span>   : <span class="nv">2</span><span class="o">=</span><span class="m">17</span>.78%, <span class="nv">4</span><span class="o">=</span><span class="m">0</span>.09%, <span class="nv">10</span><span class="o">=</span><span class="m">0</span>.10%, <span class="nv">20</span><span class="o">=</span><span class="m">0</span>.04%, <span class="nv">50</span><span class="o">=</span><span class="m">0</span>.01%
+  lat <span class="o">(</span>usec<span class="o">)</span>   : <span class="nv">100</span><span class="o">=</span><span class="m">0</span>.01%, <span class="nv">250</span><span class="o">=</span><span class="m">0</span>.01%, <span class="nv">500</span><span class="o">=</span><span class="m">0</span>.01%
+  lat <span class="o">(</span>msec<span class="o">)</span>   : <span class="nv">2</span><span class="o">=</span><span class="m">0</span>.01%, <span class="nv">4</span><span class="o">=</span><span class="m">0</span>.02%, <span class="nv">10</span><span class="o">=</span><span class="m">0</span>.01%, <span class="nv">20</span><span class="o">=</span><span class="m">0</span>.01%, <span class="nv">50</span><span class="o">=</span><span class="m">0</span>.01%
+  lat <span class="o">(</span>msec<span class="o">)</span>   : <span class="nv">100</span><span class="o">=</span><span class="m">0</span>.01%, <span class="nv">500</span><span class="o">=</span><span class="m">0</span>.01%
+  cpu          : <span class="nv">usr</span><span class="o">=</span><span class="m">0</span>.88%, <span class="nv">sys</span><span class="o">=</span><span class="m">8</span>.19%, <span class="nv">ctx</span><span class="o">=</span><span class="m">88</span>, <span class="nv">majf</span><span class="o">=</span><span class="m">0</span>, <span class="nv">minf</span><span class="o">=</span><span class="m">15</span>
+  IO depths    : <span class="nv">1</span><span class="o">=</span><span class="m">100</span>.0%, <span class="nv">2</span><span class="o">=</span><span class="m">0</span>.0%, <span class="nv">4</span><span class="o">=</span><span class="m">0</span>.0%, <span class="nv">8</span><span class="o">=</span><span class="m">0</span>.0%, <span class="nv">16</span><span class="o">=</span><span class="m">0</span>.0%, <span class="nv">32</span><span class="o">=</span><span class="m">0</span>.0%, &gt;<span class="o">=</span><span class="nv">64</span><span class="o">=</span><span class="m">0</span>.0%
+     submit    : <span class="nv">0</span><span class="o">=</span><span class="m">0</span>.0%, <span class="nv">4</span><span class="o">=</span><span class="m">100</span>.0%, <span class="nv">8</span><span class="o">=</span><span class="m">0</span>.0%, <span class="nv">16</span><span class="o">=</span><span class="m">0</span>.0%, <span class="nv">32</span><span class="o">=</span><span class="m">0</span>.0%, <span class="nv">64</span><span class="o">=</span><span class="m">0</span>.0%, &gt;<span class="o">=</span><span class="nv">64</span><span class="o">=</span><span class="m">0</span>.0%
+     <span class="nb">complete</span>  : <span class="nv">0</span><span class="o">=</span><span class="m">0</span>.0%, <span class="nv">4</span><span class="o">=</span><span class="m">100</span>.0%, <span class="nv">8</span><span class="o">=</span><span class="m">0</span>.0%, <span class="nv">16</span><span class="o">=</span><span class="m">0</span>.0%, <span class="nv">32</span><span class="o">=</span><span class="m">0</span>.0%, <span class="nv">64</span><span class="o">=</span><span class="m">0</span>.0%, &gt;<span class="o">=</span><span class="nv">64</span><span class="o">=</span><span class="m">0</span>.0%
+     issued rwts: <span class="nv">total</span><span class="o">=</span><span class="m">51200</span>,0,0,0 <span class="nv">short</span><span class="o">=</span><span class="m">0</span>,0,0,0 <span class="nv">dropped</span><span class="o">=</span><span class="m">0</span>,0,0,0
+     latency   : <span class="nv">target</span><span class="o">=</span><span class="m">0</span>, <span class="nv">window</span><span class="o">=</span><span class="m">0</span>, <span class="nv">percentile</span><span class="o">=</span><span class="m">100</span>.00%, <span class="nv">depth</span><span class="o">=</span><span class="m">1</span>
+big-file-multi-read: <span class="o">(</span><span class="nv">groupid</span><span class="o">=</span><span class="m">0</span>, <span class="nv">jobs</span><span class="o">=</span><span class="m">1</span><span class="o">)</span>: <span class="nv">err</span><span class="o">=</span> <span class="m">0</span>: <span class="nv">pid</span><span class="o">=</span><span class="m">824</span>: Mon Aug <span class="m">15</span> <span class="m">09</span>:48:31 <span class="m">2022</span>
+</code></pre></div>
 <ul>
 <li>jufice 基准测试</li>
 </ul>
-<pre><code>root@nginx-run-7877759d45-484kx:/config# fio --name=big-file-multi-read --directory=$PWD --rw=read --refill_buffers --bs=4K --size=200M --numjobs=5
+<div class="highlight"><pre><span></span><code>root@nginx-run-7877759d45-484kx:/config# fio --name=big-file-multi-read --directory=$PWD --rw=read --refill_buffers --bs=4K --size=200M --numjobs=5
 big-file-multi-read: (g=0): rw=read, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=psync, iodepth=1
 ...
 fio-3.25
@@ -1926,7 +1934,7 @@ big-file-multi-read: (groupid=0, jobs=1): err= 0: pid=838: Mon Aug 15 09:51:22 2
      issued rwts: total=51200,0,0,0 short=0,0,0,0 dropped=0,0,0,0
      latency   : target=0, window=0, percentile=100.00%, depth=1
 big-file-multi-read: (groupid=0, jobs=1): err= 0: pid=839: Mon Aug 15 09:51:22 2022
-</code></pre>
+</code></pre></div>
 
 
 

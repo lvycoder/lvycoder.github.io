@@ -1755,46 +1755,48 @@
   </a>
 
 
-<h1 id="helm-grafana"><strong>Helm 配置grafana</strong></h1>
-<h2 id="token"><strong>获取Token</strong></h2>
+<h1 id="helm-grafana"><strong>Helm 配置grafana</strong><a class="headerlink" href="#helm-grafana" title="Permanent link">&para;</a></h1>
+<h2 id="token"><strong>获取Token</strong><a class="headerlink" href="#token" title="Permanent link">&para;</a></h2>
 <p>参考: <a href="https://grafana.com/docs/grafana/latest/developers/http_api/create-api-tokens-for-org/#how-to-add-a-dashboard">官网</a></p>
-<pre><code>curl -X POST -H &quot;Content-Type: application/json&quot; -d '{&quot;name&quot;:&quot;apikeycurl&quot;, &quot;role&quot;: &quot;Admin&quot;}' http://admin:strongpassword@localhost:3000/api/auth/keys
+<div class="highlight"><pre><span></span><code>curl -X POST -H &quot;Content-Type: application/json&quot; -d &#39;{&quot;name&quot;:&quot;apikeycurl&quot;, &quot;role&quot;: &quot;Admin&quot;}&#39; http://admin:strongpassword@localhost:3000/api/auth/keys
 {&quot;id&quot;:1,&quot;name&quot;:&quot;apikeycurl&quot;,&quot;key&quot;:&quot;eyJrIjoiVHV2czQxNTdiQnFEWDJ6VjRXMjJpUTc1bGtkR2NmQUoiLCJuIjoiYXBpa2V5Y3VybCIsImlkIjoxfQ==&quot;}%
-</code></pre>
-<h2 id="dashboardproviders"><strong>打开dashboardProviders</strong></h2>
-<p>!!! info "注意"
-    注意去掉dashboardProviders后面的{}</p>
-<pre><code class="language-yaml">dashboardProviders:
-  dashboardproviders.yaml:
-    apiVersion: 1
-    providers:
-    - name: 'default'
-      orgId: 1
-      folder: ''
-      type: file
-      disableDeletion: false
-      editable: true
-      options:
-        path: /var/lib/grafana/dashboards/default
+</code></pre></div>
+<h2 id="dashboardproviders"><strong>打开dashboardProviders</strong><a class="headerlink" href="#dashboardproviders" title="Permanent link">&para;</a></h2>
+<div class="admonition info">
+<p class="admonition-title">注意</p>
+<p>注意去掉dashboardProviders后面的{}</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="nt">dashboardProviders</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">dashboardproviders.yaml</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
+<span class="w">    </span><span class="nt">providers</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;default&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">orgId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
+<span class="w">      </span><span class="nt">folder</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">file</span><span class="w"></span>
+<span class="w">      </span><span class="nt">disableDeletion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="w">      </span><span class="nt">editable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">      </span><span class="nt">options</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/lib/grafana/dashboards/default</span><span class="w"></span>
 
-# 添加官网dashboard
+<span class="c1"># 添加官网dashboard</span><span class="w"></span>
 
-dashboards:
-  default:
-    ceph-cluster:
-      gnetId: 2842
-      revision: 14
-      datasource: Prometheus
-    ceph-osd:
-      gnetId: 5336
-      revision: 5
-      datasource: Prometheus
-    ceph-pools:
-      gnetId: 5342
-      revision: 5
-      datasource: Prometheus
-      token: 'eyJrIjoiVHV2czQxNTdiQnFEWDJ6VjRXMjJpUTc1bGtkR2NmQUoiLCJuIjoiYXBpa2V5Y3VybCIsImlkIjoxfQ=='
-</code></pre>
+<span class="nt">dashboards</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">default</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">ceph-cluster</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">gnetId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2842</span><span class="w"></span>
+<span class="w">      </span><span class="nt">revision</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">14</span><span class="w"></span>
+<span class="w">      </span><span class="nt">datasource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Prometheus</span><span class="w"></span>
+<span class="w">    </span><span class="nt">ceph-osd</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">gnetId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5336</span><span class="w"></span>
+<span class="w">      </span><span class="nt">revision</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w"></span>
+<span class="w">      </span><span class="nt">datasource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Prometheus</span><span class="w"></span>
+<span class="w">    </span><span class="nt">ceph-pools</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">gnetId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5342</span><span class="w"></span>
+<span class="w">      </span><span class="nt">revision</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w"></span>
+<span class="w">      </span><span class="nt">datasource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Prometheus</span><span class="w"></span>
+<span class="w">      </span><span class="nt">token</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;eyJrIjoiVHV2czQxNTdiQnFEWDJ6VjRXMjJpUTc1bGtkR2NmQUoiLCJuIjoiYXBpa2V5Y3VybCIsImlkIjoxfQ==&#39;</span><span class="w"></span>
+</code></pre></div>
 
 
 

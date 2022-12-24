@@ -1825,53 +1825,64 @@
   </a>
 
 
-<h1 id="docker-k3s">Docker 运行时部署k3s</h1>
+<h1 id="docker-k3s">Docker 运行时部署k3s<a class="headerlink" href="#docker-k3s" title="Permanent link">&para;</a></h1>
 <p>参考地址：https://docs.rancher.cn/docs/k3s/quick-start/_index</p>
-<h2 id="_1">基础环境</h2>
-<p>!!! 环境要求
-    Lightweight Kubernetes. Easy to install, half the memory, all in a binary of less than 100 MB.</p>
+<h2 id="_1">基础环境<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<div class="admonition 环境要求">
+<p class="admonition-title">环境要求</p>
+<p>Lightweight Kubernetes. Easy to install, half the memory, all in a binary of less than 100 MB.</p>
+</div>
 <ul>
 <li>时间同步，时区</li>
 <li>关闭防火墙</li>
 <li>docker环境</li>
 </ul>
-<p>!!! 外置环境要求
-    - 需要安装docker环境作为容器运行时，默认不是docker.</p>
-<p>安装docker：</p>
-<pre><code>curl https://releases.rancher.com/install-docker/19.03.sh | sh
-</code></pre>
-<h2 id="k3sserver">k3s安装server端</h2>
-<p>!!! warning
-    --docker 是使用docker作为容器运行时</p>
-<p>默认安装：（默认是只安装最新版）</p>
-<pre><code>curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | INSTALL_K3S_MIRROR=cn sh -s - --docker
-</code></pre>
-<p>指定安装：INSTALL_K3S_VERSION=v1.22.5+k3s1</p>
-<pre><code>INSTALL_K3S_VERSION=v1.22.5+k3s1
+<div class="admonition 外置环境要求">
+<p class="admonition-title">外置环境要求</p>
+<ul>
+<li>需要安装docker环境作为容器运行时，默认不是docker.</li>
+</ul>
+</div>
+<p>安装docker：
+<div class="highlight"><pre><span></span><code>curl https://releases.rancher.com/install-docker/19.03.sh | sh
+</code></pre></div></p>
+<h2 id="k3sserver">k3s安装server端<a class="headerlink" href="#k3sserver" title="Permanent link">&para;</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>--docker 是使用docker作为容器运行时</p>
+</div>
+<p>默认安装：（默认是只安装最新版）
+<div class="highlight"><pre><span></span><code>curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | INSTALL_K3S_MIRROR=cn sh -s - --docker
+</code></pre></div>
+指定安装：INSTALL_K3S_VERSION=v1.22.5+k3s1
+<div class="highlight"><pre><span></span><code>INSTALL_K3S_VERSION=v1.22.5+k3s1
 curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | INSTALL_K3S_MIRROR=cn INSTALL_K3S_VERSION=v1.22.5+k3s1 sh -s - --docker
-</code></pre>
-<h2 id="k3sagent">k3s部署agent端</h2>
-<p>先在server端拿到token：</p>
-<pre><code class="language-shell">root@ubuntu:~# cat /var/lib/rancher/k3s/server/node-token
+</code></pre></div></p>
+<h2 id="k3sagent">k3s部署agent端<a class="headerlink" href="#k3sagent" title="Permanent link">&para;</a></h2>
+<p>先在server端拿到token：
+<div class="highlight"><pre><span></span><code>root@ubuntu:~# cat /var/lib/rancher/k3s/server/node-token
 K10c549fbf4c0197251998eff2e9f451222f297839d4c9150543e6b1b7935a46936::server:588e0646787eb8610efd7b9c1e9fcef0
-</code></pre>
-<p>默认安装：（默认是只安装最新版）</p>
-<pre><code class="language-shell">curl -sfL http://rancher-mirror.cnrancher.com/k3s/k3s-install.sh | INSTALL_K3S_MIRROR=cn K3S_URL=https://192.168.0.202:6443 K3S_TOKEN=K10c549fbf4c0197251998eff2e9f451222f297839d4c9150543e6b1b7935a46936::server:588e0646787eb8610efd7b9c1e9fcef0  INSTALL_K3S_EXEC=&quot;--docker&quot;  sh -
-</code></pre>
-<p>指定安装：</p>
-<pre><code>curl -sfL http://rancher-mirror.cnrancher.com/k3s/k3s-install.sh | INSTALL_K3S_VERSION=v1.22.5+k3s1 INSTALL_K3S_MIRROR=cn K3S_URL=https://192.168.0.202:6443 K3S_TOKEN=K10e3cfbb8fc176b66cb7957997cd7d01958fbbdd507d3c49b75ff819cd0a93905b::server:cba4412e36cc16e5a92137bf987d575d  INSTALL_K3S_EXEC=&quot;--docker&quot;  sh -
-</code></pre>
-<h2 id="_2"><strong>更新版：</strong></h2>
-<h2 id="k3sserver_1">k3s安装server端</h2>
-<pre><code>curl -sfL https://rancher-mirror.oss-cn-beijing.aliyuncs.com/k3s/k3s-install.sh | INSTALL_K3S_MIRROR=cn INSTALL_K3S_VERSION=v1.22.5+k3s1  sh -s - --docker
-</code></pre>
-<h2 id="k3s-agent">k3s 部署agent端</h2>
-<pre><code>curl -sfL https://rancher-mirror.oss-cn-beijing.aliyuncs.com/k3s/k3s-install.sh | INSTALL_K3S_MIRROR=cn  INSTALL_K3S_VERSION=v1.22.5+k3s1 K3S_URL=https://192.168.0.202:6443 K3S_TOKEN=K10ab8ec9db721e53cf65e395d44b2b59a48ee1744dcf7c691733f907af47c88630::server:806d6ca499e7ae52c75c89a7f47961b4 sh  -s - --docker
-</code></pre>
-<h2 id="k3s">卸载k3s</h2>
+</code></pre></div></p>
+<p>默认安装：（默认是只安装最新版）
+<div class="highlight"><pre><span></span><code>curl -sfL http://rancher-mirror.cnrancher.com/k3s/k3s-install.sh <span class="p">|</span> <span class="nv">INSTALL_K3S_MIRROR</span><span class="o">=</span>cn <span class="nv">K3S_URL</span><span class="o">=</span>https://192.168.0.202:6443 <span class="nv">K3S_TOKEN</span><span class="o">=</span>K10c549fbf4c0197251998eff2e9f451222f297839d4c9150543e6b1b7935a46936::server:588e0646787eb8610efd7b9c1e9fcef0  <span class="nv">INSTALL_K3S_EXEC</span><span class="o">=</span><span class="s2">&quot;--docker&quot;</span>  sh -
+</code></pre></div></p>
+<p>指定安装：
+<div class="highlight"><pre><span></span><code>curl -sfL http://rancher-mirror.cnrancher.com/k3s/k3s-install.sh | INSTALL_K3S_VERSION=v1.22.5+k3s1 INSTALL_K3S_MIRROR=cn K3S_URL=https://192.168.0.202:6443 K3S_TOKEN=K10e3cfbb8fc176b66cb7957997cd7d01958fbbdd507d3c49b75ff819cd0a93905b::server:cba4412e36cc16e5a92137bf987d575d  INSTALL_K3S_EXEC=&quot;--docker&quot;  sh -
+</code></pre></div></p>
+<h2 id="_2"><strong>更新版：</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h2 id="k3sserver_1">k3s安装server端<a class="headerlink" href="#k3sserver_1" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>curl -sfL https://rancher-mirror.oss-cn-beijing.aliyuncs.com/k3s/k3s-install.sh | INSTALL_K3S_MIRROR=cn INSTALL_K3S_VERSION=v1.22.5+k3s1  sh -s - --docker
+</code></pre></div>
+<h2 id="k3s-agent">k3s 部署agent端<a class="headerlink" href="#k3s-agent" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>curl -sfL https://rancher-mirror.oss-cn-beijing.aliyuncs.com/k3s/k3s-install.sh | INSTALL_K3S_MIRROR=cn  INSTALL_K3S_VERSION=v1.22.5+k3s1 K3S_URL=https://192.168.0.202:6443 K3S_TOKEN=K10ab8ec9db721e53cf65e395d44b2b59a48ee1744dcf7c691733f907af47c88630::server:806d6ca499e7ae52c75c89a7f47961b4 sh  -s - --docker
+</code></pre></div>
+<h2 id="k3s">卸载k3s<a class="headerlink" href="#k3s" title="Permanent link">&para;</a></h2>
 <p>这里可以通过<a href="https://docs.rancher.cn/docs/k3s/installation/uninstall/_index">k3s</a>官方方式删除</p>
-<p>!!! tip "install k3s"
-    <code>curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | INSTALL_K3S_MIRROR=cn INSTALL_K3S_VERSION=v1.23.10+k3s1 sh -s - --docker</code></p>
+<div class="admonition tip">
+<p class="admonition-title">install k3s</p>
+<div class="highlight"><pre><span></span><code>curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | INSTALL_K3S_MIRROR=cn INSTALL_K3S_VERSION=v1.23.10+k3s1 sh -s - --docker
+</code></pre></div>
+</div>
 
 
 

@@ -1899,7 +1899,7 @@
 
   <h1>Proxmox虚拟化</h1>
 
-<h2 id="proxmox"><strong>Proxmox</strong></h2>
+<h2 id="proxmox"><strong>Proxmox</strong><a class="headerlink" href="#proxmox" title="Permanent link">&para;</a></h2>
 <p>Proxmox VE 是一个完整的、开源的企业虚拟化服务器管理平台。它将 KVM 管理程序和 Linux 容器 (LXC)、软件定义的存储和网络功能紧密集成在一个平台上。借助基于 Web 的集成用户界面，您可以轻松管理 VM 和容器、集群的高可用性或集成的灾难恢复工具。
 <img alt="" src="https://pic1.imgdb.cn/item/633aea6316f2c2beb16a04d4.jpg" /></p>
 <p><strong>优势:</strong></p>
@@ -1908,65 +1908,68 @@
 <li>既可以虚拟windows机器，也可以虚拟Linux机器</li>
 <li>使用简单，上手较快</li>
 </ul>
-<h2 id="pve"><strong>部署Pve</strong></h2>
-<h3 id="_1"><strong>制作系统盘</strong></h3>
+<h2 id="pve"><strong>部署Pve</strong><a class="headerlink" href="#pve" title="Permanent link">&para;</a></h2>
+<h3 id="_1"><strong>制作系统盘</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
 <p>工具分享: <a href="https://www.aliyundrive.com/s/Qp5sC3YrKre">rufus工具下载链接</a></p>
 <p>如果网盘失效可以访问官网: https://rufus.ie/zh/ 进行下载</p>
 <p>image 分享: https://www.proxmox.com/en/downloads</p>
-<p>!!! warning "温馨提示"
-    这个制作系统盘一定要选择dd的方式</p>
+<div class="admonition warning">
+<p class="admonition-title">温馨提示</p>
+<p>这个制作系统盘一定要选择dd的方式</p>
+</div>
 <p><img alt="" src="https://pic1.imgdb.cn/item/633aed6916f2c2beb170c6d3.jpg" /></p>
 <p>到这里系统盘就搞定了，那么就可以安装Pve这个系统了。 其实他的操作系统从下图就能看出是一个debian</p>
-<pre><code class="language-shell">root@node1:~# cat /etc/os-release
-PRETTY_NAME=&quot;Debian GNU/Linux 11 (bullseye)&quot;
-NAME=&quot;Debian GNU/Linux&quot;
-VERSION_ID=&quot;11&quot;
-VERSION=&quot;11 (bullseye)&quot;
-VERSION_CODENAME=bullseye
-ID=debian
-HOME_URL=&quot;https://www.debian.org/&quot;
-SUPPORT_URL=&quot;https://www.debian.org/support&quot;
-BUG_REPORT_URL=&quot;https://bugs.debian.org/&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>root@node1:~# cat /etc/os-release
+<span class="nv">PRETTY_NAME</span><span class="o">=</span><span class="s2">&quot;Debian GNU/Linux 11 (bullseye)&quot;</span>
+<span class="nv">NAME</span><span class="o">=</span><span class="s2">&quot;Debian GNU/Linux&quot;</span>
+<span class="nv">VERSION_ID</span><span class="o">=</span><span class="s2">&quot;11&quot;</span>
+<span class="nv">VERSION</span><span class="o">=</span><span class="s2">&quot;11 (bullseye)&quot;</span>
+<span class="nv">VERSION_CODENAME</span><span class="o">=</span>bullseye
+<span class="nv">ID</span><span class="o">=</span>debian
+<span class="nv">HOME_URL</span><span class="o">=</span><span class="s2">&quot;https://www.debian.org/&quot;</span>
+<span class="nv">SUPPORT_URL</span><span class="o">=</span><span class="s2">&quot;https://www.debian.org/support&quot;</span>
+<span class="nv">BUG_REPORT_URL</span><span class="o">=</span><span class="s2">&quot;https://bugs.debian.org/&quot;</span>
+</code></pre></div>
 <p>那么接下来就是安装系统，如果需要配置raid就可以先配置一下，这里就不过多的解释raid的概念了。</p>
 <p>安装系统其实就是普通的操作流程，这里就略过～</p>
 <p>如果实在不懂可以参考：https://www.jianshu.com/p/a2ad1aed6a92 的安装流程，基本就是这样</p>
-<h3 id="pve_1"><strong>PVE 系统初始化</strong></h3>
-<h4 id="_2"><strong>更换国内源:</strong></h4>
-<p>!!! info "清华源"
-    ```
-    # 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
-    deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye main contrib non-free
-    # deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye main contrib non-free
-    deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-updates main contrib non-free
-    # deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-updates main contrib non-free</p>
-<pre><code>deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-backports main contrib non-free
+<h3 id="pve_1"><strong>PVE 系统初始化</strong><a class="headerlink" href="#pve_1" title="Permanent link">&para;</a></h3>
+<h4 id="_2"><strong>更换国内源:</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<div class="admonition info">
+<p class="admonition-title">清华源</p>
+<div class="highlight"><pre><span></span><code># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye main contrib non-free
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye main contrib non-free
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-updates main contrib non-free
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-updates main contrib non-free
+
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-backports main contrib non-free
 # deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye-backports main contrib non-free
 
 deb https://mirrors.tuna.tsinghua.edu.cn/debian-security bullseye-security main contrib non-free
 # deb-src https://mirrors.tuna.tsinghua.edu.cn/debian-security bullseye-security main contrib non-free
-```
-</code></pre>
-<h4 id="install-package"><strong>install package:</strong>(非必需)</h4>
-<pre><code class="language-shell">ifupdown2,openvswitch-switch,vim 
+</code></pre></div>
+</div>
+<h4 id="install-package"><strong>install package:</strong>(非必需)<a class="headerlink" href="#install-package" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>ifupdown2,openvswitch-switch,vim 
 apt update
 apt install ifupdown2 openvswitch-switch -y
-</code></pre>
-<h3 id="_3"><strong>存储</strong></h3>
-<p>分区格式化，挂载</p>
-<pre><code class="language-shell">fdisk /dev/sdb
+</code></pre></div>
+<h3 id="_3"><strong>存储</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>分区格式化，挂载
+<div class="highlight"><pre><span></span><code>fdisk /dev/sdb
 mke2fs -t ext4 /dev/sdb1
 mount /dev/sdb1 /mnt/pve/node5_sdb
 以上这里是临时挂载的，需要将其写入/etc/fstab
-
-</code></pre>
-<p>!!! error "格式化报错"
-    <code>root@node18:~# mke2fs -t ext4 /dev/sdb1
-    mke2fs 1.44.5 (15-Dec-2018)
-    /dev/sdb1 is apparently in use by the system; will not make a filesystem here!</code>
-    解决方法</p>
-<pre><code>```
-root@node18:~# dmsetup remove_all
+</code></pre></div></p>
+<div class="admonition error">
+<p class="admonition-title">格式化报错</p>
+<p><div class="highlight"><pre><span></span><code>root@node18:~# mke2fs -t ext4 /dev/sdb1
+mke2fs 1.44.5 (15-Dec-2018)
+/dev/sdb1 is apparently in use by the system; will not make a filesystem here!
+</code></pre></div>
+解决方法</p>
+<div class="highlight"><pre><span></span><code>root@node18:~# dmsetup remove_all
 root@node18:~# mke2fs -t ext4 /dev/sdb1
 mke2fs 1.44.5 (15-Dec-2018)
 Creating filesystem with 244055808 4k blocks and 61014016 inodes
@@ -1980,43 +1983,43 @@ Allocating group tables: done
 Writing inode tables: done
 Creating journal (262144 blocks): done
 Writing superblocks and filesystem accounting information: done
-```
-</code></pre>
-<h4 id="ui"><strong>UI界面添加磁盘</strong></h4>
+</code></pre></div>
+</div>
+<h4 id="ui"><strong>UI界面添加磁盘</strong><a class="headerlink" href="#ui" title="Permanent link">&para;</a></h4>
 <p><img alt="" src="https://pic1.imgdb.cn/item/633af27516f2c2beb17b0160.jpg" /></p>
 <p>根据实际情况填写，这里截图不准确</p>
 <p><img alt="" src="https://pic1.imgdb.cn/item/633af2a716f2c2beb17b634c.jpg" /></p>
 <p>添加以上信息，可以看到硬盘已经挂载上</p>
 <p><img alt="" src="https://pic1.imgdb.cn/item/633af2d716f2c2beb17bc736.jpg" /></p>
-<h3 id="_4"><strong>网络</strong></h3>
+<h3 id="_4"><strong>网络</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>配置网络</p>
 <p><img alt="" src="https://pic1.imgdb.cn/item/63402c2916f2c2beb11f045b.jpg" /></p>
 <p>配置组建成集群的网卡
 <img alt="" src="https://pic1.imgdb.cn/item/63402c6316f2c2beb11f6e58.jpg" /></p>
 <p>命令行操作或者应用配置</p>
-<pre><code class="language-shell">cd /etc/network/
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> /etc/network/
 mv interfaces.new interfaces
 reboot
-</code></pre>
+</code></pre></div>
 <p>激活网络
 <img alt="" src="https://pic1.imgdb.cn/item/63402cc216f2c2beb1201c13.jpg" /></p>
 <p><img alt="" src="https://pic1.imgdb.cn/item/63402ce116f2c2beb12059a5.jpg" /></p>
-<h3 id="_5"><strong>集群管理:</strong></h3>
+<h3 id="_5"><strong>集群管理:</strong><a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>管理命令</p>
-<pre><code class="language-shell"># 停止虚拟机
-qm stop &lt;vmid&gt; [OPTIONS]
+<div class="highlight"><pre><span></span><code><span class="c1"># 停止虚拟机</span>
+qm stop &lt;vmid&gt; <span class="o">[</span>OPTIONS<span class="o">]</span>
 
-# 删除
-qm destroy &lt;vmid&gt; [OPTIONS]
+<span class="c1"># 删除</span>
+qm destroy &lt;vmid&gt; <span class="o">[</span>OPTIONS<span class="o">]</span>
 
-# 解锁
-qm unlink &lt;vmid&gt; --idlist &lt;string&gt; [OPTIONS]
-</code></pre>
-<p>驱逐故障机器 ：</p>
-<pre><code>cd /etc/pve/nodes                                                                                   # 删除故障节点node文件
+<span class="c1"># 解锁</span>
+qm unlink &lt;vmid&gt; --idlist &lt;string&gt; <span class="o">[</span>OPTIONS<span class="o">]</span>
+</code></pre></div>
+<p>驱逐故障机器 ：
+<div class="highlight"><pre><span></span><code>cd /etc/pve/nodes                                                                                   # 删除故障节点node文件
 rm -rf /etc/pve/nodes/pve2      # 改成故障节点对应路径
 root@node17:/etc/pve/nodes# pvecm delnode node12          # 登录集群中任意正常节点，执行如下指令进行驱逐操作
-</code></pre>
+</code></pre></div></p>
 
 
 

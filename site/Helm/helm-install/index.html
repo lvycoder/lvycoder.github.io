@@ -1943,119 +1943,134 @@
   </a>
 
 
-<h1 id="helm"><strong>Helm</strong></h1>
-<h2 id="helm_1"><strong>Helm 简介</strong></h2>
+<h1 id="helm"><strong>Helm</strong><a class="headerlink" href="#helm" title="Permanent link">&para;</a></h1>
+<h2 id="helm_1"><strong>Helm 简介</strong><a class="headerlink" href="#helm_1" title="Permanent link">&para;</a></h2>
 <p>Helm 可以帮助我们管理 Kubernetes 应用程序 - Helm Charts 可以定义、安装和升级复杂的 Kubernetes 应用程序，Charts 包很容易创建、版本管理、分享和分布.
 简单可以理解Linux中yum的的感觉</p>
-<h2 id="helm_2"><strong>Helm 安装</strong></h2>
-<p>!!! info "获取软件"
-    官网地址：https://github.com/helm/helm/releases
-下载到本地解压后，将 helm 二进制包文件移动到任意的 PATH 路径下</p>
-<pre><code>$ helm version
+<h2 id="helm_2"><strong>Helm 安装</strong><a class="headerlink" href="#helm_2" title="Permanent link">&para;</a></h2>
+<div class="admonition info">
+<p class="admonition-title">获取软件</p>
+<p>官网地址：https://github.com/helm/helm/releases</p>
+</div>
+<p>下载到本地解压后，将 helm 二进制包文件移动到任意的 PATH 路径下
+<div class="highlight"><pre><span></span><code>$ helm version
 version.BuildInfo{Version:&quot;v3.9.0&quot;, GitCommit:&quot;7ceeda6c585217a19a1131663d8cd1f7d641b2a7&quot;, GitTreeState:&quot;clean&quot;, GoVersion:&quot;go1.18.2&quot;}
-</code></pre>
-<p>Linux 下安装</p>
-<pre><code>root@k8s-master:/opt# wget https://get.helm.sh/helm-v3.8.1-linux-amd64.tar.gz
+</code></pre></div></p>
+<p>Linux 下安装
+<div class="highlight"><pre><span></span><code>root@k8s-master:/opt# wget https://get.helm.sh/helm-v3.8.1-linux-amd64.tar.gz
 cni  containerd  helm-v3.8.1-linux-amd64.tar.gz
 root@k8s-master:/opt# tar -xf helm-v3.8.1-linux-amd64.tar.gz 
 root@k8s-master:/opt/linux-amd64# mv helm /usr/bin/
-</code></pre>
-<h2 id="_1"><strong>管理配置</strong></h2>
-<h3 id="chart"><strong>Chart国内仓库配置 </strong></h3>
-<p>!!! info "仓库配置"
-    - 微软的源：http://mirror.azure.cn/kubernetes/charts/ 
-    - 阿里的源：https://kubernetes.oss-cn-hangzhou.aliyuncs.com/charts<br />
-    - 官方的源：https://hub.kubeapps.com/charts/incubator</p>
-<h4 id="chart_1"><strong>添加chart存储库</strong></h4>
-<pre><code>helm repo add stable  http://mirror.azure.cn/kubernetes/charts
+</code></pre></div></p>
+<h2 id="_1"><strong>管理配置</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="chart"><strong>Chart国内仓库配置 </strong><a class="headerlink" href="#chart" title="Permanent link">&para;</a></h3>
+<div class="admonition info">
+<p class="admonition-title">仓库配置</p>
+<ul>
+<li>微软的源：http://mirror.azure.cn/kubernetes/charts/ </li>
+<li>阿里的源：https://kubernetes.oss-cn-hangzhou.aliyuncs.com/charts  </li>
+<li>官方的源：https://hub.kubeapps.com/charts/incubator</li>
+</ul>
+</div>
+<h4 id="chart_1"><strong>添加chart存储库</strong><a class="headerlink" href="#chart_1" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>helm repo add stable  http://mirror.azure.cn/kubernetes/charts
 helm repo add aliyun  https://kubernetes.oss-cn-hangzhou.aliyuncs.com/charts
 
 root@k8s-master:/opt/linux-amd64# helm repo update    # 更新源
-</code></pre>
-<h4 id="_2"><strong>查看存储库</strong></h4>
-<pre><code>$ helm repo list
+</code></pre></div>
+<h4 id="_2"><strong>查看存储库</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>$ helm repo list
 NAME        URL
 stable      http://mirror.azure.cn/kubernetes/charts/
 openbayes   https://dev.openbayes.com/charts
-</code></pre>
-<h4 id="_3"><strong>删除存储库</strong></h4>
-<pre><code>root@k8s-master:/opt/linux-amd64# helm repo remove aliyun
-</code></pre>
-<h2 id="helm_3"><strong>Helm 部署应用:</strong></h2>
-<h3 id="helm-traefix"><strong>Helm 部署traefix</strong></h3>
-<p>!!! info "部署traefik"
-    文章参考: https://github.com/traefik/traefik-helm-chart</p>
-<pre><code>git clone https://github.com/traefik/traefik-helm-chart.git
-</code></pre>
+</code></pre></div>
+<h4 id="_3"><strong>删除存储库</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>root@k8s-master:/opt/linux-amd64# helm repo remove aliyun
+</code></pre></div>
+<h2 id="helm_3"><strong>Helm 部署应用:</strong><a class="headerlink" href="#helm_3" title="Permanent link">&para;</a></h2>
+<h3 id="helm-traefix"><strong>Helm 部署traefix</strong><a class="headerlink" href="#helm-traefix" title="Permanent link">&para;</a></h3>
+<div class="admonition info">
+<p class="admonition-title">部署traefik</p>
+<p>文章参考: https://github.com/traefik/traefik-helm-chart</p>
+</div>
+<div class="highlight"><pre><span></span><code>git clone https://github.com/traefik/traefik-helm-chart.git
+</code></pre></div>
 <p>定义values文件</p>
-<pre><code class="language-yaml">$ cat sjtu-traefik.yaml
-image:
-  name: traefik
-  tag: &quot;2.7&quot;
-# values-prod.yaml
-# Create an IngressRoute for the dashboard
-ingressRoute:
-  dashboard:
-    enabled: false  # 禁用helm中渲染的dashboard，我们自己手动创建
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ cat sjtu-traefik.yaml</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">image</span><span class="p p-Indicator">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">traefik</span><span class="w"></span>
+<span class="w">  </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2.7&quot;</span><span class="w"></span>
+<span class="c1"># values-prod.yaml</span><span class="w"></span>
+<span class="c1"># Create an IngressRoute for the dashboard</span><span class="w"></span>
+<span class="nt">ingressRoute</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">dashboard</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">  </span><span class="c1"># 禁用helm中渲染的dashboard，我们自己手动创建</span><span class="w"></span>
 
-# Configure ports
-ports:
-  web:
-    port: 8000
-    hostPort: 80  # 使用 hostport 模式
-    # Use nodeport if set. This is useful if you have configured Traefik in a
-    # LoadBalancer
-    # nodePort: 32080
-    # Port Redirections
-    # Added in 2.2, you can make permanent redirects via entrypoints.
-    # https://docs.traefik.io/routing/entrypoints/#redirection
-    # redirectTo: websecure
-  websecure:
-    port: 8443
-    hostPort: 443  # 使用 hostport 模式
+<span class="c1"># Configure ports</span><span class="w"></span>
+<span class="nt">ports</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">web</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span><span class="w"></span>
+<span class="w">    </span><span class="nt">hostPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span><span class="w">  </span><span class="c1"># 使用 hostport 模式</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Use nodeport if set. This is useful if you have configured Traefik in a</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># LoadBalancer</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># nodePort: 32080</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Port Redirections</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Added in 2.2, you can make permanent redirects via entrypoints.</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># https://docs.traefik.io/routing/entrypoints/#redirection</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># redirectTo: websecure</span><span class="w"></span>
+<span class="w">  </span><span class="nt">websecure</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8443</span><span class="w"></span>
+<span class="w">    </span><span class="nt">hostPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span><span class="w">  </span><span class="c1"># 使用 hostport 模式</span><span class="w"></span>
 
-# Options for the main traefik service, where the entrypoints traffic comes
-# from.
-service:  # 使用 hostport 模式就不需要Service了
-  enabled: false
+<span class="c1"># Options for the main traefik service, where the entrypoints traffic comes</span><span class="w"></span>
+<span class="c1"># from.</span><span class="w"></span>
+<span class="nt">service</span><span class="p">:</span><span class="w">  </span><span class="c1"># 使用 hostport 模式就不需要Service了</span><span class="w"></span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
 
-# Logs
-# https://docs.traefik.io/observability/logs/
-#logs:
-#  general:
-#    level: DEBUG
+<span class="c1"># Logs</span><span class="w"></span>
+<span class="c1"># https://docs.traefik.io/observability/logs/</span><span class="w"></span>
+<span class="c1">#logs:</span><span class="w"></span>
+<span class="c1">#  general:</span><span class="w"></span>
+<span class="c1">#    level: DEBUG</span><span class="w"></span>
 
-tolerations:   # kubeadm 安装的集群默认情况下master是有污点，需要容忍这个污点才可以部署
-- key: &quot;node-role.kubernetes.io/master&quot;
-  operator: &quot;Equal&quot;
-  effect: &quot;NoSchedule&quot;
+<span class="nt">tolerations</span><span class="p">:</span><span class="w">   </span><span class="c1"># kubeadm 安装的集群默认情况下master是有污点，需要容忍这个污点才可以部署</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;node-role.kubernetes.io/master&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Equal&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">effect</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;NoSchedule&quot;</span><span class="w"></span>
 
-nodeSelector:   # 固定到master1节点（该节点才可以访问外网）
-  kubernetes.io/hostname: &quot;master&quot;
-</code></pre>
-<p>部署traefik</p>
-<pre><code>helm upgrade --install traefik traefik/traefik -f ./traefik/values/sjtu-traefik.yaml --namespace kube-system
-</code></pre>
-<p>查看这次部署
-!!! info "温馨提示"
-    这个是有命名空间限制的，-A 可以查看所有helm release</p>
-<pre><code class="language-yaml">$ helm list -A
-NAME                NAMESPACE           REVISION    UPDATED                                 STATUS      CHART                                                                                   APP VERSION
-traefik             kube-system         5           2022-07-08 19:08:15.393244 +0800 CST    deployed    traefik-10.24.0                                                                         2.8.0
-</code></pre>
-<h2 id="helm_4"><strong>Helm 升级回滚</strong></h2>
-<h3 id="_4"><strong>升级</strong></h3>
-<p>!!! example "举例说明"</p>
-<p>例如通过以下方式来升级grafana，也可以通过--set 在后面传参数</p>
-<pre><code>helm upgrade --install grafana  grafana/grafana 
-</code></pre>
-<p>!!! Warning "注意事项"
-    在升级应用程序之前可以通过diff的方式来查看两个版本的区别，确定没问题，再升级
-    <code>$ helm diff  upgrade --install   grafana grafana/grafana -f  ./grafana.yaml -n infra</code></p>
-<h3 id="_5"><strong>回滚</strong></h3>
-<pre><code>helm rollback version-id
-</code></pre>
-<p>无论是升级还是回滚都是有一个的风险的，注意防止误操作。</p>
+<span class="nt">nodeSelector</span><span class="p">:</span><span class="w">   </span><span class="c1"># 固定到master1节点（该节点才可以访问外网）</span><span class="w"></span>
+<span class="w">  </span><span class="nt">kubernetes.io/hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;master&quot;</span><span class="w"></span>
+</code></pre></div>
+<p>部署traefik
+<div class="highlight"><pre><span></span><code>helm upgrade --install traefik traefik/traefik -f ./traefik/values/sjtu-traefik.yaml --namespace kube-system
+</code></pre></div></p>
+<p>查看这次部署</p>
+<div class="admonition info">
+<p class="admonition-title">温馨提示</p>
+<p>这个是有命名空间限制的，-A 可以查看所有helm release</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ helm list -A</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">NAME                NAMESPACE           REVISION    UPDATED                                 STATUS      CHART                                                                                   APP VERSION</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">traefik             kube-system         5           2022-07-08 19:08:15.393244 +0800 CST    deployed    traefik-10.24.0                                                                         2.8.0</span><span class="w"></span>
+</code></pre></div>
+<h2 id="helm_4"><strong>Helm 升级回滚</strong><a class="headerlink" href="#helm_4" title="Permanent link">&para;</a></h2>
+<h3 id="_4"><strong>升级</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<div class="admonition example">
+<p class="admonition-title">举例说明</p>
+</div>
+<p>例如通过以下方式来升级grafana，也可以通过--set 在后面传参数
+<div class="highlight"><pre><span></span><code>helm upgrade --install grafana  grafana/grafana 
+</code></pre></div></p>
+<div class="admonition warning">
+<p class="admonition-title">注意事项</p>
+<p>在升级应用程序之前可以通过diff的方式来查看两个版本的区别，确定没问题，再升级
+<div class="highlight"><pre><span></span><code>$ helm diff  upgrade --install   grafana grafana/grafana -f  ./grafana.yaml -n infra
+</code></pre></div></p>
+</div>
+<h3 id="_5"><strong>回滚</strong><a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p><div class="highlight"><pre><span></span><code>helm rollback version-id
+</code></pre></div>
+无论是升级还是回滚都是有一个的风险的，注意防止误操作。</p>
 
 
 

@@ -1809,72 +1809,78 @@
   </a>
 
 
-<h1 id="k8s"><strong>k8s 版本升级</strong></h1>
-<p>!!! 注意
-    请注意以下升级是kubeadm安装的k8s噢</p>
-<h2 id="_1"><strong>版本需求</strong></h2>
-<p>k8s 的 版本为v1.19.16，如果要升级到v1.23.8
-!!! warning
-    注意： 升级不能横跨两个大版本,因此需要升级分4次进行升级，需要1.20.15--1.21.14--1.22.11--1.23.8 （升级四次）</p>
+<h1 id="k8s"><strong>k8s 版本升级</strong><a class="headerlink" href="#k8s" title="Permanent link">&para;</a></h1>
+<div class="admonition 注意">
+<p class="admonition-title">注意</p>
+<p>请注意以下升级是kubeadm安装的k8s噢</p>
+</div>
+<h2 id="_1"><strong>版本需求</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>k8s 的 版本为v1.19.16，如果要升级到v1.23.8</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>注意： 升级不能横跨两个大版本,因此需要升级分4次进行升级，需要1.20.15--1.21.14--1.22.11--1.23.8 （升级四次）</p>
+</div>
 <p>所有节点执行：apt update  </p>
-<h2 id="_2"><strong>主节点:</strong></h2>
-<pre><code class="language-shell">
-[ucloud] root@master0:~# apt-cache policy kubeadm | grep 1.20.
-     1.20.15-00 500
+<h2 id="_2"><strong>主节点:</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p><div class="highlight"><pre><span></span><code><span class="o">[</span>ucloud<span class="o">]</span> root@master0:~# apt-cache policy kubeadm <span class="p">|</span> grep <span class="m">1</span>.20.
+     <span class="m">1</span>.20.15-00 <span class="m">500</span>
 
 
-# ************所有节点，master和node节点都需要升级*********
-apt-get install kubeadm=1.20.15-00
+<span class="c1"># ************所有节点，master和node节点都需要升级*********</span>
+apt-get install <span class="nv">kubeadm</span><span class="o">=</span><span class="m">1</span>.20.15-00
 
-# 查看k8s版本需要的镜像
+<span class="c1"># 查看k8s版本需要的镜像</span>
 kubeadm config images list  --kubernetes-version v1.20.15
 
-# 验证升级计划
+<span class="c1"># 验证升级计划</span>
 $ kubeadm upgrade plan
-# 看到如下信息，可升级到指定版本
+<span class="c1"># 看到如下信息，可升级到指定版本</span>
 
-# 看etcd版本是否发生变化
+<span class="c1"># 看etcd版本是否发生变化</span>
 
-# 主节点升级，如果不需要升级etcd，添加# --etcd-upgrade=false 参数忽略即可
+<span class="c1"># 主节点升级，如果不需要升级etcd，添加# --etcd-upgrade=false 参数忽略即可</span>
 kubeadm upgrade apply v1.20.15
-</code></pre>
-<p>注意：
+</code></pre></div>
+注意：
    这时我们发现k8s的版本还是没有变化，更新kubelet。</p>
-<p>主节点：</p>
-<pre><code class="language-shell">apt install -y kubelet=1.20.15-00 kubectl=1.20.15-00
-</code></pre>
-<p>!!! error
-    这种情况可能是之前升级没有进行node节点的kubeadm升级导致的.
-    <code>[sjtu] root@master:/home/lixie# kubeadm upgrade plan
-    [upgrade/config] Making sure the configuration is correct:
-    [upgrade/config] Reading configuration from the cluster...
-    [upgrade/config] FYI: You can look at this config file with 'kubectl -n kube-system get cm kubeadm-config -o yaml'
-    [preflight] Running pre-flight checks.
-    [upgrade] Running cluster health checks
-    [upgrade/health] FATAL: [preflight] Some fatal errors occurred:
-        [ERROR ControlPlaneNodesReady]: there are NotReady control-planes in the cluster: [master]
-    [preflight] If you know what you are doing, you can make a check non-fatal with `--ignore-preflight-errors=...`
-    To see the stack trace of this error execute with --v=5 or higher</code>
-解决：（重新安装该版本kubelet和kubectl）</p>
-<pre><code>apt install kubelet=1.19.16-00
+<p>主节点：
+<div class="highlight"><pre><span></span><code>apt install -y <span class="nv">kubelet</span><span class="o">=</span><span class="m">1</span>.20.15-00 <span class="nv">kubectl</span><span class="o">=</span><span class="m">1</span>.20.15-00
+</code></pre></div></p>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>这种情况可能是之前升级没有进行node节点的kubeadm升级导致的.
+<div class="highlight"><pre><span></span><code>[sjtu] root@master:/home/lixie# kubeadm upgrade plan
+[upgrade/config] Making sure the configuration is correct:
+[upgrade/config] Reading configuration from the cluster...
+[upgrade/config] FYI: You can look at this config file with &#39;kubectl -n kube-system get cm kubeadm-config -o yaml&#39;
+[preflight] Running pre-flight checks.
+[upgrade] Running cluster health checks
+[upgrade/health] FATAL: [preflight] Some fatal errors occurred:
+    [ERROR ControlPlaneNodesReady]: there are NotReady control-planes in the cluster: [master]
+[preflight] If you know what you are doing, you can make a check non-fatal with `--ignore-preflight-errors=...`
+To see the stack trace of this error execute with --v=5 or higher
+</code></pre></div></p>
+</div>
+<p>解决：（重新安装该版本kubelet和kubectl）
+<div class="highlight"><pre><span></span><code>apt install kubelet=1.19.16-00
 apt install kubectl=1.19.16-00
-</code></pre>
-<h2 id="_3"><strong>从节点:</strong></h2>
+</code></pre></div></p>
+<h2 id="_3"><strong>从节点:</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <ol>
 <li>node节点升级kubelet的配置（所有node节点）</li>
 </ol>
-<pre><code class="language-shell">sudo kubeadm upgrade node
-</code></pre>
+<div class="highlight"><pre><span></span><code>sudo kubeadm upgrade node
+</code></pre></div>
 <ol>
 <li>安装kubelet和kubectl</li>
 </ol>
-<pre><code class="language-shell">apt install -y kubelet=1.20.15-00 kubectl=1.20.15-00
+<div class="highlight"><pre><span></span><code>apt install -y <span class="nv">kubelet</span><span class="o">=</span><span class="m">1</span>.20.15-00 <span class="nv">kubectl</span><span class="o">=</span><span class="m">1</span>.20.15-00
 
-kubelet --version  # 查看版本
+kubelet --version  <span class="c1"># 查看版本</span>
 Kubernetes v1.23.8
-</code></pre>
-<h4 id="_4">附件</h4>
-<h4 id="k8s_1">k8s证书过期处理</h4>
+</code></pre></div>
+<h4 id="_4">附件<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<h4 id="k8s_1">k8s证书过期处理<a class="headerlink" href="#k8s_1" title="Permanent link">&para;</a></h4>
 <ul>
 <li>问题：<a href="https://aisensiy.me/kubernetes-certs-renew">处理k8s证书过期</a></li>
 </ul>

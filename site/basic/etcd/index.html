@@ -1777,14 +1777,16 @@
   </a>
 
 
-<h1 id="etcd">Etcd 备份</h1>
+<h1 id="etcd">Etcd 备份<a class="headerlink" href="#etcd" title="Permanent link">&para;</a></h1>
 <blockquote>
 <p>https://kubernetes.io/zh-cn/docs/tasks/administer-cluster/configure-upgrade-etcd/</p>
 </blockquote>
-<p>!!! info 
-    以下备份主要是以kubeadm安装的k8s</p>
-<h2 id="_1">查看证书的路径</h2>
-<pre><code>[cka] root@master0:/home/lixie# cat  /etc/kubernetes/manifests/etcd.yaml
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>以下备份主要是以kubeadm安装的k8s</p>
+</div>
+<h2 id="_1">查看证书的路径<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>[cka] root@master0:/home/lixie# cat  /etc/kubernetes/manifests/etcd.yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -1817,39 +1819,39 @@ spec:
     - --peer-trusted-ca-file=/etc/kubernetes/pki/etcd/ca.crt  # 指定证书文件
     - --snapshot-count=10000
     - --trusted-ca-file=/etc/kubernetes/pki/etcd/ca.crt
-</code></pre>
-<h3 id="_2">手动备份</h3>
-<h4 id="etcd_1">安装etcd客户端</h4>
-<pre><code>apt  install etcd-client 
-</code></pre>
-<h4 id="_3">指定路径备份</h4>
+</code></pre></div>
+<h3 id="_2">手动备份<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="etcd_1">安装etcd客户端<a class="headerlink" href="#etcd_1" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>apt  install etcd-client 
+</code></pre></div>
+<h4 id="_3">指定路径备份<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <blockquote>
 <p>这里将备份指定备份到 /srv/data/，指定的三个文件就是以上标注的三个位置</p>
 </blockquote>
-<pre><code>export ETCDCTL_API=3     # 声明etcd-api
+<div class="highlight"><pre><span></span><code>export ETCDCTL_API=3     # 声明etcd-api
 mkdir /srv/data/
 etcdctl --endpoints=https://127.0.0.1:2379 \
   --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/server.crt  --key=/etc/kubernetes/pki/etcd/server.key \
   snapshot save /srv/data/etcd-snapshot.db
-</code></pre>
-<p>校验结果：</p>
-<pre><code>etcdctl --endpoints=https://127.0.0.1:2379   --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/server.crt  --key=/etc/kubernetes/pki/etcd/server.key   snapshot status  /srv/data/etcd-snapshot.db
-</code></pre>
-<h3 id="_4">自动备份</h3>
-<h3 id="kubeadm-k8s">还原（kubeadm 安装的k8s）</h3>
-<h4 id="_5">模拟故障</h4>
+</code></pre></div>
+<p>校验结果：
+<div class="highlight"><pre><span></span><code>etcdctl --endpoints=https://127.0.0.1:2379   --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/server.crt  --key=/etc/kubernetes/pki/etcd/server.key   snapshot status  /srv/data/etcd-snapshot.db
+</code></pre></div></p>
+<h3 id="_4">自动备份<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h3 id="kubeadm-k8s">还原（kubeadm 安装的k8s）<a class="headerlink" href="#kubeadm-k8s" title="Permanent link">&para;</a></h3>
+<h4 id="_5">模拟故障<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <blockquote>
 <p>这里我模拟删除了这个资源，看一会是否可以还原</p>
 </blockquote>
-<pre><code>[ucloud] root@master0:~# k get pod
+<div class="highlight"><pre><span></span><code>[ucloud] root@master0:~# k get pod
 NAME             READY   STATUS    RESTARTS   AGE
 nginx-ds-6mnw5   1/1     Running   0          2d
 [ucloud] root@master0:~# k delete ds nginx-ds
 daemonset.apps &quot;nginx-ds&quot; deleted
-</code></pre>
-<h4 id="k8s">确认k8s组件的位置</h4>
-<p>查看kubelet的状态</p>
-<pre><code>[ucloud] root@master0:~# systemctl status kubelet
+</code></pre></div>
+<h4 id="k8s">确认k8s组件的位置<a class="headerlink" href="#k8s" title="Permanent link">&para;</a></h4>
+<p>查看kubelet的状态
+<div class="highlight"><pre><span></span><code>[ucloud] root@master0:~# systemctl status kubelet
 ● kubelet.service - kubelet: The Kubernetes Node Agent
      Loaded: loaded (/lib/systemd/system/kubelet.service; enabled; vendor preset: enabled)
     Drop-In: /etc/systemd/system/kubelet.service.d  # 查看这个目录下的文件
@@ -1860,9 +1862,9 @@ daemonset.apps &quot;nginx-ds&quot; deleted
       Tasks: 17 (limit: 4390)
      Memory: 63.3M
      CGroup: /system.slice/kubelet.service
-</code></pre>
+</code></pre></div></p>
 <p>查看文件：/etc/systemd/system/kubelet.service.d/10-kubeadm.conf</p>
-<pre><code>[ucloud] root@master0:~# cat /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+<p><div class="highlight"><pre><span></span><code>[ucloud] root@master0:~# cat /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
 # Note: This dropin only works with kubeadm and kubelet v1.11+
 [Service]
 Environment=&quot;KUBELET_KUBECONFIG_ARGS=--bootstrap-kubeconfig=/etc/kubernetes/bootstrap-kubelet.conf --kubeconfig=/etc/kubernetes/kubelet.conf&quot;
@@ -1874,9 +1876,9 @@ EnvironmentFile=-/var/lib/kubelet/kubeadm-flags.env
 EnvironmentFile=-/etc/default/kubelet
 ExecStart=
 ExecStart=/usr/bin/kubelet $KUBELET_KUBECONFIG_ARGS $KUBELET_CONFIG_ARGS $KUBELET_KUBEADM_ARGS $KUBELET_EXTRA_ARGS   
-</code></pre>
-<p>查看文件：/var/lib/kubelet/config.yaml</p>
-<pre><code>[ucloud] root@master0:~# cat /var/lib/kubelet/config.yaml
+</code></pre></div>
+查看文件：/var/lib/kubelet/config.yaml</p>
+<div class="highlight"><pre><span></span><code>[ucloud] root@master0:~# cat /var/lib/kubelet/config.yaml
 apiVersion: kubelet.config.k8s.io/v1beta1
 authentication:
   anonymous:
@@ -1890,9 +1892,9 @@ staticPodPath: /etc/kubernetes/manifests  # 看到这行，就说明配置文件
 streamingConnectionIdleTimeout: 0s
 syncFrequency: 0s
 volumeStatsAggPeriod: 0s
-</code></pre>
-<h4 id="api-server">停止api-server</h4>
-<pre><code>[ucloud] root@master0:~#  mkdir /opt/backup/ -p
+</code></pre></div>
+<h4 id="api-server">停止api-server<a class="headerlink" href="#api-server" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>[ucloud] root@master0:~#  mkdir /opt/backup/ -p
 [ucloud] root@master0:~# cd /etc/kubernetes/manifests
 [ucloud] root@master0:/etc/kubernetes/manifests# ll
 total 24
@@ -1903,37 +1905,36 @@ drwxr-xr-x 5 root root 4096 Jul  3 21:15 ../
 -rw------- 1 root root 3541 Jul  3 22:00 kube-controller-manager.yaml
 -rw------- 1 root root 1464 Jul  3 22:00 kube-scheduler.yaml
 [ucloud] root@master0:/etc/kubernetes/manifests# mv kube-* /opt/backup/   # 移走之后我们会发现不能使用kubectl命令
-
-</code></pre>
-<h4 id="_6">进行还原</h4>
+</code></pre></div>
+<h4 id="_6">进行还原<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <blockquote>
 <p>如果恢复失败需要添加--skip-hash-check参数</p>
 </blockquote>
-<pre><code>[ucloud] root@master0:~# etcdctl --endpoints=https://127.0.0.1:2379   --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/server.crt  --key=/etc/kubernetes/pki/etcd/server.key   snapshot restore /srv/data/etcd-snapshot.db --data-dir=/var/lib/etcd-restore --skip-hash-check
-</code></pre>
+<div class="highlight"><pre><span></span><code>[ucloud] root@master0:~# etcdctl --endpoints=https://127.0.0.1:2379   --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/server.crt  --key=/etc/kubernetes/pki/etcd/server.key   snapshot restore /srv/data/etcd-snapshot.db --data-dir=/var/lib/etcd-restore --skip-hash-check
+</code></pre></div>
 <p>修改etcd的配置文件</p>
 <blockquote>
 <p>将 volume 配置的 path: /var/lib/etcd 改成/var/lib/etcd-restore</p>
 </blockquote>
-<pre><code>[ucloud] root@master0:/etc/kubernetes/manifests# pwd
+<div class="highlight"><pre><span></span><code>[ucloud] root@master0:/etc/kubernetes/manifests# pwd
 /etc/kubernetes/manifests
 [ucloud] root@master0:/etc/kubernetes/manifests# vim etcd.yaml
   - hostPath:
       path: /var/lib/etcd-restore   # 将改目录修改为还原etcd的位置
       type: DirectoryOrCreate
-</code></pre>
+</code></pre></div>
 <p>还原k8s组件</p>
-<pre><code>mv /opt/backup/* /etc/kubernetes/manifests
+<div class="highlight"><pre><span></span><code>mv /opt/backup/* /etc/kubernetes/manifests
 systemctl restart kubelet
-</code></pre>
+</code></pre></div>
 <p>校验结果：</p>
 <blockquote>
 <p>发现误删除的pod还原成功</p>
 </blockquote>
-<pre><code>[ucloud] root@master0:/etc/kubernetes/manifests# k get pod
+<div class="highlight"><pre><span></span><code>[ucloud] root@master0:/etc/kubernetes/manifests# k get pod
 NAME             READY   STATUS    RESTARTS   AGE
 nginx-ds-6mnw5   1/1     Running   0          2d
-</code></pre>
+</code></pre></div>
 
 
 

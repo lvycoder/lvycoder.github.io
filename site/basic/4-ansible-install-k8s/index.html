@@ -2343,12 +2343,13 @@
   </a>
 
 
-<h1 id="ansiblekubernetes">项目一: Ansible部署二进制kubernetes集群</h1>
-<p>!!! info 
-    二进制方式是官方推荐的部署方式的一种，但是由于手动部署难度较大，此次采用GitHub的开源项目kubeasz</p>
-<pre><code>Github 项目地址: https://github.com/easzlab/kubeasz
-</code></pre>
-<h4 id="_1">环境配置</h4>
+<h1 id="ansiblekubernetes">项目一: Ansible部署二进制kubernetes集群<a class="headerlink" href="#ansiblekubernetes" title="Permanent link">&para;</a></h1>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>二进制方式是官方推荐的部署方式的一种，但是由于手动部署难度较大，此次采用GitHub的开源项目kubeasz</p>
+<p>Github 项目地址: https://github.com/easzlab/kubeasz</p>
+</div>
+<h4 id="_1">环境配置<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
 <tr>
@@ -2375,12 +2376,12 @@
 </tr>
 </tbody>
 </table>
-<h4 id="keepalived">一.配置高可用负载均衡keepalived</h4>
-<h5 id="1keepalived">1.安装keepalived</h5>
-<pre><code>yum -y install ipvsadm keepalived haproxy
-</code></pre>
-<h5 id="2master1keepalived">2.master1上配置keepalived</h5>
-<pre><code>[root@k8s-master1 ~]# cat /etc/keepalived/keepalived.conf
+<h4 id="keepalived">一.配置高可用负载均衡keepalived<a class="headerlink" href="#keepalived" title="Permanent link">&para;</a></h4>
+<h5 id="1keepalived">1.安装keepalived<a class="headerlink" href="#1keepalived" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code>yum -y install ipvsadm keepalived haproxy
+</code></pre></div>
+<h5 id="2master1keepalived">2.master1上配置keepalived<a class="headerlink" href="#2master1keepalived" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code>[root@k8s-master1 ~]# cat /etc/keepalived/keepalived.conf
 vrrp_instance VI_1 {
     state MASTER
     interface ens192
@@ -2395,9 +2396,9 @@ vrrp_instance VI_1 {
         192.168.10.88
     }
 }
-</code></pre>
-<h5 id="3master2keepalived">3.master2上配置keepalived</h5>
-<pre><code>[root@k8s-master2 ~]# cat  /etc/keepalived/keepalived.conf
+</code></pre></div>
+<h5 id="3master2keepalived">3.master2上配置keepalived<a class="headerlink" href="#3master2keepalived" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code>[root@k8s-master2 ~]# cat  /etc/keepalived/keepalived.conf
 vrrp_instance VI_1 {
     state BACKUP
     interface ens192
@@ -2412,91 +2413,90 @@ vrrp_instance VI_1 {
         192.168.10.88
     }
 }
-
-</code></pre>
-<h5 id="4keepalived">4.重启keepalived</h5>
-<pre><code>[root@k8s-master1 ~]# systemctl restart keepalived
+</code></pre></div>
+<h5 id="4keepalived">4.重启keepalived<a class="headerlink" href="#4keepalived" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code>[root@k8s-master1 ~]# systemctl restart keepalived
 [root@k8s-master1 ~]# systemctl enable  keepalived
-</code></pre>
-<h4 id="haproxy">二.配置haproxy</h4>
-<h5 id="1master1haproxy">1.master1上配置haproxy</h5>
-<pre><code>[root@k8s-master1 ~]# vim /etc/haproxy/haproxy.cfg
+</code></pre></div>
+<h4 id="haproxy">二.配置haproxy<a class="headerlink" href="#haproxy" title="Permanent link">&para;</a></h4>
+<h5 id="1master1haproxy">1.master1上配置haproxy<a class="headerlink" href="#1master1haproxy" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code>[root@k8s-master1 ~]# vim /etc/haproxy/haproxy.cfg
 listen k8s_6443
   mode tcp
   bind 192.168.10.88:6443
   server 192.168.10.10 192.168.10.10:6443 check inter 5s rise 2 fall 3
   server 192.168.10.11 192.168.10.11:6443 check inter 5s rise 2 fall 3
-</code></pre>
-<h5 id="2master2haproxy">2.master2上配置haproxy</h5>
-<pre><code>[root@k8s-master1 ~]# vim /etc/haproxy/haproxy.cfg
+</code></pre></div>
+<h5 id="2master2haproxy">2.master2上配置haproxy<a class="headerlink" href="#2master2haproxy" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code>[root@k8s-master1 ~]# vim /etc/haproxy/haproxy.cfg
 listen k8s_6443
   mode tcp
   bind 192.168.10.88:6443
   server 192.168.10.10 192.168.10.10:6443 check inter 5s rise 2 fall 3
   server 192.168.10.11 192.168.10.11:6443 check inter 5s rise 2 fall 3
-</code></pre>
-<h5 id="3haproxy">3.重启haproxy</h5>
-<pre><code>[root@k8s-master1 ~]# systemctl restart haproxy
+</code></pre></div>
+<h5 id="3haproxy">3.重启haproxy<a class="headerlink" href="#3haproxy" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code>[root@k8s-master1 ~]# systemctl restart haproxy
 [root@k8s-master1 ~]# systemctl enable haproxy
-</code></pre>
-<h4 id="k8smaster">三.安装k8s(master上配置)</h4>
-<h5 id="1ansible">1.安装ansible</h5>
-<pre><code>yum -y install ansible
-</code></pre>
-<h5 id="2">2.配置各个节点免密登陆</h5>
-<pre><code>ssh-keygen -t rsa
+</code></pre></div>
+<h4 id="k8smaster">三.安装k8s(master上配置)<a class="headerlink" href="#k8smaster" title="Permanent link">&para;</a></h4>
+<h5 id="1ansible">1.安装ansible<a class="headerlink" href="#1ansible" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code>yum -y install ansible
+</code></pre></div>
+<h5 id="2">2.配置各个节点免密登陆<a class="headerlink" href="#2" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code>ssh-keygen -t rsa
 ssh-copy-id -i .ssh/id_rsa.pub root@192.168.10.10
 ssh-copy-id -i .ssh/id_rsa.pub root@192.168.10.11
 ssh-copy-id -i .ssh/id_rsa.pub root@192.168.10.12
-</code></pre>
-<h5 id="3yumdocker">3.yum安装docker</h5>
-<h6 id="31">3.1下载依赖软件</h6>
-<pre><code>[root@jenkins ~]# yum install -y yum-utils device-mapper-persistent-data lvm2
-</code></pre>
-<h6 id="32docker">3.2下载docker源</h6>
-<pre><code>yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo 
-</code></pre>
-<h6 id="33docker">3.3安装docker</h6>
-<pre><code>[root@jenkins ~]# yum -y install docker-ce-19.03.15 docker-ce-cli-19.03.15 containerd.io
-</code></pre>
-<h6 id="34docker">3.4修改docker根目录位置</h6>
-<pre><code>[root@jenkins ~]# mkdir -p /data/docker
+</code></pre></div>
+<h5 id="3yumdocker">3.yum安装docker<a class="headerlink" href="#3yumdocker" title="Permanent link">&para;</a></h5>
+<h6 id="31">3.1下载依赖软件<a class="headerlink" href="#31" title="Permanent link">&para;</a></h6>
+<div class="highlight"><pre><span></span><code>[root@jenkins ~]# yum install -y yum-utils device-mapper-persistent-data lvm2
+</code></pre></div>
+<h6 id="32docker">3.2下载docker源<a class="headerlink" href="#32docker" title="Permanent link">&para;</a></h6>
+<div class="highlight"><pre><span></span><code>yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo 
+</code></pre></div>
+<h6 id="33docker">3.3安装docker<a class="headerlink" href="#33docker" title="Permanent link">&para;</a></h6>
+<div class="highlight"><pre><span></span><code>[root@jenkins ~]# yum -y install docker-ce-19.03.15 docker-ce-cli-19.03.15 containerd.io
+</code></pre></div>
+<h6 id="34docker">3.4修改docker根目录位置<a class="headerlink" href="#34docker" title="Permanent link">&para;</a></h6>
+<div class="highlight"><pre><span></span><code>[root@jenkins ~]# mkdir -p /data/docker
 [root@jenkins ~]# vim /usr/lib/systemd/system/docker.service
 ExecStart=/usr/bin/dockerd --graph /data/docker -H fd://
 [root@jenkins ~]# systemctl start docker
 [root@jenkins ~]# systemctl enable docker
-</code></pre>
-<h6 id="35docker">3.5配置docker镜像仓库</h6>
-<pre><code>[root@jenkins docker]# cat &gt;&gt; /etc/docker/daemon.json &lt;&lt; EOF
+</code></pre></div>
+<h6 id="35docker">3.5配置docker镜像仓库<a class="headerlink" href="#35docker" title="Permanent link">&para;</a></h6>
+<div class="highlight"><pre><span></span><code>[root@jenkins docker]# cat &gt;&gt; /etc/docker/daemon.json &lt;&lt; EOF
 {
  &quot;registry-mirrors&quot;: [&quot;https://7jauxlsb.mirror.aliyuncs.com&quot;],
  &quot;insecure-registries&quot;:[&quot;192.168.10.133&quot;]
 }
 EOF
-</code></pre>
-<h6 id="36docker">3.6重启docker</h6>
-<pre><code>[root@jenkins docker]# systemctl daemon-reload
+</code></pre></div>
+<h6 id="36docker">3.6重启docker<a class="headerlink" href="#36docker" title="Permanent link">&para;</a></h6>
+<div class="highlight"><pre><span></span><code>[root@jenkins docker]# systemctl daemon-reload
 [root@jenkins docker]# systemctl restart docker
-</code></pre>
-<h5 id="4">4.部署节点的各项目组件</h5>
-<h6 id="41ezdown">4.1安装ezdown</h6>
-<pre><code>export release=3.1.1
+</code></pre></div>
+<h5 id="4">4.部署节点的各项目组件<a class="headerlink" href="#4" title="Permanent link">&para;</a></h5>
+<h6 id="41ezdown">4.1安装ezdown<a class="headerlink" href="#41ezdown" title="Permanent link">&para;</a></h6>
+<div class="highlight"><pre><span></span><code>export release=3.1.1
 wget https://github.com/easzlab/kubeasz/releases/download/${release}/ezdown
 chmod +x ./ezdown
-</code></pre>
-<h6 id="42ezdown">4.2初始化ezdown</h6>
-<pre><code>[root@k8s-master1 ~]# vim ezdown
+</code></pre></div>
+<h6 id="42ezdown">4.2初始化ezdown<a class="headerlink" href="#42ezdown" title="Permanent link">&para;</a></h6>
+<div class="highlight"><pre><span></span><code>[root@k8s-master1 ~]# vim ezdown
 DOCKER_VER=19.03.15
 KUBEASZ_VER=3.1.1
 K8S_BIN_VER=v1.22.5
 [root@k8s-master1 ~]# ./ezdown -D
-</code></pre>
-<h6 id="43ansible-hosts">4.3生成ansible hosts文件</h6>
-<pre><code>[root@k8s-master1 ~]# cd /etc/kubeasz/
+</code></pre></div>
+<h6 id="43ansible-hosts">4.3生成ansible hosts文件<a class="headerlink" href="#43ansible-hosts" title="Permanent link">&para;</a></h6>
+<div class="highlight"><pre><span></span><code>[root@k8s-master1 ~]# cd /etc/kubeasz/
 [root@k8s-master1 kubeasz]# ./ezctl new k8s-cluster1
-</code></pre>
-<h6 id="44ansible-hosts">4.4编辑ansible hosts文件</h6>
-<pre><code># 'etcd' cluster should have odd member(s) (1,3,5,...)
+</code></pre></div>
+<h6 id="44ansible-hosts">4.4编辑ansible hosts文件<a class="headerlink" href="#44ansible-hosts" title="Permanent link">&para;</a></h6>
+<div class="highlight"><pre><span></span><code># &#39;etcd&#39; cluster should have odd member(s) (1,3,5,...)
 [etcd]
 192.168.10.10
 192.168.10.11
@@ -2511,7 +2511,7 @@ K8S_BIN_VER=v1.22.5
 192.168.10.12
 
 # [optional] harbor server, a private docker registry
-# 'NEW_INSTALL': 'true' to install a harbor server; 'false' to integrate with existed one
+# &#39;NEW_INSTALL&#39;: &#39;true&#39; to install a harbor server; &#39;false&#39; to integrate with existed one
 [harbor]
 #192.168.1.8 NEW_INSTALL=false
 
@@ -2535,7 +2535,7 @@ CONTAINER_RUNTIME=&quot;docker&quot;
 # Network plugins supported: calico, flannel, kube-router, cilium, kube-ovn
 CLUSTER_NETWORK=&quot;calico&quot;
 
-# Service proxy mode of kube-proxy: 'iptables' or 'ipvs'
+# Service proxy mode of kube-proxy: &#39;iptables&#39; or &#39;ipvs&#39;
 PROXY_MODE=&quot;ipvs&quot;
 
 # K8S Service CIDR, not overlap with node(host) networking
@@ -2550,7 +2550,7 @@ NODE_PORT_RANGE=&quot;1-65535&quot;
 # Cluster DNS Domain
 CLUSTER_DNS_DOMAIN=&quot;cluster.local&quot;
 
-# -------- Additional Variables (don't change the default value right now) ---
+# -------- Additional Variables (don&#39;t change the default value right now) ---
 # Binaries Directory
 bin_dir=&quot;/usr/bin&quot;
 
@@ -2562,10 +2562,9 @@ cluster_dir=&quot;{{ base_dir }}/clusters/k8s-cluster1&quot;
 
 # CA and other components cert/key Directory
 ca_dir=&quot;/etc/kubernetes/ssl&quot;
-
-</code></pre>
-<h6 id="45configyml">4.5编辑config.yml文件</h6>
-<pre><code>############################
+</code></pre></div>
+<h6 id="45configyml">4.5编辑config.yml文件<a class="headerlink" href="#45configyml" title="Permanent link">&para;</a></h6>
+<div class="highlight"><pre><span></span><code>############################
 # prepare
 ############################
 # 可选离线安装系统软件包 (offline|online)
@@ -2626,7 +2625,7 @@ DOCKER_STORAGE_DIR: &quot;/data/docker&quot;
 ENABLE_REMOTE_API: false
 
 # [docker]信任的HTTP仓库
-INSECURE_REG: '[&quot;127.0.0.1/8&quot;,&quot;192.168.10.133&quot;]'
+INSECURE_REG: &#39;[&quot;127.0.0.1/8&quot;,&quot;192.168.10.133&quot;]&#39;
 
 
 ############################
@@ -2687,7 +2686,7 @@ flannel_offline: &quot;flannel_{{ flannelVer }}.tar&quot;
 CALICO_IPV4POOL_IPIP: &quot;Always&quot;
 
 # [calico]设置 calico-node使用的host IP，bgp邻居通过该地址建立，可手工指定也可以自动发现
-IP_AUTODETECTION_METHOD: &quot;can-reach={{ groups['kube_master'][0] }}&quot;
+IP_AUTODETECTION_METHOD: &quot;can-reach={{ groups[&#39;kube_master&#39;][0] }}&quot;
 
 # [calico]设置calico 网络 backend: brid, vxlan, none
 CALICO_NETWORKING_BACKEND: &quot;brid&quot;
@@ -2696,7 +2695,7 @@ CALICO_NETWORKING_BACKEND: &quot;brid&quot;
 calico_ver: &quot;v3.19.2&quot;
 
 # [calico]calico 主版本
-calico_ver_main: &quot;{{ calico_ver.split('.')[0] }}.{{ calico_ver.split('.')[1] }}&quot;
+calico_ver_main: &quot;{{ calico_ver.split(&#39;.&#39;)[0] }}.{{ calico_ver.split(&#39;.&#39;)[1] }}&quot;
 
 # [calico]离线镜像tar包
 calico_offline: &quot;calico_{{ calico_ver }}.tar&quot;
@@ -2713,7 +2712,7 @@ cilium_offline: &quot;cilium_{{ cilium_ver }}.tar&quot;
 
 # ------------------------------------------- kube-ovn
 # [kube-ovn]选择 OVN DB and OVN Control Plane 节点，默认为第一个master节点
-OVN_DB_NODE: &quot;{{ groups['kube_master'][0] }}&quot;
+OVN_DB_NODE: &quot;{{ groups[&#39;kube_master&#39;][0] }}&quot;
 
 # [kube-ovn]离线镜像tar包
 kube_ovn_ver: &quot;v1.5.3&quot;
@@ -2781,7 +2780,7 @@ HARBOR_VER: &quot;v2.1.3&quot;
 HARBOR_DOMAIN: &quot;harbor.yourdomain.com&quot;
 HARBOR_TLS_PORT: 8443
 
-# if set 'false', you need to put certs named harbor.pem and harbor-key.pem in directory 'down'
+# if set &#39;false&#39;, you need to put certs named harbor.pem and harbor-key.pem in directory &#39;down&#39;
 HARBOR_SELF_SIGNED_CERT: true
 
 # install extra component
@@ -2789,32 +2788,31 @@ HARBOR_WITH_NOTARY: false
 HARBOR_WITH_TRIVY: false
 HARBOR_WITH_CLAIR: false
 HARBOR_WITH_CHARTMUSEUM: true
-
-</code></pre>
-<h6 id="46">4.6配置启动环境</h6>
+</code></pre></div>
+<h6 id="46">4.6配置启动环境<a class="headerlink" href="#46" title="Permanent link">&para;</a></h6>
 <p>一键部署:ezctl setup k8s-01 all</p>
-<pre><code>[root@k8s-master1 kubeasz]# ./ezctl setup k8s-cluster1 01
-</code></pre>
-<h6 id="47etcd">4.7配置etcd</h6>
-<pre><code>[root@k8s-master1 kubeasz]# ./ezctl setup k8s-cluster1 02
+<div class="highlight"><pre><span></span><code>[root@k8s-master1 kubeasz]# ./ezctl setup k8s-cluster1 01
+</code></pre></div>
+<h6 id="47etcd">4.7配置etcd<a class="headerlink" href="#47etcd" title="Permanent link">&para;</a></h6>
+<div class="highlight"><pre><span></span><code>[root@k8s-master1 kubeasz]# ./ezctl setup k8s-cluster1 02
 //查看etcd状态
 etcdctl --cacert=/etc/kubernetes/ssl/ca.pem --cert=/etc/kubernetes/ssl/etcd.pem --key=/etc/kubernetes/ssl/etcd-key.pem --endpoints=&quot;https://192.168.10.10:2379,https://192.168.10.11:2379&quot; endpoint health --write-out=table
-</code></pre>
-<h6 id="48docker">4.8安装docker</h6>
-<pre><code>[root@k8s-master1 kubeasz]# ./ezctl setup k8s-cluster1 03
-</code></pre>
-<h6 id="49master">4.9安装master节点</h6>
-<pre><code>[root@k8s-master1 kubeasz]# ./ezctl setup k8s-cluster1 04
-</code></pre>
-<h6 id="410node">4.10安装node节点</h6>
-<pre><code>[root@k8s-master1 kubeasz]# ./ezctl setup k8s-cluster1 05
-</code></pre>
-<h4 id="5">5.部署网络服务</h4>
-<h5 id="1calico">1.部署calico</h5>
-<pre><code>[root@k8s-master1 kubeasz]# ./ezctl setup k8s-cluster1 06
-</code></pre>
-<h5 id="2coredns">2.部署coredns</h5>
-<pre><code># __MACHINE_GENERATED_WARNING__
+</code></pre></div>
+<h6 id="48docker">4.8安装docker<a class="headerlink" href="#48docker" title="Permanent link">&para;</a></h6>
+<div class="highlight"><pre><span></span><code>[root@k8s-master1 kubeasz]# ./ezctl setup k8s-cluster1 03
+</code></pre></div>
+<h6 id="49master">4.9安装master节点<a class="headerlink" href="#49master" title="Permanent link">&para;</a></h6>
+<div class="highlight"><pre><span></span><code>[root@k8s-master1 kubeasz]# ./ezctl setup k8s-cluster1 04
+</code></pre></div>
+<h6 id="410node">4.10安装node节点<a class="headerlink" href="#410node" title="Permanent link">&para;</a></h6>
+<div class="highlight"><pre><span></span><code>[root@k8s-master1 kubeasz]# ./ezctl setup k8s-cluster1 05
+</code></pre></div>
+<h4 id="5">5.部署网络服务<a class="headerlink" href="#5" title="Permanent link">&para;</a></h4>
+<h5 id="1calico">1.部署calico<a class="headerlink" href="#1calico" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code>[root@k8s-master1 kubeasz]# ./ezctl setup k8s-cluster1 06
+</code></pre></div>
+<h5 id="2coredns">2.部署coredns<a class="headerlink" href="#2coredns" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code># __MACHINE_GENERATED_WARNING__
 
 apiVersion: v1
 kind: ServiceAccount
@@ -3036,10 +3034,9 @@ spec:
   - name: metrics
     port: 9153
     protocol: TCP
-
-</code></pre>
-<h5 id="3ingress">3.部署ingress</h5>
-<pre><code>apiVersion: v1
+</code></pre></div>
+<h5 id="3ingress">3.部署ingress<a class="headerlink" href="#3ingress" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code>apiVersion: v1
 kind: Namespace
 metadata:
   name: ingress-nginx
@@ -3091,7 +3088,7 @@ metadata:
   name: ingress-nginx
 rules:
   - apiGroups:
-      - ''
+      - &#39;&#39;
     resources:
       - configmaps
       - endpoints
@@ -3102,13 +3099,13 @@ rules:
       - list
       - watch
   - apiGroups:
-      - ''
+      - &#39;&#39;
     resources:
       - nodes
     verbs:
       - get
   - apiGroups:
-      - ''
+      - &#39;&#39;
     resources:
       - services
     verbs:
@@ -3124,7 +3121,7 @@ rules:
       - list
       - watch
   - apiGroups:
-      - ''
+      - &#39;&#39;
     resources:
       - events
     verbs:
@@ -3180,13 +3177,13 @@ metadata:
   namespace: ingress-nginx
 rules:
   - apiGroups:
-      - ''
+      - &#39;&#39;
     resources:
       - namespaces
     verbs:
       - get
   - apiGroups:
-      - ''
+      - &#39;&#39;
     resources:
       - configmaps
       - pods
@@ -3197,7 +3194,7 @@ rules:
       - list
       - watch
   - apiGroups:
-      - ''
+      - &#39;&#39;
     resources:
       - services
     verbs:
@@ -3227,7 +3224,7 @@ rules:
       - list
       - watch
   - apiGroups:
-      - ''
+      - &#39;&#39;
     resources:
       - configmaps
     resourceNames:
@@ -3236,13 +3233,13 @@ rules:
       - get
       - update
   - apiGroups:
-      - ''
+      - &#39;&#39;
     resources:
       - configmaps
     verbs:
       - create
   - apiGroups:
-      - ''
+      - &#39;&#39;
     resources:
       - events
     verbs:
@@ -3411,7 +3408,7 @@ spec:
             secretName: ingress-nginx-admission
 ---
 # Source: ingress-nginx/templates/controller-ingressclass.yaml
-# We don't support namespaced ingressClass yet
+# We don&#39;t support namespaced ingressClass yet
 # So a ClusterRole and a ClusterRoleBinding is required
 apiVersion: networking.k8s.io/v1
 kind: IngressClass
@@ -3548,7 +3545,7 @@ metadata:
     app.kubernetes.io/component: admission-webhook
 rules:
   - apiGroups:
-      - ''
+      - &#39;&#39;
     resources:
       - secrets
     verbs:
@@ -3681,10 +3678,10 @@ spec:
       securityContext:
         runAsNonRoot: true
         runAsUser: 2000
-</code></pre>
-<h4 id="k8s">四.k8s安装后配置</h4>
-<h5 id="1master">1.设置master可以调度</h5>
-<pre><code>[root@k8s-master2 ~]# kubectl get node
+</code></pre></div>
+<h4 id="k8s">四.k8s安装后配置<a class="headerlink" href="#k8s" title="Permanent link">&para;</a></h4>
+<h5 id="1master">1.设置master可以调度<a class="headerlink" href="#1master" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code>[root@k8s-master2 ~]# kubectl get node
 NAME             STATUS                     ROLES    AGE   VERSION
 192.168.10.201   Ready,SchedulingDisabled   master   21h   v1.22.2
 192.168.10.202   Ready,SchedulingDisabled   master   21h   v1.22.2
@@ -3697,9 +3694,9 @@ NAME             STATUS   ROLES    AGE   VERSION
 192.168.10.201   Ready    master   23h   v1.22.2
 192.168.10.202   Ready    master   23h   v1.22.2
 192.168.10.203   Ready    node     23h   v1.22.2
-</code></pre>
-<h5 id="2_1">2.给节点打标签</h5>
-<pre><code>//查看标签
+</code></pre></div>
+<h5 id="2_1">2.给节点打标签<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code>//查看标签
 kubectl  get node --show-labels=true
 
 kubectl label nodes 192.168.10.10 label_name=kuboard
@@ -3710,13 +3707,13 @@ kubectl label nodes 192.168.10.11 label_tools=tools-2
 
 kubectl label nodes 192.168.10.12 label_name=server-1
 kubectl label nodes 192.168.10.12 label_tools=tools-3
-</code></pre>
-<pre><code>systemctl restart kube-apiserver
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>systemctl restart kube-apiserver
 systemctl restart kube-controller-manager
 systemctl restart kubelet 
 systemctl restart kube-proxy
 systemctl restart kube-scheduler
-</code></pre>
+</code></pre></div>
 
 
 

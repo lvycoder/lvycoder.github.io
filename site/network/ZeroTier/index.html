@@ -1797,41 +1797,51 @@
   </a>
 
 
-<h1 id="zerotier">ZeroTier 内网</h1>
-<h2 id="_1"><strong>背景</strong></h2>
+<h1 id="zerotier">ZeroTier 内网<a class="headerlink" href="#zerotier" title="Permanent link">&para;</a></h1>
+<h2 id="_1"><strong>背景</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>随着互联网的普及，可用的公网 IPv4 地址越来越少，现在的运营商基本不给家用宽带分配公网 IP 了。如果你想通过外网访问到内网的资源，目前只能采用内网穿透的软件来实现。常见的内网穿透如: frp 这样的工具，但是如果要使用这样的工具需要有一台具备公网地址的服务器才可以。</p>
 <p>做为一名优秀的技术人员，当然是能白嫖就白嫖，下面主要来介绍一款不需要公网的P2P工具ZeroTier
 <img alt="" src="https://pic1.imgdb.cn/item/63355b9316f2c2beb149496a.jpg" /></p>
-<h2 id="_2"><strong>原理</strong></h2>
+<h2 id="_2"><strong>原理</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>ZeroTier 这一类 P2P VPN 是在互联网的基础上将自己的所有设备组成一个私有的网络，可以理解为互联网连接的局域网。</p>
 <p>大白话就是一堆服务器安装上这个软件就组建了一个内网，大家通过这个特定网段内网可以互相访问。</p>
-<p>!!! info "优点"
-    - 内网穿透工具（免费）
-    - ZeroTier 支持 Windows、macOS、Linux 三大主流平台，iOS、Android 两大移动平台</p>
+<div class="admonition info">
+<p class="admonition-title">优点</p>
+<ul>
+<li>内网穿透工具（免费）</li>
+<li>ZeroTier 支持 Windows、macOS、Linux 三大主流平台，iOS、Android 两大移动平台</li>
+</ul>
+</div>
 <p>我们正在逐步用 Tailscale 替换掉 ZeroTier 网络，ZeroTier 将作为 Tailscale 不可用时的备选方案</p>
 <p>官网地址: https://www.zerotier.com/</p>
 <p>下载客户端: https://www.zerotier.com/download/</p>
-<h2 id="linux-debrpm"><strong>Linux (DEB/RPM)</strong></h2>
-<pre><code class="language-bash">curl -s https://install.zerotier.com | sudo bash
-</code></pre>
-<h2 id="macos"><strong>macOS</strong></h2>
+<h2 id="linux-debrpm"><strong>Linux (DEB/RPM)</strong><a class="headerlink" href="#linux-debrpm" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>curl -s https://install.zerotier.com <span class="p">|</span> sudo bash
+</code></pre></div>
+<h2 id="macos"><strong>macOS</strong><a class="headerlink" href="#macos" title="Permanent link">&para;</a></h2>
 <p>可选择官方的 DMG 安装，或从 Homebrew 进行安装：</p>
-<pre><code class="language-bash">brew cask install zerotier-one
-</code></pre>
-<p>!!! warning "温馨提示"
-    我这边主要是以使用linux和mac为主，其他平台请直接访问上方的 Zerotier 官网进行下载</p>
-<h2 id="_3"><strong>安装</strong></h2>
-<p>!!! info "操作步骤"
-    - Linux或者Mac安装zerotier
-    - 加入到zerotier网络
-    - zerotier的UI界面勾选刚刚添加的节点</p>
+<div class="highlight"><pre><span></span><code>brew cask install zerotier-one
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">温馨提示</p>
+<p>我这边主要是以使用linux和mac为主，其他平台请直接访问上方的 Zerotier 官网进行下载</p>
+</div>
+<h2 id="_3"><strong>安装</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<div class="admonition info">
+<p class="admonition-title">操作步骤</p>
+<ul>
+<li>Linux或者Mac安装zerotier</li>
+<li>加入到zerotier网络</li>
+<li>zerotier的UI界面勾选刚刚添加的节点</li>
+</ul>
+</div>
 <p><strong>安装:</strong> <a href="https://www.zerotier.com/download/">参考官网</a></p>
-<pre><code class="language-shell">curl -s https://install.zerotier.com | sudo bash
-</code></pre>
+<div class="highlight"><pre><span></span><code>curl -s https://install.zerotier.com <span class="p">|</span> sudo bash
+</code></pre></div>
 <p>节点加入zerotier网络，加入网络之前需要提前创建这个网络</p>
-<pre><code class="language-shell">root@user:/home/user# zerotier-cli join b15644912ebd050d
-200 join OK
-</code></pre>
+<div class="highlight"><pre><span></span><code>root@user:/home/user# zerotier-cli join b15644912ebd050d
+<span class="m">200</span> join OK
+</code></pre></div>
 <p><img alt="" src="https://pic1.imgdb.cn/item/63355da416f2c2beb14ba07e.jpg" />
 登陆自己的zerotier帐号，勾选允许对应机器就可以了，这里推荐使用github帐号。</p>
 

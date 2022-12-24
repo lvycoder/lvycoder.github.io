@@ -1797,7 +1797,7 @@
   </a>
 
 
-<h1 id="_1"><strong>资源清单</strong></h1>
+<h1 id="_1"><strong>资源清单</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <p>YAML 是 "YAML Ain't a Markup Language"（YAML 不是一种标记语言）的递归缩写。AML 的语法和其他高级语言类似，并且可以简单表达清单、散列表，标量等数据形态。它使用空白符号缩进和大量依赖外观的特色，特别适合用来表达或编辑数据结构、各种配置文件、倾印调试内容、文件大纲（例如：许多电子邮件标题格式和YAML非常接近）。
 YAML 的配置文件后缀为 .yml，如：runoob.yml 。</p>
 <p>基本语法：</p>
@@ -1808,279 +1808,279 @@ YAML 的配置文件后缀为 .yml，如：runoob.yml 。</p>
 <li>缩进的空格数不重要，只要相同层级的元素左对齐即可</li>
 <li>'#'表示注释</li>
 </ul>
-<h3 id="_2"><strong>资源清单解读</strong></h3>
-<pre><code class="language-yaml">apiVersion: v1                  #版本号，例如v1
-kind: Pod                       #资源类型，如Pod
-metadata:                       #元数据
-  name: string                  # Pod名字
-  namespace: string             # Pod所属的命名空间
-  labels:                       #自定义标签
-    - name: string              #自定义标签名字
-  annotations:                  #自定义注释列表
-    - name: string
-spec:                                   # Pod中容器的详细定义
-  containers:                           # Pod中容器列表
-  - name: string                        #容器名称
-    image: string                       #容器的镜像名称
-    imagePullPolicy: [Always | Never | IfNotPresent] #获取镜像的策略 Alawys表示下载镜像 IfnotPresent表示优先使用本地镜像，否则下载镜像，Nerver表示仅使用本地镜像
-    command: [string]                       #容器的启动命令列表，如不指定，使用打包时使用的启动命令
-    args: [string]                          #容器的启动命令参数列表
-    workingDir: string                  #容器的工作目录
-    volumeMounts:                               #挂载到容器内部的存储卷配置
-    - name: string              #引用pod定义的共享存储卷的名称，需用volumes[]部分定义的的卷名
-      mountPath: string     #存储卷在容器内mount的绝对路径，应少于512字符
-      readOnly: boolean     #是否为只读模式
-    ports:                              # 需要暴露的端口库号
-    - name: string              # 端口号名称
-      containerPort: int        #容器需要监听的端口号
-      hostPort: int             #容器所在主机需要监听的端口号，默认与Container相同
-      protocol: string          #端口协议，支持TCP和UDP，默认TCP
-    env:                        #容器运行前需设置的环境变量列表
-    - name: string              #环境变量名称
-      value: string             #环境变量的值
-    resources:              #资源限制和请求的设置
-      limits:               #资源限制的设置
-        cpu: string         #cpu的限制，单位为core数
-        memory: string      #内存限制，单位可以为Mib/Gib
-      requests:             #资源请求的设置
-        cpu: string         #cpu请求，容器启动的初始可用数量
-        memory: string      #内存请求，容器启动的初始可用内存
-    livenessProbe:          #对Pod内个容器健康检查的设置，当探测无响应几次后将自动重启该容器，检查方法有exec、httpGet和tcpSocket，对一个容器只需设置其中一种方法即可
-      exec:                     #对Pod容器内检查方式设置为exec方式
-        command: [string]       #exec方式需要制定的命令或脚本
-      httpGet:                  #对Pod内个容器健康检查方法设置为HttpGet，需要制定Path、port
-        path: string
-        port: number
-        host: string
-        scheme: string
-        HttpHeaders:
-        - name: string
-          value: string
-      tcpSocket:                    #对Pod内个容器健康检查方式设置为tcpSocket方式
-         port: number
-       initialDelaySeconds: 0       #容器启动完成后首次探测的时间，单位为秒
-       timeoutSeconds: 0            #对容器健康检查探测等待响应的超时时间，单位秒，默认1秒
-       periodSeconds: 0             #对容器监控检查的定期探测时间设置，单位秒，默认10秒一次
-       successThreshold: 0
-       failureThreshold: 0
-       securityContext:
-         privileged:false
-    restartPolicy: [Always | Never | OnFailure]#Pod的重启策略，Always表示一旦不管以何种方式终止运行，kubelet都将重启，OnFailure表示只有Pod以非0退出码退出才重启，Nerver表示不再重启该Pod
-    nodeSelector: obeject           #设置NodeSelector表示将该Pod调度到包含这个label的node上，以key：value的格式指定
-    imagePullSecrets:               #Pull镜像时使用的secret名称，以key：secretkey格式指定
-    - name: string
-    hostNetwork:false               #是否使用主机网络模式，默认为false，如果设置为true，表示使用宿主机网络
-    volumes:                        #在该pod上定义共享存储卷列表
-    - name: string                  #共享存储卷名称 （volumes类型有很多种）
-      emptyDir: {}                  #类型为emtyDir的存储卷，与Pod同生命周期的一个临时目录。为空值
-      hostPath: string              #类型为hostPath的存储卷，表示挂载Pod所在宿主机的目录
-        path: string                #Pod所在宿主机的目录，将被用于同期中mount的目录
-      secret:                       #类型为secret的存储卷，挂载集群与定义的secre对象到容器内部
-        scretname: string  
-        items:     
-        - key: string
-          path: string
-      configMap:     #类型为configMap的存储卷，挂载预定义的configMap对象到容器内部
-        name: string
-        items:
-        - key: string
-          path: string
-</code></pre>
+<h3 id="_2"><strong>资源清单解读</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span><span class="w">                  </span><span class="c1">#版本号，例如v1</span><span class="w"></span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span><span class="w">                       </span><span class="c1">#资源类型，如Pod</span><span class="w"></span>
+<span class="nt">metadata</span><span class="p">:</span><span class="w">                       </span><span class="c1">#元数据</span><span class="w"></span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">                  </span><span class="c1"># Pod名字</span><span class="w"></span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">             </span><span class="c1"># Pod所属的命名空间</span><span class="w"></span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span><span class="w">                       </span><span class="c1">#自定义标签</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">              </span><span class="c1">#自定义标签名字</span><span class="w"></span>
+<span class="w">  </span><span class="nt">annotations</span><span class="p">:</span><span class="w">                  </span><span class="c1">#自定义注释列表</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="nt">spec</span><span class="p">:</span><span class="w">                                   </span><span class="c1"># Pod中容器的详细定义</span><span class="w"></span>
+<span class="w">  </span><span class="nt">containers</span><span class="p">:</span><span class="w">                           </span><span class="c1"># Pod中容器列表</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">                        </span><span class="c1">#容器名称</span><span class="w"></span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">                       </span><span class="c1">#容器的镜像名称</span><span class="w"></span>
+<span class="w">    </span><span class="nt">imagePullPolicy</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">Always | Never | IfNotPresent</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="c1">#获取镜像的策略 Alawys表示下载镜像 IfnotPresent表示优先使用本地镜像，否则下载镜像，Nerver表示仅使用本地镜像</span><span class="w"></span>
+<span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">string</span><span class="p p-Indicator">]</span><span class="w">                       </span><span class="c1">#容器的启动命令列表，如不指定，使用打包时使用的启动命令</span><span class="w"></span>
+<span class="w">    </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">string</span><span class="p p-Indicator">]</span><span class="w">                          </span><span class="c1">#容器的启动命令参数列表</span><span class="w"></span>
+<span class="w">    </span><span class="nt">workingDir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">                  </span><span class="c1">#容器的工作目录</span><span class="w"></span>
+<span class="w">    </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w">                               </span><span class="c1">#挂载到容器内部的存储卷配置</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">              </span><span class="c1">#引用pod定义的共享存储卷的名称，需用volumes[]部分定义的的卷名</span><span class="w"></span>
+<span class="w">      </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">     </span><span class="c1">#存储卷在容器内mount的绝对路径，应少于512字符</span><span class="w"></span>
+<span class="w">      </span><span class="nt">readOnly</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">boolean</span><span class="w">     </span><span class="c1">#是否为只读模式</span><span class="w"></span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">                              </span><span class="c1"># 需要暴露的端口库号</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">              </span><span class="c1"># 端口号名称</span><span class="w"></span>
+<span class="w">      </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int</span><span class="w">        </span><span class="c1">#容器需要监听的端口号</span><span class="w"></span>
+<span class="w">      </span><span class="nt">hostPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int</span><span class="w">             </span><span class="c1">#容器所在主机需要监听的端口号，默认与Container相同</span><span class="w"></span>
+<span class="w">      </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">          </span><span class="c1">#端口协议，支持TCP和UDP，默认TCP</span><span class="w"></span>
+<span class="w">    </span><span class="nt">env</span><span class="p">:</span><span class="w">                        </span><span class="c1">#容器运行前需设置的环境变量列表</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">              </span><span class="c1">#环境变量名称</span><span class="w"></span>
+<span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">             </span><span class="c1">#环境变量的值</span><span class="w"></span>
+<span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w">              </span><span class="c1">#资源限制和请求的设置</span><span class="w"></span>
+<span class="w">      </span><span class="nt">limits</span><span class="p">:</span><span class="w">               </span><span class="c1">#资源限制的设置</span><span class="w"></span>
+<span class="w">        </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">         </span><span class="c1">#cpu的限制，单位为core数</span><span class="w"></span>
+<span class="w">        </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">      </span><span class="c1">#内存限制，单位可以为Mib/Gib</span><span class="w"></span>
+<span class="w">      </span><span class="nt">requests</span><span class="p">:</span><span class="w">             </span><span class="c1">#资源请求的设置</span><span class="w"></span>
+<span class="w">        </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">         </span><span class="c1">#cpu请求，容器启动的初始可用数量</span><span class="w"></span>
+<span class="w">        </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">      </span><span class="c1">#内存请求，容器启动的初始可用内存</span><span class="w"></span>
+<span class="w">    </span><span class="nt">livenessProbe</span><span class="p">:</span><span class="w">          </span><span class="c1">#对Pod内个容器健康检查的设置，当探测无响应几次后将自动重启该容器，检查方法有exec、httpGet和tcpSocket，对一个容器只需设置其中一种方法即可</span><span class="w"></span>
+<span class="w">      </span><span class="nt">exec</span><span class="p">:</span><span class="w">                     </span><span class="c1">#对Pod容器内检查方式设置为exec方式</span><span class="w"></span>
+<span class="w">        </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">string</span><span class="p p-Indicator">]</span><span class="w">       </span><span class="c1">#exec方式需要制定的命令或脚本</span><span class="w"></span>
+<span class="w">      </span><span class="nt">httpGet</span><span class="p">:</span><span class="w">                  </span><span class="c1">#对Pod内个容器健康检查方法设置为HttpGet，需要制定Path、port</span><span class="w"></span>
+<span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">        </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">number</span><span class="w"></span>
+<span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">        </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">        </span><span class="nt">HttpHeaders</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">          </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">      </span><span class="nt">tcpSocket</span><span class="p">:</span><span class="w">                    </span><span class="c1">#对Pod内个容器健康检查方式设置为tcpSocket方式</span><span class="w"></span>
+<span class="w">         </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">number</span><span class="w"></span>
+<span class="w">      </span><span class="w w-Error"> </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w">       </span><span class="c1">#容器启动完成后首次探测的时间，单位为秒</span><span class="w"></span>
+<span class="w">       </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w">            </span><span class="c1">#对容器健康检查探测等待响应的超时时间，单位秒，默认1秒</span><span class="w"></span>
+<span class="w">       </span><span class="nt">periodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w">             </span><span class="c1">#对容器监控检查的定期探测时间设置，单位秒，默认10秒一次</span><span class="w"></span>
+<span class="w">       </span><span class="nt">successThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w"></span>
+<span class="w">       </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w"></span>
+<span class="w">       </span><span class="nt">securityContext</span><span class="p">:</span><span class="w"></span>
+<span class="w">         </span><span class="l l-Scalar l-Scalar-Plain">privileged:false</span><span class="w"></span>
+<span class="w">    </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">Always | Never | OnFailure</span><span class="p p-Indicator">]</span><span class="c1">#Pod的重启策略，Always表示一旦不管以何种方式终止运行，kubelet都将重启，OnFailure表示只有Pod以非0退出码退出才重启，Nerver表示不再重启该Pod</span><span class="w"></span>
+<span class="w">    </span><span class="nt">nodeSelector</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">obeject</span><span class="w">           </span><span class="c1">#设置NodeSelector表示将该Pod调度到包含这个label的node上，以key：value的格式指定</span><span class="w"></span>
+<span class="w">    </span><span class="nt">imagePullSecrets</span><span class="p">:</span><span class="w">               </span><span class="c1">#Pull镜像时使用的secret名称，以key：secretkey格式指定</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">hostNetwork:false</span><span class="w">               </span><span class="c1">#是否使用主机网络模式，默认为false，如果设置为true，表示使用宿主机网络</span><span class="w"></span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">                        </span><span class="c1">#在该pod上定义共享存储卷列表</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">                  </span><span class="c1">#共享存储卷名称 （volumes类型有很多种）</span><span class="w"></span>
+<span class="w">      </span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span><span class="w">                  </span><span class="c1">#类型为emtyDir的存储卷，与Pod同生命周期的一个临时目录。为空值</span><span class="w"></span>
+<span class="w">      </span><span class="nt">hostPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">              </span><span class="c1">#类型为hostPath的存储卷，表示挂载Pod所在宿主机的目录</span><span class="w"></span>
+<span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">                </span><span class="c1">#Pod所在宿主机的目录，将被用于同期中mount的目录</span><span class="w"></span>
+<span class="w">      </span><span class="nt">secret</span><span class="p">:</span><span class="w">                       </span><span class="c1">#类型为secret的存储卷，挂载集群与定义的secre对象到容器内部</span><span class="w"></span>
+<span class="w">        </span><span class="nt">scretname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w">  </span>
+<span class="w">        </span><span class="nt">items</span><span class="p">:</span><span class="w">     </span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">      </span><span class="nt">configMap</span><span class="p">:</span><span class="w">     </span><span class="c1">#类型为configMap的存储卷，挂载预定义的configMap对象到容器内部</span><span class="w"></span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">        </span><span class="nt">items</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+</code></pre></div>
 <p><a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api_changes.md#alpha-beta-and-stable-versions">API和kubernetes的对应关系</a></p>
-<h3 id="rancheryaml"><strong>rancher生产案例Yaml</strong></h3>
-<pre><code class="language-yaml">####启动docker####
+<h3 id="rancheryaml"><strong>rancher生产案例Yaml</strong><a class="headerlink" href="#rancheryaml" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">####启动docker####</span><span class="w"></span>
 
-eval PROJECT_ID='$'$k8s_group
-if [ $ms_group == 'center' ]
-then
-  replicas=1
-else
-  replicas=1
-fi
+<span class="l l-Scalar l-Scalar-Plain">eval PROJECT_ID=&#39;$&#39;$k8s_group</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">if [ $ms_group == &#39;center&#39; ]</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">then</span><span class="w"></span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">replicas=1</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">else</span><span class="w"></span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">replicas=1</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">fi</span><span class="w"></span>
 
-/opt/rancher/rancher context switch $PROJECT_ID
-cat &lt;&lt;EOF | /opt/rancher/rancher kubectl apply -f -
-apiVersion: apps/v1           # 表示api版本，v1
-kind: Deployment                          # kind表示资源类型，这里是Deployment
-metadata:                                           # 元数据
-  labels:
-    workload.user.cattle.io/workloadselector: deployment-$name_space-$server_name
-  name: $server_name                    # 服务名
-  namespace: $name_space            # 命名空间
+<span class="l l-Scalar l-Scalar-Plain">/opt/rancher/rancher context switch $PROJECT_ID</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">cat &lt;&lt;EOF | /opt/rancher/rancher kubectl apply -f -</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span><span class="w">           </span><span class="c1"># 表示api版本，v1</span><span class="w"></span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span><span class="w">                          </span><span class="c1"># kind表示资源类型，这里是Deployment</span><span class="w"></span>
+<span class="nt">metadata</span><span class="p">:</span><span class="w">                                           </span><span class="c1"># 元数据</span><span class="w"></span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">workload.user.cattle.io/workloadselector</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deployment-$name_space-$server_name</span><span class="w"></span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$server_name</span><span class="w">                    </span><span class="c1"># 服务名</span><span class="w"></span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$name_space</span><span class="w">            </span><span class="c1"># 命名空间</span><span class="w"></span>
 
-spec:
-  replicas: $replicas                   Pod中容器的详细定义
-  selector:
-    matchLabels:
-      workload.user.cattle.io/workloadselector: deployment-$name_space-$server_name
-  template:
-    metadata:
-      labels:
-        workload.user.cattle.io/workloadselector: deployment-$name_space-$server_name
-    spec:
-      imagePullSecrets:
-      - name: old-harbor    # 镜像 仓库名
-      restartPolicy: Always
-      containers:
-      - image: $harbor_addr/$name_space/$image_name:$image_tag  # 容器的镜像名
-        imagePullPolicy: Always
-        readinessProbe:
-          failureThreshold: 60
-          initialDelaySeconds: 5
-          periodSeconds: 5
-          successThreshold: 1
-          tcpSocket:
-            port: $NodePort         # 端口暴露方式
-          timeoutSeconds: 1
-        livenessProbe:
-          failureThreshold: 3
-          initialDelaySeconds: 300
-          periodSeconds: 2
-          successThreshold: 1
-          tcpSocket:
-            port: $NodePort
-          timeoutSeconds: 1
-        env:
-        - name: CSProjFile
-          value: $csproj_file
-        - name: FOR_GODS_SAKE_PLEASE_REDEPLOY
-          value: &quot;`date +%s`&quot;
-        name: $server_name
-        ports:
-        - containerPort: $NodePort
-        resources:
-          requests:
-            memory: $memory
-        args: [&quot;bash&quot;,&quot;-c&quot;,&quot;dotnet /opt/$csproj_file/$csproj_file.dll --serviceName $server_name \
-        --webApiServiceAddress http://0.0.0.0:$NodePort --zkConfigServer $zk_configserver \
-        --zkAppRole $zk_approle --runScope $run_scope --msGroup $ms_group \
-        --KPversion 2 --psapp v2 --ser protobuf \
-        --zkTimeOut 15000 --mcTimeOut 30000  --Cors *.xxxxx.net \
-        --trace kafka --webApiHelp off $other_parameters&quot;]
-        # localtime
-        volumeMounts:
-        - mountPath: /etc/localtime
-          name: localtime
-          readOnly: true
-      volumes:
-      - hostPath:
-          path: /etc/localtime
-          type: &quot;&quot;
-        name: localtime
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: $server_name
-  namespace: $name_space
-spec:
-  type: NodePort
-  ports:
-  - name: default
-    nodePort: $NodePort
-    port: $NodePort
-    protocol: TCP
-    targetPort: $NodePort
-  selector:
-    workload.user.cattle.io/workloadselector: deployment-$name_space-$server_name
-EOF
-</code></pre>
-<h3 id="jenkins"><strong> jenkins传数</strong></h3>
+<span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$replicas                   Pod中容器的详细定义</span><span class="w"></span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">workload.user.cattle.io/workloadselector</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deployment-$name_space-$server_name</span><span class="w"></span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">workload.user.cattle.io/workloadselector</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deployment-$name_space-$server_name</span><span class="w"></span>
+<span class="w">    </span><span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">imagePullSecrets</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">old-harbor</span><span class="w">    </span><span class="c1"># 镜像 仓库名</span><span class="w"></span>
+<span class="w">      </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Always</span><span class="w"></span>
+<span class="w">      </span><span class="nt">containers</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$harbor_addr/$name_space/$image_name:$image_tag</span><span class="w">  </span><span class="c1"># 容器的镜像名</span><span class="w"></span>
+<span class="w">        </span><span class="nt">imagePullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Always</span><span class="w"></span>
+<span class="w">        </span><span class="nt">readinessProbe</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">60</span><span class="w"></span>
+<span class="w">          </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w"></span>
+<span class="w">          </span><span class="nt">periodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w"></span>
+<span class="w">          </span><span class="nt">successThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
+<span class="w">          </span><span class="nt">tcpSocket</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$NodePort</span><span class="w">         </span><span class="c1"># 端口暴露方式</span><span class="w"></span>
+<span class="w">          </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
+<span class="w">        </span><span class="nt">livenessProbe</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span><span class="w"></span>
+<span class="w">          </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">300</span><span class="w"></span>
+<span class="w">          </span><span class="nt">periodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"></span>
+<span class="w">          </span><span class="nt">successThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
+<span class="w">          </span><span class="nt">tcpSocket</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$NodePort</span><span class="w"></span>
+<span class="w">          </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
+<span class="w">        </span><span class="nt">env</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CSProjFile</span><span class="w"></span>
+<span class="w">          </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$csproj_file</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FOR_GODS_SAKE_PLEASE_REDEPLOY</span><span class="w"></span>
+<span class="w">          </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;`date</span><span class="nv"> </span><span class="s">+%s`&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$server_name</span><span class="w"></span>
+<span class="w">        </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$NodePort</span><span class="w"></span>
+<span class="w">        </span><span class="nt">resources</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">requests</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$memory</span><span class="w"></span>
+<span class="w">        </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;bash&quot;</span><span class="p p-Indicator">,</span><span class="s">&quot;-c&quot;</span><span class="p p-Indicator">,</span><span class="s">&quot;dotnet</span><span class="nv"> </span><span class="s">/opt/$csproj_file/$csproj_file.dll</span><span class="nv"> </span><span class="s">--serviceName</span><span class="nv"> </span><span class="s">$server_name</span><span class="nv"> </span><span class="s">\</span>
+<span class="w">        </span><span class="s">--webApiServiceAddress</span><span class="nv"> </span><span class="s">http://0.0.0.0:$NodePort</span><span class="nv"> </span><span class="s">--zkConfigServer</span><span class="nv"> </span><span class="s">$zk_configserver</span><span class="nv"> </span><span class="s">\</span>
+<span class="w">        </span><span class="s">--zkAppRole</span><span class="nv"> </span><span class="s">$zk_approle</span><span class="nv"> </span><span class="s">--runScope</span><span class="nv"> </span><span class="s">$run_scope</span><span class="nv"> </span><span class="s">--msGroup</span><span class="nv"> </span><span class="s">$ms_group</span><span class="nv"> </span><span class="s">\</span>
+<span class="w">        </span><span class="s">--KPversion</span><span class="nv"> </span><span class="s">2</span><span class="nv"> </span><span class="s">--psapp</span><span class="nv"> </span><span class="s">v2</span><span class="nv"> </span><span class="s">--ser</span><span class="nv"> </span><span class="s">protobuf</span><span class="nv"> </span><span class="s">\</span>
+<span class="w">        </span><span class="s">--zkTimeOut</span><span class="nv"> </span><span class="s">15000</span><span class="nv"> </span><span class="s">--mcTimeOut</span><span class="nv"> </span><span class="s">30000</span><span class="nv">  </span><span class="s">--Cors</span><span class="nv"> </span><span class="s">*.xxxxx.net</span><span class="nv"> </span><span class="s">\</span>
+<span class="w">        </span><span class="s">--trace</span><span class="nv"> </span><span class="s">kafka</span><span class="nv"> </span><span class="s">--webApiHelp</span><span class="nv"> </span><span class="s">off</span><span class="nv"> </span><span class="s">$other_parameters&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># localtime</span><span class="w"></span>
+<span class="w">        </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/localtime</span><span class="w"></span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">localtime</span><span class="w"></span>
+<span class="w">          </span><span class="nt">readOnly</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">      </span><span class="nt">volumes</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">hostPath</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/localtime</span><span class="w"></span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">localtime</span><span class="w"></span>
+<span class="nn">---</span><span class="w"></span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span><span class="w"></span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span><span class="w"></span>
+<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$server_name</span><span class="w"></span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$name_space</span><span class="w"></span>
+<span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePort</span><span class="w"></span>
+<span class="w">  </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span><span class="w"></span>
+<span class="w">    </span><span class="nt">nodePort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$NodePort</span><span class="w"></span>
+<span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$NodePort</span><span class="w"></span>
+<span class="w">    </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span><span class="w"></span>
+<span class="w">    </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$NodePort</span><span class="w"></span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">workload.user.cattle.io/workloadselector</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deployment-$name_space-$server_name</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">EOF</span><span class="w"></span>
+</code></pre></div>
+<h3 id="jenkins"><strong> jenkins传数</strong><a class="headerlink" href="#jenkins" title="Permanent link">&para;</a></h3>
 <p>这里Jenkins作为上级项目，定义变量为下级项目传递参数</p>
-<pre><code class="language-shell">image_name=accountwebapiserver
-name_space=webapi
-server_name=account
-csproj_file=AccountWebAPIServer
-zk_approle=Common-AccountWebApi
-Controller=account
-run_scope=Core991
-ms_group=$ms_group
-zk_configserver=w1.confandsa.zk.group.hex.com:2181,w2.confandsa.zk.group.hex.com:2181,w3.confandsa.zk.group.hex.com:2181
-image_tag=$image_tag
-memory=1Gi
-maxmemory=2.2Gi
-NodePort=32037
-k8s_group=$k8s_group
-other_parameters=--UrlPrefix tms-zw4
-</code></pre>
-<h3 id="_3"><strong>第一个简单的容器化示例：</strong></h3>
-<pre><code class="language-yaml">$ cat nginx-deploy.yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: nginx-yyds
-  namespace: web
-spec:
-  selector:
-    matchLabels:
-      app: nginx
-  replicas: 2
-  template:
-    metadata:
-      labels:
-        app: nginx
-    spec:
-      containers:
-      - name: nginx
-        image: nginx:latest
-        ports:
-        - containerPort: 80
-</code></pre>
-<p>运行Yaml文件</p>
-<pre><code class="language-yaml">k apply -f nginx-deploy.yaml
-</code></pre>
-<p>查看pod的状态</p>
-<pre><code class="language-shell">$ k get pod
+<div class="highlight"><pre><span></span><code><span class="nv">image_name</span><span class="o">=</span>accountwebapiserver
+<span class="nv">name_space</span><span class="o">=</span>webapi
+<span class="nv">server_name</span><span class="o">=</span>account
+<span class="nv">csproj_file</span><span class="o">=</span>AccountWebAPIServer
+<span class="nv">zk_approle</span><span class="o">=</span>Common-AccountWebApi
+<span class="nv">Controller</span><span class="o">=</span>account
+<span class="nv">run_scope</span><span class="o">=</span>Core991
+<span class="nv">ms_group</span><span class="o">=</span><span class="nv">$ms_group</span>
+<span class="nv">zk_configserver</span><span class="o">=</span>w1.confandsa.zk.group.hex.com:2181,w2.confandsa.zk.group.hex.com:2181,w3.confandsa.zk.group.hex.com:2181
+<span class="nv">image_tag</span><span class="o">=</span><span class="nv">$image_tag</span>
+<span class="nv">memory</span><span class="o">=</span>1Gi
+<span class="nv">maxmemory</span><span class="o">=</span><span class="m">2</span>.2Gi
+<span class="nv">NodePort</span><span class="o">=</span><span class="m">32037</span>
+<span class="nv">k8s_group</span><span class="o">=</span><span class="nv">$k8s_group</span>
+<span class="nv">other_parameters</span><span class="o">=</span>--UrlPrefix tms-zw4
+</code></pre></div>
+<h3 id="_3"><strong>第一个简单的容器化示例：</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ cat nginx-deploy.yaml</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span><span class="w"></span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span><span class="w"></span>
+<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx-yyds</span><span class="w"></span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">web</span><span class="w"></span>
+<span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span><span class="w"></span>
+<span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"></span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span><span class="w"></span>
+<span class="w">    </span><span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">containers</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span><span class="w"></span>
+<span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx:latest</span><span class="w"></span>
+<span class="w">        </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span><span class="w"></span>
+</code></pre></div>
+<p>运行Yaml文件
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">k apply -f nginx-deploy.yaml</span><span class="w"></span>
+</code></pre></div>
+查看pod的状态
+<div class="highlight"><pre><span></span><code>$ k get pod
 NAME                         READY   STATUS    RESTARTS   AGE
-nginx-yyds-585449566-76hgr   1/1     Running   0          47m
-nginx-yyds-585449566-vzwkw   1/1     Running   0          47m
-</code></pre>
-<h3 id="_4"><strong>常用的管理命令：</strong></h3>
-<p>查看控制器</p>
-<pre><code class="language-shell">$ k get deploy
+nginx-yyds-585449566-76hgr   <span class="m">1</span>/1     Running   <span class="m">0</span>          47m
+nginx-yyds-585449566-vzwkw   <span class="m">1</span>/1     Running   <span class="m">0</span>          47m
+</code></pre></div></p>
+<h3 id="_4"><strong>常用的管理命令：</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>查看控制器
+<div class="highlight"><pre><span></span><code>$ k get deploy
 NAME         READY   UP-TO-DATE   AVAILABLE   AGE
-nginx-yyds   2/2     2            2           51m
-</code></pre>
+nginx-yyds   <span class="m">2</span>/2     <span class="m">2</span>            <span class="m">2</span>           51m
+</code></pre></div></p>
 <p>查看pod的详细信息</p>
-<pre><code class="language-shell">$ k get pod -o wide
+<div class="highlight"><pre><span></span><code>$ k get pod -o wide
 NAME                         READY   STATUS    RESTARTS   AGE   IP            NODE    NOMINATED NODE   READINESS GATES
-nginx-yyds-585449566-76hgr   1/1     Running   0          53m   10.42.2.130   node1   &lt;none&gt;           &lt;none&gt;
-nginx-yyds-585449566-vzwkw   1/1     Running   0          53m   10.42.1.127   node0   &lt;none&gt;           &lt;none
-</code></pre>
-<p>通过标签来查找pod</p>
-<pre><code class="language-shell">$ k get pod -l app=nginx
+nginx-yyds-585449566-76hgr   <span class="m">1</span>/1     Running   <span class="m">0</span>          53m   <span class="m">10</span>.42.2.130   node1   &lt;none&gt;           &lt;none&gt;
+nginx-yyds-585449566-vzwkw   <span class="m">1</span>/1     Running   <span class="m">0</span>          53m   <span class="m">10</span>.42.1.127   node0   &lt;none&gt;           &lt;none
+</code></pre></div>
+<p>通过标签来查找pod
+<div class="highlight"><pre><span></span><code>$ k get pod -l <span class="nv">app</span><span class="o">=</span>nginx
 NAME                         READY   STATUS    RESTARTS   AGE
-nginx-yyds-585449566-76hgr   1/1     Running   0          56m
-nginx-yyds-585449566-vzwkw   1/1     Running   0          56m
-</code></pre>
-<pre><code class="language-shell">$ k describe pod nginx-yyds-585449566-76hgr
+nginx-yyds-585449566-76hgr   <span class="m">1</span>/1     Running   <span class="m">0</span>          56m
+nginx-yyds-585449566-vzwkw   <span class="m">1</span>/1     Running   <span class="m">0</span>          56m
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code>$ k describe pod nginx-yyds-585449566-76hgr
 Name:         nginx-yyds-585449566-76hgr
 Namespace:    web
-Priority:     0
+Priority:     <span class="m">0</span>
 Node:         node1/192.168.0.151
-Start Time:   Tue, 23 Aug 2022 15:46:16 +0800
-Labels:       app=nginx
-              pod-template-hash=585449566
+Start Time:   Tue, <span class="m">23</span> Aug <span class="m">2022</span> <span class="m">15</span>:46:16 +0800
+Labels:       <span class="nv">app</span><span class="o">=</span>nginx
+              pod-template-hash<span class="o">=</span><span class="m">585449566</span>
 Annotations:  &lt;none&gt;
 Status:       Running
-IP:           10.42.2.130
+IP:           <span class="m">10</span>.42.2.130
 IPs:
-  IP:           10.42.2.130
+  IP:           <span class="m">10</span>.42.2.130
 Controlled By:  ReplicaSet/nginx-yyds-585449566
 Containers:
   nginx:
     Container ID:   docker://7994248f600aa93444272eff8092938c866a5648db1126545d28635d41251b51
     Image:          nginx:latest
     Image ID:       docker-pullable://nginx@sha256:dc29f133a33a1d6311807f3b88134000ce67318a40517b1060b929b84b0bbea0
-    Port:           80/TCP
-    Host Port:      0/TCP
+    Port:           <span class="m">80</span>/TCP
+    Host Port:      <span class="m">0</span>/TCP
     State:          Running
-      Started:      Tue, 23 Aug 2022 15:48:42 +0800
+      Started:      Tue, <span class="m">23</span> Aug <span class="m">2022</span> <span class="m">15</span>:48:42 +0800
     Ready:          True
-    Restart Count:  0
+    Restart Count:  <span class="m">0</span>
     Environment:    &lt;none&gt;
     Mounts:
-      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-rf7j8 (ro)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-rf7j8 <span class="o">(</span>ro<span class="o">)</span>
 Conditions:
   Type              Status
   Initialized       True
@@ -2089,27 +2089,27 @@ Conditions:
   PodScheduled      True
 Volumes:
   kube-api-access-rf7j8:
-    Type:                    Projected (a volume that contains injected data from multiple sources)
-    TokenExpirationSeconds:  3607
+    Type:                    Projected <span class="o">(</span>a volume that contains injected data from multiple sources<span class="o">)</span>
+    TokenExpirationSeconds:  <span class="m">3607</span>
     ConfigMapName:           kube-root-ca.crt
     ConfigMapOptional:       &lt;nil&gt;
-    DownwardAPI:             true
+    DownwardAPI:             <span class="nb">true</span>
 QoS Class:                   BestEffort
 Node-Selectors:              &lt;none&gt;
-Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
-                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute <span class="nv">op</span><span class="o">=</span>Exists <span class="k">for</span> 300s
+                             node.kubernetes.io/unreachable:NoExecute <span class="nv">op</span><span class="o">=</span>Exists <span class="k">for</span> 300s
 Events:
   Type    Reason     Age   From               Message
   ----    ------     ----  ----               -------
   Normal  Scheduled  58m   default-scheduler  Successfully assigned web/nginx-yyds-585449566-76hgr to node1
-  Normal  Pulling    58m   kubelet            Pulling image &quot;nginx:latest&quot;
-  Normal  Pulled     55m   kubelet            Successfully pulled image &quot;nginx:latest&quot; in 2m24.557367751s
+  Normal  Pulling    58m   kubelet            Pulling image <span class="s2">&quot;nginx:latest&quot;</span>
+  Normal  Pulled     55m   kubelet            Successfully pulled image <span class="s2">&quot;nginx:latest&quot;</span> <span class="k">in</span> 2m24.557367751s
   Normal  Created    55m   kubelet            Created container nginx
   Normal  Started    55m   kubelet            Started container nginx
-</code></pre>
-<p>通过explain来查看Yaml文件写法</p>
-<pre><code class="language-shell">$ k explain
-</code></pre>
+</code></pre></div>
+<p>通过explain来查看Yaml文件写法
+<div class="highlight"><pre><span></span><code>$ k explain
+</code></pre></div></p>
 
 
 

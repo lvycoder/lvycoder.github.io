@@ -1879,10 +1879,10 @@
   </a>
 
 
-<h1 id="k8s-pv-pvc">k8s pv 和 pvc</h1>
+<h1 id="k8s-pv-pvc">k8s pv 和 pvc<a class="headerlink" href="#k8s-pv-pvc" title="Permanent link">&para;</a></h1>
 <p>目前PV的提供方式有两种：静态或动态。(pv 没有命名空间限制)
 静态PV由管理员提前创建，动态PV无需提前创建，只需指定PVC的StorageClasse即可</p>
-<h3 id="_1"><strong>回收策略</strong></h3>
+<h3 id="_1"><strong>回收策略</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
 <p>Retain：保留，该策略允许手动回收资源，当删除PVC时，PV仍然存在，PV被视为已释放，管理员可以手动回收卷。</p>
@@ -1900,7 +1900,7 @@
 <p><a href="https://kubernetes.io/zh-cn/docs/concepts/storage/persistent-volumes/#reclaim-policy">官网文献: pv 回收策略</a></p>
 </li>
 </ul>
-<h3 id="pv"><strong>pv 的状态</strong></h3>
+<h3 id="pv"><strong>pv 的状态</strong><a class="headerlink" href="#pv" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
 <p>Available：可用，没有被PVC绑定的空闲资源。</p>
@@ -1915,41 +1915,39 @@
 <p>Failed：失败，自动回收失败。</p>
 </li>
 </ul>
-<h3 id="pvpvc"><strong>pv/pvc 的创建</strong></h3>
+<h3 id="pvpvc"><strong>pv/pvc 的创建</strong><a class="headerlink" href="#pvpvc" title="Permanent link">&para;</a></h3>
 <p>创建PV</p>
-<pre><code class="language-yaml">apiVersion: v1
-kind: PersistentVolume     # 资源对象的名称为 pv
-metadata:
-  name: pv-nfs             # pv 的名称为设置为 pv-nfs
-spec:
-  capacity:                # capacity：容量配置
-    storage: 5Gi           
-  volumeMode: Filesystem   # 卷的模式，目前支持Filesystem（文件系统） 和 Block（块），其中Block类型需要后端存储支持，默认为文件系统
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span><span class="w"></span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolume</span><span class="w">     </span><span class="c1"># 资源对象的名称为 pv</span><span class="w"></span>
+<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pv-nfs</span><span class="w">             </span><span class="c1"># pv 的名称为设置为 pv-nfs</span><span class="w"></span>
+<span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">capacity</span><span class="p">:</span><span class="w">                </span><span class="c1"># capacity：容量配置</span><span class="w"></span>
+<span class="w">    </span><span class="nt">storage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5Gi</span><span class="w">           </span>
+<span class="w">  </span><span class="nt">volumeMode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Filesystem</span><span class="w">   </span><span class="c1"># 卷的模式，目前支持Filesystem（文件系统） 和 Block（块），其中Block类型需要后端存储支持，默认为文件系统</span><span class="w"></span>
 
-  accessModes:             # 该PV的访问模式(这里可以写多个模式)
-    - ReadWriteMany
-  persistentVolumeReclaimPolicy: Recycle   # 回收策略
-  storageClassName: nfs-slow               # pvc 想绑定 pv,需要指定storageClassName这个名称
-  nfs:
-    path: /nfs/share 
-    server: 192.168.159.201 
-
-</code></pre>
+<span class="w">  </span><span class="nt">accessModes</span><span class="p">:</span><span class="w">             </span><span class="c1"># 该PV的访问模式(这里可以写多个模式)</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReadWriteMany</span><span class="w"></span>
+<span class="w">  </span><span class="nt">persistentVolumeReclaimPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Recycle</span><span class="w">   </span><span class="c1"># 回收策略</span><span class="w"></span>
+<span class="w">  </span><span class="nt">storageClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nfs-slow</span><span class="w">               </span><span class="c1"># pvc 想绑定 pv,需要指定storageClassName这个名称</span><span class="w"></span>
+<span class="w">  </span><span class="nt">nfs</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/nfs/share</span><span class="w"> </span>
+<span class="w">    </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.159.201</span><span class="w"> </span>
+</code></pre></div>
 <p>创建PVC</p>
-<pre><code class="language-yaml">
-root@ubuntu:/opt/k8s-data/pv-pvc# cat 3-pvc.yaml
-kind: PersistentVolumeClaim
-apiVersion: v1
-metadata:
-  name: nfs           # pvc的名称
-spec:
-  storageClassName: nfs-slow    # pv 的storageClassName ,必须一致
-  accessModes:
-    - ReadWriteMany                 # 必须一致
-  resources:
-    requests:
-      storage: 100Gi
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">root@ubuntu:/opt/k8s-data/pv-pvc# cat 3-pvc.yaml</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">kind</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolumeClaim</span><span class="w"></span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span><span class="w"></span>
+<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nfs</span><span class="w">           </span><span class="c1"># pvc的名称</span><span class="w"></span>
+<span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">storageClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nfs-slow</span><span class="w">    </span><span class="c1"># pv 的storageClassName ,必须一致</span><span class="w"></span>
+<span class="w">  </span><span class="nt">accessModes</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReadWriteMany</span><span class="w">                 </span><span class="c1"># 必须一致</span><span class="w"></span>
+<span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">requests</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">storage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100Gi</span><span class="w"></span>
+</code></pre></div>
 <p><strong>访问模式:</strong></p>
 <ul>
 <li>
@@ -1965,32 +1963,42 @@ spec:
 <p>ReadWriteOncePod：仅有一个Pod可以访问使用该pvc（Kubernetes &gt;= v1.22）当你创建一个带有pvc访问模式为ReadWriteOncePod的Pod A时，Kubernetes确保整个集群内只有一个Pod可以读写该PVC。此时如果你创建Pod B并引用了与Pod A相同的PVC(ReadWriteOncePod)时，那么Pod B会由于该pvc被Pod A引用而启动失败。</p>
 </li>
 </ul>
-<h2 id="pv_1"><strong>上海交大修复pv步骤</strong></h2>
-<p>!!! info "这里主要是kubeadm部署的k8s"</p>
-<h2 id="_2"><strong>现象</strong></h2>
-<p>!!! error "PV不知道因为什么原因处于Terminating."</p>
-<h2 id="pv_2"><strong>修复PV</strong></h2>
+<h2 id="pv_1"><strong>上海交大修复pv步骤</strong><a class="headerlink" href="#pv_1" title="Permanent link">&para;</a></h2>
+<div class="admonition info">
+<p class="admonition-title">这里主要是kubeadm部署的k8s</p>
+</div>
+<h2 id="_2"><strong>现象</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<div class="admonition error">
+<p class="admonition-title">PV不知道因为什么原因处于Terminating.</p>
+</div>
+<h2 id="pv_2"><strong>修复PV</strong><a class="headerlink" href="#pv_2" title="Permanent link">&para;</a></h2>
 <p>文章参考：https://github.com/jianz/k8s-reset-terminating-pv</p>
-<h3 id="_3">端口转发到本地</h3>
-<pre><code class="language-shell">kubectl port-forward pods/etcd-master 2379:2379 -n kube-system
-</code></pre>
-<h3 id="pv_3">修复pv</h3>
-<pre><code class="language-shell">./resetpv-linux-x86-64 --k8s-key-prefix registry pvc-bd426570-7fc2-4270-bd41-9512262b0790 --etcd-ca=/etc/kubernetes/pki/etcd/ca.crt --etcd-cert=/etc/kubernetes/pki/etcd/server.crt --etcd-key=/etc/kubernetes/pki/etcd/server.key
-</code></pre>
-<p>!!! warning
-    pvc-bd426570-7fc2-4270-bd41-9512262b0790 是处于Terminating的pv，修复完成pv处于Bound状态</p>
-<h2 id="k8sscwork"><strong>k8s升级导致sc无法正常work</strong></h2>
+<h3 id="_3">端口转发到本地<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>kubectl port-forward pods/etcd-master <span class="m">2379</span>:2379 -n kube-system
+</code></pre></div>
+<h3 id="pv_3">修复pv<a class="headerlink" href="#pv_3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>./resetpv-linux-x86-64 --k8s-key-prefix registry pvc-bd426570-7fc2-4270-bd41-9512262b0790 --etcd-ca<span class="o">=</span>/etc/kubernetes/pki/etcd/ca.crt --etcd-cert<span class="o">=</span>/etc/kubernetes/pki/etcd/server.crt --etcd-key<span class="o">=</span>/etc/kubernetes/pki/etcd/server.key
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>pvc-bd426570-7fc2-4270-bd41-9512262b0790 是处于Terminating的pv，修复完成pv处于Bound状态</p>
+</div>
+<h2 id="k8sscwork"><strong>k8s升级导致sc无法正常work</strong><a class="headerlink" href="#k8sscwork" title="Permanent link">&para;</a></h2>
 <p>参考地址: <a href="https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner/issues/25">sc无法正常work</a></p>
-<p>!!! bug
-    Using Kubernetes v1.20.0, getting "unexpected error getting claim reference: selfLink was empty, can't make reference</p>
-<p>当前的解决方法是编辑 /etc/kubernetes/manifests/kube-apiserver.yaml</p>
-<pre><code class="language-shell">添加这一行：
----feature-gates=RemoveSelfLink=false
-</code></pre>
-<h2 id="rook-ceph"><strong>亲和性导致rook-ceph无法正常使用</strong></h2>
-<p>!!! bug 
-    unable to get monitor info from DNS SRV with service name: ceph-mon
-取消亲和性的配置</p>
+<div class="admonition bug">
+<p class="admonition-title">Bug</p>
+<p>Using Kubernetes v1.20.0, getting "unexpected error getting claim reference: selfLink was empty, can't make reference</p>
+</div>
+<p>当前的解决方法是编辑 /etc/kubernetes/manifests/kube-apiserver.yaml
+<div class="highlight"><pre><span></span><code>添加这一行：
+---feature-gates<span class="o">=</span><span class="nv">RemoveSelfLink</span><span class="o">=</span><span class="nb">false</span>
+</code></pre></div></p>
+<h2 id="rook-ceph"><strong>亲和性导致rook-ceph无法正常使用</strong><a class="headerlink" href="#rook-ceph" title="Permanent link">&para;</a></h2>
+<div class="admonition bug">
+<p class="admonition-title">Bug</p>
+<p>unable to get monitor info from DNS SRV with service name: ceph-mon</p>
+</div>
+<p>取消亲和性的配置</p>
 
 
 

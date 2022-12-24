@@ -1821,15 +1821,19 @@
   </a>
 
 
-<h1 id="mysql-operator"><strong>Mysql-operator 安装部署</strong></h1>
-<p>!!! info "环境要求"
-    - 安装Helm包管理工具
-    - 安装rook-ceph作为后端存储
-    - 安装operator
-    - 安装mysql服务</p>
-<h2 id="_1"><strong>安装</strong></h2>
+<h1 id="mysql-operator"><strong>Mysql-operator 安装部署</strong><a class="headerlink" href="#mysql-operator" title="Permanent link">&para;</a></h1>
+<div class="admonition info">
+<p class="admonition-title">环境要求</p>
+<ul>
+<li>安装Helm包管理工具</li>
+<li>安装rook-ceph作为后端存储</li>
+<li>安装operator</li>
+<li>安装mysql服务</li>
+</ul>
+</div>
+<h2 id="_1"><strong>安装</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>Helm和rook-ceph这里就不进行演示安装了，可以通过之前的文章来安装</p>
-<h3 id="operator"><strong>安装operator </strong></h3>
+<h3 id="operator"><strong>安装operator </strong><a class="headerlink" href="#operator" title="Permanent link">&para;</a></h3>
 <p>github上有一个项目可以帮我们快速的来安装    <a href="https://github.com/bitpoke/mysql-operator">mysql</a></p>
 <p><strong>优势:</strong></p>
 <ul>
@@ -1838,63 +1842,63 @@
 <li>通过storageClass来解决存储问题</li>
 <li>开箱即用的备份（计划和按需）和时间点恢复</li>
 </ul>
-<h4 id="chart">添加chart地址</h4>
-<pre><code class="language-shell">helm repo add bitpoke https://helm-charts.bitpoke.io
+<h4 id="chart">添加chart地址<a class="headerlink" href="#chart" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>helm repo add bitpoke https://helm-charts.bitpoke.io
 helm repo update
-</code></pre>
-<h4 id="mysql-operator_1">安装mysql-operator</h4>
-<pre><code class="language-shell">$ helm install mysql-operator bitpoke/mysql-operator \
-    -f 1-config.yaml \
+</code></pre></div>
+<h4 id="mysql-operator_1">安装mysql-operator<a class="headerlink" href="#mysql-operator_1" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>$ helm install mysql-operator bitpoke/mysql-operator <span class="se">\</span>
+    -f <span class="m">1</span>-config.yaml <span class="se">\</span>
     -n infra
 WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: /Users/beiyiwangdejiyi/.kube/config
 WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: /Users/beiyiwangdejiyi/.kube/config
 NAME: mysql-operator
-LAST DEPLOYED: Thu Aug 25 10:24:53 2022
+LAST DEPLOYED: Thu Aug <span class="m">25</span> <span class="m">10</span>:24:53 <span class="m">2022</span>
 NAMESPACE: infra
 STATUS: deployed
-REVISION: 1
+REVISION: <span class="m">1</span>
 TEST SUITE: None
 NOTES:
 You can create a new cluster by issuing:
 
-cat &lt;&lt;EOF | kubectl apply -f-
-apiVersion: mysql.presslabs.org/v1alpha1
-kind: MysqlCluster
-metadata:
-  name: my-cluster
-spec:
-  replicas: 1
-  secretName: my-cluster-secret
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: my-cluster-secret
-type: Opaque
-data:
-  ROOT_PASSWORD: $(echo -n &quot;not-so-secure&quot; | base64)
-EOF
-</code></pre>
-<p>这个1-config.yaml文件是给operator来使用的，这里定义了storageClass和容量</p>
-<pre><code class="language-shell">$ cat 1-config.yaml
+cat <span class="s">&lt;&lt;EOF | kubectl apply -f-</span>
+<span class="s">apiVersion: mysql.presslabs.org/v1alpha1</span>
+<span class="s">kind: MysqlCluster</span>
+<span class="s">metadata:</span>
+<span class="s">  name: my-cluster</span>
+<span class="s">spec:</span>
+<span class="s">  replicas: 1</span>
+<span class="s">  secretName: my-cluster-secret</span>
+<span class="s">---</span>
+<span class="s">apiVersion: v1</span>
+<span class="s">kind: Secret</span>
+<span class="s">metadata:</span>
+<span class="s">  name: my-cluster-secret</span>
+<span class="s">type: Opaque</span>
+<span class="s">data:</span>
+<span class="s">  ROOT_PASSWORD: $(echo -n &quot;not-so-secure&quot; | base64)</span>
+<span class="s">EOF</span>
+</code></pre></div>
+<p>这个1-config.yaml文件是给operator来使用的，这里定义了storageClass和容量
+<div class="highlight"><pre><span></span><code>$ cat <span class="m">1</span>-config.yaml
 orchestrator:
   persistence:
-    enabled: true
-    storageClass: &quot;rook-ceph-block&quot;
-    accessMode: &quot;ReadWriteOnce&quot;
+    enabled: <span class="nb">true</span>
+    storageClass: <span class="s2">&quot;rook-ceph-block&quot;</span>
+    accessMode: <span class="s2">&quot;ReadWriteOnce&quot;</span>
     size: 10Gi
-</code></pre>
-<p>验证：</p>
-<pre><code class="language-shell">$ k get pod
+</code></pre></div></p>
+<p>验证：
+<div class="highlight"><pre><span></span><code>$ k get pod
 NAME                READY   STATUS    RESTARTS        AGE
-mysql-operator-0    2/2     Running   2 (6m46s ago)   6m47s
-</code></pre>
-<p>这时，mysql-operator就安装好了，第二步就安装Mysql</p>
-<h3 id="mysql"><strong>安装mysql </strong></h3>
-<pre><code class="language-shell">$ k apply -f 2-openbayes-mysql.yaml
+mysql-operator-0    <span class="m">2</span>/2     Running   <span class="m">2</span> <span class="o">(</span>6m46s ago<span class="o">)</span>   6m47s
+</code></pre></div>
+这时，mysql-operator就安装好了，第二步就安装Mysql</p>
+<h3 id="mysql"><strong>安装mysql </strong><a class="headerlink" href="#mysql" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>$ k apply -f <span class="m">2</span>-openbayes-mysql.yaml
 secret/openbayes-db-secret created
 mysqlcluster.mysql.presslabs.org/openbayes created
-</code></pre>
+</code></pre></div>
 
 
 

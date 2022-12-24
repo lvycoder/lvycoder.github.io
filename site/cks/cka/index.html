@@ -1979,64 +1979,63 @@
   </a>
 
 
-<h1 id="cka">cka 认证考试</h1>
-<h2 id="1-pod-5">1. 监控 pod日志 5%</h2>
+<h1 id="cka">cka 认证考试<a class="headerlink" href="#cka" title="Permanent link">&para;</a></h1>
+<h2 id="1-pod-5">1. 监控 pod日志 5%<a class="headerlink" href="#1-pod-5" title="Permanent link">&para;</a></h2>
 <p>图示:
 <img alt="" src="https://pic.imgdb.cn/item/6386c82216f2c2beb1c78650.jpg" /></p>
 <p>中文解释:</p>
 <p>监控名为 foobar 的 Pod 的日志，并过滤出具有 unable-access-website 信息的行，然后将写入到 /opt/KUTR00101/foobar</p>
-<p>解题步骤:</p>
-<pre><code class="language-shell">$ kubectl config use-context k8s
-$ kubectl logs foobar | grep unable-access-website &gt; /opt/KUTR00101/foobar
-</code></pre>
-<h2 id="2-pod-5">2.监控 pod 度量 指标: 5%</h2>
+<p>解题步骤:
+<div class="highlight"><pre><span></span><code>$ kubectl config use-context k8s
+$ kubectl logs foobar <span class="p">|</span> grep unable-access-website &gt; /opt/KUTR00101/foobar
+</code></pre></div></p>
+<h2 id="2-pod-5">2.监控 pod 度量 指标: 5%<a class="headerlink" href="#2-pod-5" title="Permanent link">&para;</a></h2>
 <p>图示:
 <img alt="" src="https://pic.imgdb.cn/item/6386d12f16f2c2beb1d8affb.jpg" /></p>
 <p>中文解释:</p>
 <p>找出具有 name=cpu-user 的 Pod，并过滤出使用 CPU 最高的 Pod，然后把它的名字写在已经存在的/opt/KUTR00401/KUTR00401.txt 文件里  <font color='red'> （注意他没有说指定 namespace。所以需要使用-A 指定所以 namespace） 注意是<strong>追加</strong> </font></p>
 <p>解题步骤:</p>
-<pre><code class="language-shell">$ kubectl config use-context k8s
-$ kubectl top pod -A -l |grep name=cpu-user
+<div class="highlight"><pre><span></span><code>$ kubectl config use-context k8s
+$ kubectl top pod -A -l <span class="p">|</span>grep <span class="nv">name</span><span class="o">=</span>cpu-user
 
-# 注意这里的 pod 名字以实际名字为准，按照 CPU 那一列进行选择一个最大的 Pod，另外如果
-CPU 的数值是 1 2 3 这样的。是大于带 m 这样的，因为 1 颗 CPU 等于 1000m，注意要用&gt;&gt;而不是&gt; 
-$ echo &quot;coredns-54d67798b7-hl8xc&quot; &gt;&gt; /opt/KUTR00401/KUTR00401.txt
-
-</code></pre>
-<h2 id="3deployment">3.Deployment 扩缩容</h2>
+<span class="c1"># 注意这里的 pod 名字以实际名字为准，按照 CPU 那一列进行选择一个最大的 Pod，另外如果</span>
+CPU 的数值是 <span class="m">1</span> <span class="m">2</span> <span class="m">3</span> 这样的。是大于带 m 这样的，因为 <span class="m">1</span> 颗 CPU 等于 1000m，注意要用&gt;&gt;而不是&gt; 
+$ <span class="nb">echo</span> <span class="s2">&quot;coredns-54d67798b7-hl8xc&quot;</span> &gt;&gt; /opt/KUTR00401/KUTR00401.txt
+</code></pre></div>
+<h2 id="3deployment">3.Deployment 扩缩容<a class="headerlink" href="#3deployment" title="Permanent link">&para;</a></h2>
 <p>图示:
 <img alt="" src="https://pic.imgdb.cn/item/6386d3e816f2c2beb1dcea41.jpg" /></p>
 <p>中文解释:</p>
 <p>扩容名字为 loadbalancer 的 deployment 的副本数为 6</p>
 <p>解题步骤:</p>
-<pre><code class="language-shell">$ kubectl config use-context k8s
-$ kubectl scale --replicas=6 deployment loadbalancer
+<div class="highlight"><pre><span></span><code>$ kubectl config use-context k8s
+$ kubectl scale --replicas<span class="o">=</span><span class="m">6</span> deployment loadbalancer
 $ kubectl edit
-</code></pre>
-<h2 id="4-node">4. 检查 Node 节点的健康状态</h2>
+</code></pre></div>
+<h2 id="4-node">4. 检查 Node 节点的健康状态<a class="headerlink" href="#4-node" title="Permanent link">&para;</a></h2>
 <p>图示:
 <img alt="" src="https://pic.imgdb.cn/item/6386d5f716f2c2beb1e0f339.jpg" /></p>
 <p>中文解释:</p>
 <p>检查集群中有多少节点为 Ready 状态，并且去除包含 NoSchedule 污点的节点。之后将数字写到/opt/KUSC00402/kusc00402.txt</p>
 <p>解题步骤:</p>
-<pre><code class="language-shell">$ kubectl config use-context k8s
-$ kubectl get node | grep -i ready # 记录总数为 A 
-$ kubectl describe node | grep Taint | grep NoSchedule 
-# 记录总数为 B # 将 A 减 B 的值 x 导入到/opt/KUSC00402/kusc00402.txt
-$ echo x &gt;&gt; /opt/KUSC00402/kusc00402.txt
-</code></pre>
-<h2 id="5">5. 节点维护</h2>
+<div class="highlight"><pre><span></span><code>$ kubectl config use-context k8s
+$ kubectl get node <span class="p">|</span> grep -i ready <span class="c1"># 记录总数为 A </span>
+$ kubectl describe node <span class="p">|</span> grep Taint <span class="p">|</span> grep NoSchedule 
+<span class="c1"># 记录总数为 B # 将 A 减 B 的值 x 导入到/opt/KUSC00402/kusc00402.txt</span>
+$ <span class="nb">echo</span> x &gt;&gt; /opt/KUSC00402/kusc00402.txt
+</code></pre></div>
+<h2 id="5">5. 节点维护<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
 <p>图示:
 <img alt="" src="https://pic.imgdb.cn/item/6386ed5f16f2c2beb105f9fa.jpg" /></p>
 <p>中文解释:</p>
 <p>将 ek8s-node-1 节点设置为不可用，然后重新调度该节点上的所有 Pod</p>
 <p>解题步骤:</p>
-<pre><code class="language-shell">$ kubectl config use-context ek8s
+<div class="highlight"><pre><span></span><code>$ kubectl config use-context ek8s
 $ kubectl cordon ek8s-node-1 
 $ kubectl drain ek8s-node-1 --delete-emptydir-data --ignore-daemonsets --force
-$ k delete pod  pod-name  --grace-period=0 --force
-</code></pre>
-<h2 id="6">6. 指定节点部署</h2>
+$ k delete pod  pod-name  --grace-period<span class="o">=</span><span class="m">0</span> --force
+</code></pre></div>
+<h2 id="6">6. 指定节点部署<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
 <p>图示:</p>
 <p><img alt="" src="https://pic.imgdb.cn/item/6386effc16f2c2beb10a6a38.jpg" /></p>
 <p>中文解释:</p>
@@ -2051,105 +2050,105 @@ $ k delete pod  pod-name  --grace-period=0 --force
 </ul>
 <p>解题步骤:</p>
 <p>题目一：</p>
-<pre><code class="language-yaml">apiVersion: v1
-kind: Pod
-metadata:
-  name: nginx-kusc00401
-  labels:
-    role: nginx-kusc00401
-spec:
-  containers:
-  - name: nginx
-    image: nginx
-  nodeSelector:
-    disk: spinning
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span><span class="w"></span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span><span class="w"></span>
+<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx-kusc00401</span><span class="w"></span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx-kusc00401</span><span class="w"></span>
+<span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">containers</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span><span class="w"></span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span><span class="w"></span>
+<span class="w">  </span><span class="nt">nodeSelector</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">disk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spinning</span><span class="w"></span>
+</code></pre></div>
 <p>题目二：</p>
-<pre><code class="language-yaml">$ cat 6-2-cka.yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: nginx-kusc00402
-  labels:
-    role: nginx-kusc00402
-spec:
-  nodeName: node1
-  containers:
-  - name: nginx
-    image: nginx
-</code></pre>
-<h2 id="7-pod">7. 一个 Pod 多个容器</h2>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ cat 6-2-cka.yaml</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span><span class="w"></span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span><span class="w"></span>
+<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx-kusc00402</span><span class="w"></span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx-kusc00402</span><span class="w"></span>
+<span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">nodeName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node1</span><span class="w"></span>
+<span class="w">  </span><span class="nt">containers</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span><span class="w"></span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span><span class="w"></span>
+</code></pre></div>
+<h2 id="7-pod">7. 一个 Pod 多个容器<a class="headerlink" href="#7-pod" title="Permanent link">&para;</a></h2>
 <p>图示：
 <img alt="" src="https://pic.imgdb.cn/item/6387767c16f2c2beb1f445e8.jpg" /></p>
 <p>中文解释:</p>
 <p>创建一个 Pod ， 名字为 kucc1 ，这个 Pod 可能包含 1-4 容 器 ， 该题为四个 ：nginx+redis+memcached+consul</p>
 <p>解题步骤:</p>
-<pre><code class="language-yaml">$ cat 7-cka.yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: kucc1
-spec:
-  containers:
-  - name: nginx
-    image: nginx
-  - name: redis
-    image: redis
-  - name: memcached
-    image: memcached
-  - name: consul
-    image: consul
-</code></pre>
-<h2 id="8-service">8. Service 考题</h2>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ cat 7-cka.yaml</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span><span class="w"></span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span><span class="w"></span>
+<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kucc1</span><span class="w"></span>
+<span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">containers</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span><span class="w"></span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span><span class="w"></span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">memcached</span><span class="w"></span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">memcached</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">consul</span><span class="w"></span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">consul</span><span class="w"></span>
+</code></pre></div>
+<h2 id="8-service">8. Service 考题<a class="headerlink" href="#8-service" title="Permanent link">&para;</a></h2>
 <p><img alt="" src="https://pic.imgdb.cn/item/638778cc16f2c2beb1f7d310.jpg" /></p>
 <p>中文解释:</p>
 <p>重新配置一个已经存在的 deployment front-end，在名字为 nginx 的容器里面添加一个端口配置，名字为 http，暴露端口号为 80，然后创建一个 service，名字为 front-end-svc，暴露该deployment 的 http 端口，并且 service 的类型为 NodePort。</p>
-<pre><code class="language-yaml">        ports:
-        - containerPort: 80
-          name: http
-          protocol: TCP
-</code></pre>
-<p>创建一个svc</p>
-<pre><code class="language-shell">kubectl expose deploy front-end --name=front-end-svc --port=80 \
---target-port=http --type=NodePort
-</code></pre>
-<h2 id="9-ingress-8">9. Ingress考题 8%</h2>
+<div class="highlight"><pre><span></span><code><span class="w">        </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span><span class="w"></span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span><span class="w"></span>
+<span class="w">          </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span><span class="w"></span>
+</code></pre></div>
+<p>创建一个svc
+<div class="highlight"><pre><span></span><code>kubectl expose deploy front-end --name<span class="o">=</span>front-end-svc --port<span class="o">=</span><span class="m">80</span> <span class="se">\</span>
+--target-port<span class="o">=</span>http --type<span class="o">=</span>NodePort
+</code></pre></div></p>
+<h2 id="9-ingress-8">9. Ingress考题 8%<a class="headerlink" href="#9-ingress-8" title="Permanent link">&para;</a></h2>
 <ul>
 <li>参考地址: https://kubernetes.io/zh-cn/docs/concepts/services-networking/ingress/</li>
 </ul>
 <p>图示:
 <img alt="" src="https://pic.imgdb.cn/item/63885c4916f2c2beb1fe8813.jpg" /></p>
 <p>环境准备:</p>
-<pre><code class="language-shell">[cka] root@master0:/home/lixie# k label node node1 ingress=true
+<div class="highlight"><pre><span></span><code><span class="o">[</span>cka<span class="o">]</span> root@master0:/home/lixie# k label node node1 <span class="nv">ingress</span><span class="o">=</span><span class="nb">true</span>
 node/node1 labeled
-</code></pre>
+</code></pre></div>
 <p>中文解释:</p>
 <p>在 ing-internal 命名空间下创建一个 ingress，名字为 pong，代理的 service hi，端口为 5678，配置路径/hi。
 验证：访问 curl -kL <INTERNAL_IP>/hi 会返回 hi</p>
 <p>解题步骤:</p>
-<pre><code class="language-shell">$ k label node node2 ingress=true
+<div class="highlight"><pre><span></span><code>$ k label node node2 <span class="nv">ingress</span><span class="o">=</span><span class="nb">true</span>
 $ k apply -f ingress.yaml
-</code></pre>
-<pre><code class="language-yaml">[cka] root@master0:~/cka# cat 9-ingress.yaml
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: pong   # 名称需要该
-  namespace: ing-internal   # 需要该
-spec:
-  ingressClassName: nginx
-  rules:
-  - http:
-      paths:
-      - pathType: Prefix
-        path: &quot;/hi&quot;   # 访问路径需要改
-        backend:
-          service:
-            name: front-end-svc   # 需要该
-            port:
-              number: 80
-</code></pre>
-<h2 id="10-sidecar-8">10. Sidecar 8%</h2>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span><span class="nv">cka</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root@master0:~/cka# cat 9-ingress.yaml</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span><span class="w"></span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span><span class="w"></span>
+<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pong</span><span class="w">   </span><span class="c1"># 名称需要该</span><span class="w"></span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ing-internal</span><span class="w">   </span><span class="c1"># 需要该</span><span class="w"></span>
+<span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">ingressClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span><span class="w"></span>
+<span class="w">  </span><span class="nt">rules</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">http</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">paths</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pathType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Prefix</span><span class="w"></span>
+<span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/hi&quot;</span><span class="w">   </span><span class="c1"># 访问路径需要改</span><span class="w"></span>
+<span class="w">        </span><span class="nt">backend</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">service</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">front-end-svc</span><span class="w">   </span><span class="c1"># 需要该</span><span class="w"></span>
+<span class="w">            </span><span class="nt">port</span><span class="p">:</span><span class="w"></span>
+<span class="w">              </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span><span class="w"></span>
+</code></pre></div>
+<h2 id="10-sidecar-8">10. Sidecar 8%<a class="headerlink" href="#10-sidecar-8" title="Permanent link">&para;</a></h2>
 <p>图示:
 <img alt="" src="https://pic.imgdb.cn/item/63885c4916f2c2beb1fe8813.jpg" /></p>
 <ul>
@@ -2160,70 +2159,70 @@ spec:
 Pod 上，这个 sidecar 的启动命令为/bin/sh, -c, 'tail -n+1 -f /var/log/legacy-app.log'。</p>
 <p>并且这个 sidecar 和原有的镜像挂载一个名为 logs 的 volume，挂载的目录为/var/log/</p>
 <p>导出yaml</p>
-<pre><code class="language-yaml">[cka] root@master0:~/cka# cat 10-1.yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: legacy-app
-spec:
-  containers:
-  - name: count
-    image: busybox
-    args:
-    - /bin/sh
-    - -c
-    - &gt;
-      i=0;
-       while true;
-       do
-         echo &quot;$(date) INFO $i&quot; &gt;&gt; /var/log/legacy-app.log;
-         i=$((i+1));
-         sleep 1;
-       done
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span><span class="nv">cka</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root@master0:~/cka# cat 10-1.yaml</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span><span class="w"></span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span><span class="w"></span>
+<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">legacy-app</span><span class="w"></span>
+<span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">containers</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">count</span><span class="w"></span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">busybox</span><span class="w"></span>
+<span class="w">    </span><span class="nt">args</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/bin/sh</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-c</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">&gt;</span><span class="w"></span>
+<span class="w">      </span><span class="no">i=0;</span><span class="w"></span>
+<span class="w">       </span><span class="no">while true;</span><span class="w"></span>
+<span class="w">       </span><span class="no">do</span><span class="w"></span>
+<span class="w">         </span><span class="no">echo &quot;$(date) INFO $i&quot; &gt;&gt; /var/log/legacy-app.log;</span><span class="w"></span>
+<span class="w">         </span><span class="no">i=$((i+1));</span><span class="w"></span>
+<span class="w">         </span><span class="no">sleep 1;</span><span class="w"></span>
+<span class="w">       </span><span class="no">done</span><span class="w"></span>
 
-首先将 legacy-app 的 Pod 的 yaml 导出，大致如下：
-kubectl  get pod  legacy-app -o yaml &gt; 10-2.yaml
-</code></pre>
+<span class="l l-Scalar l-Scalar-Plain">首先将 legacy-app 的 Pod 的 yaml 导出，大致如下：</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">kubectl  get pod  legacy-app -o yaml &gt; 10-2.yaml</span><span class="w"></span>
+</code></pre></div>
 <p>进行修改</p>
-<pre><code class="language-yaml">[cka] root@master0:~/cka# cat 10-2.yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: legacy-app
-  namespace: default
-spec:
-  containers:
-  - name: busybox     # 需要修改
-    image: busybox      # 需要修改
-    args: [/bin/sh, -c, 'tail -n+1 -F /var/log/legacy-app.log']
-    volumeMounts:
-    - name: logs  # 需要修改
-      mountPath: /var/log
-  - args:
-    - /bin/sh
-    - -c
-    - |
-      i=0;
-       while true;
-       do
-         echo &quot;$(date) INFO $i&quot; &gt;&gt; /var/log/legacy-app.log;
-         i=$((i+1));
-         sleep 1;
-       done
-    image: busybox
-    imagePullPolicy: Always
-    name: count
-    resources: {}
-    terminationMessagePath: /dev/termination-log
-    terminationMessagePolicy: File
-    volumeMounts:  # 需要添加
-    - name: logs
-      mountPath: /var/log
-  volumes:
-  - name: logs  # 需要修改
-    emptyDir: {}
-</code></pre>
-<h2 id="11rbac">11.RBAC考题</h2>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span><span class="nv">cka</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root@master0:~/cka# cat 10-2.yaml</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span><span class="w"></span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span><span class="w"></span>
+<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">legacy-app</span><span class="w"></span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span><span class="w"></span>
+<span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">containers</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">busybox</span><span class="w">     </span><span class="c1"># 需要修改</span><span class="w"></span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">busybox</span><span class="w">      </span><span class="c1"># 需要修改</span><span class="w"></span>
+<span class="w">    </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">/bin/sh</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-c</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&#39;tail</span><span class="nv"> </span><span class="s">-n+1</span><span class="nv"> </span><span class="s">-F</span><span class="nv"> </span><span class="s">/var/log/legacy-app.log&#39;</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">logs</span><span class="w">  </span><span class="c1"># 需要修改</span><span class="w"></span>
+<span class="w">      </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/log</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">args</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/bin/sh</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-c</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
+<span class="w">      </span><span class="no">i=0;</span><span class="w"></span>
+<span class="w">       </span><span class="no">while true;</span><span class="w"></span>
+<span class="w">       </span><span class="no">do</span><span class="w"></span>
+<span class="w">         </span><span class="no">echo &quot;$(date) INFO $i&quot; &gt;&gt; /var/log/legacy-app.log;</span><span class="w"></span>
+<span class="w">         </span><span class="no">i=$((i+1));</span><span class="w"></span>
+<span class="w">         </span><span class="no">sleep 1;</span><span class="w"></span>
+<span class="w">       </span><span class="no">done</span><span class="w"></span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">busybox</span><span class="w"></span>
+<span class="w">    </span><span class="nt">imagePullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Always</span><span class="w"></span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">count</span><span class="w"></span>
+<span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span><span class="w"></span>
+<span class="w">    </span><span class="nt">terminationMessagePath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/dev/termination-log</span><span class="w"></span>
+<span class="w">    </span><span class="nt">terminationMessagePolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File</span><span class="w"></span>
+<span class="w">    </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w">  </span><span class="c1"># 需要添加</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">logs</span><span class="w"></span>
+<span class="w">      </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/log</span><span class="w"></span>
+<span class="w">  </span><span class="nt">volumes</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">logs</span><span class="w">  </span><span class="c1"># 需要修改</span><span class="w"></span>
+<span class="w">    </span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span><span class="w"></span>
+</code></pre></div>
+<h2 id="11rbac">11.RBAC考题<a class="headerlink" href="#11rbac" title="Permanent link">&para;</a></h2>
 <ul>
 <li>文章参考: https://kubernetes.io/zh-cn/docs/reference/access-authn-authz/rbac/</li>
 </ul>
@@ -2232,48 +2231,48 @@ spec:
 <p>创建一个名为 deployment-clusterrole 的 clusterrole，该 clusterrole 只允许创建 Deployment、
 Daemonset、Statefulset 的 create 操作在名字为 app-team1 的 namespace 下创建一个名为 cicd-token 的 serviceAccount，并且将上一步创建 clusterrole 的权限绑定到该 serviceAccount</p>
 <p>解题步骤:</p>
-<pre><code class="language-yaml">apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
-metadata:
-  # &quot;namespace&quot; 被忽略，因为 ClusterRoles 不受名字空间限制
-  name: deployment-clusterrole
-rules:
-- apiGroups: [&quot;apps&quot;]
-  # 在 HTTP 层面，用来访问 Secret 资源的名称为 &quot;secrets&quot;
-  resources: [&quot;deployments&quot;,&quot;daemonsets&quot;,&quot;statefulsets&quot;]
-  verbs: [&quot;create&quot;]
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rbac.authorization.k8s.io/v1</span><span class="w"></span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterRole</span><span class="w"></span>
+<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="c1"># &quot;namespace&quot; 被忽略，因为 ClusterRoles 不受名字空间限制</span><span class="w"></span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deployment-clusterrole</span><span class="w"></span>
+<span class="nt">rules</span><span class="p">:</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;apps&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">  </span><span class="c1"># 在 HTTP 层面，用来访问 Secret 资源的名称为 &quot;secrets&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;deployments&quot;</span><span class="p p-Indicator">,</span><span class="s">&quot;daemonsets&quot;</span><span class="p p-Indicator">,</span><span class="s">&quot;statefulsets&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">  </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;create&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
+</code></pre></div>
 <p>创建serviceAccount:</p>
-<pre><code class="language-shell">$ k create ns  app-team1
+<div class="highlight"><pre><span></span><code>$ k create ns  app-team1
 $ k create sa cicd-token -n app-team1
-$ k create rolebinding deployment-rolebinding \
---clusterrole='deployment-clusterrole' \
---serviceaccount=app-team1:cicd-token -n app-team1
-</code></pre>
-<h2 id="12-networkpolicy">12. NetworkPolicy</h2>
+$ k create rolebinding deployment-rolebinding <span class="se">\</span>
+--clusterrole<span class="o">=</span><span class="s1">&#39;deployment-clusterrole&#39;</span> <span class="se">\</span>
+--serviceaccount<span class="o">=</span>app-team1:cicd-token -n app-team1
+</code></pre></div>
+<h2 id="12-networkpolicy">12. NetworkPolicy<a class="headerlink" href="#12-networkpolicy" title="Permanent link">&para;</a></h2>
 <p>图示:
 <img alt="" src="https://pic.imgdb.cn/item/638876b716f2c2beb1265bf1.jpg" /></p>
 <p>中文解释:</p>
 <p>创建一个名字为 allow-port-from-namespace 的 NetworkPolicy，这个 NetworkPolicy 允许internal 命名空间下的 Pod 访问该命名空间下的 9000 端口。并且不允许不是 internal 命令空间的下的 Pod 访问不允许访问没有监听 9000 端口的 Pod。</p>
-<p>解题步骤:</p>
-<pre><code class="language-yaml">$ cat 12-1-cka.yaml
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: allow-port-from-namespace
-  namespace: internal
-spec:
-  ingress:
-  - from:
-    - podSelector: {}
-    ports:
-    - port: 9000
-      protocol: TCP
-  podSelector: {}
-  policyTypes:
-  - Ingress
-</code></pre>
-<h2 id="13-persistentvolume">13. PersistentVolume</h2>
+<p>解题步骤:
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ cat 12-1-cka.yaml</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span><span class="w"></span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NetworkPolicy</span><span class="w"></span>
+<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">allow-port-from-namespace</span><span class="w"></span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">internal</span><span class="w"></span>
+<span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">ingress</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">from</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">podSelector</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span><span class="w"></span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9000</span><span class="w"></span>
+<span class="w">      </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span><span class="w"></span>
+<span class="w">  </span><span class="nt">podSelector</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span><span class="w"></span>
+<span class="w">  </span><span class="nt">policyTypes</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span><span class="w"></span>
+</code></pre></div></p>
+<h2 id="13-persistentvolume">13. PersistentVolume<a class="headerlink" href="#13-persistentvolume" title="Permanent link">&para;</a></h2>
 <ul>
 <li>文章参考: https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/</li>
 </ul>
@@ -2281,22 +2280,22 @@ spec:
 <p><img alt="" src="https://pic.imgdb.cn/item/63889f8016f2c2beb16c38d9.jpg" /></p>
 <p>中文解释:</p>
 <p>创建一个 pv，名字为 app-config，大小为 2Gi，访问权限为 ReadWriteMany。Volume 的类型为 hostPath，路径为/srv/app-config</p>
-<pre><code class="language-yaml">apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: app-config
-  labels:
-    type: local
-spec:
-  storageClassName: manual
-  capacity:
-    storage: 2Gi
-  accessModes:
-    - ReadWriteMany
-  hostPath:
-    path: &quot;/srv/app-config&quot;
-</code></pre>
-<h2 id="14-csi-persistentvolumeclaim">14. CSI &amp; PersistentVolumeClaim</h2>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span><span class="w"></span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolume</span><span class="w"></span>
+<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app-config</span><span class="w"></span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local</span><span class="w"></span>
+<span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">storageClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">manual</span><span class="w"></span>
+<span class="w">  </span><span class="nt">capacity</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">storage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2Gi</span><span class="w"></span>
+<span class="w">  </span><span class="nt">accessModes</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReadWriteMany</span><span class="w"></span>
+<span class="w">  </span><span class="nt">hostPath</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/srv/app-config&quot;</span><span class="w"></span>
+</code></pre></div>
+<h2 id="14-csi-persistentvolumeclaim">14. CSI &amp; PersistentVolumeClaim<a class="headerlink" href="#14-csi-persistentvolumeclaim" title="Permanent link">&para;</a></h2>
 <ul>
 <li>文章参考: https://kubernetes.io/zh-cn/docs/tasks/configure-pod-container/configure-persistent-volume-storage/</li>
 </ul>
@@ -2307,71 +2306,68 @@ spec:
 <p>然后创建一个 Pod，名字为 web-server，镜像为 nginx，并且挂载该 PVC 至/usr/share/nginx/html，
 挂载的权限为 ReadWriteOnce。之后通过 kubectl edit 或者 kubectl path 将 pvc 改成 70Mi，并且记录修改记录。</p>
 <p>准备工作:</p>
-<pre><code class="language-shell">$ mkdir csi-hostpath
-$ cd csi-hostpath
+<div class="highlight"><pre><span></span><code>$ mkdir csi-hostpath
+$ <span class="nb">cd</span> csi-hostpath
 
 $ git clone https://gitee.com/dukuan/k8s-ha-install.git
-$ cd k8s-ha-install/
+$ <span class="nb">cd</span> k8s-ha-install/
 $ git checkout manual-installation-v1.20.x-csi-hostpath
 
 $ kubectl  create -f snapshotter/ 
 $ kubectl get volumesnapshotclasses.snapshot.storage.k8s.io 
 $ kubectl get volumesnapshots.snapshot.storage.k8s.io 
 $ kubectl get volumesnapshotcontents.snapshot.storage.k8s.io
-# 如果返回值不是error: the server doesn't have a resource type &quot;volumesnapshotclasses&quot;表示安装成功
+<span class="c1"># 如果返回值不是error: the server doesn&#39;t have a resource type &quot;volumesnapshotclasses&quot;表示安装成功</span>
 
-# 有返回值说明Snapshot Controller已经安装
-$ kubectl get pods --all-namespaces -o=jsonpath='{range .items[*]}{&quot;\n&quot;}{range .spec.containers[*]}{.image}{&quot;, &quot;}{end}{end}' | grep snapshot-controller
+<span class="c1"># 有返回值说明Snapshot Controller已经安装</span>
+$ kubectl get pods --all-namespaces -o<span class="o">=</span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{range .items[*]}{&quot;\n&quot;}{range .spec.containers[*]}{.image}{&quot;, &quot;}{end}{end}&#39;</span> <span class="p">|</span> grep snapshot-controller
 
 $ 安装csi-hostpath
-$ cd csi-hostpath/
+$ <span class="nb">cd</span> csi-hostpath/
 $ kubectl apply -f .
 
 
 $ 创建storageClass
-$ cd examples/
+$ <span class="nb">cd</span> examples/
 $ kubectl  create -f csi-storageclass.yaml
-
-
-</code></pre>
+</code></pre></div>
 <p>解题步骤:</p>
-<p>创建一个pvc</p>
-<pre><code class="language-yaml">apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: pv-volume
-spec:
-  storageClassName: csi-hostpath-sc
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 10Mi
-</code></pre>
+<p>创建一个pvc
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span><span class="w"></span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolumeClaim</span><span class="w"></span>
+<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pv-volume</span><span class="w"></span>
+<span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">storageClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">csi-hostpath-sc</span><span class="w"></span>
+<span class="w">  </span><span class="nt">accessModes</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReadWriteOnce</span><span class="w"></span>
+<span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">requests</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">storage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10Mi</span><span class="w"></span>
+</code></pre></div></p>
 <p>创建一个pod挂在pvc</p>
-<pre><code class="language-yaml">apiVersion: v1
-kind: Pod
-metadata:
-  name: web-server
-spec:
-  volumes:
-    - name: pv-volume
-      persistentVolumeClaim:
-        claimName: pv-volume
-  containers:
-    - name: task-pv-container
-      image: nginx
-      ports:
-        - containerPort: 80
-          name: &quot;http-server&quot;
-      volumeMounts:
-        - mountPath: &quot;/usr/share/nginx/html&quot;
-          name: pv-volume
-
-</code></pre>
-<pre><code class="language-shell">kubectl patch pvc pv-volume -p '{&quot;spec&quot;:{&quot;resources&quot;:{&quot;requests&quot;:{&quot;storage&quot;: &quot;70Mi&quot;}}}}' --record
-</code></pre>
-<h2 id="15-etcd">15. Etcd 备份恢复</h2>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span><span class="w"></span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span><span class="w"></span>
+<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">web-server</span><span class="w"></span>
+<span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">volumes</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pv-volume</span><span class="w"></span>
+<span class="w">      </span><span class="nt">persistentVolumeClaim</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">claimName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pv-volume</span><span class="w"></span>
+<span class="w">  </span><span class="nt">containers</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">task-pv-container</span><span class="w"></span>
+<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span><span class="w"></span>
+<span class="w">      </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span><span class="w"></span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http-server&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/usr/share/nginx/html&quot;</span><span class="w"></span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pv-volume</span><span class="w"></span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>kubectl patch pvc pv-volume -p <span class="s1">&#39;{&quot;spec&quot;:{&quot;resources&quot;:{&quot;requests&quot;:{&quot;storage&quot;: &quot;70Mi&quot;}}}}&#39;</span> --record
+</code></pre></div>
+<h2 id="15-etcd">15. Etcd 备份恢复<a class="headerlink" href="#15-etcd" title="Permanent link">&para;</a></h2>
 <p>文章参考: https://kubernetes.io/zh-cn/docs/tasks/administer-cluster/configure-upgrade-etcd/</p>
 <p><img alt="" src="https://pic.imgdb.cn/item/6388b21b16f2c2beb192e0d7.jpg" /></p>
 <p>中文解释: </p>
@@ -2391,9 +2387,8 @@ spec:
 </li>
 </ul>
 <p>解题步骤:</p>
-<pre><code class="language-shell">
-练习时需要查看证书的路径:
-[cka] root@master0:/home/lixie# cat  /etc/kubernetes/manifests/etcd.yaml
+<div class="highlight"><pre><span></span><code>练习时需要查看证书的路径:
+<span class="o">[</span>cka<span class="o">]</span> root@master0:/home/lixie# cat  /etc/kubernetes/manifests/etcd.yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -2409,125 +2404,122 @@ spec:
   containers:
   - command:
     - etcd
-    - --advertise-client-urls=https://192.168.159.81:2379
-    - --cert-file=/etc/kubernetes/pki/etcd/server.crt    # 指定 crt 文件
-    - --client-cert-auth=true
-    - --data-dir=/var/lib/etcd
-    - --initial-advertise-peer-urls=https://192.168.159.81:2380
-    - --initial-cluster=master0=https://192.168.159.81:2380
-    - --key-file=/etc/kubernetes/pki/etcd/server.key       # 指定 key 文件
-    - --listen-client-urls=https://127.0.0.1:2379,https://192.168.159.81:2379
-    - --listen-metrics-urls=http://127.0.0.1:2381
-    - --listen-peer-urls=https://192.168.159.81:2380
-    - --name=master0
-    - --peer-cert-file=/etc/kubernetes/pki/etcd/peer.crt
-    - --peer-client-cert-auth=true
-    - --peer-key-file=/etc/kubernetes/pki/etcd/peer.key
-    - --peer-trusted-ca-file=/etc/kubernetes/pki/etcd/ca.crt  # 指定证书文件
-    - --snapshot-count=10000
-    - --trusted-ca-file=/etc/kubernetes/pki/etcd/ca.crt
-</code></pre>
+    - --advertise-client-urls<span class="o">=</span>https://192.168.159.81:2379
+    - --cert-file<span class="o">=</span>/etc/kubernetes/pki/etcd/server.crt    <span class="c1"># 指定 crt 文件</span>
+    - --client-cert-auth<span class="o">=</span><span class="nb">true</span>
+    - --data-dir<span class="o">=</span>/var/lib/etcd
+    - --initial-advertise-peer-urls<span class="o">=</span>https://192.168.159.81:2380
+    - --initial-cluster<span class="o">=</span><span class="nv">master0</span><span class="o">=</span>https://192.168.159.81:2380
+    - --key-file<span class="o">=</span>/etc/kubernetes/pki/etcd/server.key       <span class="c1"># 指定 key 文件</span>
+    - --listen-client-urls<span class="o">=</span>https://127.0.0.1:2379,https://192.168.159.81:2379
+    - --listen-metrics-urls<span class="o">=</span>http://127.0.0.1:2381
+    - --listen-peer-urls<span class="o">=</span>https://192.168.159.81:2380
+    - --name<span class="o">=</span>master0
+    - --peer-cert-file<span class="o">=</span>/etc/kubernetes/pki/etcd/peer.crt
+    - --peer-client-cert-auth<span class="o">=</span><span class="nb">true</span>
+    - --peer-key-file<span class="o">=</span>/etc/kubernetes/pki/etcd/peer.key
+    - --peer-trusted-ca-file<span class="o">=</span>/etc/kubernetes/pki/etcd/ca.crt  <span class="c1"># 指定证书文件</span>
+    - --snapshot-count<span class="o">=</span><span class="m">10000</span>
+    - --trusted-ca-file<span class="o">=</span>/etc/kubernetes/pki/etcd/ca.crt
+</code></pre></div>
 <p>这个证书的路径根据题目提供的写就可以了</p>
 <p>备份:</p>
-<pre><code class="language-shell">apt  install etcd-client 
-export ETCDCTL_API=3 
+<div class="highlight"><pre><span></span><code>apt  install etcd-client 
+<span class="nb">export</span> <span class="nv">ETCDCTL_API</span><span class="o">=</span><span class="m">3</span> 
 mkdir /srv/data/
-etcdctl --endpoints=https://127.0.0.1:2379 \
-  --cacert=/etc/kubernetes/pki/etcd/ca.crt \
-  --cert=/etc/kubernetes/pki/etcd/server.crt \ 
-  --key=/etc/kubernetes/pki/etcd/server.key \
+etcdctl --endpoints<span class="o">=</span>https://127.0.0.1:2379 <span class="se">\</span>
+  --cacert<span class="o">=</span>/etc/kubernetes/pki/etcd/ca.crt <span class="se">\</span>
+  --cert<span class="o">=</span>/etc/kubernetes/pki/etcd/server.crt <span class="se">\ </span>
+  --key<span class="o">=</span>/etc/kubernetes/pki/etcd/server.key <span class="se">\</span>
   snapshot save /srv/data/etcd-snapshot.db
-
-</code></pre>
+</code></pre></div>
 <p>还原数据:
 配置文件可能不在原来的位置,可以通过以下的方式来查找</p>
 <p><img alt="" src="https://pic.imgdb.cn/item/6389f82e16f2c2beb1418df6.jpg" /></p>
 <p><img alt="" src="https://pic.imgdb.cn/item/6389f84916f2c2beb141c525.jpg" /></p>
 <p>模拟删除: (删除 pod 这样 etcd 的数据就会没有这个数据)</p>
-<p>模拟还原:</p>
-<pre><code class="language-shell">mv /etc/kubernetes/manifests /etc/kubernetes/manifests.bak
+<p>模拟还原:
+<div class="highlight"><pre><span></span><code>mv /etc/kubernetes/manifests /etc/kubernetes/manifests.bak
 
 
-export ETCDCTL_API=3 
+<span class="nb">export</span> <span class="nv">ETCDCTL_API</span><span class="o">=</span><span class="m">3</span> 
 
-etcdctl --endpoints=https://127.0.0.1:2379  --cacert=/etc/kubernetes/pki/etcd/ca.crt  --cert=/etc/kubernetes/pki/etcd/server.crt --key=/etc/kubernetes/pki/etcd/server.key snapshot restore /src/data/etcd-snapshot.db  --data-dir=/var/lib/etcd-restore  --skip-hash-check
+etcdctl --endpoints<span class="o">=</span>https://127.0.0.1:2379  --cacert<span class="o">=</span>/etc/kubernetes/pki/etcd/ca.crt  --cert<span class="o">=</span>/etc/kubernetes/pki/etcd/server.crt --key<span class="o">=</span>/etc/kubernetes/pki/etcd/server.key snapshot restore /src/data/etcd-snapshot.db  --data-dir<span class="o">=</span>/var/lib/etcd-restore  --skip-hash-check
 
 
 mv /etc/kubernetes/manifests.bak /etc/kubernetes/manifests
 systemctl restart kubelet
-
-</code></pre>
-<h2 id="16-k8s">16. k8s 升级</h2>
+</code></pre></div></p>
+<h2 id="16-k8s">16. k8s 升级<a class="headerlink" href="#16-k8s" title="Permanent link">&para;</a></h2>
 <p><img alt="" src="https://pic.imgdb.cn/item/638a113716f2c2beb172ddf3.jpg" /></p>
 <p>中文解释: </p>
 <p>仅需要升级 master 节点,和 kubelet,kubectl。不需要升级 etcd 等其他组件</p>
 <p>解题步骤:</p>
-<pre><code class="language-shell">$ k cordon master0
+<div class="highlight"><pre><span></span><code>$ k cordon master0
 $ k drain master0 --delete-emptydir-data --ignore-daemonsets --force
 
 之后需要按照题目提示 ssh 到一个 master 节点
 
 $ apt update
-$ apt-cache policy kubeadm | grep 1.19.0 # (注意版本的差异，有可能并非 1.18.8
-升级到 1.19) 
-$ apt-get install kubeadm=1.19.0-00
+$ apt-cache policy kubeadm <span class="p">|</span> grep <span class="m">1</span>.19.0 <span class="c1"># (注意版本的差异，有可能并非 1.18.8</span>
+升级到 <span class="m">1</span>.19<span class="o">)</span> 
+$ apt-get install <span class="nv">kubeadm</span><span class="o">=</span><span class="m">1</span>.19.0-00
 
 
-# 验证升级计划
+<span class="c1"># 验证升级计划</span>
 $ kubeadm upgrade plan
-# 看到如下信息，可升级到指定版本
+<span class="c1"># 看到如下信息，可升级到指定版本</span>
 You can now apply the upgrade by executing the following command:
 kubeadm upgrade apply v1.19.0
 
 开始升级 Master 节点
-kubeadm upgrade apply v1.20.9 --etcd-upgrade=false  # 注意这里不需要升级 etcd
+kubeadm upgrade apply v1.20.9 --etcd-upgrade<span class="o">=</span><span class="nb">false</span>  <span class="c1"># 注意这里不需要升级 etcd</span>
 
 升级kubelet和kubectl
-apt-get install -y kubelet=1.19.0-00 kubectl=1.19.0-00
+apt-get install -y <span class="nv">kubelet</span><span class="o">=</span><span class="m">1</span>.19.0-00 <span class="nv">kubectl</span><span class="o">=</span><span class="m">1</span>.19.0-00
 $ systemctl daemon-reload
 $ systemctl restart kubelet
 $ kubectl uncordon k8s-master
-
-</code></pre>
-<h2 id="17-kubelet">17. 集群故障排查 – kubelet 故障</h2>
+</code></pre></div>
+<h2 id="17-kubelet">17. 集群故障排查 – kubelet 故障<a class="headerlink" href="#17-kubelet" title="Permanent link">&para;</a></h2>
 <p><img alt="" src="https://pic.imgdb.cn/item/638a261016f2c2beb19c3246.jpg" /></p>
 <p>中文解释:</p>
 <p>一个名为 wk8s-node-0 的节点状态为 NotReady，让其他恢复至正常状态，并确认所有的更改开机自动完成</p>
-<pre><code class="language-shell">$ ssh wk8s-node-0
+<div class="highlight"><pre><span></span><code>$ ssh wk8s-node-0
 $ sudo -i 
-# systemctl status kubelet 
-# systemctl start kubelet
-# systemctl enable kubelet
-</code></pre>
-<h2 id="_1">变更题:</h2>
+<span class="c1"># systemctl status kubelet </span>
+<span class="c1"># systemctl start kubelet</span>
+<span class="c1"># systemctl enable kubelet</span>
+</code></pre></div>
+<h2 id="_1">变更题:<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p><img alt="" src="https://pic.imgdb.cn/item/639498b6b1fccdcd361e8c2a.jpg" /></p>
 <p>如果fubar没有打标签，需要打一个标签</p>
-<pre><code class="language-yaml">$ cat network-policy.yaml
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: allow-port-from-namespace
-  namespace: my-app
-spec:
-  egress:
-    - to:
-        - namespaceSelector:
-            matchLabels:
-              name: fubar
-      ports:
-        - protocol: TCP
-          port: 53
-  ingress:
-    - from:
-        - podSelector: {}
-      ports:
-        - protocol: TCP
-          port: 80
-  podSelector: {}
-  policyTypes:
-    - Ingress
-    - Egress
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ cat network-policy.yaml</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span><span class="w"></span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NetworkPolicy</span><span class="w"></span>
+<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">allow-port-from-namespace</span><span class="w"></span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-app</span><span class="w"></span>
+<span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">egress</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">to</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">namespaceSelector</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w"></span>
+<span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fubar</span><span class="w"></span>
+<span class="w">      </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span><span class="w"></span>
+<span class="w">          </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">53</span><span class="w"></span>
+<span class="w">  </span><span class="nt">ingress</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">from</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">podSelector</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span><span class="w"></span>
+<span class="w">      </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span><span class="w"></span>
+<span class="w">          </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span><span class="w"></span>
+<span class="w">  </span><span class="nt">podSelector</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span><span class="w"></span>
+<span class="w">  </span><span class="nt">policyTypes</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Egress</span><span class="w"></span>
+</code></pre></div>
 
 
 

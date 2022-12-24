@@ -1844,14 +1844,22 @@
 
   <h1>Ubuntu system</h1>
 
-<h2 id="_1"><strong>系统安装</strong></h2>
+<h2 id="_1"><strong>系统安装</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>正所谓不会装系统的运维就不是好运维的理念，下面介绍一下ubuntu系统安装</p>
-<p>!!! info "准备工作"
-    - 步骤一: 下载iso镜像
-        - 下载地址: https://mirrors.aliyun.com/ubuntu-releases/
-    - 步骤二: 制作系统盘
-        - 可以参考使用技巧中的Mac制作系统盘这篇文章
-    - 步骤三: 装就完事了</p>
+<div class="admonition info">
+<p class="admonition-title">准备工作</p>
+<ul>
+<li>步骤一: 下载iso镜像<ul>
+<li>下载地址: https://mirrors.aliyun.com/ubuntu-releases/</li>
+</ul>
+</li>
+<li>步骤二: 制作系统盘<ul>
+<li>可以参考使用技巧中的Mac制作系统盘这篇文章</li>
+</ul>
+</li>
+<li>步骤三: 装就完事了</li>
+</ul>
+</div>
 <p>1.1. 选择语言
 <img alt="第一步" src="https://pic.imgdb.cn/item/632d192516f2c2beb1185a77.png" /></p>
 <p>1.2. 选择键盘（本步骤直接默认按回车即可。）
@@ -1870,45 +1878,67 @@
 <img alt="第六步" src="https://pic.imgdb.cn/item/632d193416f2c2beb1186a90.png" /></p>
 <p>1.8. openssh server 切记要选择上 (<code>切记</code>)
 <img alt="第七步" src="https://pic.imgdb.cn/item/632d193416f2c2beb1186aa0.png" /></p>
-<h2 id="_2"><strong>系统初始化</strong></h2>
-<p>!!! tip "初始化步骤"
-    - 添加hosts信息</p>
-<pre><code>- 修改国内apt源
-    - 清华源
-    - 阿里源
-- 添加管理员用户
-    - 通常几个管理人员几个管理用户
-- 修改内核参数
-- 安装基础软件，gpu驱动
-- 安装docker
-    - 安装容器运行时
-- 安装kubernetes
-    - 安装指定kubeadm版本
-</code></pre>
+<h2 id="_2"><strong>系统初始化</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">初始化步骤</p>
+<ul>
+<li>
+<p>添加hosts信息</p>
+</li>
+<li>
+<p>修改国内apt源</p>
+<ul>
+<li>清华源</li>
+<li>阿里源</li>
+</ul>
+</li>
+<li>添加管理员用户<ul>
+<li>通常几个管理人员几个管理用户</li>
+</ul>
+</li>
+<li>修改内核参数</li>
+<li>安装基础软件，gpu驱动</li>
+<li>安装docker<ul>
+<li>安装容器运行时</li>
+</ul>
+</li>
+<li>安装kubernetes<ul>
+<li>安装指定kubeadm版本</li>
+</ul>
+</li>
+</ul>
+</div>
 <p>以上初始化可以通过跑ansible来实现，下面具体拆分来配置一下</p>
-<p>!!! warning "温馨提示"
-    - 以下操作系统版本是以最新的ubuntu22.04 为例子来演示</p>
-<h3 id="_3"><strong>更换国内源</strong></h3>
-<p>!!! info "ubuntu22.04 清华源"
-    - 需要注意一下，如果apt update 报错，就将https改成http
-    - 如果需要添加其他的版本的源可以访问: https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/
-    ```
-    # 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
-    deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse
-    # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse
-    deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse
-    # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse
-    deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse
-    # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse
-    deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-security main restricted universe multiverse
-    # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-security main restricted universe multiverse</p>
-<pre><code># 预发布软件源，不建议启用
+<div class="admonition warning">
+<p class="admonition-title">温馨提示</p>
+<ul>
+<li>以下操作系统版本是以最新的ubuntu22.04 为例子来演示</li>
+</ul>
+</div>
+<h3 id="_3"><strong>更换国内源</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<div class="admonition info">
+<p class="admonition-title">ubuntu22.04 清华源</p>
+<ul>
+<li>需要注意一下，如果apt update 报错，就将https改成http</li>
+<li>如果需要添加其他的版本的源可以访问: https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/
+<div class="highlight"><pre><span></span><code># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-security main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-security main restricted universe multiverse
+
+# 预发布软件源，不建议启用
 # deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse
 # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse
-```
-</code></pre>
-<h2 id="_4"><strong>安全</strong></h2>
-<h3 id="_5"><strong>五: 系统安全</strong></h3>
+</code></pre></div></li>
+</ul>
+</div>
+<h2 id="_4"><strong>安全</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="_5"><strong>五: 系统安全</strong><a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>通常在企业中，服务器会遭受外来的很多的恶意攻击，那么服务器的安全就显得格外的重要。首先肯定想到的是服务器的帐号和密码管理，通常的情况下会禁止root这样的管理员用户登陆，也会禁止密码这样的方式登陆。</p>
 <p><strong>原因:</strong></p>
 <ul>
@@ -1919,7 +1949,7 @@
 <p>禁止密码方式登陆也是为了安全考虑，毕竟密码丢失也是很平常的事情。推荐使用公钥的方式来登陆服务器。</p>
 </li>
 </ul>
-<h4 id="51-root-centosubuntu"><strong>5.1: 禁止root用户:</strong> （centos/ubuntu都适用）</h4>
+<h4 id="51-root-centosubuntu"><strong>5.1: 禁止root用户:</strong> （centos/ubuntu都适用）<a class="headerlink" href="#51-root-centosubuntu" title="Permanent link">&para;</a></h4>
 <ul>
 <li>可以修改<code>/etc/ssh/sshd_config</code>配置文件</li>
 <li>添加: <code>PermitRootLogin yes</code> 配置（一般情况下，在完成初始化就禁止root登陆了）<ul>
@@ -1930,65 +1960,75 @@
 <li>重新启动sshd服务。<code>systemctl restart sshd</code></li>
 <li>当然也可以加入系统初始化步骤中，略～</li>
 </ul>
-<h4 id="52"><strong>5.2: 密钥对来登陆服务器</strong></h4>
-<p>生成公钥和私钥</p>
-<pre><code class="language-shell">root@user:~# ssh-keygen   //一路回车
+<h4 id="52"><strong>5.2: 密钥对来登陆服务器</strong><a class="headerlink" href="#52" title="Permanent link">&para;</a></h4>
+<p>生成公钥和私钥
+<div class="highlight"><pre><span></span><code>root@user:~# ssh-keygen   //一路回车
 Generating public/private rsa key pair.
-Enter file in which to save the key (/root/.ssh/id_rsa):
-Enter passphrase (empty for no passphrase):
+Enter file <span class="k">in</span> which to save the key <span class="o">(</span>/root/.ssh/id_rsa<span class="o">)</span>:
+Enter passphrase <span class="o">(</span>empty <span class="k">for</span> no passphrase<span class="o">)</span>:
 Enter same passphrase again:
-Your identification has been saved in /root/.ssh/id_rsa
-Your public key has been saved in /root/.ssh/id_rsa.pub
+Your identification has been saved <span class="k">in</span> /root/.ssh/id_rsa
+Your public key has been saved <span class="k">in</span> /root/.ssh/id_rsa.pub
 The key fingerprint is:
 SHA256:J0s/ZHIRTj/UCcDQLHtxd5Qa0p3r2CYlcz7lPS7VaXU root@user
-The key's randomart image is:
-+---[RSA 3072]----+
-|        .=+.+o.o+|
-|        .o==.o++.|
-|         ooo+.o..|
-|        . .. = +E|
-|        S.=   X.B|
-|       . X   o @+|
-|        . o   * o|
-|           . . . |
-|              .  |
-+----[SHA256]-----+
-</code></pre>
+The key<span class="err">&#39;</span>s randomart image is:
++---<span class="o">[</span>RSA <span class="m">3072</span><span class="o">]</span>----+
+<span class="p">|</span>        .<span class="o">=</span>+.+o.o+<span class="p">|</span>
+<span class="p">|</span>        .o<span class="o">==</span>.o++.<span class="p">|</span>
+<span class="p">|</span>         ooo+.o..<span class="p">|</span>
+<span class="p">|</span>        . .. <span class="o">=</span> +E<span class="p">|</span>
+<span class="p">|</span>        S.<span class="o">=</span>   X.B<span class="p">|</span>
+<span class="p">|</span>       . X   o @+<span class="p">|</span>
+<span class="p">|</span>        . o   * o<span class="p">|</span>
+<span class="p">|</span>           . . . <span class="p">|</span>
+<span class="p">|</span>              .  <span class="p">|</span>
++----<span class="o">[</span>SHA256<span class="o">]</span>-----+
+</code></pre></div></p>
 <p>这个时候在.ssh目录下生成几个文件</p>
-<pre><code class="language-shell">root@user:~# ll .ssh/
-total 16
-drwx------ 2 root root 4096 Sep 20 09:46 ./
-drwx------ 5 root root 4096 Sep 20 09:35 ../
--rw------- 1 root root    0 May 24 15:30 authorized_keys  // 这个是授权文件
--rw------- 1 root root 2590 Sep 20 09:46 id_rsa         // 这个是私钥文件
--rw-r--r-- 1 root root  563 Sep 20 09:46 id_rsa.pub    //这个是公钥文件
-</code></pre>
+<div class="highlight"><pre><span></span><code>root@user:~# ll .ssh/
+total <span class="m">16</span>
+drwx------ <span class="m">2</span> root root <span class="m">4096</span> Sep <span class="m">20</span> <span class="m">09</span>:46 ./
+drwx------ <span class="m">5</span> root root <span class="m">4096</span> Sep <span class="m">20</span> <span class="m">09</span>:35 ../
+-rw------- <span class="m">1</span> root root    <span class="m">0</span> May <span class="m">24</span> <span class="m">15</span>:30 authorized_keys  // 这个是授权文件
+-rw------- <span class="m">1</span> root root <span class="m">2590</span> Sep <span class="m">20</span> <span class="m">09</span>:46 id_rsa         // 这个是私钥文件
+-rw-r--r-- <span class="m">1</span> root root  <span class="m">563</span> Sep <span class="m">20</span> <span class="m">09</span>:46 id_rsa.pub    //这个是公钥文件
+</code></pre></div>
 <p>将公钥加入user用户下: <code>.ssh/authorized_keys</code></p>
-<pre><code class="language-shell">root@user:/home/user# ls -a .ssh/
+<p><div class="highlight"><pre><span></span><code>root@user:/home/user# ls -a .ssh/
 .  ..  authorized_keys
 root@user:/home/user# cat .ssh/authorized_keys
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDwWSc73tyq4TAkXxt3rWmGggbpgdm+egc8mOSDu0hauuvPdieIe1qUbKsIKC1O93KyDPlsfP5gcwqdEmf5Di0S6CCxRh6ENyZ9mtN+s1pCDeHiKbjhPyG4o71tafIDOjhcbpEtCwPA0YTrp5i1oO466qYHeFmTCmkcDFhuEKZx78EZdTwbFH0vhOGTymLFgUVauzmd45ZxpTzaZHrd093nFHWg6FeZWk2axkDiijLALNxiAAaECn2S69y5SxXgKSqpe4Z25b2cKKySlM1lBv1eI7CSxAUoxuXSpcgoRiVUx5VgJwkixKvq8NpihYEkV5pFRjB8W0ssu1YF6d+3MlzOkwa+kir9JJlLq+F/rrBTfF2mCLBgg0KE+voDd8vjEkqSmweNs2gEO7Gi/fUEfcabNAOuNNPL2dhdFl+BH2TCofDYvZcWd8Wrl/0qoW5nbUdCaC7aznb0lpVgseB/gj6ah3adCzfA/W8S+1znD9VMHDdMNy+AN8eeQQ6d2t05SOc=
-</code></pre>
-<p>话不多说测试登陆</p>
-<pre><code class="language-shell">$ ssh user@172.30.42.244    //这是我们使用user用户登陆，就不需要密码了
-Welcome to Ubuntu 20.04.4 LTS (GNU/Linux 5.4.0-113-generic x86_64)
-</code></pre>
-<p>!!! tip "禁止用户密码登陆"
-    - 为了安全的考虑，我们需要关闭用户密码登陆的这种方式
-    <code>shell
-    PubkeyAuthentication yes    # 启用公告密钥配对认证方式 
-    RSAAuthentication yes       # 允许RSA密钥
-    PasswordAuthentication no   # 禁止密码验证登录,如果启用的话,RSA认证登录就没有意义了
-    PermitRootLogin no          # 禁用root账户登录，非必要，但为了安全性，请配置</code>
-    - 这样结合上一步骤，关闭用户账号密码验证方式，只采用密钥对会安全很多。</p>
-<p>!!! fail "SSH 无法登陆"
-    - 可以ping通但无法ssh
-    - ssh -v ip 无明显报错
-    - 考虑是否是服务端禁止客户端
-    - 在/etc/hosts.allow文件中加上  sshd: ALL ，重启sshd</p>
-<p>!!! info "修改网卡配置"</p>
-<pre><code>root@ubuntu:/home/ubuntu# cat /etc/netplan/00-installer-config.yaml
-# This is the network config written by 'subiquity'
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDwWSc73tyq4TAkXxt3rWmGggbpgdm+egc8mOSDu0hauuvPdieIe1qUbKsIKC1O93KyDPlsfP5gcwqdEmf5Di0S6CCxRh6ENyZ9mtN+s1pCDeHiKbjhPyG4o71tafIDOjhcbpEtCwPA0YTrp5i1oO466qYHeFmTCmkcDFhuEKZx78EZdTwbFH0vhOGTymLFgUVauzmd45ZxpTzaZHrd093nFHWg6FeZWk2axkDiijLALNxiAAaECn2S69y5SxXgKSqpe4Z25b2cKKySlM1lBv1eI7CSxAUoxuXSpcgoRiVUx5VgJwkixKvq8NpihYEkV5pFRjB8W0ssu1YF6d+3MlzOkwa+kir9JJlLq+F/rrBTfF2mCLBgg0KE+voDd8vjEkqSmweNs2gEO7Gi/fUEfcabNAOuNNPL2dhdFl+BH2TCofDYvZcWd8Wrl/0qoW5nbUdCaC7aznb0lpVgseB/gj6ah3adCzfA/W8S+1znD9VMHDdMNy+AN8eeQQ6d2t05SOc<span class="o">=</span>
+</code></pre></div>
+话不多说测试登陆</p>
+<div class="highlight"><pre><span></span><code>$ ssh user@172.30.42.244    //这是我们使用user用户登陆，就不需要密码了
+Welcome to Ubuntu <span class="m">20</span>.04.4 LTS <span class="o">(</span>GNU/Linux <span class="m">5</span>.4.0-113-generic x86_64<span class="o">)</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">禁止用户密码登陆</p>
+<ul>
+<li>为了安全的考虑，我们需要关闭用户密码登陆的这种方式
+<div class="highlight"><pre><span></span><code>PubkeyAuthentication yes    <span class="c1"># 启用公告密钥配对认证方式 </span>
+RSAAuthentication yes       <span class="c1"># 允许RSA密钥</span>
+PasswordAuthentication no   <span class="c1"># 禁止密码验证登录,如果启用的话,RSA认证登录就没有意义了</span>
+PermitRootLogin no          <span class="c1"># 禁用root账户登录，非必要，但为了安全性，请配置</span>
+</code></pre></div></li>
+<li>这样结合上一步骤，关闭用户账号密码验证方式，只采用密钥对会安全很多。</li>
+</ul>
+</div>
+<div class="admonition fail">
+<p class="admonition-title">SSH 无法登陆</p>
+<ul>
+<li>可以ping通但无法ssh</li>
+<li>ssh -v ip 无明显报错</li>
+<li>考虑是否是服务端禁止客户端</li>
+<li>在/etc/hosts.allow文件中加上  sshd: ALL ，重启sshd</li>
+</ul>
+</div>
+<div class="admonition info">
+<p class="admonition-title">修改网卡配置</p>
+</div>
+<div class="highlight"><pre><span></span><code>root@ubuntu:/home/ubuntu# cat /etc/netplan/00-installer-config.yaml
+# This is the network config written by &#39;subiquity&#39;
 network:
   ethernets:
     ens18:
@@ -2001,16 +2041,18 @@ network:
         search:
         - 202.106.46.151
   version: 2
-</code></pre>
-<p>!!! info "清除内核缓存"
-    https://www.tecmint.com/clear-ram-memory-cache-buffer-and-swap-space-on-linux/</p>
-<h2 id="ubuntu"><strong>Ubuntu 系统管理 &amp;&amp; 安装及管理程序:</strong></h2>
-<h3 id="dpkg"><strong>dpkg 包安装</strong></h3>
-<h4 id="1"><strong>（1）格式</strong></h4>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">清除内核缓存</p>
+<p>https://www.tecmint.com/clear-ram-memory-cache-buffer-and-swap-space-on-linux/</p>
+</div>
+<h2 id="ubuntu"><strong>Ubuntu 系统管理 &amp;&amp; 安装及管理程序:</strong><a class="headerlink" href="#ubuntu" title="Permanent link">&para;</a></h2>
+<h3 id="dpkg"><strong>dpkg 包安装</strong><a class="headerlink" href="#dpkg" title="Permanent link">&para;</a></h3>
+<h4 id="1"><strong>（1）格式</strong><a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
 <ul>
 <li>dpkg [选项] 包文件</li>
 </ul>
-<h4 id="2"><strong>（2）用法</strong></h4>
+<h4 id="2"><strong>（2）用法</strong><a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
 <tr>
@@ -2041,22 +2083,22 @@ network:
 </tr>
 </tbody>
 </table>
-<h4 id="3"><strong>（3）辅助选项</strong></h4>
+<h4 id="3"><strong>（3）辅助选项</strong><a class="headerlink" href="#3" title="Permanent link">&para;</a></h4>
 <p>--force-all  强制安装一个包(忽略依赖及其它问题)</p>
-<h3 id="apt"><strong>apt 包安装 卸载</strong></h3>
-<h4 id="1_1"><strong>（1）格式</strong></h4>
+<h3 id="apt"><strong>apt 包安装 卸载</strong><a class="headerlink" href="#apt" title="Permanent link">&para;</a></h3>
+<h4 id="1_1"><strong>（1）格式</strong><a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h4>
 <p>apt [options] [command] [package ...]</p>
-<h4 id="2_1"><strong>（2）用法</strong></h4>
+<h4 id="2_1"><strong>（2）用法</strong><a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h4>
 <p>apt install -y  package_name  //安装</p>
 <p>apt remove  package_name   //卸载</p>
 <p>apt update  //列出所有可更新的软件清单命令</p>
-<h4 id="3_1"><strong>（3）案例</strong></h4>
-<pre><code class="language-shell">// 过滤出来以rc开头和nvidia的包并卸载
-dpkg -l |grep nvidia |grep &quot;^rc&quot; |awk '{print $2}' |grep -E 'nvidia' | xargs dpkg  --purge
+<h4 id="3_1"><strong>（3）案例</strong><a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>// 过滤出来以rc开头和nvidia的包并卸载
+dpkg -l <span class="p">|</span>grep nvidia <span class="p">|</span>grep <span class="s2">&quot;^rc&quot;</span> <span class="p">|</span>awk <span class="s1">&#39;{print $2}&#39;</span> <span class="p">|</span>grep -E <span class="s1">&#39;nvidia&#39;</span> <span class="p">|</span> xargs dpkg  --purge
 
-dpkg -l |grep nvidia |grep &quot;^ii&quot; |awk '{print $2}' |grep -E '^nvidia' | xargs dpkg --force-all  -r
-</code></pre>
-<h4 id="_6"><strong>附件:</strong></h4>
+dpkg -l <span class="p">|</span>grep nvidia <span class="p">|</span>grep <span class="s2">&quot;^ii&quot;</span> <span class="p">|</span>awk <span class="s1">&#39;{print $2}&#39;</span> <span class="p">|</span>grep -E <span class="s1">&#39;^nvidia&#39;</span> <span class="p">|</span> xargs dpkg --force-all  -r
+</code></pre></div>
+<h4 id="_6"><strong>附件:</strong><a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <ul>
 <li>文章地址: <a href="https://www.cnblogs.com/mefj/p/14964416.html">ubuntu安装参考:</a> </li>
 </ul>

@@ -1851,55 +1851,60 @@
   </a>
 
 
-<h1 id="k8s">k8s集群部署</h1>
-<h2 id="kubeadm">kubeadm 创建集群</h2>
-<p>!!! tip "注意以下是centos搭建"</p>
-<h3 id="_1">集群初始化</h3>
-<pre><code class="language-shell"># 将 SELinux 设置为 permissive 模式（相当于将其禁用）
-sudo setenforce 0
-sudo sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
+<h1 id="k8s">k8s集群部署<a class="headerlink" href="#k8s" title="Permanent link">&para;</a></h1>
+<h2 id="kubeadm">kubeadm 创建集群<a class="headerlink" href="#kubeadm" title="Permanent link">&para;</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">注意以下是centos搭建</p>
+</div>
+<h3 id="_1">集群初始化<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 将 SELinux 设置为 permissive 模式（相当于将其禁用）</span>
+sudo setenforce <span class="m">0</span>
+sudo sed -i <span class="s1">&#39;s/^SELINUX=enforcing$/SELINUX=permissive/&#39;</span> /etc/selinux/config
 
-#关闭swap
+<span class="c1">#关闭swap</span>
 swapoff -a  
-sed -ri 's/.*swap.*/#&amp;/' /etc/fstab
+sed -ri <span class="s1">&#39;s/.*swap.*/#&amp;/&#39;</span> /etc/fstab
 
-#允许 iptables 检查桥接流量
-cat &lt;&lt;EOF | sudo tee /etc/modules-load.d/k8s.conf
-br_netfilter
-EOF
+<span class="c1">#允许 iptables 检查桥接流量</span>
+cat <span class="s">&lt;&lt;EOF | sudo tee /etc/modules-load.d/k8s.conf</span>
+<span class="s">br_netfilter</span>
+<span class="s">EOF</span>
 
-cat &lt;&lt;EOF | sudo tee /etc/sysctl.d/k8s.conf
-net.bridge.bridge-nf-call-ip6tables = 1
-net.bridge.bridge-nf-call-iptables = 1
-EOF
+cat <span class="s">&lt;&lt;EOF | sudo tee /etc/sysctl.d/k8s.conf</span>
+<span class="s">net.bridge.bridge-nf-call-ip6tables = 1</span>
+<span class="s">net.bridge.bridge-nf-call-iptables = 1</span>
+<span class="s">EOF</span>
 sudo sysctl --system
-</code></pre>
-<p>安装kubelet、kubeadm、kubectl</p>
-<pre><code class="language-shell">cat &lt;&lt;EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
-[kubernetes]
-name=Kubernetes
-baseurl=http://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64
-enabled=1
-gpgcheck=0
-repo_gpgcheck=0
-gpgkey=http://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg
-   http://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
-exclude=kubelet kubeadm kubectl
-EOF
+</code></pre></div>
+<p>安装kubelet、kubeadm、kubectl
+<div class="highlight"><pre><span></span><code>cat <span class="s">&lt;&lt;EOF | sudo tee /etc/yum.repos.d/kubernetes.repo</span>
+<span class="s">[kubernetes]</span>
+<span class="s">name=Kubernetes</span>
+<span class="s">baseurl=http://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64</span>
+<span class="s">enabled=1</span>
+<span class="s">gpgcheck=0</span>
+<span class="s">repo_gpgcheck=0</span>
+<span class="s">gpgkey=http://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg</span>
+<span class="s">   http://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg</span>
+<span class="s">exclude=kubelet kubeadm kubectl</span>
+<span class="s">EOF</span>
 
-sudo yum install -y kubelet-1.20.9 kubeadm-1.20.9 kubectl-1.20.9 --disableexcludes=kubernetes
+sudo yum install -y kubelet-1.20.9 kubeadm-1.20.9 kubectl-1.20.9 --disableexcludes<span class="o">=</span>kubernetes
 
-# 所有节点
+<span class="c1"># 所有节点</span>
 
-sudo systemctl enable --now kubelet
-
-</code></pre>
-<p>!!! info "温馨提示"
-    - kubelet 现在每隔几秒就会重启，因为它陷入了一个等待 kubeadm 指令的死循环</p>
+sudo systemctl <span class="nb">enable</span> --now kubelet
+</code></pre></div></p>
+<div class="admonition info">
+<p class="admonition-title">温馨提示</p>
+<ul>
+<li>kubelet 现在每隔几秒就会重启，因为它陷入了一个等待 kubeadm 指令的死循环</li>
+</ul>
+</div>
 <p>查看kubeadm的版本，并拉取该版本的images</p>
-<pre><code>kubeadm config images list  --kubernetes-version v1.20.9 &gt; k8s.images
+<p><div class="highlight"><pre><span></span><code>kubeadm config images list  --kubernetes-version v1.20.9 &gt; k8s.images
 
-root@ubuntu:/home/ubuntu/script# cat k8s.images |awk -F'/' '{print $2}'
+root@ubuntu:/home/ubuntu/script# cat k8s.images |awk -F&#39;/&#39; &#39;{print $2}&#39;
 kube-apiserver:v1.20.9
 kube-controller-manager:v1.20.9
 kube-scheduler:v1.20.9
@@ -1907,11 +1912,11 @@ kube-proxy:v1.20.9
 pause:3.2
 etcd:3.4.13-0
 coredns:1.7.0
-</code></pre>
-<p>脚本下载镜像</p>
-<pre><code>root@ubuntu:/home/ubuntu/script# cat ubuntu-k8s-images.sh
+</code></pre></div>
+脚本下载镜像
+<div class="highlight"><pre><span></span><code>root@ubuntu:/home/ubuntu/script# cat ubuntu-k8s-images.sh
 #!/bin/bash
-images='
+images=&#39;
 kube-apiserver:v1.20.9
 kube-controller-manager:v1.20.9
 kube-scheduler:v1.20.9
@@ -1919,14 +1924,14 @@ kube-proxy:v1.20.9
 pause:3.2
 etcd:3.4.13-0
 coredns:1.7.0
-'
+&#39;
 
 for i in $images ; do
 docker pull registry.aliyuncs.com/google_containers/$i
 done
-</code></pre>
-<p>初始化master节点：</p>
-<pre><code>#所有机器添加master域名映射，以下需要修改为自己的
+</code></pre></div></p>
+<p>初始化master节点：
+<div class="highlight"><pre><span></span><code>#所有机器添加master域名映射，以下需要修改为自己的
 echo &quot;192.168.8.70  cluster-endpoint&quot; &gt;&gt; /etc/hosts
 
 
@@ -1941,61 +1946,81 @@ kubeadm init \
 --pod-network-cidr=172.16.0.0/16
 
 #所有网络范围不重叠
-</code></pre>
+</code></pre></div></p>
 <p>初始化发现所有状态都是<code>NotReady</code>安装网络组件: <a href="https://projectcalico.docs.tigera.io/getting-started/kubernetes/quickstart">calico</a></p>
-<h3 id="node">Node节点加入集群</h3>
-<p>!!! warning 
-    - 新令牌,默认的令牌24小时候失效
-    kubeadm token create --print-join-command  </p>
-<h3 id="mac">Mac连接集群报错</h3>
-<p>!!! error "Mac 连接k8s集群报错"
-    - x509: certificate signed by unknown authority
-    - 创建集群的时候没有执行外网地址.导致证书不能正常使用
-    - 将 master 的外网地址和主机名解析到本地 hosts</p>
-<h3 id="k8s_1">清理k8s集群</h3>
-<p>!!! success</p>
-<pre><code>[root@k8s-master ~]# kubeadm reset
+<h3 id="node">Node节点加入集群<a class="headerlink" href="#node" title="Permanent link">&para;</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li>新令牌,默认的令牌24小时候失效
+kubeadm token create --print-join-command  </li>
+</ul>
+</div>
+<h3 id="mac">Mac连接集群报错<a class="headerlink" href="#mac" title="Permanent link">&para;</a></h3>
+<div class="admonition error">
+<p class="admonition-title">Mac 连接k8s集群报错</p>
+<ul>
+<li>x509: certificate signed by unknown authority</li>
+<li>创建集群的时候没有执行外网地址.导致证书不能正常使用</li>
+<li>将 master 的外网地址和主机名解析到本地 hosts</li>
+</ul>
+</div>
+<h3 id="k8s_1">清理k8s集群<a class="headerlink" href="#k8s_1" title="Permanent link">&para;</a></h3>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+</div>
+<div class="highlight"><pre><span></span><code>[root@k8s-master ~]# kubeadm reset
 [root@k8s-master ~]# kubectl delete node 192.168.200.112
 
 [root@k8s-node01 ~]# docker rm -f $(docker ps -aq)
 [root@k8s-node01 ~]# systemctl stop kubelet
 [root@k8s-node01 ~]# rm -rf /etc/kubernetes/*
 [root@k8s-node01 ~]# rm -rf /var/lib/kubelet/*
-</code></pre>
-<h3 id="_2">报错解决</h3>
-<p>在使用k8s的过程中，经常会遇到集群出问题，那么可以通过以下命令来查看kubelet 日志，解决问题。</p>
-<pre><code class="language-shell">[cka] root@node1:/home/lixie# journalctl -u kubelet -f   //绝大部分的错误都需要看日志来解决
-</code></pre>
-<h3 id="namespace">强制删除namespace</h3>
-<p>!!! info "delete namespace"</p>
-<pre><code class="language-yaml">打开一个新窗口：root@master30:~# kubectl proxy --port=8001
-方法二
+</code></pre></div>
+<h3 id="_2">报错解决<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>在使用k8s的过程中，经常会遇到集群出问题，那么可以通过以下命令来查看kubelet 日志，解决问题。
+<div class="highlight"><pre><span></span><code><span class="o">[</span>cka<span class="o">]</span> root@node1:/home/lixie# journalctl -u kubelet -f   //绝大部分的错误都需要看日志来解决
+</code></pre></div></p>
+<h3 id="namespace">强制删除namespace<a class="headerlink" href="#namespace" title="Permanent link">&para;</a></h3>
+<div class="admonition info">
+<p class="admonition-title">delete namespace</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">打开一个新窗口：root@master30:~# kubectl proxy --port=8001</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">方法二</span><span class="w"></span>
 
-$ NAMESPACE_NAME=rook-ceph
-cat &lt;&lt;EOF | curl -X PUT \
-  127.0.0.1:8001/api/v1/namespaces/$NAMESPACE_NAME/finalize \
-  -H &quot;Content-Type: application/json&quot; \
-  --data-binary @-
-{
-  &quot;kind&quot;: &quot;Namespace&quot;,
-  &quot;apiVersion&quot;: &quot;v1&quot;,
-  &quot;metadata&quot;: {
-    &quot;name&quot;: &quot;$NAMESPACE_NAME&quot;
-  },
-  &quot;spec&quot;: {
-    &quot;finalizers&quot;: null
-  }
-}
-EOF
-</code></pre>
-<p>!!! error "System OOM encountered"
-    - 两种OOM（进程OOM，容器OOM）发生后，都可能会伴随一个系统OOM事件，该事件的原因是由上述OOM事件伴随导致。
-    - 需要解决上面进程OOM或者容器CgroupOOM的问题，文章参考: <a href="https://caryyu.top/posts/%E8%AE%BA%E4%B8%80%E6%AC%A1-K8S-%E7%9A%84-Worker-%E8%8A%82%E7%82%B9%E4%BF%AE%E5%A4%8D%E7%BB%8F%E5%8E%86/">解决OOM</a></p>
-<h3 id="_3">小技巧</h3>
-<p>!!! info "小技巧"
-    - Mac 管理kubernetes，合并yaml 
-    - https://aisensiy.me/kubeconfig-management
-    - 可以通过journalctl -xeu kubelet 来查看日志</p>
+<span class="l l-Scalar l-Scalar-Plain">$ NAMESPACE_NAME=rook-ceph</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">cat &lt;&lt;EOF | curl -X PUT \</span><span class="w"></span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">127.0.0.1:8001/api/v1/namespaces/$NAMESPACE_NAME/finalize \</span><span class="w"></span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">-H &quot;Content-Type</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">application/json&quot; \</span><span class="w"></span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">--data-binary @-</span><span class="w"></span>
+<span class="p p-Indicator">{</span><span class="w"></span>
+<span class="w">  </span><span class="s">&quot;kind&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Namespace&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
+<span class="w">  </span><span class="s">&quot;apiVersion&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;v1&quot;</span><span class="p p-Indicator">,</span><span class="w"></span>
+<span class="w">  </span><span class="s">&quot;metadata&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;$NAMESPACE_NAME&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">},</span><span class="w"></span>
+<span class="w">  </span><span class="s">&quot;spec&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;finalizers&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">}</span><span class="w"></span>
+<span class="p p-Indicator">}</span><span class="w"></span>
+<span class="l l-Scalar l-Scalar-Plain">EOF</span><span class="w"></span>
+</code></pre></div>
+<div class="admonition error">
+<p class="admonition-title">System OOM encountered</p>
+<ul>
+<li>两种OOM（进程OOM，容器OOM）发生后，都可能会伴随一个系统OOM事件，该事件的原因是由上述OOM事件伴随导致。</li>
+<li>需要解决上面进程OOM或者容器CgroupOOM的问题，文章参考: <a href="https://caryyu.top/posts/%E8%AE%BA%E4%B8%80%E6%AC%A1-K8S-%E7%9A%84-Worker-%E8%8A%82%E7%82%B9%E4%BF%AE%E5%A4%8D%E7%BB%8F%E5%8E%86/">解决OOM</a></li>
+</ul>
+</div>
+<h3 id="_3">小技巧<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<div class="admonition info">
+<p class="admonition-title">小技巧</p>
+<ul>
+<li>Mac 管理kubernetes，合并yaml </li>
+<li>https://aisensiy.me/kubeconfig-management</li>
+<li>可以通过journalctl -xeu kubelet 来查看日志</li>
+</ul>
+</div>
 
 
 

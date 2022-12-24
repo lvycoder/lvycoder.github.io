@@ -1793,19 +1793,23 @@
 
   <h1>Github</h1>
 
-<h3 id="github"><strong>认识 Github:</strong></h3>
+<h3 id="github"><strong>认识 Github:</strong><a class="headerlink" href="#github" title="Permanent link">&para;</a></h3>
 <p>Github顾名思义是一个Git版本库的托管服务，是目前全球最大的软件仓库，拥有上百万的开发者用户，也是软件开发和寻找资源的最佳途径，Github不仅可以托管各种Git版本仓库，还拥有了更美观的Web界面，您的代码文件可以被任何人克隆，使得开发者为开源项贡献代码变得更加容易，当然也可以付费购买私有库，这样高性价比的私有库真的是帮助到了很多团队和企业。</p>
 <p><img alt="" src="https://pic1.imgdb.cn/item/6333f08a16f2c2beb101796d.png" /></p>
-<h3 id="github_1"><strong>一、注册Github帐号</strong></h3>
+<h3 id="github_1"><strong>一、注册Github帐号</strong><a class="headerlink" href="#github_1" title="Permanent link">&para;</a></h3>
 <p>1.1. 进入github的官网: https://github.com/</p>
 <p><img alt="" src="https://pic1.imgdb.cn/item/63342d7b16f2c2beb141f07e.png" /></p>
 <p>1.2. 点击注册账号
 <img alt="" src="https://pic1.imgdb.cn/item/63342e0216f2c2beb1426bdc.png" /></p>
-<p>!!! warning "温馨提示"
-    - 用户昵称，建议用有特色自己的，而且不要太长，要好记，以后对创建仓库有很大的帮助。
-    - 电子邮箱地址，填写你常用的，不要乱填，一会是要发激活链接到你邮箱的。
-    - 用户密码，确保至少15个字符或至少8个字符（ 包括数字 和小写字母）
-    - 输入完会有一个人机验证，你只需把图片矫正即可。</p>
+<div class="admonition warning">
+<p class="admonition-title">温馨提示</p>
+<ul>
+<li>用户昵称，建议用有特色自己的，而且不要太长，要好记，以后对创建仓库有很大的帮助。</li>
+<li>电子邮箱地址，填写你常用的，不要乱填，一会是要发激活链接到你邮箱的。</li>
+<li>用户密码，确保至少15个字符或至少8个字符（ 包括数字 和小写字母）</li>
+<li>输入完会有一个人机验证，你只需把图片矫正即可。</li>
+</ul>
+</div>
 <p><img alt="" src="https://pic1.imgdb.cn/item/63342faa16f2c2beb14409e4.png" /></p>
 <p>1.3. 选择个人版</p>
 <p><img alt="" src="https://pic1.imgdb.cn/item/633430f716f2c2beb1457fb1.jpg" /></p>
@@ -1814,18 +1818,22 @@
 <p>1.5.验证邮箱</p>
 <p><img alt="" src="https://pic1.imgdb.cn/item/633430a116f2c2beb145215a.png" /></p>
 <p>到这里基本就完成了对github帐号的注册。</p>
-<h3 id="_1"><strong>二、创建仓库</strong></h3>
+<h3 id="_1"><strong>二、创建仓库</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
 <p>2.1. 新建一个公共仓库
 <img alt="" src="https://pic1.imgdb.cn/item/633431fe16f2c2beb146951d.png" /></p>
 <p>2.2. 初始化仓库
 <img alt="" src="https://pic1.imgdb.cn/item/6334322716f2c2beb146bb1c.png" /></p>
-<h3 id="_2"><strong>三、提交代码</strong></h3>
-<p>!!! tip "Github 提交 pr"
-    - 代码commit规约: https://www.conventionalcommits.org/zh-hans/v1.0.0/</p>
-<pre><code class="language-shell">git checkout -b lixie   //切换到lixie分支
+<h3 id="_2"><strong>三、提交代码</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<div class="admonition tip">
+<p class="admonition-title">Github 提交 pr</p>
+<ul>
+<li>代码commit规约: https://www.conventionalcommits.org/zh-hans/v1.0.0/</li>
+</ul>
+</div>
+<div class="highlight"><pre><span></span><code>git checkout -b lixie   //切换到lixie分支
 git add .
 git status   // 查看暂存区提交的内容
-git commit -m &quot;feat(ssh): add lixie for sjtu&quot; 
+git commit -m <span class="s2">&quot;feat(ssh): add lixie for sjtu&quot;</span> 
 git branch
 git remote
 origin
@@ -1835,10 +1843,10 @@ git push origin lixie  //将代码上传远程lixie分支
 git rebase origin/master
 git push origin lixie
 git push origin lixie  -f 强制提交到lixie分区
-</code></pre>
-<h3 id="_3"><strong>四、配置公钥</strong></h3>
-<p>4.1. 生成密钥对</p>
-<pre><code>root@a100-1:/home/lixie# ssh-keygen   //一路回车
+</code></pre></div>
+<h3 id="_3"><strong>四、配置公钥</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>4.1. 生成密钥对
+<div class="highlight"><pre><span></span><code>root@a100-1:/home/lixie# ssh-keygen   //一路回车
 Generating public/private rsa key pair.
 Enter file in which to save the key (/root/.ssh/id_rsa):
 Enter passphrase (empty for no passphrase):
@@ -1847,7 +1855,7 @@ Your identification has been saved in /root/.ssh/id_rsa
 Your public key has been saved in /root/.ssh/id_rsa.pub
 The key fingerprint is:
 SHA256:a92LUGI9FIkRl7wUlOVKqh3Xtsigo2XkG8iau0JKHUE root@a100-1
-The key's randomart image is:
+The key&#39;s randomart image is:
 +---[RSA 3072]----+
 |  .E    o*=*.    |
 |   .    ..*o     |
@@ -1863,15 +1871,19 @@ The key's randomart image is:
 // 家目录下就会生成几个文件
 root@a100-1:~# ls .ssh/
 authorized_keys  id_rsa  id_rsa.pub
-</code></pre>
-<p>4.2. 将公钥上传到github
+</code></pre></div>
+4.2. 将公钥上传到github
 <img alt="" src="https://pic1.imgdb.cn/item/6335458216f2c2beb1320354.jpg" /></p>
 <p>需要给公钥起一个名称，复制自己刚刚创建的公钥
 <img alt="" src="https://pic1.imgdb.cn/item/633545ea16f2c2beb132741b.jpg" /></p>
 <p>上传完成之后，就不需要提交的时候再输入密码验证了。windows也类似可以自行百度。</p>
-<p>!!! note "windows 使用git"
-    - 网站地址: https://git-for-windows.github.io
-    - 下载地址: https://github.com/git-for-windows/git/releases/download/v2.22.0.windows.1/Git-2.22.0-64-bit.exe </p>
+<div class="admonition note">
+<p class="admonition-title">windows 使用git</p>
+<ul>
+<li>网站地址: https://git-for-windows.github.io</li>
+<li>下载地址: https://github.com/git-for-windows/git/releases/download/v2.22.0.windows.1/Git-2.22.0-64-bit.exe </li>
+</ul>
+</div>
 
 
 

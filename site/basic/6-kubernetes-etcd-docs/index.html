@@ -1782,7 +1782,7 @@
 <p>官网: https://etcd.io/</p>
 <p>Github地址: https://github.com/etcd-io/etcd</p>
 <p><img alt="" src="https://pic.imgdb.cn/item/63a49d2f08b68301634b3f0a.jpg" /></p>
-<h2 id="etcd">ETCD 特性:</h2>
+<h2 id="etcd">ETCD 特性:<a class="headerlink" href="#etcd" title="Permanent link">&para;</a></h2>
 <p><img alt="" src="https://pic.imgdb.cn/item/63a49e7408b68301634c8022.jpg" /></p>
 <ul>
 <li>完全复制: 集群中的每个节点都可以使用完整的存档</li>
@@ -1793,82 +1793,83 @@
 <li>快速: 每秒一万次写入的基准速度</li>
 <li>可靠: 使用Raft算法实现存储的合理分布在etcd的工作原理</li>
 </ul>
-<h2 id="_1">硬件推荐</h2>
+<h2 id="_1">硬件推荐<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>ETCD 主要考虑内存，CPU，磁盘</p>
 <p>官网硬件(推荐): https://etcd.io/docs/v3.5/op-guide/hardware/</p>
-<p>!!! warning "温馨提示"
-    官方提供的硬件有些过于保守，正式的生产环境最好高于官方推荐的1.5-2倍比较合理</p>
+<div class="admonition warning">
+<p class="admonition-title">温馨提示</p>
+<p>官方提供的硬件有些过于保守，正式的生产环境最好高于官方推荐的1.5-2倍比较合理</p>
+</div>
 <p><img alt="" src="https://pic.imgdb.cn/item/63a51b7308b6830163c7130c.jpg" /></p>
 <p><img alt="" src="https://pic.imgdb.cn/item/63a51ba608b6830163c75744.jpg" /></p>
-<h2 id="etcd_1">ETCD 客户端使用</h2>
-<pre><code class="language-shell">root@m1-pre:~# etcdctl member list
-4469cb53324fe68b, started, etcd-192.168.1.102, https://192.168.1.102:2380, https://192.168.1.102:2379, false
-9f5e0acc1f346641, started, etcd-192.168.1.101, https://192.168.1.101:2380, https://192.168.1.101:2379, false
-e519401c4b995768, started, etcd-192.168.1.103, https://192.168.1.103:2380, https://192.168.1.103:2379, false
-</code></pre>
-<p>验证当前所有ETCD成员状态</p>
-<pre><code class="language-shell">root@m1-pre:~# export NODE_IPS=&quot;192.168.1.101 192.168.1.102 192.168.1.103&quot;
-root@m1-pre:~# for ip in ${NODE_IPS};do ETCDCTL_API=3 /usr/bin/etcdctl --endpoints=https://${ip}:2379 --cacert=/etc/kubernetes/ssl/ca.pem --cert=/etc/kubernetes/ssl/etcd.pem --key=/etc/kubernetes/ssl/etcd-key.pem endpoint health;done
-https://192.168.1.101:2379 is healthy: successfully committed proposal: took = 17.871745ms
-https://192.168.1.102:2379 is healthy: successfully committed proposal: took = 12.499902ms
-https://192.168.1.103:2379 is healthy: successfully committed proposal: took = 10.525834ms
-</code></pre>
+<h2 id="etcd_1">ETCD 客户端使用<a class="headerlink" href="#etcd_1" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>root@m1-pre:~# etcdctl member list
+4469cb53324fe68b, started, etcd-192.168.1.102, https://192.168.1.102:2380, https://192.168.1.102:2379, <span class="nb">false</span>
+9f5e0acc1f346641, started, etcd-192.168.1.101, https://192.168.1.101:2380, https://192.168.1.101:2379, <span class="nb">false</span>
+e519401c4b995768, started, etcd-192.168.1.103, https://192.168.1.103:2380, https://192.168.1.103:2379, <span class="nb">false</span>
+</code></pre></div>
+<p>验证当前所有ETCD成员状态
+<div class="highlight"><pre><span></span><code>root@m1-pre:~# <span class="nb">export</span> <span class="nv">NODE_IPS</span><span class="o">=</span><span class="s2">&quot;192.168.1.101 192.168.1.102 192.168.1.103&quot;</span>
+root@m1-pre:~# <span class="k">for</span> ip <span class="k">in</span> <span class="si">${</span><span class="nv">NODE_IPS</span><span class="si">}</span><span class="p">;</span><span class="k">do</span> <span class="nv">ETCDCTL_API</span><span class="o">=</span><span class="m">3</span> /usr/bin/etcdctl --endpoints<span class="o">=</span>https://<span class="si">${</span><span class="nv">ip</span><span class="si">}</span>:2379 --cacert<span class="o">=</span>/etc/kubernetes/ssl/ca.pem --cert<span class="o">=</span>/etc/kubernetes/ssl/etcd.pem --key<span class="o">=</span>/etc/kubernetes/ssl/etcd-key.pem endpoint health<span class="p">;</span><span class="k">done</span>
+https://192.168.1.101:2379 is healthy: successfully committed proposal: <span class="nv">took</span> <span class="o">=</span> <span class="m">17</span>.871745ms
+https://192.168.1.102:2379 is healthy: successfully committed proposal: <span class="nv">took</span> <span class="o">=</span> <span class="m">12</span>.499902ms
+https://192.168.1.103:2379 is healthy: successfully committed proposal: <span class="nv">took</span> <span class="o">=</span> <span class="m">10</span>.525834ms
+</code></pre></div></p>
 <p>显示详细信息</p>
-<pre><code class="language-shell">root@m1-pre:~# for ip in ${NODE_IPS};do ETCDCTL_API=3 /usr/bin/etcdctl --write-out=table endpoint status  --endpoints=https://${ip}:2379 --cacert=/etc/kubernetes/ssl/ca.pem --cert=/etc/kubernetes/ssl/etcd.pem --key=/etc/kubernetes/ssl/etcd-key.pem;done
+<div class="highlight"><pre><span></span><code>root@m1-pre:~# <span class="k">for</span> ip <span class="k">in</span> <span class="si">${</span><span class="nv">NODE_IPS</span><span class="si">}</span><span class="p">;</span><span class="k">do</span> <span class="nv">ETCDCTL_API</span><span class="o">=</span><span class="m">3</span> /usr/bin/etcdctl --write-out<span class="o">=</span>table endpoint status  --endpoints<span class="o">=</span>https://<span class="si">${</span><span class="nv">ip</span><span class="si">}</span>:2379 --cacert<span class="o">=</span>/etc/kubernetes/ssl/ca.pem --cert<span class="o">=</span>/etc/kubernetes/ssl/etcd.pem --key<span class="o">=</span>/etc/kubernetes/ssl/etcd-key.pem<span class="p">;</span><span class="k">done</span>
 +----------------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
-|          ENDPOINT          |        ID        | VERSION | DB SIZE | IS LEADER | IS LEARNER | RAFT TERM | RAFT INDEX | RAFT APPLIED INDEX | ERRORS |
+<span class="p">|</span>          ENDPOINT          <span class="p">|</span>        ID        <span class="p">|</span> VERSION <span class="p">|</span> DB SIZE <span class="p">|</span> IS LEADER <span class="p">|</span> IS LEARNER <span class="p">|</span> RAFT TERM <span class="p">|</span> RAFT INDEX <span class="p">|</span> RAFT APPLIED INDEX <span class="p">|</span> ERRORS <span class="p">|</span>
 +----------------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
-| https://192.168.1.101:2379 | 9f5e0acc1f346641 |  3.4.13 |  2.5 MB |      true |      false |       128 |     259947 |             259947 |        |
-+----------------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
-+----------------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
-|          ENDPOINT          |        ID        | VERSION | DB SIZE | IS LEADER | IS LEARNER | RAFT TERM | RAFT INDEX | RAFT APPLIED INDEX | ERRORS |
-+----------------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
-| https://192.168.1.102:2379 | 4469cb53324fe68b |  3.4.13 |  2.5 MB |     false |      false |       128 |     259947 |             259947 |        |
+<span class="p">|</span> https://192.168.1.101:2379 <span class="p">|</span> 9f5e0acc1f346641 <span class="p">|</span>  <span class="m">3</span>.4.13 <span class="p">|</span>  <span class="m">2</span>.5 MB <span class="p">|</span>      <span class="nb">true</span> <span class="p">|</span>      <span class="nb">false</span> <span class="p">|</span>       <span class="m">128</span> <span class="p">|</span>     <span class="m">259947</span> <span class="p">|</span>             <span class="m">259947</span> <span class="p">|</span>        <span class="p">|</span>
 +----------------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
 +----------------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
-|          ENDPOINT          |        ID        | VERSION | DB SIZE | IS LEADER | IS LEARNER | RAFT TERM | RAFT INDEX | RAFT APPLIED INDEX | ERRORS |
+<span class="p">|</span>          ENDPOINT          <span class="p">|</span>        ID        <span class="p">|</span> VERSION <span class="p">|</span> DB SIZE <span class="p">|</span> IS LEADER <span class="p">|</span> IS LEARNER <span class="p">|</span> RAFT TERM <span class="p">|</span> RAFT INDEX <span class="p">|</span> RAFT APPLIED INDEX <span class="p">|</span> ERRORS <span class="p">|</span>
 +----------------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
-| https://192.168.1.103:2379 | e519401c4b995768 |  3.4.13 |  2.5 MB |     false |      false |       128 |     259947 |             259947 |        |
+<span class="p">|</span> https://192.168.1.102:2379 <span class="p">|</span> 4469cb53324fe68b <span class="p">|</span>  <span class="m">3</span>.4.13 <span class="p">|</span>  <span class="m">2</span>.5 MB <span class="p">|</span>     <span class="nb">false</span> <span class="p">|</span>      <span class="nb">false</span> <span class="p">|</span>       <span class="m">128</span> <span class="p">|</span>     <span class="m">259947</span> <span class="p">|</span>             <span class="m">259947</span> <span class="p">|</span>        <span class="p">|</span>
 +----------------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
-</code></pre>
++----------------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+<span class="p">|</span>          ENDPOINT          <span class="p">|</span>        ID        <span class="p">|</span> VERSION <span class="p">|</span> DB SIZE <span class="p">|</span> IS LEADER <span class="p">|</span> IS LEARNER <span class="p">|</span> RAFT TERM <span class="p">|</span> RAFT INDEX <span class="p">|</span> RAFT APPLIED INDEX <span class="p">|</span> ERRORS <span class="p">|</span>
++----------------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+<span class="p">|</span> https://192.168.1.103:2379 <span class="p">|</span> e519401c4b995768 <span class="p">|</span>  <span class="m">3</span>.4.13 <span class="p">|</span>  <span class="m">2</span>.5 MB <span class="p">|</span>     <span class="nb">false</span> <span class="p">|</span>      <span class="nb">false</span> <span class="p">|</span>       <span class="m">128</span> <span class="p">|</span>     <span class="m">259947</span> <span class="p">|</span>             <span class="m">259947</span> <span class="p">|</span>        <span class="p">|</span>
++----------------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+</code></pre></div>
 <p>查看ETCD数据</p>
-<pre><code class="language-shell">$ etcdctl get / --prefix  --keys-only
+<div class="highlight"><pre><span></span><code>$ etcdctl get / --prefix  --keys-only
 $ etcdctl get /registry/pods/default/test
-$ etcdctl get / --prefix  --keys-only |grep namespace
-$ etcdctl get / --prefix  --keys-only |grep calico
-$ etcdctl get / --prefix  --keys-only |grep deployment
+$ etcdctl get / --prefix  --keys-only <span class="p">|</span>grep namespace
+$ etcdctl get / --prefix  --keys-only <span class="p">|</span>grep calico
+$ etcdctl get / --prefix  --keys-only <span class="p">|</span>grep deployment
 
-$ ETCDCTL_API=3 etcdctl put /name &quot;linux60&quot;  //增
-$ ETCDCTL_API=3 etcdctl get /name            //查
-$ ETCDCTL_API=3 etcdctl del /name            //删
+$ <span class="nv">ETCDCTL_API</span><span class="o">=</span><span class="m">3</span> etcdctl put /name <span class="s2">&quot;linux60&quot;</span>  //增
+$ <span class="nv">ETCDCTL_API</span><span class="o">=</span><span class="m">3</span> etcdctl get /name            //查
+$ <span class="nv">ETCDCTL_API</span><span class="o">=</span><span class="m">3</span> etcdctl del /name            //删
 
-$ ETCDCTL_API=3 etcdctl watch /data //无key也可以进行watch
-</code></pre>
+$ <span class="nv">ETCDCTL_API</span><span class="o">=</span><span class="m">3</span> etcdctl watch /data //无key也可以进行watch
+</code></pre></div>
 <p>watch 如同所示:</p>
 <p><img alt="" src="https://pic.imgdb.cn/item/63a5244408b6830163d22164.jpg" /></p>
-<h2 id="etcd_2">ETCD备份恢复</h2>
+<h2 id="etcd_2">ETCD备份恢复<a class="headerlink" href="#etcd_2" title="Permanent link">&para;</a></h2>
 <p>WAL顾名思义，在真正执行写操作之前先写一个日志，预写日志
 WAL 存放了预写日志，最大的作用是记录了整个数据变化的的全部历程。在etcd中，所有数据的修改在提交前都要先写入WAL中</p>
-<p>V3 版本备份数据</p>
-<pre><code class="language-shell">ETCDCTL_API=3 etcdctl  snapshot save &lt;filename&gt;
-
-</code></pre>
+<p>V3 版本备份数据
+<div class="highlight"><pre><span></span><code><span class="nv">ETCDCTL_API</span><span class="o">=</span><span class="m">3</span> etcdctl  snapshot save &lt;filename&gt;
+</code></pre></div></p>
 <p>自动备份数据</p>
-<pre><code class="language-shell">$ mkdir /data/etcd-backup
+<div class="highlight"><pre><span></span><code>$ mkdir /data/etcd-backup
 
 $ cat etcd-backup.sh
-#!/bin/bash
-source /etc/profile
-DATE=`date +%Y%m%d-%H%M`
-ETCDCTL_API=3 /usr/bin/etcdctl snapshot save /data/etcd-backup/etcd-snapshot-${DATE}.db
-ETCDFILE=`find /data/etcd-backup -mtime +30 -name etcd-*|wc -l`
-if [ ${ETCDFILE} -gt 30 ];then
-    find /data/etcd-backup -mtime +30 -name etcd-* -exec rm -f {} \;
-fi
-</code></pre>
+<span class="c1">#!/bin/bash</span>
+<span class="nb">source</span> /etc/profile
+<span class="nv">DATE</span><span class="o">=</span><span class="sb">`</span>date +%Y%m%d-%H%M<span class="sb">`</span>
+<span class="nv">ETCDCTL_API</span><span class="o">=</span><span class="m">3</span> /usr/bin/etcdctl snapshot save /data/etcd-backup/etcd-snapshot-<span class="si">${</span><span class="nv">DATE</span><span class="si">}</span>.db
+<span class="nv">ETCDFILE</span><span class="o">=</span><span class="sb">`</span>find /data/etcd-backup -mtime +30 -name etcd-*<span class="p">|</span>wc -l<span class="sb">`</span>
+<span class="k">if</span> <span class="o">[</span> <span class="si">${</span><span class="nv">ETCDFILE</span><span class="si">}</span> -gt <span class="m">30</span> <span class="o">]</span><span class="p">;</span><span class="k">then</span>
+    find /data/etcd-backup -mtime +30 -name etcd-* -exec rm -f <span class="o">{}</span> <span class="se">\;</span>
+<span class="k">fi</span>
+</code></pre></div>
 <p>V3 版本恢复数据</p>
-<pre><code class="language-shell">ETCDCTL_API=3 etcdctl  snapshot restore /data/etcd/etcd.db --data-dir=/opt/data // 恢复的目录必须不存在，否则会报错
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">ETCDCTL_API</span><span class="o">=</span><span class="m">3</span> etcdctl  snapshot restore /data/etcd/etcd.db --data-dir<span class="o">=</span>/opt/data // 恢复的目录必须不存在，否则会报错
+</code></pre></div>
 
 
 

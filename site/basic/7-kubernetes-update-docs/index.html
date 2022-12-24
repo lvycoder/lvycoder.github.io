@@ -1751,7 +1751,7 @@
 
   <h1>Kubernetes 节点维护</h1>
 
-<h2 id="master">Master节点维护</h2>
+<h2 id="master">Master节点维护<a class="headerlink" href="#master" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
 <p>首先需要从负载均衡踢出去</p>
@@ -1763,7 +1763,7 @@
 <p>去GitHub下载要升级的二进制包，并进行替换（替换前master需要把服务都停掉）</p>
 </li>
 </ol>
-<h2 id="_1">组件升级</h2>
+<h2 id="_1">组件升级<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Master节点服务:</li>
 </ul>
@@ -1772,14 +1772,18 @@
 <li>Node节点服务:</li>
 </ul>
 <p>kubectl,kubelet,kube-proxy                  </p>
-<p>!!! info "kubernetes二进制包如何获取？"
-    - https://github.com/kubernetes/kubernetes/releases
-    - 选择kubernetes版本，点击CHANGELOG
-    - https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md 选择要下载的包
-    - wget https://dl.k8s.io/v1.22.17/kubernetes.tar.gz
-    - wget https://dl.k8s.io/v1.22.17/kubernetes-client-linux-amd64.tar.gz
-    - wget https://dl.k8s.io/v1.22.17/kubernetes-server-linux-amd64.tar.gz
-    - wget https://dl.k8s.io/v1.22.17/kubernetes-node-linux-amd64.tar.gz</p>
+<div class="admonition info">
+<p class="admonition-title">kubernetes二进制包如何获取？</p>
+<ul>
+<li>https://github.com/kubernetes/kubernetes/releases</li>
+<li>选择kubernetes版本，点击CHANGELOG</li>
+<li>https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md 选择要下载的包</li>
+<li>wget https://dl.k8s.io/v1.22.17/kubernetes.tar.gz</li>
+<li>wget https://dl.k8s.io/v1.22.17/kubernetes-client-linux-amd64.tar.gz</li>
+<li>wget https://dl.k8s.io/v1.22.17/kubernetes-server-linux-amd64.tar.gz</li>
+<li>wget https://dl.k8s.io/v1.22.17/kubernetes-node-linux-amd64.tar.gz</li>
+</ul>
+</div>
 
 
 

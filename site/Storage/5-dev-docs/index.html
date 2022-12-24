@@ -1765,9 +1765,9 @@
 
   <h1>ceph 存储修复</h1>
 
-<h2 id="_1">问题描述</h2>
+<h2 id="_1">问题描述<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>dev 环境因为磁盘出现问题导致存储不可用,提出不可用磁盘,加入新磁盘无法加入</p>
-<h2 id="_2">问题原因</h2>
+<h2 id="_2">问题原因<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>磁盘坏掉具体不清楚原因,新加入 osd 无法加入 rook-ceph 主要原因有以下几个:</p>
 <ul>
 <li>
@@ -1793,68 +1793,67 @@
 </li>
 </ul>
 <p><img alt="" src="https://pic.imgdb.cn/item/63918b37b1fccdcd36a63c65.jpg" /></p>
-<h2 id="_3">解决方法</h2>
+<h2 id="_3">解决方法<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <ul>
 <li>将有问题的 osd-6 踢出去 rook-ceph 集群中.</li>
 </ul>
-<pre><code class="language-shell">
-方式一 : (利用 rook 提供的脚本来删除,推荐!)
+<div class="highlight"><pre><span></span><code>方式一 : <span class="o">(</span>利用 rook 提供的脚本来删除,推荐!<span class="o">)</span>
 脚本地址: https://github.com/rook/rook/blob/v1.6.11/cluster/examples/kubernetes/ceph/osd-purge.yaml
 
 方式二 : 使用 ceph 原生方式删除
 
-[root@node-1 ceph]# ceph osd out osd.6
-[root@node-1 ceph]# ceph osd purge 6
-[root@node-1 ceph]# ceph osd tree //确认是否已经删除
-[root@node-1 ceph]# ceph auth del osd.6  //注意可能就是这步骤没有做从而导致集群加不进去新 osd
-[root@node-1 ceph]# kubectl delete deployments.apps rook-ceph-osd-6  //删除 osd 的 deploy
-</code></pre>
+<span class="o">[</span>root@node-1 ceph<span class="o">]</span><span class="c1"># ceph osd out osd.6</span>
+<span class="o">[</span>root@node-1 ceph<span class="o">]</span><span class="c1"># ceph osd purge 6</span>
+<span class="o">[</span>root@node-1 ceph<span class="o">]</span><span class="c1"># ceph osd tree //确认是否已经删除</span>
+<span class="o">[</span>root@node-1 ceph<span class="o">]</span><span class="c1"># ceph auth del osd.6  //注意可能就是这步骤没有做从而导致集群加不进去新 osd</span>
+<span class="o">[</span>root@node-1 ceph<span class="o">]</span><span class="c1"># kubectl delete deployments.apps rook-ceph-osd-6  //删除 osd 的 deploy</span>
+</code></pre></div>
 <ul>
 <li>清理磁盘已经被 ceph 标记三个 osd</li>
 </ul>
 <p>因为配置 Ceph 存储,需要裸设备或者没有文件系统的设备,已经被 ceph 标记也可能 operator 会加入 osd 失败,所以需要清理</p>
-<pre><code class="language-shell">[root@node-1 ceph]# dmsetup ls  //用这条命令查出被 ceph 标记的设备
-[root@node-1 ceph]# dmsetup remove vg--test-vg--lv
-[root@node-1 ceph]# sgdisk -Z /dev/vdd
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>root@node-1 ceph<span class="o">]</span><span class="c1"># dmsetup ls  //用这条命令查出被 ceph 标记的设备</span>
+<span class="o">[</span>root@node-1 ceph<span class="o">]</span><span class="c1"># dmsetup remove vg--test-vg--lv</span>
+<span class="o">[</span>root@node-1 ceph<span class="o">]</span><span class="c1"># sgdisk -Z /dev/vdd</span>
+</code></pre></div>
 <ul>
 <li>roo-ceph 空间不足</li>
 </ul>
-<p>将名称为 rook 这个 pool 删除来解决的这个问题(这个 pool 不在使用)</p>
-<pre><code>ceph osd pool delete rook rook  --yes-i-really-really-mean-it  //删除需谨慎
-</code></pre>
+<p>将名称为 rook 这个 pool 删除来解决的这个问题(这个 pool 不在使用)
+<div class="highlight"><pre><span></span><code>ceph osd pool delete rook rook  --yes-i-really-really-mean-it  //删除需谨慎
+</code></pre></div></p>
 <ul>
 <li>如果不清楚是具体那块设备出现了问题,可以通过官方提供的脚本来过滤出来</li>
 </ul>
-<pre><code class="language-shell"># Get OSD Pods
-# This uses the example/default cluster name &quot;rook&quot;
-OSD_PODS=$(kubectl get pods --all-namespaces -l \
-  app=rook-ceph-osd,rook_cluster=rook-ceph -o jsonpath='{.items[*].metadata.name}')
+<div class="highlight"><pre><span></span><code><span class="c1"># Get OSD Pods</span>
+<span class="c1"># This uses the example/default cluster name &quot;rook&quot;</span>
+<span class="nv">OSD_PODS</span><span class="o">=</span><span class="k">$(</span>kubectl get pods --all-namespaces -l <span class="se">\</span>
+  <span class="nv">app</span><span class="o">=</span>rook-ceph-osd,rook_cluster<span class="o">=</span>rook-ceph -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.items[*].metadata.name}&#39;</span><span class="k">)</span>
 
-# Find node and drive associations from OSD pods
-for pod in $(echo ${OSD_PODS})
-do
- echo &quot;Pod:  ${pod}&quot;
- echo &quot;Node: $(kubectl -n rook-ceph get pod ${pod} -o jsonpath='{.spec.nodeName}')&quot;
- kubectl -n rook-ceph exec ${pod} -- sh -c '\
-  for i in /var/lib/ceph/osd/ceph-*; do
-    [ -f ${i}/ready ] || continue
-    echo -ne &quot;-$(basename ${i}) &quot;
-    echo $(lsblk -n -o NAME,SIZE ${i}/block 2&gt; /dev/null || \
-    findmnt -n -v -o SOURCE,SIZE -T ${i}) $(cat ${i}/type)
-  done | sort -V
-  echo'
-done
-</code></pre>
+<span class="c1"># Find node and drive associations from OSD pods</span>
+<span class="k">for</span> pod <span class="k">in</span> <span class="k">$(</span><span class="nb">echo</span> <span class="si">${</span><span class="nv">OSD_PODS</span><span class="si">}</span><span class="k">)</span>
+<span class="k">do</span>
+ <span class="nb">echo</span> <span class="s2">&quot;Pod:  </span><span class="si">${</span><span class="nv">pod</span><span class="si">}</span><span class="s2">&quot;</span>
+ <span class="nb">echo</span> <span class="s2">&quot;Node: </span><span class="k">$(</span>kubectl -n rook-ceph get pod <span class="si">${</span><span class="nv">pod</span><span class="si">}</span> -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.spec.nodeName}&#39;</span><span class="k">)</span><span class="s2">&quot;</span>
+ kubectl -n rook-ceph <span class="nb">exec</span> <span class="si">${</span><span class="nv">pod</span><span class="si">}</span> -- sh -c <span class="s1">&#39;\</span>
+<span class="s1">  for i in /var/lib/ceph/osd/ceph-*; do</span>
+<span class="s1">    [ -f ${i}/ready ] || continue</span>
+<span class="s1">    echo -ne &quot;-$(basename ${i}) &quot;</span>
+<span class="s1">    echo $(lsblk -n -o NAME,SIZE ${i}/block 2&gt; /dev/null || \</span>
+<span class="s1">    findmnt -n -v -o SOURCE,SIZE -T ${i}) $(cat ${i}/type)</span>
+<span class="s1">  done | sort -V</span>
+<span class="s1">  echo&#39;</span>
+<span class="k">done</span>
+</code></pre></div>
 <ul>
 <li>修复pg unknown PG</li>
 </ul>
-<pre><code class="language-shell"># 列出状态为 unkown 的 PG, 第一列为 pgid
-$ ceph pg dump | grep unknown
+<div class="highlight"><pre><span></span><code><span class="c1"># 列出状态为 unkown 的 PG, 第一列为 pgid</span>
+$ ceph pg dump <span class="p">|</span> grep unknown
 
-# 强制重建 PG，注：会丢失数据，慎重使用
+<span class="c1"># 强制重建 PG，注：会丢失数据，慎重使用</span>
 $ ceph osd force-create-pg &lt;pgid&gt;
-</code></pre>
+</code></pre></div>
 <p>文章参考: https://www.linuxcool.com/dmsetup</p>
 
 

@@ -1877,30 +1877,31 @@
   </a>
 
 
-<h1 id="mac"><strong>Mac 环境配置</strong></h1>
-<h2 id="_1"><strong>背景</strong></h2>
+<h1 id="mac"><strong>Mac 环境配置</strong><a class="headerlink" href="#mac" title="Permanent link">&para;</a></h1>
+<h2 id="_1"><strong>背景</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>在维护和管理多个k8s集群时，每个集群都有自己对应的config文件，那么带来的问题就是在 ~/.kube 目录下就会有一大堆各种环境的 yaml，对于管理来说不是特别的友好。
 更有可能在不同的集群切来切去，造成运维事故。</p>
-<p>!!! info "kubecm 用法"</p>
+<div class="admonition info">
+<p class="admonition-title">kubecm 用法</p>
+</div>
 <p><strong>解决的痛点问题：</strong></p>
 <ul>
 <li>统一管理多个k8s集群</li>
 <li>来回切换指定namespace繁琐</li>
 <li>很多时候不知道自己在哪个集群下</li>
 </ul>
-<h2 id="_2"><strong>安装</strong></h2>
-<p>Mac安装地址：<a href="https://formulae.brew.sh/formula/kubecm">kubecm</a></p>
-<pre><code class="language-shell">https://formulae.brew.sh/formula/kubecm
-</code></pre>
+<h2 id="_2"><strong>安装</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>Mac安装地址：<a href="https://formulae.brew.sh/formula/kubecm">kubecm</a>
+<div class="highlight"><pre><span></span><code>https://formulae.brew.sh/formula/kubecm
+</code></pre></div></p>
 <p>下载好了，如何使用？</p>
 <p>使用说明：<a href="https://github.com/sunny0826/kubecm">kubecm github地址</a></p>
-<h2 id="kubecm"><strong>kubecm 案例</strong></h2>
+<h2 id="kubecm"><strong>kubecm 案例</strong><a class="headerlink" href="#kubecm" title="Permanent link">&para;</a></h2>
 <p>参数说明：</p>
 <ul>
 <li>我最常用的就是添加，删除，切换集群</li>
 </ul>
-<pre><code class="language-shell">
-        Manage your kubeconfig more easily.        
+<div class="highlight"><pre><span></span><code>        Manage your kubeconfig more easily.        
 
 
 ██   ██ ██    ██ ██████  ███████  ██████ ███    ███ 
@@ -1912,77 +1913,89 @@
  Tips  Find more information at: https://kubecm.cloud
 
 Usage:
-  kubecm [command]
+  kubecm <span class="o">[</span>command<span class="o">]</span>
 
 Available Commands:
-  add         Add KubeConfig to $HOME/.kube/config   # 添加
-  alias       Generate alias for all contexts
+  add         Add KubeConfig to <span class="nv">$HOME</span>/.kube/config   <span class="c1"># 添加</span>
+  <span class="nb">alias</span>       Generate <span class="nb">alias</span> <span class="k">for</span> all contexts
   clear       Clear lapsed context, cluster and user
   cloud       manage kubeconfig from cloud
   completion  Generate completion script
-  create      Create new KubeConfig(experiment)
-  delete      Delete the specified context from the kubeconfig  # 删除
-  help        Help about any command
+  create      Create new KubeConfig<span class="o">(</span>experiment<span class="o">)</span>
+  delete      Delete the specified context from the kubeconfig  <span class="c1"># 删除</span>
+  <span class="nb">help</span>        Help about any <span class="nb">command</span>
   list        List KubeConfig
   merge       Merge multiple kubeconfig files into one
   namespace   Switch or change namespace interactively
   rename      Rename the contexts of kubeconfig
-  switch      Switch Kube Context interactively  # 切换
+  switch      Switch Kube Context interactively  <span class="c1"># 切换</span>
   version     Print version info
 
 Flags:
-      --config string   path of kubeconfig (default &quot;$HOME/.kube/config&quot;)
-  -h, --help            help for kubecm
-      --ui-size int     number of list items to show in menu at once (default 4)
+      --config string   path of kubeconfig <span class="o">(</span>default <span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/.kube/config&quot;</span><span class="o">)</span>
+  -h, --help            <span class="nb">help</span> <span class="k">for</span> kubecm
+      --ui-size int     number of list items to show <span class="k">in</span> menu at once <span class="o">(</span>default <span class="m">4</span><span class="o">)</span>
 
-Use &quot;kubecm [command] --help&quot; for more information about a command.
-</code></pre>
+Use <span class="s2">&quot;kubecm [command] --help&quot;</span> <span class="k">for</span> more information about a command.
+</code></pre></div>
 <p>首先我们先回到：家目录下的<code>.kube</code>目录</p>
-<pre><code class="language-shell">$ pwd
+<div class="highlight"><pre><span></span><code>$ <span class="nb">pwd</span>
 /Users/beiyiwangdejiyi/.kube
-</code></pre>
-<h4 id="_3"><strong>添加一个集群</strong></h4>
-<pre><code class="language-shell">kubecm add -f enflame.yaml
-</code></pre>
-<h4 id="_4"><strong>删除一个集群</strong></h4>
-<pre><code class="language-shell">$ kubecm delete   # 选择删除的集群，选择True
+</code></pre></div>
+<h4 id="_3"><strong>添加一个集群</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>kubecm add -f enflame.yaml
+</code></pre></div>
+<h4 id="_4"><strong>删除一个集群</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>$ kubecm delete   <span class="c1"># 选择删除的集群，选择True</span>
 Use the arrow keys to navigate: ↓ ↑ → ←  and / toggles search
 Select The Delete Kube Context
-  😼 ucloud-k3s(*)
+  😼 ucloud-k3s<span class="o">(</span>*<span class="o">)</span>
     enflame
     produce
 ↓   pve
-</code></pre>
-<h4 id="_5"><strong>切换一个集群</strong></h4>
-<pre><code class="language-shell">$ kubecm switch   # 可以上下切换，选择集群环境
+</code></pre></div>
+<h4 id="_5"><strong>切换一个集群</strong><a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>$ kubecm switch   <span class="c1"># 可以上下切换，选择集群环境</span>
 Use the arrow keys to navigate: ↓ ↑ → ←  and / toggles search
 Select Kube Context
-    ucloud-k3s(*)
+    ucloud-k3s<span class="o">(</span>*<span class="o">)</span>
     bj
   😼 dev
 ↓   produce
-</code></pre>
+</code></pre></div>
 <p>以上就是kubecm 的一些安装和使用方法，其他的如果感兴趣可以自己试一试。</p>
-<p>!!! info "kubens kubectx"
-文章地址：<a href="https://github.com/ahmetb/kubectx">kubenc</a></p>
-<h2 id="kubectx"><strong>kubectx安装</strong></h2>
-<p>如果你使用Homebrew，你可以像这样安装：</p>
-<pre><code class="language-shell">brew install kubectx
-</code></pre>
-<p>安装完成之后，来这样使用kubens就可以很方便的切换namespace。</p>
-<h2 id="fzf"><strong>fzf安装</strong></h2>
-<p>!!! info "fzf 安装"
-    - <a href="https://github.com/junegunn/fzf#fuzzy-completion-for-bash-and-zsh">fzf官网</a>
-这里面比较好玩的还有一个带有模糊搜索的交互式菜单，安装完成之后再使用kubens就香的很啊</p>
-<pre><code class="language-shell">brew install fzf
-$(brew --prefix)/opt/fzf/install
-</code></pre>
-<p>!!! warning "温馨提示"
-    - 如果不能使用，需要关闭终端，重新打开</p>
+<div class="admonition info">
+<p class="admonition-title">kubens kubectx</p>
+</div>
+<p>文章地址：<a href="https://github.com/ahmetb/kubectx">kubenc</a></p>
+<h2 id="kubectx"><strong>kubectx安装</strong><a class="headerlink" href="#kubectx" title="Permanent link">&para;</a></h2>
+<p>如果你使用Homebrew，你可以像这样安装：
+<div class="highlight"><pre><span></span><code>brew install kubectx
+</code></pre></div>
+安装完成之后，来这样使用kubens就可以很方便的切换namespace。</p>
+<h2 id="fzf"><strong>fzf安装</strong><a class="headerlink" href="#fzf" title="Permanent link">&para;</a></h2>
+<div class="admonition info">
+<p class="admonition-title">fzf 安装</p>
+<ul>
+<li><a href="https://github.com/junegunn/fzf#fuzzy-completion-for-bash-and-zsh">fzf官网</a></li>
+</ul>
+</div>
+<p>这里面比较好玩的还有一个带有模糊搜索的交互式菜单，安装完成之后再使用kubens就香的很啊</p>
+<div class="highlight"><pre><span></span><code>brew install fzf
+<span class="k">$(</span>brew --prefix<span class="k">)</span>/opt/fzf/install
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">温馨提示</p>
+<ul>
+<li>如果不能使用，需要关闭终端，重新打开</li>
+</ul>
+</div>
 <p>fzf除了这些，还有很多的骚操作，shell命令补全，另外fzf 重写了 ctrl+r 搜索历史命令</p>
-<h3 id="word">word文件修复</h3>
-<p>!!! info "参考地址"
-    https://www.51cto.com/article/708448.html</p>
+<h3 id="word">word文件修复<a class="headerlink" href="#word" title="Permanent link">&para;</a></h3>
+<div class="admonition info">
+<p class="admonition-title">参考地址</p>
+<p>https://www.51cto.com/article/708448.html</p>
+</div>
 
 
 
