@@ -17,7 +17,7 @@
     
     
       
-        <title>Ansible 高级用法 - Kubernetes 进阶训练营</title>
+        <title>COREDNS 简介与使用 - Kubernetes 进阶训练营</title>
       
     
     
@@ -73,11 +73,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#yaml" class="md-skip">
-          跳转至
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -109,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Ansible 高级用法
+              COREDNS 简介与使用
             
           </span>
         </div>
@@ -245,13 +240,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../basic/cncf/" class="md-tabs__link">
+      <a href="../cncf/" class="md-tabs__link md-tabs__link--active">
         基础
       </a>
     </li>
@@ -357,15 +354,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../ansible-case1/" class="md-tabs__link md-tabs__link--active">
+      <a href="../../ansible/ansible-case1/" class="md-tabs__link">
         Ansible自动化
       </a>
     </li>
@@ -659,12 +654,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
       
       
       
@@ -711,7 +708,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../basic/cncf/" class="md-nav__link">
+      <a href="../cncf/" class="md-nav__link">
         云原生简介
       </a>
     </li>
@@ -739,7 +736,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../basic/3-k8s-systeminit-docs/" class="md-nav__link">
+      <a href="../3-k8s-systeminit-docs/" class="md-nav__link">
         集群部署
       </a>
     </li>
@@ -753,7 +750,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../basic/k8s-update/" class="md-nav__link">
+      <a href="../k8s-update/" class="md-nav__link">
         K8S升级
       </a>
     </li>
@@ -767,7 +764,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../basic/6-kubernetes-etcd-docs/" class="md-nav__link">
+      <a href="../6-kubernetes-etcd-docs/" class="md-nav__link">
         ETCD 简介与使用
       </a>
     </li>
@@ -779,11 +776,19 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../basic/7-kubernetes-coredns-docs/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         COREDNS 简介与使用
       </a>
+      
     </li>
   
 
@@ -823,7 +828,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../basic/5-kubernetes-UI-docs/" class="md-nav__link">
+      <a href="../5-kubernetes-UI-docs/" class="md-nav__link">
         Kubernetes UI
       </a>
     </li>
@@ -837,7 +842,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../basic/7-kubernetes-update-docs/" class="md-nav__link">
+      <a href="../7-kubernetes-update-docs/" class="md-nav__link">
         Kubernetes 节点维护
       </a>
     </li>
@@ -851,7 +856,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../basic/4-ansible-install-k8s/" class="md-nav__link">
+      <a href="../4-ansible-install-k8s/" class="md-nav__link">
         项目一
       </a>
     </li>
@@ -1327,14 +1332,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" checked>
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" checked>
       
       
       
@@ -1363,7 +1366,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ansible-case1/" class="md-nav__link">
+      <a href="../../ansible/ansible-case1/" class="md-nav__link">
         Ansible 应用基础
       </a>
     </li>
@@ -1375,95 +1378,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Ansible 高级用法
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../ansible/ansible-docs2/" class="md-nav__link">
         Ansible 高级用法
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#yaml" class="md-nav__link">
-    YAML 介绍
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#yaml_1" class="md-nav__link">
-    YAML 语法
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#yaml_2" class="md-nav__link">
-    YAML常用的数据类型
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ansible" class="md-nav__link">
-    Ansible 基础元素介绍
-  </a>
-  
-    <nav class="md-nav" aria-label="Ansible 基础元素介绍">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-inventory" class="md-nav__link">
-    1. Inventory(主机清单)
-  </a>
-  
-    <nav class="md-nav" aria-label="1. Inventory(主机清单)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#inventory" class="md-nav__link">
-    Inventory 参数:
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1765,68 +1684,6 @@
   
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#yaml" class="md-nav__link">
-    YAML 介绍
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#yaml_1" class="md-nav__link">
-    YAML 语法
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#yaml_2" class="md-nav__link">
-    YAML常用的数据类型
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ansible" class="md-nav__link">
-    Ansible 基础元素介绍
-  </a>
-  
-    <nav class="md-nav" aria-label="Ansible 基础元素介绍">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-inventory" class="md-nav__link">
-    1. Inventory(主机清单)
-  </a>
-  
-    <nav class="md-nav" aria-label="1. Inventory(主机清单)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#inventory" class="md-nav__link">
-    Inventory 参数:
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1839,90 +1696,254 @@
                 
                   
 
-  <a href="https://github.com/lixie021/lixie021.github.io/edit/master/docs/ansible/ansible-docs2.md" title="编辑此页" class="md-content__button md-icon">
+  <a href="https://github.com/lixie021/lixie021.github.io/edit/master/docs/basic/7-kubernetes-coredns-docs.md" title="编辑此页" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-  <h1>Ansible 高级用法</h1>
+  <h1>COREDNS 简介与使用</h1>
 
-<h2 id="yaml"><strong>YAML 介绍</strong><a class="headerlink" href="#yaml" title="Permanent link">&para;</a></h2>
-<p>YAML 是一种用来表达资料序列的格式，参考了其他多种语言所以具有很高的可 读性。YAML 是 YAML Ain’t Markup Language 的缩写，即 YAML 不是 XML。不过在 研发这种语言时，YAML 的意思其实是”Yet Another Markup Language”（仍是一种标 记语言）。其特性如下：</p>
-<ul>
-<li>具有很好的可读性，易于实现；</li>
-<li>表达能力强，扩展性好；</li>
-<li>和脚本语言的交互性好；</li>
-<li>有一个一致的信息模型； </li>
-<li>可以基于流来处理。</li>
-</ul>
-<h2 id="yaml_1"><strong>YAML 语法</strong><a class="headerlink" href="#yaml_1" title="Permanent link">&para;</a></h2>
-<p>YAML 的语法和其它语言类似，也可以表达散列表、标量等数据结构。其中结构 （structure）通过空格来展示；序列（sequence）里的项用”-”来代表；Map 里的键值 对用”:”分隔。YAML 文件扩展名通常为：yaml，如：example.yaml。下面是 YAML 的一个示例。</p>
-<h2 id="yaml_2"><strong>YAML常用的数据类型</strong><a class="headerlink" href="#yaml_2" title="Permanent link">&para;</a></h2>
-<p>YAML 中有两种常用的数据类型：list 和 dictionary。</p>
-<p>1.list （列表）</p>
-<p>列表（list）的所有元素均使用”-”开头，例如：</p>
-<div class="highlight"><pre><span></span><code>-Apple 
--Orange 
--Strawberry 
--Mango
+<p>CoreDNS简介</p>
+<p>官网: https://coredns.io/
+Github 地址: https://github.com/coredns/coredns</p>
+<p>Coredns 是kubernetes中的一个域名解析的组件，主要作用就是解析kubernetes中的域名。</p>
+<p><img alt="coredns" src="https://pic.imgdb.cn/item/63a6a0a508b68301630ff867.jpg" /></p>
+<p>不过CoreDNS的yaml中有一个小BUG，需要加入以下内容才能正常work</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery.k8s.io</span><span class="w"></span>
+<span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">endpointslices</span><span class="w"></span>
+<span class="w">  </span><span class="nt">verbs</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">list</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">watch</span><span class="w"></span>
 </code></pre></div>
-<p>2.dictionary</p>
-<p>字典（dictionary）通过 key 与 value 进行标识，例如：</p>
-<div class="highlight"><pre><span></span><code>name: Example Developer
-Job: Developer
-Skill: Elite
-</code></pre></div>
-<p>也可以使用 key:value 的形式放置于{ }中进行表示，例如：
-<div class="highlight"><pre><span></span><code>{ name: Example Developer, Job: Developer, Skill: Elite}
+<p>下面这个yaml就是Coredns的配置
+<div class="highlight"><pre><span></span><code><span class="c1"># __MACHINE_GENERATED_WARNING__</span><span class="w"></span>
+
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span><span class="w"></span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceAccount</span><span class="w"></span>
+<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">coredns</span><span class="w"></span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-system</span><span class="w"></span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">kubernetes.io/cluster-service</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">addonmanager.kubernetes.io/mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Reconcile</span><span class="w"></span>
+<span class="nn">---</span><span class="w"></span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rbac.authorization.k8s.io/v1</span><span class="w"></span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterRole</span><span class="w"></span>
+<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">kubernetes.io/bootstrapping</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rbac-defaults</span><span class="w"></span>
+<span class="w">    </span><span class="nt">addonmanager.kubernetes.io/mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Reconcile</span><span class="w"></span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system:coredns</span><span class="w"></span>
+<span class="nt">rules</span><span class="p">:</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">endpoints</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">services</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pods</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">namespaces</span><span class="w"></span>
+<span class="w">  </span><span class="nt">verbs</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">list</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">watch</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nodes</span><span class="w"></span>
+<span class="w">  </span><span class="nt">verbs</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">get</span><span class="w"></span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery.k8s.io</span><span class="w"></span>
+<span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">endpointslices</span><span class="w"></span>
+<span class="w">  </span><span class="nt">verbs</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">list</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">watch</span><span class="w"></span>
+<span class="nn">---</span><span class="w"></span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rbac.authorization.k8s.io/v1</span><span class="w"></span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterRoleBinding</span><span class="w"></span>
+<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">annotations</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">rbac.authorization.kubernetes.io/autoupdate</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">kubernetes.io/bootstrapping</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rbac-defaults</span><span class="w"></span>
+<span class="w">    </span><span class="nt">addonmanager.kubernetes.io/mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnsureExists</span><span class="w"></span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system:coredns</span><span class="w"></span>
+<span class="nt">roleRef</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">apiGroup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rbac.authorization.k8s.io</span><span class="w"></span>
+<span class="w">  </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterRole</span><span class="w"></span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system:coredns</span><span class="w"></span>
+<span class="nt">subjects</span><span class="p">:</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceAccount</span><span class="w"></span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">coredns</span><span class="w"></span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-system</span><span class="w"></span>
+<span class="nn">---</span><span class="w"></span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span><span class="w"></span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span><span class="w"></span>
+<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">coredns</span><span class="w"></span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-system</span><span class="w"></span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">addonmanager.kubernetes.io/mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnsureExists</span><span class="w"></span>
+<span class="nt">data</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">Corefile</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
+<span class="w">    </span><span class="no">.:53 {</span><span class="w"></span>
+<span class="w">        </span><span class="no">errors</span><span class="w"></span>
+<span class="w">        </span><span class="no">health {</span><span class="w"></span>
+<span class="w">            </span><span class="no">lameduck 5s</span><span class="w"></span>
+<span class="w">        </span><span class="no">}</span><span class="w"></span>
+<span class="w">        </span><span class="no">ready</span><span class="w"></span>
+<span class="w">        </span><span class="no">kubernetes magedu.local. in-addr.arpa ip6.arpa { //这个需要根据自己配置的域名后缀来改</span><span class="w"></span>
+<span class="w">            </span><span class="no">pods insecure</span><span class="w"></span>
+<span class="w">            </span><span class="no">fallthrough in-addr.arpa ip6.arpa</span><span class="w"></span>
+<span class="w">            </span><span class="no">ttl 30</span><span class="w"></span>
+<span class="w">        </span><span class="no">}</span><span class="w"></span>
+<span class="w">        </span><span class="no">prometheus :9153</span><span class="w"></span>
+<span class="w">        </span><span class="no">forward . 8.8.8.8 {  //如果解析不了会转发到8.8.8.8 ，这个也可以改为/etc/resolv.conf</span><span class="w"></span>
+<span class="w">            </span><span class="no">max_concurrent 1000</span><span class="w"></span>
+<span class="w">        </span><span class="no">}</span><span class="w"></span>
+<span class="w">        </span><span class="no">cache 30</span><span class="w"></span>
+<span class="w">        </span><span class="no">loop</span><span class="w"></span>
+<span class="w">        </span><span class="no">reload</span><span class="w"></span>
+<span class="w">        </span><span class="no">loadbalance</span><span class="w"></span>
+<span class="w">    </span><span class="no">}</span><span class="w"></span>
+<span class="nn">---</span><span class="w"></span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span><span class="w"></span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span><span class="w"></span>
+<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">coredns</span><span class="w"></span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-system</span><span class="w"></span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">k8s-app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-dns</span><span class="w"></span>
+<span class="w">    </span><span class="nt">kubernetes.io/cluster-service</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">addonmanager.kubernetes.io/mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Reconcile</span><span class="w"></span>
+<span class="w">    </span><span class="nt">kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;CoreDNS&quot;</span><span class="w"></span>
+<span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="c1"># replicas: not specified here:</span><span class="w"></span>
+<span class="w">  </span><span class="c1"># 1. In order to make Addon Manager do not reconcile this replicas parameter.</span><span class="w"></span>
+<span class="w">  </span><span class="c1"># 2. Default is 1.</span><span class="w"></span>
+<span class="w">  </span><span class="c1"># 3. Will be tuned in real time if DNS horizontal auto-scaling is turned on.</span><span class="w"></span>
+<span class="w">  </span><span class="nt">strategy</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RollingUpdate</span><span class="w"></span>
+<span class="w">    </span><span class="nt">rollingUpdate</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">maxUnavailable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">k8s-app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-dns</span><span class="w"></span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">k8s-app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-dns</span><span class="w"></span>
+<span class="w">    </span><span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">securityContext</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">seccompProfile</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RuntimeDefault</span><span class="w"></span>
+<span class="w">      </span><span class="nt">priorityClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system-cluster-critical</span><span class="w"></span>
+<span class="w">      </span><span class="nt">serviceAccountName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">coredns</span><span class="w"></span>
+<span class="w">      </span><span class="nt">affinity</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">podAntiAffinity</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">preferredDuringSchedulingIgnoredDuringExecution</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">weight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span><span class="w"></span>
+<span class="w">            </span><span class="nt">podAffinityTerm</span><span class="p">:</span><span class="w"></span>
+<span class="w">              </span><span class="nt">labelSelector</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="nt">matchExpressions</span><span class="p">:</span><span class="w"></span>
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k8s-app</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">values</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;kube-dns&quot;</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">              </span><span class="nt">topologyKey</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes.io/hostname</span><span class="w"></span>
+<span class="w">      </span><span class="nt">tolerations</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;CriticalAddonsOnly&quot;</span><span class="w"></span>
+<span class="w">          </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Exists&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">nodeSelector</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">kubernetes.io/os</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">linux</span><span class="w"></span>
+<span class="w">      </span><span class="nt">containers</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">coredns</span><span class="w"></span>
+<span class="w">        </span><span class="c1">#image: k8s.gcr.io/coredns/coredns:v1.8.0</span><span class="w"></span>
+<span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">coredns/coredns:1.8.6</span><span class="w"> </span>
+<span class="w">        </span><span class="nt">imagePullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IfNotPresent</span><span class="w"></span>
+<span class="w">        </span><span class="nt">resources</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">limits</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">512Mi</span><span class="w"></span>
+<span class="w">          </span><span class="nt">requests</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100m</span><span class="w"></span>
+<span class="w">            </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">70Mi</span><span class="w"></span>
+<span class="w">        </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="s">&quot;-conf&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;/etc/coredns/Corefile&quot;</span><span class="w"> </span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">        </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">config-volume</span><span class="w"></span>
+<span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/coredns</span><span class="w"></span>
+<span class="w">          </span><span class="nt">readOnly</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">        </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">53</span><span class="w"></span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dns</span><span class="w"></span>
+<span class="w">          </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UDP</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">53</span><span class="w"></span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dns-tcp</span><span class="w"></span>
+<span class="w">          </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9153</span><span class="w"></span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">metrics</span><span class="w"></span>
+<span class="w">          </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span><span class="w"></span>
+<span class="w">        </span><span class="nt">livenessProbe</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">httpGet</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/health</span><span class="w"></span>
+<span class="w">            </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span><span class="w"></span>
+<span class="w">            </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTP</span><span class="w"></span>
+<span class="w">          </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">60</span><span class="w"></span>
+<span class="w">          </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w"></span>
+<span class="w">          </span><span class="nt">successThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
+<span class="w">          </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w"></span>
+<span class="w">        </span><span class="nt">readinessProbe</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">httpGet</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/ready</span><span class="w"></span>
+<span class="w">            </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8181</span><span class="w"></span>
+<span class="w">            </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTP</span><span class="w"></span>
+<span class="w">        </span><span class="nt">securityContext</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">allowPrivilegeEscalation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<span class="w">          </span><span class="nt">capabilities</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">add</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NET_BIND_SERVICE</span><span class="w"></span>
+<span class="w">            </span><span class="nt">drop</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">all</span><span class="w"></span>
+<span class="w">          </span><span class="nt">readOnlyRootFilesystem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">      </span><span class="nt">dnsPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Default</span><span class="w"></span>
+<span class="w">      </span><span class="nt">volumes</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">config-volume</span><span class="w"></span>
+<span class="w">          </span><span class="nt">configMap</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">coredns</span><span class="w"></span>
+<span class="w">            </span><span class="nt">items</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Corefile</span><span class="w"></span>
+<span class="w">              </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Corefile</span><span class="w"></span>
+<span class="nn">---</span><span class="w"></span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span><span class="w"></span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span><span class="w"></span>
+<span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-dns</span><span class="w"></span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-system</span><span class="w"></span>
+<span class="w">  </span><span class="nt">annotations</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">prometheus.io/port</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;9153&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">prometheus.io/scrape</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">k8s-app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-dns</span><span class="w"></span>
+<span class="w">    </span><span class="nt">kubernetes.io/cluster-service</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">addonmanager.kubernetes.io/mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Reconcile</span><span class="w"></span>
+<span class="w">    </span><span class="nt">kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;CoreDNS&quot;</span><span class="w"></span>
+<span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">k8s-app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-dns</span><span class="w"></span>
+<span class="w">  </span><span class="nt">clusterIP</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.100.0.2  //这个IP需要根据自己的环境来调试</span><span class="w"></span>
+<span class="w">  </span><span class="nt">ports</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dns</span><span class="w"></span>
+<span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">53</span><span class="w"></span>
+<span class="w">    </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UDP</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dns-tcp</span><span class="w"></span>
+<span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">53</span><span class="w"></span>
+<span class="w">    </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">metrics</span><span class="w"></span>
+<span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9153</span><span class="w"></span>
+<span class="w">    </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span><span class="w"></span>
 </code></pre></div></p>
-<hr />
-<h2 id="ansible"><strong>Ansible 基础元素介绍</strong><a class="headerlink" href="#ansible" title="Permanent link">&para;</a></h2>
-<h3 id="1-inventory"><strong>1. Inventory(主机清单)</strong><a class="headerlink" href="#1-inventory" title="Permanent link">&para;</a></h3>
-<p>Inventory 文件中以中括号中的字符标识为组名，将主机分组管理，也可以将同一主机同时划分到多个不同的组中。如果被管理主机使用非默认的SSH端口，以下例子主要分了两个主机组cka-1和cka-2，inventory 下有很多的主机文件，注意这里ansible的配置文件是做了修改的。</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ cat inventory/cka</span><span class="w"></span>
-<span class="l l-Scalar l-Scalar-Plain">[cka-1]</span><span class="w"></span>
-<span class="l l-Scalar l-Scalar-Plain">cka.master hostname=master0 ansible_host=172.30.42.244 ansible_user=lixie</span><span class="w"></span>
-
-<span class="l l-Scalar l-Scalar-Plain">[cka-2]</span><span class="w"></span>
-<span class="l l-Scalar l-Scalar-Plain">cka.node1  hostname=node1 ansible_host=172.30.192.106 ansible_user=lixie</span><span class="w"></span>
-<span class="l l-Scalar l-Scalar-Plain">cka.node2  hostname=node2 ansible_host=172.30.226.223 ansible_user=lixie</span><span class="w"></span>
-</code></pre></div>
-<h4 id="inventory"><strong>Inventory 参数: </strong><a class="headerlink" href="#inventory" title="Permanent link">&para;</a></h4>
-<p>Ansible 基于 SSH 连接 Inventory 中指定的被管理主机时，还可以通过参数指定 交互方式，这些参数如表 3-2 所示。</p>
-<div class="highlight"><pre><span></span><code>ansible_ssh_host
-      将要连接的远程主机名.与你想要设定的主机的别名不同的话,可通过此变量设置.
-
-ansible_ssh_port
-      ssh端口号.如果不是默认的端口号,通过此变量设置.
-
-ansible_ssh_user
-      默认的 ssh 用户名
-
-ansible_ssh_pass
-      ssh 密码<span class="o">(</span>这种方式并不安全,我们强烈建议使用 --ask-pass 或 SSH 密钥<span class="o">)</span>
-
-ansible_sudo_pass
-      sudo 密码<span class="o">(</span>这种方式并不安全,我们强烈建议使用 --ask-sudo-pass<span class="o">)</span>
-
-ansible_sudo_exe <span class="o">(</span>new <span class="k">in</span> version <span class="m">1</span>.8<span class="o">)</span>
-      sudo 命令路径<span class="o">(</span>适用于1.8及以上版本<span class="o">)</span>
-
-ansible_connection
-      与主机的连接类型.比如:local, ssh 或者 paramiko. Ansible <span class="m">1</span>.2 以前默认使用 paramiko.1.2 以后默认使用 <span class="s1">&#39;smart&#39;</span>,<span class="s1">&#39;smart&#39;</span> 方式会根据是否支持 ControlPersist, 来判断<span class="s1">&#39;ssh&#39;</span> 方式是否可行.
-
-ansible_ssh_private_key_file
-      ssh 使用的私钥文件.适用于有多个密钥,而你不想使用 SSH 代理的情况.
-
-ansible_shell_type
-      目标系统的shell类型.默认情况下,命令的执行使用 <span class="s1">&#39;sh&#39;</span> 语法,可设置为 <span class="s1">&#39;csh&#39;</span> 或 <span class="s1">&#39;fish&#39;</span>.
-
-ansible_python_interpreter
-      目标主机的 python 路径.适用于的情况: 系统中有多个 Python, 或者命令路径不是<span class="s2">&quot;/usr/bin/python&quot;</span>,比如  <span class="se">\*</span>BSD, 或者 /usr/bin/python
-      不是 <span class="m">2</span>.X 版本的 Python.我们不使用 <span class="s2">&quot;/usr/bin/env&quot;</span> 机制,因为这要求远程用户的路径设置正确,且要求 <span class="s2">&quot;python&quot;</span> 可执行程序名不可为 python以外的名字<span class="o">(</span>实际有可能名为python26<span class="o">)</span>.
-
-      与 ansible_python_interpreter 的工作方式相同,可设定如 ruby 或 perl 的路径....
-</code></pre></div>
 
 
 
@@ -1948,7 +1969,7 @@ ansible_python_interpreter
     <nav class="md-footer__inner md-grid" aria-label="页脚" >
       
         
-        <a href="../ansible-case1/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Ansible 应用基础" rel="prev">
+        <a href="../6-kubernetes-etcd-docs/" class="md-footer__link md-footer__link--prev" aria-label="上一页: ETCD 简介与使用" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -1957,20 +1978,20 @@ ansible_python_interpreter
               <span class="md-footer__direction">
                 上一页
               </span>
-              Ansible 应用基础
+              ETCD 简介与使用
             </div>
           </div>
         </a>
       
       
         
-        <a href="../../Helm/helm-install/" class="md-footer__link md-footer__link--next" aria-label="下一页: Helm 简介与安装" rel="next">
+        <a href="../../k8s/yaml/yaml/" class="md-footer__link md-footer__link--next" aria-label="下一页: 资源清单" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 下一页
               </span>
-              Helm 简介与安装
+              资源清单
             </div>
           </div>
           <div class="md-footer__button md-icon">
