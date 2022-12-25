@@ -16,5 +16,5 @@ jobs:
     - uses: wangchucheng/git-repo-sync@v0.1.0
       with:
         target-url: 'https://gitee.com/awxie/lixie021.github.io.git'
-        target-username: 'lixie'
+        target-username: 'user_11851004'
         target-token: ${{ secrets.GITEE_TOKEN }}
