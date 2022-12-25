@@ -1,18 +1,20 @@
-name: syncToGitee
+name: sync-gitee
+
 on:
   push:
     branches:
-      - main
+      - '**'
+
 jobs:
-  repo-sync:
+  sync:
     runs-on: ubuntu-latest
+    name: Git Repo Sync
     steps:
-      - name: Mirror the Github organization repos to Gitee.
-        uses: Yikun/hub-mirror-action@master
-        with:
-          src: 'github/lixie021'
-          dst: 'gitee/user_11851004'
-          dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
-          dst_token:  ${{ secrets.GITEE_TOKEN }}
-          static_list: "lixie021.github.io"
-          force_update: true
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - uses: wangchucheng/git-repo-sync@v0.1.0
+      with:
+        target-url: https://gitee.com/awxie/lixie021.github.io.git
+        target-username: lixie
+        target-token: ${{ secrets.GITEE_TOKEN }}
