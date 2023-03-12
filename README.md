@@ -1,7 +1,7 @@
-# Blog地址: lixie021.github.io/site
+# Blog地址: Barry-boy.github.io/site
 
   Hello，大家好！
-    我叫阿勰，北漂一族。江湖人称勰哥（xie），在弄这个网站的初衷一方面为开源做贡献，第二个为了记录自己工作和生活的内容。大家可以点击进入[《Kubernetes 进阶训练营》](https://lixie021.github.io/site/)以后也将持续更新～
+    我叫阿勰，北漂一族。江湖人称勰哥（xie），在弄这个网站的初衷一方面为开源做贡献，第二个为了记录自己工作和生活的内容。大家可以点击进入[《Kubernetes 进阶训练营》](https://Barry-boy.github.io/site/)以后也将持续更新～
 
   - 主要记录工作以及生活内容
   - 把工作和生活的事情列清楚，为了以后做复盘
