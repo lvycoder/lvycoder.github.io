@@ -14,7 +14,7 @@
 
 |微信（勰哥本人）|公众号|
 |:----:|:----:|
-|<img src="https://github.com/barry-boy/barry-boy.github.io/blob/main/png/lixie.pic.jpg" width="120">|
+|<img src="https://github.com/barry-boy/barry-boy.github.io/blob/main/png/weixin.pic.jpg" width="120">|
 
 
 
