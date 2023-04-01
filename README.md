@@ -1,4 +1,4 @@
-# Blog地址: Barry-boy.github.io/site
+# Blog地址: barry-boy.github.io/site
 
   Hello，大家好！
     我叫阿勰，北漂一族。在弄这个网站的初衷主要是为了记录自己工作和生活的内容。
@@ -10,15 +10,11 @@
 
   邮箱: lixie0215@163.com
 
-  - 联系方式:
-
-  ![](https://pic1.imgdb.cn/item/63458f7216f2c2beb122f5b0.jpg)
-
 有兴趣可以加我，一起进运维交流群，一起交流学习～
 
 |微信（勰哥本人）|公众号|
 |:----:|:----:|
-
+|<img src="https://github.com/barry-boy/barry-boy.github.io/blob/main/png/lixie.pic.jpg" width="120">|
 
 
 
