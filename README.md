@@ -42,7 +42,19 @@
       - 写 Issues 记录遇到的问题
 
 
+## 专题类
 
+### 监控专题 
 
+- [如何使kube-prometheus传入cm生效](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/additional-scrape-config.md)
+
+- [夜莺监控系统](https://n9e.github.io/)
+
+- [Prometheus告警方案](https://github.com/feiyu563/PrometheusAlert)
+
+- [Prometheus 入门到实践](https://p8s.io/docs/k8s/deploy/)
+
+- [grafana dashboard 方案示例: ](https://github.com/dotdc/grafana-dashboards-kubernetes)
+### 工具类专题
 
 
