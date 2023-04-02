@@ -44,6 +44,18 @@
 
 ## 专题类
 
+### kubernetes 基本
+
+[第一个容器化应用和 Yaml 文件](https://github.com/barry-boy/barry-boy.github.io/issues/33)
+
+
+
+
+
+
+
+
+
 ### 监控专题 
 
 - [如何使kube-prometheus传入cm生效](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/additional-scrape-config.md)
