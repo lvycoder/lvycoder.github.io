@@ -1895,16 +1895,6 @@
 </ul>
 </li>
 </ul>
-<p>3.17 部署集群+openbayes</p>
-<p>kubeadm join siom.k8s.vip:6443 --token rdcblc.q5brifovry9o1dsa \
-    --discovery-token-ca-cert-hash sha256:5ceb7de1e73ca06d12a0af14273fe50a90950f2fb3ffb27a1fa39145fd671420 \
-    --control-plane --certificate-key 1c4c777d042f680230e3b8e0868338e56bfe3d060d066f8d231e5c2524b911b5</p>
-<p>Please note that the certificate-key gives access to cluster sensitive data, keep it secret!
-As a safeguard, uploaded-certs will be deleted in two hours; If necessary, you can use
-"kubeadm init phase upload-certs --upload-certs" to reload certs afterward.</p>
-<p>Then you can join any number of worker nodes by running the following on each as root:</p>
-<p>kubeadm join siom.k8s.vip:6443 --token rdcblc.q5brifovry9o1dsa \
-    --discovery-token-ca-cert-hash sha256:5ceb7de1e73ca06d12a0af14273fe50a90950f2fb3ffb27a1fa39145fd671420</p>
 
               
             </article>
