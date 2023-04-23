@@ -52,7 +52,7 @@
 
 ### 硬件专题
 
--[显示器接口与显示器线]()
+- [显示器接口类型](https://github.com/barry-boy/barry-boy.github.io/issues/39)
 
 
 
