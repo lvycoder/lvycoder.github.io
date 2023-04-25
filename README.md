@@ -73,3 +73,4 @@
 
 - [科学上网](https://barry-boy.github.io/site/network/4-network-docs/)
 - [Mac使用技巧](https://mac.orsoon.com/news/1111503.html)
+- [Mac PC 实用配置](https://zhuanlan.zhihu.com/p/550022490)
