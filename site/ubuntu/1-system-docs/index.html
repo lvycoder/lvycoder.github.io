@@ -13,7 +13,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.0.0">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-8.0.0">
     
     
       
@@ -2311,8 +2311,6 @@ drwx------<span class="w"> </span><span class="m">5</span><span class="w"> </spa
 <p>将公钥加入user用户下: <code>.ssh/authorized_keys</code></p>
 <p><div class="highlight"><pre><span></span><code>root@user:/home/user#<span class="w"> </span>ls<span class="w"> </span>-a<span class="w"> </span>.ssh/
 .<span class="w">  </span>..<span class="w">  </span>authorized_keys
-root@user:/home/user#<span class="w"> </span>cat<span class="w"> </span>.ssh/authorized_keys
-ssh-rsa<span class="w"> </span>AAAAB3NzaC1yc2EAAAADAQABAAABgQDwWSc73tyq4TAkXxt3rWmGggbpgdm+egc8mOSDu0hauuvPdieIe1qUbKsIKC1O93KyDPlsfP5gcwqdEmf5Di0S6CCxRh6ENyZ9mtN+s1pCDeHiKbjhPyG4o71tafIDOjhcbpEtCwPA0YTrp5i1oO466qYHeFmTCmkcDFhuEKZx78EZdTwbFH0vhOGTymLFgUVauzmd45ZxpTzaZHrd093nFHWg6FeZWk2axkDiijLALNxiAAaECn2S69y5SxXgKSqpe4Z25b2cKKySlM1lBv1eI7CSxAUoxuXSpcgoRiVUx5VgJwkixKvq8NpihYEkV5pFRjB8W0ssu1YF6d+3MlzOkwa+kir9JJlLq+F/rrBTfF2mCLBgg0KE+voDd8vjEkqSmweNs2gEO7Gi/fUEfcabNAOuNNPL2dhdFl+BH2TCofDYvZcWd8Wrl/0qoW5nbUdCaC7aznb0lpVgseB/gj6ah3adCzfA/W8S+1znD9VMHDdMNy+AN8eeQQ6d2t05SOc<span class="o">=</span>
 </code></pre></div>
 话不多说测试登陆</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh<span class="w"> </span>user@172.30.42.244<span class="w">    </span>//这是我们使用user用户登陆，就不需要密码了
@@ -2416,7 +2414,7 @@ network:
 <p><div class="highlight"><pre><span></span><code>root@node2:/etc/apt#<span class="w"> </span>apt<span class="w"> </span>update
 Reading<span class="w"> </span>package<span class="w"> </span>lists...<span class="w"> </span>Done
 E:<span class="w"> </span>Could<span class="w"> </span>not<span class="w"> </span>get<span class="w"> </span>lock<span class="w"> </span>/var/lib/apt/lists/lock.<span class="w"> </span>It<span class="w"> </span>is<span class="w"> </span>held<span class="w"> </span>by<span class="w"> </span>process<span class="w"> </span><span class="m">27056</span><span class="w"> </span><span class="o">(</span>apt-get<span class="o">)</span>
-N:<span class="w"> </span>Be<span class="w"> </span>aware<span class="w"> </span>that<span class="w"> </span>removing<span class="w"> </span>the<span class="w"> </span>lock<span class="w"> </span>file<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>a<span class="w"> </span>solution<span class="w"> </span>and<span class="w"> </span>may<span class="w"> </span><span class="nb">break</span><span class="w"> </span>your<span class="w"> </span>system.
+N:<span class="w"> </span>Be<span class="w"> </span>aware<span class="w"> </span>that<span class="w"> </span>removing<span class="w"> </span>the<span class="w"> </span>lock<span class="w"> </span>file<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>a<span class="w"> </span>solution<span class="w"> </span>and<span class="w"> </span>may<span class="w"> </span><span class="k">break</span><span class="w"> </span>your<span class="w"> </span>system.
 E:<span class="w"> </span>Unable<span class="w"> </span>to<span class="w"> </span>lock<span class="w"> </span>directory<span class="w"> </span>/var/lib/apt/lists/
 </code></pre></div>
 这个主要的原因是有别的进程占用apt这个进程，可以通过一下方法进行排查
