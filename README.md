@@ -53,7 +53,7 @@
 ### 硬件专题
 
 - [显示器接口类型](https://github.com/barry-boy/barry-boy.github.io/issues/39)
-
+- [服务器关闭超线程](https://github.com/barry-boy/barry-boy.github.io/issues/60)
 
 
 
