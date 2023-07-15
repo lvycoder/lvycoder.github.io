@@ -90,6 +90,7 @@ nav:
        # - ETCD备份还原: basic/etcd.md
         - 资源清单: k8s/yaml/yaml.md
         - CKA考题: cks/cka.md
+        - CKS考题: cks/cks.md
         - Kubernetes UI: basic/5-kubernetes-UI-docs.md
         - Kubernetes 节点维护: basic/7-kubernetes-update-docs.md
         - 项目一: basic/4-ansible-install-k8s.md
