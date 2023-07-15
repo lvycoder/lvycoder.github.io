@@ -13,7 +13,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-8.0.0">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.0.0">
     
     
       
@@ -2414,7 +2414,7 @@ network:
 <p><div class="highlight"><pre><span></span><code>root@node2:/etc/apt#<span class="w"> </span>apt<span class="w"> </span>update
 Reading<span class="w"> </span>package<span class="w"> </span>lists...<span class="w"> </span>Done
 E:<span class="w"> </span>Could<span class="w"> </span>not<span class="w"> </span>get<span class="w"> </span>lock<span class="w"> </span>/var/lib/apt/lists/lock.<span class="w"> </span>It<span class="w"> </span>is<span class="w"> </span>held<span class="w"> </span>by<span class="w"> </span>process<span class="w"> </span><span class="m">27056</span><span class="w"> </span><span class="o">(</span>apt-get<span class="o">)</span>
-N:<span class="w"> </span>Be<span class="w"> </span>aware<span class="w"> </span>that<span class="w"> </span>removing<span class="w"> </span>the<span class="w"> </span>lock<span class="w"> </span>file<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>a<span class="w"> </span>solution<span class="w"> </span>and<span class="w"> </span>may<span class="w"> </span><span class="k">break</span><span class="w"> </span>your<span class="w"> </span>system.
+N:<span class="w"> </span>Be<span class="w"> </span>aware<span class="w"> </span>that<span class="w"> </span>removing<span class="w"> </span>the<span class="w"> </span>lock<span class="w"> </span>file<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>a<span class="w"> </span>solution<span class="w"> </span>and<span class="w"> </span>may<span class="w"> </span><span class="nb">break</span><span class="w"> </span>your<span class="w"> </span>system.
 E:<span class="w"> </span>Unable<span class="w"> </span>to<span class="w"> </span>lock<span class="w"> </span>directory<span class="w"> </span>/var/lib/apt/lists/
 </code></pre></div>
 这个主要的原因是有别的进程占用apt这个进程，可以通过一下方法进行排查
