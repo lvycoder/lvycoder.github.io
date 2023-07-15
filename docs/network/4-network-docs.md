@@ -1,4 +1,4 @@
-科学上网
+# 科学上网
 
 我是一名技术人员，平时每天需要大量的Google去看一些文章，当然也回去油管逛逛，那么国内上网的环境并不是很理想，而且资源也有限，
 所以需要科学上网，那么我推荐一个比较好用的机场。
@@ -16,3 +16,11 @@ WgetCloud 也是目前个人使用后觉得最稳定的翻墙服务，但套餐�
 
 - WgetCloud推荐: https://invite.wgetcloud.ltd/auth/register?code=Apl0
 
+## 如何科学上网
+- 对于学习和找资料，我们很多的时候都要访问外国网站，但是由于防火墙限制，就需要通过科学上网来实现访问。
+
+## 推荐一种方式：
+- 购买机场订阅+clash 科学上网（稳定性比较好）
+- 机场网站：https://barry-boy.github.io/site/network/4-network-docs/ 查看注册
+- 安装clash：https://install.appcenter.ms/users/clashx/apps/clashx-pro/distribution_groups/public
+- 配置clash，并测试访问外网。

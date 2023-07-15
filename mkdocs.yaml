@@ -112,6 +112,7 @@ nav:
         - frp 内网穿透: network/frp.md
         - kubernetes 网络组件: network/3-network-docs.md
         - 科学上网: network/4-network-docs.md
+        
     - 存储: 
         - rook-ceph简介: Storage/rook-ceph.md
         - osd 性能测试: Storage/osd.md
