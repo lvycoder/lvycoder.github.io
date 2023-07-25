@@ -143,7 +143,9 @@ nav:
     - 排错技巧: 
         - 天津集群: error/tjtu.md
         - Dev环境集群: error/dev.md
+        - 误删除监控数据: error/delete-prometheus-db.md
         - Kubernetes pvc ubound: error/kubernetes-pvc-ubound-doc.md
+ 
 
     - 使用技巧: 
         - Mac 小功能: Macuse/mac-easy.md

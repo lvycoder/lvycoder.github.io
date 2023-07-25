@@ -3,15 +3,17 @@
 - k8s v1.19 升级 k8s v1.20
 - rook-ceph:v1.0.3
 
-## 报错内容
+## **报错内容**
 以下报错来源于ceph-operator
 
-```
-controller.go:1213] provision "default/rbd-pvc" class "ceph-ext4": unexpected error getting claim reference: selfLink was empty, can't make reference
-E0720 10:01:18.054984 7 controller.go:1213] provision "default/admin-9ktquk6q7gew-scratch" class "ceph-ext4": unexpected error getting claim reference: selfLink was empty, can't make reference
+```shell
+controller.go:1213] provision "default/rbd-pvc" class "ceph-ext4": 
+unexpected error getting claim reference: selfLink was empty, can't make reference
+E0720 10:01:18.054984 7 controller.go:1213] provision "default/admin-9ktquk6q7gew-scratch" class "ceph-ext4": 
+unexpected error getting claim reference: selfLink was empty, can't make reference
 ```
 
-## 修复方法
+## **修复方法**
 
 这个错误是由于 Kubernetes 1.20 版本中默认禁用了 `selfLink`。这是一个已知问题，并且已经在 Rook 的更新版本中修复。
 
