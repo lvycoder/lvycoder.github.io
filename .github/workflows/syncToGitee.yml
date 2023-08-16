@@ -14,6 +14,5 @@ jobs:
           dst: 'gitee/user_11851004'
           dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
           dst_token:  ${{ secrets.GITEE_TOKEN }}
-          white_list: "barry-boy.github.io"
           force_update: true
           debug: true
