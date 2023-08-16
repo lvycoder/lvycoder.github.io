@@ -8,4 +8,8 @@
 
 gcluster 最终只能用复制卷，或者是分布式复制
 
-ceph  推荐使用rgw
+ceph  推荐使用rgw   
+
+juicefs 元数据--redis,tidb
+
+
