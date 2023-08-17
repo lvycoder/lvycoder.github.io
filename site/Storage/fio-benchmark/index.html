@@ -17,7 +17,7 @@
     
     
       
-        <title>Juicefs存储 - Kubernetes 进阶训练营</title>
+        <title>Fio benchmark - Kubernetes 进阶训练营</title>
       
     
     
@@ -70,11 +70,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#juicefs" class="md-skip">
-          跳转至
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -106,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Juicefs存储
+              Fio benchmark
             
           </span>
         </div>
@@ -304,15 +299,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../rook-ceph/" class="md-tabs__link md-tabs__link--active">
+      <a href="../rook-ceph/" class="md-tabs__link">
         存储
       </a>
     </li>
@@ -1134,14 +1127,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" data-md-state="indeterminate" type="checkbox" id="__nav_8" checked>
       
       
       
@@ -1232,89 +1223,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Juicefs存储
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Juicefs/" class="md-nav__link">
         Juicefs存储
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#juicefs" class="md-nav__link">
-    Juicefs 存储介绍
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    核心特性
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    应用场景
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    技术架构
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    环境部署
-  </a>
-  
-    <nav class="md-nav" aria-label="环境部署">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    文章参考:
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1923,162 +1836,19 @@
               </div>
             
             
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#juicefs" class="md-nav__link">
-    Juicefs 存储介绍
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    核心特性
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    应用场景
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    技术架构
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    环境部署
-  </a>
-  
-    <nav class="md-nav" aria-label="环境部署">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    文章参考:
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
                 
-<a href="https://github.com/barry-boy/barry-boy.github.io/edit/master/docs/Storage/Juicefs.md" title="编辑此页" class="md-content__button md-icon">
+<a href="https://github.com/barry-boy/barry-boy.github.io/edit/master/docs/Storage/fio-benchmark.md" title="编辑此页" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
 
-  <h1>Juicefs存储</h1>
+  <h1>Fio benchmark</h1>
 
-<h2 id="juicefs"><strong>Juicefs 存储介绍</strong><a class="headerlink" href="#juicefs" title="Permanent link">&para;</a></h2>
-<p><strong>JuiceFS</strong> 是一款面向云原生设计的高性能分布式文件系统，在 Apache 2.0 开源协议下发布。提供完备的 <a href="https://en.wikipedia.org/wiki/POSIX">POSIX</a> 兼容性，可将几乎所有对象存储接入本地作为海量本地磁盘使用，亦可同时在跨平台、跨地区的不同主机上挂载读写。</p>
-<p>JuiceFS 采用「数据」与「元数据」分离存储的架构，从而实现文件系统的分布式设计。文件数据本身会被切分保存在<a href="../reference/how_to_set_up_object_storage.md#supported-object-storage">对象存储</a>（例如 Amazon S3），而元数据则可以保存在 Redis、MySQL、TiKV、SQLite 等多种<a href="../reference/how_to_set_up_metadata_engine.md">数据库</a>中，你可以根据场景与性能要求进行选择。</p>
-<p>JuiceFS 提供了丰富的 API，适用于各种形式数据的管理、分析、归档、备份，可以在不修改代码的前提下无缝对接大数据、机器学习、人工智能等应用平台，为其提供海量、弹性、低价的高性能存储。运维人员不用再为可用性、灾难恢复、监控、扩容等工作烦恼，专注于业务开发，提升研发效率。同时运维细节的简化，对 DevOps 极其友好。</p>
-<div className="video-container">
-  <iframe src="//player.bilibili.com/player.html?aid=931107196&bvid=BV1HK4y197va&cid=350876578&page=1&autoplay=0" width="100%" height="360" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-</div>
 
-<h2 id="_1"><strong>核心特性</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<ol>
-<li><strong>POSIX 兼容</strong>：像本地文件系统一样使用，无缝对接已有应用，无业务侵入性；</li>
-<li><strong>HDFS 兼容</strong>：完整兼容 <a href="../deployment/hadoop_java_sdk.md">HDFS API</a>，提供更强的元数据性能；</li>
-<li><strong>S3 兼容</strong>：提供 <a href="../deployment/s3_gateway.md">S3 网关</a> 实现 S3 协议兼容的访问接口；</li>
-<li><strong>云原生</strong>：通过 <a href="../deployment/how_to_use_on_kubernetes.md">Kubernetes CSI 驱动</a> 轻松地在 Kubernetes 中使用 JuiceFS；</li>
-<li><strong>分布式设计</strong>：同一文件系统可在上千台服务器同时挂载，高性能并发读写，共享数据；</li>
-<li><strong>强一致性</strong>：确认的文件修改会在所有服务器上立即可见，保证强一致性；</li>
-<li><strong>强悍性能</strong>：毫秒级延迟，近乎无限的吞吐量（取决于对象存储规模），查看<a href="../benchmark/benchmark.md">性能测试结果</a>；</li>
-<li><strong>数据安全</strong>：支持传输中加密（encryption in transit）和静态加密（encryption at rest），<a href="../security/encrypt.md">查看详情</a>；</li>
-<li><strong>文件锁</strong>：支持 BSD 锁（flock）和 POSIX 锁（fcntl）；</li>
-<li><strong>数据压缩</strong>：支持 <a href="https://lz4.github.io/lz4">LZ4</a> 和 <a href="https://facebook.github.io/zstd">Zstandard</a> 压缩算法，节省存储空间。</li>
-</ol>
-<h2 id="_2"><strong>应用场景</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>JuiceFS 为海量数据存储设计，可以作为很多分布式文件系统和网络文件系统的替代，特别是以下场景：</p>
-<ul>
-<li>
-<p>大数据分析：HDFS 兼容；与主流计算引擎（Spark、Presto、Hive 等）无缝衔接；无限扩展的存储空间；运维成本几乎为 0；性能远好于直接对接对象存储。</p>
-</li>
-<li>
-<p>机器学习：POSIX 兼容，可以支持所有机器学习、深度学习框架；方便的文件共享还能提升团队管理、使用数据效率。
-Kubernetes：JuiceFS 支持 Kubernetes CSI；为容器提供解耦的文件存储，令应用服务可以无状态化；方便地在容器间共享数据。</p>
-</li>
-<li>
-<p>共享工作区：可以在任意主机挂载；没有客户端并发读写限制；POSIX 兼容已有的数据流和脚本操作。
-数据备份：在无限平滑扩展的存储空间备份各种数据，结合共享挂载功能，可以将多主机数据汇总至一处，做统一备份。</p>
-</li>
-</ul>
-<h2 id="_3"><strong>技术架构</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p><img alt="" src="https://pic.imgdb.cn/item/64ddc7b6661c6c8e542ebab0.jpg" /></p>
-<p>JuiceFS 文件系统由三个部分组成：</p>
-<p><strong>JuiceFS 客户端（Client）</strong>：所有文件读写，以及碎片合并、回收站文件过期删除等后台任务，均在客户端中发生。客户端需要同时与对象存储和元数据引擎打交道。客户端支持多种接入方式：</p>
-<ul>
-<li>通过 <strong>FUSE</strong>，JuiceFS 文件系统能够以 POSIX 兼容的方式挂载到服务器，将海量云端存储直接当做本地存储来使用。</li>
-<li>通过 <strong>Hadoop Java SDK</strong>，JuiceFS 文件系统能够直接替代 HDFS，为 Hadoop 提供低成本的海量存储。</li>
-<li>通过 <strong>Kubernetes CSI 驱动</strong>，JuiceFS 文件系统能够直接为 Kubernetes 提供海量存储。</li>
-<li>通过 <strong>S3 网关</strong>，使用 S3 作为存储层的应用可直接接入，同时可使用 AWS CLI、s3cmd、MinIO client 等工具访问 JuiceFS 文件系统。</li>
-<li>通过 <strong>WebDAV 服务</strong>，以 HTTP 协议，以类似 RESTful API 的方式接入 JuiceFS 并直接操作其中的文件。</li>
-</ul>
-<p><strong>数据存储（Data Storage）</strong>：文件将会被切分上传至对象存储服务。JuiceFS 支持几乎所有的公有云对象存储，同时也支持 OpenStack Swift、Ceph、MinIO 等私有化的对象存储。</p>
-<p><strong>元数据引擎（Metadata Engine）</strong>：用于存储文件元数据（metadata），包含以下内容：</p>
-<ul>
-<li>常规文件系统的元数据：文件名、文件大小、权限信息、创建修改时间、目录结构、文件属性、符号链接、文件锁等。</li>
-<li>文件数据的索引：文件的数据分配和引用计数、客户端会话等。</li>
-</ul>
-<h2 id="_4"><strong>环境部署</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<div class="admonition info">
-<p class="admonition-title">环境要求</p>
-<ul>
-<li>这里做 dome 实验,所以可用 k3s 作为实验环境,利用k3s自带的local-path,作为 redis-cluster的块存储,后端使用 minio 作为 juicefs 对接的s3存储</li>
-</ul>
-</div>
-<p><strong>部署方式:</strong></p>
-<ul>
-<li>方式一: <a href="https://juicefs.com/docs/zh/community/juicefs_on_k3s">在 K3s 上使用 JuiceFS</a> (测试可以使用这种方式,比较简单)</li>
-<li>方式二: <a href="https://juicefs.com/docs/zh/csi/getting_started/">官方推荐helm方式部署</a> (生产环境强烈推荐这种)</li>
-<li>优化方法:<a href="https://github.com/barry-boy/barry-boy.github.io/issues/62">可以参考我写的一个 pr 对已经安装的 juicefs 进行优化</a></li>
-</ul>
-<h3 id="_5"><strong>文章参考:</strong><a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<ul>
-<li><a href="https://juicefs.com/docs/zh/csi/getting_started/">juicefs 官方文档</a></li>
-<li><a href="https://github.com/bitnami/charts/tree/main/bitnami/redis-cluster">redis cluster 文章</a></li>
-<li><a href="https://min.io/docs/minio/kubernetes/gke/index.html">minio 官方文档</a></li>
-</ul>
 
               
             </article>
@@ -2093,41 +1863,6 @@ Kubernetes：JuiceFS 支持 Kubernetes CSI；为容器提供解耦的文件存�
       </main>
       
         <footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="页脚">
-      
-        
-        <a href="../rook-ceph-update/" class="md-footer__link md-footer__link--prev" aria-label="上一页: rook-ceph 版本升级" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                上一页
-              </span>
-              rook-ceph 版本升级
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../5-dev-docs/" class="md-footer__link md-footer__link--next" aria-label="下一页: ceph 存储修复" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                下一页
-              </span>
-              ceph 存储修复
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

@@ -1,154 +1,82 @@
-# **Juicefs机器学习存储方案**
+## **Juicefs 存储介绍**
+
+**JuiceFS** 是一款面向云原生设计的高性能分布式文件系统，在 Apache 2.0 开源协议下发布。提供完备的 [POSIX](https://en.wikipedia.org/wiki/POSIX) 兼容性，可将几乎所有对象存储接入本地作为海量本地磁盘使用，亦可同时在跨平台、跨地区的不同主机上挂载读写。
+
+JuiceFS 采用「数据」与「元数据」分离存储的架构，从而实现文件系统的分布式设计。文件数据本身会被切分保存在[对象存储](../reference/how_to_set_up_object_storage.md#supported-object-storage)（例如 Amazon S3），而元数据则可以保存在 Redis、MySQL、TiKV、SQLite 等多种[数据库](../reference/how_to_set_up_metadata_engine.md)中，你可以根据场景与性能要求进行选择。
+
+JuiceFS 提供了丰富的 API，适用于各种形式数据的管理、分析、归档、备份，可以在不修改代码的前提下无缝对接大数据、机器学习、人工智能等应用平台，为其提供海量、弹性、低价的高性能存储。运维人员不用再为可用性、灾难恢复、监控、扩容等工作烦恼，专注于业务开发，提升研发效率。同时运维细节的简化，对 DevOps 极其友好。
+
+<div className="video-container">
+  <iframe src="//player.bilibili.com/player.html?aid=931107196&bvid=BV1HK4y197va&cid=350876578&page=1&autoplay=0" width="100%" height="360" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+</div>
+
+
+## **核心特性**
+
+1. **POSIX 兼容**：像本地文件系统一样使用，无缝对接已有应用，无业务侵入性；
+2. **HDFS 兼容**：完整兼容 [HDFS API](../deployment/hadoop_java_sdk.md)，提供更强的元数据性能；
+3. **S3 兼容**：提供 [S3 网关](../deployment/s3_gateway.md) 实现 S3 协议兼容的访问接口；
+4. **云原生**：通过 [Kubernetes CSI 驱动](../deployment/how_to_use_on_kubernetes.md) 轻松地在 Kubernetes 中使用 JuiceFS；
+5. **分布式设计**：同一文件系统可在上千台服务器同时挂载，高性能并发读写，共享数据；
+6. **强一致性**：确认的文件修改会在所有服务器上立即可见，保证强一致性；
+7. **强悍性能**：毫秒级延迟，近乎无限的吞吐量（取决于对象存储规模），查看[性能测试结果](../benchmark/benchmark.md)；
+8. **数据安全**：支持传输中加密（encryption in transit）和静态加密（encryption at rest），[查看详情](../security/encrypt.md)；
+9. **文件锁**：支持 BSD 锁（flock）和 POSIX 锁（fcntl）；
+10. **数据压缩**：支持 [LZ4](https://lz4.github.io/lz4) 和 [Zstandard](https://facebook.github.io/zstd) 压缩算法，节省存储空间。
+
+
+## **应用场景**
+
+JuiceFS 为海量数据存储设计，可以作为很多分布式文件系统和网络文件系统的替代，特别是以下场景：
+
+- 大数据分析：HDFS 兼容；与主流计算引擎（Spark、Presto、Hive 等）无缝衔接；无限扩展的存储空间；运维成本几乎为 0；性能远好于直接对接对象存储。
+
+- 机器学习：POSIX 兼容，可以支持所有机器学习、深度学习框架；方便的文件共享还能提升团队管理、使用数据效率。
+Kubernetes：JuiceFS 支持 Kubernetes CSI；为容器提供解耦的文件存储，令应用服务可以无状态化；方便地在容器间共享数据。
+
+- 共享工作区：可以在任意主机挂载；没有客户端并发读写限制；POSIX 兼容已有的数据流和脚本操作。
+数据备份：在无限平滑扩展的存储空间备份各种数据，结合共享挂载功能，可以将多主机数据汇总至一处，做统一备份。
+
+
+
+## **技术架构**
+
+![](https://pic.imgdb.cn/item/64ddc7b6661c6c8e542ebab0.jpg)
+
+JuiceFS 文件系统由三个部分组成：
+
+**JuiceFS 客户端（Client）**：所有文件读写，以及碎片合并、回收站文件过期删除等后台任务，均在客户端中发生。客户端需要同时与对象存储和元数据引擎打交道。客户端支持多种接入方式：
+
+- 通过 **FUSE**，JuiceFS 文件系统能够以 POSIX 兼容的方式挂载到服务器，将海量云端存储直接当做本地存储来使用。
+- 通过 **Hadoop Java SDK**，JuiceFS 文件系统能够直接替代 HDFS，为 Hadoop 提供低成本的海量存储。
+- 通过 **Kubernetes CSI 驱动**，JuiceFS 文件系统能够直接为 Kubernetes 提供海量存储。
+- 通过 **S3 网关**，使用 S3 作为存储层的应用可直接接入，同时可使用 AWS CLI、s3cmd、MinIO client 等工具访问 JuiceFS 文件系统。
+- 通过 **WebDAV 服务**，以 HTTP 协议，以类似 RESTful API 的方式接入 JuiceFS 并直接操作其中的文件。
+
+**数据存储（Data Storage）**：文件将会被切分上传至对象存储服务。JuiceFS 支持几乎所有的公有云对象存储，同时也支持 OpenStack Swift、Ceph、MinIO 等私有化的对象存储。
+
+**元数据引擎（Metadata Engine）**：用于存储文件元数据（metadata），包含以下内容：
+
+- 常规文件系统的元数据：文件名、文件大小、权限信息、创建修改时间、目录结构、文件属性、符号链接、文件锁等。
+- 文件数据的索引：文件的数据分配和引用计数、客户端会话等。
+
+
+## **环境部署**
+
 !!! info "环境要求"
-    - docker环境
-    - k3s 环境安装
-    - redis数据库
-    - rook-ceph存储
+    - 这里做 dome 实验,所以可用 k3s 作为实验环境,利用k3s自带的local-path,作为 redis-cluster的块存储,后端使用 minio 作为 juicefs 对接的s3存储
 
-## **juicefs 环境部署**
+**部署方式:**
 
-参考文章: [Juicefs官网]( https://juicefs.com/docs/zh/community/juicefs_on_k3s) 进行部署
-
-!!! wanring "温馨提示"
-    - 如果是生产环境需要考虑redis的高可用，以及原数据的备份。
+- 方式一: [在 K3s 上使用 JuiceFS]( https://juicefs.com/docs/zh/community/juicefs_on_k3s) (测试可以使用这种方式,比较简单)
+- 方式二: [官方推荐helm方式部署](https://juicefs.com/docs/zh/csi/getting_started/) (生产环境强烈推荐这种)
+- 优化方法:[可以参考我写的一个 pr 对已经安装的 juicefs 进行优化](https://github.com/barry-boy/barry-boy.github.io/issues/62)
 
 
-## **Cephfs和juicefs性能对比**
 
-### **基准测试对比**
 
-- cephfs 基准测试
+### **文章参考:**
 
-```shell
-root@nginx-run-7877759d45-484kx:/data# fio --name=big-file-multi-read --directory=$PWD --rw=read --refill_buffers --bs=4K --size=200M --numjobs=5
-big-file-multi-read: (g=0): rw=read, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=psync, iodepth=1
-...
-fio-3.25
-Starting 5 processes
-Jobs: 5 (f=5)
-big-file-multi-read: (groupid=0, jobs=1): err= 0: pid=816: Mon Aug 15 09:48:26 2022
-  read: IOPS=33.5k, BW=131MiB/s (137MB/s)(200MiB/1527msec)
-    clat (nsec): min=570, max=248033k, avg=29131.89, stdev=2094821.44
-     lat (nsec): min=605, max=248033k, avg=29167.63, stdev=2094821.43
-    clat percentiles (nsec):
-     |  1.00th=[     644],  5.00th=[     708], 10.00th=[     732],
-     | 20.00th=[     748], 30.00th=[     756], 40.00th=[     780],
-     | 50.00th=[     796], 60.00th=[     828], 70.00th=[     892],
-     | 80.00th=[     940], 90.00th=[    1048], 95.00th=[    1160],
-     | 99.00th=[    1416], 99.50th=[    1752], 99.90th=[   23168],
-     | 99.95th=[ 2899968], 99.99th=[93847552]
-   bw (  KiB/s): min=73728, max=196608, per=21.37%, avg=135168.00, stdev=86889.28, samples=2
-   iops        : min=18432, max=49152, avg=33792.00, stdev=21722.32, samples=2
-  lat (nsec)   : 750=23.25%, 1000=63.18%
-  lat (usec)   : 2=13.14%, 4=0.15%, 10=0.12%, 20=0.04%, 50=0.02%
-  lat (usec)   : 100=0.01%, 250=0.01%, 500=0.01%
-  lat (msec)   : 2=0.01%, 4=0.02%, 10=0.01%, 20=0.01%, 50=0.01%
-  lat (msec)   : 100=0.01%, 250=0.01%
-  cpu          : usr=0.72%, sys=6.55%, ctx=81, majf=0, minf=16
-  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
-     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
-     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
-     issued rwts: total=51200,0,0,0 short=0,0,0,0 dropped=0,0,0,0
-     latency   : target=0, window=0, percentile=100.00%, depth=1
-
-root@nginx-run-7877759d45-484kx:/data# fio --name=big-file-multi-read --directory=$PWD --rw=read --refill_buffers --bs=4K --size=200M --numjobs=5
-big-file-multi-read: (g=0): rw=read, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=psync, iodepth=1
-...
-fio-3.25
-Starting 5 processes
-Jobs: 5 (f=5)
-big-file-multi-read: (groupid=0, jobs=1): err= 0: pid=823: Mon Aug 15 09:48:31 2022
-  read: IOPS=41.1k, BW=161MiB/s (168MB/s)(200MiB/1246msec)
-    clat (nsec): min=620, max=346202k, avg=23787.02, stdev=1805527.05
-     lat (nsec): min=654, max=346202k, avg=23822.73, stdev=1805527.05
-    clat percentiles (nsec):
-     |  1.00th=[     692],  5.00th=[     740], 10.00th=[     748],
-     | 20.00th=[     764], 30.00th=[     780], 40.00th=[     804],
-     | 50.00th=[     828], 60.00th=[     876], 70.00th=[     924],
-     | 80.00th=[     980], 90.00th=[    1128], 95.00th=[    1192],
-     | 99.00th=[    1464], 99.50th=[    1672], 99.90th=[   11712],
-     | 99.95th=[ 2899968], 99.99th=[63700992]
-   bw (  KiB/s): min=159960, max=224614, per=26.87%, avg=192287.00, stdev=45717.28, samples=2
-   iops        : min=39990, max=56153, avg=48071.50, stdev=11428.97, samples=2
-  lat (nsec)   : 750=9.15%, 1000=72.77%
-  lat (usec)   : 2=17.78%, 4=0.09%, 10=0.10%, 20=0.04%, 50=0.01%
-  lat (usec)   : 100=0.01%, 250=0.01%, 500=0.01%
-  lat (msec)   : 2=0.01%, 4=0.02%, 10=0.01%, 20=0.01%, 50=0.01%
-  lat (msec)   : 100=0.01%, 500=0.01%
-  cpu          : usr=0.88%, sys=8.19%, ctx=88, majf=0, minf=15
-  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
-     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
-     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
-     issued rwts: total=51200,0,0,0 short=0,0,0,0 dropped=0,0,0,0
-     latency   : target=0, window=0, percentile=100.00%, depth=1
-big-file-multi-read: (groupid=0, jobs=1): err= 0: pid=824: Mon Aug 15 09:48:31 2022
-```
-
-- jufice 基准测试
-
-```
-root@nginx-run-7877759d45-484kx:/config# fio --name=big-file-multi-read --directory=$PWD --rw=read --refill_buffers --bs=4K --size=200M --numjobs=5
-big-file-multi-read: (g=0): rw=read, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=psync, iodepth=1
-...
-fio-3.25
-Starting 5 processes
-big-file-multi-read: Laying out IO file (1 file / 200MiB)
-big-file-multi-read: Laying out IO file (1 file / 200MiB)
-big-file-multi-read: Laying out IO file (1 file / 200MiB)
-big-file-multi-read: Laying out IO file (1 file / 200MiB)
-big-file-multi-read: Laying out IO file (1 file / 200MiB)
-Jobs: 5 (f=5): [R(5)][66.7%][r=304MiB/s][r=77.8k IOPS][eta 00m:02s]
-big-file-multi-read: (groupid=0, jobs=1): err= 0: pid=831: Mon Aug 15 09:50:58 2022
-  read: IOPS=14.9k, BW=58.0MiB/s (60.9MB/s)(200MiB/3446msec)
-    clat (nsec): min=373, max=533198k, avg=67006.12, stdev=4299023.59
-     lat (nsec): min=406, max=533198k, avg=67043.41, stdev=4299023.63
-    clat percentiles (nsec):
-     |  1.00th=[      390],  5.00th=[      418], 10.00th=[      462],
-     | 20.00th=[      532], 30.00th=[      548], 40.00th=[      564],
-     | 50.00th=[      572], 60.00th=[      580], 70.00th=[      596],
-     | 80.00th=[      620], 90.00th=[      692], 95.00th=[      860],
-     | 99.00th=[    58624], 99.50th=[    86528], 99.90th=[   220160],
-     | 99.95th=[  3031040], 99.99th=[248512512]
-   bw (  KiB/s): min=24576, max=90112, per=22.61%, avg=64140.67, stdev=22219.00, samples=6
-   iops        : min= 6144, max=22528, avg=16035.17, stdev=5554.75, samples=6
-  lat (nsec)   : 500=14.08%, 750=78.30%, 1000=4.37%
-  lat (usec)   : 2=0.36%, 4=0.65%, 10=0.30%, 20=0.09%, 50=0.28%
-  lat (usec)   : 100=1.21%, 250=0.26%, 500=0.03%, 750=0.01%, 1000=0.01%
-  lat (msec)   : 2=0.01%, 4=0.01%, 20=0.01%, 50=0.01%, 100=0.01%
-  lat (msec)   : 250=0.01%, 500=0.01%, 750=0.01%
-  cpu          : usr=0.70%, sys=1.92%, ctx=874, majf=0, minf=16
-  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
-     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
-     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
-     issued rwts: total=51200,0,0,0 short=0,0,0,0 dropped=0,0,0,0
-     latency   : target=0, window=0, percentile=100.00%, depth=1
-
-root@nginx-run-7877759d45-484kx:/config# fio --name=big-file-multi-read --directory=$PWD --rw=read --refill_buffers --bs=4K --size=200M --numjobs=5
-big-file-multi-read: (g=0): rw=read, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=psync, iodepth=1
-...
-fio-3.25
-Starting 5 processes
-
-big-file-multi-read: (groupid=0, jobs=1): err= 0: pid=838: Mon Aug 15 09:51:22 2022
-  read: IOPS=157k, BW=613MiB/s (643MB/s)(200MiB/326msec)
-    clat (nsec): min=379, max=7481.0k, avg=5697.24, stdev=75385.63
-     lat (nsec): min=411, max=7481.1k, avg=5733.65, stdev=75387.68
-    clat percentiles (nsec):
-     |  1.00th=[    458],  5.00th=[    498], 10.00th=[    524],
-     | 20.00th=[    556], 30.00th=[    572], 40.00th=[    580],
-     | 50.00th=[    596], 60.00th=[    612], 70.00th=[    636],
-     | 80.00th=[    684], 90.00th=[    852], 95.00th=[    964],
-     | 99.00th=[ 102912], 99.50th=[ 280576], 99.90th=[ 962560],
-     | 99.95th=[1302528], 99.99th=[2539520]
-  lat (nsec)   : 500=5.63%, 750=79.66%, 1000=10.50%
-  lat (usec)   : 2=1.80%, 4=0.02%, 10=0.21%, 20=0.06%, 50=0.26%
-  lat (usec)   : 100=0.84%, 250=0.45%, 500=0.38%, 750=0.07%, 1000=0.03%
-  lat (msec)   : 2=0.08%, 4=0.01%, 10=0.01%
-  cpu          : usr=5.85%, sys=27.08%, ctx=1348, majf=0, minf=17
-  IO depths    : 1=100.0%, 2=0.0%, 4=0.0%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
-     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
-     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
-     issued rwts: total=51200,0,0,0 short=0,0,0,0 dropped=0,0,0,0
-     latency   : target=0, window=0, percentile=100.00%, depth=1
-big-file-multi-read: (groupid=0, jobs=1): err= 0: pid=839: Mon Aug 15 09:51:22 2022
-```
+- [juicefs 官方文档](https://juicefs.com/docs/zh/csi/getting_started/)
+- [redis cluster 文章](https://github.com/bitnami/charts/tree/main/bitnami/redis-cluster)
+- [minio 官方文档](https://min.io/docs/minio/kubernetes/gke/index.html)
