@@ -148,7 +148,7 @@ nav:
  
 
     - 使用技巧: 
-        - Mac 小功能: Macuse/mac-easy.md
+        - kubeconfig 实践应用: Macuse/mac-kubeconfig.md
         - Mac 制作ubuntu系统盘: Macuse/mac-usb-system.md
         - Mac vscode使用技巧: Macuse/mac-vscode.md
 

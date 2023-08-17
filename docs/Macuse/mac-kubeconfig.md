@@ -1,33 +1,27 @@
-# **Mac 环境配置**
+## **kubecm 的一些实践**
 
-## **背景**
+## **问题背景**
 
 在维护和管理多个k8s集群时，每个集群都有自己对应的config文件，那么带来的问题就是在 ~/.kube 目录下就会有一大堆各种环境的 yaml，对于管理来说不是特别的友好。
-更有可能在不同的集群切来切去，造成运维事故。
+更有可能在不同的集群切来切去，造成运维事故。因此这里介绍一种管理 kubeconfig 的一种方式.(这个主要以 mac 来作为演示).
+<div className="video-container">
+  <iframe src="//player.bilibili.com/player.html?aid=531017349&bvid=BV1nu411L7nh&cid=1198974833&page=1" width="100%" height="360" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+</div>
 
-!!! info "kubecm 用法"
 
-
-**解决的痛点问题：**
-
+## **解决痛点**
   - 统一管理多个k8s集群
   - 来回切换指定namespace繁琐
   - 很多时候不知道自己在哪个集群下
 
-## **安装**
+## **如何安装**
 
-Mac安装地址：[kubecm](https://formulae.brew.sh/formula/kubecm)
-```shell
-https://formulae.brew.sh/formula/kubecm
-```
-
-下载好了，如何使用？
-
-使用说明：[kubecm github地址](https://github.com/sunny0826/kubecm)
+Mac安装地址：[只需要使用 brew 直接安装kubecm即可](https://formulae.brew.sh/formula/kubecm)
 
 
 
-## **kubecm 案例**
+
+## **kubecm 案例:**
 
 参数说明：
 
@@ -141,7 +135,7 @@ fzf除了这些，还有很多的骚操作，shell命令补全，另外fzf 重�
 
 
 
+### ** 文章参考:**
 
-### word文件修复
-!!! info "参考地址"
-    https://www.51cto.com/article/708448.html
+- https://formulae.brew.sh/formula/kubecm
+- https://github.com/sunny0826/kubecm

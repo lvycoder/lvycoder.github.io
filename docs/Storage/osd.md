@@ -306,23 +306,7 @@ elapsed: 1   ops: 200   ops/sec: 136.986   bytes/sec: 137 MiB/s
 ```
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-!!! info "固态磁盘测试"
-
+- https://bench.sh/
 
 
 
