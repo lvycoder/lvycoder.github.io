@@ -1,6 +1,6 @@
 
 
-# **Mac 制作Linux系统盘（其他发行版都可以）**
+## **Mac 制作Linux系统盘（其他发行版都可以）**
 
 
 1.1. Convert ISO file to RAW img file"

@@ -149,8 +149,10 @@ nav:
 
     - 使用技巧: 
         - kubeconfig 实践应用: Macuse/mac-kubeconfig.md
+        - k9s 实践应用: Macuse/mac-k9s-doc.md
         - Mac 制作ubuntu系统盘: Macuse/mac-usb-system.md
         - Mac vscode使用技巧: Macuse/mac-vscode.md
+
 
     - 工作生活:
         - 我的2021: mylife/life-docs1.md
