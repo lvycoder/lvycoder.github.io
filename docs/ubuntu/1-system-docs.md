@@ -1,328 +1,272 @@
 
-## **系统安装**
-正所谓不会装系统的运维就不是好运维的理念，下面介绍一下ubuntu系统安装
+## **Linux系统管理01——系统命令精讲**
+## **一、Linux命令的分类**
+1、内部命令：属于Shell解释器的一部分
 
-!!! info "准备工作"
-    - 步骤一: 下载iso镜像
-        - 下载地址: https://mirrors.aliyun.com/ubuntu-releases/
-    - 步骤二: 制作系统盘
-        - 可以参考使用技巧中的Mac制作系统盘这篇文章
-    - 步骤三: 装就完事了
+2、外部命令：独立于Shell解释器之外的程序
 
-1.1. 选择语言
-![第一步](https://pic.imgdb.cn/item/632d192516f2c2beb1185a77.png)
+3、type命令，查看命令是外部命令还是内部命令：
 
-1.2. 选择键盘（本步骤直接默认按回车即可。）
-![第二步](https://pic.imgdb.cn/item/632d192616f2c2beb1185a80.png)
+`	`[root@www ~]# type cd
 
-1.3. 配置网络（一般情况会直接跳过这一步）
-![第三步](https://pic.imgdb.cn/item/632d192616f2c2beb1185a8b.png)
+`	`cd is a shell builtin   【cd是一个内部命令】
 
-1.4. 选择代理（默认回车跳过）
-![第四步](https://pic.imgdb.cn/item/632d192616f2c2beb1185a94.png)
+`	`[root@www ~]# type ifconfig
 
-1.5. 配置镜像源（跳过）
+`	`ifconfig is /sbin/ifconfig  【ifconfig是一个外部命令】
+## **二、Linux命令格式**
+1、Linux命令的通用格式：命令字  [选项]  [参数]
 
-1.6. 选择磁盘（这个步骤比较关键）
-![第五步](https://pic.imgdb.cn/item/632d192616f2c2beb1185a9e.png)
+2、选项：用于调节命令的具体功能
 
-选择磁盘这一步需要注意，需要所有磁盘空间分给根分区
-![第五步](https://pic.imgdb.cn/item/632d193416f2c2beb1186a6c.png)
+`	`“-”引导短格式选项，例如“ls -a”
 
-![第五步](https://pic.imgdb.cn/item/632d193416f2c2beb1186a7d.png)
+`	`“--”引导长格式选项，例如“ls --help”
 
+`	`注意：多个短格式选项可以合并，例如“ls -alh”
 
-1.7. 用户信息
-![第六步](https://pic.imgdb.cn/item/632d193416f2c2beb1186a90.png)
+`	`但是多个长格式选项，不能合并。
 
+3、参数：命令的对象，如文件、目录名等
 
-1.8. openssh server 切记要选择上 (`切记`)
-![第七步](https://pic.imgdb.cn/item/632d193416f2c2beb1186aa0.png)
+`	`例如：[root@www ~]# ls -alh /etc
 
+`	`ls——命令字；-alh——选项；/etc——参数
+## **三、命令快捷键**
+`	`•tab键：自动补齐文件名，命令等；按两次tab键，系统将输出可用的所有名称列表。
 
+`	`•反斜杠“\”:强行换行
 
-## **系统初始化**
+`	`•ctrl+U：快速删除光标之前所有字符（可视为剪切）
 
-!!! tip "初始化步骤"
-    - 添加hosts信息
+`	`•ctrl+K：快速删除光标之后所有字符（可视为剪切）
 
-    - 修改国内apt源
-        - 清华源
-        - 阿里源
-    - 添加管理员用户
-        - 通常几个管理人员几个管理用户
-    - 修改内核参数
-    - 安装基础软件，gpu驱动
-    - 安装docker
-        - 安装容器运行时
-    - 安装kubernetes
-        - 安装指定kubeadm版本
+`	`•ctrl+Y：黏贴刚才所删除（剪切）的字符
 
-以上初始化可以通过跑ansible来实现，下面具体拆分来配置一下
+`	`•ctrl+L：清屏
 
+`	`•ctrl+C：取消当前命令行编辑；结束当前执行的命令
 
+`	`•ctrl+D：从shell提示中注销关闭，类似输入exit
 
-!!! warning "温馨提示"
-    - 以下操作系统版本是以最新的ubuntu22.04 为例子来演示
+`	`•ctrl+A：把光标移动到行首，类似于Home键
 
-### **更换国内源**
+`	`•ctrl+E：把光标移动到行尾，类似于End键
 
-!!! info "ubuntu22.04 清华源"
-    - 需要注意一下，如果apt update 报错，就将https改成http
-    - 如果需要添加其他的版本的源可以访问: https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/
-    ```
-    # 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
-    deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse
-    # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse
-    deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse
-    # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse
-    deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse
-    # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse
-    deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-security main restricted universe multiverse
-    # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-security main restricted universe multiverse
+`	`•ctrl+Z：转入后台运行
 
-    # 预发布软件源，不建议启用
-    # deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse
-    # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse
-    ```
+`	`•ctrl+R：在历史命令中查找（常用并且很好用）
+## **四、帮助命令**
+1、help内部命令帮助，查看bash内部命令的帮助
 
+`	`用法1：help  内部命令字
 
+`	`[root@www ~]# help cd
 
+`	`用法2：命令字 --help
 
+`	`即命令的“--help”选项，适用于大多数外部命令
 
+`	`[root@www ~]# ls --help
 
+2、man用来提供在线帮助，使用权限是所有用户。在Linux系统中存储着一部联机使用的手册，以供用户在终端上查找。使用man命令可以调阅其中的帮助信息，非常方便实用。
 
+`	`（1）用法：man  命令字
 
-## **安全**
+`	`man [-acdfhkKtwW] [-m system] [-p string] [-C config\_file] [-Mpath] [-P pager] [-S 	section\_list][section] name ...
 
-### **五: 系统安全**
+`	`（2）示例：
 
-通常在企业中，服务器会遭受外来的很多的恶意攻击，那么服务器的安全就显得格外的重要。首先肯定想到的是服务器的帐号和密码管理，通常的情况下会禁止root这样的管理员用户登陆，也会禁止密码这样的方式登陆。
+`	`[root@www ~]# man ls
 
-**原因:**
-  
-  - root用户的权限太高，如果一旦帐号密码泄漏，就会造成很严重的后果。
-  
-  - 禁止密码方式登陆也是为了安全考虑，毕竟密码丢失也是很平常的事情。推荐使用公钥的方式来登陆服务器。
-
-
-#### **5.1: 禁止root用户:** （centos/ubuntu都适用）
-  
-  - 可以修改`/etc/ssh/sshd_config`配置文件
-  - 添加: `PermitRootLogin yes` 配置（一般情况下，在完成初始化就禁止root登陆了）
-    - yes 为允许root登陆
-    - no  为禁止root登陆
-  - 重新启动sshd服务。`systemctl restart sshd`
-  - 当然也可以加入系统初始化步骤中，略～
-
-
-#### **5.2: 密钥对来登陆服务器**
-
-生成公钥和私钥
-```shell
-root@user:~# ssh-keygen   //一路回车
-Generating public/private rsa key pair.
-Enter file in which to save the key (/root/.ssh/id_rsa):
-Enter passphrase (empty for no passphrase):
-Enter same passphrase again:
-Your identification has been saved in /root/.ssh/id_rsa
-Your public key has been saved in /root/.ssh/id_rsa.pub
-The key fingerprint is:
-SHA256:J0s/ZHIRTj/UCcDQLHtxd5Qa0p3r2CYlcz7lPS7VaXU root@user
-The key's randomart image is:
-+---[RSA 3072]----+
-|        .=+.+o.o+|
-|        .o==.o++.|
-|         ooo+.o..|
-|        . .. = +E|
-|        S.=   X.B|
-|       . X   o @+|
-|        . o   * o|
-|           . . . |
-|              .  |
-+----[SHA256]-----+
-```
-
-这个时候在.ssh目录下生成几个文件
-
-```shell
-root@user:~# ll .ssh/
-total 16
-drwx------ 2 root root 4096 Sep 20 09:46 ./
-drwx------ 5 root root 4096 Sep 20 09:35 ../
--rw------- 1 root root    0 May 24 15:30 authorized_keys  // 这个是授权文件
--rw------- 1 root root 2590 Sep 20 09:46 id_rsa         // 这个是私钥文件
--rw-r--r-- 1 root root  563 Sep 20 09:46 id_rsa.pub    //这个是公钥文件
-```
-
-将公钥加入user用户下: `.ssh/authorized_keys`
-
-```shell
-root@user:/home/user# ls -a .ssh/
-.  ..  authorized_keys
-```
-话不多说测试登陆
-
-```shell
-$ ssh user@172.30.42.244    //这是我们使用user用户登陆，就不需要密码了
-Welcome to Ubuntu 20.04.4 LTS (GNU/Linux 5.4.0-113-generic x86_64)
-```
-
-当然了，也可以通过一下这样添加自己的公钥
-```shell
-
-curl https://openbayes.com/api/users/lixie/keys.txt >> authorized_keys
-```
-
-!!! tip "禁止用户密码登陆"
-    - 为了安全的考虑，我们需要关闭用户密码登陆的这种方式
-    ```shell
-    PubkeyAuthentication yes    # 启用公告密钥配对认证方式 
-    RSAAuthentication yes       # 允许RSA密钥
-    PasswordAuthentication no   # 禁止密码验证登录,如果启用的话,RSA认证登录就没有意义了
-    PermitRootLogin no          # 禁用root账户登录，非必要，但为了安全性，请配置
-    ```
-    - 这样结合上一步骤，关闭用户账号密码验证方式，只采用密钥对会安全很多。
+`	`（3）参数
 
+`	`-C config\_file：指定设定文件man.conf，缺省值是/etc/man.conf。
 
+`	`[root@www ~]# man 1 man
 
+`	`[root@www ~]# man 7 man
 
+`	`（4）代号 代表內容
 
+`		`1 使用者在shell中可以操作的指令或可执行档
 
+`		`2 系統核心可呼叫的函数与工具等
 
-!!! fail "SSH 无法登陆"
-    - 可以ping通但无法ssh
-    - ssh -v ip 无明显报错
-    - 考虑是否是服务端禁止客户端
-    - 在/etc/hosts.allow文件中加上  sshd: ALL ，重启sshd
+`		`3 一些常用的函数(function)与函数库(library)，大部分是C的函数库(libc)
 
-!!! info "修改网卡配置"
-    
-```
-root@ubuntu:/home/ubuntu# cat /etc/netplan/00-installer-config.yaml
-# This is the network config written by 'subiquity'
-network:
-  ethernets:
-    ens18:
-      addresses:
-      - 192.168.1.114/24
-      gateway4: 192.168.1.1
-      nameservers:
-        addresses:
-        - 192.168.1.1
-        search:
-        - 202.106.46.151
-  version: 2
-```
+`		`4 装置档案的说明，通常在/dev下的档案
 
-!!! info "清除内核缓存"
-    https://www.tecmint.com/clear-ram-memory-cache-buffer-and-swap-space-on-linux/
+`		`5 设定档或者是某些档案的格式
 
+`		`6 游戏(games)
 
-## **Ubuntu 系统管理 && 安装及管理程序:**
+`		`7 惯例与协定等，例如Linux档案系统、网络协定、ASCII code等等的說明
 
-### **dpkg 包安装**
+`		`8 系統管理員可用的管理指令
 
-#### **（1）格式**
-- dpkg [选项] 包文件
+`		`9 跟kernel有关的文件
 
-#### **（2）用法**
+`	`（5）由于手册页man page是用less程序来看的(可以方便地使屏幕上翻和下翻), 所以 		 在man page里可以使用less的所有选项。
+## **五、ls（list）命令详解**
+1、作用：列表显示目录内的文件及目录，结合不同选项实现不同的作用。
 
+2、格式：ls [选项] 目录或文件名
 
-| 参数      | Description                          |
-| ----------- | ------------------------------------ |
-| - i      |  安装 deb 软件包  |
-| - r       | 删除 deb 软件包 |
-| -r --purge     | 连同配置文件一起删除 |
-|  -l   | 查看系统中已安装软件包信息  |
-|  -p  | 卸载软件包及其配置文件，但无法解决依赖关系 |
+3、常用选项：
 
+`	`-l：以长格式（long）显示文件和目录的列表
 
-#### **（3）辅助选项**
---force-all  强制安装一个包(忽略依赖及其它问题)
---no-install-recommends    参数来避免安装非必须的文件，从而减小镜像的体积
+`	`-a：显示所有（all）子目录和文件的信息
 
+`	`-A：与-a基本类似，但有两个特殊隐藏目录“.”和“..”不显示
 
-### **apt 包安装 卸载**
+`	`-d：显示目录（directory）本身的属性，常与-l同时使用
 
-#### **（1）格式**
-apt [options] [command] [package ...]
+`	`-h：以更人性化（human）的方式显示出目录或文件的大小，常与-l同时使用
 
-#### **（2）用法**
+`	`-R：以递归（recursive）的方式显示目录及其子目录中的所有内容
 
-apt install -y  package_name  //安装
+4、示例：
 
-apt remove  package_name   //卸载
+![](Linux系统管理01——系统命令精讲.001.png)
 
-apt update  //列出所有可更新的软件清单命令
+![](Linux系统管理01——系统命令精讲.002.png)
+## **六、du（disk usage）命令详解**
+1、作用：用于统计制定目录或文件所占用磁盘空间的大小
 
+2、格式：du [选项] 目录或文件名
 
-!!! error "apt update 更新报错"
-    ```shell
-    root@node2:/etc/apt# apt update
-    Reading package lists... Done
-    E: Could not get lock /var/lib/apt/lists/lock. It is held by process 27056 (apt-get)
-    N: Be aware that removing the lock file is not a solution and may break your system.
-    E: Unable to lock directory /var/lib/apt/lists/
-    ```
-    这个主要的原因是有别的进程占用apt这个进程，可以通过一下方法进行排查
-    ```shell
-    ps aux | grep -i apt  //过滤出来apt进程，如果没有用可以kill掉，或者等待进程结束
-    ```
+3、常见选项：
 
+`	`-a：统计磁盘空间占用时所有的文件，而不仅仅是统计目录
 
-#### **（3）案例**
+`	`-s：只统计所占用空间总的（summary）大小
 
-```shell
-// 过滤出来以rc开头和nvidia的包并卸载
-dpkg -l |grep nvidia |grep "^rc" |awk '{print $2}' |grep -E 'nvidia' | xargs dpkg  --purge
+4、示例：
 
-dpkg -l |grep nvidia |grep "^ii" |awk '{print $2}' |grep -E '^nvidia' | xargs dpkg --force-all  -r
+`	`[root@www ~]# du -sh test/
 
-dpkg -l | grep nvidia  | awk '{print $2}' | xargs apt remove -y
+`	`16K	test/
+## **七、touch命令**
+1、作用：创建空文件，用于测试。若当前文件已存在时，将更新该文件的时间戳
 
-dpkg -l | grep nvidia  | awk '{print $2}' | xargs apt purge -y
+2、格式：touch 文件名
 
-```
+3、示例：
 
+![](Linux系统管理01——系统命令精讲.003.png)
 
-### **ubuntu 关机**
+![](Linux系统管理01——系统命令精讲.004.png)
+## **八、mkdir（make directory）命令**
+1、作用：创建新目录
 
-```shell
-echo b > /proc/sysrq-trigger
-```
+2、格式：mkdir [选项] 目录位置及名称
 
-官网: 参考地址链接[](https://www.kernel.org/doc/html/v4.10/admin-guide/sysrq.html?from_wecom=1)
+3、常用选项：
 
+`	`-p 一次性创建嵌套的多层目录
 
+`	`-v 显示详细
 
+`	`-m 跳出当前的umask值
 
+4、示例：
 
-### **Linux系统管理07-文件系统与LVM** 
+![](Linux系统管理01——系统命令精讲.005.png)
+## **九、cp（copy）命令**
+1、作用：复制文件或目录
 
+2、格式：cp [选项] 源文件或目录 目标文件或目录
 
+3、常用选项：
 
-#### **inode 知识点补充**
+`	`-f 覆盖同名文件或目录，强制（force）复制
 
-当我们在Linux系统中，偶然会遇到一些特殊格式的文件或者目录，通过使用rm 是无法直接删除的，这时可以利用inode号删除文件或者目录。
+`	`-i 提醒用户确认（interactive，交互式）
 
-```shell
+`	`-p 保持（preserve）源文件权限、属性、属主及时间标记等不变
 
-[cka] root@node1:/# mkdir /share
+`	`-r 递归（recursive）复制
 
-[cka] root@node1:/# ll -i  //可以通过以下命令查看文件的inode为805024
-total 2097232
-805024 drwxr-xr-x   2 root root       4096 Nov 11 17:22 share/
-655362 drwxr-xr-x   6 root root       4096 Feb 23  2022 snap/ 
-find  . -inum inode号 -delete    // 根据inode来删除该目录
+4、示例：
 
-```
+![](Linux系统管理01——系统命令精讲.006.png)
+## **十、rm（remove）命令**
+1、作用：删除制定的文件或目录
 
+2、格式：rm [选项] 要删除的文件或目录
 
+3、常用选项：
 
+`	`-f 不提示，直接强制删除
 
+`	`-i 提示用户确认
 
+`	`-r 递归式删除整个目录树
 
+4、示例：
 
-#### **附件:**
-  - 文章地址: [ubuntu安装参考:](https://www.cnblogs.com/mefj/p/14964416.html) 
+`	`[root@www /]# rm -rf test 【此命令危险，建议进入到文件夹后删除】
+
+`	`建议如下操作：
+
+`	`[root@www /]# cd test/
+
+`	`[root@www test]# rm -rf \*
+## **十一、mv（move）命令**
+1、作用：将指定文件或目录转移位置（剪切），如果目标位置与源位置相同，则相当于执行重命名操作
+
+2、格式：mv [选项] 源文件或目录 目标文件或目录
+
+3、示例：
+
+![](Linux系统管理01——系统命令精讲.007.png)
+
+## **十二、which命令**
+1、作用：查找Linux命令程序所在的位置
+
+2、格式：which 命令|程序名
+
+3、示例：
+
+`	`[root@www ~]# which du
+
+`	`/usr/bin/du
+
+注意：默认当只熬到第一个目标后不再继续查找，若需查找全部，加选项-a。
+## **十三、find命令**
+1、作用：精细查找文件或目录
+
+2、格式：find [查找范围] [查找条件表达式]
+
+3、常用查找条件：
+
+`	`-name 按名称查找	例：find /etc –name “resol\*.conf”
+
+`	`-size 按大小查找		例：find /etc –size +1M 【k，M，G】
+
+`	`-user 按属性查找		例：find /etc –user root
+
+`	`-type 按类型查找		例：find /boot –type d 【d目录；f普通文件；b块设备；c字								符设备文件】
+
+4、逻辑运算符
+
+`	`（1）-a （and）逻辑“与”运算
+
+`		`[root@www ~]# find /boot -size +1M -a -name "vm\*"
+
+`		`/boot/vmlinuz-2.6.32-431.el6.x86\_64
+
+`	`（2）-o （or）逻辑“或”运算
+
+`		`[root@www ~]# find /boot -size +1M -o -name "vm\*"
+
+`		`/boot/vmlinuz-2.6.32-431.el6.x86\_64
+
+`		`/boot/initramfs-2.6.32-431.el6.x86\_64.img
+
+`		`/boot/System.map-2.6.32-431.el6.x86\_64
+
+` `PAGE   \\* MERGEFORMAT 6
+

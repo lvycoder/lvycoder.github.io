@@ -17,7 +17,7 @@
     
     
       
-        <title>Linux 系统管理 - Kubernetes 进阶训练营</title>
+        <title>1 system docs - Kubernetes 进阶训练营</title>
       
     
     
@@ -71,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#linux01" class="md-skip">
           跳转至
         </a>
       
@@ -106,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Linux 系统管理
+              1 system docs
             
           </span>
         </div>
@@ -208,15 +208,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../ubuntu-bmc/" class="md-tabs__link md-tabs__link--active">
+      <a href="../ubuntu-bmc/" class="md-tabs__link">
         操作系统
       </a>
     </li>
@@ -518,17 +516,17 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" data-md-state="indeterminate" type="checkbox" id="__nav_2" checked>
       
       
       
+        
+          
         
           
         
@@ -568,223 +566,25 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Linux 系统管理
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        Linux 系统管理
+    <li class="md-nav__item">
+      <a href="../0-system-docs/" class="md-nav__link">
+        Linux 系统安装
       </a>
-      
-        
+    </li>
+  
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+            
+          
+            
+              
   
   
   
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    系统安装
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    系统初始化
-  </a>
-  
-    <nav class="md-nav" aria-label="系统初始化">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    更换国内源
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    安全
-  </a>
-  
-    <nav class="md-nav" aria-label="安全">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    五: 系统安全
-  </a>
-  
-    <nav class="md-nav" aria-label="五: 系统安全">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#51-root-centosubuntu" class="md-nav__link">
-    5.1: 禁止root用户: （centos/ubuntu都适用）
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#52" class="md-nav__link">
-    5.2: 密钥对来登陆服务器
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ubuntu" class="md-nav__link">
-    Ubuntu 系统管理 &amp;&amp; 安装及管理程序:
-  </a>
-  
-    <nav class="md-nav" aria-label="Ubuntu 系统管理 &amp;&amp; 安装及管理程序:">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#dpkg" class="md-nav__link">
-    dpkg 包安装
-  </a>
-  
-    <nav class="md-nav" aria-label="dpkg 包安装">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    （1）格式
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    （2）用法
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    （3）辅助选项
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#apt" class="md-nav__link">
-    apt 包安装 卸载
-  </a>
-  
-    <nav class="md-nav" aria-label="apt 包安装 卸载">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
-    （1）格式
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2_1" class="md-nav__link">
-    （2）用法
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3_1" class="md-nav__link">
-    （3）案例
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ubuntu_1" class="md-nav__link">
-    ubuntu 关机
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#linux07-lvm" class="md-nav__link">
-    Linux系统管理07-文件系统与LVM
-  </a>
-  
-    <nav class="md-nav" aria-label="Linux系统管理07-文件系统与LVM">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#inode" class="md-nav__link">
-    inode 知识点补充
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    附件:
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
+    <li class="md-nav__item">
+      <a href="../linux01/Linux%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%8601%E2%80%94%E2%80%94%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4%E7%B2%BE%E8%AE%B2/" class="md-nav__link">
+        Linux 系统管理-基础命令
+      </a>
     </li>
   
 
@@ -2091,184 +1891,100 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#linux01" class="md-nav__link">
+    Linux系统管理01——系统命令精讲
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linux" class="md-nav__link">
+    一、Linux命令的分类
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linux_1" class="md-nav__link">
+    二、Linux命令格式
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    系统安装
+    三、命令快捷键
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    系统初始化
+    四、帮助命令
   </a>
-  
-    <nav class="md-nav" aria-label="系统初始化">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    更换国内源
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    安全
+  <a href="#lslist" class="md-nav__link">
+    五、ls（list）命令详解
   </a>
-  
-    <nav class="md-nav" aria-label="安全">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    五: 系统安全
-  </a>
-  
-    <nav class="md-nav" aria-label="五: 系统安全">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#51-root-centosubuntu" class="md-nav__link">
-    5.1: 禁止root用户: （centos/ubuntu都适用）
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#52" class="md-nav__link">
-    5.2: 密钥对来登陆服务器
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#ubuntu" class="md-nav__link">
-    Ubuntu 系统管理 &amp;&amp; 安装及管理程序:
-  </a>
-  
-    <nav class="md-nav" aria-label="Ubuntu 系统管理 &amp;&amp; 安装及管理程序:">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#dpkg" class="md-nav__link">
-    dpkg 包安装
-  </a>
-  
-    <nav class="md-nav" aria-label="dpkg 包安装">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    （1）格式
+  <a href="#dudisk-usage" class="md-nav__link">
+    六、du（disk usage）命令详解
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    （2）用法
+      
+        <li class="md-nav__item">
+  <a href="#touch" class="md-nav__link">
+    七、touch命令
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    （3）辅助选项
+      
+        <li class="md-nav__item">
+  <a href="#mkdirmake-directory" class="md-nav__link">
+    八、mkdir（make directory）命令
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#apt" class="md-nav__link">
-    apt 包安装 卸载
-  </a>
-  
-    <nav class="md-nav" aria-label="apt 包安装 卸载">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
-    （1）格式
+      
+        <li class="md-nav__item">
+  <a href="#cpcopy" class="md-nav__link">
+    九、cp（copy）命令
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#2_1" class="md-nav__link">
-    （2）用法
+      
+        <li class="md-nav__item">
+  <a href="#rmremove" class="md-nav__link">
+    十、rm（remove）命令
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#3_1" class="md-nav__link">
-    （3）案例
+      
+        <li class="md-nav__item">
+  <a href="#mvmove" class="md-nav__link">
+    十一、mv（move）命令
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ubuntu_1" class="md-nav__link">
-    ubuntu 关机
+      
+        <li class="md-nav__item">
+  <a href="#which" class="md-nav__link">
+    十二、which命令
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#linux07-lvm" class="md-nav__link">
-    Linux系统管理07-文件系统与LVM
+      
+        <li class="md-nav__item">
+  <a href="#find" class="md-nav__link">
+    十三、find命令
   </a>
-  
-    <nav class="md-nav" aria-label="Linux系统管理07-文件系统与LVM">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#inode" class="md-nav__link">
-    inode 知识点补充
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    附件:
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2289,299 +2005,156 @@
 </a>
 
 
-  <h1>Linux 系统管理</h1>
+  <h1>1 system docs</h1>
 
-<h2 id="_1"><strong>系统安装</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>正所谓不会装系统的运维就不是好运维的理念，下面介绍一下ubuntu系统安装</p>
-<div class="admonition info">
-<p class="admonition-title">准备工作</p>
-<ul>
-<li>步骤一: 下载iso镜像<ul>
-<li>下载地址: https://mirrors.aliyun.com/ubuntu-releases/</li>
-</ul>
-</li>
-<li>步骤二: 制作系统盘<ul>
-<li>可以参考使用技巧中的Mac制作系统盘这篇文章</li>
-</ul>
-</li>
-<li>步骤三: 装就完事了</li>
-</ul>
-</div>
-<p>1.1. 选择语言
-<img alt="第一步" src="https://pic.imgdb.cn/item/632d192516f2c2beb1185a77.png" /></p>
-<p>1.2. 选择键盘（本步骤直接默认按回车即可。）
-<img alt="第二步" src="https://pic.imgdb.cn/item/632d192616f2c2beb1185a80.png" /></p>
-<p>1.3. 配置网络（一般情况会直接跳过这一步）
-<img alt="第三步" src="https://pic.imgdb.cn/item/632d192616f2c2beb1185a8b.png" /></p>
-<p>1.4. 选择代理（默认回车跳过）
-<img alt="第四步" src="https://pic.imgdb.cn/item/632d192616f2c2beb1185a94.png" /></p>
-<p>1.5. 配置镜像源（跳过）</p>
-<p>1.6. 选择磁盘（这个步骤比较关键）
-<img alt="第五步" src="https://pic.imgdb.cn/item/632d192616f2c2beb1185a9e.png" /></p>
-<p>选择磁盘这一步需要注意，需要所有磁盘空间分给根分区
-<img alt="第五步" src="https://pic.imgdb.cn/item/632d193416f2c2beb1186a6c.png" /></p>
-<p><img alt="第五步" src="https://pic.imgdb.cn/item/632d193416f2c2beb1186a7d.png" /></p>
-<p>1.7. 用户信息
-<img alt="第六步" src="https://pic.imgdb.cn/item/632d193416f2c2beb1186a90.png" /></p>
-<p>1.8. openssh server 切记要选择上 (<code>切记</code>)
-<img alt="第七步" src="https://pic.imgdb.cn/item/632d193416f2c2beb1186aa0.png" /></p>
-<h2 id="_2"><strong>系统初始化</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<div class="admonition tip">
-<p class="admonition-title">初始化步骤</p>
-<ul>
-<li>
-<p>添加hosts信息</p>
-</li>
-<li>
-<p>修改国内apt源</p>
-<ul>
-<li>清华源</li>
-<li>阿里源</li>
-</ul>
-</li>
-<li>添加管理员用户<ul>
-<li>通常几个管理人员几个管理用户</li>
-</ul>
-</li>
-<li>修改内核参数</li>
-<li>安装基础软件，gpu驱动</li>
-<li>安装docker<ul>
-<li>安装容器运行时</li>
-</ul>
-</li>
-<li>安装kubernetes<ul>
-<li>安装指定kubeadm版本</li>
-</ul>
-</li>
-</ul>
-</div>
-<p>以上初始化可以通过跑ansible来实现，下面具体拆分来配置一下</p>
-<div class="admonition warning">
-<p class="admonition-title">温馨提示</p>
-<ul>
-<li>以下操作系统版本是以最新的ubuntu22.04 为例子来演示</li>
-</ul>
-</div>
-<h3 id="_3"><strong>更换国内源</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<div class="admonition info">
-<p class="admonition-title">ubuntu22.04 清华源</p>
-<ul>
-<li>需要注意一下，如果apt update 报错，就将https改成http</li>
-<li>如果需要添加其他的版本的源可以访问: https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/
-<div class="highlight"><pre><span></span><code># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
-deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse
-deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse
-deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse
-deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-security main restricted universe multiverse
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-security main restricted universe multiverse
-
-# 预发布软件源，不建议启用
-# deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse
-</code></pre></div></li>
-</ul>
-</div>
-<h2 id="_4"><strong>安全</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<h3 id="_5"><strong>五: 系统安全</strong><a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>通常在企业中，服务器会遭受外来的很多的恶意攻击，那么服务器的安全就显得格外的重要。首先肯定想到的是服务器的帐号和密码管理，通常的情况下会禁止root这样的管理员用户登陆，也会禁止密码这样的方式登陆。</p>
-<p><strong>原因:</strong></p>
-<ul>
-<li>
-<p>root用户的权限太高，如果一旦帐号密码泄漏，就会造成很严重的后果。</p>
-</li>
-<li>
-<p>禁止密码方式登陆也是为了安全考虑，毕竟密码丢失也是很平常的事情。推荐使用公钥的方式来登陆服务器。</p>
-</li>
-</ul>
-<h4 id="51-root-centosubuntu"><strong>5.1: 禁止root用户:</strong> （centos/ubuntu都适用）<a class="headerlink" href="#51-root-centosubuntu" title="Permanent link">&para;</a></h4>
-<ul>
-<li>可以修改<code>/etc/ssh/sshd_config</code>配置文件</li>
-<li>添加: <code>PermitRootLogin yes</code> 配置（一般情况下，在完成初始化就禁止root登陆了）<ul>
-<li>yes 为允许root登陆</li>
-<li>no  为禁止root登陆</li>
-</ul>
-</li>
-<li>重新启动sshd服务。<code>systemctl restart sshd</code></li>
-<li>当然也可以加入系统初始化步骤中，略～</li>
-</ul>
-<h4 id="52"><strong>5.2: 密钥对来登陆服务器</strong><a class="headerlink" href="#52" title="Permanent link">&para;</a></h4>
-<p>生成公钥和私钥
-<div class="highlight"><pre><span></span><code>root@user:~#<span class="w"> </span>ssh-keygen<span class="w">   </span>//一路回车
-Generating<span class="w"> </span>public/private<span class="w"> </span>rsa<span class="w"> </span>key<span class="w"> </span>pair.
-Enter<span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>which<span class="w"> </span>to<span class="w"> </span>save<span class="w"> </span>the<span class="w"> </span>key<span class="w"> </span><span class="o">(</span>/root/.ssh/id_rsa<span class="o">)</span>:
-Enter<span class="w"> </span>passphrase<span class="w"> </span><span class="o">(</span>empty<span class="w"> </span><span class="k">for</span><span class="w"> </span>no<span class="w"> </span>passphrase<span class="o">)</span>:
-Enter<span class="w"> </span>same<span class="w"> </span>passphrase<span class="w"> </span>again:
-Your<span class="w"> </span>identification<span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>saved<span class="w"> </span><span class="k">in</span><span class="w"> </span>/root/.ssh/id_rsa
-Your<span class="w"> </span>public<span class="w"> </span>key<span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>saved<span class="w"> </span><span class="k">in</span><span class="w"> </span>/root/.ssh/id_rsa.pub
-The<span class="w"> </span>key<span class="w"> </span>fingerprint<span class="w"> </span>is:
-SHA256:J0s/ZHIRTj/UCcDQLHtxd5Qa0p3r2CYlcz7lPS7VaXU<span class="w"> </span>root@user
-The<span class="w"> </span>key<span class="err">&#39;</span>s<span class="w"> </span>randomart<span class="w"> </span>image<span class="w"> </span>is:
-+---<span class="o">[</span>RSA<span class="w"> </span><span class="m">3072</span><span class="o">]</span>----+
-<span class="p">|</span><span class="w">        </span>.<span class="o">=</span>+.+o.o+<span class="p">|</span>
-<span class="p">|</span><span class="w">        </span>.o<span class="o">==</span>.o++.<span class="p">|</span>
-<span class="p">|</span><span class="w">         </span>ooo+.o..<span class="p">|</span>
-<span class="p">|</span><span class="w">        </span>.<span class="w"> </span>..<span class="w"> </span><span class="o">=</span><span class="w"> </span>+E<span class="p">|</span>
-<span class="p">|</span><span class="w">        </span>S.<span class="o">=</span><span class="w">   </span>X.B<span class="p">|</span>
-<span class="p">|</span><span class="w">       </span>.<span class="w"> </span>X<span class="w">   </span>o<span class="w"> </span>@+<span class="p">|</span>
-<span class="p">|</span><span class="w">        </span>.<span class="w"> </span>o<span class="w">   </span>*<span class="w"> </span>o<span class="p">|</span>
-<span class="p">|</span><span class="w">           </span>.<span class="w"> </span>.<span class="w"> </span>.<span class="w"> </span><span class="p">|</span>
-<span class="p">|</span><span class="w">              </span>.<span class="w">  </span><span class="p">|</span>
-+----<span class="o">[</span>SHA256<span class="o">]</span>-----+
-</code></pre></div></p>
-<p>这个时候在.ssh目录下生成几个文件</p>
-<div class="highlight"><pre><span></span><code>root@user:~#<span class="w"> </span>ll<span class="w"> </span>.ssh/
-total<span class="w"> </span><span class="m">16</span>
-drwx------<span class="w"> </span><span class="m">2</span><span class="w"> </span>root<span class="w"> </span>root<span class="w"> </span><span class="m">4096</span><span class="w"> </span>Sep<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">09</span>:46<span class="w"> </span>./
-drwx------<span class="w"> </span><span class="m">5</span><span class="w"> </span>root<span class="w"> </span>root<span class="w"> </span><span class="m">4096</span><span class="w"> </span>Sep<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">09</span>:35<span class="w"> </span>../
--rw-------<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w">    </span><span class="m">0</span><span class="w"> </span>May<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">15</span>:30<span class="w"> </span>authorized_keys<span class="w">  </span>//<span class="w"> </span>这个是授权文件
--rw-------<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w"> </span><span class="m">2590</span><span class="w"> </span>Sep<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">09</span>:46<span class="w"> </span>id_rsa<span class="w">         </span>//<span class="w"> </span>这个是私钥文件
--rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w">  </span><span class="m">563</span><span class="w"> </span>Sep<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">09</span>:46<span class="w"> </span>id_rsa.pub<span class="w">    </span>//这个是公钥文件
-</code></pre></div>
-<p>将公钥加入user用户下: <code>.ssh/authorized_keys</code></p>
-<p><div class="highlight"><pre><span></span><code>root@user:/home/user#<span class="w"> </span>ls<span class="w"> </span>-a<span class="w"> </span>.ssh/
-.<span class="w">  </span>..<span class="w">  </span>authorized_keys
-</code></pre></div>
-话不多说测试登陆</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh<span class="w"> </span>user@172.30.42.244<span class="w">    </span>//这是我们使用user用户登陆，就不需要密码了
-Welcome<span class="w"> </span>to<span class="w"> </span>Ubuntu<span class="w"> </span><span class="m">20</span>.04.4<span class="w"> </span>LTS<span class="w"> </span><span class="o">(</span>GNU/Linux<span class="w"> </span><span class="m">5</span>.4.0-113-generic<span class="w"> </span>x86_64<span class="o">)</span>
-</code></pre></div>
-<p>当然了，也可以通过一下这样添加自己的公钥
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>https://openbayes.com/api/users/lixie/keys.txt<span class="w"> </span>&gt;&gt;<span class="w"> </span>authorized_keys
-</code></pre></div></p>
-<div class="admonition tip">
-<p class="admonition-title">禁止用户密码登陆</p>
-<ul>
-<li>为了安全的考虑，我们需要关闭用户密码登陆的这种方式
-<div class="highlight"><pre><span></span><code>PubkeyAuthentication<span class="w"> </span>yes<span class="w">    </span><span class="c1"># 启用公告密钥配对认证方式 </span>
-RSAAuthentication<span class="w"> </span>yes<span class="w">       </span><span class="c1"># 允许RSA密钥</span>
-PasswordAuthentication<span class="w"> </span>no<span class="w">   </span><span class="c1"># 禁止密码验证登录,如果启用的话,RSA认证登录就没有意义了</span>
-PermitRootLogin<span class="w"> </span>no<span class="w">          </span><span class="c1"># 禁用root账户登录，非必要，但为了安全性，请配置</span>
-</code></pre></div></li>
-<li>这样结合上一步骤，关闭用户账号密码验证方式，只采用密钥对会安全很多。</li>
-</ul>
-</div>
-<div class="admonition fail">
-<p class="admonition-title">SSH 无法登陆</p>
-<ul>
-<li>可以ping通但无法ssh</li>
-<li>ssh -v ip 无明显报错</li>
-<li>考虑是否是服务端禁止客户端</li>
-<li>在/etc/hosts.allow文件中加上  sshd: ALL ，重启sshd</li>
-</ul>
-</div>
-<div class="admonition info">
-<p class="admonition-title">修改网卡配置</p>
-</div>
-<div class="highlight"><pre><span></span><code>root@ubuntu:/home/ubuntu# cat /etc/netplan/00-installer-config.yaml
-# This is the network config written by &#39;subiquity&#39;
-network:
-  ethernets:
-    ens18:
-      addresses:
-      - 192.168.1.114/24
-      gateway4: 192.168.1.1
-      nameservers:
-        addresses:
-        - 192.168.1.1
-        search:
-        - 202.106.46.151
-  version: 2
-</code></pre></div>
-<div class="admonition info">
-<p class="admonition-title">清除内核缓存</p>
-<p>https://www.tecmint.com/clear-ram-memory-cache-buffer-and-swap-space-on-linux/</p>
-</div>
-<h2 id="ubuntu"><strong>Ubuntu 系统管理 &amp;&amp; 安装及管理程序:</strong><a class="headerlink" href="#ubuntu" title="Permanent link">&para;</a></h2>
-<h3 id="dpkg"><strong>dpkg 包安装</strong><a class="headerlink" href="#dpkg" title="Permanent link">&para;</a></h3>
-<h4 id="1"><strong>（1）格式</strong><a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
-<ul>
-<li>dpkg [选项] 包文件</li>
-</ul>
-<h4 id="2"><strong>（2）用法</strong><a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>- i</td>
-<td>安装 deb 软件包</td>
-</tr>
-<tr>
-<td>- r</td>
-<td>删除 deb 软件包</td>
-</tr>
-<tr>
-<td>-r --purge</td>
-<td>连同配置文件一起删除</td>
-</tr>
-<tr>
-<td>-l</td>
-<td>查看系统中已安装软件包信息</td>
-</tr>
-<tr>
-<td>-p</td>
-<td>卸载软件包及其配置文件，但无法解决依赖关系</td>
-</tr>
-</tbody>
-</table>
-<h4 id="3"><strong>（3）辅助选项</strong><a class="headerlink" href="#3" title="Permanent link">&para;</a></h4>
-<p>--force-all  强制安装一个包(忽略依赖及其它问题)
---no-install-recommends    参数来避免安装非必须的文件，从而减小镜像的体积</p>
-<h3 id="apt"><strong>apt 包安装 卸载</strong><a class="headerlink" href="#apt" title="Permanent link">&para;</a></h3>
-<h4 id="1_1"><strong>（1）格式</strong><a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h4>
-<p>apt [options] [command] [package ...]</p>
-<h4 id="2_1"><strong>（2）用法</strong><a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h4>
-<p>apt install -y  package_name  //安装</p>
-<p>apt remove  package_name   //卸载</p>
-<p>apt update  //列出所有可更新的软件清单命令</p>
-<div class="admonition error">
-<p class="admonition-title">apt update 更新报错</p>
-<p><div class="highlight"><pre><span></span><code>root@node2:/etc/apt#<span class="w"> </span>apt<span class="w"> </span>update
-Reading<span class="w"> </span>package<span class="w"> </span>lists...<span class="w"> </span>Done
-E:<span class="w"> </span>Could<span class="w"> </span>not<span class="w"> </span>get<span class="w"> </span>lock<span class="w"> </span>/var/lib/apt/lists/lock.<span class="w"> </span>It<span class="w"> </span>is<span class="w"> </span>held<span class="w"> </span>by<span class="w"> </span>process<span class="w"> </span><span class="m">27056</span><span class="w"> </span><span class="o">(</span>apt-get<span class="o">)</span>
-N:<span class="w"> </span>Be<span class="w"> </span>aware<span class="w"> </span>that<span class="w"> </span>removing<span class="w"> </span>the<span class="w"> </span>lock<span class="w"> </span>file<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>a<span class="w"> </span>solution<span class="w"> </span>and<span class="w"> </span>may<span class="w"> </span><span class="nb">break</span><span class="w"> </span>your<span class="w"> </span>system.
-E:<span class="w"> </span>Unable<span class="w"> </span>to<span class="w"> </span>lock<span class="w"> </span>directory<span class="w"> </span>/var/lib/apt/lists/
-</code></pre></div>
-这个主要的原因是有别的进程占用apt这个进程，可以通过一下方法进行排查
-<div class="highlight"><pre><span></span><code>ps<span class="w"> </span>aux<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>apt<span class="w">  </span>//过滤出来apt进程，如果没有用可以kill掉，或者等待进程结束
-</code></pre></div></p>
-</div>
-<h4 id="3_1"><strong>（3）案例</strong><a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>//<span class="w"> </span>过滤出来以rc开头和nvidia的包并卸载
-dpkg<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span>grep<span class="w"> </span>nvidia<span class="w"> </span><span class="p">|</span>grep<span class="w"> </span><span class="s2">&quot;^rc&quot;</span><span class="w"> </span><span class="p">|</span>awk<span class="w"> </span><span class="s1">&#39;{print $2}&#39;</span><span class="w"> </span><span class="p">|</span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">&#39;nvidia&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>dpkg<span class="w">  </span>--purge
-
-dpkg<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span>grep<span class="w"> </span>nvidia<span class="w"> </span><span class="p">|</span>grep<span class="w"> </span><span class="s2">&quot;^ii&quot;</span><span class="w"> </span><span class="p">|</span>awk<span class="w"> </span><span class="s1">&#39;{print $2}&#39;</span><span class="w"> </span><span class="p">|</span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">&#39;^nvidia&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>dpkg<span class="w"> </span>--force-all<span class="w">  </span>-r
-
-dpkg<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>nvidia<span class="w">  </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $2}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>apt<span class="w"> </span>remove<span class="w"> </span>-y
-
-dpkg<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>nvidia<span class="w">  </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $2}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>apt<span class="w"> </span>purge<span class="w"> </span>-y
-</code></pre></div>
-<h3 id="ubuntu_1"><strong>ubuntu 关机</strong><a class="headerlink" href="#ubuntu_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span>b<span class="w"> </span>&gt;<span class="w"> </span>/proc/sysrq-trigger
-</code></pre></div>
-<p>官网: 参考地址链接<a href="https://www.kernel.org/doc/html/v4.10/admin-guide/sysrq.html?from_wecom=1"></a></p>
-<h3 id="linux07-lvm"><strong>Linux系统管理07-文件系统与LVM</strong><a class="headerlink" href="#linux07-lvm" title="Permanent link">&para;</a></h3>
-<h4 id="inode"><strong>inode 知识点补充</strong><a class="headerlink" href="#inode" title="Permanent link">&para;</a></h4>
-<p>当我们在Linux系统中，偶然会遇到一些特殊格式的文件或者目录，通过使用rm 是无法直接删除的，这时可以利用inode号删除文件或者目录。</p>
-<div class="highlight"><pre><span></span><code><span class="o">[</span>cka<span class="o">]</span><span class="w"> </span>root@node1:/#<span class="w"> </span>mkdir<span class="w"> </span>/share
-
-<span class="o">[</span>cka<span class="o">]</span><span class="w"> </span>root@node1:/#<span class="w"> </span>ll<span class="w"> </span>-i<span class="w">  </span>//可以通过以下命令查看文件的inode为805024
-total<span class="w"> </span><span class="m">2097232</span>
-<span class="m">805024</span><span class="w"> </span>drwxr-xr-x<span class="w">   </span><span class="m">2</span><span class="w"> </span>root<span class="w"> </span>root<span class="w">       </span><span class="m">4096</span><span class="w"> </span>Nov<span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">17</span>:22<span class="w"> </span>share/
-<span class="m">655362</span><span class="w"> </span>drwxr-xr-x<span class="w">   </span><span class="m">6</span><span class="w"> </span>root<span class="w"> </span>root<span class="w">       </span><span class="m">4096</span><span class="w"> </span>Feb<span class="w"> </span><span class="m">23</span><span class="w">  </span><span class="m">2022</span><span class="w"> </span>snap/<span class="w"> </span>
-find<span class="w">  </span>.<span class="w"> </span>-inum<span class="w"> </span>inode号<span class="w"> </span>-delete<span class="w">    </span>//<span class="w"> </span>根据inode来删除该目录
-</code></pre></div>
-<h4 id="_6"><strong>附件:</strong><a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<ul>
-<li>文章地址: <a href="https://www.cnblogs.com/mefj/p/14964416.html">ubuntu安装参考:</a> </li>
-</ul>
+<h2 id="linux01"><strong>Linux系统管理01——系统命令精讲</strong><a class="headerlink" href="#linux01" title="Permanent link">&para;</a></h2>
+<h2 id="linux"><strong>一、Linux命令的分类</strong><a class="headerlink" href="#linux" title="Permanent link">&para;</a></h2>
+<p>1、内部命令：属于Shell解释器的一部分</p>
+<p>2、外部命令：独立于Shell解释器之外的程序</p>
+<p>3、type命令，查看命令是外部命令还是内部命令：</p>
+<p><code></code>[root@www ~]# type cd</p>
+<p><code></code>cd is a shell builtin   【cd是一个内部命令】</p>
+<p><code></code>[root@www ~]# type ifconfig</p>
+<p><code></code>ifconfig is /sbin/ifconfig  【ifconfig是一个外部命令】</p>
+<h2 id="linux_1"><strong>二、Linux命令格式</strong><a class="headerlink" href="#linux_1" title="Permanent link">&para;</a></h2>
+<p>1、Linux命令的通用格式：命令字  [选项]  [参数]</p>
+<p>2、选项：用于调节命令的具体功能</p>
+<p><code></code>“-”引导短格式选项，例如“ls -a”</p>
+<p><code></code>“--”引导长格式选项，例如“ls --help”</p>
+<p><code></code>注意：多个短格式选项可以合并，例如“ls -alh”</p>
+<p><code></code>但是多个长格式选项，不能合并。</p>
+<p>3、参数：命令的对象，如文件、目录名等</p>
+<p><code></code>例如：[root@www ~]# ls -alh /etc</p>
+<p><code></code>ls——命令字；-alh——选项；/etc——参数</p>
+<h2 id="_1"><strong>三、命令快捷键</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p><code></code>•tab键：自动补齐文件名，命令等；按两次tab键，系统将输出可用的所有名称列表。</p>
+<p><code></code>•反斜杠“\”:强行换行</p>
+<p><code></code>•ctrl+U：快速删除光标之前所有字符（可视为剪切）</p>
+<p><code></code>•ctrl+K：快速删除光标之后所有字符（可视为剪切）</p>
+<p><code></code>•ctrl+Y：黏贴刚才所删除（剪切）的字符</p>
+<p><code></code>•ctrl+L：清屏</p>
+<p><code></code>•ctrl+C：取消当前命令行编辑；结束当前执行的命令</p>
+<p><code></code>•ctrl+D：从shell提示中注销关闭，类似输入exit</p>
+<p><code></code>•ctrl+A：把光标移动到行首，类似于Home键</p>
+<p><code></code>•ctrl+E：把光标移动到行尾，类似于End键</p>
+<p><code></code>•ctrl+Z：转入后台运行</p>
+<p><code></code>•ctrl+R：在历史命令中查找（常用并且很好用）</p>
+<h2 id="_2"><strong>四、帮助命令</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>1、help内部命令帮助，查看bash内部命令的帮助</p>
+<p><code></code>用法1：help  内部命令字</p>
+<p><code></code>[root@www ~]# help cd</p>
+<p><code></code>用法2：命令字 --help</p>
+<p><code></code>即命令的“--help”选项，适用于大多数外部命令</p>
+<p><code></code>[root@www ~]# ls --help</p>
+<p>2、man用来提供在线帮助，使用权限是所有用户。在Linux系统中存储着一部联机使用的手册，以供用户在终端上查找。使用man命令可以调阅其中的帮助信息，非常方便实用。</p>
+<p><code></code>（1）用法：man  命令字</p>
+<p><code></code>man [-acdfhkKtwW] [-m system] [-p string] [-C config_file] [-Mpath] [-P pager] [-S    section_list][section] name ...</p>
+<p><code></code>（2）示例：</p>
+<p><code></code>[root@www ~]# man ls</p>
+<p><code></code>（3）参数</p>
+<p><code></code>-C config_file：指定设定文件man.conf，缺省值是/etc/man.conf。</p>
+<p><code></code>[root@www ~]# man 1 man</p>
+<p><code></code>[root@www ~]# man 7 man</p>
+<p><code></code>（4）代号 代表內容</p>
+<p><code></code>1 使用者在shell中可以操作的指令或可执行档</p>
+<p><code></code>2 系統核心可呼叫的函数与工具等</p>
+<p><code></code>3 一些常用的函数(function)与函数库(library)，大部分是C的函数库(libc)</p>
+<p><code></code>4 装置档案的说明，通常在/dev下的档案</p>
+<p><code></code>5 设定档或者是某些档案的格式</p>
+<p><code></code>6 游戏(games)</p>
+<p><code></code>7 惯例与协定等，例如Linux档案系统、网络协定、ASCII code等等的說明</p>
+<p><code></code>8 系統管理員可用的管理指令</p>
+<p><code></code>9 跟kernel有关的文件</p>
+<p><code></code>（5）由于手册页man page是用less程序来看的(可以方便地使屏幕上翻和下翻), 所以          在man page里可以使用less的所有选项。</p>
+<h2 id="lslist"><strong>五、ls（list）命令详解</strong><a class="headerlink" href="#lslist" title="Permanent link">&para;</a></h2>
+<p>1、作用：列表显示目录内的文件及目录，结合不同选项实现不同的作用。</p>
+<p>2、格式：ls [选项] 目录或文件名</p>
+<p>3、常用选项：</p>
+<p><code></code>-l：以长格式（long）显示文件和目录的列表</p>
+<p><code></code>-a：显示所有（all）子目录和文件的信息</p>
+<p><code></code>-A：与-a基本类似，但有两个特殊隐藏目录“.”和“..”不显示</p>
+<p><code></code>-d：显示目录（directory）本身的属性，常与-l同时使用</p>
+<p><code></code>-h：以更人性化（human）的方式显示出目录或文件的大小，常与-l同时使用</p>
+<p><code></code>-R：以递归（recursive）的方式显示目录及其子目录中的所有内容</p>
+<p>4、示例：</p>
+<p><img alt="" src="Linux系统管理01——系统命令精讲.001.png" /></p>
+<p><img alt="" src="Linux系统管理01——系统命令精讲.002.png" /></p>
+<h2 id="dudisk-usage"><strong>六、du（disk usage）命令详解</strong><a class="headerlink" href="#dudisk-usage" title="Permanent link">&para;</a></h2>
+<p>1、作用：用于统计制定目录或文件所占用磁盘空间的大小</p>
+<p>2、格式：du [选项] 目录或文件名</p>
+<p>3、常见选项：</p>
+<p><code></code>-a：统计磁盘空间占用时所有的文件，而不仅仅是统计目录</p>
+<p><code></code>-s：只统计所占用空间总的（summary）大小</p>
+<p>4、示例：</p>
+<p><code></code>[root@www ~]# du -sh test/</p>
+<p><code></code>16K    test/</p>
+<h2 id="touch"><strong>七、touch命令</strong><a class="headerlink" href="#touch" title="Permanent link">&para;</a></h2>
+<p>1、作用：创建空文件，用于测试。若当前文件已存在时，将更新该文件的时间戳</p>
+<p>2、格式：touch 文件名</p>
+<p>3、示例：</p>
+<p><img alt="" src="Linux系统管理01——系统命令精讲.003.png" /></p>
+<p><img alt="" src="Linux系统管理01——系统命令精讲.004.png" /></p>
+<h2 id="mkdirmake-directory"><strong>八、mkdir（make directory）命令</strong><a class="headerlink" href="#mkdirmake-directory" title="Permanent link">&para;</a></h2>
+<p>1、作用：创建新目录</p>
+<p>2、格式：mkdir [选项] 目录位置及名称</p>
+<p>3、常用选项：</p>
+<p><code></code>-p 一次性创建嵌套的多层目录</p>
+<p><code></code>-v 显示详细</p>
+<p><code></code>-m 跳出当前的umask值</p>
+<p>4、示例：</p>
+<p><img alt="" src="Linux系统管理01——系统命令精讲.005.png" /></p>
+<h2 id="cpcopy"><strong>九、cp（copy）命令</strong><a class="headerlink" href="#cpcopy" title="Permanent link">&para;</a></h2>
+<p>1、作用：复制文件或目录</p>
+<p>2、格式：cp [选项] 源文件或目录 目标文件或目录</p>
+<p>3、常用选项：</p>
+<p><code></code>-f 覆盖同名文件或目录，强制（force）复制</p>
+<p><code></code>-i 提醒用户确认（interactive，交互式）</p>
+<p><code></code>-p 保持（preserve）源文件权限、属性、属主及时间标记等不变</p>
+<p><code></code>-r 递归（recursive）复制</p>
+<p>4、示例：</p>
+<p><img alt="" src="Linux系统管理01——系统命令精讲.006.png" /></p>
+<h2 id="rmremove"><strong>十、rm（remove）命令</strong><a class="headerlink" href="#rmremove" title="Permanent link">&para;</a></h2>
+<p>1、作用：删除制定的文件或目录</p>
+<p>2、格式：rm [选项] 要删除的文件或目录</p>
+<p>3、常用选项：</p>
+<p><code></code>-f 不提示，直接强制删除</p>
+<p><code></code>-i 提示用户确认</p>
+<p><code></code>-r 递归式删除整个目录树</p>
+<p>4、示例：</p>
+<p><code></code>[root@www /]# rm -rf test 【此命令危险，建议进入到文件夹后删除】</p>
+<p><code></code>建议如下操作：</p>
+<p><code></code>[root@www /]# cd test/</p>
+<p><code></code>[root@www test]# rm -rf *</p>
+<h2 id="mvmove"><strong>十一、mv（move）命令</strong><a class="headerlink" href="#mvmove" title="Permanent link">&para;</a></h2>
+<p>1、作用：将指定文件或目录转移位置（剪切），如果目标位置与源位置相同，则相当于执行重命名操作</p>
+<p>2、格式：mv [选项] 源文件或目录 目标文件或目录</p>
+<p>3、示例：</p>
+<p><img alt="" src="Linux系统管理01——系统命令精讲.007.png" /></p>
+<h2 id="which"><strong>十二、which命令</strong><a class="headerlink" href="#which" title="Permanent link">&para;</a></h2>
+<p>1、作用：查找Linux命令程序所在的位置</p>
+<p>2、格式：which 命令|程序名</p>
+<p>3、示例：</p>
+<p><code></code>[root@www ~]# which du</p>
+<p><code></code>/usr/bin/du</p>
+<p>注意：默认当只熬到第一个目标后不再继续查找，若需查找全部，加选项-a。</p>
+<h2 id="find"><strong>十三、find命令</strong><a class="headerlink" href="#find" title="Permanent link">&para;</a></h2>
+<p>1、作用：精细查找文件或目录</p>
+<p>2、格式：find [查找范围] [查找条件表达式]</p>
+<p>3、常用查找条件：</p>
+<p><code></code>-name 按名称查找    例：find /etc –name “resol*.conf”</p>
+<p><code></code>-size 按大小查找        例：find /etc –size +1M 【k，M，G】</p>
+<p><code></code>-user 按属性查找        例：find /etc –user root</p>
+<p><code></code>-type 按类型查找        例：find /boot –type d 【d目录；f普通文件；b块设备；c字                             符设备文件】</p>
+<p>4、逻辑运算符</p>
+<p><code></code>（1）-a （and）逻辑“与”运算</p>
+<p><code></code>[root@www ~]# find /boot -size +1M -a -name "vm*"</p>
+<p><code></code>/boot/vmlinuz-2.6.32-431.el6.x86_64</p>
+<p><code></code>（2）-o （or）逻辑“或”运算</p>
+<p><code></code>[root@www ~]# find /boot -size +1M -o -name "vm*"</p>
+<p><code></code>/boot/vmlinuz-2.6.32-431.el6.x86_64</p>
+<p><code></code>/boot/initramfs-2.6.32-431.el6.x86_64.img</p>
+<p><code></code>/boot/System.map-2.6.32-431.el6.x86_64</p>
+<p><code></code>PAGE   \* MERGEFORMAT 6</p>
 
               
             </article>
@@ -2596,41 +2169,6 @@ find<span class="w">  </span>.<span class="w"> </span>-inum<span class="w"> </sp
       </main>
       
         <footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="页脚">
-      
-        
-        <a href="../ubuntu-bmc/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Linux 带外管理" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                上一页
-              </span>
-              Linux 带外管理
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../network/1-network-docs/" class="md-footer__link md-footer__link--next" aria-label="下一页: Linux 网络服务" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                下一页
-              </span>
-              Linux 网络服务
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
