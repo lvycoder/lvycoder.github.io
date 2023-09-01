@@ -66,21 +66,3 @@
 - [Mac PC 实用配置](https://zhuanlan.zhihu.com/p/550022490)
 
 
-
-
-fio --name=big-file-sequential-read \
-    --directory=/juicefs \
-    --rw=read --refill_buffers \
-    --bs=256k --size=4G
-
-
-    fio --name=big-file-sequential-write \
-    --directory=$PWD \
-    --rw=write --refill_buffers \
-    --bs=256k --size=4G
-
-
-fio --name=small-file-seq-read \
-    --directory=$PWD \
-    --rw=read --file_service_type=sequential \
-    --bs=4k--filesize=4k --nrfiles=1000
