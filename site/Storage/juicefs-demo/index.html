@@ -17,7 +17,7 @@
     
     
       
-        <title>Linux 系统安装 - Kubernetes 进阶训练营</title>
+        <title>juicefs 介绍 - Kubernetes 进阶训练营</title>
       
     
     
@@ -71,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#juicefs" class="md-skip">
           跳转至
         </a>
       
@@ -106,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Linux 系统安装
+              juicefs 介绍
             
           </span>
         </div>
@@ -208,15 +208,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../ubuntu-bmc/" class="md-tabs__link md-tabs__link--active">
+      <a href="../../ubuntu/ubuntu-bmc/" class="md-tabs__link">
         操作系统
       </a>
     </li>
@@ -312,7 +310,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../Storage/disk-ssd-docs/" class="md-tabs__link">
+      <a href="../disk-ssd-docs/" class="md-tabs__link">
         存储
       </a>
     </li>
@@ -518,14 +516,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" data-md-state="indeterminate" type="checkbox" id="__nav_2" checked>
       
       
       
@@ -558,7 +554,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ubuntu-bmc/" class="md-nav__link">
+      <a href="../../ubuntu/ubuntu-bmc/" class="md-nav__link">
         Linux 带外管理
       </a>
     </li>
@@ -570,223 +566,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Linux 系统安装
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../ubuntu/0-system-docs/" class="md-nav__link">
         Linux 系统安装
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    系统安装
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    系统初始化
-  </a>
-  
-    <nav class="md-nav" aria-label="系统初始化">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    更换国内源
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    安全
-  </a>
-  
-    <nav class="md-nav" aria-label="安全">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    五: 系统安全
-  </a>
-  
-    <nav class="md-nav" aria-label="五: 系统安全">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#51-root-centosubuntu" class="md-nav__link">
-    5.1: 禁止root用户: （centos/ubuntu都适用）
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#52" class="md-nav__link">
-    5.2: 密钥对来登陆服务器
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ubuntu" class="md-nav__link">
-    Ubuntu 系统管理 &amp;&amp; 安装及管理程序:
-  </a>
-  
-    <nav class="md-nav" aria-label="Ubuntu 系统管理 &amp;&amp; 安装及管理程序:">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#dpkg" class="md-nav__link">
-    dpkg 包安装
-  </a>
-  
-    <nav class="md-nav" aria-label="dpkg 包安装">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    （1）格式
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    （2）用法
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    （3）辅助选项
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#apt" class="md-nav__link">
-    apt 包安装 卸载
-  </a>
-  
-    <nav class="md-nav" aria-label="apt 包安装 卸载">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
-    （1）格式
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2_1" class="md-nav__link">
-    （2）用法
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3_1" class="md-nav__link">
-    （3）案例
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ubuntu_1" class="md-nav__link">
-    ubuntu 关机
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#linux07-lvm" class="md-nav__link">
-    Linux系统管理07-文件系统与LVM
-  </a>
-  
-    <nav class="md-nav" aria-label="Linux系统管理07-文件系统与LVM">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#inode" class="md-nav__link">
-    inode 知识点补充
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    附件:
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -798,7 +582,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../linux01/Linux%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%8601%E2%80%94%E2%80%94%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4%E7%B2%BE%E8%AE%B2/" class="md-nav__link">
+      <a href="../../ubuntu/linux01/Linux%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%8601%E2%80%94%E2%80%94%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4%E7%B2%BE%E8%AE%B2/" class="md-nav__link">
         Linux 系统管理-基础命令
       </a>
     </li>
@@ -812,7 +596,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../network/1-network-docs/" class="md-nav__link">
+      <a href="../../ubuntu/network/1-network-docs/" class="md-nav__link">
         Linux 网络服务
       </a>
     </li>
@@ -1410,7 +1194,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Storage/disk-ssd-docs/" class="md-nav__link">
+      <a href="../disk-ssd-docs/" class="md-nav__link">
         固态 ssd
       </a>
     </li>
@@ -1424,7 +1208,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Storage/rook-ceph/" class="md-nav__link">
+      <a href="../rook-ceph/" class="md-nav__link">
         rook-ceph简介
       </a>
     </li>
@@ -1438,7 +1222,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Storage/Juicefs/" class="md-nav__link">
+      <a href="../Juicefs/" class="md-nav__link">
         Juicefs存储
       </a>
     </li>
@@ -1452,7 +1236,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Storage/redis-docs/" class="md-nav__link">
+      <a href="../redis-docs/" class="md-nav__link">
         缓存加速
       </a>
     </li>
@@ -1466,7 +1250,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Storage/osd/" class="md-nav__link">
+      <a href="../osd/" class="md-nav__link">
         osd 性能测试
       </a>
     </li>
@@ -1480,7 +1264,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Storage/pv-rep/" class="md-nav__link">
+      <a href="../pv-rep/" class="md-nav__link">
         pv/pvc简介
       </a>
     </li>
@@ -1494,7 +1278,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Storage/rook-ceph-update/" class="md-nav__link">
+      <a href="../rook-ceph-update/" class="md-nav__link">
         rook-ceph 版本升级
       </a>
     </li>
@@ -1508,7 +1292,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Storage/5-dev-docs/" class="md-nav__link">
+      <a href="../5-dev-docs/" class="md-nav__link">
         ceph 存储修复
       </a>
     </li>
@@ -2131,196 +1915,8 @@
   
   
   
+    
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    系统安装
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    系统初始化
-  </a>
-  
-    <nav class="md-nav" aria-label="系统初始化">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    更换国内源
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    安全
-  </a>
-  
-    <nav class="md-nav" aria-label="安全">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    五: 系统安全
-  </a>
-  
-    <nav class="md-nav" aria-label="五: 系统安全">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#51-root-centosubuntu" class="md-nav__link">
-    5.1: 禁止root用户: （centos/ubuntu都适用）
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#52" class="md-nav__link">
-    5.2: 密钥对来登陆服务器
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ubuntu" class="md-nav__link">
-    Ubuntu 系统管理 &amp;&amp; 安装及管理程序:
-  </a>
-  
-    <nav class="md-nav" aria-label="Ubuntu 系统管理 &amp;&amp; 安装及管理程序:">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#dpkg" class="md-nav__link">
-    dpkg 包安装
-  </a>
-  
-    <nav class="md-nav" aria-label="dpkg 包安装">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    （1）格式
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    （2）用法
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    （3）辅助选项
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#apt" class="md-nav__link">
-    apt 包安装 卸载
-  </a>
-  
-    <nav class="md-nav" aria-label="apt 包安装 卸载">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
-    （1）格式
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2_1" class="md-nav__link">
-    （2）用法
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3_1" class="md-nav__link">
-    （3）案例
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ubuntu_1" class="md-nav__link">
-    ubuntu 关机
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#linux07-lvm" class="md-nav__link">
-    Linux系统管理07-文件系统与LVM
-  </a>
-  
-    <nav class="md-nav" aria-label="Linux系统管理07-文件系统与LVM">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#inode" class="md-nav__link">
-    inode 知识点补充
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    附件:
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
   
 </nav>
                   </div>
@@ -2332,303 +1928,42 @@
             <article class="md-content__inner md-typeset">
               
                 
-<a href="https://github.com/barry-boy/barry-boy.github.io/edit/master/docs/ubuntu/0-system-docs.md" title="编辑此页" class="md-content__button md-icon">
+<a href="https://github.com/barry-boy/barry-boy.github.io/edit/master/docs/Storage/juicefs-demo.md" title="编辑此页" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
 
-  <h1>Linux 系统安装</h1>
-
-<h2 id="_1"><strong>系统安装</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>正所谓不会装系统的运维就不是好运维的理念，下面介绍一下ubuntu系统安装</p>
-<div class="admonition info">
-<p class="admonition-title">准备工作</p>
+<h1 id="juicefs">juicefs 介绍<a class="headerlink" href="#juicefs" title="Permanent link">&para;</a></h1>
 <ul>
-<li>步骤一: 下载iso镜像<ul>
-<li>下载地址: https://mirrors.aliyun.com/ubuntu-releases/</li>
+<li>1.1 什么是 juicefs</li>
+<li>1.2 juicefs 架构</li>
+<li>1.3 读写流程介绍</li>
+<li>1.4 技术对比</li>
 </ul>
-</li>
-<li>步骤二: 制作系统盘<ul>
-<li>可以参考使用技巧中的Mac制作系统盘这篇文章</li>
-</ul>
-</li>
-<li>步骤三: 装就完事了</li>
-</ul>
-</div>
-<p>1.1. 选择语言
-<img alt="第一步" src="https://pic.imgdb.cn/item/632d192516f2c2beb1185a77.png" /></p>
-<p>1.2. 选择键盘（本步骤直接默认按回车即可。）
-<img alt="第二步" src="https://pic.imgdb.cn/item/632d192616f2c2beb1185a80.png" /></p>
-<p>1.3. 配置网络（一般情况会直接跳过这一步）
-<img alt="第三步" src="https://pic.imgdb.cn/item/632d192616f2c2beb1185a8b.png" /></p>
-<p>1.4. 选择代理（默认回车跳过）
-<img alt="第四步" src="https://pic.imgdb.cn/item/632d192616f2c2beb1185a94.png" /></p>
-<p>1.5. 配置镜像源（跳过）</p>
-<p>1.6. 选择磁盘（这个步骤比较关键）
-<img alt="第五步" src="https://pic.imgdb.cn/item/632d192616f2c2beb1185a9e.png" /></p>
-<p>选择磁盘这一步需要注意，需要所有磁盘空间分给根分区
-<img alt="第五步" src="https://pic.imgdb.cn/item/632d193416f2c2beb1186a6c.png" /></p>
-<p><img alt="第五步" src="https://pic.imgdb.cn/item/632d193416f2c2beb1186a7d.png" /></p>
-<p>1.7. 用户信息
-<img alt="第六步" src="https://pic.imgdb.cn/item/632d193416f2c2beb1186a90.png" /></p>
-<p>1.8. openssh server 切记要选择上 (<code>切记</code>)
-<img alt="第七步" src="https://pic.imgdb.cn/item/632d193416f2c2beb1186aa0.png" /></p>
-<h2 id="_2"><strong>系统初始化</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<div class="admonition tip">
-<p class="admonition-title">初始化步骤</p>
+<h1 id="juicefs_1">juicefs 核心特性<a class="headerlink" href="#juicefs_1" title="Permanent link">&para;</a></h1>
 <ul>
-<li>
-<p>添加hosts信息</p>
-</li>
-<li>
-<p>修改国内apt源</p>
+<li>1.5 缓存特性介绍</li>
+<li>1.6 存储配额</li>
+<li>1.7 目录用量统计</li>
+<li>1.8 克隆文件或目录</li>
+</ul>
+<h1 id="_1">准备工作<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <ul>
-<li>清华源</li>
-<li>阿里源</li>
+<li>什么是 k3s </li>
+<li>部署k3s环境</li>
+<li>部署 redis 哨兵集群</li>
+<li>minio 介绍</li>
+<li>部署单节点 minio</li>
 </ul>
-</li>
-<li>添加管理员用户<ul>
-<li>通常几个管理人员几个管理用户</li>
-</ul>
-</li>
-<li>修改内核参数</li>
-<li>安装基础软件，gpu驱动</li>
-<li>安装docker<ul>
-<li>安装容器运行时</li>
-</ul>
-</li>
-<li>安装kubernetes<ul>
-<li>安装指定kubeadm版本</li>
-</ul>
-</li>
-</ul>
-</div>
-<p>以上初始化可以通过跑ansible来实现，下面具体拆分来配置一下</p>
-<div class="admonition warning">
-<p class="admonition-title">温馨提示</p>
+<h1 id="juicefs_2">快速启动一个 juicefs 环境<a class="headerlink" href="#juicefs_2" title="Permanent link">&para;</a></h1>
 <ul>
-<li>以下操作系统版本是以最新的ubuntu22.04 为例子来演示</li>
+<li>在 k3s 中运行一个 juicefs demo 示例</li>
 </ul>
-</div>
-<h3 id="_3"><strong>更换国内源</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<div class="admonition info">
-<p class="admonition-title">ubuntu22.04 清华源</p>
+<h1 id="k8s-juicefs">在 k8s 中运行juicefs<a class="headerlink" href="#k8s-juicefs" title="Permanent link">&para;</a></h1>
 <ul>
-<li>需要注意一下，如果apt update 报错，就将https改成http</li>
-<li>如果需要添加其他的版本的源可以访问: https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/
-<div class="highlight"><pre><span></span><code># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
-deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse
-deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse
-deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse
-deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-security main restricted universe multiverse
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-security main restricted universe multiverse
-
-# 预发布软件源，不建议启用
-# deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse
-</code></pre></div></li>
-</ul>
-</div>
-<h2 id="_4"><strong>安全</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<h3 id="_5"><strong>五: 系统安全</strong><a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>通常在企业中，服务器会遭受外来的很多的恶意攻击，那么服务器的安全就显得格外的重要。首先肯定想到的是服务器的帐号和密码管理，通常的情况下会禁止root这样的管理员用户登陆，也会禁止密码这样的方式登陆。</p>
-<p><strong>原因:</strong></p>
-<ul>
-<li>
-<p>root用户的权限太高，如果一旦帐号密码泄漏，就会造成很严重的后果。</p>
-</li>
-<li>
-<p>禁止密码方式登陆也是为了安全考虑，毕竟密码丢失也是很平常的事情。推荐使用公钥的方式来登陆服务器。</p>
-</li>
-</ul>
-<h4 id="51-root-centosubuntu"><strong>5.1: 禁止root用户:</strong> （centos/ubuntu都适用）<a class="headerlink" href="#51-root-centosubuntu" title="Permanent link">&para;</a></h4>
-<ul>
-<li>可以修改<code>/etc/ssh/sshd_config</code>配置文件</li>
-<li>添加: <code>PermitRootLogin yes</code> 配置（一般情况下，在完成初始化就禁止root登陆了）<ul>
-<li>yes 为允许root登陆</li>
-<li>no  为禁止root登陆</li>
-</ul>
-</li>
-<li>重新启动sshd服务。<code>systemctl restart sshd</code></li>
-<li>当然也可以加入系统初始化步骤中，略～</li>
-</ul>
-<h4 id="52"><strong>5.2: 密钥对来登陆服务器</strong><a class="headerlink" href="#52" title="Permanent link">&para;</a></h4>
-<p>生成公钥和私钥
-<div class="highlight"><pre><span></span><code>root@user:~#<span class="w"> </span>ssh-keygen<span class="w">   </span>//一路回车
-Generating<span class="w"> </span>public/private<span class="w"> </span>rsa<span class="w"> </span>key<span class="w"> </span>pair.
-Enter<span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>which<span class="w"> </span>to<span class="w"> </span>save<span class="w"> </span>the<span class="w"> </span>key<span class="w"> </span><span class="o">(</span>/root/.ssh/id_rsa<span class="o">)</span>:
-Enter<span class="w"> </span>passphrase<span class="w"> </span><span class="o">(</span>empty<span class="w"> </span><span class="k">for</span><span class="w"> </span>no<span class="w"> </span>passphrase<span class="o">)</span>:
-Enter<span class="w"> </span>same<span class="w"> </span>passphrase<span class="w"> </span>again:
-Your<span class="w"> </span>identification<span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>saved<span class="w"> </span><span class="k">in</span><span class="w"> </span>/root/.ssh/id_rsa
-Your<span class="w"> </span>public<span class="w"> </span>key<span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>saved<span class="w"> </span><span class="k">in</span><span class="w"> </span>/root/.ssh/id_rsa.pub
-The<span class="w"> </span>key<span class="w"> </span>fingerprint<span class="w"> </span>is:
-SHA256:J0s/ZHIRTj/UCcDQLHtxd5Qa0p3r2CYlcz7lPS7VaXU<span class="w"> </span>root@user
-The<span class="w"> </span>key<span class="err">&#39;</span>s<span class="w"> </span>randomart<span class="w"> </span>image<span class="w"> </span>is:
-+---<span class="o">[</span>RSA<span class="w"> </span><span class="m">3072</span><span class="o">]</span>----+
-<span class="p">|</span><span class="w">        </span>.<span class="o">=</span>+.+o.o+<span class="p">|</span>
-<span class="p">|</span><span class="w">        </span>.o<span class="o">==</span>.o++.<span class="p">|</span>
-<span class="p">|</span><span class="w">         </span>ooo+.o..<span class="p">|</span>
-<span class="p">|</span><span class="w">        </span>.<span class="w"> </span>..<span class="w"> </span><span class="o">=</span><span class="w"> </span>+E<span class="p">|</span>
-<span class="p">|</span><span class="w">        </span>S.<span class="o">=</span><span class="w">   </span>X.B<span class="p">|</span>
-<span class="p">|</span><span class="w">       </span>.<span class="w"> </span>X<span class="w">   </span>o<span class="w"> </span>@+<span class="p">|</span>
-<span class="p">|</span><span class="w">        </span>.<span class="w"> </span>o<span class="w">   </span>*<span class="w"> </span>o<span class="p">|</span>
-<span class="p">|</span><span class="w">           </span>.<span class="w"> </span>.<span class="w"> </span>.<span class="w"> </span><span class="p">|</span>
-<span class="p">|</span><span class="w">              </span>.<span class="w">  </span><span class="p">|</span>
-+----<span class="o">[</span>SHA256<span class="o">]</span>-----+
-</code></pre></div></p>
-<p>这个时候在.ssh目录下生成几个文件</p>
-<div class="highlight"><pre><span></span><code>root@user:~#<span class="w"> </span>ll<span class="w"> </span>.ssh/
-total<span class="w"> </span><span class="m">16</span>
-drwx------<span class="w"> </span><span class="m">2</span><span class="w"> </span>root<span class="w"> </span>root<span class="w"> </span><span class="m">4096</span><span class="w"> </span>Sep<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">09</span>:46<span class="w"> </span>./
-drwx------<span class="w"> </span><span class="m">5</span><span class="w"> </span>root<span class="w"> </span>root<span class="w"> </span><span class="m">4096</span><span class="w"> </span>Sep<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">09</span>:35<span class="w"> </span>../
--rw-------<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w">    </span><span class="m">0</span><span class="w"> </span>May<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">15</span>:30<span class="w"> </span>authorized_keys<span class="w">  </span>//<span class="w"> </span>这个是授权文件
--rw-------<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w"> </span><span class="m">2590</span><span class="w"> </span>Sep<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">09</span>:46<span class="w"> </span>id_rsa<span class="w">         </span>//<span class="w"> </span>这个是私钥文件
--rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w">  </span><span class="m">563</span><span class="w"> </span>Sep<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">09</span>:46<span class="w"> </span>id_rsa.pub<span class="w">    </span>//这个是公钥文件
-</code></pre></div>
-<p>将公钥加入user用户下: <code>.ssh/authorized_keys</code></p>
-<p><div class="highlight"><pre><span></span><code>root@user:/home/user#<span class="w"> </span>ls<span class="w"> </span>-a<span class="w"> </span>.ssh/
-.<span class="w">  </span>..<span class="w">  </span>authorized_keys
-</code></pre></div>
-话不多说测试登陆</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh<span class="w"> </span>user@172.30.42.244<span class="w">    </span>//这是我们使用user用户登陆，就不需要密码了
-Welcome<span class="w"> </span>to<span class="w"> </span>Ubuntu<span class="w"> </span><span class="m">20</span>.04.4<span class="w"> </span>LTS<span class="w"> </span><span class="o">(</span>GNU/Linux<span class="w"> </span><span class="m">5</span>.4.0-113-generic<span class="w"> </span>x86_64<span class="o">)</span>
-</code></pre></div>
-<p>当然了，也可以通过一下这样添加自己的公钥
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>https://openbayes.com/api/users/lixie/keys.txt<span class="w"> </span>&gt;&gt;<span class="w"> </span>authorized_keys
-</code></pre></div></p>
-<div class="admonition tip">
-<p class="admonition-title">禁止用户密码登陆</p>
-<ul>
-<li>为了安全的考虑，我们需要关闭用户密码登陆的这种方式
-<div class="highlight"><pre><span></span><code>PubkeyAuthentication<span class="w"> </span>yes<span class="w">    </span><span class="c1"># 启用公告密钥配对认证方式 </span>
-RSAAuthentication<span class="w"> </span>yes<span class="w">       </span><span class="c1"># 允许RSA密钥</span>
-PasswordAuthentication<span class="w"> </span>no<span class="w">   </span><span class="c1"># 禁止密码验证登录,如果启用的话,RSA认证登录就没有意义了</span>
-PermitRootLogin<span class="w"> </span>no<span class="w">          </span><span class="c1"># 禁用root账户登录，非必要，但为了安全性，请配置</span>
-</code></pre></div></li>
-<li>这样结合上一步骤，关闭用户账号密码验证方式，只采用密钥对会安全很多。</li>
-</ul>
-</div>
-<div class="admonition fail">
-<p class="admonition-title">SSH 无法登陆</p>
-<ul>
-<li>可以ping通但无法ssh</li>
-<li>ssh -v ip 无明显报错</li>
-<li>考虑是否是服务端禁止客户端</li>
-<li>在/etc/hosts.allow文件中加上  sshd: ALL ，重启sshd</li>
-</ul>
-</div>
-<div class="admonition info">
-<p class="admonition-title">修改网卡配置</p>
-</div>
-<div class="highlight"><pre><span></span><code>root@ubuntu:/home/ubuntu# cat /etc/netplan/00-installer-config.yaml
-# This is the network config written by &#39;subiquity&#39;
-network:
-  ethernets:
-    ens18:
-      addresses:
-      - 192.168.1.114/24
-      gateway4: 192.168.1.1
-      nameservers:
-        addresses:
-        - 192.168.1.1
-        search:
-        - 202.106.46.151
-  version: 2
-</code></pre></div>
-<div class="admonition info">
-<p class="admonition-title">清除内核缓存</p>
-<p>https://www.tecmint.com/clear-ram-memory-cache-buffer-and-swap-space-on-linux/</p>
-</div>
-<h2 id="ubuntu"><strong>Ubuntu 系统管理 &amp;&amp; 安装及管理程序:</strong><a class="headerlink" href="#ubuntu" title="Permanent link">&para;</a></h2>
-<h3 id="dpkg"><strong>dpkg 包安装</strong><a class="headerlink" href="#dpkg" title="Permanent link">&para;</a></h3>
-<h4 id="1"><strong>（1）格式</strong><a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
-<ul>
-<li>dpkg [选项] 包文件</li>
-</ul>
-<h4 id="2"><strong>（2）用法</strong><a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>- i</td>
-<td>安装 deb 软件包</td>
-</tr>
-<tr>
-<td>- r</td>
-<td>删除 deb 软件包</td>
-</tr>
-<tr>
-<td>-r --purge</td>
-<td>连同配置文件一起删除</td>
-</tr>
-<tr>
-<td>-l</td>
-<td>查看系统中已安装软件包信息</td>
-</tr>
-<tr>
-<td>-p</td>
-<td>卸载软件包及其配置文件，但无法解决依赖关系</td>
-</tr>
-</tbody>
-</table>
-<h4 id="3"><strong>（3）辅助选项</strong><a class="headerlink" href="#3" title="Permanent link">&para;</a></h4>
-<p>--force-all  强制安装一个包(忽略依赖及其它问题)
---no-install-recommends    参数来避免安装非必须的文件，从而减小镜像的体积</p>
-<h3 id="apt"><strong>apt 包安装 卸载</strong><a class="headerlink" href="#apt" title="Permanent link">&para;</a></h3>
-<h4 id="1_1"><strong>（1）格式</strong><a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h4>
-<p>apt [options] [command] [package ...]</p>
-<h4 id="2_1"><strong>（2）用法</strong><a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h4>
-<p>apt install -y  package_name  //安装</p>
-<p>apt remove  package_name   //卸载</p>
-<p>apt update  //列出所有可更新的软件清单命令</p>
-<div class="admonition error">
-<p class="admonition-title">apt update 更新报错</p>
-<p><div class="highlight"><pre><span></span><code>root@node2:/etc/apt#<span class="w"> </span>apt<span class="w"> </span>update
-Reading<span class="w"> </span>package<span class="w"> </span>lists...<span class="w"> </span>Done
-E:<span class="w"> </span>Could<span class="w"> </span>not<span class="w"> </span>get<span class="w"> </span>lock<span class="w"> </span>/var/lib/apt/lists/lock.<span class="w"> </span>It<span class="w"> </span>is<span class="w"> </span>held<span class="w"> </span>by<span class="w"> </span>process<span class="w"> </span><span class="m">27056</span><span class="w"> </span><span class="o">(</span>apt-get<span class="o">)</span>
-N:<span class="w"> </span>Be<span class="w"> </span>aware<span class="w"> </span>that<span class="w"> </span>removing<span class="w"> </span>the<span class="w"> </span>lock<span class="w"> </span>file<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>a<span class="w"> </span>solution<span class="w"> </span>and<span class="w"> </span>may<span class="w"> </span><span class="nb">break</span><span class="w"> </span>your<span class="w"> </span>system.
-E:<span class="w"> </span>Unable<span class="w"> </span>to<span class="w"> </span>lock<span class="w"> </span>directory<span class="w"> </span>/var/lib/apt/lists/
-</code></pre></div>
-这个主要的原因是有别的进程占用apt这个进程，可以通过一下方法进行排查
-<div class="highlight"><pre><span></span><code>ps<span class="w"> </span>aux<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>apt<span class="w">  </span>//过滤出来apt进程，如果没有用可以kill掉，或者等待进程结束
-</code></pre></div></p>
-</div>
-<h4 id="3_1"><strong>（3）案例</strong><a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>//<span class="w"> </span>过滤出来以rc开头和nvidia的包并卸载
-dpkg<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span>grep<span class="w"> </span>nvidia<span class="w"> </span><span class="p">|</span>grep<span class="w"> </span><span class="s2">&quot;^rc&quot;</span><span class="w"> </span><span class="p">|</span>awk<span class="w"> </span><span class="s1">&#39;{print $2}&#39;</span><span class="w"> </span><span class="p">|</span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">&#39;nvidia&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>dpkg<span class="w">  </span>--purge
-
-dpkg<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span>grep<span class="w"> </span>nvidia<span class="w"> </span><span class="p">|</span>grep<span class="w"> </span><span class="s2">&quot;^ii&quot;</span><span class="w"> </span><span class="p">|</span>awk<span class="w"> </span><span class="s1">&#39;{print $2}&#39;</span><span class="w"> </span><span class="p">|</span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">&#39;^nvidia&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>dpkg<span class="w"> </span>--force-all<span class="w">  </span>-r
-
-dpkg<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>nvidia<span class="w">  </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $2}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>apt<span class="w"> </span>remove<span class="w"> </span>-y
-
-dpkg<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>nvidia<span class="w">  </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $2}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>apt<span class="w"> </span>purge<span class="w"> </span>-y
-</code></pre></div>
-<h3 id="ubuntu_1"><strong>ubuntu 关机</strong><a class="headerlink" href="#ubuntu_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span>b<span class="w"> </span>&gt;<span class="w"> </span>/proc/sysrq-trigger
-</code></pre></div>
-<p>官网: 参考地址链接<a href="https://www.kernel.org/doc/html/v4.10/admin-guide/sysrq.html?from_wecom=1"></a></p>
-<h3 id="linux07-lvm"><strong>Linux系统管理07-文件系统与LVM</strong><a class="headerlink" href="#linux07-lvm" title="Permanent link">&para;</a></h3>
-<h4 id="inode"><strong>inode 知识点补充</strong><a class="headerlink" href="#inode" title="Permanent link">&para;</a></h4>
-<p>当我们在Linux系统中，偶然会遇到一些特殊格式的文件或者目录，通过使用rm 是无法直接删除的，这时可以利用inode号删除文件或者目录。</p>
-<div class="highlight"><pre><span></span><code><span class="o">[</span>cka<span class="o">]</span><span class="w"> </span>root@node1:/#<span class="w"> </span>mkdir<span class="w"> </span>/share
-
-<span class="o">[</span>cka<span class="o">]</span><span class="w"> </span>root@node1:/#<span class="w"> </span>ll<span class="w"> </span>-i<span class="w">  </span>//可以通过以下命令查看文件的inode为805024
-total<span class="w"> </span><span class="m">2097232</span>
-<span class="m">805024</span><span class="w"> </span>drwxr-xr-x<span class="w">   </span><span class="m">2</span><span class="w"> </span>root<span class="w"> </span>root<span class="w">       </span><span class="m">4096</span><span class="w"> </span>Nov<span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">17</span>:22<span class="w"> </span>share/
-<span class="m">655362</span><span class="w"> </span>drwxr-xr-x<span class="w">   </span><span class="m">6</span><span class="w"> </span>root<span class="w"> </span>root<span class="w">       </span><span class="m">4096</span><span class="w"> </span>Feb<span class="w"> </span><span class="m">23</span><span class="w">  </span><span class="m">2022</span><span class="w"> </span>snap/<span class="w"> </span>
-find<span class="w">  </span>.<span class="w"> </span>-inum<span class="w"> </span>inode号<span class="w"> </span>-delete<span class="w">    </span>//<span class="w"> </span>根据inode来删除该目录
-</code></pre></div>
-<h4 id="_6"><strong>附件:</strong><a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<ul>
-<li>文章地址: <a href="https://www.cnblogs.com/mefj/p/14964416.html">ubuntu安装参考:</a> </li>
+<li>元数据技术选型,后端存储选型介绍</li>
+<li>helm 工具安装</li>
+<li>CSI 驱动安装</li>
 </ul>
 
               
@@ -2644,41 +1979,6 @@ find<span class="w">  </span>.<span class="w"> </span>-inum<span class="w"> </sp
       </main>
       
         <footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="页脚">
-      
-        
-        <a href="../ubuntu-bmc/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Linux 带外管理" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                上一页
-              </span>
-              Linux 带外管理
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../linux01/Linux%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%8601%E2%80%94%E2%80%94%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4%E7%B2%BE%E8%AE%B2/" class="md-footer__link md-footer__link--next" aria-label="下一页: Linux 系统管理-基础命令" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                下一页
-              </span>
-              Linux 系统管理-基础命令
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

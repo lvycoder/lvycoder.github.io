@@ -115,11 +115,14 @@ nav:
         - 科学上网: network/4-network-docs.md
         
     - 存储: 
+        - 固态 ssd : Storage/disk-ssd-docs.md
         - rook-ceph简介: Storage/rook-ceph.md
+        - Juicefs存储: Storage/Juicefs.md
+        - 缓存加速: Storage/redis-docs.md
         - osd 性能测试: Storage/osd.md
         - pv/pvc简介: Storage/pv-rep.md
         - rook-ceph 版本升级: Storage/rook-ceph-update.md
-        - Juicefs存储: Storage/Juicefs.md
+
         - ceph 存储修复: Storage/5-dev-docs.md
     - 虚拟化:
         - Proxmox虚拟化: vm/promox.md  
