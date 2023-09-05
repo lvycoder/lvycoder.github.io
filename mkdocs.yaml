@@ -121,7 +121,7 @@ nav:
         - 缓存加速: Storage/redis-docs.md
         - osd 性能测试: Storage/osd.md
         - pv/pvc简介: Storage/pv-rep.md
-        - rook-ceph 版本升级: Storage/rook-ceph-update.md
+        - s3cmd 用法: Storage/s3-client-docs.md
 
         - ceph 存储修复: Storage/5-dev-docs.md
     - 虚拟化:

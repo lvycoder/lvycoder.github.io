@@ -17,7 +17,7 @@
     
     
       
-        <title>Helm 简介与安装 - Kubernetes 进阶训练营</title>
+        <title>s3cmd 用法 - Kubernetes 进阶训练营</title>
       
     
     
@@ -70,11 +70,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#helm" class="md-skip">
-          跳转至
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -106,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Helm 简介与安装
+              s3cmd 用法
             
           </span>
         </div>
@@ -304,13 +299,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../Storage/disk-ssd-docs/" class="md-tabs__link">
+      <a href="../disk-ssd-docs/" class="md-tabs__link md-tabs__link--active">
         存储
       </a>
     </li>
@@ -368,15 +365,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="./" class="md-tabs__link md-tabs__link--active">
+      <a href="../../Helm/helm-install/" class="md-tabs__link">
         Helm
       </a>
     </li>
@@ -1150,12 +1145,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" data-md-state="indeterminate" type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" checked>
       
       
       
@@ -1196,7 +1193,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Storage/disk-ssd-docs/" class="md-nav__link">
+      <a href="../disk-ssd-docs/" class="md-nav__link">
         固态 ssd
       </a>
     </li>
@@ -1210,7 +1207,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Storage/rook-ceph/" class="md-nav__link">
+      <a href="../rook-ceph/" class="md-nav__link">
         rook-ceph简介
       </a>
     </li>
@@ -1224,7 +1221,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Storage/Juicefs/" class="md-nav__link">
+      <a href="../Juicefs/" class="md-nav__link">
         Juicefs存储
       </a>
     </li>
@@ -1238,7 +1235,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Storage/redis-docs/" class="md-nav__link">
+      <a href="../redis-docs/" class="md-nav__link">
         缓存加速
       </a>
     </li>
@@ -1252,7 +1249,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Storage/osd/" class="md-nav__link">
+      <a href="../osd/" class="md-nav__link">
         osd 性能测试
       </a>
     </li>
@@ -1266,7 +1263,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Storage/pv-rep/" class="md-nav__link">
+      <a href="../pv-rep/" class="md-nav__link">
         pv/pvc简介
       </a>
     </li>
@@ -1278,11 +1275,19 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../Storage/s3-client-docs/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         s3cmd 用法
       </a>
+      
     </li>
   
 
@@ -1294,7 +1299,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Storage/5-dev-docs/" class="md-nav__link">
+      <a href="../5-dev-docs/" class="md-nav__link">
         ceph 存储修复
       </a>
     </li>
@@ -1518,14 +1523,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" data-md-state="indeterminate" type="checkbox" id="__nav_12" checked>
       
       
       
@@ -1552,153 +1555,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Helm 简介与安装
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../Helm/helm-install/" class="md-nav__link">
         Helm 简介与安装
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#helm_1" class="md-nav__link">
-    Helm 简介
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#helm_2" class="md-nav__link">
-    Helm 安装
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    管理配置
-  </a>
-  
-    <nav class="md-nav" aria-label="管理配置">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#chart" class="md-nav__link">
-    Chart国内仓库配置
-  </a>
-  
-    <nav class="md-nav" aria-label="Chart国内仓库配置">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#chart_1" class="md-nav__link">
-    添加chart存储库
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    查看存储库
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    删除存储库
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#helm_3" class="md-nav__link">
-    Helm 部署应用:
-  </a>
-  
-    <nav class="md-nav" aria-label="Helm 部署应用:">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#helm-traefix" class="md-nav__link">
-    Helm 部署traefix
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#helm_4" class="md-nav__link">
-    Helm 升级回滚
-  </a>
-  
-    <nav class="md-nav" aria-label="Helm 升级回滚">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    升级
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    回滚
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1710,7 +1571,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../helm/" class="md-nav__link">
+      <a href="../../Helm/helm/" class="md-nav__link">
         Helm 配置grafana
       </a>
     </li>
@@ -2051,278 +1912,39 @@
               </div>
             
             
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#helm_1" class="md-nav__link">
-    Helm 简介
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#helm_2" class="md-nav__link">
-    Helm 安装
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    管理配置
-  </a>
-  
-    <nav class="md-nav" aria-label="管理配置">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#chart" class="md-nav__link">
-    Chart国内仓库配置
-  </a>
-  
-    <nav class="md-nav" aria-label="Chart国内仓库配置">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#chart_1" class="md-nav__link">
-    添加chart存储库
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    查看存储库
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    删除存储库
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#helm_3" class="md-nav__link">
-    Helm 部署应用:
-  </a>
-  
-    <nav class="md-nav" aria-label="Helm 部署应用:">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#helm-traefix" class="md-nav__link">
-    Helm 部署traefix
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#helm_4" class="md-nav__link">
-    Helm 升级回滚
-  </a>
-  
-    <nav class="md-nav" aria-label="Helm 升级回滚">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    升级
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    回滚
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
                 
-<a href="https://github.com/barry-boy/barry-boy.github.io/edit/master/docs/Helm/helm-install.md" title="编辑此页" class="md-content__button md-icon">
+<a href="https://github.com/barry-boy/barry-boy.github.io/edit/master/docs/Storage/s3-client-docs.md" title="编辑此页" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
 
-<h1 id="helm"><strong>Helm</strong><a class="headerlink" href="#helm" title="Permanent link">&para;</a></h1>
-<h2 id="helm_1"><strong>Helm 简介</strong><a class="headerlink" href="#helm_1" title="Permanent link">&para;</a></h2>
-<p>Helm 可以帮助我们管理 Kubernetes 应用程序 - Helm Charts 可以定义、安装和升级复杂的 Kubernetes 应用程序，Charts 包很容易创建、版本管理、分享和分布.
-简单可以理解Linux中yum的的感觉</p>
-<h2 id="helm_2"><strong>Helm 安装</strong><a class="headerlink" href="#helm_2" title="Permanent link">&para;</a></h2>
-<div class="admonition info">
-<p class="admonition-title">获取软件</p>
-<p>官网地址：https://github.com/helm/helm/releases</p>
-</div>
-<p>下载到本地解压后，将 helm 二进制包文件移动到任意的 PATH 路径下
-<div class="highlight"><pre><span></span><code>$ helm version
-version.BuildInfo{Version:&quot;v3.9.0&quot;, GitCommit:&quot;7ceeda6c585217a19a1131663d8cd1f7d641b2a7&quot;, GitTreeState:&quot;clean&quot;, GoVersion:&quot;go1.18.2&quot;}
-</code></pre></div></p>
-<p>Linux 下安装
-<div class="highlight"><pre><span></span><code>root@k8s-master:/opt# wget https://get.helm.sh/helm-v3.8.1-linux-amd64.tar.gz
-cni  containerd  helm-v3.8.1-linux-amd64.tar.gz
-root@k8s-master:/opt# tar -xf helm-v3.8.1-linux-amd64.tar.gz 
-root@k8s-master:/opt/linux-amd64# mv helm /usr/bin/
-</code></pre></div></p>
-<h2 id="_1"><strong>管理配置</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<h3 id="chart"><strong>Chart国内仓库配置 </strong><a class="headerlink" href="#chart" title="Permanent link">&para;</a></h3>
-<div class="admonition info">
-<p class="admonition-title">仓库配置</p>
+  <h1>s3cmd 用法</h1>
+
+<p>在运维的过程中，经常会遇到要清理对象存储中的数据，在rook中推荐了一个s3的工具，叫s3cmd，那么可以利用这个工具对
+对象存储中的数据进行上传，下载，删除等操作.</p>
 <ul>
-<li>微软的源：http://mirror.azure.cn/kubernetes/charts/ </li>
-<li>阿里的源：https://kubernetes.oss-cn-hangzhou.aliyuncs.com/charts  </li>
-<li>官方的源：https://hub.kubeapps.com/charts/incubator</li>
+<li>s3cmd 命令用法:</li>
 </ul>
-</div>
-<h4 id="chart_1"><strong>添加chart存储库</strong><a class="headerlink" href="#chart_1" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>helm repo add stable  http://mirror.azure.cn/kubernetes/charts
-helm repo add aliyun  https://kubernetes.oss-cn-hangzhou.aliyuncs.com/charts
-
-root@k8s-master:/opt/linux-amd64# helm repo update    # 更新源
-</code></pre></div>
-<h4 id="_2"><strong>查看存储库</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>$ helm repo list
-NAME        URL
-stable      http://mirror.azure.cn/kubernetes/charts/
-openbayes   https://dev.openbayes.com/charts
-</code></pre></div>
-<h4 id="_3"><strong>删除存储库</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>root@k8s-master:/opt/linux-amd64# helm repo remove aliyun
-</code></pre></div>
-<h2 id="helm_3"><strong>Helm 部署应用:</strong><a class="headerlink" href="#helm_3" title="Permanent link">&para;</a></h2>
-<h3 id="helm-traefix"><strong>Helm 部署traefix</strong><a class="headerlink" href="#helm-traefix" title="Permanent link">&para;</a></h3>
-<div class="admonition info">
-<p class="admonition-title">部署traefik</p>
-<p>文章参考: https://github.com/traefik/traefik-helm-chart</p>
-</div>
-<div class="highlight"><pre><span></span><code>git clone https://github.com/traefik/traefik-helm-chart.git
-</code></pre></div>
-<p>定义values文件</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ cat sjtu-traefik.yaml</span>
-<span class="l l-Scalar l-Scalar-Plain">image</span><span class="p p-Indicator">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">traefik</span>
-<span class="w">  </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2.7&quot;</span>
-<span class="c1"># values-prod.yaml</span>
-<span class="c1"># Create an IngressRoute for the dashboard</span>
-<span class="nt">ingressRoute</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">dashboard</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">  </span><span class="c1"># 禁用helm中渲染的dashboard，我们自己手动创建</span>
-
-<span class="c1"># Configure ports</span>
-<span class="nt">ports</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">web</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
-<span class="w">    </span><span class="nt">hostPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span><span class="w">  </span><span class="c1"># 使用 hostport 模式</span>
-<span class="w">    </span><span class="c1"># Use nodeport if set. This is useful if you have configured Traefik in a</span>
-<span class="w">    </span><span class="c1"># LoadBalancer</span>
-<span class="w">    </span><span class="c1"># nodePort: 32080</span>
-<span class="w">    </span><span class="c1"># Port Redirections</span>
-<span class="w">    </span><span class="c1"># Added in 2.2, you can make permanent redirects via entrypoints.</span>
-<span class="w">    </span><span class="c1"># https://docs.traefik.io/routing/entrypoints/#redirection</span>
-<span class="w">    </span><span class="c1"># redirectTo: websecure</span>
-<span class="w">  </span><span class="nt">websecure</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8443</span>
-<span class="w">    </span><span class="nt">hostPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span><span class="w">  </span><span class="c1"># 使用 hostport 模式</span>
-
-<span class="c1"># Options for the main traefik service, where the entrypoints traffic comes</span>
-<span class="c1"># from.</span>
-<span class="nt">service</span><span class="p">:</span><span class="w">  </span><span class="c1"># 使用 hostport 模式就不需要Service了</span>
-<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-
-<span class="c1"># Logs</span>
-<span class="c1"># https://docs.traefik.io/observability/logs/</span>
-<span class="c1">#logs:</span>
-<span class="c1">#  general:</span>
-<span class="c1">#    level: DEBUG</span>
-
-<span class="nt">tolerations</span><span class="p">:</span><span class="w">   </span><span class="c1"># kubeadm 安装的集群默认情况下master是有污点，需要容忍这个污点才可以部署</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;node-role.kubernetes.io/master&quot;</span>
-<span class="w">  </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Equal&quot;</span>
-<span class="w">  </span><span class="nt">effect</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;NoSchedule&quot;</span>
-
-<span class="nt">nodeSelector</span><span class="p">:</span><span class="w">   </span><span class="c1"># 固定到master1节点（该节点才可以访问外网）</span>
-<span class="w">  </span><span class="nt">kubernetes.io/hostname</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;master&quot;</span>
-</code></pre></div>
-<p>部署traefik
-<div class="highlight"><pre><span></span><code>helm upgrade --install traefik traefik/traefik -f ./traefik/values/sjtu-traefik.yaml --namespace kube-system
-</code></pre></div></p>
-<p>查看这次部署</p>
-<div class="admonition info">
-<p class="admonition-title">温馨提示</p>
-<p>这个是有命名空间限制的，-A 可以查看所有helm release</p>
-</div>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ helm list -A</span>
-<span class="l l-Scalar l-Scalar-Plain">NAME                NAMESPACE           REVISION    UPDATED                                 STATUS      CHART                                                                                   APP VERSION</span>
-<span class="l l-Scalar l-Scalar-Plain">traefik             kube-system         5           2022-07-08 19:08:15.393244 +0800 CST    deployed    traefik-10.24.0                                                                         2.8.0</span>
-</code></pre></div>
-<h2 id="helm_4"><strong>Helm 升级回滚</strong><a class="headerlink" href="#helm_4" title="Permanent link">&para;</a></h2>
-<h3 id="_4"><strong>升级</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<div class="admonition example">
-<p class="admonition-title">举例说明</p>
-</div>
-<p>例如通过以下方式来升级grafana，也可以通过--set 在后面传参数
-<div class="highlight"><pre><span></span><code>helm upgrade --install grafana  grafana/grafana 
-</code></pre></div></p>
 <div class="admonition warning">
-<p class="admonition-title">注意事项</p>
-<p>在升级应用程序之前可以通过diff的方式来查看两个版本的区别，确定没问题，再升级
-<div class="highlight"><pre><span></span><code>$ helm diff  upgrade --install   grafana grafana/grafana -f  ./grafana.yaml -n infra
-</code></pre></div></p>
+<p class="admonition-title">温馨提示</p>
+<p>在使用 s3cmd 命令,需要对桶有权限,具体配置可以参考:  https://github.com/barry-boy/note-k8s/issues/115</p>
 </div>
-<h3 id="_5"><strong>回滚</strong><a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code>helm rollback version-id
+<ul>
+<li>查看 bucket</li>
+</ul>
+<div class="highlight"><pre><span></span><code>root@rbd-demo-c5fc7f94-89l5k:/# s3cmd ls
+2023-08-12 17:18  s3://ceph-bkt-a0842637-c874-4dc7-b0d5-639d6aa825a2
 </code></pre></div>
-无论是升级还是回滚都是有一个的风险的，注意防止误操作。</p>
+<ul>
+<li>s3cmd 递归删除</li>
+</ul>
+<div class="highlight"><pre><span></span><code>s3cmd del --recursive s3://ceph-bkt-a0842637-c874-4dc7-b0d5-639d6aa825a2/juicefs-sc/
+s3cmd del --recursive s3://ceph-bkt-a0842637-c874-4dc7-b0d5-639d6aa825a2/openbayes-jfs/
+</code></pre></div>
 
               
             </article>
@@ -2341,7 +1963,7 @@ openbayes   https://dev.openbayes.com/charts
     <nav class="md-footer__inner md-grid" aria-label="页脚">
       
         
-        <a href="../../ansible/ansible-docs2/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Ansible 高级用法" rel="prev">
+        <a href="../pv-rep/" class="md-footer__link md-footer__link--prev" aria-label="上一页: pv/pvc简介" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -2350,20 +1972,20 @@ openbayes   https://dev.openbayes.com/charts
               <span class="md-footer__direction">
                 上一页
               </span>
-              Ansible 高级用法
+              pv/pvc简介
             </div>
           </div>
         </a>
       
       
         
-        <a href="../helm/" class="md-footer__link md-footer__link--next" aria-label="下一页: Helm 配置grafana" rel="next">
+        <a href="../5-dev-docs/" class="md-footer__link md-footer__link--next" aria-label="下一页: ceph 存储修复" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 下一页
               </span>
-              Helm 配置grafana
+              ceph 存储修复
             </div>
           </div>
           <div class="md-footer__button md-icon">
