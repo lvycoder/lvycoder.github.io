@@ -71,17 +71,17 @@ markdown_extensions:
 
 nav:
     - 首页: index.md
-    - 操作系统: 
+    - 1、Linux: 
         - Linux 带外管理: ubuntu/ubuntu-bmc.md
         - Linux 系统安装: ubuntu/0-system-docs.md
         - Linux 系统管理-基础命令: ubuntu/linux01/Linux系统管理01——系统命令精讲.md
         - Linux 网络服务: ubuntu/network/1-network-docs.md
 
-    - 容器运行时: 
+    - 2、容器运行时: 
         - Docker 基本管理: docker/docker-docs.md
         - lxcfs 介绍: docker/lxcfs.md
         - docker 实现翻墙 pull 镜像: docker/3-docker-docs.md
-    - 基础:
+    - 3、kubernetes:
         - 云原生简介: basic/cncf.md
         - K8S简介: k8s/base/k8s-overview.md
         - 集群部署: basic/3-k8s-systeminit-docs.md
