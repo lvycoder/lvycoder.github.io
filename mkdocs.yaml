@@ -117,6 +117,7 @@ nav:
     - 存储: 
         - 固态 ssd : Storage/disk-ssd-docs.md
         - rook-ceph简介: Storage/rook-ceph.md
+        - ceph 命令用法: Storage/ceph-cli-docs.md
         - Juicefs存储: Storage/Juicefs.md
         - 缓存加速: Storage/redis-docs.md
         - osd 性能测试: Storage/osd.md
