@@ -105,6 +105,33 @@ kubeadm init \
 ```
 
 
+## 节点初始化
+
+```
+Your Kubernetes control-plane has initialized successfully!
+
+To start using your cluster, you need to run the following as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+Alternatively, if you are the root user, you can run:
+
+  export KUBECONFIG=/etc/kubernetes/admin.conf
+
+You should now deploy a pod network to the cluster.
+Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/
+
+Then you can join any number of worker nodes by running the following on each as root:
+
+kubeadm join 192.168.1.11:6443 --token bv4kei.ozbuoivuj8jxaa6q \
+	--discovery-token-ca-cert-hash sha256:e37c82f136192e54480555eeaa2a102cec8b630f18b5fffd0e24c1d1c0c8f730
+```
+
+
+
 初始化发现所有状态都是`NotReady`安装网络组件: [calico](https://projectcalico.docs.tigera.io/getting-started/kubernetes/quickstart)
 
 
