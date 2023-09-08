@@ -1,6 +1,6 @@
 
 
-## 容器翻墙
+## Docker proxy 代理 pull 国外镜像
 
 首先需要一台可以翻墙的机器,这边就用我的 Mac.
 
@@ -50,3 +50,25 @@ export https_proxy=http://localhost:7890
 ```shell
 ssh -R 7890:localhost:7890 主机
 ```
+
+
+
+### 镜像加速
+
+很多镜像都在国外，比如 gcr。国内下载很慢，需要加速。 DaoCloud 为此提供了国内镜像加速，便于从国内拉取这些镜像。
+
+
+增加前缀（推荐）：
+
+```
+k8s.gcr.io/coredns/coredns => m.daocloud.io/k8s.gcr.io/coredns/coredns
+```
+修改镜像仓库的前缀
+
+```
+k8s.gcr.io/coredns/coredns => k8s-gcr.m.daocloud.io/coredns/coredns
+```
+
+### 参考文章
+
+- https://docs.daocloud.io/community/mirror/

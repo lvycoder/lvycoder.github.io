@@ -80,7 +80,7 @@ nav:
     - 2、容器运行时: 
         - Docker 基本管理: docker/docker-docs.md
         - lxcfs 介绍: docker/lxcfs.md
-        - docker 实现翻墙 pull 镜像: docker/3-docker-docs.md
+        - docker 实现翻墙 pull 镜像: docker/docker-proxy-docs.md
     - 3、kubernetes:
         - 云原生简介: basic/cncf.md
         - K8S简介: k8s/base/k8s-overview.md
@@ -96,13 +96,11 @@ nav:
         - Kubernetes 节点维护: basic/7-kubernetes-update-docs.md
         - 项目一: basic/4-ansible-install-k8s.md
         - 项目二: basic/9-install-keepalived-cluster.md
-     
-    # - 控制器:
-    #     - ReplicaSet: k8s/controller/rs.md
-    #     - Deployment: k8s/controller/deployment.md
-    #     - StatefulSet: k8s/controller/StatefulSet.md
 
-    - K3S:
+    - 4、运维开发:
+         - 模块：python/module-docs.md
+
+    - 5、 边缘计算:
         - K3S安装: k3s/k3s-install.md
     # - 配置管理:
     #     - RBAC鉴权: config-admin/RBAC.md
@@ -131,8 +129,7 @@ nav:
         - Github: Devops/github.md
         - Github仓库同步至Gitee: Devops/4-github-gitee-doc.md
         - Google 浏览器扩展: Devops/3-github-docs.md
-    # - 日志:
-    #     - rsyslog日志服务管理: log/rsyslog.md
+
 
     - Ansible自动化:
         - Ansible 应用基础: ansible/ansible-case1.md
@@ -142,8 +139,7 @@ nav:
         - Helm 配置grafana: Helm/helm.md
     # - monitor:
     #     - prometheus 监控: monitor/prometheus.md
-    - Python 自动化:
-         - 模块：python/module-docs.md
+
 
     - 排错技巧: 
         - 天津集群: error/tjtu.md
