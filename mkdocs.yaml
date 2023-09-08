@@ -71,6 +71,11 @@ markdown_extensions:
 
 nav:
     - 首页: index.md
+    - 0、网络基础:
+        - ZeroTier组网: network/ZeroTier.md
+        - frp 内网穿透: network/frp.md
+        - kubernetes 网络组件: network/3-network-docs.md
+        - 科学上网: network/4-network-docs.md
     - 1、Linux: 
         - Linux 带外管理: ubuntu/ubuntu-bmc.md
         - Linux 系统安装: ubuntu/0-system-docs.md
@@ -80,7 +85,7 @@ nav:
     - 2、容器运行时: 
         - Docker 基本管理: docker/docker-docs.md
         - lxcfs 介绍: docker/lxcfs.md
-        - docker 实现翻墙 pull 镜像: docker/docker-proxy-docs.md
+        - docker proxy代理: docker/docker-proxy-docs.md
     - 3、kubernetes:
         - 云原生简介: basic/cncf.md
         - K8S简介: k8s/base/k8s-overview.md
@@ -94,25 +99,22 @@ nav:
         - CKS考题: cks/cks.md
         - Kubernetes UI: basic/5-kubernetes-UI-docs.md
         - Kubernetes 节点维护: basic/7-kubernetes-update-docs.md
+        - Helm 简介与安装: Helm/helm-install.md
+        - Helm 配置grafana: Helm/helm.md
         - 项目一: basic/4-ansible-install-k8s.md
         - 项目二: basic/9-install-keepalived-cluster.md
 
     - 4、运维开发:
          - 模块：python/module-docs.md
 
-    - 5、 边缘计算:
-        - K3S安装: k3s/k3s-install.md
+    # - 5、 边缘计算:
+        
     # - 配置管理:
     #     - RBAC鉴权: config-admin/RBAC.md
-    - 数据库:
+    - 6、数据库:
         - Mysql-operator: k8s/mysql-operator/1-install-mysql-operator.md
-    - 网络:
-        - ZeroTier组网: network/ZeroTier.md
-        - frp 内网穿透: network/frp.md
-        - kubernetes 网络组件: network/3-network-docs.md
-        - 科学上网: network/4-network-docs.md
-        
-    - 存储: 
+ 
+    - 7、存储服务: 
         - 固态 ssd : Storage/disk-ssd-docs.md
         - rook-ceph简介: Storage/rook-ceph.md
         - ceph 命令用法: Storage/ceph-cli-docs.md
@@ -121,41 +123,35 @@ nav:
         - osd 性能测试: Storage/osd.md
         - pv/pvc简介: Storage/pv-rep.md
         - s3cmd 用法: Storage/s3-client-docs.md
-
         - ceph 存储修复: Storage/5-dev-docs.md
-    - 虚拟化:
+
+    - 8、虚拟化:
         - Proxmox虚拟化: vm/promox.md  
-    - Devops:
+
+    - 9、Devops:
         - Github: Devops/github.md
         - Github仓库同步至Gitee: Devops/4-github-gitee-doc.md
         - Google 浏览器扩展: Devops/3-github-docs.md
 
-
-    - Ansible自动化:
+    - 10、Ansible自动化:
         - Ansible 应用基础: ansible/ansible-case1.md
         - Ansible 高级用法: ansible/ansible-docs2.md
-    - Helm:
-        - Helm 简介与安装: Helm/helm-install.md
-        - Helm 配置grafana: Helm/helm.md
+
     # - monitor:
     #     - prometheus 监控: monitor/prometheus.md
 
-
-    - 排错技巧: 
+    - 其他: 
+        - kubeconfig 实践应用: Macuse/mac-kubeconfig.md
+        - 边缘计算: k3s/k3s-install.md
+        - k9s 实践应用: Macuse/mac-k9s-doc.md
+        - Mac 制作ubuntu系统盘: Macuse/mac-usb-system.md
+        - Mac vscode使用技巧: Macuse/mac-vscode.md
         - 天津集群: error/tjtu.md
         - Dev环境集群: error/dev.md
         - 误删除监控数据: error/delete-prometheus-db.md
         - Kubernetes pvc ubound: error/kubernetes-pvc-ubound-doc.md
- 
 
-    - 使用技巧: 
-        - kubeconfig 实践应用: Macuse/mac-kubeconfig.md
-        - k9s 实践应用: Macuse/mac-k9s-doc.md
-        - Mac 制作ubuntu系统盘: Macuse/mac-usb-system.md
-        - Mac vscode使用技巧: Macuse/mac-vscode.md
-
-
-    - 工作生活:
+    - 关于我:
         - 我的2021: mylife/life-docs1.md
         - 我的2022: mylife/2022-life-docs.md
 

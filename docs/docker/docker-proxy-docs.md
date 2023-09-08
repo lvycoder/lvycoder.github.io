@@ -1,10 +1,10 @@
 
 
-## Docker proxy 代理 pull 国外镜像
+## **Docker proxy 代理 pull 国外镜像**
 
 首先需要一台可以翻墙的机器,这边就用我的 Mac.
 
-### docker proxy 配置
+### **docker proxy 配置**
 
 docker 本身是支持在 docker pull 使用代理的，那么配个代理不久解决问题了吗。
 
@@ -53,7 +53,7 @@ ssh -R 7890:localhost:7890 主机
 
 
 
-### 镜像加速
+### **镜像加速**
 
 很多镜像都在国外，比如 gcr。国内下载很慢，需要加速。 DaoCloud 为此提供了国内镜像加速，便于从国内拉取这些镜像。
 
@@ -69,6 +69,6 @@ k8s.gcr.io/coredns/coredns => m.daocloud.io/k8s.gcr.io/coredns/coredns
 k8s.gcr.io/coredns/coredns => k8s-gcr.m.daocloud.io/coredns/coredns
 ```
 
-### 参考文章
+### **参考文章**
 
 - https://docs.daocloud.io/community/mirror/
