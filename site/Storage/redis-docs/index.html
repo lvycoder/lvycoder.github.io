@@ -1206,7 +1206,7 @@
         
           <li class="md-nav__item">
   <a href="#helm-redis" class="md-nav__link">
-    helm 部署 redis
+    Helm 部署 redis
   </a>
   
 </li>
@@ -1249,6 +1249,20 @@
           <li class="md-nav__item">
   <a href="#redis_3" class="md-nav__link">
     Redis数据库常用命令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    多数据库常用命令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    清除数据库
   </a>
   
 </li>
@@ -1958,7 +1972,7 @@
         
           <li class="md-nav__item">
   <a href="#helm-redis" class="md-nav__link">
-    helm 部署 redis
+    Helm 部署 redis
   </a>
   
 </li>
@@ -2001,6 +2015,20 @@
           <li class="md-nav__item">
   <a href="#redis_3" class="md-nav__link">
     Redis数据库常用命令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    多数据库常用命令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    清除数据库
   </a>
   
 </li>
@@ -2058,7 +2086,7 @@ Redis的所有数据都是保存在内存中，然后不定期的通过异步方
 全持久化与半持久化的方式在工作中适当的使用，在如今的生产环境中，如果使用全持久化的方式可能会造成append onlyfile的文件过大，如果是半持久化的话又没有办法保证数据的安全性，所以希望大家适当的使用。</p>
 <h3 id="redis_1"><strong>Redis的工作原理</strong><a class="headerlink" href="#redis_1" title="Permanent link">&para;</a></h3>
 <p>Redis服务器程序是一个单进程模型，也就是说在一台服务器上可以开启多个redis进程（多实例），而redis的实际处理速度则完全依靠于主进程的执行速率，若在服务器上只运行一个redis进程，当多个客户端同时访问时，服务器处理能力会有一定程度的下降，若在一个服务器上开启多个redis进程，redis在提高并发处理能力的同时也会给CPU造成很大的压力，所以在实际生产环境中，结合实际服务器环境来决定如何使用。</p>
-<h3 id="redis_2">Redis 的优点<a class="headerlink" href="#redis_2" title="Permanent link">&para;</a></h3>
+<h3 id="redis_2"><strong>Redis 的优点</strong><a class="headerlink" href="#redis_2" title="Permanent link">&para;</a></h3>
 <ul>
 <li>具有极高的数据读写速度：数据读取速度最高可达11万次/s，数据写入速度最高可达8万1千次/s</li>
 <li>支持丰富的数据类型，支持丰富的数据类型不仅支持key-values数据类型，还支持Strings，Lists，Hashes，Sets，及Ordered Sets等数据类型操作</li>
@@ -2066,7 +2094,7 @@ Redis的所有数据都是保存在内存中，然后不定期的通过异步方
 <li>原子性 redis的所有操作都是原子性的</li>
 <li>支持数据备份及master-slave模式的数据备份</li>
 </ul>
-<h3 id="helm-redis"><strong>helm 部署 redis</strong><a class="headerlink" href="#helm-redis" title="Permanent link">&para;</a></h3>
+<h3 id="helm-redis"><strong> Helm 部署 redis</strong><a class="headerlink" href="#helm-redis" title="Permanent link">&para;</a></h3>
 <p>在云原生环境中部署 Redis 集群，我们通常会使用 Kubernetes，它是一个开源的容器编排平台，用于自动化应用程序容器的部署、扩展和管理。对于 Redis，我们可以使用 Helm，这是一个 Kubernetes 的包管理器，可以帮助我们更容易地管理和部署应用。</p>
 <p>以下是在 Kubernetes 中使用 Helm 部署 Redis 集群的两种方法：</p>
 <ul>
@@ -2204,7 +2232,7 @@ activerehashing<span class="w"> </span>yes
 include<span class="w"> </span>/path/to/local.conf
 </code></pre></div>
 <p>当然以上的配置参数不需要都了解，看情况需要什么配置什么即可。我们之后使用helm部署大部分的参数也已经都有了。redis中比较重要的就是他的持久化。后续会列一下他持久化的的方式。</p>
-<h3 id="redis-cli">redis-cli 用法<a class="headerlink" href="#redis-cli" title="Permanent link">&para;</a></h3>
+<h3 id="redis-cli"><strong>redis-cli 用法</strong><a class="headerlink" href="#redis-cli" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>redis-cli<span class="w"> </span>-h<span class="w"> </span>远程连接主机<span class="w"> </span>-p<span class="w"> </span>指定端口<span class="w"> </span>-a<span class="w"> </span>指定密码
 </code></pre></div>
 <p>注：若未设置数据库密码 -a选项可以忽略 退出数据库操作环境可以执行 quit 或 exit 就可以返回到原来的shell文件</p>
@@ -2212,7 +2240,7 @@ include<span class="w"> </span>/path/to/local.conf
 127.0.0.1:6379&gt; ping
 PONG                                # 执行ping命令可以检测Redis服务是否启动
 </code></pre></div>
-<h3 id="redis-benchmark">redis-benchmark测试工具<a class="headerlink" href="#redis-benchmark" title="Permanent link">&para;</a></h3>
+<h3 id="redis-benchmark"><strong>redis-benchmark测试工具</strong><a class="headerlink" href="#redis-benchmark" title="Permanent link">&para;</a></h3>
 <p>Redis-benchmark是redis官方自带的redis性能测试工具，可以有效的测试redis服务的性能。</p>
 <p>语法：</p>
 <div class="highlight"><pre><span></span><code>redis-benchmark [option] [option value]
@@ -2238,11 +2266,57 @@ PONG                                # 执行ping命令可以检测Redis服务是
 <li>测试并发数为10请求连接数为100000个请求的性能</li>
 </ul>
 <div class="highlight"><pre><span></span><code>[root@localhost redis]# redis-benchmark -h localhost -p 6379 -c 10 -n 100000
+
+Summary:
+  throughput summary: 2584.25 requests per second
+  latency summary (msec):
+          avg       min       p50       p95       p99       max
+        3.378     0.448     2.719     7.159    16.607   389.375
 </code></pre></div>
 <ul>
 <li>测试存取大小为100B的数据包时redis的性能</li>
 </ul>
 <div class="highlight"><pre><span></span><code>[root@localhost ~]# redis-benchmark -h localhost -p 6379 -q -d 100
+
+PING_INLINE: 9354.54 requests per second, p50=2.543 msec
+PING_MBULK: 9018.76 requests per second, p50=2.567 msec
+SET: 6365.78 requests per second, p50=5.183 msec
+GET: 8983.11 requests per second, p50=2.639 msec
+INCR: 6784.26 requests per second, p50=4.711 msec
+LPUSH: 6266.84 requests per second, p50=5.511 msec
+RPUSH: 6391.41 requests per second, p50=5.359 msec
+LPOP: 6735.37 requests per second, p50=4.911 msec
+RPOP: 7187.01 requests per second, p50=4.935 msec
+SADD: 9295.41 requests per second, p50=2.551 msec
+HSET: 6427.15 requests per second, p50=5.359 msec
+SPOP: 9106.64 requests per second, p50=2.527 msec
+ZADD: 8525.88 requests per second, p50=2.663 msec
+ZPOPMIN: 8797.40 requests per second, p50=2.559 msec
+LPUSH (needed to benchmark LRANGE): 6059.87 requests per second, p50=5.615 msec
+LRANGE_100 (first 100 elements): 4113.20 requests per second, p50=5.695 msec
+LRANGE_300 (first 300 elements): 1667.83 requests per second, p50=13.879 msec
+LRANGE_500 (first 500 elements): 1051.38 requests per second, p50=15.783 msec
+LRANGE_600 (first 600 elements): 951.19 requests per second, p50=18.767 msec
+MSET (10 keys): 3831.71 requests per second, p50=9.711 msec
+</code></pre></div>
+<p>说明：</p>
+<div class="highlight"><pre><span></span><code>你运行的是 Redis 的性能基准测试，测试了各种常见的 Redis 操作的性能。以下是对这些结果的解读：
+
+- `PING_INLINE` 和 `PING_MBULK` 是检测 Redis 服务器是否在线的操作。在这次测试中，它们的吞吐量分别是 9354.54 和 9018.76 请求/秒，p50 延迟分别是 2.543 和 2.567 毫秒。
+
+- `SET`、`GET` 和 `INCR` 是常见的键值操作。它们的吞吐量分别是 6365.78、8983.11 和 6784.26 请求/秒，p50 延迟分别是 5.183、2.639 和 4.711 毫秒。
+
+- `LPUSH`、`RPUSH`、`LPOP` 和 `RPOP` 是列表操作。它们的吞吐量分别是 6266.84、6391.41、6735.37 和 7187.01 请求/秒，p50 延迟分别是 5.511、5.359、4.911 和 4.935 毫秒。
+
+- `SADD`、`HSET` 和 `SPOP` 是集合和哈希操作。它们的吞吐量分别是 9295.41、6427.15 和 9106.64 请求/秒，p50 延迟分别是 2.551、5.359 和 2.527 毫秒。
+
+- `ZADD` 和 `ZPOPMIN` 是有序集合操作。它们的吞吐量分别是 8525.88 和 8797.40 请求/秒，p50 延迟分别是 2.663 和 2.559 毫秒。
+
+- `LRANGE` 是获取列表的一部分的操作。这个操作的性能取决于你获取的元素数量。在这次测试中，获取前 100、300、500 和 600 个元素的吞吐量分别是 4113.20、1667.83、1051.38 和 951.19 请求/秒，p50 延迟分别是 5.695、13.879、15.783 和 18.767 毫秒。
+
+- `MSET` 是一次设置多个键值的操作。在这次测试中，设置 10 个键值的吞吐量是 3831.71 请求/秒，p50 延迟是 9.711 毫秒。
+
+这些结果可以帮助你了解在你的硬件和配置下，Redis 对于各种操作的性能表现。如果你发现某些操作的性能不佳，你可以尝试调整 Redis 的配置或升级你的硬件来改善性能。
 </code></pre></div>
 <ul>
 <li>测试执行set,lpush 操作时的性能</li>
@@ -2271,7 +2345,9 @@ cluster_enabled:0
 # Keyspace
 db0:keys=4,expires=0,avg_ttl=0
 </code></pre></div>
-<p>内存使用量
+<ul>
+<li>内存使用量</li>
+</ul>
 <div class="highlight"><pre><span></span><code>&gt; INFO memory
 used_memory: 19167628056
 used_memory_human: 17.85G
@@ -2282,8 +2358,175 @@ used_memory_overhead: 5727954464
 ...
 used_memory_dataset: 13439673592
 used_memory_dataset_perc: 70.12%
-</code></pre></div></p>
+</code></pre></div>
 <p>其中 used_memory_rss 是 Redis 实际使用的总内存大小，这里既包含了存储在 Redis 中的数据大小（也就是上面的 used_memory_dataset），也包含了一些 Redis 的系统开销（也就是上面的 used_memory_overhead）。</p>
+<ul>
+<li>set，get应用案例</li>
+</ul>
+<div class="highlight"><pre><span></span><code>127.0.0.1:6379&gt; set name zhangsan           # 设置键值列表为name 键值为zhangsan
+OK  
+127.0.0.1:6379&gt; get name                    # 获取name的键值
+&quot;zhangsan&quot;
+</code></pre></div>
+<ul>
+<li>key相关命令</li>
+</ul>
+<p>在使用keys命令可以取符合规则的键值列表，通常情况可以结合<em>，？等选项来使用
+？：表示任意一位数据
+</em>：表示任意数据</p>
+<div class="highlight"><pre><span></span><code>127.0.0.1:6379&gt; set name zhangsan
+OK
+127.0.0.1:6379&gt; get name
+&quot;zhangsan&quot;
+127.0.0.1:6379&gt; set k1 1
+OK
+127.0.0.1:6379&gt; set k2 2
+OK
+127.0.0.1:6379&gt; set k3 3
+OK
+127.0.0.1:6379&gt; set s1 4
+OK
+127.0.0.1:6379&gt; set v55 5
+OK
+</code></pre></div>
+<ul>
+<li>通过keys获取键值列表信息</li>
+</ul>
+<div class="highlight"><pre><span></span><code>127.0.0.1:6379&gt; keys *
+1) &quot;name&quot;
+2) &quot;mylist&quot;
+3) &quot;key3&quot;
+4) &quot;myhash&quot;
+5) &quot;key1&quot;
+6) &quot;key2&quot;
+7) &quot;key:__rand_int__&quot;
+8) &quot;key4&quot;
+9) &quot;counter:__rand_int__&quot;
+
+
+127.0.0.1:6379&gt; KEYS key? # ？表示k后面的任意一个字符 及匹配任何一个以k开头的键列表后面只有一位的
+1) &quot;key3&quot;
+2) &quot;key1&quot;
+3) &quot;key2&quot;
+4) &quot;key4&quot;
+127.0.0.1:6379&gt;
+
+127.0.0.1:6379&gt; KEYS key* # * 任意及匹配任何一个以key开头的键列表
+1) &quot;key3&quot;
+2) &quot;key1&quot;
+3) &quot;key2&quot;
+4) &quot;key:__rand_int__&quot;
+5) &quot;key4&quot;
+</code></pre></div>
+<ul>
+<li>exists命令
+作用：用来判断键值是否存在</li>
+</ul>
+<div class="highlight"><pre><span></span><code>127.0.0.1:6379&gt; exists name             # 判断name键是否存在
+(integer) 1                         # 返回1表示存在
+127.0.0.1:6379&gt; exists name1            
+(integer) 0                         # 返回0表示不存在
+</code></pre></div>
+<ul>
+<li>del 删除命令</li>
+</ul>
+<div class="highlight"><pre><span></span><code>127.0.0.1:6379&gt; get name
+&quot;zhangsan&quot;
+127.0.0.1:6379&gt; del name
+(integer) 1
+127.0.0.1:6379&gt; get name
+(nil)
+</code></pre></div>
+<ul>
+<li>Type 命令</li>
+</ul>
+<p>作用：使用type命令可以获取key对应的value值的类型</p>
+<div class="highlight"><pre><span></span><code>127.0.0.1:6379&gt; type key1
+string
+</code></pre></div>
+<ul>
+<li>rename命令 (对已有的key进行重命名)</li>
+<li>命令格式：rename 源key 目标key</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">温馨提示</p>
+<p>注意：使用rename命令进行重命名时，无论目标key是否存在都会进行重命名，在实际使用过程中建议先使用exists查看目标key是否存在，再决定是否执行rename命令，以免覆盖重要的数据。</p>
+</div>
+<div class="highlight"><pre><span></span><code>127.0.0.1:6379&gt; get key1
+&quot;1&quot;
+127.0.0.1:6379&gt; rename key1 name
+OK
+127.0.0.1:6379&gt; get name
+&quot;1&quot;
+</code></pre></div>
+<ul>
+<li>dbsize命令(作用：查看当前数据库中key的数目)</li>
+</ul>
+<div class="highlight"><pre><span></span><code>127.0.0.1:6379&gt; keys *
+1) &quot;name&quot;
+2) &quot;mylist&quot;
+3) &quot;key3&quot;
+4) &quot;myhash&quot;
+5) &quot;key2&quot;
+6) &quot;key:__rand_int__&quot;
+7) &quot;key4&quot;
+8) &quot;counter:__rand_int__&quot;
+
+127.0.0.1:6379&gt; dbsize
+(integer) 8
+</code></pre></div>
+<h3 id="_6"><strong>多数据库常用命令</strong><a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<ol>
+<li>多数据库之间切换</li>
+</ol>
+<p>Redis支持多数据库，redis在默认没有任何改动的情况下包含16个数据库，数据库的名称是使用数值0~15来依次命名的，而我们通过redis-cli打开的是默认的第一个库其显示为“<ip地址：6379>”的形式,通过select命令进行切换后 其格式会变为 “<ip地址：6379[n]>”。
+n 表示select后面的数字</p>
+<div class="highlight"><pre><span></span><code>127.0.0.1:6379&gt; select 5       
+OK
+127.0.0.1:6379[5]&gt; select 15
+OK
+127.0.0.1:6379[15]&gt; select 16               # 切换为16时报错
+(error) ERR DB index is out of range    # 超出范围
+127.0.0.1:6379[15]&gt; select 0
+OK
+</code></pre></div>
+<h3 id="_7"><strong>清除数据库</strong><a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>Redis清除数据库一般分为两部分</p>
+<ul>
+<li>
+<ol>
+<li>清除当前数据库：flushdb</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>清除所有数据库文件：flushall </li>
+</ol>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>127.0.0.1:6379&gt; select 1
+OK
+127.0.0.1:6379[1]&gt; flushdb
+OK
+127.0.0.1:6379[1]&gt; keys *
+(empty list or set)
+127.0.0.1:6379[1]&gt; select 0
+OK
+127.0.0.1:6379&gt; keys *
+1) &quot;counter:__rand_int__&quot;
+2) &quot;key:__rand_int__&quot;
+3) &quot;k1&quot;
+4) &quot;myset:__rand_int__&quot;
+5) &quot;mylist&quot;
+127.0.0.1:6379&gt; select 1
+OK
+127.0.0.1:6379[1]&gt; flushall
+OK
+127.0.0.1:6379[1]&gt; select 0
+OK
+127.0.0.1:6379&gt; keys *
+(empty list or set)
+</code></pre></div>
 
               
             </article>

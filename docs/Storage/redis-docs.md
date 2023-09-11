@@ -51,7 +51,7 @@ Redis服务器程序是一个单进程模型，也就是说在一台服务器上
 
 
 
-### Redis 的优点
+### **Redis 的优点**
 
 - 具有极高的数据读写速度：数据读取速度最高可达11万次/s，数据写入速度最高可达8万1千次/s
 - 支持丰富的数据类型，支持丰富的数据类型不仅支持key-values数据类型，还支持Strings，Lists，Hashes，Sets，及Ordered Sets等数据类型操作
@@ -61,7 +61,7 @@ Redis服务器程序是一个单进程模型，也就是说在一台服务器上
 
 
 
-### **helm 部署 redis**
+### ** Helm 部署 redis**
 
 在云原生环境中部署 Redis 集群，我们通常会使用 Kubernetes，它是一个开源的容器编排平台，用于自动化应用程序容器的部署、扩展和管理。对于 Redis，我们可以使用 Helm，这是一个 Kubernetes 的包管理器，可以帮助我们更容易地管理和部署应用。
 
@@ -225,7 +225,7 @@ include /path/to/local.conf
 
 
 
-### redis-cli 用法
+### **redis-cli 用法**
 
 ```shell
 redis-cli -h 远程连接主机 -p 指定端口 -a 指定密码
@@ -241,7 +241,7 @@ PONG								# 执行ping命令可以检测Redis服务是否启动
 
 
 
-### redis-benchmark测试工具
+### **redis-benchmark测试工具**
 
 Redis-benchmark是redis官方自带的redis性能测试工具，可以有效的测试redis服务的性能。
 
@@ -272,22 +272,69 @@ redis-benchmark [option] [option value]
 -I :idle模式。仅打开/v个idle连接并等待
 ```
 
-
-
 ### **Redis-benchmark应用实例**
 
 - 测试并发数为10请求连接数为100000个请求的性能
 
 ```
 [root@localhost redis]# redis-benchmark -h localhost -p 6379 -c 10 -n 100000
+
+Summary:
+  throughput summary: 2584.25 requests per second
+  latency summary (msec):
+          avg       min       p50       p95       p99       max
+        3.378     0.448     2.719     7.159    16.607   389.375
 ```
 
 - 测试存取大小为100B的数据包时redis的性能
 
 ```
 [root@localhost ~]# redis-benchmark -h localhost -p 6379 -q -d 100
+
+PING_INLINE: 9354.54 requests per second, p50=2.543 msec
+PING_MBULK: 9018.76 requests per second, p50=2.567 msec
+SET: 6365.78 requests per second, p50=5.183 msec
+GET: 8983.11 requests per second, p50=2.639 msec
+INCR: 6784.26 requests per second, p50=4.711 msec
+LPUSH: 6266.84 requests per second, p50=5.511 msec
+RPUSH: 6391.41 requests per second, p50=5.359 msec
+LPOP: 6735.37 requests per second, p50=4.911 msec
+RPOP: 7187.01 requests per second, p50=4.935 msec
+SADD: 9295.41 requests per second, p50=2.551 msec
+HSET: 6427.15 requests per second, p50=5.359 msec
+SPOP: 9106.64 requests per second, p50=2.527 msec
+ZADD: 8525.88 requests per second, p50=2.663 msec
+ZPOPMIN: 8797.40 requests per second, p50=2.559 msec
+LPUSH (needed to benchmark LRANGE): 6059.87 requests per second, p50=5.615 msec
+LRANGE_100 (first 100 elements): 4113.20 requests per second, p50=5.695 msec
+LRANGE_300 (first 300 elements): 1667.83 requests per second, p50=13.879 msec
+LRANGE_500 (first 500 elements): 1051.38 requests per second, p50=15.783 msec
+LRANGE_600 (first 600 elements): 951.19 requests per second, p50=18.767 msec
+MSET (10 keys): 3831.71 requests per second, p50=9.711 msec
 ```
-  
+
+说明：
+
+```
+你运行的是 Redis 的性能基准测试，测试了各种常见的 Redis 操作的性能。以下是对这些结果的解读：
+
+- `PING_INLINE` 和 `PING_MBULK` 是检测 Redis 服务器是否在线的操作。在这次测试中，它们的吞吐量分别是 9354.54 和 9018.76 请求/秒，p50 延迟分别是 2.543 和 2.567 毫秒。
+
+- `SET`、`GET` 和 `INCR` 是常见的键值操作。它们的吞吐量分别是 6365.78、8983.11 和 6784.26 请求/秒，p50 延迟分别是 5.183、2.639 和 4.711 毫秒。
+
+- `LPUSH`、`RPUSH`、`LPOP` 和 `RPOP` 是列表操作。它们的吞吐量分别是 6266.84、6391.41、6735.37 和 7187.01 请求/秒，p50 延迟分别是 5.511、5.359、4.911 和 4.935 毫秒。
+
+- `SADD`、`HSET` 和 `SPOP` 是集合和哈希操作。它们的吞吐量分别是 9295.41、6427.15 和 9106.64 请求/秒，p50 延迟分别是 2.551、5.359 和 2.527 毫秒。
+
+- `ZADD` 和 `ZPOPMIN` 是有序集合操作。它们的吞吐量分别是 8525.88 和 8797.40 请求/秒，p50 延迟分别是 2.663 和 2.559 毫秒。
+
+- `LRANGE` 是获取列表的一部分的操作。这个操作的性能取决于你获取的元素数量。在这次测试中，获取前 100、300、500 和 600 个元素的吞吐量分别是 4113.20、1667.83、1051.38 和 951.19 请求/秒，p50 延迟分别是 5.695、13.879、15.783 和 18.767 毫秒。
+
+- `MSET` 是一次设置多个键值的操作。在这次测试中，设置 10 个键值的吞吐量是 3831.71 请求/秒，p50 延迟是 9.711 毫秒。
+
+这些结果可以帮助你了解在你的硬件和配置下，Redis 对于各种操作的性能表现。如果你发现某些操作的性能不佳，你可以尝试调整 Redis 的配置或升级你的硬件来改善性能。
+```
+
 - 测试执行set,lpush 操作时的性能
 
 ```
@@ -320,7 +367,8 @@ cluster_enabled:0
 db0:keys=4,expires=0,avg_ttl=0
 ```
 
-内存使用量
+- 内存使用量
+
 ```
 > INFO memory
 used_memory: 19167628056
@@ -337,17 +385,177 @@ used_memory_dataset_perc: 70.12%
 其中 used_memory_rss 是 Redis 实际使用的总内存大小，这里既包含了存储在 Redis 中的数据大小（也就是上面的 used_memory_dataset），也包含了一些 Redis 的系统开销（也就是上面的 used_memory_overhead）。
 
 
+- set，get应用案例
+
+```
+127.0.0.1:6379> set name zhangsan     		# 设置键值列表为name 键值为zhangsan
+OK  
+127.0.0.1:6379> get name					# 获取name的键值
+"zhangsan"
+```
+
+- key相关命令
+
+在使用keys命令可以取符合规则的键值列表，通常情况可以结合*，？等选项来使用
+？：表示任意一位数据
+*：表示任意数据
+
+```
+127.0.0.1:6379> set name zhangsan
+OK
+127.0.0.1:6379> get name
+"zhangsan"
+127.0.0.1:6379> set k1 1
+OK
+127.0.0.1:6379> set k2 2
+OK
+127.0.0.1:6379> set k3 3
+OK
+127.0.0.1:6379> set s1 4
+OK
+127.0.0.1:6379> set v55 5
+OK
+```
+
+- 通过keys获取键值列表信息
+
+```
+127.0.0.1:6379> keys *
+1) "name"
+2) "mylist"
+3) "key3"
+4) "myhash"
+5) "key1"
+6) "key2"
+7) "key:__rand_int__"
+8) "key4"
+9) "counter:__rand_int__"
 
 
+127.0.0.1:6379> KEYS key? # ？表示k后面的任意一个字符 及匹配任何一个以k开头的键列表后面只有一位的
+1) "key3"
+2) "key1"
+3) "key2"
+4) "key4"
+127.0.0.1:6379>
+
+127.0.0.1:6379> KEYS key* # * 任意及匹配任何一个以key开头的键列表
+1) "key3"
+2) "key1"
+3) "key2"
+4) "key:__rand_int__"
+5) "key4"
+```
+
+- exists命令
+作用：用来判断键值是否存在
+
+```
+127.0.0.1:6379> exists name   			# 判断name键是否存在
+(integer) 1							# 返回1表示存在
+127.0.0.1:6379> exists name1			
+(integer) 0							# 返回0表示不存在
+```
 
 
+- del 删除命令
 
+```
+127.0.0.1:6379> get name
+"zhangsan"
+127.0.0.1:6379> del name
+(integer) 1
+127.0.0.1:6379> get name
+(nil)
+```
 
+- Type 命令
 
+作用：使用type命令可以获取key对应的value值的类型
 
+```
+127.0.0.1:6379> type key1
+string
+```
 
+- rename命令 (对已有的key进行重命名)
+- 命令格式：rename 源key 目标key
 
+!!! warning "温馨提示"
+    注意：使用rename命令进行重命名时，无论目标key是否存在都会进行重命名，在实际使用过程中建议先使用exists查看目标key是否存在，再决定是否执行rename命令，以免覆盖重要的数据。
 
+```
+127.0.0.1:6379> get key1
+"1"
+127.0.0.1:6379> rename key1 name
+OK
+127.0.0.1:6379> get name
+"1"
+```
 
+- dbsize命令(作用：查看当前数据库中key的数目)
 
+```
+127.0.0.1:6379> keys *
+1) "name"
+2) "mylist"
+3) "key3"
+4) "myhash"
+5) "key2"
+6) "key:__rand_int__"
+7) "key4"
+8) "counter:__rand_int__"
 
+127.0.0.1:6379> dbsize
+(integer) 8
+```
+
+### **多数据库常用命令**
+
+1. 多数据库之间切换
+
+Redis支持多数据库，redis在默认没有任何改动的情况下包含16个数据库，数据库的名称是使用数值0~15来依次命名的，而我们通过redis-cli打开的是默认的第一个库其显示为“<ip地址：6379>”的形式,通过select命令进行切换后 其格式会变为 “<ip地址：6379[n]>”。
+n 表示select后面的数字
+
+```
+127.0.0.1:6379> select 5       
+OK
+127.0.0.1:6379[5]> select 15
+OK
+127.0.0.1:6379[15]> select 16				# 切换为16时报错
+(error) ERR DB index is out of range	# 超出范围
+127.0.0.1:6379[15]> select 0
+OK
+```
+
+### **清除数据库**
+
+Redis清除数据库一般分为两部分
+
+- 1. 清除当前数据库：flushdb
+- 2. 清除所有数据库文件：flushall 
+
+```
+127.0.0.1:6379> select 1
+OK
+127.0.0.1:6379[1]> flushdb
+OK
+127.0.0.1:6379[1]> keys *
+(empty list or set)
+127.0.0.1:6379[1]> select 0
+OK
+127.0.0.1:6379> keys *
+1) "counter:__rand_int__"
+2) "key:__rand_int__"
+3) "k1"
+4) "myset:__rand_int__"
+5) "mylist"
+127.0.0.1:6379> select 1
+OK
+127.0.0.1:6379[1]> flushall
+OK
+127.0.0.1:6379[1]> select 0
+OK
+127.0.0.1:6379> keys *
+(empty list or set)
+```
