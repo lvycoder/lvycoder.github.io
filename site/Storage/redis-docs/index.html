@@ -2299,7 +2299,7 @@ LRANGE_500 (first 500 elements): 1051.38 requests per second, p50=15.783 msec
 LRANGE_600 (first 600 elements): 951.19 requests per second, p50=18.767 msec
 MSET (10 keys): 3831.71 requests per second, p50=9.711 msec
 </code></pre></div>
-<p>说明：</p>
+<p>参数说明：</p>
 <div class="highlight"><pre><span></span><code>你运行的是 Redis 的性能基准测试，测试了各种常见的 Redis 操作的性能。以下是对这些结果的解读：
 
 - `PING_INLINE` 和 `PING_MBULK` 是检测 Redis 服务器是否在线的操作。在这次测试中，它们的吞吐量分别是 9354.54 和 9018.76 请求/秒，p50 延迟分别是 2.543 和 2.567 毫秒。
@@ -2330,9 +2330,9 @@ MSET (10 keys): 3831.71 requests per second, p50=9.711 msec
 <li>get: 用于redis数据库中获取数据 命令格式为 get key</li>
 </ul>
 <div class="highlight"><pre><span></span><code>[root@localhost ~]# redis-cli
-127.0.0.1:6379&gt; ping       #测试redis服务是否启动
+127.0.0.1:6379&gt; ping       # 测试redis服务是否启动
 PONG
-127.0.0.1:6379&gt; info        #查看详细信息
+127.0.0.1:6379&gt; info           # 查看详细信息
 # Server
 redis_version:4.0.10
 ……#省略部分信息
@@ -2493,16 +2493,8 @@ OK
 <h3 id="_7"><strong>清除数据库</strong><a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>Redis清除数据库一般分为两部分</p>
 <ul>
-<li>
-<ol>
 <li>清除当前数据库：flushdb</li>
-</ol>
-</li>
-<li>
-<ol>
 <li>清除所有数据库文件：flushall </li>
-</ol>
-</li>
 </ul>
 <div class="highlight"><pre><span></span><code>127.0.0.1:6379&gt; select 1
 OK
