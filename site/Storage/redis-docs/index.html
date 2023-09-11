@@ -1197,15 +1197,29 @@
   
 </li>
         
-      </ul>
-    </nav>
+          <li class="md-nav__item">
+  <a href="#redis_2" class="md-nav__link">
+    Redis 的优点
+  </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#helm-redis" class="md-nav__link">
     helm 部署 redis
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    生产环境部署
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1900,15 +1914,29 @@
   
 </li>
         
-      </ul>
-    </nav>
+          <li class="md-nav__item">
+  <a href="#redis_2" class="md-nav__link">
+    Redis 的优点
+  </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#helm-redis" class="md-nav__link">
     helm 部署 redis
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    生产环境部署
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1960,11 +1988,21 @@ Redis的所有数据都是保存在内存中，然后不定期的通过异步方
 全持久化与半持久化的方式在工作中适当的使用，在如今的生产环境中，如果使用全持久化的方式可能会造成append onlyfile的文件过大，如果是半持久化的话又没有办法保证数据的安全性，所以希望大家适当的使用。</p>
 <h3 id="redis_1"><strong>Redis的工作原理</strong><a class="headerlink" href="#redis_1" title="Permanent link">&para;</a></h3>
 <p>Redis服务器程序是一个单进程模型，也就是说在一台服务器上可以开启多个redis进程（多实例），而redis的实际处理速度则完全依靠于主进程的执行速率，若在服务器上只运行一个redis进程，当多个客户端同时访问时，服务器处理能力会有一定程度的下降，若在一个服务器上开启多个redis进程，redis在提高并发处理能力的同时也会给CPU造成很大的压力，所以在实际生产环境中，结合实际服务器环境来决定如何使用。</p>
-<h2 id="helm-redis"><strong>helm 部署 redis</strong><a class="headerlink" href="#helm-redis" title="Permanent link">&para;</a></h2>
+<h3 id="redis_2">Redis 的优点<a class="headerlink" href="#redis_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>具有极高的数据读写速度：数据读取速度最高可达11万次/s，数据写入速度最高可达8万1千次/s</li>
+<li>支持丰富的数据类型，支持丰富的数据类型不仅支持key-values数据类型，还支持Strings，Lists，Hashes，Sets，及Ordered Sets等数据类型操作</li>
+<li>支持数据的持久化，在这一点上redis远远强于memcached，redis可以将数据保存到磁盘中，重启后还可以继续加载使用</li>
+<li>原子性 redis的所有操作都是原子性的</li>
+<li>支持数据备份及master-slave模式的数据备份</li>
+</ul>
+<h3 id="helm-redis"><strong>helm 部署 redis</strong><a class="headerlink" href="#helm-redis" title="Permanent link">&para;</a></h3>
 <p>在云原生环境中部署 Redis 集群，我们通常会使用 Kubernetes，它是一个开源的容器编排平台，用于自动化应用程序容器的部署、扩展和管理。对于 Redis，我们可以使用 Helm，这是一个 Kubernetes 的包管理器，可以帮助我们更容易地管理和部署应用。</p>
-<p>以下是在 Kubernetes 中使用 Helm 部署 Redis 集群的两种方法：
-- 集群方式
-- 哨兵方式</p>
+<p>以下是在 Kubernetes 中使用 Helm 部署 Redis 集群的两种方法：</p>
+<ul>
+<li>集群方式</li>
+<li>哨兵方式</li>
+</ul>
 <p>以下是一个小 demo 的例子:</p>
 <ol>
 <li>
@@ -1974,36 +2012,25 @@ Redis的所有数据都是保存在内存中，然后不定期的通过异步方
 <p><strong>添加 Helm 仓库</strong>：Bitnami 维护了一个包含了许多常见应用（包括 Redis）的 Helm 仓库。你可以使用以下命令添加这个仓库：</p>
 </li>
 </ol>
-<div class="highlight"><pre><span></span><code>helm repo add bitnami https://charts.bitnami.com/bitnami
+<p><div class="highlight"><pre><span></span><code>helm repo add bitnami https://charts.bitnami.com/bitnami
+helm repo update
+helm install my-redis-cluster bitnami/redis --set cluster.enabled=true,cluster.nodes=3,persistence.enabled=true,persistence.size=1Gi
 </code></pre></div>
-<ol>
-<li><strong>更新 Helm 仓库</strong>：添加新的 Helm 仓库后，你需要更新 Helm 仓库以获取最新的包信息：</li>
-</ol>
-<div class="highlight"><pre><span></span><code>helm repo update
-</code></pre></div>
-<ol>
-<li><strong>部署 Redis 集群</strong>：现在，你可以使用 Helm 部署 Redis 集群了。以下是一个基本的命令：</li>
-</ol>
-<div class="highlight"><pre><span></span><code>helm install my-redis-cluster bitnami/redis --set cluster.enabled=true,cluster.nodes=3,persistence.enabled=true,persistence.size=1Gi
-</code></pre></div>
-<p>这个命令将部署一个包含 3 个节点的 Redis 集群，并为每个节点启用了 1Gi 的持久化存储。</p>
-<ol>
-<li><strong>验证部署</strong>：最后，你可以使用以下命令检查 Redis 集群的状态：</li>
-</ol>
-<div class="highlight"><pre><span></span><code>kubectl get pods
-</code></pre></div>
+这个命令将部署一个包含 3 个节点的 Redis 集群，并为每个节点启用了 1Gi 的持久化存储。</p>
+<p><strong>验证部署</strong>：最后，你可以使用以下命令检查 Redis 集群的状态：</p>
 <p>如果一切顺利，你应该可以看到你的 Redis pods 在运行。</p>
 <p>这只是一个最基本的示例。在实际环境中，你可能需要根据你的具体需求调整各种参数，例如节点数、存储大小、密码等。你可以在 Bitnami 的 Redis Helm chart 文档中找到更多的配置选项。</p>
 <p>此外，你也需要考虑如何处理数据持久化、高可用性、备份和恢复等问题。例如，你可能需要配置 Kubernetes 的 Persistent Volumes 和 Persistent Volume Claims 来处理数据持久化，配置 Redis 的主从复制和哨兵模式来实现高可用性，定期备份 Redis 数据以防数据丢失，等等。</p>
+<h3 id="_4"><strong>生产环境部署</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <ul>
-<li>
-<p>添加Helm chart
+<li>添加Helm chart</li>
+</ul>
 <div class="highlight"><pre><span></span><code>helm repo add bitnami https://charts.bitnami.com/bitnami
 helm repo update
-</code></pre></div></p>
-</li>
-<li>
-<p>查询 Redis 资源
+</code></pre></div>
+<ul>
+<li>查询 Redis 资源</li>
+</ul>
 <div class="highlight"><pre><span></span><code>$ helm search repo redis 
 NAME                                            CHART VERSION   APP VERSION DESCRIPTION
 bitnami/redis                                   17.15.2         7.0.12      Redis(R) is an open source, advanced key-value ...
@@ -2014,15 +2041,13 @@ stable/redis                                    10.5.7          5.0.7       DEPR
 stable/redis-ha                                 4.4.6           5.0.6       DEPRECATED - Highly available Kubernetes implem...
 ucloud-operator/redis-cluster-operator          0.1.0           0.1.0       A Helm chart for Redis cluster operator deployment
 stable/sensu                                    0.2.5           0.28        DEPRECATED Sensu monitoring framework backed by...
-</code></pre></div></p>
-</li>
-<li>
-<p>下载 chart 包
+</code></pre></div>
+<ul>
+<li>下载 chart 包</li>
+</ul>
 <div class="highlight"><pre><span></span><code>$ helm search repo redis --versions
 $ helm pull bitnami/redis --version 17.15.2
-</code></pre></div></p>
-</li>
-</ul>
+</code></pre></div>
 
               
             </article>
