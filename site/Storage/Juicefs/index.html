@@ -17,7 +17,7 @@
     
     
       
-        <title>Juicefs存储 - Kubernetes 进阶训练营</title>
+        <title>云原生存储方案:Juicefs - Kubernetes 进阶训练营</title>
       
     
     
@@ -106,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Juicefs存储
+              云原生存储方案:Juicefs
             
           </span>
         </div>
@@ -1199,7 +1199,7 @@
   
     <li class="md-nav__item">
       <a href="../rook-ceph/" class="md-nav__link">
-        rook-ceph简介
+        分布式存储:ceph
       </a>
     </li>
   
@@ -1234,12 +1234,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Juicefs存储
+          云原生存储方案:Juicefs
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Juicefs存储
+        云原生存储方案:Juicefs
       </a>
       
         
@@ -1288,7 +1288,14 @@
     环境部署
   </a>
   
-    <nav class="md-nav" aria-label="环境部署">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#juicefs_1" class="md-nav__link">
+    Juicefs升级
+  </a>
+  
+    <nav class="md-nav" aria-label="Juicefs升级">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1897,7 +1904,14 @@
     环境部署
   </a>
   
-    <nav class="md-nav" aria-label="环境部署">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#juicefs_1" class="md-nav__link">
+    Juicefs升级
+  </a>
+  
+    <nav class="md-nav" aria-label="Juicefs升级">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1929,7 +1943,7 @@
 </a>
 
 
-  <h1>Juicefs存储</h1>
+  <h1>云原生存储方案:Juicefs</h1>
 
 <h2 id="juicefs"><strong>Juicefs 存储介绍</strong><a class="headerlink" href="#juicefs" title="Permanent link">&para;</a></h2>
 <p><strong>JuiceFS</strong> 是一款面向云原生设计的高性能分布式文件系统，在 Apache 2.0 开源协议下发布。提供完备的 <a href="https://en.wikipedia.org/wiki/POSIX">POSIX</a> 兼容性，可将几乎所有对象存储接入本地作为海量本地磁盘使用，亦可同时在跨平台、跨地区的不同主机上挂载读写。</p>
@@ -1997,6 +2011,18 @@ Kubernetes：JuiceFS 支持 Kubernetes CSI；为容器提供解耦的文件存�
 <li>方式二: <a href="https://juicefs.com/docs/zh/csi/getting_started/">官方推荐helm方式部署</a> (生产环境强烈推荐这种)</li>
 <li>优化方法:<a href="https://github.com/barry-boy/barry-boy.github.io/issues/62">可以参考我写的一个 pr 对已经安装的 juicefs 进行优化</a></li>
 </ul>
+<h2 id="juicefs_1"><strong>Juicefs升级</strong><a class="headerlink" href="#juicefs_1" title="Permanent link">&para;</a></h2>
+<p>可以参考 juicefs 官方推荐 helm 方式来升级,文章参考:https://juicefs.com/docs/zh/csi/upgrade-csi-driver
+<div class="highlight"><pre><span></span><code>helm repo update
+helm upgrade juicefs-csi-driver juicefs/juicefs-csi-driver -n kube-system -f ./values.yaml
+
+我是从 1.1 beta 版本升级,其中 values 中只需要修改一个镜像版本即可.
+
+image:
+  repository: juicedata/juicefs-csi-driver
+  tag: &quot;v0.22.0&quot; # 修改为最新版即可
+  pullPolicy: &quot;&quot;
+</code></pre></div></p>
 <h3 id="_5"><strong>文章参考:</strong><a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="https://juicefs.com/docs/zh/csi/getting_started/">juicefs 官方文档</a></li>
@@ -2117,7 +2143,7 @@ Kubernetes：JuiceFS 支持 Kubernetes CSI；为容器提供解耦的文件存�
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "navigation.indexes", "navigation.top", "search.suggest", "search.highlight", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.01824240.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["header.autohide", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "navigation.indexes", "navigation.top", "search.suggest", "search.highlight", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.01824240.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.e8a254df.min.js"></script>

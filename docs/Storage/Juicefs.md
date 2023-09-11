@@ -74,9 +74,27 @@ JuiceFS 文件系统由三个部分组成：
 
 
 
+## **Juicefs升级**
+
+可以参考 juicefs 官方推荐 helm 方式来升级,文章参考:https://juicefs.com/docs/zh/csi/upgrade-csi-driver
+```
+helm repo update
+helm upgrade juicefs-csi-driver juicefs/juicefs-csi-driver -n kube-system -f ./values.yaml
+
+我是从 1.1 beta 版本升级,其中 values 中只需要修改一个镜像版本即可.
+
+image:
+  repository: juicedata/juicefs-csi-driver
+  tag: "v0.22.0" # 修改为最新版即可
+  pullPolicy: ""
+```
+
 
 ### **文章参考:**
 
 - [juicefs 官方文档](https://juicefs.com/docs/zh/csi/getting_started/)
 - [redis cluster 文章](https://github.com/bitnami/charts/tree/main/bitnami/redis-cluster)
 - [minio 官方文档](https://min.io/docs/minio/kubernetes/gke/index.html)
+
+
+

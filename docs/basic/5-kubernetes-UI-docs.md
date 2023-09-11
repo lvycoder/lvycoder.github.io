@@ -38,6 +38,6 @@ kubectl apply -f https://addons.kuboard.cn/kuboard/kuboard-v3.yaml
 
 ![](https://pic.imgdb.cn/item/63a4905608b68301633d5850.jpg)
 
-文章参考:
+###  **文章参考:**
 
-https://kuboard.cn/install/v3/install-in-k8s.html#%E5%AE%89%E8%A3%85
+- https://kuboard.cn/install/v3/install-in-k8s.html#%E5%AE%89%E8%A3%85

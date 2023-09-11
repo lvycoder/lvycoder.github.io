@@ -17,7 +17,7 @@
     
     
       
-        <title>rook-ceph简介 - Kubernetes 进阶训练营</title>
+        <title>分布式存储:ceph - Kubernetes 进阶训练营</title>
       
     
     
@@ -106,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              rook-ceph简介
+              分布式存储:ceph
             
           </span>
         </div>
@@ -1204,16 +1204,14 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
-        
-      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          rook-ceph简介
+          分布式存储:ceph
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        rook-ceph简介
+        分布式存储:ceph
       </a>
       
         
@@ -1221,8 +1219,6 @@
 <nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
-  
-    
   
   
     <label class="md-nav__title" for="__toc">
@@ -1232,7 +1228,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#rook-ceph_1" class="md-nav__link">
+  <a href="#rook-ceph" class="md-nav__link">
     rook-ceph简介
   </a>
   
@@ -1259,7 +1255,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#rook-ceph_2" class="md-nav__link">
+  <a href="#rook-ceph_1" class="md-nav__link">
     rook-ceph部署
   </a>
   
@@ -1519,7 +1515,7 @@
   
     <li class="md-nav__item">
       <a href="../Juicefs/" class="md-nav__link">
-        Juicefs存储
+        云原生存储方案:Juicefs
       </a>
     </li>
   
@@ -2071,8 +2067,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -2081,7 +2075,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#rook-ceph_1" class="md-nav__link">
+  <a href="#rook-ceph" class="md-nav__link">
     rook-ceph简介
   </a>
   
@@ -2108,7 +2102,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#rook-ceph_2" class="md-nav__link">
+  <a href="#rook-ceph_1" class="md-nav__link">
     rook-ceph部署
   </a>
   
@@ -2355,8 +2349,9 @@
 </a>
 
 
-<h1 id="rook-ceph">rook-ceph简介和部署<a class="headerlink" href="#rook-ceph" title="Permanent link">&para;</a></h1>
-<h2 id="rook-ceph_1"><strong>rook-ceph简介</strong><a class="headerlink" href="#rook-ceph_1" title="Permanent link">&para;</a></h2>
+  <h1>分布式存储:ceph</h1>
+
+<h2 id="rook-ceph"><strong>rook-ceph简介</strong><a class="headerlink" href="#rook-ceph" title="Permanent link">&para;</a></h2>
 <p>开源的分布式存储系统，支持对象存储，块设备，文件系统</p>
 <ul>
 <li>块存储</li>
@@ -2387,7 +2382,7 @@
 <p class="admonition-title">ceph 面试题</p>
 <p>ceph</p>
 </div>
-<h2 id="rook-ceph_2"><strong>rook-ceph部署</strong><a class="headerlink" href="#rook-ceph_2" title="Permanent link">&para;</a></h2>
+<h2 id="rook-ceph_1"><strong>rook-ceph部署</strong><a class="headerlink" href="#rook-ceph_1" title="Permanent link">&para;</a></h2>
 <div class="admonition info">
 <p class="admonition-title">环境要求</p>
 <p>一个k8s集群，node节点最少三个节点</p>
@@ -3460,7 +3455,7 @@ big-file-multi-read:<span class="w"> </span><span class="o">(</span><span class=
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "navigation.indexes", "navigation.top", "search.suggest", "search.highlight", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.01824240.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["header.autohide", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "navigation.indexes", "navigation.top", "search.suggest", "search.highlight", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.01824240.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.e8a254df.min.js"></script>
