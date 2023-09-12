@@ -33,4 +33,4 @@ curl -sSL https://d.juicefs.com/install | sh -
 ### **参考文章**
 
 - https://juicefs.com/docs/zh/community/release_notes#juicefs-v10
-  
+- https://juicefs.com/docs/zh/csi/upgrade-csi-driver
