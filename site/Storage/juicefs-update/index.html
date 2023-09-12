@@ -17,7 +17,7 @@
     
     
       
-        <title>Gcluster - Kubernetes 进阶训练营</title>
+        <title>Juicefs版本升级 - Kubernetes 进阶训练营</title>
       
     
     
@@ -70,6 +70,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -101,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Gcluster
+              Juicefs版本升级
             
           </span>
         </div>
@@ -299,13 +304,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../disk-ssd-docs/" class="md-tabs__link">
+      <a href="../disk-ssd-docs/" class="md-tabs__link md-tabs__link--active">
         7、存储服务
       </a>
     </li>
@@ -1175,12 +1182,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" data-md-state="indeterminate" type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" checked>
       
       
       
@@ -1277,11 +1286,61 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../juicefs-update/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Juicefs版本升级
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Juicefs版本升级
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    前言
+  </a>
+  
+    <nav class="md-nav" aria-label="前言">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    参考文章
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1808,26 +1867,91 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    前言
+  </a>
+  
+    <nav class="md-nav" aria-label="前言">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    参考文章
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
                 
-<a href="https://github.com/barry-boy/barry-boy.github.io/edit/master/docs/Storage/gcluster.md" title="编辑此页" class="md-content__button md-icon">
+<a href="https://github.com/barry-boy/barry-boy.github.io/edit/master/docs/Storage/juicefs-update.md" title="编辑此页" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
 
-  <h1>Gcluster</h1>
+  <h1>Juicefs版本升级</h1>
 
-<p>分布式卷: (数据是完整的，例如5个文件会分散来存)     没有冗余功能，有的能读，有的不能
-条带卷:（数据是一半，如果机器损坏导致机器会出问题）  全部损坏
-复制卷: （如果是两个存储，数据都是一样的，副本）   <br />
-分布式条带: 既有分布式的特点，也有条带的特点        坏一部分
-分布式复制: 既有分布式的特点，也有复制的特点        </p>
-<p>gcluster 最终只能用复制卷，或者是分布式复制</p>
-<p>ceph  推荐使用rgw   </p>
-<p>juicefs 元数据--redis,tidb</p>
+<h2 id="_1"><strong>前言</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>我自己有一个demo环境，上面安装了一个juicefs,最近正式版发布了，所以要对线上环境升级。JuiceFS 的客户端只有一个二进制文件，一般情况下升级时只需要用新版本软件替换旧版即可。</p>
+<ol>
+<li>首先要对 values 中<code>juicefs-csi-driver</code>镜像版本升级<code>v0.22.0</code></li>
+<li>升级所有客户端软件到 v1.1 版本</li>
+<li>拒绝 v1.1 之前的版本再次连接：<code>juicefs config META-URL --min-client-version 1.1.0-A</code></li>
+<li>重启服务</li>
+<li>确保所有在线客户端版本都在 v1.1 或以上：<code>juicefs status META-URL | grep -w Version</code></li>
+<li>启用新特性，具体参见目录用量统计和目录配额</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">温馨提示</p>
+<p>JuiceFS 在 v1.1（具体而言，是 v1.1.0-beta2）版本中新增了目录用量统计和目录配额两个功能，且目录配额依赖于用量统计。这两项功能在旧版本客户端中没有，当它们被开启的情况下使用旧客户端写入会导致统计数值出现较大偏差。在升级到 v1.1 时，若您不打算启用这两项新功能，可以直接使用新版本客户端替换升级，无需额外操作。若您打算使用，则建议您在升级前了解以下内容。</p>
+</div>
+<p>默认配置(目前这两项功能的默认配置为：)</p>
+<p>新创建的文件系统，会自动启用
+已有的文件系统，默认均不启用</p>
+<ul>
+<li>目录用量统计可以通过 juicefs config 命令单独开启</li>
+<li>设置目录配额时，用量统计会自动开启</li>
+</ul>
+<p>可以直接升级：
+<div class="highlight"><pre><span></span><code># 默认安装到 /usr/local/bin
+curl -sSL https://d.juicefs.com/install | sh -
+</code></pre></div></p>
+<h3 id="_2"><strong>参考文章</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>https://juicefs.com/docs/zh/community/release_notes#juicefs-v10</li>
+</ul>
 
               
             </article>
@@ -1842,6 +1966,41 @@
       </main>
       
         <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="页脚">
+      
+        
+        <a href="../Juicefs/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Juicefs存储方案" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              Juicefs存储方案
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../osd/" class="md-footer__link md-footer__link--next" aria-label="下一页: osd 性能测试" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              osd 性能测试
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
