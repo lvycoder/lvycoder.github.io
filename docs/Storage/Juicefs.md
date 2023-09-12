@@ -95,6 +95,6 @@ image:
 - [juicefs 官方文档](https://juicefs.com/docs/zh/csi/getting_started/)
 - [redis cluster 文章](https://github.com/bitnami/charts/tree/main/bitnami/redis-cluster)
 - [minio 官方文档](https://min.io/docs/minio/kubernetes/gke/index.html)
-
+- [juicefs 升级文档](https://juicefs.com/docs/zh/community/release_notes)
 
 
