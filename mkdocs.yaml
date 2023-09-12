@@ -124,7 +124,7 @@ nav:
  
     - 7、存储服务: 
         - 固态 ssd : Storage/disk-ssd-docs.md
-        - 分布式存储:ceph: Storage/rook-ceph.md
+        - 分布式存储: Storage/rook-ceph.md
         - ceph 命令用法: Storage/ceph-cli-docs.md
         - Juicefs存储方案: Storage/Juicefs.md
         - Juicefs版本升级: Storage/juicefs-update.md
@@ -144,6 +144,7 @@ nav:
     - 10、Ansible自动化:
         - Ansible 应用基础: ansible/ansible-case1.md
         - Ansible 高级用法: ansible/ansible-docs2.md
+        - Ansible 安装: ansible/ansible-install-docs.md
 
     # - monitor:
     #     - prometheus 监控: monitor/prometheus.md
