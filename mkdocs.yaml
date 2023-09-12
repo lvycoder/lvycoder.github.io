@@ -119,6 +119,8 @@ nav:
     - 6、数据库:
         - Mysql-operator: k8s/mysql-operator/1-install-mysql-operator.md
         - 缓存加速: Storage/redis-docs.md
+        - redis 集群篇: Storage/redis-cluster-docs.md
+        - redis 持久化: redis/redis-save-docs.md
  
     - 7、存储服务: 
         - 固态 ssd : Storage/disk-ssd-docs.md

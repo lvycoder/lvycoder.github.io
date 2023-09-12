@@ -12,19 +12,19 @@
         <meta name="author" content="Li">
       
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.0.0">
     
     
       
-        <title>Rs - Kubernetes 进阶训练营</title>
+        <title>redis 集群篇 - Kubernetes 进阶训练营</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ad626c1e.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ad626c1e.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9204c3b2.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.9204c3b2.min.css">
         
       
     
@@ -38,11 +38,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/extra.css">
     
-      <link rel="stylesheet" href="../../../assets/styles/atom-one-light.css">
+      <link rel="stylesheet" href="../../assets/styles/atom-one-light.css">
     
-    <script>function __md_scope(e,t,_){return new URL(_||(t===localStorage?"../../..":"../../.."),location).pathname+"."+e}function __md_get(e,t=localStorage,_){return JSON.parse(t.getItem(__md_scope(e,t,_)))}function __md_set(e,t,_=localStorage,o){try{_.setItem(__md_scope(e,_,o),JSON.stringify(t))}catch(e){}}</script>
+    <script>function __md_scope(e,t,_){return new URL(_||(t===localStorage?"../..":"../.."),location).pathname+"."+e}function __md_get(e,t=localStorage,_){return JSON.parse(t.getItem(__md_scope(e,t,_)))}function __md_set(e,t,_=localStorage,o){try{_.setItem(__md_scope(e,_,o),JSON.stringify(t))}catch(e){}}</script>
     
       
 
@@ -70,6 +70,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#redis" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -82,7 +87,7 @@
 
 <header class="md-header md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../../.." title="Kubernetes 进阶训练营" class="md-header__button md-logo" aria-label="Kubernetes 进阶训练营" data-md-component="logo">
+    <a href="../.." title="Kubernetes 进阶训练营" class="md-header__button md-logo" aria-label="Kubernetes 进阶训练营" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -101,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Rs
+              redis 集群篇
             
           </span>
         </div>
@@ -194,7 +199,7 @@
 
 
   <li class="md-tabs__item">
-    <a href="../../.." class="md-tabs__link">
+    <a href="../.." class="md-tabs__link">
       首页
     </a>
   </li>
@@ -209,7 +214,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../network/ZeroTier/" class="md-tabs__link">
+      <a href="../../network/ZeroTier/" class="md-tabs__link">
         0、网络基础
       </a>
     </li>
@@ -225,7 +230,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../ubuntu/ubuntu-bmc/" class="md-tabs__link">
+      <a href="../../ubuntu/ubuntu-bmc/" class="md-tabs__link">
         1、Linux
       </a>
     </li>
@@ -241,7 +246,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../docker/docker-docs/" class="md-tabs__link">
+      <a href="../../docker/docker-docs/" class="md-tabs__link">
         2、容器运行时
       </a>
     </li>
@@ -257,7 +262,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../basic/cncf/" class="md-tabs__link">
+      <a href="../../basic/cncf/" class="md-tabs__link">
         3、kubernetes
       </a>
     </li>
@@ -273,7 +278,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../模块：python/module-docs.md" class="md-tabs__link">
+      <a href="../../模块：python/module-docs.md" class="md-tabs__link">
         4、运维开发
       </a>
     </li>
@@ -283,13 +288,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../mysql-operator/1-install-mysql-operator/" class="md-tabs__link">
+      <a href="../../k8s/mysql-operator/1-install-mysql-operator/" class="md-tabs__link md-tabs__link--active">
         6、数据库
       </a>
     </li>
@@ -305,7 +312,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../Storage/disk-ssd-docs/" class="md-tabs__link">
+      <a href="../disk-ssd-docs/" class="md-tabs__link">
         7、存储服务
       </a>
     </li>
@@ -321,7 +328,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../vm/promox/" class="md-tabs__link">
+      <a href="../../vm/promox/" class="md-tabs__link">
         8、虚拟化
       </a>
     </li>
@@ -337,7 +344,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../Devops/github/" class="md-tabs__link">
+      <a href="../../Devops/github/" class="md-tabs__link">
         9、Devops
       </a>
     </li>
@@ -353,7 +360,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../ansible/ansible-case1/" class="md-tabs__link">
+      <a href="../../ansible/ansible-case1/" class="md-tabs__link">
         10、Ansible自动化
       </a>
     </li>
@@ -369,7 +376,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../Macuse/mac-kubeconfig/" class="md-tabs__link">
+      <a href="../../Macuse/mac-kubeconfig/" class="md-tabs__link">
         其他
       </a>
     </li>
@@ -385,7 +392,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../mylife/life-docs1/" class="md-tabs__link">
+      <a href="../../mylife/life-docs1/" class="md-tabs__link">
         关于我
       </a>
     </li>
@@ -419,7 +426,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Kubernetes 进阶训练营" class="md-nav__button md-logo" aria-label="Kubernetes 进阶训练营" data-md-component="logo">
+    <a href="../.." title="Kubernetes 进阶训练营" class="md-nav__button md-logo" aria-label="Kubernetes 进阶训练营" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -450,7 +457,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         首页
       </a>
     </li>
@@ -501,7 +508,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../network/ZeroTier/" class="md-nav__link">
+      <a href="../../network/ZeroTier/" class="md-nav__link">
         ZeroTier组网
       </a>
     </li>
@@ -515,7 +522,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../network/frp/" class="md-nav__link">
+      <a href="../../network/frp/" class="md-nav__link">
         frp 内网穿透
       </a>
     </li>
@@ -529,7 +536,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../network/3-network-docs/" class="md-nav__link">
+      <a href="../../network/3-network-docs/" class="md-nav__link">
         kubernetes 网络组件
       </a>
     </li>
@@ -543,7 +550,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../network/4-network-docs/" class="md-nav__link">
+      <a href="../../network/4-network-docs/" class="md-nav__link">
         科学上网
       </a>
     </li>
@@ -601,7 +608,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ubuntu/ubuntu-bmc/" class="md-nav__link">
+      <a href="../../ubuntu/ubuntu-bmc/" class="md-nav__link">
         Linux 带外管理
       </a>
     </li>
@@ -615,7 +622,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ubuntu/0-system-docs/" class="md-nav__link">
+      <a href="../../ubuntu/0-system-docs/" class="md-nav__link">
         Linux 系统安装
       </a>
     </li>
@@ -629,7 +636,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ubuntu/linux01/Linux%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%8601%E2%80%94%E2%80%94%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4%E7%B2%BE%E8%AE%B2/" class="md-nav__link">
+      <a href="../../ubuntu/linux01/Linux%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%8601%E2%80%94%E2%80%94%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4%E7%B2%BE%E8%AE%B2/" class="md-nav__link">
         Linux 系统管理-基础命令
       </a>
     </li>
@@ -643,7 +650,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ubuntu/network/1-network-docs/" class="md-nav__link">
+      <a href="../../ubuntu/network/1-network-docs/" class="md-nav__link">
         Linux 网络服务
       </a>
     </li>
@@ -699,7 +706,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docker/docker-docs/" class="md-nav__link">
+      <a href="../../docker/docker-docs/" class="md-nav__link">
         Docker 基本管理
       </a>
     </li>
@@ -713,7 +720,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docker/lxcfs.md" class="md-nav__link">
+      <a href="../../docker/lxcfs.md" class="md-nav__link">
         lxcfs 介绍
       </a>
     </li>
@@ -727,7 +734,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docker/docker-proxy-docs/" class="md-nav__link">
+      <a href="../../docker/docker-proxy-docs/" class="md-nav__link">
         docker proxy代理
       </a>
     </li>
@@ -807,7 +814,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../basic/cncf/" class="md-nav__link">
+      <a href="../../basic/cncf/" class="md-nav__link">
         云原生简介
       </a>
     </li>
@@ -821,7 +828,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../base/k8s-overview/" class="md-nav__link">
+      <a href="../../k8s/base/k8s-overview/" class="md-nav__link">
         K8S简介
       </a>
     </li>
@@ -835,7 +842,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../basic/3-k8s-systeminit-docs/" class="md-nav__link">
+      <a href="../../basic/3-k8s-systeminit-docs/" class="md-nav__link">
         集群部署
       </a>
     </li>
@@ -849,7 +856,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../basic/k8s-update/" class="md-nav__link">
+      <a href="../../basic/k8s-update/" class="md-nav__link">
         K8S升级
       </a>
     </li>
@@ -863,7 +870,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../basic/6-kubernetes-etcd-docs/" class="md-nav__link">
+      <a href="../../basic/6-kubernetes-etcd-docs/" class="md-nav__link">
         ETCD 简介与使用
       </a>
     </li>
@@ -877,7 +884,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../basic/7-kubernetes-coredns-docs/" class="md-nav__link">
+      <a href="../../basic/7-kubernetes-coredns-docs/" class="md-nav__link">
         COREDNS 简介与使用
       </a>
     </li>
@@ -891,7 +898,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../yaml/yaml/" class="md-nav__link">
+      <a href="../../k8s/yaml/yaml/" class="md-nav__link">
         资源清单
       </a>
     </li>
@@ -905,7 +912,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cks/cka/" class="md-nav__link">
+      <a href="../../cks/cka/" class="md-nav__link">
         CKA考题
       </a>
     </li>
@@ -919,7 +926,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cks/cks/" class="md-nav__link">
+      <a href="../../cks/cks/" class="md-nav__link">
         CKS考题
       </a>
     </li>
@@ -933,7 +940,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../basic/5-kubernetes-UI-docs/" class="md-nav__link">
+      <a href="../../basic/5-kubernetes-UI-docs/" class="md-nav__link">
         Kubernetes UI
       </a>
     </li>
@@ -947,7 +954,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../basic/7-kubernetes-update-docs/" class="md-nav__link">
+      <a href="../../basic/7-kubernetes-update-docs/" class="md-nav__link">
         Kubernetes 节点维护
       </a>
     </li>
@@ -961,7 +968,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Helm/helm-install/" class="md-nav__link">
+      <a href="../../Helm/helm-install/" class="md-nav__link">
         Helm 简介与安装
       </a>
     </li>
@@ -975,7 +982,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Helm/helm/" class="md-nav__link">
+      <a href="../../Helm/helm/" class="md-nav__link">
         Helm 配置grafana
       </a>
     </li>
@@ -989,7 +996,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../basic/4-ansible-install-k8s/" class="md-nav__link">
+      <a href="../../basic/4-ansible-install-k8s/" class="md-nav__link">
         项目一
       </a>
     </li>
@@ -1003,7 +1010,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../basic/9-install-keepalived-cluster/" class="md-nav__link">
+      <a href="../../basic/9-install-keepalived-cluster/" class="md-nav__link">
         项目二
       </a>
     </li>
@@ -1055,7 +1062,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../模块：python/module-docs.md" class="md-nav__link">
+      <a href="../../模块：python/module-docs.md" class="md-nav__link">
         None
       </a>
     </li>
@@ -1075,12 +1082,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" data-md-state="indeterminate" type="checkbox" id="__nav_7" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
       
       
       
@@ -1113,7 +1122,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../mysql-operator/1-install-mysql-operator/" class="md-nav__link">
+      <a href="../../k8s/mysql-operator/1-install-mysql-operator/" class="md-nav__link">
         Mysql-operator
       </a>
     </li>
@@ -1127,7 +1136,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Storage/redis-docs/" class="md-nav__link">
+      <a href="../redis-docs/" class="md-nav__link">
         缓存加速
       </a>
     </li>
@@ -1139,11 +1148,76 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../../Storage/redis-cluster-docs/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          redis 集群篇
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         redis 集群篇
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#redis" class="md-nav__link">
+    Redis群集
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#redis-cluster" class="md-nav__link">
+    Redis cluster介绍
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#redis_1" class="md-nav__link">
+    Redis数据分布
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    虚拟槽分区
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#redis_2" class="md-nav__link">
+    Redis集群原理
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1155,7 +1229,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../redis/redis-save-docs/" class="md-nav__link">
+      <a href="../../redis/redis-save-docs/" class="md-nav__link">
         redis 持久化
       </a>
     </li>
@@ -1221,7 +1295,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Storage/disk-ssd-docs/" class="md-nav__link">
+      <a href="../disk-ssd-docs/" class="md-nav__link">
         固态 ssd
       </a>
     </li>
@@ -1235,7 +1309,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Storage/rook-ceph/" class="md-nav__link">
+      <a href="../rook-ceph/" class="md-nav__link">
         分布式存储:ceph
       </a>
     </li>
@@ -1249,7 +1323,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Storage/ceph-cli-docs/" class="md-nav__link">
+      <a href="../ceph-cli-docs/" class="md-nav__link">
         ceph 命令用法
       </a>
     </li>
@@ -1263,7 +1337,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Storage/Juicefs/" class="md-nav__link">
+      <a href="../Juicefs/" class="md-nav__link">
         云原生存储方案:Juicefs
       </a>
     </li>
@@ -1277,7 +1351,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Storage/osd/" class="md-nav__link">
+      <a href="../osd/" class="md-nav__link">
         osd 性能测试
       </a>
     </li>
@@ -1291,7 +1365,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Storage/pv-rep/" class="md-nav__link">
+      <a href="../pv-rep/" class="md-nav__link">
         pv/pvc简介
       </a>
     </li>
@@ -1305,7 +1379,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Storage/s3-client-docs/" class="md-nav__link">
+      <a href="../s3-client-docs/" class="md-nav__link">
         s3cmd 用法
       </a>
     </li>
@@ -1319,7 +1393,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Storage/5-dev-docs/" class="md-nav__link">
+      <a href="../5-dev-docs/" class="md-nav__link">
         ceph 存储修复
       </a>
     </li>
@@ -1371,7 +1445,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../vm/promox/" class="md-nav__link">
+      <a href="../../vm/promox/" class="md-nav__link">
         Proxmox虚拟化
       </a>
     </li>
@@ -1427,7 +1501,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Devops/github/" class="md-nav__link">
+      <a href="../../Devops/github/" class="md-nav__link">
         Github
       </a>
     </li>
@@ -1441,7 +1515,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Devops/4-github-gitee-doc/" class="md-nav__link">
+      <a href="../../Devops/4-github-gitee-doc/" class="md-nav__link">
         Github仓库同步至Gitee
       </a>
     </li>
@@ -1455,7 +1529,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Devops/3-github-docs/" class="md-nav__link">
+      <a href="../../Devops/3-github-docs/" class="md-nav__link">
         Google 浏览器扩展
       </a>
     </li>
@@ -1509,7 +1583,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ansible/ansible-case1/" class="md-nav__link">
+      <a href="../../ansible/ansible-case1/" class="md-nav__link">
         Ansible 应用基础
       </a>
     </li>
@@ -1523,7 +1597,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ansible/ansible-docs2/" class="md-nav__link">
+      <a href="../../ansible/ansible-docs2/" class="md-nav__link">
         Ansible 高级用法
       </a>
     </li>
@@ -1591,7 +1665,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Macuse/mac-kubeconfig/" class="md-nav__link">
+      <a href="../../Macuse/mac-kubeconfig/" class="md-nav__link">
         kubeconfig 实践应用
       </a>
     </li>
@@ -1605,7 +1679,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../k3s/k3s-install/" class="md-nav__link">
+      <a href="../../k3s/k3s-install/" class="md-nav__link">
         边缘计算
       </a>
     </li>
@@ -1619,7 +1693,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Macuse/mac-k9s-doc/" class="md-nav__link">
+      <a href="../../Macuse/mac-k9s-doc/" class="md-nav__link">
         k9s 实践应用
       </a>
     </li>
@@ -1633,7 +1707,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Macuse/mac-usb-system/" class="md-nav__link">
+      <a href="../../Macuse/mac-usb-system/" class="md-nav__link">
         Mac 制作ubuntu系统盘
       </a>
     </li>
@@ -1647,7 +1721,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Macuse/mac-vscode/" class="md-nav__link">
+      <a href="../../Macuse/mac-vscode/" class="md-nav__link">
         Mac vscode使用技巧
       </a>
     </li>
@@ -1661,7 +1735,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../error/tjtu/" class="md-nav__link">
+      <a href="../../error/tjtu/" class="md-nav__link">
         天津集群
       </a>
     </li>
@@ -1675,7 +1749,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../error/dev/" class="md-nav__link">
+      <a href="../../error/dev/" class="md-nav__link">
         Dev环境集群
       </a>
     </li>
@@ -1689,7 +1763,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../error/delete-prometheus-db/" class="md-nav__link">
+      <a href="../../error/delete-prometheus-db/" class="md-nav__link">
         误删除监控数据
       </a>
     </li>
@@ -1703,7 +1777,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../error/kubernetes-pvc-ubound-doc/" class="md-nav__link">
+      <a href="../../error/kubernetes-pvc-ubound-doc/" class="md-nav__link">
         Kubernetes pvc ubound
       </a>
     </li>
@@ -1757,7 +1831,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../mylife/life-docs1/" class="md-nav__link">
+      <a href="../../mylife/life-docs1/" class="md-nav__link">
         我的2021
       </a>
     </li>
@@ -1771,7 +1845,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../mylife/2022-life-docs/" class="md-nav__link">
+      <a href="../../mylife/2022-life-docs/" class="md-nav__link">
         我的2022
       </a>
     </li>
@@ -1792,19 +1866,104 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#redis" class="md-nav__link">
+    Redis群集
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#redis-cluster" class="md-nav__link">
+    Redis cluster介绍
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#redis_1" class="md-nav__link">
+    Redis数据分布
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    虚拟槽分区
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#redis_2" class="md-nav__link">
+    Redis集群原理
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
                 
-<a href="https://github.com/barry-boy/barry-boy.github.io/edit/master/docs/k8s/controller/rs.md" title="编辑此页" class="md-content__button md-icon">
+<a href="https://github.com/barry-boy/barry-boy.github.io/edit/master/docs/Storage/redis-cluster-docs.md" title="编辑此页" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
 
-  <h1>Rs</h1>
+  <h1>redis 集群篇</h1>
 
-
+<h3 id="redis"><strong>Redis群集</strong><a class="headerlink" href="#redis" title="Permanent link">&para;</a></h3>
+<p>我们日常在对于redis的使用中，经常会遇到一些问题：</p>
+<ul>
+<li>高可用问题，如何保证redis的持续高可用性。</li>
+<li>容量问题，单实例redis内存无法无限扩充，达到32G后就进入了64位世界，性能下降。</li>
+<li>并发性能问题，redis号称单实例10万并发，但也是有尽头的。</li>
+</ul>
+<h3 id="redis-cluster"><strong>Redis cluster介绍</strong><a class="headerlink" href="#redis-cluster" title="Permanent link">&para;</a></h3>
+<p>Redis cluster 是redis的分布式解决方案，在redis3.0版本中正式推出的采用的是hash slot（hash槽），可以将多个Redis实例整合在一起，形成一个集群，也就是将数据分散到集群的多台机器上。有效的解决了redis分布式方面的需求，当遇到单机内存、开发、流量等瓶颈时，可以采用cluster架构达到负载均衡的目的。</p>
+<p><strong>redis-cluster的优势:</strong></p>
+<ul>
+<li>1.官方推荐，毋庸置疑。</li>
+<li>2.去中心化，集群最大可增加1000个节点，性能随节点增加而线性扩展。</li>
+<li>3.管理方便，后续可自行增加或摘除节点，移动分槽等等。</li>
+<li>4.简单，易上手。</li>
+</ul>
+<h3 id="redis_1"><strong>Redis数据分布</strong><a class="headerlink" href="#redis_1" title="Permanent link">&para;</a></h3>
+<p>分布式数据库主要解决把整个数据集按照分区规则映射到多个节点的问题，即把数据集划分到多个节点上，每个节点负责整个数据的一个子集。常见的分区规则有哈希分区和顺序分区。Redis cluster采用哈希分区规则，因此接下来会讨论哈希规则，常见的哈希分区有以下几种：(redis cluster采用虚拟槽分区)</p>
+<ul>
+<li>1.节点取余</li>
+<li>2.一致性哈希分区</li>
+<li>3.虚拟槽分区</li>
+</ul>
+<h3 id="_1"><strong>虚拟槽分区</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>虚拟槽分区巧妙地使用了哈希空间，使用分散度良好的哈希函数把所有的数据映射到一个固定的范围内的整数集合。Redis Cluster槽的范围是0-16383。槽是集群数据管理和迁移的基本的单位。采用大范围槽的主要目的是为了方便数据的拆分和集群的扩展（同时这也是redis的优点），使每个节点负责一定数量的值。</p>
+<h3 id="redis_2"><strong>Redis集群原理</strong><a class="headerlink" href="#redis_2" title="Permanent link">&para;</a></h3>
+<p>Redis cluster是一个无中心的结构，其每一个节点都会保存着数据和整个集群的状态。每个节点都会保存其他节点的信息，知道其它节点所负责的槽，并且会与其他节点定时发送心跳信息能够及时感知整个集群中异常的节点。</p>
 
               
             </article>
@@ -1819,6 +1978,41 @@
       </main>
       
         <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="页脚">
+      
+        
+        <a href="../redis-docs/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 缓存加速" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              缓存加速
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../redis/redis-save-docs/" class="md-footer__link md-footer__link--next" aria-label="下一页: redis 持久化" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              redis 持久化
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -1884,14 +2078,14 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["header.autohide", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "navigation.indexes", "navigation.top", "search.suggest", "search.highlight", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.01824240.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["header.autohide", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "navigation.indexes", "navigation.top", "search.suggest", "search.highlight", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.01824240.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.e8a254df.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e8a254df.min.js"></script>
       
-        <script src="../../../js/extra.js"></script>
+        <script src="../../js/extra.js"></script>
       
-        <script src="../../../js/baidu-tongji.js"></script>
+        <script src="../../js/baidu-tongji.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       

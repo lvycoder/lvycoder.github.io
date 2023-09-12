@@ -1098,6 +1098,10 @@
         
           
         
+          
+        
+          
+        
       
       
         <label class="md-nav__link" for="__nav_7">
@@ -1267,34 +1271,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#redis_4" class="md-nav__link">
-    Redis群集
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#redis-cluster" class="md-nav__link">
-    Redis cluster介绍
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#redis_5" class="md-nav__link">
-    Redis数据分布
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    虚拟槽分区
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -1304,6 +1280,34 @@
   
 </nav>
       
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redis-cluster-docs/" class="md-nav__link">
+        redis 集群篇
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../redis/redis-save-docs/" class="md-nav__link">
+        redis 持久化
+      </a>
     </li>
   
 
@@ -2061,34 +2065,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#redis_4" class="md-nav__link">
-    Redis群集
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#redis-cluster" class="md-nav__link">
-    Redis cluster介绍
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#redis_5" class="md-nav__link">
-    Redis数据分布
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    虚拟槽分区
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -2575,31 +2551,6 @@ OK
 127.0.0.1:6379&gt; keys *
 (empty list or set)
 </code></pre></div>
-<h3 id="redis_4"><strong>Redis群集</strong><a class="headerlink" href="#redis_4" title="Permanent link">&para;</a></h3>
-<p>我们日常在对于redis的使用中，经常会遇到一些问题：</p>
-<ul>
-<li>高可用问题，如何保证redis的持续高可用性。</li>
-<li>容量问题，单实例redis内存无法无限扩充，达到32G后就进入了64位世界，性能下降。</li>
-<li>并发性能问题，redis号称单实例10万并发，但也是有尽头的。</li>
-</ul>
-<h3 id="redis-cluster"><strong>Redis cluster介绍</strong><a class="headerlink" href="#redis-cluster" title="Permanent link">&para;</a></h3>
-<p>Redis cluster 是redis的分布式解决方案，在redis3.0版本中正式推出的采用的是hash slot（hash槽），可以将多个Redis实例整合在一起，形成一个集群，也就是将数据分散到集群的多台机器上。有效的解决了redis分布式方面的需求，当遇到单机内存、开发、流量等瓶颈时，可以采用cluster架构达到负载均衡的目的。</p>
-<p><strong>redis-cluster的优势:</strong></p>
-<ul>
-<li>1.官方推荐，毋庸置疑。</li>
-<li>2.去中心化，集群最大可增加1000个节点，性能随节点增加而线性扩展。</li>
-<li>3.管理方便，后续可自行增加或摘除节点，移动分槽等等。</li>
-<li>4.简单，易上手。</li>
-</ul>
-<h3 id="redis_5"><strong>Redis数据分布</strong><a class="headerlink" href="#redis_5" title="Permanent link">&para;</a></h3>
-<p>分布式数据库主要解决把整个数据集按照分区规则映射到多个节点的问题，即把数据集划分到多个节点上，每个节点负责整个数据的一个子集。常见的分区规则有哈希分区和顺序分区。Redis cluster采用哈希分区规则，因此接下来会讨论哈希规则，常见的哈希分区有以下几种：(redis cluster采用虚拟槽分区)</p>
-<ul>
-<li>1.节点取余</li>
-<li>2.一致性哈希分区</li>
-<li>3.虚拟槽分区</li>
-</ul>
-<h3 id="_8"><strong>虚拟槽分区</strong><a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<p>虚拟槽分区巧妙地使用了哈希空间，使用分散度良好的哈希函数把所有的数据映射到一个固定的范围内的整数集合。Redis Cluster槽的范围是0-16383。槽是集群数据管理和迁移的基本的单位。采用大范围槽的主要目的是为了方便数据的拆分和集群的扩展（同时这也是redis的优点），使每个节点负责一定数量的值。</p>
 
               
             </article>
@@ -2634,13 +2585,13 @@ OK
       
       
         
-        <a href="../disk-ssd-docs/" class="md-footer__link md-footer__link--next" aria-label="下一页: 固态 ssd" rel="next">
+        <a href="../redis-cluster-docs/" class="md-footer__link md-footer__link--next" aria-label="下一页: redis 集群篇" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 下一页
               </span>
-              固态 ssd
+              redis 集群篇
             </div>
           </div>
           <div class="md-footer__button md-icon">
