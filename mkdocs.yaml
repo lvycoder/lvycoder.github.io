@@ -102,6 +102,7 @@ nav:
         - COREDNS 简介与使用: basic/7-kubernetes-coredns-docs.md
        # - ETCD备份还原: basic/etcd.md
         - 资源清单: k8s/yaml/yaml.md
+        - 资源限制: k8s/base/k8s-limit-docs.md
         - CKA考题: cks/cka.md
         - CKS考题: cks/cks.md
         - Kubernetes UI: basic/5-kubernetes-UI-docs.md

@@ -17,7 +17,7 @@
     
     
       
-        <title>StatefulSet - Kubernetes 进阶训练营</title>
+        <title>资源限制 - Kubernetes 进阶训练营</title>
       
     
     
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              StatefulSet
+              资源限制
             
           </span>
         </div>
@@ -251,13 +251,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../../basic/cncf/" class="md-tabs__link">
+      <a href="../../../basic/cncf/" class="md-tabs__link md-tabs__link--active">
         3、kubernetes
       </a>
     </li>
@@ -763,12 +765,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" data-md-state="indeterminate" type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
       
       
       
@@ -839,7 +843,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../base/k8s-overview/" class="md-nav__link">
+      <a href="../k8s-overview/" class="md-nav__link">
         K8S简介
       </a>
     </li>
@@ -921,11 +925,19 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../base/k8s-limit-docs/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         资源限制
       </a>
+      
     </li>
   
 
@@ -1877,14 +1889,108 @@
             <article class="md-content__inner md-typeset">
               
                 
-<a href="https://github.com/barry-boy/barry-boy.github.io/edit/master/docs/k8s/controller/StatefulSet.md" title="编辑此页" class="md-content__button md-icon">
+<a href="https://github.com/barry-boy/barry-boy.github.io/edit/master/docs/k8s/base/k8s-limit-docs.md" title="编辑此页" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
 
-  <h1>StatefulSet</h1>
+  <h1>资源限制</h1>
 
-
+<p>在 Kubernetes (K8s) 中，可以对 Pod 和 Container 设置资源限制，包括 CPU 和内存。这样可以防止某个 Pod 或 Container 占用过多的资源，影响到其他的 Pod 或 Container。</p>
+<p>对于 CPU，可以设置的资源包括 <code>requests</code> 和 <code>limits</code>：</p>
+<ul>
+<li><code>requests</code>：这是 Pod 启动所需要的最小 CPU 资源。Kubernetes 会确保 Pod 至少获得这么多的 CPU 资源。</li>
+<li><code>limits</code>：这是 Pod 可以使用的最大 CPU 资源。Pod 的 CPU 使用量不会超过这个值。</li>
+</ul>
+<p>对于内存，也可以设置 <code>requests</code> 和 <code>limits</code>：</p>
+<ul>
+<li><code>requests</code>：这是 Pod 启动所需要的最小内存资源。Kubernetes 会确保 Pod 至少获得这么多的内存资源。</li>
+<li><code>limits</code>：这是 Pod 可以使用的最大内存资源。如果 Pod 的内存使用量超过这个值，那么 Pod 可能会被系统 OOM Killer 杀掉。</li>
+</ul>
+<p>以下是一个设置了资源限制的 Pod 定义示例：</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">resource-demo</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">resource-demo-container</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+<span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;200Mi&quot;</span>
+<span class="w">        </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;500m&quot;</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
+</code></pre></div>
+<p>在这个示例中，<code>resource-demo-container</code> 这个 Container 的 CPU 使用量不会超过 500m（即半个 CPU 核心的使用量），内存使用量不会超过 200Mi。如果 Container 的 CPU 或内存使用量超过了这些值，Kubernetes 会采取相应的措施，例如限制 CPU 使用量，或者杀掉内存使用过多的 Pod。</p>
+<p>注意，设置资源限制时，需要考虑到 Pod 的实际需求，避免设置过小导致 Pod 无法正常运行，也避免设置过大导致资源浪费。</p>
+<p>CPU 以核心为单位，memory 以字节为单位。1核心=1000毫核</p>
+<p>requests 为kubernetes scheduler执行pod调度时，node节点至少需要拥有的资源。</p>
+<p>limit 为pod运行成功之后最多可以使用的资源上线</p>
+<p>例子1: 以下是一个针对内存资源限制的yaml
+<div class="highlight"><pre><span></span><code>apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: limit-test-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels: #rs or deployment
+      app: limit-test-pod
+#    matchExpressions:
+#      - {key: app, operator: In, values: [ng-deploy-80,ng-rs-81]}
+  template:
+    metadata:
+      labels:
+        app: limit-test-pod
+    spec:
+      containers:
+      - name: limit-test-container
+        image: lorel/docker-stress-ng
+        resources:
+          limits:
+            memory: &quot;512Mi&quot;
+          requests:
+            memory: &quot;100Mi&quot;
+        #command: [&quot;stress&quot;]
+        args: [&quot;--vm&quot;, &quot;2&quot;, &quot;--vm-bytes&quot;, &quot;256M&quot;]
+      #nodeSelector:
+      #  env: group1
+</code></pre></div></p>
+<p>例子2: 以下是一个针对内存和CPU资源限制的yaml
+<div class="highlight"><pre><span></span><code>apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: limit-test-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels: #rs or deployment
+      app: limit-test-pod
+#    matchExpressions:
+#      - {key: app, operator: In, values: [ng-deploy-80,ng-rs-81]}
+  template:
+    metadata:
+      labels:
+        app: limit-test-pod
+    spec:
+      containers:
+      - name: limit-test-container
+        image: lorel/docker-stress-ng
+        resources:
+          limits:
+            cpu: &quot;1.2&quot;
+            memory: &quot;512Mi&quot;
+          requests:
+            memory: &quot;100Mi&quot;
+            cpu: &quot;500m&quot;
+        #command: [&quot;stress&quot;]
+        args: [&quot;--vm&quot;, &quot;2&quot;, &quot;--vm-bytes&quot;, &quot;256M&quot;]
+      #nodeSelector:
+      #  env: group1
+</code></pre></div></p>
+<p>一般通常来说，limits与request为相同大小，可以根据不同环境来修改。</p>
 
               
             </article>
@@ -1899,6 +2005,41 @@
       </main>
       
         <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="页脚">
+      
+        
+        <a href="../../yaml/yaml/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 资源清单" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              资源清单
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../../cks/cka/" class="md-footer__link md-footer__link--next" aria-label="下一页: CKA考题" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              CKA考题
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
