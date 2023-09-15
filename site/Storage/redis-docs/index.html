@@ -2646,11 +2646,12 @@ OK
 (empty list or set)
 </code></pre></div>
 <p>测试连接:</p>
-<div class="highlight"><pre><span></span><code>$ k exec -it redis-client -- /bin/bash
+<div class="highlight"><pre><span></span><code>$ kubectl run --namespace redis-ha redis-client --restart=&#39;Never&#39;  --env REDIS_PASSWORD=$REDIS_PASSWORD  --image docker.io/bitnami/redis:7.2.0-debian-11-r3 --command -- sleep infinity
+$ k exec -it redis-client -- /bin/bash
 I have no name!@redis-client:/$ redis-cli -h redis-redis-ha-haproxy.redis-ha
 I have no name!@redis-client:/$ redis-cli -h redis-redis-ha-haproxy.redis-ha info replication | grep role
 </code></pre></div>
-<h3 id="_8">参考文章<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h3 id="_8"><strong>参考文章</strong><a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <ul>
 <li>https://github.com/DandyDeveloper/charts/tree/master/charts/redis-ha</li>
 </ul>

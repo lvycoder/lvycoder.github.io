@@ -563,11 +563,12 @@ OK
 测试连接:
 
 ```
+$ kubectl run --namespace redis-ha redis-client --restart='Never'  --env REDIS_PASSWORD=$REDIS_PASSWORD  --image docker.io/bitnami/redis:7.2.0-debian-11-r3 --command -- sleep infinity
 $ k exec -it redis-client -- /bin/bash
 I have no name!@redis-client:/$ redis-cli -h redis-redis-ha-haproxy.redis-ha
 I have no name!@redis-client:/$ redis-cli -h redis-redis-ha-haproxy.redis-ha info replication | grep role
 ```
 
 
-### 参考文章
+### **参考文章**
 - https://github.com/DandyDeveloper/charts/tree/master/charts/redis-ha
