@@ -1303,6 +1303,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    参考文章
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2145,6 +2152,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    参考文章
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2631,6 +2645,15 @@ OK
 127.0.0.1:6379&gt; keys *
 (empty list or set)
 </code></pre></div>
+<p>测试连接:</p>
+<div class="highlight"><pre><span></span><code>$ k exec -it redis-client -- /bin/bash
+I have no name!@redis-client:/$ redis-cli -h redis-redis-ha-haproxy.redis-ha
+I have no name!@redis-client:/$ redis-cli -h redis-redis-ha-haproxy.redis-ha info replication | grep role
+</code></pre></div>
+<h3 id="_8">参考文章<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<ul>
+<li>https://github.com/DandyDeveloper/charts/tree/master/charts/redis-ha</li>
+</ul>
 
               
             </article>

@@ -96,10 +96,13 @@ playbook: /etc/ansible/test.yml				//没有报错提示
 [root@ansible ~]# ansible-playbook -C /etc/ansible/test.yaml 
 
 列出主机:
-[root@ansible ~]# ansible-playbook --list-hosts /etc/ansible/test.yml 
+$ ansible-playbook --list-hosts /etc/ansible/test.yml 
 
 列出任务:
-[root@ansible ~]# ansible-playbook --list-tasks /etc/ansible/test.yml 
+$ ansible-playbook --list-tasks /etc/ansible/test.yml 
+// 只执行cpu-3.mac 主机上tag为testccc
+$ ansible-playbook -i inventory/mac test_tag.yml --tag testccc --limit cpu-3.mac 
+
 
 列出标签:
 [root@ansible ~]# ansible-playbook --list-tags /etc/ansible/test.yml 
@@ -154,9 +157,19 @@ YAML语法和其他高级语言类似，其结构通过缩进来展示，通过�
 ### **4. 变量**
 
 
-
+  
 
 
 ### **5. Template模板**
 
 配置文件如果使用copy模块去下发的话，那么所有主机的配置都是一样的； 如果下发的配置文件里有可变的配置，需要用到template模块。
+
+
+列出mac组中所有主机列表
+```
+$ ansible mac --list
+  hosts (3):
+    cpu-1.mac
+    cpu-3.mac
+    cpu-4.mac
+```

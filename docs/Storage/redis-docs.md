@@ -560,3 +560,14 @@ OK
 (empty list or set)
 ```
 
+测试连接:
+
+```
+$ k exec -it redis-client -- /bin/bash
+I have no name!@redis-client:/$ redis-cli -h redis-redis-ha-haproxy.redis-ha
+I have no name!@redis-client:/$ redis-cli -h redis-redis-ha-haproxy.redis-ha info replication | grep role
+```
+
+
+### 参考文章
+- https://github.com/DandyDeveloper/charts/tree/master/charts/redis-ha
