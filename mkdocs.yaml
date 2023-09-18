@@ -109,6 +109,7 @@ nav:
         - Kubernetes 节点维护: basic/7-kubernetes-update-docs.md
         - Helm 简介与安装: Helm/helm-install.md
         - Helm 配置grafana: Helm/helm.md
+        - 处理k8s证书过期: k8s/other/k8s-ca-docs.md
         - 项目一: basic/4-ansible-install-k8s.md
         - 项目二: basic/9-install-keepalived-cluster.md
 
