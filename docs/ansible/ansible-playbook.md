@@ -157,6 +157,16 @@ YAML语法和其他高级语言类似，其结构通过缩进来展示，通过�
 ### **4. 变量**
 
 
+实例1: 利用系统变量获取主机系统
+```
+  tasks:
+    - name: Gather system information
+      setup:
+
+    - name: Print ansible_distribution
+      debug:
+        var: ansible_distribution
+```
   
 
 

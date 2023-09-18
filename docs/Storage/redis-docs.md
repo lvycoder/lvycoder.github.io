@@ -142,6 +142,17 @@ $ helm pull bitnami/redis --version 17.15.2
     2. 将mysql的数据分离出来有利于减少中心存储的压力。
     3. local-path-provisioner将本地目录作为最后数据存储的路径。因此我们在多个节点添加一块数据盘+部署高可用的哨兵集群并限制于该节点。
 
+当时以上方式在部署哨兵集群还有一些问题，就是他只支持轮询的方式来访问后端的redis，这个就很扯淡，要是全是读的场景还可以接受，但是如果要是写的话，造成的结果就是一会成功一会失败，很傻逼。
+还是觉得使用以前stable，不过换了一个人维护的。
+
+```
+helm repo add dandydev https://dandydeveloper.github.io/charts
+helm install dandydev/redis-ha
+```
+
+- 他支持hostpath和sc，这里sc可以结合local-path-provisioner使用
+
+
 
 
 ### **配置文件介绍**

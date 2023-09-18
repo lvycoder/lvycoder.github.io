@@ -2198,6 +2198,15 @@ YAML语法和其他高级语言类似，其结构通过缩进来展示，通过�
 <p>6.meta：用于存放此角色元数据</p>
 <p>7.default：默认变量存放目录，文件中定义了此角色使用的默认变量</p>
 <h3 id="4"><strong>4. 变量</strong><a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<p>实例1: 利用系统变量获取主机系统
+<div class="highlight"><pre><span></span><code>  tasks:
+    - name: Gather system information
+      setup:
+
+    - name: Print ansible_distribution
+      debug:
+        var: ansible_distribution
+</code></pre></div></p>
 <h3 id="5-template"><strong>5. Template模板</strong><a class="headerlink" href="#5-template" title="Permanent link">&para;</a></h3>
 <p>配置文件如果使用copy模块去下发的话，那么所有主机的配置都是一样的； 如果下发的配置文件里有可变的配置，需要用到template模块。</p>
 <p>列出mac组中所有主机列表
