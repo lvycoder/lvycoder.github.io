@@ -150,7 +150,7 @@ helm repo add dandydev https://dandydeveloper.github.io/charts
 helm install dandydev/redis-ha
 ```
 
-- 他支持hostpath和sc，这里sc可以结合local-path-provisioner使用
+- 他支持hostpath和sc，这里sc可以结合local-path-provisioner使用，上面bitnami可以简单玩一下，就不推荐生产了
 
 
 

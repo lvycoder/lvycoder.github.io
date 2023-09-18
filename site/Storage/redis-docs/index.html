@@ -2291,7 +2291,7 @@ $ helm pull bitnami/redis --version 17.15.2
 helm install dandydev/redis-ha
 </code></pre></div>
 <ul>
-<li>他支持hostpath和sc，这里sc可以结合local-path-provisioner使用</li>
+<li>他支持hostpath和sc，这里sc可以结合local-path-provisioner使用，上面bitnami可以简单玩一下，就不推荐生产了</li>
 </ul>
 <h3 id="_5"><strong>配置文件介绍</strong><a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="m">1</span>.<span class="w"> </span>Redis默认不是以守护进程的方式运行，可以通过该配置项修改，使用yes启用守护进程
