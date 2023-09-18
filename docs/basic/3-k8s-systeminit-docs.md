@@ -49,6 +49,11 @@ sudo systemctl enable --now kubelet
 
 ```
 
+阿里云镜像地址: https://developer.aliyun.com/mirror/kubernetes/
+
+
+
+
 !!! info "温馨提示"
     - kubelet 现在每隔几秒就会重启，因为它陷入了一个等待 kubeadm 指令的死循环
 
