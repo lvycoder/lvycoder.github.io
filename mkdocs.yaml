@@ -1,4 +1,5 @@
 site_name: Kubernetes 进阶训练营
+site_url: https://barry-boy.github.io/
 repo_name: "GitHub"
 repo_url: https://github.com/barry-boy/barry-boy.github.io
 site_description: Project documentation with Markdown.
@@ -106,6 +107,7 @@ nav:
         - CKA考题: cks/cka.md
         - CKS考题: cks/cks.md
         - Kubernetes UI: basic/5-kubernetes-UI-docs.md
+        - Rancher 升级: k8s/ui/rancher-update-docs.md
         - Kubernetes 节点维护: basic/7-kubernetes-update-docs.md
         - Helm 简介与安装: Helm/helm-install.md
         - Helm 配置grafana: Helm/helm.md
@@ -114,10 +116,14 @@ nav:
         - 项目二: basic/9-install-keepalived-cluster.md
 
     - 4、运维开发:
-         - 模块：python/module-docs.md
+         - GO开发: go/go-base-docs.md
+         - 模块: python/module-docs.md
         
     - 5、数据库:
+        - Mysql 数据库: k8s/mysql-operator/0-mysql-docs.md
         - Mysql-operator: k8s/mysql-operator/1-install-mysql-operator.md
+        - Mysql 备份恢复: k8s/mysql-operator/2-mysql-backup-docs.md
+        - 数据库问题处理: k8s/mysql-operator/3-mysql-backup-error-docs.md
         - 缓存加速: Storage/redis-docs.md
         - redis 集群篇: Storage/redis-cluster-docs.md
         - redis 持久化: redis/redis-save-docs.md
