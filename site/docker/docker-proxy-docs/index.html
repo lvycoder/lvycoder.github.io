@@ -73,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#docker-proxy-代理-pull-国外镜像" class="md-skip">
+        <a href="#docker-proxy-pull" class="md-skip">
           跳转至
         </a>
       
@@ -768,7 +768,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#docker-proxy-代理-pull-国外镜像" class="md-nav__link">
+  <a href="#docker-proxy-pull" class="md-nav__link">
     Docker proxy 代理 pull 国外镜像
   </a>
   
@@ -776,21 +776,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#docker-proxy-配置" class="md-nav__link">
+  <a href="#docker-proxy" class="md-nav__link">
     docker proxy 配置
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#镜像加速" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     镜像加速
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#参考文章" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     参考文章
   </a>
   
@@ -2075,7 +2075,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#docker-proxy-代理-pull-国外镜像" class="md-nav__link">
+  <a href="#docker-proxy-pull" class="md-nav__link">
     Docker proxy 代理 pull 国外镜像
   </a>
   
@@ -2083,21 +2083,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#docker-proxy-配置" class="md-nav__link">
+  <a href="#docker-proxy" class="md-nav__link">
     docker proxy 配置
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#镜像加速" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     镜像加速
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#参考文章" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     参考文章
   </a>
   
@@ -2127,9 +2127,9 @@
 
   <h1>docker proxy代理</h1>
 
-<h2 id="docker-proxy-代理-pull-国外镜像"><strong>Docker proxy 代理 pull 国外镜像</strong><a class="headerlink" href="#docker-proxy-代理-pull-国外镜像" title="Permanent link">&para;</a></h2>
+<h2 id="docker-proxy-pull"><strong>Docker proxy 代理 pull 国外镜像</strong><a class="headerlink" href="#docker-proxy-pull" title="Permanent link">&para;</a></h2>
 <p>首先需要一台可以翻墙的机器,这边就用我的 Mac.</p>
-<h3 id="docker-proxy-配置"><strong>docker proxy 配置</strong><a class="headerlink" href="#docker-proxy-配置" title="Permanent link">&para;</a></h3>
+<h3 id="docker-proxy"><strong>docker proxy 配置</strong><a class="headerlink" href="#docker-proxy" title="Permanent link">&para;</a></h3>
 <p>docker 本身是支持在 docker pull 使用代理的，那么配个代理不久解决问题了吗。</p>
 <p>首先 mkdir /etc/systemd/system/docker.service.d。
 然后创建 /etc/systemd/system/docker.service.d/http-proxy.conf，添加内容如下：</p>
@@ -2155,7 +2155,7 @@ export https_proxy=http://localhost:7890
 <p>本地端口转发:</p>
 <div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-R<span class="w"> </span><span class="m">7890</span>:localhost:7890<span class="w"> </span>主机
 </code></pre></div>
-<h3 id="镜像加速"><strong>镜像加速</strong><a class="headerlink" href="#镜像加速" title="Permanent link">&para;</a></h3>
+<h3 id="_1"><strong>镜像加速</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
 <p>很多镜像都在国外，比如 gcr。国内下载很慢，需要加速。 DaoCloud 为此提供了国内镜像加速，便于从国内拉取这些镜像。</p>
 <p>增加前缀（推荐）：</p>
 <p><div class="highlight"><pre><span></span><code>k8s.gcr.io/coredns/coredns =&gt; m.daocloud.io/k8s.gcr.io/coredns/coredns
@@ -2163,7 +2163,7 @@ export https_proxy=http://localhost:7890
 修改镜像仓库的前缀</p>
 <div class="highlight"><pre><span></span><code>k8s.gcr.io/coredns/coredns =&gt; k8s-gcr.m.daocloud.io/coredns/coredns
 </code></pre></div>
-<h3 id="参考文章"><strong>参考文章</strong><a class="headerlink" href="#参考文章" title="Permanent link">&para;</a></h3>
+<h3 id="_2"><strong>参考文章</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <ul>
 <li>https://docs.daocloud.io/community/mirror/</li>
 </ul>

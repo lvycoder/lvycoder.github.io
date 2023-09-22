@@ -73,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#helm-配置grafana" class="md-skip">
+        <a href="#helm-grafana" class="md-skip">
           跳转至
         </a>
       
@@ -1068,14 +1068,14 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#获取token" class="md-nav__link">
+  <a href="#token" class="md-nav__link">
     获取Token
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#打开dashboardproviders" class="md-nav__link">
+  <a href="#dashboardproviders" class="md-nav__link">
     打开dashboardProviders
   </a>
   
@@ -2061,14 +2061,14 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#获取token" class="md-nav__link">
+  <a href="#token" class="md-nav__link">
     获取Token
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#打开dashboardproviders" class="md-nav__link">
+  <a href="#dashboardproviders" class="md-nav__link">
     打开dashboardProviders
   </a>
   
@@ -2091,13 +2091,13 @@
 </a>
 
 
-<h1 id="helm-配置grafana"><strong>Helm 配置grafana</strong><a class="headerlink" href="#helm-配置grafana" title="Permanent link">&para;</a></h1>
-<h2 id="获取token"><strong>获取Token</strong><a class="headerlink" href="#获取token" title="Permanent link">&para;</a></h2>
+<h1 id="helm-grafana"><strong>Helm 配置grafana</strong><a class="headerlink" href="#helm-grafana" title="Permanent link">&para;</a></h1>
+<h2 id="token"><strong>获取Token</strong><a class="headerlink" href="#token" title="Permanent link">&para;</a></h2>
 <p>参考: <a href="https://grafana.com/docs/grafana/latest/developers/http_api/create-api-tokens-for-org/#how-to-add-a-dashboard">官网</a></p>
 <div class="highlight"><pre><span></span><code>curl -X POST -H &quot;Content-Type: application/json&quot; -d &#39;{&quot;name&quot;:&quot;apikeycurl&quot;, &quot;role&quot;: &quot;Admin&quot;}&#39; http://admin:strongpassword@localhost:3000/api/auth/keys
 {&quot;id&quot;:1,&quot;name&quot;:&quot;apikeycurl&quot;,&quot;key&quot;:&quot;eyJrIjoiVHV2czQxNTdiQnFEWDJ6VjRXMjJpUTc1bGtkR2NmQUoiLCJuIjoiYXBpa2V5Y3VybCIsImlkIjoxfQ==&quot;}%
 </code></pre></div>
-<h2 id="打开dashboardproviders"><strong>打开dashboardProviders</strong><a class="headerlink" href="#打开dashboardproviders" title="Permanent link">&para;</a></h2>
+<h2 id="dashboardproviders"><strong>打开dashboardProviders</strong><a class="headerlink" href="#dashboardproviders" title="Permanent link">&para;</a></h2>
 <div class="admonition info">
 <p class="admonition-title">注意</p>
 <p>注意去掉dashboardProviders后面的{}</p>

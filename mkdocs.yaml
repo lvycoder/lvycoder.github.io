@@ -7,11 +7,8 @@ site_author: Li
 
 theme:
   logo: material/logo.jpg
-  palette:
-    scheme: default
+
   name: "material"
-  # name: null
-  # custom_dir: docs/themes/beautifulhugo
 
   font:
     text: "Ubuntu"
@@ -84,7 +81,7 @@ markdown_extensions:
   #      encoding: utf-8
   - toc: # 大纲
       permalink: true
-      slugify: !!python/name:pymdownx.slugs.uslugify
+
 
 nav:
     - 首页: index.md

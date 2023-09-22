@@ -73,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#beautiful-hugo---an-adaptation-of-the-beautiful-jekyll-theme" class="md-skip">
+        <a href="#beautiful-hugo-an-adaptation-of-the-beautiful-jekyll-theme" class="md-skip">
           跳转至
         </a>
       
@@ -2046,21 +2046,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#chroma---new-server-side-syntax-highlighting" class="md-nav__link">
+  <a href="#chroma-new-server-side-syntax-highlighting" class="md-nav__link">
     Chroma - New server side syntax highlighting
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#pygments---old-server-side-syntax-highlighting" class="md-nav__link">
+  <a href="#pygments-old-server-side-syntax-highlighting" class="md-nav__link">
     Pygments - Old server side syntax highlighting
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#highlightjs---client-side-syntax-highlighting" class="md-nav__link">
+  <a href="#highlightjs-client-side-syntax-highlighting" class="md-nav__link">
     Highlight.js - Client side syntax highlighting
   </a>
   
@@ -2114,7 +2114,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#self-hosted-assets-for-gdpr--eu-dsgvo-compliance" class="md-nav__link">
+  <a href="#self-hosted-assets-for-gdpr-eu-dsgvo-compliance" class="md-nav__link">
     Self Hosted assets for GDPR / EU-DSGVO compliance
   </a>
   
@@ -2190,7 +2190,7 @@
 </a>
 
 
-<h1 id="beautiful-hugo---an-adaptation-of-the-beautiful-jekyll-theme">Beautiful Hugo - An adaptation of the Beautiful Jekyll theme<a class="headerlink" href="#beautiful-hugo---an-adaptation-of-the-beautiful-jekyll-theme" title="Permanent link">&para;</a></h1>
+<h1 id="beautiful-hugo-an-adaptation-of-the-beautiful-jekyll-theme">Beautiful Hugo - An adaptation of the Beautiful Jekyll theme<a class="headerlink" href="#beautiful-hugo-an-adaptation-of-the-beautiful-jekyll-theme" title="Permanent link">&para;</a></h1>
 <p><img alt="Beautiful Hugo Theme Screenshot" src="https://github.com/halogenica/beautifulhugo/blob/master/images/screenshot.png" /></p>
 <h2 id="live-demo">Live demo<a class="headerlink" href="#live-demo" title="Permanent link">&para;</a></h2>
 <p>See https://hugo-theme-beautifulhugo.netlify.app/</p>
@@ -2210,7 +2210,7 @@
 <p>This theme is designed to look great on both large-screen and small-screen (mobile) devices.</p>
 <h3 id="syntax-highlighting">Syntax highlighting<a class="headerlink" href="#syntax-highlighting" title="Permanent link">&para;</a></h3>
 <p>This theme has support for either Hugo's lightning fast Chroma, or both server side and client side highlighting. See <a href="https://gohugo.io/content-management/syntax-highlighting/">the Hugo docs for more</a>.</p>
-<h4 id="chroma---new-server-side-syntax-highlighting">Chroma - New server side syntax highlighting<a class="headerlink" href="#chroma---new-server-side-syntax-highlighting" title="Permanent link">&para;</a></h4>
+<h4 id="chroma-new-server-side-syntax-highlighting">Chroma - New server side syntax highlighting<a class="headerlink" href="#chroma-new-server-side-syntax-highlighting" title="Permanent link">&para;</a></h4>
 <p>To enable Chroma, add the following to your site parameters:</p>
 <div class="highlight"><pre><span></span><code>pygmentsCodeFences = true
 pygmentsUseClasses = true
@@ -2218,13 +2218,13 @@ pygmentsUseClasses = true
 <p>Then, you can generate a different style by running:</p>
 <div class="highlight"><pre><span></span><code>hugo gen chromastyles --style=trac &gt; static/css/syntax.css
 </code></pre></div>
-<h4 id="pygments---old-server-side-syntax-highlighting">Pygments - Old server side syntax highlighting<a class="headerlink" href="#pygments---old-server-side-syntax-highlighting" title="Permanent link">&para;</a></h4>
+<h4 id="pygments-old-server-side-syntax-highlighting">Pygments - Old server side syntax highlighting<a class="headerlink" href="#pygments-old-server-side-syntax-highlighting" title="Permanent link">&para;</a></h4>
 <p>To use this feature install Pygments (<code>pip install Pygments</code>) and add the following to your site parameters:</p>
 <div class="highlight"><pre><span></span><code>pygmentsStyle = &quot;trac&quot;
 pygmentsUseClassic = true
 </code></pre></div>
 <p>Pygments is mostly compatable with the newer Chroma. It is slower but has some additional theme options. I recommend Chroma over Pygments. Pygments will use <code>syntax.css</code> for highlighting, unless you also set the config <code>pygmentsUseClasses = false</code> which will generate the style code directly in the HTML file. </p>
-<h4 id="highlightjs---client-side-syntax-highlighting">Highlight.js - Client side syntax highlighting<a class="headerlink" href="#highlightjs---client-side-syntax-highlighting" title="Permanent link">&para;</a></h4>
+<h4 id="highlightjs-client-side-syntax-highlighting">Highlight.js - Client side syntax highlighting<a class="headerlink" href="#highlightjs-client-side-syntax-highlighting" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>[Params]
     useHLJS = true
 </code></pre></div>
@@ -2306,7 +2306,7 @@ language and just put stuff inside <code>page/</code> and <code>post/</code> reg
     ├── page/     ├── page/     ├── page/
     └── post/     └── post/     └── post/
 </code></pre></div></p>
-<h3 id="self-hosted-assets-for-gdpr--eu-dsgvo-compliance">Self Hosted assets for GDPR / EU-DSGVO compliance<a class="headerlink" href="#self-hosted-assets-for-gdpr--eu-dsgvo-compliance" title="Permanent link">&para;</a></h3>
+<h3 id="self-hosted-assets-for-gdpr-eu-dsgvo-compliance">Self Hosted assets for GDPR / EU-DSGVO compliance<a class="headerlink" href="#self-hosted-assets-for-gdpr-eu-dsgvo-compliance" title="Permanent link">&para;</a></h3>
 <p>With default settings, visiting to a website using Beautifulhugo connects also to remote services like google fonts or jsdelivr to embed fonts, js and other assets.</p>
 <p>To avoid this, set the following param in config.toml:</p>
 <div class="highlight"><pre><span></span><code>[Params]

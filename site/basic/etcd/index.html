@@ -73,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#etcd-备份" class="md-skip">
+        <a href="#etcd" class="md-skip">
           跳转至
         </a>
       
@@ -2009,7 +2009,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#查看证书的路径" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     查看证书的路径
   </a>
   
@@ -2017,7 +2017,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#手动备份" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     手动备份
   </a>
   
@@ -2025,14 +2025,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#安装etcd客户端" class="md-nav__link">
+  <a href="#etcd_1" class="md-nav__link">
     安装etcd客户端
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#指定路径备份" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     指定路径备份
   </a>
   
@@ -2044,14 +2044,14 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#自动备份" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     自动备份
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#还原kubeadm-安装的k8s" class="md-nav__link">
+  <a href="#kubeadm-k8s" class="md-nav__link">
     还原（kubeadm 安装的k8s）
   </a>
   
@@ -2059,28 +2059,28 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#模拟故障" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     模拟故障
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#确认k8s组件的位置" class="md-nav__link">
+  <a href="#k8s" class="md-nav__link">
     确认k8s组件的位置
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#停止api-server" class="md-nav__link">
+  <a href="#api-server" class="md-nav__link">
     停止api-server
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#进行还原" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     进行还原
   </a>
   
@@ -2113,7 +2113,7 @@
 </a>
 
 
-<h1 id="etcd-备份">Etcd 备份<a class="headerlink" href="#etcd-备份" title="Permanent link">&para;</a></h1>
+<h1 id="etcd">Etcd 备份<a class="headerlink" href="#etcd" title="Permanent link">&para;</a></h1>
 <blockquote>
 <p>https://kubernetes.io/zh-cn/docs/tasks/administer-cluster/configure-upgrade-etcd/</p>
 </blockquote>
@@ -2121,7 +2121,7 @@
 <p class="admonition-title">Info</p>
 <p>以下备份主要是以kubeadm安装的k8s</p>
 </div>
-<h2 id="查看证书的路径">查看证书的路径<a class="headerlink" href="#查看证书的路径" title="Permanent link">&para;</a></h2>
+<h2 id="_1">查看证书的路径<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>[cka] root@master0:/home/lixie# cat  /etc/kubernetes/manifests/etcd.yaml
 apiVersion: v1
 kind: Pod
@@ -2156,11 +2156,11 @@ spec:
     - --snapshot-count=10000
     - --trusted-ca-file=/etc/kubernetes/pki/etcd/ca.crt
 </code></pre></div>
-<h3 id="手动备份">手动备份<a class="headerlink" href="#手动备份" title="Permanent link">&para;</a></h3>
-<h4 id="安装etcd客户端">安装etcd客户端<a class="headerlink" href="#安装etcd客户端" title="Permanent link">&para;</a></h4>
+<h3 id="_2">手动备份<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="etcd_1">安装etcd客户端<a class="headerlink" href="#etcd_1" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>apt  install etcd-client 
 </code></pre></div>
-<h4 id="指定路径备份">指定路径备份<a class="headerlink" href="#指定路径备份" title="Permanent link">&para;</a></h4>
+<h4 id="_3">指定路径备份<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <blockquote>
 <p>这里将备份指定备份到 /srv/data/，指定的三个文件就是以上标注的三个位置</p>
 </blockquote>
@@ -2173,9 +2173,9 @@ etcdctl --endpoints=https://127.0.0.1:2379 \
 <p>校验结果：
 <div class="highlight"><pre><span></span><code>etcdctl --endpoints=https://127.0.0.1:2379   --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/server.crt  --key=/etc/kubernetes/pki/etcd/server.key   snapshot status  /srv/data/etcd-snapshot.db
 </code></pre></div></p>
-<h3 id="自动备份">自动备份<a class="headerlink" href="#自动备份" title="Permanent link">&para;</a></h3>
-<h3 id="还原kubeadm-安装的k8s">还原（kubeadm 安装的k8s）<a class="headerlink" href="#还原kubeadm-安装的k8s" title="Permanent link">&para;</a></h3>
-<h4 id="模拟故障">模拟故障<a class="headerlink" href="#模拟故障" title="Permanent link">&para;</a></h4>
+<h3 id="_4">自动备份<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h3 id="kubeadm-k8s">还原（kubeadm 安装的k8s）<a class="headerlink" href="#kubeadm-k8s" title="Permanent link">&para;</a></h3>
+<h4 id="_5">模拟故障<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <blockquote>
 <p>这里我模拟删除了这个资源，看一会是否可以还原</p>
 </blockquote>
@@ -2185,7 +2185,7 @@ nginx-ds-6mnw5   1/1     Running   0          2d
 [ucloud] root@master0:~# k delete ds nginx-ds
 daemonset.apps &quot;nginx-ds&quot; deleted
 </code></pre></div>
-<h4 id="确认k8s组件的位置">确认k8s组件的位置<a class="headerlink" href="#确认k8s组件的位置" title="Permanent link">&para;</a></h4>
+<h4 id="k8s">确认k8s组件的位置<a class="headerlink" href="#k8s" title="Permanent link">&para;</a></h4>
 <p>查看kubelet的状态
 <div class="highlight"><pre><span></span><code>[ucloud] root@master0:~# systemctl status kubelet
 ● kubelet.service - kubelet: The Kubernetes Node Agent
@@ -2229,7 +2229,7 @@ streamingConnectionIdleTimeout: 0s
 syncFrequency: 0s
 volumeStatsAggPeriod: 0s
 </code></pre></div>
-<h4 id="停止api-server">停止api-server<a class="headerlink" href="#停止api-server" title="Permanent link">&para;</a></h4>
+<h4 id="api-server">停止api-server<a class="headerlink" href="#api-server" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>[ucloud] root@master0:~#  mkdir /opt/backup/ -p
 [ucloud] root@master0:~# cd /etc/kubernetes/manifests
 [ucloud] root@master0:/etc/kubernetes/manifests# ll
@@ -2242,7 +2242,7 @@ drwxr-xr-x 5 root root 4096 Jul  3 21:15 ../
 -rw------- 1 root root 1464 Jul  3 22:00 kube-scheduler.yaml
 [ucloud] root@master0:/etc/kubernetes/manifests# mv kube-* /opt/backup/   # 移走之后我们会发现不能使用kubectl命令
 </code></pre></div>
-<h4 id="进行还原">进行还原<a class="headerlink" href="#进行还原" title="Permanent link">&para;</a></h4>
+<h4 id="_6">进行还原<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <blockquote>
 <p>如果恢复失败需要添加--skip-hash-check参数</p>
 </blockquote>

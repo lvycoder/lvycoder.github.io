@@ -73,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#yaml-介绍" class="md-skip">
+        <a href="#yaml" class="md-skip">
           跳转至
         </a>
       
@@ -1710,7 +1710,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#yaml-介绍" class="md-nav__link">
+  <a href="#yaml" class="md-nav__link">
     YAML 介绍
   </a>
   
@@ -1718,14 +1718,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#yaml-语法" class="md-nav__link">
+  <a href="#yaml_1" class="md-nav__link">
     YAML 语法
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#yaml常用的数据类型" class="md-nav__link">
+  <a href="#yaml_2" class="md-nav__link">
     YAML常用的数据类型
   </a>
   
@@ -1737,7 +1737,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ansible-基础元素介绍" class="md-nav__link">
+  <a href="#ansible" class="md-nav__link">
     Ansible 基础元素介绍
   </a>
   
@@ -1745,14 +1745,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#inventory主机清单" class="md-nav__link">
+  <a href="#inventory" class="md-nav__link">
     Inventory(主机清单)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#inventory-参数" class="md-nav__link">
+  <a href="#inventory_1" class="md-nav__link">
     Inventory 参数:
   </a>
   
@@ -2095,7 +2095,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#yaml-介绍" class="md-nav__link">
+  <a href="#yaml" class="md-nav__link">
     YAML 介绍
   </a>
   
@@ -2103,14 +2103,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#yaml-语法" class="md-nav__link">
+  <a href="#yaml_1" class="md-nav__link">
     YAML 语法
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#yaml常用的数据类型" class="md-nav__link">
+  <a href="#yaml_2" class="md-nav__link">
     YAML常用的数据类型
   </a>
   
@@ -2122,7 +2122,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ansible-基础元素介绍" class="md-nav__link">
+  <a href="#ansible" class="md-nav__link">
     Ansible 基础元素介绍
   </a>
   
@@ -2130,14 +2130,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#inventory主机清单" class="md-nav__link">
+  <a href="#inventory" class="md-nav__link">
     Inventory(主机清单)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#inventory-参数" class="md-nav__link">
+  <a href="#inventory_1" class="md-nav__link">
     Inventory 参数:
   </a>
   
@@ -2167,7 +2167,7 @@
 
   <h1>Ansible 高级用法</h1>
 
-<h2 id="yaml-介绍"><strong>YAML 介绍</strong><a class="headerlink" href="#yaml-介绍" title="Permanent link">&para;</a></h2>
+<h2 id="yaml"><strong>YAML 介绍</strong><a class="headerlink" href="#yaml" title="Permanent link">&para;</a></h2>
 <p>YAML 是一种用来表达资料序列的格式，参考了其他多种语言所以具有很高的可 读性。YAML 是 YAML Ain’t Markup Language 的缩写，即 YAML 不是 XML。不过在 研发这种语言时，YAML 的意思其实是”Yet Another Markup Language”（仍是一种标 记语言）。其特性如下：</p>
 <ul>
 <li>具有很好的可读性，易于实现；</li>
@@ -2176,9 +2176,9 @@
 <li>有一个一致的信息模型； </li>
 <li>可以基于流来处理。</li>
 </ul>
-<h3 id="yaml-语法"><strong>YAML 语法</strong><a class="headerlink" href="#yaml-语法" title="Permanent link">&para;</a></h3>
+<h3 id="yaml_1"><strong>YAML 语法</strong><a class="headerlink" href="#yaml_1" title="Permanent link">&para;</a></h3>
 <p>YAML 的语法和其它语言类似，也可以表达散列表、标量等数据结构。其中结构 （structure）通过空格来展示；序列（sequence）里的项用”-”来代表；Map 里的键值 对用”:”分隔。YAML 文件扩展名通常为：yaml，如：example.yaml。下面是 YAML 的一个示例。</p>
-<h3 id="yaml常用的数据类型"><strong>YAML常用的数据类型</strong><a class="headerlink" href="#yaml常用的数据类型" title="Permanent link">&para;</a></h3>
+<h3 id="yaml_2"><strong>YAML常用的数据类型</strong><a class="headerlink" href="#yaml_2" title="Permanent link">&para;</a></h3>
 <p>YAML 中有两种常用的数据类型：list 和 dictionary。</p>
 <p>1.list （列表）</p>
 <p>列表（list）的所有元素均使用”-”开头，例如：</p>
@@ -2197,8 +2197,8 @@ Skill:<span class="w"> </span>Elite
 <div class="highlight"><pre><span></span><code>{ name: Example Developer, Job: Developer, Skill: Elite}
 </code></pre></div></p>
 <hr />
-<h2 id="ansible-基础元素介绍"><strong>Ansible 基础元素介绍</strong><a class="headerlink" href="#ansible-基础元素介绍" title="Permanent link">&para;</a></h2>
-<h3 id="inventory主机清单"><strong> Inventory(主机清单)</strong><a class="headerlink" href="#inventory主机清单" title="Permanent link">&para;</a></h3>
+<h2 id="ansible"><strong>Ansible 基础元素介绍</strong><a class="headerlink" href="#ansible" title="Permanent link">&para;</a></h2>
+<h3 id="inventory"><strong> Inventory(主机清单)</strong><a class="headerlink" href="#inventory" title="Permanent link">&para;</a></h3>
 <p>Inventory 文件中以中括号中的字符标识为组名，将主机分组管理，也可以将同一主机同时划分到多个不同的组中。如果被管理主机使用非默认的SSH端口，以下例子主要分了两个主机组cka-1和cka-2，inventory 下有很多的主机文件，注意这里ansible的配置文件是做了修改的。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ cat inventory/cka</span>
 <span class="l l-Scalar l-Scalar-Plain">[cka-1]</span>
@@ -2208,7 +2208,7 @@ Skill:<span class="w"> </span>Elite
 <span class="l l-Scalar l-Scalar-Plain">cka.node1  hostname=node1 ansible_host=172.30.192.106 ansible_user=lixie</span>
 <span class="l l-Scalar l-Scalar-Plain">cka.node2  hostname=node2 ansible_host=172.30.226.223 ansible_user=lixie</span>
 </code></pre></div>
-<h3 id="inventory-参数"><strong>Inventory 参数: </strong><a class="headerlink" href="#inventory-参数" title="Permanent link">&para;</a></h3>
+<h3 id="inventory_1"><strong>Inventory 参数: </strong><a class="headerlink" href="#inventory_1" title="Permanent link">&para;</a></h3>
 <p>Ansible 基于 SSH 连接 Inventory 中指定的被管理主机时，还可以通过参数指定 交互方式，这些参数如表 3-2 所示。</p>
 <table>
 <thead>

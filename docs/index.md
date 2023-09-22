@@ -17,11 +17,6 @@
   
 |微信（勰哥本人）|公众号|
 |:----:|:----:|
-|<img src="https://pic2.imgdb.cn/item/645f8d120d2dde57771d9470.jpg" width="115">|<img src="https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blogweixin.pic.jpg" width="115">
+|<img src="https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/bloglixie.jpeg" width="115">|<img src="https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blogweixin.pic.jpg" width="115">
 
 有兴趣可以加我，一起交流学习～
-
-
-
-
-
