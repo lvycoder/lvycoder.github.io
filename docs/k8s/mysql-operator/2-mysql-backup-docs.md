@@ -83,6 +83,178 @@ MySQL数据库的备份可以采用很多种方式，如直接打包数据库文
 
 
 
+## **三、MySQL完全备份操作**
+
+MySQL数据库的完全备份可以采用多种方式，物理冷备份一般用tar命令直接打包数据库文件夹（数据目录），而在备份前需要先停库。
+
+### **1、直接打包数据库文件夹**
+- 源码包的位置/usr/local/mysql/data/，rpm包的位置 /var/lib/mysql/
+
+
+```
+[root@localhost ~]# /etc/init.d/mysqld start
+Starting MySQL............... SUCCESS! 
+[root@localhost ~]# netstat -lnpt | grep :3306
+tcp6       0      0 :::3306                 :::*                    LISTEN      1630/mysqld         
+[root@localhost ~]# mysql -u root -p123456
+mysql> create database auth;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> use auth;
+Database changed
+mysql> create table user(name char(10) not null,ID int(48));
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> insert into user values('crushlinux','123');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from user;
++------------+------+
+| name       | ID   |
++------------+------+
+| crushlinux |  123 |
++------------+------+
+1 row in set (0.00 sec) 
+
+mysql> exit
+Bye
+```
+
+停止数据库，进行备份。
+
+```
+[root@localhost ~]# /etc/init.d/mysqld stop
+Shutting down MySQL.. SUCCESS!
+
+[root@localhost ~]# mkdir backup
+[root@localhost ~]# tar zcf backup/mysql_all-$(date +%F).tar.gz /usr/local/mysql/data/
+tar: Removing leading `/' from member names 
+[root@localhost ~]# ls -l backup/
+总用量 728
+-rw-r--r-- 1 root root 742476 12月 14 23:31 mysql_all-2018-12-14.tar.gz
+```
+
+模拟丢失:
+
+```
+[root@localhost ~]# /etc/init.d/mysqld start
+Starting MySQL.. SUCCESS! 
+[root@localhost ~]# mysql -uroot -p123456
+mysql> drop database auth;
+Query OK, 1 row affected (0.02 sec)
+```
+
+恢复数据:
+
+```
+[root@localhost ~]# /etc/init.d/mysqld stop
+Shutting down MySQL.. SUCCESS! 
+[root@localhost ~]# mkdir restore
+[root@localhost ~]# tar xf backup/mysql_all-2020-04-23.tar.gz -C restore/
+[root@localhost ~]# rm -rf /usr/local/mysql/data/*
+[root@localhost ~]# mv restore/usr/local/mysql/data/* /usr/local/mysql/data/
+[root@localhost ~]# /etc/init.d/mysqld start
+Starting MySQL. SUCCESS!
+[root@localhost ~]# mysql -uroot -p123456 -e 'select * from auth.user;'
+mysql: [Warning] Using a password on the command line interface can be insecure.
++------------+------+
+| name       | ID   |
++------------+------+
+| crushlinux |  123 |
++------------+------+
+```
+
+### **2、使用专用备份工具mysqldump**
+
+
+MySQL自带的备份工具mysqldump，可以很方便的对MySQL进行备份。通过该命令工具可以将数据库、数据表或全部的库导出为SQL脚本，便于该命令在不同版本的MySQL服务器上使用。例如，当需要升级MySQL服务器时，可以先使用mysqldump命令将原有库信息到导出，然后直接在升级后的MySQL服务器中导入即可。
+
+
+#### 1. 对单个库进行完全备份
+
+**格式：**
+```
+mysqldump -u用户名 -p[密码] [选项] --databases [数据库名] > /备份路径/备份文件名
+```
+**示例：**
+```
+[root@localhost ~]# mysqldump -uroot -p123456 --databases auth > backup/auth-$(date +%Y%m%d).sql
+mysqldump: [Warning] Using a password on the command line interface can be insecure.
+[root@localhost ~]# cat backup/auth-20181214.sql
+```
+
+#### **2. 对多个库进行完全备份**
+
+**格式：**
+```
+mysqldump -u用户名 -p [密码] [选项] --databases 库名1 [库名2]… > /备份路径/备份文件名
+```
+**示例：**
+```
+[root@localhost ~]# mysqldump -uroot -p123456 --databases mysql auth > backup/mysql+auth-$(date +%Y%m%d).sql 
+[root@localhost ~]# cat backup/mysql+auth-20181214.sql
+```
+
+#### **3. 对所有库进行完全备份**
+
+**格式：**
+```
+mysqldump -u用户名 -p [密码] [选项] --opt --all-databases > /备份路径/备份文件名
+```
+**示例：**
+```
+[root@localhost ~]# mysqldump -uroot -p123456 --opt --all-databases > backup/mysql_all.$(date +%Y%m%d).sql
+[root@localhost ~]# cat backup/mysql_all.20181214.sql
+//--opt 加快备份速度，当备份数据量大时使用
+[root@localhost ~]# cat backup/mysql_all.20160505.sql
+```
+
+#### **4. 对表进行完全备份**
+
+**格式：**
+```
+mysqldump -u用户名 -p [密码] [选项] 数据库名 表名 > /备份路径/备份文件名
+```
+**示例：**
+```
+[root@localhost ~]# mysqldump -uroot -p123456 auth user > backup/auth_user-$(date +%Y%m%d).sql
+[root@localhost ~]# cat backup/auth_user-20181214.sql
+```
+
+#### **5. 对表结构的备份**
+
+**格式：**
+```
+mysqldump -u用户名 -p [密码] -d 数据库名 表名 > /备份路径/备份文件名
+```
+**示例：**
+```
+[root@localhost ~]# mysqldump -uroot -p123456 -d mysql user > backup/desc_mysql_user-$(date +%Y%m%d).sql
+[root@localhost ~]# cat backup/desc_mysql_user-20181214.sql
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

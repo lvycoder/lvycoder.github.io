@@ -1315,6 +1315,74 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mysql_1" class="md-nav__link">
+    三、MySQL完全备份操作
+  </a>
+  
+    <nav class="md-nav" aria-label="三、MySQL完全备份操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1、直接打包数据库文件夹
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2mysqldump" class="md-nav__link">
+    2、使用专用备份工具mysqldump
+  </a>
+  
+    <nav class="md-nav" aria-label="2、使用专用备份工具mysqldump">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    1. 对单个库进行完全备份
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 对多个库进行完全备份
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 对所有库进行完全备份
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4. 对表进行完全备份
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    5. 对表结构的备份
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     参考文章
@@ -2152,6 +2220,74 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mysql_1" class="md-nav__link">
+    三、MySQL完全备份操作
+  </a>
+  
+    <nav class="md-nav" aria-label="三、MySQL完全备份操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1、直接打包数据库文件夹
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2mysqldump" class="md-nav__link">
+    2、使用专用备份工具mysqldump
+  </a>
+  
+    <nav class="md-nav" aria-label="2、使用专用备份工具mysqldump">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    1. 对单个库进行完全备份
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 对多个库进行完全备份
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 对所有库进行完全备份
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4. 对表进行完全备份
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    5. 对表结构的备份
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     参考文章
@@ -2262,6 +2398,119 @@
 <li>1.公司数据库的总数据量多大？ 25~30G 2.每天增长量多大？50M 3.备份的策略？ 4.备份数据量？ 5.备份的时长？</li>
 </ul>
 </div>
+<h2 id="mysql_1"><strong>三、MySQL完全备份操作</strong><a class="headerlink" href="#mysql_1" title="Permanent link">&para;</a></h2>
+<p>MySQL数据库的完全备份可以采用多种方式，物理冷备份一般用tar命令直接打包数据库文件夹（数据目录），而在备份前需要先停库。</p>
+<h3 id="1"><strong>1、直接打包数据库文件夹</strong><a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>源码包的位置/usr/local/mysql/data/，rpm包的位置 /var/lib/mysql/</li>
+</ul>
+<div class="highlight"><pre><span></span><code>[root@localhost ~]# /etc/init.d/mysqld start
+Starting MySQL............... SUCCESS! 
+[root@localhost ~]# netstat -lnpt | grep :3306
+tcp6       0      0 :::3306                 :::*                    LISTEN      1630/mysqld         
+[root@localhost ~]# mysql -u root -p123456
+mysql&gt; create database auth;
+Query OK, 1 row affected (0.00 sec)
+
+mysql&gt; use auth;
+Database changed
+mysql&gt; create table user(name char(10) not null,ID int(48));
+Query OK, 0 rows affected (0.04 sec)
+
+mysql&gt; insert into user values(&#39;crushlinux&#39;,&#39;123&#39;);
+Query OK, 1 row affected (0.01 sec)
+
+mysql&gt; select * from user;
++------------+------+
+| name       | ID   |
++------------+------+
+| crushlinux |  123 |
++------------+------+
+1 row in set (0.00 sec) 
+
+mysql&gt; exit
+Bye
+</code></pre></div>
+<p>停止数据库，进行备份。</p>
+<div class="highlight"><pre><span></span><code>[root@localhost ~]# /etc/init.d/mysqld stop
+Shutting down MySQL.. SUCCESS!
+
+[root@localhost ~]# mkdir backup
+[root@localhost ~]# tar zcf backup/mysql_all-$(date +%F).tar.gz /usr/local/mysql/data/
+tar: Removing leading `/&#39; from member names 
+[root@localhost ~]# ls -l backup/
+总用量 728
+-rw-r--r-- 1 root root 742476 12月 14 23:31 mysql_all-2018-12-14.tar.gz
+</code></pre></div>
+<p>模拟丢失:</p>
+<div class="highlight"><pre><span></span><code>[root@localhost ~]# /etc/init.d/mysqld start
+Starting MySQL.. SUCCESS! 
+[root@localhost ~]# mysql -uroot -p123456
+mysql&gt; drop database auth;
+Query OK, 1 row affected (0.02 sec)
+</code></pre></div>
+<p>恢复数据:</p>
+<div class="highlight"><pre><span></span><code>[root@localhost ~]# /etc/init.d/mysqld stop
+Shutting down MySQL.. SUCCESS! 
+[root@localhost ~]# mkdir restore
+[root@localhost ~]# tar xf backup/mysql_all-2020-04-23.tar.gz -C restore/
+[root@localhost ~]# rm -rf /usr/local/mysql/data/*
+[root@localhost ~]# mv restore/usr/local/mysql/data/* /usr/local/mysql/data/
+[root@localhost ~]# /etc/init.d/mysqld start
+Starting MySQL. SUCCESS!
+[root@localhost ~]# mysql -uroot -p123456 -e &#39;select * from auth.user;&#39;
+mysql: [Warning] Using a password on the command line interface can be insecure.
++------------+------+
+| name       | ID   |
++------------+------+
+| crushlinux |  123 |
++------------+------+
+</code></pre></div>
+<h3 id="2mysqldump"><strong>2、使用专用备份工具mysqldump</strong><a class="headerlink" href="#2mysqldump" title="Permanent link">&para;</a></h3>
+<p>MySQL自带的备份工具mysqldump，可以很方便的对MySQL进行备份。通过该命令工具可以将数据库、数据表或全部的库导出为SQL脚本，便于该命令在不同版本的MySQL服务器上使用。例如，当需要升级MySQL服务器时，可以先使用mysqldump命令将原有库信息到导出，然后直接在升级后的MySQL服务器中导入即可。</p>
+<h4 id="1_1">1. 对单个库进行完全备份<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h4>
+<p><strong>格式：</strong>
+<div class="highlight"><pre><span></span><code>mysqldump -u用户名 -p[密码] [选项] --databases [数据库名] &gt; /备份路径/备份文件名
+</code></pre></div>
+<strong>示例：</strong>
+<div class="highlight"><pre><span></span><code>[root@localhost ~]# mysqldump -uroot -p123456 --databases auth &gt; backup/auth-$(date +%Y%m%d).sql
+mysqldump: [Warning] Using a password on the command line interface can be insecure.
+[root@localhost ~]# cat backup/auth-20181214.sql
+</code></pre></div></p>
+<h4 id="2"><strong>2. 对多个库进行完全备份</strong><a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
+<p><strong>格式：</strong>
+<div class="highlight"><pre><span></span><code>mysqldump -u用户名 -p [密码] [选项] --databases 库名1 [库名2]… &gt; /备份路径/备份文件名
+</code></pre></div>
+<strong>示例：</strong>
+<div class="highlight"><pre><span></span><code>[root@localhost ~]# mysqldump -uroot -p123456 --databases mysql auth &gt; backup/mysql+auth-$(date +%Y%m%d).sql 
+[root@localhost ~]# cat backup/mysql+auth-20181214.sql
+</code></pre></div></p>
+<h4 id="3"><strong>3. 对所有库进行完全备份</strong><a class="headerlink" href="#3" title="Permanent link">&para;</a></h4>
+<p><strong>格式：</strong>
+<div class="highlight"><pre><span></span><code>mysqldump -u用户名 -p [密码] [选项] --opt --all-databases &gt; /备份路径/备份文件名
+</code></pre></div>
+<strong>示例：</strong>
+<div class="highlight"><pre><span></span><code>[root@localhost ~]# mysqldump -uroot -p123456 --opt --all-databases &gt; backup/mysql_all.$(date +%Y%m%d).sql
+[root@localhost ~]# cat backup/mysql_all.20181214.sql
+//--opt 加快备份速度，当备份数据量大时使用
+[root@localhost ~]# cat backup/mysql_all.20160505.sql
+</code></pre></div></p>
+<h4 id="4"><strong>4. 对表进行完全备份</strong><a class="headerlink" href="#4" title="Permanent link">&para;</a></h4>
+<p><strong>格式：</strong>
+<div class="highlight"><pre><span></span><code>mysqldump -u用户名 -p [密码] [选项] 数据库名 表名 &gt; /备份路径/备份文件名
+</code></pre></div>
+<strong>示例：</strong>
+<div class="highlight"><pre><span></span><code>[root@localhost ~]# mysqldump -uroot -p123456 auth user &gt; backup/auth_user-$(date +%Y%m%d).sql
+[root@localhost ~]# cat backup/auth_user-20181214.sql
+</code></pre></div></p>
+<h4 id="5"><strong>5. 对表结构的备份</strong><a class="headerlink" href="#5" title="Permanent link">&para;</a></h4>
+<p><strong>格式：</strong>
+<div class="highlight"><pre><span></span><code>mysqldump -u用户名 -p [密码] -d 数据库名 表名 &gt; /备份路径/备份文件名
+</code></pre></div>
+<strong>示例：</strong>
+<div class="highlight"><pre><span></span><code>[root@localhost ~]# mysqldump -uroot -p123456 -d mysql user &gt; backup/desc_mysql_user-$(date +%Y%m%d).sql
+[root@localhost ~]# cat backup/desc_mysql_user-20181214.sql
+</code></pre></div></p>
 <h3 id="_3"><strong>参考文章</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <ul>
 <li>https://satya-dba.blogspot.com/2021/09/percona-xtrabackup-installation.html</li>
