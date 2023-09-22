@@ -73,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#更新证书" class="md-skip">
           跳转至
         </a>
       
@@ -91,8 +91,7 @@
   <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../../.." title="Kubernetes 进阶训练营" class="md-header__button md-logo" aria-label="Kubernetes 进阶训练营" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+  <img src="../../../material/logo.jpg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -430,8 +429,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../../.." title="Kubernetes 进阶训练营" class="md-nav__button md-logo" aria-label="Kubernetes 进阶训练营" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+  <img src="../../../material/logo.jpg" alt="logo">
 
     </a>
     Kubernetes 进阶训练营
@@ -1080,14 +1078,14 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#更新证书" class="md-nav__link">
     更新证书
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#手动更新证书" class="md-nav__link">
     手动更新证书
   </a>
   
@@ -2057,14 +2055,14 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#更新证书" class="md-nav__link">
     更新证书
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#手动更新证书" class="md-nav__link">
     手动更新证书
   </a>
   
@@ -2093,9 +2091,9 @@
 <ul>
 <li>主要针对的k8s v1.15之前的版本和v1.15之后的版本</li>
 </ul>
-<h2 id="_1"><strong>更新证书</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h2 id="更新证书"><strong>更新证书</strong><a class="headerlink" href="#更新证书" title="Permanent link">&para;</a></h2>
 <p>使用 kubeadm 安装 kubernetes 集群非常方便，但是也有一个比较烦人的问题就是默认的证书有效期只有一年时间，所以需要考虑证书升级的问题，本文的演示集群版本为 v1.16.2 版本，不保证下面的操作对其他版本也适用，在操作之前一定要先对证书目录进行备份，防止操作错误进行回滚。本文主要介绍两种方式来更新集群证书。</p>
-<h2 id="_2"><strong>手动更新证书</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h2 id="手动更新证书"><strong>手动更新证书</strong><a class="headerlink" href="#手动更新证书" title="Permanent link">&para;</a></h2>
 <p>由 kubeadm 生成的客户端证书默认只有一年有效期，我们可以通过 check-expiration 命令来检查证书是否过期：</p>
 <div class="highlight"><pre><span></span><code>$ kubeadm alpha certs check-expiration
 CERTIFICATE                EXPIRES                  RESIDUAL TIME   EXTERNALLY MANAGED

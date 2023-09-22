@@ -17,23 +17,10 @@
   
 |微信（勰哥本人）|公众号|
 |:----:|:----:|
-|<img src="https://pic2.imgdb.cn/item/645f8d120d2dde57771d9470.jpg" width="115">|<img src="https://i.328888.xyz/2023/05/13/iuTf2o.jpeg" width="125">
+|<img src="https://pic2.imgdb.cn/item/645f8d120d2dde57771d9470.jpg" width="115">|<img src="https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blogweixin.pic.jpg" width="115">
 
 有兴趣可以加我，一起交流学习～
 
-<!-- **我的2022目标:**
-
-  - 生活/进度:
-
-  - 工作/进度:
-
-**我的2023目标:**
-
-  - 生活/进度:
-
-  - 工作/进度:
-    - 学习python (进行中)
-    - 备考cks 证书 (已完成)
 
 
 

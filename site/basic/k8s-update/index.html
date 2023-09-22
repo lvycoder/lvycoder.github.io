@@ -73,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#k8s" class="md-skip">
+        <a href="#k8s-版本升级" class="md-skip">
           跳转至
         </a>
       
@@ -91,8 +91,7 @@
   <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../.." title="Kubernetes 进阶训练营" class="md-header__button md-logo" aria-label="Kubernetes 进阶训练营" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+  <img src="../../material/logo.jpg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -430,8 +429,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Kubernetes 进阶训练营" class="md-nav__button md-logo" aria-label="Kubernetes 进阶训练营" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+  <img src="../../material/logo.jpg" alt="logo">
 
     </a>
     Kubernetes 进阶训练营
@@ -916,21 +914,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#版本需求" class="md-nav__link">
     版本需求
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#主节点" class="md-nav__link">
     主节点:
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#从节点" class="md-nav__link">
     从节点:
   </a>
   
@@ -938,14 +936,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#附件" class="md-nav__link">
     附件
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#k8s_1" class="md-nav__link">
+  <a href="#k8s证书过期处理" class="md-nav__link">
     k8s证书过期处理
   </a>
   
@@ -2090,21 +2088,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#版本需求" class="md-nav__link">
     版本需求
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#主节点" class="md-nav__link">
     主节点:
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#从节点" class="md-nav__link">
     从节点:
   </a>
   
@@ -2112,14 +2110,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#附件" class="md-nav__link">
     附件
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#k8s_1" class="md-nav__link">
+  <a href="#k8s证书过期处理" class="md-nav__link">
     k8s证书过期处理
   </a>
   
@@ -2147,19 +2145,19 @@
 </a>
 
 
-<h1 id="k8s"><strong>k8s 版本升级</strong><a class="headerlink" href="#k8s" title="Permanent link">&para;</a></h1>
+<h1 id="k8s-版本升级"><strong>k8s 版本升级</strong><a class="headerlink" href="#k8s-版本升级" title="Permanent link">&para;</a></h1>
 <div class="admonition 注意">
 <p class="admonition-title">注意</p>
 <p>请注意以下升级是kubeadm安装的k8s噢</p>
 </div>
-<h2 id="_1"><strong>版本需求</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h2 id="版本需求"><strong>版本需求</strong><a class="headerlink" href="#版本需求" title="Permanent link">&para;</a></h2>
 <p>k8s 的 版本为v1.19.16，如果要升级到v1.23.8</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>注意： 升级不能横跨两个大版本,因此需要升级分4次进行升级，需要1.20.15--1.21.14--1.22.11--1.23.8 （升级四次）</p>
 </div>
 <p>所有节点执行：apt update  </p>
-<h2 id="_2"><strong>主节点:</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h2 id="主节点"><strong>主节点:</strong><a class="headerlink" href="#主节点" title="Permanent link">&para;</a></h2>
 <p><div class="highlight"><pre><span></span><code><span class="o">[</span>ucloud<span class="o">]</span><span class="w"> </span>root@master0:~#<span class="w"> </span>apt-cache<span class="w"> </span>policy<span class="w"> </span>kubeadm<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="m">1</span>.20.
 <span class="w">     </span><span class="m">1</span>.20.15-00<span class="w"> </span><span class="m">500</span>
 
@@ -2203,7 +2201,7 @@ To see the stack trace of this error execute with --v=5 or higher
 <div class="highlight"><pre><span></span><code>apt install kubelet=1.19.16-00
 apt install kubectl=1.19.16-00
 </code></pre></div></p>
-<h2 id="_3"><strong>从节点:</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h2 id="从节点"><strong>从节点:</strong><a class="headerlink" href="#从节点" title="Permanent link">&para;</a></h2>
 <ol>
 <li>node节点升级kubelet的配置（所有node节点）</li>
 </ol>
@@ -2217,8 +2215,8 @@ apt install kubectl=1.19.16-00
 kubelet<span class="w"> </span>--version<span class="w">  </span><span class="c1"># 查看版本</span>
 Kubernetes<span class="w"> </span>v1.23.8
 </code></pre></div>
-<h4 id="_4">附件<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<h4 id="k8s_1">k8s证书过期处理<a class="headerlink" href="#k8s_1" title="Permanent link">&para;</a></h4>
+<h4 id="附件">附件<a class="headerlink" href="#附件" title="Permanent link">&para;</a></h4>
+<h4 id="k8s证书过期处理">k8s证书过期处理<a class="headerlink" href="#k8s证书过期处理" title="Permanent link">&para;</a></h4>
 <ul>
 <li>问题：<a href="https://aisensiy.me/kubernetes-certs-renew">处理k8s证书过期</a></li>
 </ul>

@@ -73,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#k8s" class="md-skip">
+        <a href="#k8s-简介" class="md-skip">
           跳转至
         </a>
       
@@ -91,8 +91,7 @@
   <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../../.." title="Kubernetes 进阶训练营" class="md-header__button md-logo" aria-label="Kubernetes 进阶训练营" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+  <img src="../../../material/logo.jpg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -430,8 +429,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../../.." title="Kubernetes 进阶训练营" class="md-nav__button md-logo" aria-label="Kubernetes 进阶训练营" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+  <img src="../../../material/logo.jpg" alt="logo">
 
     </a>
     Kubernetes 进阶训练营
@@ -888,7 +886,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#核心组件介绍" class="md-nav__link">
     核心组件介绍
   </a>
   
@@ -896,21 +894,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#控制平面组件" class="md-nav__link">
     控制平面组件
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#node" class="md-nav__link">
+  <a href="#node-组件" class="md-nav__link">
     Node 组件
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#其他组件" class="md-nav__link">
     其他组件
   </a>
   
@@ -2083,7 +2081,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#核心组件介绍" class="md-nav__link">
     核心组件介绍
   </a>
   
@@ -2091,21 +2089,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#控制平面组件" class="md-nav__link">
     控制平面组件
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#node" class="md-nav__link">
+  <a href="#node-组件" class="md-nav__link">
     Node 组件
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#其他组件" class="md-nav__link">
     其他组件
   </a>
   
@@ -2133,12 +2131,12 @@
 </a>
 
 
-<h1 id="k8s"><strong>k8s 简介</strong><a class="headerlink" href="#k8s" title="Permanent link">&para;</a></h1>
+<h1 id="k8s-简介"><strong>k8s 简介</strong><a class="headerlink" href="#k8s-简介" title="Permanent link">&para;</a></h1>
 <ul>
 <li>开源容器化编排引擎，专用于管理容器化应用和服务集群。</li>
 </ul>
-<h2 id="_1"><strong>核心组件介绍</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<h3 id="_2"><strong>控制平面组件</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h2 id="核心组件介绍"><strong>核心组件介绍</strong><a class="headerlink" href="#核心组件介绍" title="Permanent link">&para;</a></h2>
+<h3 id="控制平面组件"><strong>控制平面组件</strong><a class="headerlink" href="#控制平面组件" title="Permanent link">&para;</a></h3>
 <div class="admonition info">
 <p class="admonition-title">kube-apiserver:</p>
 </div>
@@ -2190,7 +2188,7 @@
 <ul>
 <li>一堆控制器（副本控制器，节点控制器，命令空间控制器，服务器账号控制器等），控制器做为集群内部管理控制中心，负责集群内的node、pod、服务端点、命名空间、服务器账号，资源定额的管理，当某个node意外宕机，Controller-manager会自动发现并执行自动恢复流程。确保集群中pod的副本始终保持预期工作的状态。</li>
 </ul>
-<h3 id="node"><strong>Node 组件</strong><a class="headerlink" href="#node" title="Permanent link">&para;</a></h3>
+<h3 id="node-组件"><strong>Node 组件</strong><a class="headerlink" href="#node-组件" title="Permanent link">&para;</a></h3>
 <div class="admonition info">
 <p class="admonition-title">kubelet：</p>
 </div>
@@ -2213,7 +2211,7 @@
 <ul>
 <li>个人理解：维护当前主机的网络规则</li>
 </ul>
-<h3 id="_3"><strong>其他组件</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="其他组件"><strong>其他组件</strong><a class="headerlink" href="#其他组件" title="Permanent link">&para;</a></h3>
 <p>helm install mysql presslabs/mysql-operator \
     -f 1-config.yaml \
     -n infra </p>

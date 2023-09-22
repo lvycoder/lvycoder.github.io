@@ -73,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#误删除监控数据" class="md-skip">
           跳转至
         </a>
       
@@ -91,8 +91,7 @@
   <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../.." title="Kubernetes 进阶训练营" class="md-header__button md-logo" aria-label="Kubernetes 进阶训练营" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+  <img src="../../material/logo.jpg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -430,8 +429,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Kubernetes 进阶训练营" class="md-nav__button md-logo" aria-label="Kubernetes 进阶训练营" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+  <img src="../../material/logo.jpg" alt="logo">
 
     </a>
     Kubernetes 进阶训练营
@@ -1912,7 +1910,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#如何规避这个问题" class="md-nav__link">
     如何规避这个问题？
   </a>
   
@@ -2056,7 +2054,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#如何规避这个问题" class="md-nav__link">
     如何规避这个问题？
   </a>
   
@@ -2079,7 +2077,7 @@
 </a>
 
 
-<h1 id="_1">误删除监控数据<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h1 id="误删除监控数据">误删除监控数据<a class="headerlink" href="#误删除监控数据" title="Permanent link">&para;</a></h1>
 <p>事情经过是prometheus 监控数据盘超过90%，本想扩容一下。于是kubectl edit pvc ，那么prometheus 的pv成功扩容，但是pvc还是之前的容量。这个是因为rook版本太低导致的
 。本想删除pvc重建一下，没想到删除pvc之后发现pv也没有了。</p>
 <ul>
@@ -2087,7 +2085,7 @@
 <li>没有注意pv的策略是否保留</li>
 <li>当时的sc策略是Retain，但是这个策略应该是后改的。之前的事delete</li>
 </ul>
-<h2 id="_2"><strong>如何规避这个问题？</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h2 id="如何规避这个问题"><strong>如何规避这个问题？</strong><a class="headerlink" href="#如何规避这个问题" title="Permanent link">&para;</a></h2>
 <p>如果pv的策略仍然是delete，那么删除重建pvc就有误删除的风险。那么结局办法就是找到pvc对于的pv，修改pv的策略为Retain</p>
 <p>这件事也让我知道，再做任何删除操作之前，一定要进行数据备份！</p>
 

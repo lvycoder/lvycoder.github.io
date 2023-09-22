@@ -73,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#bmc" class="md-skip">
+        <a href="#服务器bmc带外" class="md-skip">
           跳转至
         </a>
       
@@ -91,8 +91,7 @@
   <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../.." title="Kubernetes 进阶训练营" class="md-header__button md-logo" aria-label="Kubernetes 进阶训练营" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+  <img src="../../material/logo.jpg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -430,8 +429,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Kubernetes 进阶训练营" class="md-nav__button md-logo" aria-label="Kubernetes 进阶训练营" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+  <img src="../../material/logo.jpg" alt="logo">
 
     </a>
     Kubernetes 进阶训练营
@@ -646,21 +644,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#简介" class="md-nav__link">
     简介
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#实践" class="md-nav__link">
     实践
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#附件" class="md-nav__link">
     附件
   </a>
   
@@ -2070,21 +2068,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#简介" class="md-nav__link">
     简介
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#实践" class="md-nav__link">
     实践
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#附件" class="md-nav__link">
     附件
   </a>
   
@@ -2107,12 +2105,12 @@
 </a>
 
 
-<h1 id="bmc">服务器BMC（带外）<a class="headerlink" href="#bmc" title="Permanent link">&para;</a></h1>
-<h2 id="_1"><strong>简介</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h1 id="服务器bmc带外">服务器BMC（带外）<a class="headerlink" href="#服务器bmc带外" title="Permanent link">&para;</a></h1>
+<h2 id="简介"><strong>简介</strong><a class="headerlink" href="#简介" title="Permanent link">&para;</a></h2>
 <p>服务器除了装linux，windows系统外，相应还有一个可通过网线（服务器默认带外地址--可改）连接具体厂商服务器的BMC（Baseboard Management Controller，基板管理控制器）</p>
 <p>智能平台管理接口 (IPMI) 是一种开放标准的硬件管理接口规格，定义了嵌入式管理子系统进行通信的特定方法。IPMI 信息通过基板管理控制器 (BMC)（位于 IPMI 规格的硬件组件上）进行交流。使用低级硬件智能管理而不使用操作系统进行管理，具有两个主要优点： 首先，此配置允许进行带外服务器管理；其次，操作系统不必负担传输系统状态数据的任务。一般统称Mgmt管理网口，华为的白皮书叫iBMC，戴尔叫idrac，其实都是兼容ipmi协议的网口而已~</p>
 <p>BMC系统独立，管理硬件（cpu，风扇等信息），打开控制台,来远程管理我们的服务器，让运维的同学少跑一万次的机房～</p>
-<h2 id="_2"><strong>实践</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h2 id="实践"><strong>实践</strong><a class="headerlink" href="#实践" title="Permanent link">&para;</a></h2>
 <p>下面介绍一下我这边曙光GPU服务器的带外管理。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh<span class="w"> </span>-L<span class="w"> </span><span class="m">3443</span>:192.168.2.x:443<span class="w"> </span>routerx.c1
 </code></pre></div>
@@ -2124,7 +2122,7 @@
 <p><kbd><img alt="" src="https://pic1.imgdb.cn/item/634982f316f2c2beb1dcca28.jpg" /></kbd></p>
 <p><kbd><img alt="" src="https://pic1.imgdb.cn/item/634984f716f2c2beb1e1a543.jpg" /></kbd></p>
 <p>通过以上的方式,就可以对服务器进行重启,关机,重装系统等操作~</p>
-<h2 id="_3"><strong>附件</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h2 id="附件"><strong>附件</strong><a class="headerlink" href="#附件" title="Permanent link">&para;</a></h2>
 <div class="admonition info">
 <p class="admonition-title">Linux配置</p>
 <div class="highlight"><pre><span></span><code>apt-get<span class="w"> </span>install<span class="w"> </span>ipmitool

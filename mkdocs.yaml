@@ -6,9 +6,12 @@ site_description: Project documentation with Markdown.
 site_author: Li
 
 theme:
+  logo: material/logo.jpg
   palette:
     scheme: default
   name: "material"
+  # name: null
+  # custom_dir: docs/themes/beautifulhugo
 
   font:
     text: "Ubuntu"
@@ -28,6 +31,7 @@ theme:
     - search.suggest
     - search.highlight
     - content.code.annotate
+
   palette:
    # Light mode
    - media: "(prefers-color-scheme: light)"
@@ -50,7 +54,14 @@ theme:
 copyright: "Copyright &copy; 2022 lixie"
 
 
+
 markdown_extensions:
+  - admonition #MkDocs 警告框
+  - footnotes #脚注
+  - meta #自定义文章元数据
+  - pymdownx.caret #下划线
+  - pymdownx.mark #文本高亮
+  - pymdownx.tilde #删除线
   - def_list
   - tables
   - md_in_html
@@ -71,9 +82,9 @@ markdown_extensions:
   #  - markdown_include.include:
   #      base_path: content/includes/
   #      encoding: utf-8
-  - toc:
+  - toc: # 大纲
       permalink: true
-      # slugify: !!python/name:pymdownx.slugs.uslugify_cased # Page tree
+      slugify: !!python/name:pymdownx.slugs.uslugify
 
 nav:
     - 首页: index.md
