@@ -1383,6 +1383,53 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mysqldump" class="md-nav__link">
+    四、使用mysqldump备份后，恢复数据库
+  </a>
+  
+    <nav class="md-nav" aria-label="四、使用mysqldump备份后，恢复数据库">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-source" class="md-nav__link">
+    1. 使用source命令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-mysql" class="md-nav__link">
+    2. 使用mysql命令
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mysql_2" class="md-nav__link">
+    五、MySQL备份思路
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mysql_3" class="md-nav__link">
+    六、MySQL完全备份案例
+  </a>
+  
+    <nav class="md-nav" aria-label="六、MySQL完全备份案例">
+      <ul class="md-nav__list">
+        
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     参考文章
@@ -2288,6 +2335,53 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mysqldump" class="md-nav__link">
+    四、使用mysqldump备份后，恢复数据库
+  </a>
+  
+    <nav class="md-nav" aria-label="四、使用mysqldump备份后，恢复数据库">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-source" class="md-nav__link">
+    1. 使用source命令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-mysql" class="md-nav__link">
+    2. 使用mysql命令
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mysql_2" class="md-nav__link">
+    五、MySQL备份思路
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mysql_3" class="md-nav__link">
+    六、MySQL完全备份案例
+  </a>
+  
+    <nav class="md-nav" aria-label="六、MySQL完全备份案例">
+      <ul class="md-nav__list">
+        
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     参考文章
@@ -2511,6 +2605,183 @@ mysqldump: [Warning] Using a password on the command line interface can be insec
 <div class="highlight"><pre><span></span><code>[root@localhost ~]# mysqldump -uroot -p123456 -d mysql user &gt; backup/desc_mysql_user-$(date +%Y%m%d).sql
 [root@localhost ~]# cat backup/desc_mysql_user-20181214.sql
 </code></pre></div></p>
+<h2 id="mysqldump"><strong>四、使用mysqldump备份后，恢复数据库</strong><a class="headerlink" href="#mysqldump" title="Permanent link">&para;</a></h2>
+<h3 id="1-source"><strong>1. 使用source命令</strong><a class="headerlink" href="#1-source" title="Permanent link">&para;</a></h3>
+<ul>
+<li>登录到MySQL数据库，执行source 备份sql脚本路径</li>
+</ul>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code>[root@localhost ~]# mysql -uroot -p123456
+mysql&gt; show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| auth               |
+| mysql              |
+| performance_schema |
+| test               |
+| usr                |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql&gt; drop database auth;
+Query OK, 1 row affected (0.12 sec)
+
+mysql&gt; source backup/auth.20181214.sql
+mysql&gt; show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| auth               |
+| mysql              |
+| performance_schema |
+| test               |
+| usr                |
++--------------------+
+6 rows in set (0.00 sec)
+</code></pre></div></p>
+<h3 id="2-mysql"><strong>2. 使用mysql命令</strong><a class="headerlink" href="#2-mysql" title="Permanent link">&para;</a></h3>
+<p><strong>格式：</strong>
+<div class="highlight"><pre><span></span><code>mysql -u用户名 -p [密码] &lt; 库备份脚本的路径
+mysql -u用户名 -p [密码] 库名 &lt; 表备份脚本的路径
+</code></pre></div></p>
+<p><strong>示例：</strong>
+<div class="highlight"><pre><span></span><code>[root@localhost ~]# mysql -uroot -p123456 -e &#39;show databases;&#39;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| auth               |
+| mysql              |
+| performance_schema |
+| test               |
+| usr                |
++--------------------+
+[root@localhost ~]# mysql -uroot -p123456 -e &#39;drop database auth;&#39;
+[root@localhost ~]# mysql -uroot -p123456 &lt; backup/auth.20181214.sql
+[root@localhost ~]# mysql -uroot -p123456 -e &#39;show databases;&#39;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| auth               |
+| mysql              |
+| performance_schema |
+| test               |
+| usr                |
++--------------------+
+[root@localhost ~]# mysql -uroot -p123456 -e &#39;drop table auth.user;&#39;
+[root@localhost ~]# mysql -uroot -p123456 auth &lt; backup/auth_user-20181214.sql 
+[root@localhost ~]# mysql -uroot -p123456 -e &#39;select * from auth.user;&#39;
++------------+------+
+| name       | ID   |
++------------+------+
+| crushlinux |  123 |
++------------+------+
+</code></pre></div></p>
+<h2 id="mysql_2"><strong>五、MySQL备份思路</strong><a class="headerlink" href="#mysql_2" title="Permanent link">&para;</a></h2>
+<p>1、定期实施备份，制定备份计划或策略，并严格遵守。</p>
+<p>2、除了进行完全备份，开启MySQL服务器的binlog日志功能是很重要的（完全备份加上日志，可以对MySQL进行最大化还原）。</p>
+<p>3、使用统一和易理解的备份名称，推荐使用库名或者表名加上时间的命名规则，如mysql_user-20181214.sql，不要使用backup1或者abc之类没有意义的名字。</p>
+<h2 id="mysql_3"><strong>六、MySQL完全备份案例</strong><a class="headerlink" href="#mysql_3" title="Permanent link">&para;</a></h2>
+<p><strong>需求描述：</strong></p>
+<p>用户信息数据库为client，用户资费数据表为user_info，表结构如下所示。请为该公司制定合理的备份策略，依据所制定的策略备份数据，模拟数据丢失进行数据恢复。</p>
+<p><img alt="20230922161808" src="https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog20230922161808.png" /></p>
+<p>创建数据及表，录入数据：</p>
+<div class="highlight"><pre><span></span><code>[root@localhost ~]# mysql -uroot -p123456
+mysql&gt; show variables like &#39;character_set_%&#39;;   //查看字符集是否支持中文
++--------------------------+----------------------------------+
+| Variable_name            | Value                            |
++--------------------------+----------------------------------+
+| character_set_client     | utf8                             |
+| character_set_connection | utf8                             |
+| character_set_database   | latin1                           |
+| character_set_filesystem | binary                           |
+| character_set_results    | utf8                             |
+| character_set_server     | latin1                           |
+| character_set_system     | utf8                             |
+| character_sets_dir       | /usr/local/mysql/share/charsets/ |
++--------------------------+----------------------------------+
+8 rows in set (0.01 sec)
+
+[root@localhost ~]# vim /etc/my.cnf
+[mysqld]
+character_set_server=utf8
+[root@localhost ~]# /etc/init.d/mysqld restart
+
+mysql&gt; show variables like &#39;character_set_%&#39;;
++--------------------------+----------------------------------+
+| Variable_name            | Value                            |
++--------------------------+----------------------------------+
+| character_set_client     | utf8                             |
+| character_set_connection | utf8                             |
+| character_set_database   | utf8                             |
+| character_set_filesystem | binary                           |
+| character_set_results    | utf8                             |
+| character_set_server     | utf8                             |
+| character_set_system     | utf8                             |
+| character_sets_dir       | /usr/local/mysql/share/charsets/ |
++--------------------------+----------------------------------+
+8 rows in set (0.01 sec)
+
+mysql&gt; create database client;
+Query OK, 1 row affected (0.00 sec)
+
+mysql&gt; use client;
+Database changed
+
+create table user_info(身份证 int(20),姓名 char(20),性别 char(2),用户ID号 int(110),资费 int(10)) DEFAULT CHARSET=utf8;
+insert into user_info values(&#39;000000001&#39;,&#39;孙空武&#39;,&#39;男&#39;,&#39;011&#39;,&#39;100&#39;);
+insert into user_info values(&#39;000000002&#39;,&#39;蓝凌&#39;,&#39;女&#39;,&#39;012&#39;,&#39;98&#39;);
+insert into user_info values(&#39;000000003&#39;,&#39;姜纹&#39;,&#39;女&#39;,&#39;013&#39;,&#39;12&#39;);
+insert into user_info values(&#39;000000004&#39;,&#39;关园&#39;,&#39;男&#39;,&#39;014&#39;,&#39;38&#39;);
+insert into user_info values(&#39;000000004&#39;,&#39;罗中昆&#39;,&#39;男&#39;,&#39;015&#39;,&#39;39&#39;);
+
+mysql&gt; select * from user_info;
++-----------+-----------+--------+-------------+--------+
+| 身份证    | 姓名      | 性别   | 用户ID号    | 资费   |
++-----------+-----------+--------+-------------+--------+
+|         1 | 孙空武    | 男     |          11 |    100 |
+|         2 | 蓝凌      | 女     |          12 |     98 |
+|         3 | 姜纹      | 女     |          13 |     12 |
+|         4 | 关园      | 男     |          14 |     38 |
+|         4 | 罗中昆    | 男     |          15 |     39 |
++-----------+-----------+--------+-------------+--------+
+5 rows in set (0.00 sec)
+</code></pre></div>
+<p>完整备份client.user_info表：</p>
+<div class="highlight"><pre><span></span><code>[root@localhost ~]# mysqldump -uroot -p123456 client user_info &gt; backup/client.user_info-$(date +%Y%m%d).sql
+</code></pre></div>
+<p>模拟数据丢失恢复数据：</p>
+<div class="highlight"><pre><span></span><code>[root@localhost ~]# mysql -uroot -p123456 -e &#39;drop table client.user_info;&#39;
+[root@localhost ~]# mysql -uroot -p123456 -e &#39;use client; show tables;&#39;
+[root@localhost ~]# mysql -uroot -p123456 client &lt; backup/client.user_info-20181214.sql
+[root@localhost ~]# mysql -uroot -p123456 -e &#39;select * from client.user_info;&#39;
++-----------+-----------+--------+-------------+--------+
+| 身份证    | 姓名      | 性别   | 用户ID号    | 资费   |
++-----------+-----------+--------+-------------+--------+
+|         1 | 孙空武    | 男     |          11 |    100 |
+|         2 | 蓝凌      | 女     |          12 |     98 |
+|         3 | 姜纹      | 女     |          13 |     12 |
+|         4 | 关园      | 男     |          14 |     38 |
+|         4 | 罗中昆    | 男     |          15 |     39 |
++-----------+-----------+--------+-------------+--------+
+</code></pre></div>
+<p>定期备份数据：</p>
+<div class="highlight"><pre><span></span><code>[root@localhost ~]# which mysqldump
+/usr/local/mysql/bin/mysqldump
+
+[root@localhost ~]# vim /opt/bak_client.sh
+#!/bin/bash
+# 备份client.user_info表 脚本
+/usr/local/mysql/bin/mysqldump -uroot -p123456 client user_info &gt;backup/client.user_info-$(date +%Y%m%d).sql
+
+[root@localhost ~]# chmod +x /opt/bak_client.sh 
+[root@localhost ~]# crontab -e
+0       0       *       *       *       /opt/bak_client.sh      //每天0:00备份
+</code></pre></div>
 <h3 id="_3"><strong>参考文章</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <ul>
 <li>https://satya-dba.blogspot.com/2021/09/percona-xtrabackup-installation.html</li>

@@ -233,6 +233,219 @@ mysqldump -u用户名 -p [密码] -d 数据库名 表名 > /备份路径/备份�
 [root@localhost ~]# cat backup/desc_mysql_user-20181214.sql
 ```
 
+## **四、使用mysqldump备份后，恢复数据库**
+### **1. 使用source命令**
+
+- 登录到MySQL数据库，执行source 备份sql脚本路径
+
+
+**示例：**
+```
+[root@localhost ~]# mysql -uroot -p123456
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| auth               |
+| mysql              |
+| performance_schema |
+| test               |
+| usr                |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> drop database auth;
+Query OK, 1 row affected (0.12 sec)
+
+mysql> source backup/auth.20181214.sql
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| auth               |
+| mysql              |
+| performance_schema |
+| test               |
+| usr                |
++--------------------+
+6 rows in set (0.00 sec)
+```
+
+### **2. 使用mysql命令**
+
+**格式：**
+```
+mysql -u用户名 -p [密码] < 库备份脚本的路径
+mysql -u用户名 -p [密码] 库名 < 表备份脚本的路径
+```
+
+**示例：**
+```
+[root@localhost ~]# mysql -uroot -p123456 -e 'show databases;'
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| auth               |
+| mysql              |
+| performance_schema |
+| test               |
+| usr                |
++--------------------+
+[root@localhost ~]# mysql -uroot -p123456 -e 'drop database auth;'
+[root@localhost ~]# mysql -uroot -p123456 < backup/auth.20181214.sql
+[root@localhost ~]# mysql -uroot -p123456 -e 'show databases;'
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| auth               |
+| mysql              |
+| performance_schema |
+| test               |
+| usr                |
++--------------------+
+[root@localhost ~]# mysql -uroot -p123456 -e 'drop table auth.user;'
+[root@localhost ~]# mysql -uroot -p123456 auth < backup/auth_user-20181214.sql 
+[root@localhost ~]# mysql -uroot -p123456 -e 'select * from auth.user;'
++------------+------+
+| name       | ID   |
++------------+------+
+| crushlinux |  123 |
++------------+------+
+```
+
+
+
+## **五、MySQL备份思路**
+
+1、定期实施备份，制定备份计划或策略，并严格遵守。
+
+2、除了进行完全备份，开启MySQL服务器的binlog日志功能是很重要的（完全备份加上日志，可以对MySQL进行最大化还原）。
+
+3、使用统一和易理解的备份名称，推荐使用库名或者表名加上时间的命名规则，如mysql_user-20181214.sql，不要使用backup1或者abc之类没有意义的名字。
+
+
+
+## **六、MySQL完全备份案例**
+
+**需求描述：**
+
+用户信息数据库为client，用户资费数据表为user_info，表结构如下所示。请为该公司制定合理的备份策略，依据所制定的策略备份数据，模拟数据丢失进行数据恢复。
+
+![20230922161808](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog20230922161808.png)
+
+
+创建数据及表，录入数据：
+
+```
+[root@localhost ~]# mysql -uroot -p123456
+mysql> show variables like 'character_set_%';	//查看字符集是否支持中文
++--------------------------+----------------------------------+
+| Variable_name            | Value                            |
++--------------------------+----------------------------------+
+| character_set_client     | utf8                             |
+| character_set_connection | utf8                             |
+| character_set_database   | latin1                           |
+| character_set_filesystem | binary                           |
+| character_set_results    | utf8                             |
+| character_set_server     | latin1                           |
+| character_set_system     | utf8                             |
+| character_sets_dir       | /usr/local/mysql/share/charsets/ |
++--------------------------+----------------------------------+
+8 rows in set (0.01 sec)
+
+[root@localhost ~]# vim /etc/my.cnf
+[mysqld]
+character_set_server=utf8
+[root@localhost ~]# /etc/init.d/mysqld restart
+
+mysql> show variables like 'character_set_%';
++--------------------------+----------------------------------+
+| Variable_name            | Value                            |
++--------------------------+----------------------------------+
+| character_set_client     | utf8                             |
+| character_set_connection | utf8                             |
+| character_set_database   | utf8                             |
+| character_set_filesystem | binary                           |
+| character_set_results    | utf8                             |
+| character_set_server     | utf8                             |
+| character_set_system     | utf8                             |
+| character_sets_dir       | /usr/local/mysql/share/charsets/ |
++--------------------------+----------------------------------+
+8 rows in set (0.01 sec)
+
+mysql> create database client;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> use client;
+Database changed
+
+create table user_info(身份证 int(20),姓名 char(20),性别 char(2),用户ID号 int(110),资费 int(10)) DEFAULT CHARSET=utf8;
+insert into user_info values('000000001','孙空武','男','011','100');
+insert into user_info values('000000002','蓝凌','女','012','98');
+insert into user_info values('000000003','姜纹','女','013','12');
+insert into user_info values('000000004','关园','男','014','38');
+insert into user_info values('000000004','罗中昆','男','015','39');
+
+mysql> select * from user_info;
++-----------+-----------+--------+-------------+--------+
+| 身份证    | 姓名      | 性别   | 用户ID号    | 资费   |
++-----------+-----------+--------+-------------+--------+
+|         1 | 孙空武    | 男     |          11 |    100 |
+|         2 | 蓝凌      | 女     |          12 |     98 |
+|         3 | 姜纹      | 女     |          13 |     12 |
+|         4 | 关园      | 男     |          14 |     38 |
+|         4 | 罗中昆    | 男     |          15 |     39 |
++-----------+-----------+--------+-------------+--------+
+5 rows in set (0.00 sec)
+```
+
+
+完整备份client.user_info表：
+
+```
+[root@localhost ~]# mysqldump -uroot -p123456 client user_info > backup/client.user_info-$(date +%Y%m%d).sql
+```
+
+模拟数据丢失恢复数据：
+
+```
+[root@localhost ~]# mysql -uroot -p123456 -e 'drop table client.user_info;'
+[root@localhost ~]# mysql -uroot -p123456 -e 'use client; show tables;'
+[root@localhost ~]# mysql -uroot -p123456 client < backup/client.user_info-20181214.sql
+[root@localhost ~]# mysql -uroot -p123456 -e 'select * from client.user_info;'
++-----------+-----------+--------+-------------+--------+
+| 身份证    | 姓名      | 性别   | 用户ID号    | 资费   |
++-----------+-----------+--------+-------------+--------+
+|         1 | 孙空武    | 男     |          11 |    100 |
+|         2 | 蓝凌      | 女     |          12 |     98 |
+|         3 | 姜纹      | 女     |          13 |     12 |
+|         4 | 关园      | 男     |          14 |     38 |
+|         4 | 罗中昆    | 男     |          15 |     39 |
++-----------+-----------+--------+-------------+--------+
+```
+
+
+定期备份数据：
+
+```
+[root@localhost ~]# which mysqldump
+/usr/local/mysql/bin/mysqldump
+
+[root@localhost ~]# vim /opt/bak_client.sh
+#!/bin/bash
+# 备份client.user_info表 脚本
+/usr/local/mysql/bin/mysqldump -uroot -p123456 client user_info >backup/client.user_info-$(date +%Y%m%d).sql
+
+[root@localhost ~]# chmod +x /opt/bak_client.sh 
+[root@localhost ~]# crontab -e
+0       0       *       *       *       /opt/bak_client.sh		//每天0:00备份
+```
+
+
 
 
 
