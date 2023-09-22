@@ -1389,11 +1389,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#mysqldump" class="md-nav__link">
-    四、使用mysqldump备份后，恢复数据库
+  <a href="#_3" class="md-nav__link">
+    四、恢复数据库
   </a>
   
-    <nav class="md-nav" aria-label="四、使用mysqldump备份后，恢复数据库">
+    <nav class="md-nav" aria-label="四、恢复数据库">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1431,7 +1431,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     参考文章
   </a>
   
@@ -2341,11 +2341,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#mysqldump" class="md-nav__link">
-    四、使用mysqldump备份后，恢复数据库
+  <a href="#_3" class="md-nav__link">
+    四、恢复数据库
   </a>
   
-    <nav class="md-nav" aria-label="四、使用mysqldump备份后，恢复数据库">
+    <nav class="md-nav" aria-label="四、恢复数据库">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2383,7 +2383,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     参考文章
   </a>
   
@@ -2605,7 +2605,7 @@ mysqldump: [Warning] Using a password on the command line interface can be insec
 <div class="highlight"><pre><span></span><code>[root@localhost ~]# mysqldump -uroot -p123456 -d mysql user &gt; backup/desc_mysql_user-$(date +%Y%m%d).sql
 [root@localhost ~]# cat backup/desc_mysql_user-20181214.sql
 </code></pre></div></p>
-<h2 id="mysqldump"><strong>四、使用mysqldump备份后，恢复数据库</strong><a class="headerlink" href="#mysqldump" title="Permanent link">&para;</a></h2>
+<h2 id="_3"><strong>四、恢复数据库</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <h3 id="1-source"><strong>1. 使用source命令</strong><a class="headerlink" href="#1-source" title="Permanent link">&para;</a></h3>
 <ul>
 <li>登录到MySQL数据库，执行source 备份sql脚本路径</li>
@@ -2782,7 +2782,7 @@ mysql&gt; select * from user_info;
 [root@localhost ~]# crontab -e
 0       0       *       *       *       /opt/bak_client.sh      //每天0:00备份
 </code></pre></div>
-<h3 id="_3"><strong>参考文章</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="_4"><strong>参考文章</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <ul>
 <li>https://satya-dba.blogspot.com/2021/09/percona-xtrabackup-installation.html</li>
 <li><a href="https://www.starcto.com/mysql/315.html">xtrabackup 解压ucloud数据库文章</a></li>

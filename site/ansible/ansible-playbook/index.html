@@ -2289,6 +2289,13 @@ $ ansible-playbook -i inventory/mac test_tag.yml --tag testccc --limit cpu-3.mac
 
 执行任务:
 [root@ansible ~]# ansible-playbook /etc/ansible/test.yml
+
+列出mac组中所有主机列表
+$ ansible mac --list
+  hosts (3):
+    cpu-1.mac
+    cpu-3.mac
+    cpu-4.mac
 </code></pre></div>
 <h2 id="ansible-playbook"><strong>Ansible playbook:</strong><a class="headerlink" href="#ansible-playbook" title="Permanent link">&para;</a></h2>
 <h3 id="1"><strong>1. 执行配置文件</strong><a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
@@ -2321,13 +2328,160 @@ YAML语法和其他高级语言类似，其结构通过缩进来展示，通过�
 </code></pre></div></p>
 <h3 id="5-template"><strong>5. Template模板</strong><a class="headerlink" href="#5-template" title="Permanent link">&para;</a></h3>
 <p>配置文件如果使用copy模块去下发的话，那么所有主机的配置都是一样的； 如果下发的配置文件里有可变的配置，需要用到template模块。</p>
-<p>列出mac组中所有主机列表
-<div class="highlight"><pre><span></span><code>$ ansible mac --list
-  hosts (3):
-    cpu-1.mac
-    cpu-3.mac
-    cpu-4.mac
-</code></pre></div></p>
+<p>5.1 利用template模块下发可变的配置文件</p>
+<div class="highlight"><pre><span></span><code>[root@ansible ~]# cat /tmp/test
+my name is {{ myname }} # 自定义变量
+my name is {{ ansible_all_ipv4_addresses[1] }}  # 系统变量
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>[root@ansible ~]# cat /etc/ansible/filevars.yml
+---
+- hosts: all
+  gather_facts: True    #开启系统变量
+  vars:
+  - myname: &quot;cloud&quot; #自定义变量
+  tasks:
+  - name: template test
+    template: src=/tmp/test dest=/root/test #使用template下发可变配置文件
+...
+[root@ansible ~]# ansible-playbook /etc/ansible/filevars.yml
+
+PLAY [all] ************************************************************************
+
+TASK [Gathering Facts] ************************************************************
+ok: [192.168.200.112]
+ok: [192.168.200.113]
+
+TASK [template test] **************************************************************
+changed: [192.168.200.113]
+changed: [192.168.200.112]
+
+PLAY RECAP ************************************************************************
+192.168.200.112            : ok=2    changed=1    unreachable=0    failed=0   
+192.168.200.113            : ok=2    changed=1    unreachable=0    failed=0  
+
+[root@client1 ~]# cat /tmp/test 
+ip 192.168.122.1 cpu 1
+time 2019-05-15
+</code></pre></div>
+<p>5.2 下发配置文件里面使用判断语法</p>
+<div class="highlight"><pre><span></span><code>[root@ansible ~]# vim /tmp/if.j2
+{% if PORT %}       #if PORT存在
+ip=0.0.0.0:{{ PORT }}
+{% else %}          #否则的话
+ip=0.0.0.0:80
+{% endif %}         #结尾
+[root@ansible ~]# vim /etc/ansible/test_ifvars.yml
+---
+- hosts: all
+  gather_facts: True    #开启系统内置变量
+  vars:
+  - PORT: 90        #自定义变量
+  tasks:
+  - name: jinja2 if test
+    template: src=/tmp/if.j2 dest=/root/test
+...
+[root@ansible ~]# ansible-playbook /etc/ansible/test_ifvars.yml
+
+PLAY [all] ************************************************************************
+
+TASK [Gathering Facts] ************************************************************
+ok: [192.168.200.112]
+ok: [192.168.200.113]
+
+TASK [jinja2 if test] *************************************************************
+changed: [192.168.200.112]
+changed: [192.168.200.113]
+
+PLAY RECAP ************************************************************************
+192.168.200.112            : ok=2    changed=1    unreachable=0    failed=0   
+192.168.200.113            : ok=2    changed=1    unreachable=0    failed=0  
+
+[root@client1 ~]# cat /root/test 
+       #if PORT存在
+ip=0.0.0.0:90
+         #结尾
+</code></pre></div>
+<p>以下是你给出的命令和输出的Markdown格式：</p>
+<div class="highlight"><pre><span></span><code><span class="k">1.</span> 将变量PORT值设为空，然后运行Ansible playbook：
+
+```shell
+<span class="gu">[root@ansible ~]# vim /etc/ansible/test_ifvars.yml</span>
+<span class="gu">---</span>
+<span class="k">-</span><span class="w"> </span>hosts: all
+  gather_facts: True    <span class="ni">#开启系统内置变量</span>
+  vars:
+<span class="w">  </span><span class="k">-</span><span class="w"> </span>PORT:         <span class="ni">#变量为空</span>
+  tasks:
+<span class="w">  </span><span class="k">-</span><span class="w"> </span>name: jinja2 if test
+    template: src=/tmp/if.j2 dest=/root/test
+...
+[root@ansible ~]# ansible-playbook /etc/ansible/test_ifvars.yml
+</code></pre></div>
+<p>运行结果：</p>
+<div class="highlight"><pre><span></span><code>PLAY<span class="w"> </span><span class="o">[</span>all<span class="o">]</span><span class="w"> </span>************************************************************************
+
+TASK<span class="w"> </span><span class="o">[</span>Gathering<span class="w"> </span>Facts<span class="o">]</span><span class="w"> </span>************************************************************
+ok:<span class="w"> </span><span class="o">[</span><span class="m">192</span>.168.200.112<span class="o">]</span>
+ok:<span class="w"> </span><span class="o">[</span><span class="m">192</span>.168.200.113<span class="o">]</span>
+
+TASK<span class="w"> </span><span class="o">[</span>jinja2<span class="w"> </span><span class="k">if</span><span class="w"> </span>test<span class="o">]</span><span class="w"> </span>*************************************************************
+changed:<span class="w"> </span><span class="o">[</span><span class="m">192</span>.168.200.112<span class="o">]</span>
+changed:<span class="w"> </span><span class="o">[</span><span class="m">192</span>.168.200.113<span class="o">]</span>
+
+PLAY<span class="w"> </span>RECAP<span class="w"> </span>************************************************************************
+<span class="m">192</span>.168.200.112<span class="w">            </span>:<span class="w"> </span><span class="nv">ok</span><span class="o">=</span><span class="m">2</span><span class="w">    </span><span class="nv">changed</span><span class="o">=</span><span class="m">1</span><span class="w">    </span><span class="nv">unreachable</span><span class="o">=</span><span class="m">0</span><span class="w">    </span><span class="nv">failed</span><span class="o">=</span><span class="m">0</span><span class="w">   </span>
+<span class="m">192</span>.168.200.113<span class="w">            </span>:<span class="w"> </span><span class="nv">ok</span><span class="o">=</span><span class="m">2</span><span class="w">    </span><span class="nv">changed</span><span class="o">=</span><span class="m">1</span><span class="w">    </span><span class="nv">unreachable</span><span class="o">=</span><span class="m">0</span><span class="w">    </span><span class="nv">failed</span><span class="o">=</span><span class="m">0</span>
+</code></pre></div>
+<p>在客户端检查生成的文件：</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>root@client1<span class="w"> </span>~<span class="o">]</span><span class="c1"># cat /root/test </span>
+<span class="w">          </span><span class="c1">#否则的话</span>
+<span class="nv">ip</span><span class="o">=</span><span class="m">0</span>.0.0.0:80
+<span class="w">         </span><span class="c1">#结尾</span>
+</code></pre></div>
+<ol>
+<li>使用Ansible playbook下发可执行动作的可变的nginx配置文件：</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>root@ansible<span class="w"> </span>~<span class="o">]</span><span class="c1"># cp nginx.conf /tmp/nginx.j2</span>
+<span class="o">[</span>root@ansible<span class="w"> </span>~<span class="o">]</span><span class="c1"># head -3 /tmp/nginx.j2</span>
+<span class="c1">#user  nobody;</span>
+worker_processes<span class="w">  </span><span class="o">{{</span><span class="w"> </span>ansible_processor_vcpus<span class="w"> </span><span class="o">}}</span><span class="p">;</span><span class="w">    </span><span class="c1">#可变的参数</span>
+</code></pre></div>
+<p>创建并运行Ansible playbook：</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>root@ansible<span class="w"> </span>~<span class="o">]</span><span class="c1"># cat /etc/ansible/test_nginxvars.yml</span>
+---
+-<span class="w"> </span>hosts:<span class="w"> </span>all
+<span class="w">  </span>gather_facts:<span class="w"> </span>True<span class="w">    </span><span class="c1">#开启系统内置变量</span>
+<span class="w">  </span>tasks:
+<span class="w">  </span>-<span class="w"> </span>name:<span class="w"> </span>nginx<span class="w"> </span>conf
+<span class="w">    </span>template:<span class="w"> </span><span class="nv">src</span><span class="o">=</span>/tmp/nginx.j2<span class="w"> </span><span class="nv">dest</span><span class="o">=</span>/usr/local/nginx/conf/nginx.conf
+<span class="w">    </span>notify:
+<span class="w">    </span>-<span class="w"> </span>reload<span class="w"> </span>nginx<span class="w">  </span><span class="c1">#下发通知给handlers模块执行名字叫做reload nginx的动作</span>
+<span class="w">  </span>handlers:<span class="w"> </span><span class="c1">#定义动作</span>
+<span class="w">  </span>-<span class="w"> </span>name:<span class="w"> </span>reload<span class="w"> </span>nginx<span class="w">  </span><span class="c1">#动作的名字</span>
+<span class="w">    </span>shell:<span class="w"> </span>/usr/local/nginx/sbin/nginx<span class="w"> </span>-s<span class="w"> </span>reload
+...
+<span class="o">[</span>root@ansible<span class="w"> </span>~<span class="o">]</span><span class="c1"># ansible-playbook /etc/ansible/test_nginxvars.yml</span>
+</code></pre></div>
+<p>运行结果：</p>
+<div class="highlight"><pre><span></span><code>PLAY<span class="w"> </span><span class="o">[</span>all<span class="o">]</span><span class="w"> </span>************************************************************************
+
+TASK<span class="w"> </span><span class="o">[</span>Gathering<span class="w"> </span>Facts<span class="o">]</span><span class="w"> </span>************************************************************
+ok:<span class="w"> </span><span class="o">[</span><span class="m">192</span>.168.200.113<span class="o">]</span>
+ok:<span class="w"> </span><span class="o">[</span><span class="m">192</span>.168.200.112<span class="o">]</span>
+
+TASK<span class="w"> </span><span class="o">[</span>nginx<span class="w"> </span>conf<span class="o">]</span><span class="w"> </span>*****************************************************************
+ok:<span class="w"> </span><span class="o">[</span><span class="m">192</span>.168.200.112<span class="o">]</span>
+ok:<span class="w"> </span><span class="o">[</span><span class="m">192</span>.168.200.113<span class="o">]</span>
+
+PLAY<span class="w"> </span>RECAP<span class="w"> </span>************************************************************************
+<span class="m">192</span>.168.200.112<span class="w">            </span>:<span class="w"> </span><span class="nv">ok</span><span class="o">=</span><span class="m">2</span><span class="w">    </span><span class="nv">changed</span><span class="o">=</span><span class="m">0</span><span class="w">    </span><span class="nv">unreachable</span><span class="o">=</span><span class="m">0</span><span class="w">    </span><span class="nv">failed</span><span class="o">=</span><span class="m">0</span><span class="w">   </span>
+<span class="m">192</span>.168.200.113<span class="w">            </span>:<span class="w"> </span><span class="nv">ok</span><span class="o">=</span><span class="m">2</span><span class="w">    </span><span class="nv">changed</span><span class="o">=</span><span class="m">0</span><span class="w">    </span><span class="nv">unreachable</span><span class="o">=</span><span class="m">0</span><span class="w">    </span><span class="nv">failed</span><span class="o">=</span><span class="m">0</span><span class="w">  </span>
+</code></pre></div>
+<p>在客户端检查生成的配置文件：</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>root@client1<span class="w"> </span>~<span class="o">]</span><span class="c1"># head -3 /usr/local/nginx/conf/nginx.conf</span>
+<span class="c1">#user  nobody;</span>
+worker_processes<span class="w">  </span><span class="m">1</span><span class="p">;</span>
+</code></pre></div>
 
               
             </article>

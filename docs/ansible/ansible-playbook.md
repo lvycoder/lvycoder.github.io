@@ -110,6 +110,13 @@ $ ansible-playbook -i inventory/mac test_tag.yml --tag testccc --limit cpu-3.mac
 执行任务:
 [root@ansible ~]# ansible-playbook /etc/ansible/test.yml
 
+列出mac组中所有主机列表
+$ ansible mac --list
+  hosts (3):
+    cpu-1.mac
+    cpu-3.mac
+    cpu-4.mac
+
 ```
 
 
@@ -174,12 +181,188 @@ YAML语法和其他高级语言类似，其结构通过缩进来展示，通过�
 
 配置文件如果使用copy模块去下发的话，那么所有主机的配置都是一样的； 如果下发的配置文件里有可变的配置，需要用到template模块。
 
+5.1 利用template模块下发可变的配置文件
 
-列出mac组中所有主机列表
 ```
-$ ansible mac --list
-  hosts (3):
-    cpu-1.mac
-    cpu-3.mac
-    cpu-4.mac
+[root@ansible ~]# cat /tmp/test
+my name is {{ myname }} # 自定义变量
+my name is {{ ansible_all_ipv4_addresses[1] }}  # 系统变量
 ```
+
+
+```
+[root@ansible ~]# cat /etc/ansible/filevars.yml
+---
+- hosts: all
+  gather_facts: True    #开启系统变量
+  vars:
+  - myname: "cloud" #自定义变量
+  tasks:
+  - name: template test
+    template: src=/tmp/test dest=/root/test #使用template下发可变配置文件
+...
+[root@ansible ~]# ansible-playbook /etc/ansible/filevars.yml
+
+PLAY [all] ************************************************************************
+
+TASK [Gathering Facts] ************************************************************
+ok: [192.168.200.112]
+ok: [192.168.200.113]
+
+TASK [template test] **************************************************************
+changed: [192.168.200.113]
+changed: [192.168.200.112]
+
+PLAY RECAP ************************************************************************
+192.168.200.112            : ok=2    changed=1    unreachable=0    failed=0   
+192.168.200.113            : ok=2    changed=1    unreachable=0    failed=0  
+
+[root@client1 ~]# cat /tmp/test 
+ip 192.168.122.1 cpu 1
+time 2019-05-15
+```
+
+5.2 下发配置文件里面使用判断语法
+
+```
+[root@ansible ~]# vim /tmp/if.j2
+{% if PORT %}       #if PORT存在
+ip=0.0.0.0:{{ PORT }}
+{% else %}          #否则的话
+ip=0.0.0.0:80
+{% endif %}         #结尾
+[root@ansible ~]# vim /etc/ansible/test_ifvars.yml
+---
+- hosts: all
+  gather_facts: True    #开启系统内置变量
+  vars:
+  - PORT: 90        #自定义变量
+  tasks:
+  - name: jinja2 if test
+    template: src=/tmp/if.j2 dest=/root/test
+...
+[root@ansible ~]# ansible-playbook /etc/ansible/test_ifvars.yml
+
+PLAY [all] ************************************************************************
+
+TASK [Gathering Facts] ************************************************************
+ok: [192.168.200.112]
+ok: [192.168.200.113]
+
+TASK [jinja2 if test] *************************************************************
+changed: [192.168.200.112]
+changed: [192.168.200.113]
+
+PLAY RECAP ************************************************************************
+192.168.200.112            : ok=2    changed=1    unreachable=0    failed=0   
+192.168.200.113            : ok=2    changed=1    unreachable=0    failed=0  
+
+[root@client1 ~]# cat /root/test 
+       #if PORT存在
+ip=0.0.0.0:90
+         #结尾
+```
+
+
+
+以下是你给出的命令和输出的Markdown格式：
+
+```markdown
+1. 将变量PORT值设为空，然后运行Ansible playbook：
+
+```shell
+[root@ansible ~]# vim /etc/ansible/test_ifvars.yml
+---
+- hosts: all
+  gather_facts: True    #开启系统内置变量
+  vars:
+  - PORT:         #变量为空
+  tasks:
+  - name: jinja2 if test
+    template: src=/tmp/if.j2 dest=/root/test
+...
+[root@ansible ~]# ansible-playbook /etc/ansible/test_ifvars.yml
+```
+
+运行结果：
+
+```shell
+PLAY [all] ************************************************************************
+
+TASK [Gathering Facts] ************************************************************
+ok: [192.168.200.112]
+ok: [192.168.200.113]
+
+TASK [jinja2 if test] *************************************************************
+changed: [192.168.200.112]
+changed: [192.168.200.113]
+
+PLAY RECAP ************************************************************************
+192.168.200.112            : ok=2    changed=1    unreachable=0    failed=0   
+192.168.200.113            : ok=2    changed=1    unreachable=0    failed=0
+```
+
+在客户端检查生成的文件：
+
+```shell
+[root@client1 ~]# cat /root/test 
+          #否则的话
+ip=0.0.0.0:80
+         #结尾
+```
+
+2. 使用Ansible playbook下发可执行动作的可变的nginx配置文件：
+
+```shell
+[root@ansible ~]# cp nginx.conf /tmp/nginx.j2
+[root@ansible ~]# head -3 /tmp/nginx.j2
+#user  nobody;
+worker_processes  {{ ansible_processor_vcpus }};	#可变的参数
+```
+
+创建并运行Ansible playbook：
+
+```shell
+[root@ansible ~]# cat /etc/ansible/test_nginxvars.yml
+---
+- hosts: all
+  gather_facts: True    #开启系统内置变量
+  tasks:
+  - name: nginx conf
+    template: src=/tmp/nginx.j2 dest=/usr/local/nginx/conf/nginx.conf
+    notify:
+    - reload nginx  #下发通知给handlers模块执行名字叫做reload nginx的动作
+  handlers: #定义动作
+  - name: reload nginx  #动作的名字
+    shell: /usr/local/nginx/sbin/nginx -s reload
+...
+[root@ansible ~]# ansible-playbook /etc/ansible/test_nginxvars.yml
+```
+
+运行结果：
+
+```shell
+PLAY [all] ************************************************************************
+
+TASK [Gathering Facts] ************************************************************
+ok: [192.168.200.113]
+ok: [192.168.200.112]
+
+TASK [nginx conf] *****************************************************************
+ok: [192.168.200.112]
+ok: [192.168.200.113]
+
+PLAY RECAP ************************************************************************
+192.168.200.112            : ok=2    changed=0    unreachable=0    failed=0   
+192.168.200.113            : ok=2    changed=0    unreachable=0    failed=0  
+```
+
+在客户端检查生成的配置文件：
+
+```shell
+[root@client1 ~]# head -3 /usr/local/nginx/conf/nginx.conf
+#user  nobody;
+worker_processes  1;
+```
+
+

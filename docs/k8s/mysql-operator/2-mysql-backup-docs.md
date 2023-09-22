@@ -233,7 +233,7 @@ mysqldump -u用户名 -p [密码] -d 数据库名 表名 > /备份路径/备份�
 [root@localhost ~]# cat backup/desc_mysql_user-20181214.sql
 ```
 
-## **四、使用mysqldump备份后，恢复数据库**
+## **四、恢复数据库**
 ### **1. 使用source命令**
 
 - 登录到MySQL数据库，执行source 备份sql脚本路径
