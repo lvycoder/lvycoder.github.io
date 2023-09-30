@@ -155,7 +155,7 @@ nav:
         - Github仓库同步至Gitee: Devops/4-github-gitee-doc.md
         - Google 浏览器扩展: Devops/3-github-docs.md
 
-    - 9、Ansible自动化:
+    - 9、运维自动化:
         - Ansible 应用基础: ansible/ansible-case1.md
         - Ansible 高级用法: ansible/ansible-docs2.md
         - Ansible 安装: ansible/ansible-install-docs.md
@@ -175,8 +175,9 @@ nav:
         - dns 文件权限调整: error/centos-dns-error-docs.md
 
     - 关于我:
-        - 我的2021: mylife/life-docs1.md
+        - 我的2021: mylife/2021-life-docs.md
         - 我的2022: mylife/2022-life-docs.md
+        - 我的2023: mylife/2023-life-docs.md
 
 
 plugins:

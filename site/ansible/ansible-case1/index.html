@@ -362,7 +362,7 @@
   
     <li class="md-tabs__item">
       <a href="./" class="md-tabs__link md-tabs__link--active">
-        9、Ansible自动化
+        9、运维自动化
       </a>
     </li>
   
@@ -393,7 +393,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../mylife/life-docs1/" class="md-tabs__link">
+      <a href="../../mylife/2021-life-docs/" class="md-tabs__link">
         关于我
       </a>
     </li>
@@ -1649,14 +1649,14 @@
       
       
         <label class="md-nav__link" for="__nav_11">
-          9、Ansible自动化
+          9、运维自动化
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="9、Ansible自动化" data-md-level="1">
+      <nav class="md-nav" aria-label="9、运维自动化" data-md-level="1">
         <label class="md-nav__title" for="__nav_11">
           <span class="md-nav__icon md-icon"></span>
-          9、Ansible自动化
+          9、运维自动化
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -1835,6 +1835,20 @@
           <li class="md-nav__item">
   <a href="#14-hostname" class="md-nav__link">
     14. hostname 模块
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-cron" class="md-nav__link">
+    15. cron 模块
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-lineinfile" class="md-nav__link">
+    16. Lineinfile 模块
   </a>
   
 </li>
@@ -2144,6 +2158,8 @@
         
           
         
+          
+        
       
       
         <label class="md-nav__link" for="__nav_13">
@@ -2164,7 +2180,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../mylife/life-docs1/" class="md-nav__link">
+      <a href="../../mylife/2021-life-docs/" class="md-nav__link">
         我的2021
       </a>
     </li>
@@ -2180,6 +2196,20 @@
     <li class="md-nav__item">
       <a href="../../mylife/2022-life-docs/" class="md-nav__link">
         我的2022
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mylife/2023-life-docs/" class="md-nav__link">
+        我的2023
       </a>
     </li>
   
@@ -2358,6 +2388,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#15-cron" class="md-nav__link">
+    15. cron 模块
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-lineinfile" class="md-nav__link">
+    16. Lineinfile 模块
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2504,6 +2548,21 @@ master.pve<span class="w"> </span><span class="nv">hostname</span><span class="o
 </code></pre></div>
 <hr />
 <p>Ansible 自带了很多模块，能够下发执行 Ansible 的各种管理任务。首先来了解下 Ansible 常用的这些核心模块。</p>
+<p>探测模块:
+<div class="highlight"><pre><span></span><code>$ ansible mac -m ping
+cpu-4.mac | SUCCESS =&gt; {
+    &quot;changed&quot;: false,
+    &quot;ping&quot;: &quot;pong&quot;
+}
+cpu-3.mac | SUCCESS =&gt; {
+    &quot;changed&quot;: false,
+    &quot;ping&quot;: &quot;pong&quot;
+}
+cpu-1.mac | SUCCESS =&gt; {
+    &quot;changed&quot;: false,
+    &quot;ping&quot;: &quot;pong&quot;
+}
+</code></pre></div></p>
 <h3 id="1-command"><strong>1. command 模块</strong><a class="headerlink" href="#1-command" title="Permanent link">&para;</a></h3>
 <p>Ansibale 管理工具使用-m 选项来指定所使用模块，默认使用 command 模块，即 -m 选 项省略时会运行此模块，用于在被管理主机上运行命令。例如在被管理主机上执行 date 命令，显示被管理主机时间。有三种执行命令的方式来管理写入主机清单中的主机。</p>
 <p>示例一：使用 IP 地址查看被管理主机日期
@@ -2733,6 +2792,18 @@ hello<span class="w"> </span>tom
 <h3 id="14-hostname"><strong>14. hostname 模块</strong><a class="headerlink" href="#14-hostname" title="Permanent link">&para;</a></h3>
 <p>可以利用hostname 给主机修改主机名</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ansible<span class="w"> </span>cka-1<span class="w"> </span>-m<span class="w"> </span>hostname<span class="w"> </span>-a<span class="w"> </span><span class="s1">&#39;name=nginx01&#39;</span>
+</code></pre></div>
+<h3 id="15-cron"><strong>15. cron 模块</strong><a class="headerlink" href="#15-cron" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>$ ansible mac -m cron -a &#39;hour=2 minute=30 weekday=1-5 name=&quot;backup mysql&quot; job=/root/lixie.sh&#39; # 创建计划任务
+$ ansible mac -m cron -a &#39;hour=2 minute=30 weekday=1-5 name=&quot;backup mysql&quot; job=/root/lixie.sh disabled=yes&#39; # 禁用计划任务
+$ ansible mac -m cron -a &#39;hour=2 minute=30 weekday=1-5 name=&quot;backup mysql&quot; job=/root/lixie.sh disabled=no&#39; # 启用计划任务
+$ ansible mac -m cron -a &#39;hour=2 minute=30 weekday=1-5 name=&quot;backup mysql&quot; job=/root/lixie.sh state=absent&#39; # 删除计划任务
+$ ansible mac -m shell -a &quot;crontab -l&quot; # 查看计划任务
+</code></pre></div>
+<h3 id="16-lineinfile"><strong>16. Lineinfile 模块</strong><a class="headerlink" href="#16-lineinfile" title="Permanent link">&para;</a></h3>
+<p>允许你在文件中搜索特定的行，并在找到匹配项时替换它。如果没有找到匹配项，它将添加一个新的行</p>
+<p>你可以使用Ansible的命令行方式来执行<code>lineinfile</code>模块。这是一个示例，它使用<code>ansible</code>命令来确保SELinux设置为强制模式：</p>
+<div class="highlight"><pre><span></span><code>ansible<span class="w"> </span>localhost<span class="w"> </span>-m<span class="w"> </span>lineinfile<span class="w"> </span>-a<span class="w"> </span><span class="s2">&quot;path=/etc/selinux/config regexp=&#39;^SELINUX=&#39; line=&#39;SELINUX=enforcing&#39;&quot;</span>
 </code></pre></div>
 <h2 id="ansible_4"><strong>Ansible 案例</strong><a class="headerlink" href="#ansible_4" title="Permanent link">&para;</a></h2>
 <h4 id="create_useryaml"><strong>案例一：create_user.yaml</strong><a class="headerlink" href="#create_useryaml" title="Permanent link">&para;</a></h4>

@@ -362,7 +362,7 @@
   
     <li class="md-tabs__item">
       <a href="../ansible-case1/" class="md-tabs__link md-tabs__link--active">
-        9、Ansible自动化
+        9、运维自动化
       </a>
     </li>
   
@@ -393,7 +393,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../mylife/life-docs1/" class="md-tabs__link">
+      <a href="../../mylife/2021-life-docs/" class="md-tabs__link">
         关于我
       </a>
     </li>
@@ -1649,14 +1649,14 @@
       
       
         <label class="md-nav__link" for="__nav_11">
-          9、Ansible自动化
+          9、运维自动化
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="9、Ansible自动化" data-md-level="1">
+      <nav class="md-nav" aria-label="9、运维自动化" data-md-level="1">
         <label class="md-nav__title" for="__nav_11">
           <span class="md-nav__icon md-icon"></span>
-          9、Ansible自动化
+          9、运维自动化
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -2036,6 +2036,8 @@
         
           
         
+          
+        
       
       
         <label class="md-nav__link" for="__nav_13">
@@ -2056,7 +2058,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../mylife/life-docs1/" class="md-nav__link">
+      <a href="../../mylife/2021-life-docs/" class="md-nav__link">
         我的2021
       </a>
     </li>
@@ -2072,6 +2074,20 @@
     <li class="md-nav__item">
       <a href="../../mylife/2022-life-docs/" class="md-nav__link">
         我的2022
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mylife/2023-life-docs/" class="md-nav__link">
+        我的2023
       </a>
     </li>
   
@@ -2275,9 +2291,6 @@ playbook: /etc/ansible/test.yml             //没有报错提示
 <div class="highlight"><pre><span></span><code>预测试:
 [root@ansible ~]# ansible-playbook -C /etc/ansible/test.yaml 
 
-列出主机:
-$ ansible-playbook --list-hosts /etc/ansible/test.yml 
-
 列出任务:
 $ ansible-playbook --list-tasks /etc/ansible/test.yml 
 // 只执行cpu-3.mac 主机上tag为testccc
@@ -2290,8 +2303,14 @@ $ ansible-playbook -i inventory/mac test_tag.yml --tag testccc --limit cpu-3.mac
 执行任务:
 [root@ansible ~]# ansible-playbook /etc/ansible/test.yml
 
-列出mac组中所有主机列表
+
+列出主机:
 $ ansible mac --list
+  hosts (3):
+    cpu-1.mac
+    cpu-3.mac
+    cpu-4.mac
+$ ansible mac --list-hosts
   hosts (3):
     cpu-1.mac
     cpu-3.mac

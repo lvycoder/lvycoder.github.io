@@ -95,9 +95,6 @@ playbook: /etc/ansible/test.yml				//没有报错提示
 预测试:
 [root@ansible ~]# ansible-playbook -C /etc/ansible/test.yaml 
 
-列出主机:
-$ ansible-playbook --list-hosts /etc/ansible/test.yml 
-
 列出任务:
 $ ansible-playbook --list-tasks /etc/ansible/test.yml 
 // 只执行cpu-3.mac 主机上tag为testccc
@@ -110,8 +107,14 @@ $ ansible-playbook -i inventory/mac test_tag.yml --tag testccc --limit cpu-3.mac
 执行任务:
 [root@ansible ~]# ansible-playbook /etc/ansible/test.yml
 
-列出mac组中所有主机列表
+
+列出主机:
 $ ansible mac --list
+  hosts (3):
+    cpu-1.mac
+    cpu-3.mac
+    cpu-4.mac
+$ ansible mac --list-hosts
   hosts (3):
     cpu-1.mac
     cpu-3.mac

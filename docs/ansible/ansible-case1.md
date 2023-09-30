@@ -122,6 +122,23 @@ ansible-doc 工具用于查看模块帮助信息。主要选项包括：
 ---
 Ansible 自带了很多模块，能够下发执行 Ansible 的各种管理任务。首先来了解下 Ansible 常用的这些核心模块。
 
+探测模块:
+```
+$ ansible mac -m ping
+cpu-4.mac | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+cpu-3.mac | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+cpu-1.mac | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+```
+
 
 ### **1. command 模块**
 Ansibale 管理工具使用-m 选项来指定所使用模块，默认使用 command 模块，即 -m 选 项省略时会运行此模块，用于在被管理主机上运行命令。例如在被管理主机上执行 date 命令，显示被管理主机时间。有三种执行命令的方式来管理写入主机清单中的主机。
@@ -489,6 +506,40 @@ $ ansible cka-1 -m hostname -a 'name=nginx01'
 ```
 
 
+### **15. cron 模块**
+
+```
+$ ansible mac -m cron -a 'hour=2 minute=30 weekday=1-5 name="backup mysql" job=/root/lixie.sh' # 创建计划任务
+$ ansible mac -m cron -a 'hour=2 minute=30 weekday=1-5 name="backup mysql" job=/root/lixie.sh disabled=yes' # 禁用计划任务
+$ ansible mac -m cron -a 'hour=2 minute=30 weekday=1-5 name="backup mysql" job=/root/lixie.sh disabled=no' # 启用计划任务
+$ ansible mac -m cron -a 'hour=2 minute=30 weekday=1-5 name="backup mysql" job=/root/lixie.sh state=absent' # 删除计划任务
+$ ansible mac -m shell -a "crontab -l" # 查看计划任务
+
+
+```
+
+### **16. Lineinfile 模块**
+允许你在文件中搜索特定的行，并在找到匹配项时替换它。如果没有找到匹配项，它将添加一个新的行
+
+
+你可以使用Ansible的命令行方式来执行`lineinfile`模块。这是一个示例，它使用`ansible`命令来确保SELinux设置为强制模式：
+
+```bash
+ansible localhost -m lineinfile -a "path=/etc/selinux/config regexp='^SELINUX=' line='SELINUX=enforcing'"
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -497,14 +548,6 @@ $ ansible cka-1 -m hostname -a 'name=nginx01'
 
 
 ## **Ansible 案例**
-
-
-
-
-
-
-
-
 
 
 #### **案例一：create_user.yaml**
