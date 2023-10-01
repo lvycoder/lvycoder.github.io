@@ -41,6 +41,8 @@ Hello，大家好，2022已经过去，如今疫情也过去了，终于不用�
 
 
 ### **《公司篇》**
+年后刚刚来,老王的红包
+![20231001112320](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231001112320.png)
 
 小琴同学过生日
 ![20230930230838](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog20230930230838.png)
@@ -57,8 +59,13 @@ Hello，大家好，2022已经过去，如今疫情也过去了，终于不用�
 
 铁打的流水线,帅气工作的我(多谢三羊~拍的很帅)
 
-![20230930231408](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog20230930231408.png)
+![20231001105057](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231001105057.png)
 
+来自老王的发言
+![20231001110841](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231001110841.png)
+
+这张图就很有趣了
+![20231001110902](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231001110902.png)
 
 ### **《练车篇》**
 
@@ -81,10 +88,14 @@ Hello，大家好，2022已经过去，如今疫情也过去了，终于不用�
 ### **《成就篇》**
 
 获得两个认证,还参加的 kubecon 的活动.
-![20230930231827](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog20230930231827.png)
 
-![20230930231845](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog20230930231845.png)
+![20231001104315](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231001104315.png)
 
+![20231001104331](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231001104331.png)
+
+kubecon 活动
+
+![20231001105444](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231001105444.png)
 
 农业银行架构师
 
@@ -92,10 +103,57 @@ Hello，大家好，2022已经过去，如今疫情也过去了，终于不用�
 
 ![IMG_3081](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blogIMG_3081.jpg)
 
+阿里小哥的containerd 的分享
+![20231001105658](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231001105658.png)
+
 kubecon 大会展台
 
 ![IMG_3109](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blogIMG_3109.jpg)
 
+![20231001110147](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231001110147.png)
+
+![20231001105955](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231001105955.png)
+感觉挺好玩,算了一卦
+
+![20231001105744](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231001105744.png)
+
+出门暴富太粗鲁了,就前程似锦吧.哈哈
+
+![20231001105813](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231001105813.png)
+
+![20231001105832](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231001105832.png)
+
 ### **《个人篇》**
 
-![20230930232300](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog20230930232300.png)
+
+见了以下一个好哥们,(鹏哥,超哥,庚哥,旭哥,兴哥,瑞豪,老徐,胖子)
+
+![20231001110306](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231001110306.png)
+
+![20231001110403](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231001110403.png)
+
+![20231001110422](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231001110422.png)
+
+![20231001110443](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231001110443.png)
+
+![20231001110711](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231001110711.png)
+
+![20231001110744](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231001110744.png)
+
+![20231001111542](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231001111542.png)
+
+
+就是吃吃吃
+![20231001111609](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231001111609.png)
+
+这小家伙真的萌
+![20231001112037](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231001112037.png)
+
+
+
+表妹在威海写的我的名字(就当我也去过了)
+
+![20231001105335](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231001105335.png)
+
+国庆快乐
+![20231001104026](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231001104026.png)
