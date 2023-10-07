@@ -40,6 +40,24 @@ Hello，大家好，2022已经过去，如今疫情也过去了，终于不用�
 ![IMG_3041](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blogIMG_3041.jpg)
 
 
+### **《广州篇》**
+
+广州出差拍了一些好看的风景
+![20231005174000](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231005174000.png)
+
+下面就快到广州的地界了
+![20231005174148](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231005174148.png)
+
+广州塔来了
+![20231007155829](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231007155829.png)
+
+![20231007155903](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231007155903.png)
+
+
+最后一天和华杰吃的烧烤还不错
+
+![20231007160040](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231007160040.png)
+
 ### **《公司篇》**
 年后刚刚来,老王的红包
 ![20231001112320](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231001112320.png)
@@ -123,6 +141,8 @@ kubecon 大会展台
 
 ![20231001105832](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231001105832.png)
 
+国庆节日全款给老爸拿下他喜欢的车
+![20231007160402](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231007160402.png)
 ### **《个人篇》**
 
 
