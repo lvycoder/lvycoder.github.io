@@ -124,7 +124,9 @@ nav:
         - 项目二: basic/9-install-keepalived-cluster.md
 
     - 4、运维开发:
-         - GO开发: go/go-base-docs.md
+         - Python 开发-基础语法: python/1-python-docs.md
+         - GO开发-环境安装: go/go-base-docs.md
+         - GO 开发-操作符和表达式: go/2-go-docs.md
          - 模块: python/module-docs.md
         
     - 5、数据库:
