@@ -29,8 +29,8 @@
 
  ![20231008141803](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231008141803.png)
 
-  
-  ### **OpenKruise**
+
+### **OpenKruise**
 
 OpenKruise 是一个基于 Kubernetes 的扩展套件，主要聚焦于云原生应用的自动化，比如 部署、发布、运维以及可用性防护。
 
@@ -43,12 +43,14 @@ OpenKruise 是一个基于 Kubernetes 的扩展套件，主要聚焦于云原生
 
 
 
-文档参考：
+学习文档：
 
-- [第一期文档：](www.qikqiak.com/k8strain)
+- [第一期文档: ](www.qikqiak.com/k8strain)
 
-- [第二期文档：](www.qikqiak.com/k8strain2)
+- [第二期文档: ](www.qikqiak.com/k8strain2)
 
-- [第三期文档：](www.qikqiak.com/k3s)
+- [第三期文档: ](www.qikqiak.com/k3s)
+
+- [kubecon 会议: ](https://www.lfasiallc.com/kubecon-cloudnativecon-open-source-summit-china/) 
 
 
