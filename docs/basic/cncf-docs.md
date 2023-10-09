@@ -45,11 +45,11 @@ OpenKruise 是一个基于 Kubernetes 的扩展套件，主要聚焦于云原生
 
 ### **学习文档：**
 
-- [第一期文档: ](www.qikqiak.com/k8strain)
+- www.qikqiak.com/k8strain
 
-- [第二期文档: ](www.qikqiak.com/k8strain2)
+- www.qikqiak.com/k8strain2
 
-- [第三期文档: ](www.qikqiak.com/k3s)
+- www.qikqiak.com/k3s
 
 - [kubecon 会议: ](https://www.lfasiallc.com/kubecon-cloudnativecon-open-source-summit-china/) 
 
