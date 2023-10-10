@@ -43,3 +43,49 @@ salary = 30000.1  # 记下人的薪资为30000.1元
 ### **基本数据类型**
 
 在 python 中常用的数据类型包含以下几种(int 类型,float 浮点型,字符串类型,列表,字典,布尔值)
+
+#### int 类型: 
+- 用来记录年龄,年份,学生人数等相关状态
+
+```
+age = 18
+class_id  = 176
+```
+#### float浮点型:
+- 用来记录身高体重,薪资这些小数的状态
+
+```python
+weight=11.5
+height=3434.4
+```
+
+#### 字符串类型:
+- 用来记录人的名字,住址,描述性质状态
+
+```python 
+dog_name = 'tom'
+dog_address = '朝阳'
+dog_sex = '公'
+```
+
+- 用单引号,多引号,都可以定义字符串,本质上是没有区别的
+
+```
+msg = 'my name is lili'
+```
+
+- 使用:
+
+```
+name='zhangsan'
+age='18'
+print(name + age) # 相加就是简单的字符串拼接
+zhangsan18
+
+
+print(name * 5)
+zhangsanzhangsanzhangsanzhangsanzhangsan # 相乘就相当于字符串*5
+```
+
+#### 列表:
+

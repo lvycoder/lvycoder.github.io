@@ -1218,6 +1218,8 @@
         
           
         
+          
+        
       
       
         <label class="md-nav__link" for="__nav_7">
@@ -1282,6 +1284,20 @@
     <li class="md-nav__item">
       <a href="../../k8s/mysql-operator/3-mysql-backup-error-docs/" class="md-nav__link">
         数据库问题处理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../redis/redis-class-docs/" class="md-nav__link">
+        redis 大纲
       </a>
     </li>
   
@@ -1879,6 +1895,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#master" class="md-nav__link">
+    单Master节点集群
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#k3s_2" class="md-nav__link">
     部署 k3s 集群
   </a>
@@ -1894,14 +1917,35 @@
       
         <li class="md-nav__item">
   <a href="#k3s_3" class="md-nav__link">
-    卸载k3s
+    高可用k3s集群
   </a>
   
-    <nav class="md-nav" aria-label="卸载k3s">
+    <nav class="md-nav" aria-label="高可用k3s集群">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
+    环境准备:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    高可用部署:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#k3s_4" class="md-nav__link">
+    卸载k3s
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
     参考文章
   </a>
   
@@ -2171,6 +2215,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#master" class="md-nav__link">
+    单Master节点集群
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#k3s_2" class="md-nav__link">
     部署 k3s 集群
   </a>
@@ -2186,14 +2237,35 @@
       
         <li class="md-nav__item">
   <a href="#k3s_3" class="md-nav__link">
-    卸载k3s
+    高可用k3s集群
   </a>
   
-    <nav class="md-nav" aria-label="卸载k3s">
+    <nav class="md-nav" aria-label="高可用k3s集群">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
+    环境准备:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    高可用部署:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#k3s_4" class="md-nav__link">
+    卸载k3s
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
     参考文章
   </a>
   
@@ -2268,6 +2340,7 @@
 <p>一键安装docker脚本：
 <div class="highlight"><pre><span></span><code>curl https://releases.rancher.com/install-docker/20.10.sh | sh
 </code></pre></div></p>
+<h2 id="master">单Master节点集群<a class="headerlink" href="#master" title="Permanent link">&para;</a></h2>
 <h2 id="k3s_2"><strong>部署 k3s 集群</strong><a class="headerlink" href="#k3s_2" title="Permanent link">&para;</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -2295,16 +2368,118 @@ K10c549fbf4c0197251998eff2e9f451222f297839d4c9150543e6b1b7935a46936::server:588e
 <p>指定安装：
 <div class="highlight"><pre><span></span><code>curl -sfL http://rancher-mirror.cnrancher.com/k3s/k3s-install.sh | INSTALL_K3S_VERSION=v1.22.5+k3s1 INSTALL_K3S_MIRROR=cn K3S_URL=https://192.168.0.202:6443 K3S_TOKEN=K10e3cfbb8fc176b66cb7957997cd7d01958fbbdd507d3c49b75ff819cd0a93905b::server:cba4412e36cc16e5a92137bf987d575d  INSTALL_K3S_EXEC=&quot;--docker&quot;  sh -
 </code></pre></div></p>
-<h2 id="k3s_3">卸载k3s<a class="headerlink" href="#k3s_3" title="Permanent link">&para;</a></h2>
+<h2 id="k3s_3"><strong>高可用k3s集群</strong><a class="headerlink" href="#k3s_3" title="Permanent link">&para;</a></h2>
+<p>单服务器集群可以满足各种用例，但如果你的环境对 Kubernetes control plane 的正常运行时间有要求，你可以在 HA 配置中运行 K3s。一个高可用 K3s 集群包括：</p>
+<ul>
+<li>三个或多个 Server 节点为 Kubernetes API 提供服务并运行其他 control plane 服务</li>
+<li>嵌入式 etcd 数据存储（与单节点设置中使用的嵌入式 SQLite 数据存储相反）</li>
+</ul>
+<p>如下图所示: (使用内嵌 etcd 作为存储)</p>
+<ul>
+<li>我们可以使用 Ucloud 或者其他云的 ulb 作为负载均衡,在创建三台机器作为 k3s-server,一台机器作为 k3s-agent</li>
+</ul>
+<p><img alt="20231010142750" src="https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231010142750.png" /></p>
+<h3 id="_3"><strong>环境准备:</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li>ucloud 的内网 ulb 是需要在每台 master 做额外的设置的</li>
+</ul>
+<p>步骤:
+- 需要在每台机器下增加文件 /etc/netplan/lo-cloud-init.yaml，其中 <code>$VIP</code> 为 ulb 的内网 IP</p>
+<div class="highlight"><pre><span></span><code>network:
+    ethernets:
+        lo:
+            addresses:
+            - $VIP/32
+</code></pre></div>
+<ul>
+<li>执行命令 sudo netplan apply</li>
+</ul>
+<p>通过命令 ip a 可以看到 lo 的网卡已经增加了 $VIP。如果没有生效可以尝试重启试试.</p>
+<div class="admonition warning">
+<p class="admonition-title">温馨提示</p>
+<p>k3s 默认使用的容器运行时是 containerd,我不太习惯,仍然使用 docker 作为容器运行时.</p>
+<ul>
+<li>可以使用: <code>curl https://releases.rancher.com/install-docker/20.10.sh | sh</code></li>
+</ul>
+</div>
+<h3 id="_4"><strong>高可用部署:</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>创建一个 master 节点</li>
+<li>然后将后续的两个 master 加入到集群</li>
+<li>最后加入 work 节点,加入节点的时候就需要指定 ulb 的ip 了</li>
+</ul>
+<p>第一步: master0 需要执行:</p>
+<div class="highlight"><pre><span></span><code>curl -sfL https://get.k3s.io | INSTALL_K3S_MIRROR=cn sh -s - server -c /home/lixie/master0-config.yaml
+</code></pre></div>
+<p>采用了 k3s server 下一个 -c 的参数，这个参数可以将命令参数以 yaml 的形式传进来</p>
+<p>其中<code>master0-config.yaml</code>如下所示</p>
+<div class="highlight"><pre><span></span><code>root@10-0-0-118:/home/lixie# cat master0-config.yaml
+write-kubeconfig-mode: &quot;0644&quot;
+tls-san:
+- 10.0.0.118    # m1.k3s.k3s.in.openbayes.com m1.k3s
+- 10.0.0.182    # m2.k3s.k3s.in.openbayes.com m2.k3s
+- 10.0.0.106    # m3.k3s.k3s.in.openbayes.com m3.k3s
+- 10.0.0.150    # node1.k3s.k3s.in.openbayes.com node1.k3s
+- 10.0.0.46
+- 106.75.6.119
+- 106.75.8.51
+- 106.75.77.106
+docker: true
+cluster-init: true
+token: VNVIyKGNPtSKTfhi
+disable: servicelb
+</code></pre></div>
+<p><strong>文件说明:</strong></p>
+<ul>
+<li>把所有 master 的内网和外网 ip 都放进了 tls-san 同时把内网负载均衡节点 ip 也放了进来。</li>
+<li>k3s 默认使用 containerd 作为容器运行环境，不过我还是用惯了 docker 所以添加了参数 docker: true。</li>
+<li>第一台 master 采用 cluster-init 的方式启动。</li>
+<li>token 就是一个随机字符串，后面添加 master 节点和 worker 节点只要保持一致就好。</li>
+<li>disable 参数关掉了 k3s 默认添加的 servicelb 如果想要同时关掉 traefik 就可以写成 disable: servicelb,traefik；注意 像配置 tls-san 那样用 yaml 的数组的语法是不行的，这也是让我多花了点时间的地方。</li>
+</ul>
+<p>等 master0 的命令执行成功后输入命令 k3s kubectl get nodes -w 等待第一个节点准备完毕后在第二台 master 执行如下命令：</p>
+<div class="highlight"><pre><span></span><code>curl -sfL https://get.k3s.io | INSTALL_K3S_MIRROR=cn sh -s - server -c /home/lixie/master-others.config.yaml
+</code></pre></div>
+<p>其中 <code>master-others.config.yaml</code> 内容如下：
+<div class="highlight"><pre><span></span><code>root@10-0-0-182:/home/lixie# cat master-others.config.yaml
+write-kubeconfig-mode: &quot;0644&quot;
+tls-san:
+- 10.0.0.118    # m1.k3s.k3s.in.openbayes.com m1.k3s
+- 10.0.0.182    # m2.k3s.k3s.in.openbayes.com m2.k3s
+- 10.0.0.106    # m3.k3s.k3s.in.openbayes.com m3.k3s
+- 10.0.0.150    # node1.k3s.k3s.in.openbayes.com node1.k3s
+- 10.0.0.46     # ULB
+- 106.75.6.119
+- 106.75.8.51
+- 106.75.77.106
+docker: true
+server: https://10.0.0.118:6443
+token: VNVIyKGNPtSKTfhi
+disable: servicelb
+</code></pre></div></p>
+<p>Node 节点加入集群:</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.k3s.io<span class="w"> </span><span class="se">\</span>
+<span class="p">|</span><span class="w"> </span><span class="nv">K3S_TOKEN</span><span class="o">=</span>VNVIyKGNPtSKTfhi<span class="w"> </span>sh<span class="w"> </span>-s<span class="w"> </span>-<span class="w"> </span>agent<span class="w"> </span>--server<span class="w"> </span>https://10.0.0.118:6443
+</code></pre></div>
+<p>在 node 节点,拿 master 的 kubeconfig 配置,地址直到 ULB 测试</p>
+<div class="highlight"><pre><span></span><code>root@10-0-0-150:/home/lixie# kubectl get nodes
+NAME         STATUS   ROLES                       AGE    VERSION
+10-0-0-106   Ready    control-plane,etcd,master   137m   v1.27.6+k3s1
+10-0-0-118   Ready    control-plane,etcd,master   170m   v1.27.6+k3s1
+10-0-0-150   Ready    &lt;none&gt;                      12s    v1.27.6+k3s1
+10-0-0-182   Ready    control-plane,etcd,master   138m   v1.27.6+k3s1
+</code></pre></div>
+<h3 id="k3s_4"><strong>卸载k3s</strong><a class="headerlink" href="#k3s_4" title="Permanent link">&para;</a></h3>
 <p>这里可以通过<a href="https://docs.rancher.cn/docs/k3s/installation/uninstall/_index">k3s</a>官方方式删除</p>
 <div class="admonition tip">
 <p class="admonition-title">卸载 k3s</p>
 <div class="highlight"><pre><span></span><code>curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | INSTALL_K3S_MIRROR=cn INSTALL_K3S_VERSION=v1.23.10+k3s1 sh -s - --docker
 </code></pre></div>
 </div>
-<h3 id="_3">参考文章<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="_5">参考文章<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <ul>
 <li>https://docs.rancher.cn/docs/k3s/quick-start/_index</li>
+<li>https://aisensiy.me/k3s-ha-in-cloud/</li>
 </ul>
 
               

@@ -134,6 +134,7 @@ nav:
         - Mysql-operator: k8s/mysql-operator/1-install-mysql-operator.md
         - Mysql 备份恢复: k8s/mysql-operator/2-mysql-backup-docs.md
         - 数据库问题处理: k8s/mysql-operator/3-mysql-backup-error-docs.md
+        - redis 大纲: redis/redis-class-docs.md
         - 缓存加速: Storage/redis-docs.md
         - redis 集群篇: Storage/redis-cluster-docs.md
         - redis 持久化: redis/redis-save-docs.md
