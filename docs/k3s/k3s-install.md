@@ -1,5 +1,3 @@
-# **私有部署:高可用k3s**
-
 ## **前言**
 
 在工作中,经常遇到很多小环境(小于等于 5 台机器),对于这种环境,就可以尝试使用k3s,原因就是因为 k3s 设计很小巧.它相对于标准的 k8s 所用的内存资源要减半，非常适合比较小型的设备.对于我们测试的 demo 环境,大可不必要安装标准 k8s,就可以用到几乎所有 k8s 的功能和特性.这就让他适用于很多的边缘计算场景.Edge,IoT,Development....等等~
@@ -20,20 +18,7 @@ K3s 是一个完全兼容的 Kubernetes 发行版，具有以下增强功能：
   - service load balancer
   - Helm controller
   - Traefik ingress controller
-
-- 所有 Kubernetes control plane 组件的操作都封装在单个二进制文件和进程中。因此，K3s 支持自动化和管理复杂的集群操作（例如证书分发等）。
-
-- 最大程度减轻了外部依赖性，K3s 仅需要现代内核和 cgroup 挂载。K3s 打包了所需的依赖，包括：
-
-  - containerd
-  - Flannel (CNI)
-  - CoreDNS
-  - Traefik (Ingress)
-  - Klipper-lb (Service LB)
-  - 嵌入式网络策略控制器
-  - 嵌入式 local-path-provisioner
-  - 主机实用程序（iptables、socat 等）
-  
+  ......等
     
 
 ## **基础环境**
@@ -48,48 +33,33 @@ curl https://releases.rancher.com/install-docker/20.10.sh | sh
 ```
 
 
+## **单Master节点集群**
+
+嵌入式数据库的单服务器
+
+下图显示了具有嵌入式 SQLite 数据库的单节点 K3s Server 集群示例。
+
+在此配置中，每个 Agent 节点都注册到同一个 Server 节点。K3s 用户可以通过调用 Server 节点上的 K3s API 来操作 Kubernetes 资源。
+
+![20231010154321](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231010154321.png)
 
 
-## 单Master节点集群
+### **安装脚本:**
 
-
-## **部署 k3s 集群**
-!!! warning
-    k3s默认使用的运行时是 containerd,--docker 是配置docker作为容器运行时
-
-
-- 默认安装：（默认是只安装最新版）
-
+中国用户，可以使用以下方法加速安装 Server端：
 ```
-curl -sfL https://get.k3s.io | sh -s - --docker
-```
-
-- 指定安装：INSTALL_K3S_VERSION=v1.22.5+k3s1
-
-```
-INSTALL_K3S_VERSION=v1.22.5+k3s1
-curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | INSTALL_K3S_MIRROR=cn INSTALL_K3S_VERSION=v1.22.5+k3s1 sh -s - --docker
+curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | \
+INSTALL_K3S_MIRROR=cn sh -
 ```
 
-## **k3s部署agent端 **
+安装其他 Agent 节点并将它们添加到集群
 
-先在server端拿到token：
-```shell
-root@ubuntu:~# cat /var/lib/rancher/k3s/server/node-token
-K10c549fbf4c0197251998eff2e9f451222f297839d4c9150543e6b1b7935a46936::server:588e0646787eb8610efd7b9c1e9fcef0
+```
+curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | \
+INSTALL_K3S_MIRROR=cn K3S_URL=https://myserver:6443 K3S_TOKEN=mynodetoken sh -
 ```
 
-默认安装：（默认是只安装最新版）
-```shell
-curl -sfL http://rancher-mirror.cnrancher.com/k3s/k3s-install.sh | INSTALL_K3S_MIRROR=cn K3S_URL=https://192.168.0.202:6443 K3S_TOKEN=K10c549fbf4c0197251998eff2e9f451222f297839d4c9150543e6b1b7935a46936::server:588e0646787eb8610efd7b9c1e9fcef0  INSTALL_K3S_EXEC="--docker"  sh -
-```
-
-指定安装：
-```
-curl -sfL http://rancher-mirror.cnrancher.com/k3s/k3s-install.sh | INSTALL_K3S_VERSION=v1.22.5+k3s1 INSTALL_K3S_MIRROR=cn K3S_URL=https://192.168.0.202:6443 K3S_TOKEN=K10e3cfbb8fc176b66cb7957997cd7d01958fbbdd507d3c49b75ff819cd0a93905b::server:cba4412e36cc16e5a92137bf987d575d  INSTALL_K3S_EXEC="--docker"  sh -
-```
-
-
+K3S_URL 参数会导致安装程序将 K3s 配置为 Agent 而不是 Server。K3s Agent 将注册到在 URL 上监听的 K3s Server。K3S_TOKEN 使用的值存储在 Server 节点上的 `/var/lib/rancher/k3s/server/node-token` 中
 
 
 ## **高可用k3s集群**
@@ -208,7 +178,7 @@ curl -sfL https://get.k3s.io \
 | K3S_TOKEN=VNVIyKGNPtSKTfhi sh -s - agent --server https://10.0.0.118:6443
 ```
 
-在 node 节点,拿 master 的 kubeconfig 配置,地址直到 ULB 测试
+在 node 节点,拿 master 的 kubeconfig 配置,地址指到 ULB 测试
 
 ```
 root@10-0-0-150:/home/lixie# kubectl get nodes
@@ -220,20 +190,11 @@ NAME         STATUS   ROLES                       AGE    VERSION
 ```
 
 
-
-
-
 ### **卸载k3s**
 这里可以通过[k3s](https://docs.rancher.cn/docs/k3s/installation/uninstall/_index)官方方式删除
 
 
 
-!!! tip "卸载 k3s"
-    ```
-    curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | INSTALL_K3S_MIRROR=cn INSTALL_K3S_VERSION=v1.23.10+k3s1 sh -s - --docker
-    ```
-
-
-### 参考文章
+### **参考文章**
 - https://docs.rancher.cn/docs/k3s/quick-start/_index
 - https://aisensiy.me/k3s-ha-in-cloud/

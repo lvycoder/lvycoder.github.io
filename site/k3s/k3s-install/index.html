@@ -73,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#k3s" class="md-skip">
+        <a href="#_1" class="md-skip">
           跳转至
         </a>
       
@@ -1846,8 +1846,6 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
-        
-      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           边缘计算
@@ -1864,8 +1862,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1881,7 +1877,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#k3s_1" class="md-nav__link">
+  <a href="#k3s" class="md-nav__link">
     什么是 K3S
   </a>
   
@@ -1899,24 +1895,23 @@
     单Master节点集群
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#k3s_2" class="md-nav__link">
-    部署 k3s 集群
+    <nav class="md-nav" aria-label="单Master节点集群">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    安装脚本:
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#k3sagent" class="md-nav__link">
-    k3s部署agent端
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#k3s_3" class="md-nav__link">
+  <a href="#k3s_1" class="md-nav__link">
     高可用k3s集群
   </a>
   
@@ -1924,28 +1919,28 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     环境准备:
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     高可用部署:
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#k3s_4" class="md-nav__link">
+  <a href="#k3s_2" class="md-nav__link">
     卸载k3s
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     参考文章
   </a>
   
@@ -2184,8 +2179,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -2201,7 +2194,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#k3s_1" class="md-nav__link">
+  <a href="#k3s" class="md-nav__link">
     什么是 K3S
   </a>
   
@@ -2219,24 +2212,23 @@
     单Master节点集群
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#k3s_2" class="md-nav__link">
-    部署 k3s 集群
+    <nav class="md-nav" aria-label="单Master节点集群">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    安装脚本:
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#k3sagent" class="md-nav__link">
-    k3s部署agent端
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#k3s_3" class="md-nav__link">
+  <a href="#k3s_1" class="md-nav__link">
     高可用k3s集群
   </a>
   
@@ -2244,28 +2236,28 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     环境准备:
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     高可用部署:
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#k3s_4" class="md-nav__link">
+  <a href="#k3s_2" class="md-nav__link">
     卸载k3s
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     参考文章
   </a>
   
@@ -2293,10 +2285,11 @@
 </a>
 
 
-<h1 id="k3s"><strong>私有部署:高可用k3s</strong><a class="headerlink" href="#k3s" title="Permanent link">&para;</a></h1>
+  <h1>边缘计算</h1>
+
 <h2 id="_1"><strong>前言</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>在工作中,经常遇到很多小环境(小于等于 5 台机器),对于这种环境,就可以尝试使用k3s,原因就是因为 k3s 设计很小巧.它相对于标准的 k8s 所用的内存资源要减半，非常适合比较小型的设备.对于我们测试的 demo 环境,大可不必要安装标准 k8s,就可以用到几乎所有 k8s 的功能和特性.这就让他适用于很多的边缘计算场景.Edge,IoT,Development....等等~</p>
-<h2 id="k3s_1"><strong>什么是 K3S</strong><a class="headerlink" href="#k3s_1" title="Permanent link">&para;</a></h2>
+<h2 id="k3s"><strong>什么是 K3S</strong><a class="headerlink" href="#k3s" title="Permanent link">&para;</a></h2>
 <p>K3s 是一个完全兼容的 Kubernetes 发行版，具有以下增强功能：</p>
 <ul>
 <li>打包为单个二进制文件。</li>
@@ -2310,25 +2303,8 @@
 <li>本地存储提供程序</li>
 <li>service load balancer</li>
 <li>Helm controller</li>
-<li>
-<p>Traefik ingress controller</p>
-</li>
-<li>
-<p>所有 Kubernetes control plane 组件的操作都封装在单个二进制文件和进程中。因此，K3s 支持自动化和管理复杂的集群操作（例如证书分发等）。</p>
-</li>
-<li>
-<p>最大程度减轻了外部依赖性，K3s 仅需要现代内核和 cgroup 挂载。K3s 打包了所需的依赖，包括：</p>
-</li>
-<li>
-<p>containerd</p>
-</li>
-<li>Flannel (CNI)</li>
-<li>CoreDNS</li>
-<li>Traefik (Ingress)</li>
-<li>Klipper-lb (Service LB)</li>
-<li>嵌入式网络策略控制器</li>
-<li>嵌入式 local-path-provisioner</li>
-<li>主机实用程序（iptables、socat 等）</li>
+<li>Traefik ingress controller
+  ......等</li>
 </ul>
 <h2 id="_2"><strong>基础环境</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <div class="admonition info 环境要求">
@@ -2340,35 +2316,22 @@
 <p>一键安装docker脚本：
 <div class="highlight"><pre><span></span><code>curl https://releases.rancher.com/install-docker/20.10.sh | sh
 </code></pre></div></p>
-<h2 id="master">单Master节点集群<a class="headerlink" href="#master" title="Permanent link">&para;</a></h2>
-<h2 id="k3s_2"><strong>部署 k3s 集群</strong><a class="headerlink" href="#k3s_2" title="Permanent link">&para;</a></h2>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>k3s默认使用的运行时是 containerd,--docker 是配置docker作为容器运行时</p>
-</div>
-<ul>
-<li>默认安装：（默认是只安装最新版）</li>
-</ul>
-<div class="highlight"><pre><span></span><code>curl -sfL https://get.k3s.io | sh -s - --docker
+<h2 id="master"><strong>单Master节点集群</strong><a class="headerlink" href="#master" title="Permanent link">&para;</a></h2>
+<p>嵌入式数据库的单服务器</p>
+<p>下图显示了具有嵌入式 SQLite 数据库的单节点 K3s Server 集群示例。</p>
+<p>在此配置中，每个 Agent 节点都注册到同一个 Server 节点。K3s 用户可以通过调用 Server 节点上的 K3s API 来操作 Kubernetes 资源。</p>
+<p><img alt="20231010154321" src="https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231010154321.png" /></p>
+<h3 id="_3"><strong>安装脚本:</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>中国用户，可以使用以下方法加速安装 Server端：
+<div class="highlight"><pre><span></span><code>curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | \
+INSTALL_K3S_MIRROR=cn sh -
+</code></pre></div></p>
+<p>安装其他 Agent 节点并将它们添加到集群</p>
+<div class="highlight"><pre><span></span><code>curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | \
+INSTALL_K3S_MIRROR=cn K3S_URL=https://myserver:6443 K3S_TOKEN=mynodetoken sh -
 </code></pre></div>
-<ul>
-<li>指定安装：INSTALL_K3S_VERSION=v1.22.5+k3s1</li>
-</ul>
-<div class="highlight"><pre><span></span><code>INSTALL_K3S_VERSION=v1.22.5+k3s1
-curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | INSTALL_K3S_MIRROR=cn INSTALL_K3S_VERSION=v1.22.5+k3s1 sh -s - --docker
-</code></pre></div>
-<h2 id="k3sagent"><strong>k3s部署agent端 </strong><a class="headerlink" href="#k3sagent" title="Permanent link">&para;</a></h2>
-<p>先在server端拿到token：
-<div class="highlight"><pre><span></span><code>root@ubuntu:~#<span class="w"> </span>cat<span class="w"> </span>/var/lib/rancher/k3s/server/node-token
-K10c549fbf4c0197251998eff2e9f451222f297839d4c9150543e6b1b7935a46936::server:588e0646787eb8610efd7b9c1e9fcef0
-</code></pre></div></p>
-<p>默认安装：（默认是只安装最新版）
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-sfL<span class="w"> </span>http://rancher-mirror.cnrancher.com/k3s/k3s-install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nv">INSTALL_K3S_MIRROR</span><span class="o">=</span>cn<span class="w"> </span><span class="nv">K3S_URL</span><span class="o">=</span>https://192.168.0.202:6443<span class="w"> </span><span class="nv">K3S_TOKEN</span><span class="o">=</span>K10c549fbf4c0197251998eff2e9f451222f297839d4c9150543e6b1b7935a46936::server:588e0646787eb8610efd7b9c1e9fcef0<span class="w">  </span><span class="nv">INSTALL_K3S_EXEC</span><span class="o">=</span><span class="s2">&quot;--docker&quot;</span><span class="w">  </span>sh<span class="w"> </span>-
-</code></pre></div></p>
-<p>指定安装：
-<div class="highlight"><pre><span></span><code>curl -sfL http://rancher-mirror.cnrancher.com/k3s/k3s-install.sh | INSTALL_K3S_VERSION=v1.22.5+k3s1 INSTALL_K3S_MIRROR=cn K3S_URL=https://192.168.0.202:6443 K3S_TOKEN=K10e3cfbb8fc176b66cb7957997cd7d01958fbbdd507d3c49b75ff819cd0a93905b::server:cba4412e36cc16e5a92137bf987d575d  INSTALL_K3S_EXEC=&quot;--docker&quot;  sh -
-</code></pre></div></p>
-<h2 id="k3s_3"><strong>高可用k3s集群</strong><a class="headerlink" href="#k3s_3" title="Permanent link">&para;</a></h2>
+<p>K3S_URL 参数会导致安装程序将 K3s 配置为 Agent 而不是 Server。K3s Agent 将注册到在 URL 上监听的 K3s Server。K3S_TOKEN 使用的值存储在 Server 节点上的 <code>/var/lib/rancher/k3s/server/node-token</code> 中</p>
+<h2 id="k3s_1"><strong>高可用k3s集群</strong><a class="headerlink" href="#k3s_1" title="Permanent link">&para;</a></h2>
 <p>单服务器集群可以满足各种用例，但如果你的环境对 Kubernetes control plane 的正常运行时间有要求，你可以在 HA 配置中运行 K3s。一个高可用 K3s 集群包括：</p>
 <ul>
 <li>三个或多个 Server 节点为 Kubernetes API 提供服务并运行其他 control plane 服务</li>
@@ -2379,7 +2342,7 @@ K10c549fbf4c0197251998eff2e9f451222f297839d4c9150543e6b1b7935a46936::server:588e
 <li>我们可以使用 Ucloud 或者其他云的 ulb 作为负载均衡,在创建三台机器作为 k3s-server,一台机器作为 k3s-agent</li>
 </ul>
 <p><img alt="20231010142750" src="https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231010142750.png" /></p>
-<h3 id="_3"><strong>环境准备:</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="_4"><strong>环境准备:</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <ul>
 <li>ucloud 的内网 ulb 是需要在每台 master 做额外的设置的</li>
 </ul>
@@ -2402,7 +2365,7 @@ K10c549fbf4c0197251998eff2e9f451222f297839d4c9150543e6b1b7935a46936::server:588e
 <li>可以使用: <code>curl https://releases.rancher.com/install-docker/20.10.sh | sh</code></li>
 </ul>
 </div>
-<h3 id="_4"><strong>高可用部署:</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h3 id="_5"><strong>高可用部署:</strong><a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <ul>
 <li>创建一个 master 节点</li>
 <li>然后将后续的两个 master 加入到集群</li>
@@ -2461,7 +2424,7 @@ disable: servicelb
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.k3s.io<span class="w"> </span><span class="se">\</span>
 <span class="p">|</span><span class="w"> </span><span class="nv">K3S_TOKEN</span><span class="o">=</span>VNVIyKGNPtSKTfhi<span class="w"> </span>sh<span class="w"> </span>-s<span class="w"> </span>-<span class="w"> </span>agent<span class="w"> </span>--server<span class="w"> </span>https://10.0.0.118:6443
 </code></pre></div>
-<p>在 node 节点,拿 master 的 kubeconfig 配置,地址直到 ULB 测试</p>
+<p>在 node 节点,拿 master 的 kubeconfig 配置,地址指到 ULB 测试</p>
 <div class="highlight"><pre><span></span><code>root@10-0-0-150:/home/lixie# kubectl get nodes
 NAME         STATUS   ROLES                       AGE    VERSION
 10-0-0-106   Ready    control-plane,etcd,master   137m   v1.27.6+k3s1
@@ -2469,14 +2432,9 @@ NAME         STATUS   ROLES                       AGE    VERSION
 10-0-0-150   Ready    &lt;none&gt;                      12s    v1.27.6+k3s1
 10-0-0-182   Ready    control-plane,etcd,master   138m   v1.27.6+k3s1
 </code></pre></div>
-<h3 id="k3s_4"><strong>卸载k3s</strong><a class="headerlink" href="#k3s_4" title="Permanent link">&para;</a></h3>
+<h3 id="k3s_2"><strong>卸载k3s</strong><a class="headerlink" href="#k3s_2" title="Permanent link">&para;</a></h3>
 <p>这里可以通过<a href="https://docs.rancher.cn/docs/k3s/installation/uninstall/_index">k3s</a>官方方式删除</p>
-<div class="admonition tip">
-<p class="admonition-title">卸载 k3s</p>
-<div class="highlight"><pre><span></span><code>curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | INSTALL_K3S_MIRROR=cn INSTALL_K3S_VERSION=v1.23.10+k3s1 sh -s - --docker
-</code></pre></div>
-</div>
-<h3 id="_5">参考文章<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h3 id="_6"><strong>参考文章</strong><a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <ul>
 <li>https://docs.rancher.cn/docs/k3s/quick-start/_index</li>
 <li>https://aisensiy.me/k3s-ha-in-cloud/</li>
