@@ -368,4 +368,24 @@ PLAY RECAP *********************************************************************
 worker_processes  1;
 ```
 
+#### **5.1 模版变量获取**
 
+方式一：
+
+```
+{% for host in groups['k8s_masters'] %}
+    server {{ host }} {{ hostvars[host]['ansible_default_ipv4']['address'] }}:6443 check
+{% endfor %}
+```
+
+方式二：
+```
+如果你想在生成的 HAProxy 配置文件中使用主机的 IP 地址代替主机名，你可以修改你的模板，如下所示：
+
+{% for host in groups['k8s_master'] %}
+    server {{ hostvars[host]['ansible_default_ipv4']['address'] }} {{ hostvars[host]['ansible_default_ipv4']['address'] }}:6443 check
+{% endfor %}
+在这个修改后的模板中，我们使用了 hostvars[host]['ansible_default_ipv4']['address'] 来获取每个主机的 IP 地址，并用这个 IP 地址代替了原来的主机名。
+
+请注意，这个修改假设你的主机都有一个定义了 'ansible_default_ipv4' 变量的 IPv4 地址。这个变量通常由 Ansible 的 setup 模块自动收集，但如果你的主机没有 IPv4 地址，或者没有运行 setup 模块，你可能需要手动设置这个变量。
+```

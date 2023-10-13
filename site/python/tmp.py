@@ -1,5 +1,3 @@
-name='zhangsan'
-age='18'
-print(name + age)
 
-print(name * 5)
+print('hello world') # 输出一个值
+print('zhangsan','lisi','wangwu')

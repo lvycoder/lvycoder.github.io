@@ -125,6 +125,7 @@ nav:
 
     - 4、运维开发:
          - Python 开发-基础语法: python/1-python-docs.md
+         - Python 开发-用户交互: python/2-python-docs.md
          - GO开发-环境安装: go/go-base-docs.md
          - GO 开发-操作符和表达式: go/2-go-docs.md
          - 模块: python/module-docs.md

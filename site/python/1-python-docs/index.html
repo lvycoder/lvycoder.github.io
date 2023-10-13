@@ -1114,6 +1114,8 @@
         
           
         
+          
+        
       
       
         <label class="md-nav__link" for="__nav_6">
@@ -1242,6 +1244,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#dict" class="md-nav__link">
+    字典 dict
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bool" class="md-nav__link">
+    布尔值 bool
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1256,6 +1272,20 @@
   
 </nav>
       
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-python-docs/" class="md-nav__link">
+        Python 开发-用户交互
+      </a>
     </li>
   
 
@@ -2272,6 +2302,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#dict" class="md-nav__link">
+    字典 dict
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bool" class="md-nav__link">
+    布尔值 bool
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2379,6 +2423,42 @@ print(name * 5)
 zhangsanzhangsanzhangsanzhangsanzhangsan # 相乘就相当于字符串*5
 </code></pre></div>
 <h4 id="_8">列表:<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>用于记录同一种属性的多个值,例如一个班级的所有学生名字</p>
+<p>定义:</p>
+<div class="highlight"><pre><span></span><code><span class="n">class_name</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;zhangsan&#39;</span><span class="p">,</span><span class="s1">&#39;lisi&#39;</span><span class="p">,</span><span class="s1">&#39;wangwu&#39;</span><span class="p">]</span>
+</code></pre></div>
+<p>使用:
+<div class="highlight"><pre><span></span><code><span class="err">$</span> <span class="n">python3</span>            
+<span class="n">Python</span> <span class="mf">3.11.5</span> <span class="p">(</span><span class="n">main</span><span class="p">,</span> <span class="n">Aug</span> <span class="mi">24</span> <span class="mi">2023</span><span class="p">,</span> <span class="mi">15</span><span class="p">:</span><span class="mi">09</span><span class="p">:</span><span class="mi">45</span><span class="p">)</span> <span class="p">[</span><span class="n">Clang</span> <span class="mf">14.0.3</span> <span class="p">(</span><span class="n">clang</span><span class="o">-</span><span class="mf">1403.0.22.14.1</span><span class="p">)]</span> <span class="n">on</span> <span class="n">darwin</span>
+<span class="n">Type</span> <span class="s2">&quot;help&quot;</span><span class="p">,</span> <span class="s2">&quot;copyright&quot;</span><span class="p">,</span> <span class="s2">&quot;credits&quot;</span> <span class="ow">or</span> <span class="s2">&quot;license&quot;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">class_name</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;zhangsan&#39;</span><span class="p">,</span><span class="s1">&#39;lisi&#39;</span><span class="p">,</span><span class="s1">&#39;wangwu&#39;</span><span class="p">]</span> <span class="c1"># 通过索引进行取值</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">class_name</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="s1">&#39;zhangsan&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">class_name</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="s1">&#39;lisi&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">class_name</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="s1">&#39;wangwu&#39;</span>
+
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">class_info</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39;zhangsan&#39;</span><span class="p">,</span><span class="mi">12</span><span class="p">],[</span><span class="s1">&#39;lisi&#39;</span><span class="p">,],[</span><span class="s1">&#39;wangwu&#39;</span><span class="p">,</span><span class="mi">23</span><span class="p">]]</span> <span class="c1"># 列表嵌套</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">class_info</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="s1">&#39;lisi&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">class_info</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+<span class="mi">23</span>
+</code></pre></div></p>
+<h4 id="dict">字典 dict<a class="headerlink" href="#dict" title="Permanent link">&para;</a></h4>
+<p>作用:
+我们有一些场景,我们需要一个变量来记录多个值,但是多个值的属性是不同的</p>
+<div class="highlight"><pre><span></span><code>dic_info = {&#39;name&#39;:&#39;lixie&#39;,&#39;age&#39;:20,weight:3434.3}
+&gt;&gt;&gt; dic_info[&#39;age&#39;]
+20
+&gt;&gt;&gt; dic_info[&#39;name&#39;]
+&#39;lixie&#39;
+</code></pre></div>
+<h4 id="bool">布尔值 bool<a class="headerlink" href="#bool" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>True
+False
+</code></pre></div>
 
               
             </article>
@@ -2413,13 +2493,13 @@ zhangsanzhangsanzhangsanzhangsanzhangsan # 相乘就相当于字符串*5
       
       
         
-        <a href="../../go/go-base-docs/" class="md-footer__link md-footer__link--next" aria-label="下一页: GO开发-环境安装" rel="next">
+        <a href="../2-python-docs/" class="md-footer__link md-footer__link--next" aria-label="下一页: Python 开发-用户交互" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 下一页
               </span>
-              GO开发-环境安装
+              Python 开发-用户交互
             </div>
           </div>
           <div class="md-footer__button md-icon">

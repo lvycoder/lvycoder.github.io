@@ -88,4 +88,51 @@ zhangsanzhangsanzhangsanzhangsanzhangsan # 相乘就相当于字符串*5
 ```
 
 #### 列表:
+用于记录同一种属性的多个值,例如一个班级的所有学生名字
 
+定义:
+
+```python
+class_name = ['zhangsan','lisi','wangwu']
+```
+
+使用:
+```python
+$ python3            
+Python 3.11.5 (main, Aug 24 2023, 15:09:45) [Clang 14.0.3 (clang-1403.0.22.14.1)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> class_name = ['zhangsan','lisi','wangwu'] # 通过索引进行取值
+>>> class_name[0]
+'zhangsan'
+>>> class_name[1]
+'lisi'
+>>> class_name[2]
+'wangwu'
+
+
+>>> class_info = [['zhangsan',12],['lisi',],['wangwu',23]] # 列表嵌套
+>>> class_info[1][0]
+'lisi'
+>>> class_info[2][1]
+23
+```
+
+#### 字典 dict
+
+作用:
+我们有一些场景,我们需要一个变量来记录多个值,但是多个值的属性是不同的
+
+```
+dic_info = {'name':'lixie','age':20,weight:3434.3}
+>>> dic_info['age']
+20
+>>> dic_info['name']
+'lixie'
+```
+
+#### 布尔值 bool
+
+```
+True
+False
+```
