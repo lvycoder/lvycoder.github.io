@@ -73,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ceph" class="md-skip">
+        <a href="#mgr-pool" class="md-skip">
           跳转至
         </a>
       
@@ -1582,8 +1582,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#ceph" class="md-nav__link">
-    ceph 存储副本调整
+  <a href="#mgr-pool" class="md-nav__link">
+    mgr pool 副本调整
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ceph-pool" class="md-nav__link">
+    ceph 存储pool无法创建
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unknown-pg" class="md-nav__link">
+    修复unknown PG
   </a>
   
 </li>
@@ -2144,8 +2158,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#ceph" class="md-nav__link">
-    ceph 存储副本调整
+  <a href="#mgr-pool" class="md-nav__link">
+    mgr pool 副本调整
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ceph-pool" class="md-nav__link">
+    ceph 存储pool无法创建
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unknown-pg" class="md-nav__link">
+    修复unknown PG
   </a>
   
 </li>
@@ -2169,20 +2197,33 @@
 
   <h1>ceph 错误指南</h1>
 
-<h2 id="ceph">ceph 存储副本调整<a class="headerlink" href="#ceph" title="Permanent link">&para;</a></h2>
-<p>在我们使用ceph集群创建pool时，有时候可能会对副本的数量做一些调整，例如将3调整为1（但是会出现以下的报错）</p>
+<h2 id="mgr-pool">mgr pool 副本调整<a class="headerlink" href="#mgr-pool" title="Permanent link">&para;</a></h2>
+<p><img alt="20231018140645" src="https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231018140645.png" /></p>
 <ul>
-<li>
-<p>报错提示:
-<div class="highlight"><pre><span></span><code>Warning  ReconcileFailed  28s (x14 over 73s)  rook-ceph-block-pool-controller  \
+<li>ceph 集群默认安装好有<code>.mgr</code>这样的一个池,而他默认的副本是三个,所以会在有些场景不适用</li>
+</ul>
+<div class="highlight"><pre><span></span><code>ceph osd pool set .mgr size 1 --yes-i-really-mean-it
+</code></pre></div>
+<h2 id="ceph-pool">ceph 存储pool无法创建<a class="headerlink" href="#ceph-pool" title="Permanent link">&para;</a></h2>
+<div class="admonition error">
+<p class="admonition-title">报错提示:</p>
+<div class="highlight"><pre><span></span><code>Warning  ReconcileFailed  28s (x14 over 73s)  rook-ceph-block-pool-controller  
 failed to reconcile CephBlockPool &quot;rook-ceph/replicapool&quot;. invalid pool CR &quot;replicapool&quot; spec: 
 error pool size is 1 and requireSafeReplicaSize is true, must be false
-</code></pre></div></p>
-</li>
-<li>
-<p>这个错误是由于将副本调整为1，需要将 <code>requireSafeReplicaSize</code> 改成 <code>false</code> 这样才能正确的创建pool</p>
-</li>
+</code></pre></div>
+</div>
+<p>在我们使用ceph集群创建pool时，有时候可能会对副本的数量做一些调整，例如将3调整为1（但是会出现以下的报错）</p>
+<p><strong>解决方法:</strong></p>
+<ul>
+<li>这个错误是由于将副本调整为1，需要将 <code>requireSafeReplicaSize</code> 改成 <code>false</code> 这样才能正确的创建pool</li>
 </ul>
+<h2 id="unknown-pg">修复unknown PG<a class="headerlink" href="#unknown-pg" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code># 列出状态为 unkown 的 PG, 第一列为 pgid
+$ ceph pg dump | grep unknown
+
+# 强制重建 PG，注：会丢失数据，慎重使用
+$ ceph osd force-create-pg &lt;pgid&gt;
+</code></pre></div>
 
               
             </article>
