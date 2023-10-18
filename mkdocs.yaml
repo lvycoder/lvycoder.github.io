@@ -92,7 +92,7 @@ nav:
         - 科学上网: network/4-network-docs.md
     - 1、Linux: 
         - Linux 带外管理: ubuntu/ubuntu-bmc.md
-        - Linux 系统安装: ubuntu/0-system-docs.md
+        - Linux 系统管理: ubuntu/0-system-docs.md
         - Linux 系统管理-基础命令: ubuntu/linux01/Linux系统管理01——系统命令精讲.md
         - Linux 网络服务: ubuntu/network/1-network-docs.md
 
@@ -150,6 +150,7 @@ nav:
         - pv/pvc简介: Storage/pv-rep.md
         - s3cmd 用法: Storage/s3-client-docs.md
         - ceph 存储修复: Storage/5-dev-docs.md
+        - ceph 错误指南: Storage/ceph-error.md
 
     - 7、虚拟化:
         - Proxmox虚拟化: vm/promox.md  
