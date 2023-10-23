@@ -17,17 +17,21 @@ theme:
   include_sidebar: true
   features:
     - header.autohide
-    # - navigation.instant
+    - navigation.instant
     - navigation.sections
     - navigation.tabs
     - navigation.tabs.sticky
-    - navigation.expand
+    # - navigation.expand
     - navigation.indexes
     - navigation.top
-    # - toc.integrate
+    - toc.integrate
     - search.suggest
     - search.highlight
     - content.code.annotate
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.path
+    - navigation.prune
 
   palette:
    # Light mode
@@ -90,11 +94,23 @@ nav:
         - frp 内网穿透: network/frp.md
         - kubernetes 网络组件: network/3-network-docs.md
         - 科学上网: network/4-network-docs.md
-    - 1、Linux: 
+    - 1、Linux:
         - Linux 带外管理: ubuntu/ubuntu-bmc.md
         - Linux 系统管理: ubuntu/0-system-docs.md
         - Linux 系统管理-基础命令: ubuntu/linux01/Linux系统管理01——系统命令精讲.md
+        - Linux 系统管理-目录和文件管理: xxx/xxx.md
+        - Linux 系统管理-安装及管理程序: xxx/xxx.md
+        - Linux 系统管理-账号管理: xxx/xxx.md
+        - Linux 系统管理-权限及归属管理: xxx/xxx.md
+        - Linux 系统管理-磁盘管理: xxx/xxx.md
+        - Linux 系统管理-文件系统与lvm: xxx/xxx.md
+        - Linux 系统管理-服务器配置实践: xxx/xxx.md
+        - Linux 系统管理-引导过程与服务控制: xxx/xxx.md
+        - Linux 系统管理-进程和计划任务管理: xxx/xxx.md
+        - Linux 系统管理-系统安全: xxx/xxx.md
+        - Linux 系统管理-文件系统与日志: xxx/xxx.md
         - Linux 网络服务: ubuntu/network/1-network-docs.md
+
 
     - 2、容器运行时: 
         - Docker 基本管理: docker/docker-docs.md
@@ -213,8 +229,9 @@ extra:
 
 
 extra_css:
-  - assets/stylesheets/extra.css # Our custom styles
-  - assets/styles/atom-one-light.css # HightlightJS's CSS theme
+  - stylesheets/extra.css
+  # - assets/stylesheets/extra.css # Our custom styles
+  # - assets/styles/atom-one-light.css # HightlightJS's CSS theme
 
 extra_javascript:
   - 'js/extra.js'

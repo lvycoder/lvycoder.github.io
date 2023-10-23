@@ -1,0 +1,13 @@
+[global]
+ioengine=libaio
+direct=1
+runtime=30
+group_reporting=1
+
+[read-4M]
+filename=/data/10g.test
+rw=read
+bs=4m
+numjobs=4
+iodepth=32
+filesize=10G
