@@ -106,7 +106,7 @@ nav:
         - Linux 系统管理-文件系统与lvm: xxx/xxx.md
         - Linux 系统管理-服务器配置实践: xxx/xxx.md
         - Linux 系统管理-引导过程与服务控制: xxx/xxx.md
-        - Linux 系统管理-进程和计划任务管理: xxx/xxx.md
+        - Linux 系统管理-进程和计划任务管理: ubuntu/ps-docs.md
         - Linux 系统管理-系统安全: xxx/xxx.md
         - Linux 系统管理-文件系统与日志: xxx/xxx.md
         - Linux 网络服务: ubuntu/network/1-network-docs.md

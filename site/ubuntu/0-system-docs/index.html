@@ -846,6 +846,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#nvme" class="md-nav__link">
+    nvme 模块
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#linux07-lvm" class="md-nav__link">
     Linux系统管理07-文件系统与LVM
   </a>
@@ -1018,7 +1025,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../xxx/xxx.md" class="md-nav__link">
+      <a href="../ps-docs/" class="md-nav__link">
         Linux 系统管理-进程和计划任务管理
       </a>
     </li>
@@ -2536,31 +2543,19 @@
 <p>1.5. 配置镜像源（跳过）</p>
 <p>1.6. 选择磁盘（这个步骤比较关键）
 <img alt="第五步" src="https://pic.imgdb.cn/item/632d192616f2c2beb1185a9e.png" /></p>
-<p>选择磁盘这一步需要注意，需要所有磁盘空间分给根分区
-<img alt="第五步" src="https://pic.imgdb.cn/item/632d193416f2c2beb1186a6c.png" /></p>
+<p>选择磁盘这一步需要注意，需要所有磁盘空间分给根分区</p>
+<p><img alt="第五步" src="https://pic.imgdb.cn/item/632d193416f2c2beb1186a6c.png" /></p>
 <p><img alt="第五步" src="https://pic.imgdb.cn/item/632d193416f2c2beb1186a7d.png" /></p>
-<p>1.7. 用户信息
-<img alt="第六步" src="https://pic.imgdb.cn/item/632d193416f2c2beb1186a90.png" /></p>
+<p>1.7. 用户信息</p>
+<p><img alt="第六步" src="https://pic.imgdb.cn/item/632d193416f2c2beb1186a90.png" /></p>
 <p>1.8. openssh server 切记要选择上 (<code>切记</code>)
 <img alt="第七步" src="https://pic.imgdb.cn/item/632d193416f2c2beb1186aa0.png" /></p>
 <h2 id="_2"><strong>系统初始化</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <div class="admonition tip">
 <p class="admonition-title">初始化步骤</p>
 <ul>
-<li>
-<p>添加hosts信息</p>
-</li>
-<li>
-<p>修改国内apt源</p>
-<ul>
-<li>清华源</li>
-<li>阿里源</li>
-</ul>
-</li>
-<li>添加管理员用户<ul>
-<li>通常几个管理人员几个管理用户</li>
-</ul>
-</li>
+<li>优化内核参数；添加hosts信息；</li>
+<li>修改国内apt源</li>
 <li>修改内核参数</li>
 <li>安装基础软件，gpu驱动</li>
 <li>安装docker<ul>
@@ -2585,23 +2580,24 @@
 <p class="admonition-title">ubuntu22.04 清华源</p>
 <ul>
 <li>需要注意一下，如果apt update 报错，就将https改成http</li>
-<li>如果需要添加其他的版本的源可以访问: https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/
-<div class="highlight"><pre><span></span><code># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
-deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse
-deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse
-deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse
-deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-security main restricted universe multiverse
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-security main restricted universe multiverse
-
-# 预发布软件源，不建议启用
-# deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse
-</code></pre></div></li>
+<li>如果需要添加其他的版本的源可以访问: https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/</li>
 </ul>
 </div>
+<p>Ubuntu 软件仓库镜像
+<div class="highlight"><pre><span></span><code>cat &lt;&lt;EOF&gt;&gt; /etc/apt/sources.list 
+deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse
+# deb-src http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse
+deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse
+# deb-src http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse
+deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse
+# deb-src http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse
+
+# deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-security main restricted universe multiverse
+# # deb-src http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-security main restricted universe multiverse
+
+deb http://security.ubuntu.com/ubuntu/ jammy-security main restricted universe multiverse
+EOF
+</code></pre></div></p>
 <h2 id="_4"><strong>安全</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <h3 id="_5"><strong>五: 系统安全</strong><a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>通常在企业中，服务器会遭受外来的很多的恶意攻击，那么服务器的安全就显得格外的重要。首先肯定想到的是服务器的帐号和密码管理，通常的情况下会禁止root这样的管理员用户登陆，也会禁止密码这样的方式登陆。</p>
@@ -2797,6 +2793,10 @@ mkpart primary 0% 100%  # 开始分区
 </code></pre></div>
 如图所示：</p>
 <p><img alt="20231017145706" src="https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231017145706.png" /></p>
+<h3 id="nvme"><strong>nvme 模块</strong><a class="headerlink" href="#nvme" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>nvme list | tail -n +3 | awk &#39;{print $1}&#39; | sed &#39;s/\/dev\///&#39; | sort -V | awk &#39;{print &quot;- name: \&quot;&quot;$1&quot;\&quot;&quot;}&#39;   # 列举出nvme所有磁盘
+nvme list | tail -n +3 | awk &#39;{print $1}&#39; | sed &#39;s/\/dev\///&#39; | sort -V | awk &#39;{print &quot;- name: \&quot;&quot;$1&quot;\&quot;&quot;}&#39; |wc -l # 统计nvme磁盘
+</code></pre></div>
 <h3 id="linux07-lvm"><strong>Linux系统管理07-文件系统与LVM</strong><a class="headerlink" href="#linux07-lvm" title="Permanent link">&para;</a></h3>
 <h4 id="inode"><strong>inode 知识点补充</strong><a class="headerlink" href="#inode" title="Permanent link">&para;</a></h4>
 <p>当我们在Linux系统中，偶然会遇到一些特殊格式的文件或者目录，通过使用rm 是无法直接删除的，这时可以利用inode号删除文件或者目录。</p>

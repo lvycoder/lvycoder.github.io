@@ -27,12 +27,14 @@
 ![第五步](https://pic.imgdb.cn/item/632d192616f2c2beb1185a9e.png)
 
 选择磁盘这一步需要注意，需要所有磁盘空间分给根分区
+
 ![第五步](https://pic.imgdb.cn/item/632d193416f2c2beb1186a6c.png)
 
 ![第五步](https://pic.imgdb.cn/item/632d193416f2c2beb1186a7d.png)
 
 
 1.7. 用户信息
+
 ![第六步](https://pic.imgdb.cn/item/632d193416f2c2beb1186a90.png)
 
 
@@ -44,13 +46,8 @@
 ## **系统初始化**
 
 !!! tip "初始化步骤"
-    - 添加hosts信息
-
+    - 优化内核参数；添加hosts信息；
     - 修改国内apt源
-        - 清华源
-        - 阿里源
-    - 添加管理员用户
-        - 通常几个管理人员几个管理用户
     - 修改内核参数
     - 安装基础软件，gpu驱动
     - 安装docker
@@ -70,26 +67,24 @@
 !!! info "ubuntu22.04 清华源"
     - 需要注意一下，如果apt update 报错，就将https改成http
     - 如果需要添加其他的版本的源可以访问: https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/
-    ```
-    # 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
-    deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse
-    # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse
-    deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse
-    # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse
-    deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse
-    # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse
-    deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-security main restricted universe multiverse
-    # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-security main restricted universe multiverse
-
-    # 预发布软件源，不建议启用
-    # deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse
-    # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse
-    ```
 
 
+Ubuntu 软件仓库镜像
+```
+cat <<EOF>> /etc/apt/sources.list 
+deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse
+# deb-src http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse
+deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse
+# deb-src http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse
+deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse
+# deb-src http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse
 
+# deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-security main restricted universe multiverse
+# # deb-src http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-security main restricted universe multiverse
 
-
+deb http://security.ubuntu.com/ubuntu/ jammy-security main restricted universe multiverse
+EOF
+```
 
 
 
@@ -286,6 +281,10 @@ dpkg -l | grep nvidia  | awk '{print $2}' | xargs apt purge -y
 ```
 
 
+
+
+
+
 ### **ubuntu 关机或者重启**
 
 ```shell
@@ -320,14 +319,12 @@ mkpart primary 0% 100%  # 开始分区
 
 
 
+### **nvme 模块**
 
-
-
-
-
-
-
-
+```
+nvme list | tail -n +3 | awk '{print $1}' | sed 's/\/dev\///' | sort -V | awk '{print "- name: \""$1"\""}'   # 列举出nvme所有磁盘
+nvme list | tail -n +3 | awk '{print $1}' | sed 's/\/dev\///' | sort -V | awk '{print "- name: \""$1"\""}' |wc -l # 统计nvme磁盘
+```
 
 
 
