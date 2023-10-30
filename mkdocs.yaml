@@ -99,27 +99,9 @@ nav:
         - Linux 云计算手册大纲: ubuntu/linux-docs.md
         - Linux 带外管理: ubuntu/ubuntu-bmc.md
         - Linux 系统管理: ubuntu/0-system-docs.md
-        - Linux 系统管理-基础命令: ubuntu/linux01/Linux系统管理01——系统命令精讲.md
-        - Linux 系统管理-目录和文件管理: xxx/xxx.md
-        - Linux 系统管理-安装及管理程序: xxx/xxx.md
-        - Linux 系统管理-账号管理: xxx/xxx.md
-        - Linux 系统管理-权限及归属管理: xxx/xxx.md
-        - Linux 系统管理-磁盘管理: xxx/xxx.md
-        - Linux 系统管理-文件系统与lvm: xxx/xxx.md
-        - Linux 系统管理-服务器配置实践: xxx/xxx.md
-        - Linux 系统管理-引导过程与服务控制: xxx/xxx.md
-        - Linux 系统管理-进程和计划任务管理: ubuntu/ps-docs.md
-        - Linux 系统管理-系统安全: xxx/xxx.md
-        - Linux 系统管理-文件系统与日志: xxx/xxx.md
         - Linux 网络服务: ubuntu/network/1-network-docs.md
 
-
-    - 2、Web服务: 
-        - Web服务器01-web基础: web-server/web-01.md
-
-
-
-    - 3、kubernetes:
+    - 2、kubernetes:
         - 云原生简介及CNCF: basic/cncf-docs.md
         - Docker 基本管理: docker/docker-docs.md
         - lxcfs 介绍: docker/lxcfs.md
@@ -144,14 +126,14 @@ nav:
         - 项目一: basic/4-ansible-install-k8s.md
         - 项目二: basic/9-install-keepalived-cluster.md
 
-    - 4、运维开发:
+    - 3、运维开发:
          - Python 开发-基础语法: python/1-python-docs.md
          - Python 开发-用户交互: python/2-python-docs.md
          - GO开发-环境安装: go/go-base-docs.md
          - GO 开发-操作符和表达式: go/2-go-docs.md
          - 模块: python/module-docs.md
         
-    - 5、数据库:
+    - 4、数据库:
         - Mysql 数据库: k8s/mysql-operator/0-mysql-docs.md
         - Mysql-operator: k8s/mysql-operator/1-install-mysql-operator.md
         - Mysql 备份恢复: k8s/mysql-operator/2-mysql-backup-docs.md
@@ -161,7 +143,7 @@ nav:
         - redis 集群篇: Storage/redis-cluster-docs.md
         - redis 持久化: redis/redis-save-docs.md
  
-    - 6、存储服务: 
+    - 5、存储服务: 
         - 固态 ssd : Storage/disk-ssd-docs.md
         - 分布式存储: Storage/rook-ceph.md
         - ceph 命令用法: Storage/ceph-cli-docs.md
@@ -173,22 +155,22 @@ nav:
         - ceph 存储修复: Storage/5-dev-docs.md
         - ceph 错误指南: Storage/ceph-error.md
 
-    - 7、虚拟化:
+    - 6、虚拟化:
         - Proxmox虚拟化: vm/promox.md  
 
-    - 8、Devops:
+    - 7、Devops:
         - Github: Devops/github.md
         - Github仓库同步至Gitee: Devops/4-github-gitee-doc.md
         - Google 浏览器扩展: Devops/3-github-docs.md
 
-    - 9、运维自动化:
+    - 8、运维自动化:
         - Ansible 应用基础: ansible/ansible-case1.md
         - Ansible 高级用法: ansible/ansible-docs2.md
         - Ansible 安装: ansible/ansible-install-docs.md
         - Ansible playbook: ansible/ansible-playbook.md
 
 
-    - 10、其他: 
+    - 9、其他: 
         - kubeconfig 实践应用: Macuse/mac-kubeconfig.md
         - 边缘计算: k3s/k3s-install.md
         - k9s 实践应用: Macuse/mac-k9s-doc.md
