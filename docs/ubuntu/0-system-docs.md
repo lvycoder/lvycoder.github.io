@@ -303,6 +303,46 @@ echo b > /proc/sysrq-trigger # 强制重启
 ## **六: Linux系统管理-磁盘管理**
 
 
+### **6.1. 磁盘结构**
+
+1. 硬盘的物理结构
+  
+  - 盘片: 硬盘有多个盘片，每个盘片2面
+  - 磁头: 每面一个磁头
+
+2. 硬盘的数据结构
+   扇区: 盘片被分为多个扇形区域，每个扇形区存放512字节的数据
+   磁道:统一盘片不同半径的同心圆
+   柱面:不同盘片相同半径构成的圆柱面
+
+
+### **6.2. 磁盘接口**
+
+
+1. IDE（并口）
+2. SATA（串口）
+   - 速度快
+   - 纠错能力强
+3. SCSI 
+
+### **6.3. MBR**
+
+1. 定义: MBR 主引导记录
+2. 位置: MBR 位于硬盘第一个物理扇区处
+
+
+
+### **6.4. 磁盘分区表示**
+
+
+![20231027170750](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231027170750.png)
+
+
+
+
+
+
+
 
 ### **6.5. parted 命令**
 - 作用: 规划格式化超过2T以上的分区，也可以用于小分区的规划
@@ -319,7 +359,7 @@ mkpart primary 0% 100%  # 开始分区
 
 
 
-### **nvme 模块**
+### **6.6. nvme 模块**
 
 ```
 nvme list | tail -n +3 | awk '{print $1}' | sed 's/\/dev\///' | sort -V | awk '{print "- name: \""$1"\""}'   # 列举出nvme所有磁盘
@@ -328,6 +368,41 @@ nvme list | tail -n +3 | awk '{print $1}' | sed 's/\/dev\///' | sort -V | awk '{
 
 
 
+```
+[wlcb] root@stor1:~# lsblk -o NAME,SERIAL
+NAME                      SERIAL
+loop0
+loop1
+loop2
+loop3
+loop4
+sda                       2036E4AD4476
+├─sda1
+├─sda2
+└─sda3
+  └─ubuntu--vg-ubuntu--lv
+sdb                       2036E4AD436F
+nvme0n1                   A0601E19
+nvme1n1                   A064696F
+nvme5n1                   A06042F7
+nvme6n1                   A064684B
+nvme7n1                   A06040FA
+nvme4n1                   A064562C
+nvme2n1                   A06470A3
+nvme3n1                   A060568E
+nvme8n1                   A0604107
+nvme9n1                   A06460A4
+nvme10n1                  A06057B6
+nvme11n1                  A0604B81
+nvme12n1                  A0646025
+nvme13n1                  A06089E4
+nvme14n1                  A06057B4
+nvme15n1                  A0604D99
+nvme16n1                  A060946F
+nvme17n1                  A0646985
+nvme18n1                  A060899F
+nvme19n1                  A0646DE4
+```
 
 
 
