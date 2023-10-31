@@ -36,6 +36,53 @@ OpenKruise 是一个基于 Kubernetes 的扩展套件，主要聚焦于云原生
 
 
 
+### **kubeasz**
+
+!!! warning "kubeasz"
+    - kubeasz (ansible自动化安装二进制k8s项目)
+    - github 地址: https://github.com/easzlab/kubeasz
+
+### **ceph**
+
+!!! warning "ceph"
+    - ceph (云原生存储)
+    - github 地址: https://github.com/ceph/ceph
+
+### **rancher**
+
+!!! warning "rancher"
+    - 一个管理k8s的UI工具
+    - 官方地址: https://www.rancher.com/
+
+
+### **cert-manager**
+
+!!! warning "cert-manager"
+    - 云原生证书管理
+    - 官方地址: https://cert-manager.io/
+
+### **kubevirt**
+
+!!! warning "kubeVirt"
+    - 云原生虚拟机解决方案（在k8s中运行虚拟机）
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -52,10 +99,4 @@ OpenKruise 是一个基于 Kubernetes 的扩展套件，主要聚焦于云原生
 - www.qikqiak.com/k3s
 
 - [kubecon 会议: ](https://www.lfasiallc.com/kubecon-cloudnativecon-open-source-summit-china/) 
-
-- [1-云计算课程笔记第一册-Linux系统管理](https://web-1311671045.cos.ap-beijing.myqcloud.com/1-%E4%BA%91%E8%AE%A1%E7%AE%97%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%E7%AC%AC%E4%B8%80%E5%86%8C-Linux%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86.pdf?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDttpksMNG0MSfgcpF_KGHGH5YiE_aVHfyXSq4hqIh7LgXscSij4a2uYDhK3Z-LxnW%26q-sign-time%3D1698646064%3B1698649724%26q-key-time%3D1698646064%3B1698649724%26q-header-list%3Dhost%26q-url-param-list%3D%26q-signature%3D19bf6eebc98897f2e00303ec6ed70cf69b2e3754&x-cos-security-token=sNun0ixmExZMC0G8tEBTW0JOEAq7ffiab0085b585d482ec7da35dc32abe230b857jY0T044k_5C2Z9bMgRrDugPmcvG4QC4BpZpDcPnwWP33lu5BFtzc0yy1MDyyWaGmoaEZp1kQvZ8_xEptpKMiwxsASWDfcK1GihQr-9cpQhDW5rTEHnY4-rzYUwvYu9qe-H-FWR8dIHke7dNTtTkgZJCmT4JjqmSKPuPGMU1t4vrH4zd4yvSz6Q040HtYKhPIPB9MB_AKdY-zUVvXZfrw)
-
-- [2-云计算课程笔记第二册-Linux网络服务](https://web-1311671045.cos.ap-beijing.myqcloud.com/2-%E4%BA%91%E8%AE%A1%E7%AE%97%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%E7%AC%AC%E4%BA%8C%E5%86%8C-Linux%E7%BD%91%E7%BB%9C%E6%9C%8D%E5%8A%A1.pdf?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDttpksMNG0MSfgcpF_KGHGH5YiE_aVHfyXSq4hqIh7LgXscSij4a2uYDhK3Z-LxnW%26q-sign-time%3D1698646064%3B1698649724%26q-key-time%3D1698646064%3B1698649724%26q-header-list%3Dhost%26q-url-param-list%3D%26q-signature%3Dcee9e6e4db8453a31975120196e0be8648c83832&x-cos-security-token=sNun0ixmExZMC0G8tEBTW0JOEAq7ffiab0085b585d482ec7da35dc32abe230b857jY0T044k_5C2Z9bMgRrDugPmcvG4QC4BpZpDcPnwWP33lu5BFtzc0yy1MDyyWaGmoaEZp1kQvZ8_xEptpKMiwxsASWDfcK1GihQr-9cpQhDW5rTEHnY4-rzYUwvYu9qe-H-FWR8dIHke7dNTtTkgZJCmT4JjqmSKPuPGMU1t4vrH4zd4yvSz6Q040HtYKhPIPB9MB_AKdY-zUVvXZfrw)
-
-- [3-云计算课程笔记第三册-Shell脚本编程](https://web-1311671045.cos.ap-beijing.myqcloud.com/3-%E4%BA%91%E8%AE%A1%E7%AE%97%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%E7%AC%AC%E4%B8%89%E5%86%8C-Shell%E8%84%9A%E6%9C%AC%E7%BC%96%E7%A8%8B.pdf?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKID5z6sWJ7-cxlQwQJq_Gsi-U8PRRsqc-pMqWYr5ORIV644h1p7dHhB-MA1UaPma14k%26q-sign-time%3D1698646433%3B1698650093%26q-key-time%3D1698646433%3B1698650093%26q-header-list%3Dhost%26q-url-param-list%3D%26q-signature%3D6ac61bb5e8f88bc1167d4cb4a989f956734c448b&x-cos-security-token=sNun0ixmExZMC0G8tEBTW0JOEAq7ffia75f7f0ecee96fdb5a5886b455e5ebeb057jY0T044k_5C2Z9bMgRrPoWhNOC-qtnqAOQkRjfE91pO9vUe-9V6KIlofzxIBj2eZqVidk2hMcNgJGG4hSBpntMvjBz5gLdI1NYlht7c8-exsMWeim9k2YLPmNTrgQR-6pZ6R1V6yrQeGTzc5vV_PjclNS0qkJCkd5Kt7gPuXpMMDgYsa9-CRF0zLAYHYZSG-dukUeuR069hfaETofkPw)
 
