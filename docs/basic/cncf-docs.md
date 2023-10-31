@@ -67,7 +67,10 @@ OpenKruise 是一个基于 Kubernetes 的扩展套件，主要聚焦于云原生
     - 云原生虚拟机解决方案（在k8s中运行虚拟机）
 
 
+### **Juicefs**
 
+!!! warning "Juicefs"
+    - 云原生分布式存储
 
 
 
