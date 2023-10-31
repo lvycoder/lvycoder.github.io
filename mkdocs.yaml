@@ -152,6 +152,7 @@ nav:
         - osd 性能测试: Storage/osd.md
         - pv/pvc简介: Storage/pv-rep.md
         - s3cmd 用法: Storage/s3-client-docs.md
+        - ceph 对象存储: Storage/ceph-bucket.md
         - ceph 存储修复: Storage/5-dev-docs.md
         - ceph 存储扩容: Storage/expand-docs.md
         - ceph 错误指南: Storage/ceph-error.md
