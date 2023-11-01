@@ -145,8 +145,11 @@ nav:
         - redis 持久化: redis/redis-save-docs.md
  
     - 5、存储服务: 
-        - 存储分类 : Storage/disk-ssd-docs.md
+        - 存储分类: Storage/disk-ssd-docs.md
+        - ceph 基础: Storage/ceph-base.md
         - ceph 分布式存储: Storage/rook-ceph.md
+        - ceph RBD使用: Storage/rbd-docs.md
+        - ceph 文件系统使用: Storage/cephfs-docs.md
         - ceph 命令用法: Storage/ceph-cli-docs.md
         - ceph 性能测试: Storage/osd.md
         - ceph 对象存储: Storage/ceph-bucket.md

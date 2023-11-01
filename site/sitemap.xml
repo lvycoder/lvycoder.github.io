@@ -66,6 +66,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://barry-boy.github.io/Storage/ceph-base/</loc>
+         <lastmod>2023-11-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://barry-boy.github.io/Storage/ceph-bucket/</loc>
          <lastmod>2023-11-01</lastmod>
          <changefreq>daily</changefreq>
@@ -77,6 +82,11 @@
     </url>
     <url>
          <loc>https://barry-boy.github.io/Storage/ceph-error/</loc>
+         <lastmod>2023-11-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://barry-boy.github.io/Storage/cephfs-docs/</loc>
          <lastmod>2023-11-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -117,6 +127,11 @@
     </url>
     <url>
          <loc>https://barry-boy.github.io/Storage/pv-rep/</loc>
+         <lastmod>2023-11-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://barry-boy.github.io/Storage/rbd-docs/</loc>
          <lastmod>2023-11-01</lastmod>
          <changefreq>daily</changefreq>
     </url>
