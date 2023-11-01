@@ -118,6 +118,7 @@ nav:
         - CKA考题: cks/cka.md
         - CKS考题: cks/cks.md
         - Kubernetes UI: basic/5-kubernetes-UI-docs.md
+        - pv/pvc简介: Storage/pv-rep.md
         - Rancher 升级: k8s/ui/rancher-update-docs.md
         - Kubernetes 节点维护: basic/7-kubernetes-update-docs.md
         - Helm 简介与安装: Helm/helm-install.md
@@ -144,19 +145,18 @@ nav:
         - redis 持久化: redis/redis-save-docs.md
  
     - 5、存储服务: 
-        - 固态 ssd : Storage/disk-ssd-docs.md
-        - 分布式存储: Storage/rook-ceph.md
+        - 存储分类 : Storage/disk-ssd-docs.md
+        - ceph 分布式存储: Storage/rook-ceph.md
         - ceph 命令用法: Storage/ceph-cli-docs.md
-        - Juicefs存储方案: Storage/Juicefs.md
-        - Juicefs版本升级: Storage/juicefs-update.md
-        - osd 性能测试: Storage/osd.md
-        - pv/pvc简介: Storage/pv-rep.md
-        - s3cmd 用法: Storage/s3-client-docs.md
+        - ceph 性能测试: Storage/osd.md
         - ceph 对象存储: Storage/ceph-bucket.md
+        - ceph s3cmd管理: Storage/s3-client-docs.md
         - ceph 存储修复: Storage/5-dev-docs.md
         - ceph 存储扩容: Storage/expand-docs.md
         - ceph 错误指南: Storage/ceph-error.md
         - ceph 高级参数: Storage/6-ceph-crush-docs.md
+        - Juicefs存储方案: Storage/Juicefs.md
+        - Juicefs版本升级: Storage/juicefs-update.md
 
 
     - 6、虚拟化:
