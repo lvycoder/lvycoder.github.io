@@ -156,7 +156,7 @@ nav:
         - ceph 存储修复: Storage/5-dev-docs.md
         - ceph 存储扩容: Storage/expand-docs.md
         - ceph 错误指南: Storage/ceph-error.md
-        
+        - ceph 高级参数: Storage/6-ceph-crush-docs.md
 
 
     - 6、虚拟化:

@@ -74,25 +74,6 @@ OpenKruise 是一个基于 Kubernetes 的扩展套件，主要聚焦于云原生
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ### **学习文档：**
 
 - www.qikqiak.com/k8strain
@@ -101,5 +82,7 @@ OpenKruise 是一个基于 Kubernetes 的扩展套件，主要聚焦于云原生
 
 - www.qikqiak.com/k3s
 
-- [kubecon 会议: ](https://www.lfasiallc.com/kubecon-cloudnativecon-open-source-summit-china/) 
+- [Devops周期表](https://devops.phodal.com/home)
+  
+- [kubecon 会议](https://www.lfasiallc.com/kubecon-cloudnativecon-open-source-summit-china/) 
 

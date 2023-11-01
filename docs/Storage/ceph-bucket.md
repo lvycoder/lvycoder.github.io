@@ -1,4 +1,15 @@
-[xxxxxxxxxxxxxx](https://web-1311671045.cos.ap-beijing.myqcloud.com/1-%E4%BA%91%E8%AE%A1%E7%AE%97%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%E7%AC%AC%E4%B8%80%E5%86%8C-Linux%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86_unlocked.pdf)
+
+## **对象存储**
+
+- 查看bucket
+
+```
+root@rbd-demo-c5fc7f94-whscz:~# s3cmd ls
+2023-08-12 17:18  s3://ceph-bkt-a0842637-c874-4dc7-b0d5-639d6aa825a2
+```
 
 
-[ddfdfdfdfdfd](https://web-1311671045.cos.ap-beijing.myqcloud.com/1-%E4%BA%91%E8%AE%A1%E7%AE%97%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0%E7%AC%AC%E4%B8%80%E5%86%8C-Linux%E7%B3%BB%E7%BB%9F%E7%AE%A1%E7%90%86_unlocked.pdf?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDI27b_hYe-lkrFz09LmYePisbSHoNamngWiX_FxQaVrE1BAfwmGERiTba-NwV0RMk%26q-sign-time%3D1698661357%3B1698665017%26q-key-time%3D1698661357%3B1698665017%26q-header-list%3Dhost%26q-url-param-list%3D%26q-signature%3D953735dd3148486143e9a8531d76ba94b98f69d3&x-cos-security-token=dhuI3Fk4b8YZdNo2NH7k0tjtr3doj8Ja86939f47c31810c914a4c7588ee4feedw5iXzSKf8vJ1aOppSaiqtRrfrsF_UdTZl4RmG6njqLs3IzDx0_BVqaifHRx-TUDnlazQ-vx9AcALuVHldoPAD99fXIf1JPYuLMEIpAm8TXzQxFXNdAxpDVWRmpMpb21SBeSDai3ln4fmugrj57vDZEMjbcyicVAqu3LY7JTKrIfmzirYQkCjg8pM8aGJcOC69YUPQlio1ZjSg2S1wEORSw)
+
+
+
+
