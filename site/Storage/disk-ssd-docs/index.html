@@ -70,6 +70,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -1412,9 +1417,65 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          存储分类
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         存储分类
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    存储的分类:
+  </a>
+  
+    <nav class="md-nav" aria-label="存储的分类:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    存储分类
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    固态存储
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    磁盘管理
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -2116,12 +2177,39 @@
 
   <h1>存储分类</h1>
 
+<h2 id="_1"><strong>存储的分类:</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="_2"><strong>存储分类</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p><strong>单机存储:</strong></p>
+<ul>
+<li>SCSI/IDE/SATA//SAS/USB/PCI-E/SSD/M.2 NVME 协议(提升性能)</li>
+</ul>
+<p>SATA/IDE:</p>
+<p><img alt="20231101170635" src="https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231101170635.png" /></p>
+<p>SATA ssd:</p>
+<ul>
+<li>https://item.jd.com/49620677951.html#crumb-wrap</li>
+</ul>
+<p><img alt="20231101171155" src="https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231101171155.png" /></p>
+<p>nvme ssd:</p>
+<p>https://item.jd.com/10070004737561.html</p>
+<p><img alt="20231101172449" src="https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231101172449.png" /></p>
+<p>M.2 :</p>
+<p><img alt="20231101172815" src="https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231101172815.png" /></p>
+<p><strong>网络存储:</strong></p>
+<ul>
+<li>NFS</li>
+<li>Samba</li>
+</ul>
+<p><img alt="20231101174931" src="https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231101174931.png" /></p>
+<h3 id="_3"><strong>固态存储</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>这次迁移机房,让我了解到真多硬盘的相关知识,之前一直使用的普通机械盘,一直对固态 ssd 欠缺了解,这次也大概了解到了几种.</p>
-<p>常见固态类型: 
-- SATA SSD：这种 SSD 使用 SATA（Serial ATA）接口连接到计算机上。虽然 SATA SSD 的速度比 NVMe SSD 慢，但它们通常更便宜，且兼容性更好。
-- NVMe SSD：NVMe（Non-Volatile Memory Express）是一种专为 SSD 设计的接口协议，能充分利用 SSD 的高速性能。NVMe SSD 通常连接到主板的 PCIe 插槽上，其数据传输速度远超 SATA 接口的 SSD
-- M.2 SSD：M.2 是一种形状和尺寸的规格，可以支持 SATA 或 NVMe 接口。M.2 SSD 可以非常小巧，适合在笔记本电脑和小型计算机中使用。
-- U.2 SSD：U.2 SSD 是一种企业级 SSD，主要用于数据中心。U.2 接口支持 NVMe 协议，可以提供高速的数据传输。</p>
+<p>常见固态类型: </p>
+<ul>
+<li>SATA SSD：这种 SSD 使用 SATA（Serial ATA）接口连接到计算机上。虽然 SATA SSD 的速度比 NVMe SSD 慢，但它们通常更便宜，且兼容性更好。</li>
+<li>NVMe SSD：NVMe（Non-Volatile Memory Express）是一种专为 SSD 设计的接口协议，能充分利用 SSD 的高速性能。NVMe SSD 通常连接到主板的 PCIe 插槽上，其数据传输速度远超 SATA 接口的 SSD</li>
+<li>M.2 SSD：M.2 是一种形状和尺寸的规格，可以支持 SATA 或 NVMe 接口。M.2 SSD 可以非常小巧，适合在笔记本电脑和小型计算机中使用。</li>
+<li>U.2 SSD：U.2 SSD 是一种企业级 SSD，主要用于数据中心。U.2 接口支持 NVMe 协议，可以提供高速的数据传输。</li>
+</ul>
 <p>以上的四种这次都用到了,</p>
 <ul>
 <li>SATA 盘这种磁盘是我们平时最常用的一种，几乎台式机都是支持SATA接口的。</li>
@@ -2131,9 +2219,6 @@
 <li>
 <p>M.2 他的样子很像内存条,一般情况用在笔记本中,或者服务器的内部,如图所示:</p>
 </li>
-</ul>
-<p><img alt="" src="https://pic.imgdb.cn/item/64f1922c661c6c8e545230d7.jpg" /></p>
-<ul>
 <li>
 <p>NVMe SSD ，这种nvme的盘也是很常见的，这个需要安装linux安装<code>nvme-tools</code> 就可以使用<code>nvme list</code> 来查看了</p>
 </li>
@@ -2141,6 +2226,78 @@
 <p>U.2 SSD,这种盘一般需要服务器接口支持才能够使用。一般这种盘比较昂贵。 </p>
 </li>
 </ul>
+<h3 id="_4"><strong>磁盘管理</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>查看硬盘的详细信息</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>wlcb<span class="o">]</span><span class="w"> </span>root@stor1:/home/openbayes#<span class="w"> </span>smartctl<span class="w"> </span>-a<span class="w"> </span>/dev/nvme9n1
+smartctl<span class="w"> </span><span class="m">7</span>.2<span class="w"> </span><span class="m">2020</span>-12-30<span class="w"> </span>r5155<span class="w"> </span><span class="o">[</span>x86_64-linux-5.15.0-79-generic<span class="o">]</span><span class="w"> </span><span class="o">(</span><span class="nb">local</span><span class="w"> </span>build<span class="o">)</span>
+Copyright<span class="w"> </span><span class="o">(</span>C<span class="o">)</span><span class="w"> </span><span class="m">2002</span>-20,<span class="w"> </span>Bruce<span class="w"> </span>Allen,<span class="w"> </span>Christian<span class="w"> </span>Franke,<span class="w"> </span>www.smartmontools.org
+
+<span class="o">===</span><span class="w"> </span>START<span class="w"> </span>OF<span class="w"> </span>INFORMATION<span class="w"> </span><span class="nv">SECTION</span><span class="w"> </span><span class="o">===</span>
+Model<span class="w"> </span>Number:<span class="w">                       </span>WUS4BB076D7P3E3<span class="w"> </span><span class="c1"># 这是硬盘的型号</span>
+Serial<span class="w"> </span>Number:<span class="w">                      </span>A06460A4<span class="w"> </span><span class="c1"># 这是硬盘的序列号</span>
+Firmware<span class="w"> </span>Version:<span class="w">                   </span>R1110012<span class="w"> </span><span class="c1"># 这是硬盘的固件版本</span>
+PCI<span class="w"> </span>Vendor/Subsystem<span class="w"> </span>ID:<span class="w">            </span>0x1b96
+IEEE<span class="w"> </span>OUI<span class="w"> </span>Identifier:<span class="w">                </span>0x0014ee
+Total<span class="w"> </span>NVM<span class="w"> </span>Capacity:<span class="w">                 </span><span class="m">7</span>,681,501,126,656<span class="w"> </span><span class="o">[</span><span class="m">7</span>.68<span class="w"> </span>TB<span class="o">]</span><span class="w"> </span><span class="c1"># 这是硬盘的总容量</span>
+Unallocated<span class="w"> </span>NVM<span class="w"> </span>Capacity:<span class="w">           </span><span class="m">0</span>
+Controller<span class="w"> </span>ID:<span class="w">                      </span><span class="m">0</span>
+NVMe<span class="w"> </span>Version:<span class="w">                       </span><span class="m">1</span>.3
+Number<span class="w"> </span>of<span class="w"> </span>Namespaces:<span class="w">               </span><span class="m">1</span>
+Namespace<span class="w"> </span><span class="m">1</span><span class="w"> </span>Size/Capacity:<span class="w">          </span><span class="m">7</span>,681,501,126,656<span class="w"> </span><span class="o">[</span><span class="m">7</span>.68<span class="w"> </span>TB<span class="o">]</span>
+Namespace<span class="w"> </span><span class="m">1</span><span class="w"> </span>Formatted<span class="w"> </span>LBA<span class="w"> </span>Size:<span class="w">     </span><span class="m">4096</span><span class="w"> </span><span class="c1"># 这是命名空间 1 的格式化 LBA 大小</span>
+Namespace<span class="w"> </span><span class="m">1</span><span class="w"> </span>IEEE<span class="w"> </span>EUI-64:<span class="w">            </span>0014ee<span class="w"> </span>8300ecf800
+Local<span class="w"> </span>Time<span class="w"> </span>is:<span class="w">                      </span>Wed<span class="w"> </span>Nov<span class="w">  </span><span class="m">1</span><span class="w"> </span><span class="m">17</span>:21:54<span class="w"> </span><span class="m">2023</span><span class="w"> </span>CST
+Firmware<span class="w"> </span>Updates<span class="w"> </span><span class="o">(</span>0x19<span class="o">)</span>:<span class="w">            </span><span class="m">4</span><span class="w"> </span>Slots,<span class="w"> </span>Slot<span class="w"> </span><span class="m">1</span><span class="w"> </span>R/O,<span class="w"> </span>no<span class="w"> </span>Reset<span class="w"> </span>required
+Optional<span class="w"> </span>Admin<span class="w"> </span>Commands<span class="w"> </span><span class="o">(</span>0x001f<span class="o">)</span>:<span class="w">   </span>Security<span class="w"> </span>Format<span class="w"> </span>Frmw_DL<span class="w"> </span>NS_Mngmt<span class="w"> </span>Self_Test
+Optional<span class="w"> </span>NVM<span class="w"> </span>Commands<span class="w"> </span><span class="o">(</span>0x005e<span class="o">)</span>:<span class="w">     </span>Wr_Unc<span class="w"> </span>DS_Mngmt<span class="w"> </span>Wr_Zero<span class="w"> </span>Sav/Sel_Feat<span class="w"> </span>Timestmp
+Log<span class="w"> </span>Page<span class="w"> </span>Attributes<span class="w"> </span><span class="o">(</span>0x03<span class="o">)</span>:<span class="w">         </span>S/H_per_NS<span class="w"> </span>Cmd_Eff_Lg
+Warning<span class="w">  </span>Comp.<span class="w"> </span>Temp.<span class="w"> </span>Threshold:<span class="w">     </span><span class="m">70</span><span class="w"> </span>Celsius<span class="w"> </span><span class="c1"># 这是硬盘的警告温度阈值</span>
+Critical<span class="w"> </span>Comp.<span class="w"> </span>Temp.<span class="w"> </span>Threshold:<span class="w">     </span><span class="m">80</span><span class="w"> </span>Celsius<span class="w"> </span><span class="c1"># 这是硬盘的临界温度阈值</span>
+Namespace<span class="w"> </span><span class="m">1</span><span class="w"> </span>Features<span class="w"> </span><span class="o">(</span>0x02<span class="o">)</span>:<span class="w">        </span>NA_Fields
+
+Supported<span class="w"> </span>Power<span class="w"> </span>States
+St<span class="w"> </span>Op<span class="w">     </span>Max<span class="w">   </span>Active<span class="w">     </span>Idle<span class="w">   </span>RL<span class="w"> </span>RT<span class="w"> </span>WL<span class="w"> </span>WT<span class="w">  </span>Ent_Lat<span class="w">  </span>Ex_Lat
+<span class="w"> </span><span class="m">0</span><span class="w"> </span>+<span class="w">    </span><span class="m">12</span>.00W<span class="w">       </span>-<span class="w">        </span>-<span class="w">    </span><span class="m">0</span><span class="w">  </span><span class="m">0</span><span class="w">  </span><span class="m">0</span><span class="w">  </span><span class="m">0</span><span class="w">       </span><span class="m">50</span><span class="w">      </span><span class="m">50</span>
+<span class="w"> </span><span class="m">1</span><span class="w"> </span>+<span class="w">    </span><span class="m">11</span>.00W<span class="w">       </span>-<span class="w">        </span>-<span class="w">    </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">  </span><span class="m">1</span><span class="w">       </span><span class="m">50</span><span class="w">      </span><span class="m">50</span>
+<span class="w"> </span><span class="m">2</span><span class="w"> </span>+<span class="w">    </span><span class="m">10</span>.00W<span class="w">       </span>-<span class="w">        </span>-<span class="w">    </span><span class="m">2</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">2</span><span class="w">  </span><span class="m">2</span><span class="w">       </span><span class="m">50</span><span class="w">      </span><span class="m">50</span>
+<span class="w"> </span><span class="m">3</span><span class="w"> </span>+<span class="w">     </span><span class="m">9</span>.00W<span class="w">       </span>-<span class="w">        </span>-<span class="w">    </span><span class="m">3</span><span class="w">  </span><span class="m">3</span><span class="w">  </span><span class="m">3</span><span class="w">  </span><span class="m">3</span><span class="w">       </span><span class="m">50</span><span class="w">      </span><span class="m">50</span>
+<span class="w"> </span><span class="m">4</span><span class="w"> </span>+<span class="w">     </span><span class="m">8</span>.00W<span class="w">       </span>-<span class="w">        </span>-<span class="w">    </span><span class="m">4</span><span class="w">  </span><span class="m">4</span><span class="w">  </span><span class="m">4</span><span class="w">  </span><span class="m">4</span><span class="w">       </span><span class="m">50</span><span class="w">      </span><span class="m">50</span>
+
+Supported<span class="w"> </span>LBA<span class="w"> </span>Sizes<span class="w"> </span><span class="o">(</span>NSID<span class="w"> </span>0x1<span class="o">)</span>
+Id<span class="w"> </span>Fmt<span class="w">  </span>Data<span class="w">  </span>Metadt<span class="w">  </span>Rel_Perf
+<span class="w"> </span><span class="m">0</span><span class="w"> </span>+<span class="w">    </span><span class="m">4096</span><span class="w">       </span><span class="m">0</span><span class="w">         </span><span class="m">0</span>
+<span class="w"> </span><span class="m">1</span><span class="w"> </span>-<span class="w">     </span><span class="m">512</span><span class="w">       </span><span class="m">0</span><span class="w">         </span><span class="nv">0</span>
+
+<span class="o">===</span><span class="w"> </span>START<span class="w"> </span>OF<span class="w"> </span>SMART<span class="w"> </span>DATA<span class="w"> </span><span class="nv">SECTION</span><span class="w"> </span><span class="o">===</span>
+SMART<span class="w"> </span>overall-health<span class="w"> </span>self-assessment<span class="w"> </span><span class="nb">test</span><span class="w"> </span>result:<span class="w"> </span>PASSED<span class="w"> </span><span class="c1"># 这是硬盘的自我评估健康检查结果</span>
+
+SMART/Health<span class="w"> </span>Information<span class="w"> </span><span class="o">(</span>NVMe<span class="w"> </span>Log<span class="w"> </span>0x02<span class="o">)</span>
+Critical<span class="w"> </span>Warning:<span class="w">                   </span>0x00
+Temperature:<span class="w">                        </span><span class="m">41</span><span class="w"> </span>Celsius<span class="w"> </span><span class="c1"># 这是硬盘的当前温度</span>
+Available<span class="w"> </span>Spare:<span class="w">                    </span><span class="m">100</span>%<span class="w"> </span><span class="c1"># 这是硬盘的可用备用容量的百分比</span>
+Available<span class="w"> </span>Spare<span class="w"> </span>Threshold:<span class="w">          </span><span class="m">10</span>%
+Percentage<span class="w"> </span>Used:<span class="w">                    </span><span class="m">0</span>%<span class="w"> </span><span class="c1"># 这是硬盘已使用的百分比</span>
+Data<span class="w"> </span>Units<span class="w"> </span>Read:<span class="w">                    </span><span class="m">15</span>,426,092<span class="w"> </span><span class="o">[</span><span class="m">7</span>.89<span class="w"> </span>TB<span class="o">]</span><span class="w"> </span><span class="c1"># 这是已读取的数据单元数量</span>
+Data<span class="w"> </span>Units<span class="w"> </span>Written:<span class="w">                 </span><span class="m">27</span>,113,736<span class="w"> </span><span class="o">[</span><span class="m">13</span>.8<span class="w"> </span>TB<span class="o">]</span><span class="w"> </span><span class="c1"># 这是已写入的数据单元数量</span>
+Host<span class="w"> </span>Read<span class="w"> </span>Commands:<span class="w">                 </span><span class="m">104</span>,197,470
+Host<span class="w"> </span>Write<span class="w"> </span>Commands:<span class="w">                </span><span class="m">1</span>,044,097,133
+Controller<span class="w"> </span>Busy<span class="w"> </span>Time:<span class="w">               </span><span class="m">7</span>,011
+Power<span class="w"> </span>Cycles:<span class="w">                       </span><span class="m">17</span>
+Power<span class="w"> </span>On<span class="w"> </span>Hours:<span class="w">                     </span><span class="m">1</span>,037<span class="w"> </span><span class="c1"># 这是硬盘的运行时间</span>
+Unsafe<span class="w"> </span>Shutdowns:<span class="w">                   </span><span class="m">11</span><span class="w"> </span><span class="c1"># 这是不安全关闭的次数</span>
+Media<span class="w"> </span>and<span class="w"> </span>Data<span class="w"> </span>Integrity<span class="w"> </span>Errors:<span class="w">    </span><span class="m">0</span>
+Error<span class="w"> </span>Information<span class="w"> </span>Log<span class="w"> </span>Entries:<span class="w">      </span><span class="m">110</span><span class="w"> </span><span class="c1"># 这是错误信息日志条目的数量</span>
+Warning<span class="w">  </span>Comp.<span class="w"> </span>Temperature<span class="w"> </span>Time:<span class="w">    </span><span class="m">0</span>
+Critical<span class="w"> </span>Comp.<span class="w"> </span>Temperature<span class="w"> </span>Time:<span class="w">    </span><span class="m">0</span>
+Temperature<span class="w"> </span>Sensor<span class="w"> </span><span class="m">1</span>:<span class="w">               </span><span class="m">39</span><span class="w"> </span>Celsius<span class="w"> </span><span class="c1"># 这是温度传感器1的读数</span>
+
+Error<span class="w"> </span>Information<span class="w"> </span><span class="o">(</span>NVMe<span class="w"> </span>Log<span class="w"> </span>0x01,<span class="w"> </span><span class="m">16</span><span class="w"> </span>of<span class="w"> </span><span class="m">256</span><span class="w"> </span>entries<span class="o">)</span>
+Num<span class="w">   </span>ErrCount<span class="w">  </span>SQId<span class="w">   </span>CmdId<span class="w">  </span>Status<span class="w">  </span>PELoc<span class="w">          </span>LBA<span class="w">  </span>NSID<span class="w">    </span>VS
+<span class="w">  </span><span class="m">0</span><span class="w">        </span><span class="m">110</span><span class="w">     </span><span class="m">0</span><span class="w">  </span>0xf01b<span class="w">  </span>0xc004<span class="w">  </span>0x028<span class="w">            </span><span class="m">0</span><span class="w">     </span><span class="m">0</span><span class="w">     </span>-
+<span class="w">  </span><span class="m">1</span><span class="w">        </span><span class="m">109</span><span class="w">     </span><span class="m">0</span><span class="w">  </span>0x2014<span class="w">  </span>0xc004<span class="w">  </span>0x029<span class="w">            </span><span class="m">0</span><span class="w">     </span><span class="m">0</span><span class="w">     </span>-
+</code></pre></div>
 
               
             </article>
