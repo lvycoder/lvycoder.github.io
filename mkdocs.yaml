@@ -143,11 +143,11 @@ nav:
         
     - 4、数据库:
         - Mysql 数据库: k8s/mysql-operator/0-mysql-docs.md
-        - Mysql-operator: k8s/mysql-operator/1-install-mysql-operator.md
+        - Mysql operator: k8s/mysql-operator/1-install-mysql-operator.md
         - Mysql 备份恢复: k8s/mysql-operator/2-mysql-backup-docs.md
         - 数据库问题处理: k8s/mysql-operator/3-mysql-backup-error-docs.md
         - redis 大纲: redis/redis-class-docs.md
-        - 缓存加速: Storage/redis-docs.md
+        - redis 缓存加速: Storage/redis-docs.md
         - redis 集群篇: Storage/redis-cluster-docs.md
         - redis 持久化: redis/redis-save-docs.md
  
@@ -186,7 +186,8 @@ nav:
 
     - 9、其他: 
         - kubeconfig 实践应用: Macuse/mac-kubeconfig.md
-        - 边缘计算: k3s/k3s-install.md
+        - k3s 大纲介绍: k3s/k3s-docs.md
+        - k3s 边缘计算: k3s/k3s-install.md
         - k9s 实践应用: Macuse/mac-k9s-doc.md
         - Mac 制作ubuntu系统盘: Macuse/mac-usb-system.md
         - Mac vscode使用技巧: Macuse/mac-vscode.md

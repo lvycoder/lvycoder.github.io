@@ -301,6 +301,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://barry-boy.github.io/k3s/k3s-docs/</loc>
+         <lastmod>2023-11-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://barry-boy.github.io/k3s/k3s-install/</loc>
          <lastmod>2023-11-02</lastmod>
          <changefreq>daily</changefreq>
