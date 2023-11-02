@@ -203,6 +203,18 @@ cat <<EOF | curl -X PUT \
 EOF
 ```
 
+### **获取当前namespace下的镜像**
+
+```shell
+$ cat ~/.bash_profile # 将一下代码复制到~/.bash_profile，并source ~/.bash_profile。就可以通过podimg命令获取镜像
+podimg() {
+  kubectl get pods -o jsonpath="{..image}" |\
+  tr -s '[[:space:]]' '\n' |\
+  sort |\
+  uniq
+}
+```
+
 
 
 !!! error "System OOM encountered"
