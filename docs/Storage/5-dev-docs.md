@@ -32,12 +32,11 @@ dev 环境因为磁盘出现问题导致存储不可用,提出不可用磁盘,�
 脚本地址: https://github.com/rook/rook/blob/v1.6.11/cluster/examples/kubernetes/ceph/osd-purge.yaml
 
 方式二 : 使用 ceph 原生方式删除
-
+[root@node-1 ceph]# kubectl scale deploy rook-ceph-osd-1 --relicas=0 
 [root@node-1 ceph]# ceph osd out osd.6
 [root@node-1 ceph]# ceph osd purge 6
 [root@node-1 ceph]# ceph osd tree //确认是否已经删除
 [root@node-1 ceph]# ceph auth del osd.6  //注意可能就是这步骤没有做从而导致集群加不进去新 osd
-[root@node-1 ceph]# kubectl delete deployments.apps rook-ceph-osd-6  //删除 osd 的 deploy
 ```
 
 
@@ -45,11 +44,35 @@ dev 环境因为磁盘出现问题导致存储不可用,提出不可用磁盘,�
 
 因为配置 Ceph 存储,需要裸设备或者没有文件系统的设备,已经被 ceph 标记也可能 operator 会加入 osd 失败,所以需要清理
 
+方式一:
 
 ```shell
 [root@node-1 ceph]# dmsetup ls  //用这条命令查出被 ceph 标记的设备
 [root@node-1 ceph]# dmsetup remove vg--test-vg--lv
 [root@node-1 ceph]# sgdisk -Z /dev/vdd
+```
+方式二:
+
+```shell
+DISK="/dev/sdX"
+
+# Zap the disk to a fresh, usable state (zap-all is important, b/c MBR has to be clean)
+sgdisk --zap-all $DISK
+
+# Wipe a large portion of the beginning of the disk to remove more LVM metadata that may be present
+dd if=/dev/zero of="$DISK" bs=1M count=100 oflag=direct,dsync
+
+# SSDs may be better cleaned with blkdiscard instead of dd
+blkdiscard $DISK
+
+# Inform the OS of partition table changes
+partprobe $DISK
+```
+
+删除deploy
+
+```
+[root@node-1 ceph]# kubectl delete deployments.apps rook-ceph-osd-6  //删除 osd 的 deploy
 ```
 
 - roo-ceph 空间不足

@@ -1,12 +1,55 @@
-## **网络学习手册**
+## **网络 思科设备**
 
+### **路由器**
 
-- [1.计算机网络参考模型与5G协议](https://web-1311671045.cos.ap-beijing.myqcloud.com/02-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B%E4%B8%8E5G%E5%8D%8F%E8%AE%AE.pdf)
+- cisco 路由设备的基本配置
 
-- [2.网络布线与数制转换](https://web-1311671045.cos.ap-beijing.myqcloud.com/03-%E7%BD%91%E7%BB%9C%E5%B8%83%E7%BA%BF%E4%B8%8E%E6%95%B0%E5%88%B6%E8%BD%AC%E6%8D%A2.pdf)
+```shell
+en
+conf t
+no ip domain-lo
+line con 0 
+exec-t 0 0
+logg syn
+end
+```
 
-- [3.交换机基本原理与配置](https://web-1311671045.cos.ap-beijing.myqcloud.com/04-%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E4%B8%8E%E9%85%8D%E7%BD%AE.pdf)
+- 配置IP(实现互通)
 
-- [4.网络层协议介绍](https://web-1311671045.cos.ap-beijing.myqcloud.com/04-%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E4%B8%8E%E9%85%8D%E7%BD%AE.pdf)
+```shell
+int f 0/1
+ip address ip_address subnet_mask
+no shutdown
+```
 
-- [5.传输层协议介绍](https://web-1311671045.cos.ap-beijing.myqcloud.com/05-%E7%BD%91%E7%BB%9C%E5%B1%82%E5%8D%8F%E8%AE%AE%E4%BB%8B%E7%BB%8D.pdf)
+!!! warning "温馨提示"
+    一般来说，路由器的物理接口默认都是关闭的，需要用“no shutdown” 命令开启；但交换机的物理接口默认都是开启
+
+### **静态路由**
+
+![20231103152941](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231103152941.png)
+
+- 静态路由
+
+- 默认路由
+
+两种配置方式:
+```
+# 静态路由
+ip route 未知网段 子网掩码 下一跳 
+
+# 默认路由
+ip route 0.0.0.0 0.0.0.0 下一跳 
+
+```
+
+### **交换机**
+
+给交换机配置IP地址并不像路由器那样配置在物理接口上，而是配置在虚拟接口上，这样，无论任何一个物理接口连接交换机都可以访问虚拟接口的IP地址，从而实现对交换机的管理
+
+```
+int vlan 1
+ip address ip_address subnet_address
+no shutdown
+```
+

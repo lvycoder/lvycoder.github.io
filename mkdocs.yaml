@@ -90,11 +90,14 @@ markdown_extensions:
 nav:
     - 首页: index.md
     - 0、网络基础:
-        - 计算机网络参考模型: network/5g-docs.md
+        - 网络 Tcp/IP: network/Tcp-ip-docs.md
+        - 网络 思科设备: network/5g-docs.md
         - ZeroTier组网: network/ZeroTier.md
         - frp 内网穿透: network/frp.md
         - kubernetes 网络组件: network/3-network-docs.md
         - 科学上网: network/4-network-docs.md
+
+
     - 1、Linux:
         - Linux 云计算手册大纲: ubuntu/linux-docs.md
         - Linux 带外管理: ubuntu/ubuntu-bmc.md

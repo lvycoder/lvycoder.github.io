@@ -19,7 +19,7 @@
     
     
       
-        <title>计算机网络参考模型 - Kubernetes 进阶训练营</title>
+        <title>网络 思科设备 - Kubernetes 进阶训练营</title>
       
     
     
@@ -105,7 +105,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              计算机网络参考模型
+              网络 思科设备
             
           </span>
         </div>
@@ -215,7 +215,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="./" class="md-tabs__link md-tabs__link--active">
+      <a href="../Tcp-ip-docs/" class="md-tabs__link md-tabs__link--active">
         0、网络基础
       </a>
     </li>
@@ -476,6 +476,8 @@
         
           
         
+          
+        
       
       
         <label class="md-nav__link" for="__nav_2">
@@ -494,6 +496,20 @@
               
   
   
+  
+    <li class="md-nav__item">
+      <a href="../Tcp-ip-docs/" class="md-nav__link">
+        网络 Tcp/IP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
     
   
   
@@ -504,12 +520,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          计算机网络参考模型
+          网络 思科设备
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        计算机网络参考模型
+        网络 思科设备
       </a>
       
         
@@ -527,8 +543,35 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    网络学习手册
+    网络 思科设备
   </a>
+  
+    <nav class="md-nav" aria-label="网络 思科设备">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    路由器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    静态路由
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    交换机
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2308,26 +2351,55 @@
 </a>
 
 
-  <h1>计算机网络参考模型</h1>
+  <h1>网络 思科设备</h1>
 
-<h2 id="_1"><strong>网络学习手册</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h2 id="_1"><strong>网络 思科设备</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="_2"><strong>路由器</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>cisco 路由设备的基本配置</li>
+</ul>
+<div class="highlight"><pre><span></span><code>en
+conf<span class="w"> </span>t
+no<span class="w"> </span>ip<span class="w"> </span>domain-lo
+line<span class="w"> </span>con<span class="w"> </span><span class="m">0</span><span class="w"> </span>
+exec-t<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+logg<span class="w"> </span>syn
+end
+</code></pre></div>
+<ul>
+<li>配置IP(实现互通)</li>
+</ul>
+<div class="highlight"><pre><span></span><code>int<span class="w"> </span>f<span class="w"> </span><span class="m">0</span>/1
+ip<span class="w"> </span>address<span class="w"> </span>ip_address<span class="w"> </span>subnet_mask
+no<span class="w"> </span>shutdown
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">温馨提示</p>
+<p>一般来说，路由器的物理接口默认都是关闭的，需要用“no shutdown” 命令开启；但交换机的物理接口默认都是开启</p>
+</div>
+<h3 id="_3"><strong>静态路由</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p><img alt="20231103152941" src="https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231103152941.png" /></p>
 <ul>
 <li>
-<p><a href="https://web-1311671045.cos.ap-beijing.myqcloud.com/02-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B%E4%B8%8E5G%E5%8D%8F%E8%AE%AE.pdf">1.计算机网络参考模型与5G协议</a></p>
+<p>静态路由</p>
 </li>
 <li>
-<p><a href="https://web-1311671045.cos.ap-beijing.myqcloud.com/03-%E7%BD%91%E7%BB%9C%E5%B8%83%E7%BA%BF%E4%B8%8E%E6%95%B0%E5%88%B6%E8%BD%AC%E6%8D%A2.pdf">2.网络布线与数制转换</a></p>
-</li>
-<li>
-<p><a href="https://web-1311671045.cos.ap-beijing.myqcloud.com/04-%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E4%B8%8E%E9%85%8D%E7%BD%AE.pdf">3.交换机基本原理与配置</a></p>
-</li>
-<li>
-<p><a href="https://web-1311671045.cos.ap-beijing.myqcloud.com/04-%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E4%B8%8E%E9%85%8D%E7%BD%AE.pdf">4.网络层协议介绍</a></p>
-</li>
-<li>
-<p><a href="https://web-1311671045.cos.ap-beijing.myqcloud.com/05-%E7%BD%91%E7%BB%9C%E5%B1%82%E5%8D%8F%E8%AE%AE%E4%BB%8B%E7%BB%8D.pdf">5.传输层协议介绍</a></p>
+<p>默认路由</p>
 </li>
 </ul>
+<p>两种配置方式:
+<div class="highlight"><pre><span></span><code># 静态路由
+ip route 未知网段 子网掩码 下一跳 
+
+# 默认路由
+ip route 0.0.0.0 0.0.0.0 下一跳 
+</code></pre></div></p>
+<h3 id="_4"><strong>交换机</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>给交换机配置IP地址并不像路由器那样配置在物理接口上，而是配置在虚拟接口上，这样，无论任何一个物理接口连接交换机都可以访问虚拟接口的IP地址，从而实现对交换机的管理</p>
+<div class="highlight"><pre><span></span><code>int vlan 1
+ip address ip_address subnet_address
+no shutdown
+</code></pre></div>
 
               
             </article>
@@ -2346,7 +2418,7 @@
     <nav class="md-footer__inner md-grid" aria-label="页脚">
       
         
-        <a href="../.." class="md-footer__link md-footer__link--prev" aria-label="上一页: 首页" rel="prev">
+        <a href="../Tcp-ip-docs/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 网络 Tcp/IP" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -2355,7 +2427,7 @@
               <span class="md-footer__direction">
                 上一页
               </span>
-              首页
+              网络 Tcp/IP
             </div>
           </div>
         </a>
