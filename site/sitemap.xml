@@ -101,6 +101,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://barry-boy.github.io/Storage/clean-ceph-docs/</loc>
+         <lastmod>2023-11-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://barry-boy.github.io/Storage/disk-ssd-docs/</loc>
          <lastmod>2023-11-06</lastmod>
          <changefreq>daily</changefreq>
