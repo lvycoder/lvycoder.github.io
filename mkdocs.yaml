@@ -166,6 +166,7 @@ nav:
         - ceph s3cmd管理: Storage/s3-client-docs.md
         - ceph 存储修复: Storage/5-dev-docs.md
         - ceph 存储扩容: Storage/expand-docs.md
+        - ceph 外部环境连接集群: Storage/ceph-tools.md
         - ceph 错误指南: Storage/ceph-error.md
         - ceph 高级参数: Storage/6-ceph-crush-docs.md
         - Juicefs存储方案: Storage/Juicefs.md
@@ -176,6 +177,7 @@ nav:
         - Proxmox虚拟化: vm/promox.md  
 
     - 7、Devops:
+        - Git 报错指南: Devops/git-error-docs.md
         - Github: Devops/github.md
         - Github仓库同步至Gitee: Devops/4-github-gitee-doc.md
         - Google 浏览器扩展: Devops/3-github-docs.md
