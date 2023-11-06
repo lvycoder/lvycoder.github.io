@@ -466,6 +466,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://barry-boy.github.io/other/mac-docs/</loc>
+         <lastmod>2023-11-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://barry-boy.github.io/prometheus/1.%20prometheus/</loc>
          <lastmod>2023-11-06</lastmod>
          <changefreq>daily</changefreq>

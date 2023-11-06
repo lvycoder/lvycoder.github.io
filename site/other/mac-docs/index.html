@@ -12,14 +12,14 @@
         <meta name="author" content="Li">
       
       
-        <link rel="canonical" href="https://barry-boy.github.io/web-server/web-01/">
+        <link rel="canonical" href="https://barry-boy.github.io/other/mac-docs/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.0.0">
     
     
       
-        <title>Web 01 - Kubernetes 进阶训练营</title>
+        <title>如何利用Mac 写博客文章 - Kubernetes 进阶训练营</title>
       
     
     
@@ -105,7 +105,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Web 01
+              如何利用Mac 写博客文章
             
           </span>
         </div>
@@ -351,13 +351,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../Macuse/mac-kubeconfig/" class="md-tabs__link">
+      <a href="../../Macuse/mac-kubeconfig/" class="md-tabs__link md-tabs__link--active">
         9、其他
       </a>
     </li>
@@ -2008,12 +2010,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" checked>
       
       
       
@@ -2214,11 +2218,62 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../other/mac-docs/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          如何利用Mac 写博客文章
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         如何利用Mac 写博客文章
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    前沿
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mac" class="md-nav__link">
+    安装与部署（Mac 系统）
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    文章参考
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2326,101 +2381,38 @@
             <article class="md-content__inner md-typeset">
               
                 
-<a href="https://github.com/barry-boy/barry-boy.github.io/edit/master/docs/web-server/web-01.md" title="编辑此页" class="md-content__button md-icon">
+<a href="https://github.com/barry-boy/barry-boy.github.io/edit/master/docs/other/mac-docs.md" title="编辑此页" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
 
-  <h1>Web 01</h1>
+  <h1>如何利用Mac 写博客文章</h1>
 
-<h2 id="_1"><strong>一、域名概述</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>1、域名解析的作用 
-  方便记忆，IP地址不容易记忆，但是域名更加直观。</p>
-<p>2、早起使用的 hosts 文件解析域名 
-早起使用 hosts 文件进行域名的解析， Linux 中 hosts 文件存放路径为/etc/hosts ，Windows 系统中存放路径为 C:\Windows\System32\drivers\etc\hosts 内。 </p>
-<p>但后期，随着 Internet 网上的网站发展迅速，一个小小的 hosts 文件以不足以存放，再 加上主机名称重复、主机维护困难等问题，出现了 DNS 域名解析服务</p>
-<p>3、DNS （Domain Name System）域名系统 </p>
+<h2 id="_1"><strong>前沿</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>由于运维这个行业对于记笔记有一些要求，这个平时我会把我使用的一些常用的东西写在博客中，来总结与归纳。我利用的<code>mkdocs-material</code> 来撰写文章，用的他的理由就是：
+- 在Mac中很好的兼容，调试起来很方便
+- 在编译之后生成的静态页面很好看
+- 可以和git结合使用</p>
+<h2 id="mac"><strong>安装与部署（Mac 系统）</strong><a class="headerlink" href="#mac" title="Permanent link">&para;</a></h2>
 <ul>
-<li>
-<p>两大特点：分布式、层次性 </p>
-</li>
-<li>
-<p>域名空间结构：根域、顶级域（国家/ 地区域名）、二级域 </p>
-</li>
-<li>
-<p>完整域名格式：FQDN= 主机名.DNS 后缀，例：www.baidu.com. </p>
-</li>
+<li>Python 环境（python3.11）</li>
+<li>mkdocs-material==8.0.0</li>
 </ul>
-<h2 id="_2"><strong>二、网页概述</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>1、网页：纯文本格式文件，其编写语言为 HTML，在用户的浏览器中被“翻译”成网页形 式显示出来 </p>
-<p>2、网站：网站是由一个一个页面构成的，是多个网页的结合体 </p>
-<p>3、主页：打开网站后出现的第一个网页称为网站主页（或首页） </p>
-<p>4、域名：浏览网页时输入的网址（例如：www.benet.wang ）</p>
-<p>5、HTTP ：用来传输网页的通信协议 </p>
-<p>6、URL ：是一种万维网寻址系统 </p>
-<p>7、HTML ：用来编写网页的超文本标记语言</p>
-<p>8、超链接：将网站中不同网页链接起来的功能</p>
-<p>9、发布：将制作好的网页上传到服务器供用户访问的过程 </p>
-<h2 id="html"><strong>三、HTML(超文本标签语言)</strong><a class="headerlink" href="#html" title="Permanent link">&para;</a></h2>
-<p>1、HTML ：Hyper Text Markup Language ，网页的“源码” </p>
-<p>2、浏览器：“解释和执行”HTML 源码的工具 </p>
-<p>3、HTML 文档的结构 </p>
-<p>头部部分 </p>
-<p>标题部分 </p>
-<p>主体部分 </p>
-<p>网页内容，包括文本、图像等 </p>
-<h2 id="web"><strong>四、Web概述</strong><a class="headerlink" href="#web" title="Permanent link">&para;</a></h2>
-<p>Web 内容储存在 Web 服务器上，最简单的 Web 资源就是 Web 服务器文件系统中的静 态文件，这些文件可以包含任意内容：文本文件、HTML 文件、微软的 Word 文件、Adobe 的 Acrobat 文件、JPEG 图片文件、AVI 电影文件。 </p>
-<p>资源不一定是静态文件，资源还可以是根据需要生成内容的软件程序。这些动态内容资 源可以根据你的身份、所请求的信息或每天的不同时段来产生内容。</p>
-<p><img alt="20231030105618" src="https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231030105618.png" /></p>
-<p>1、Web1.0 与 Web2.0 </p>
-<p>Web1.0 是以编辑为特征，网站提供给用户的内容是编辑处理后提供的，然后用户阅读 网站提供的内容。这个过程是网站到用户的单向行为。 </p>
-<p>Web2.0 更注重用户的交互作用，用户既是网站内容的消费者（浏览者），也是网站内容 的制造者。Web2.0 加强了网站与用户之间的互动，网站内容基于用户提供，网站的诸多功 能也由用户参与建设，实现了网站与用户双向的交流与参与。 </p>
-<p>2、静态网页与动态网页 </p>
-<p>（1 ）静态网页 </p>
-<p>在网站设计中，纯粹 HTML 格式的网页通常被称为“静态网页”，静态网页是标准的 HTML 文件，扩展名是.htm 、.html，可包含文本、图像、声音、 FLASH 动画、客户端脚本和 ActiveX</p>
-<p>控件及 JAVA 小程序等。静态网页是网站建设的基础，早期的网站一般都是静态网页制作的。</p>
-<p>静态网页相对于动态网页而言，是没有后台数据库、不含程序和不可交互的网页。静态 网页相对更新起来比较麻烦，适用于一般更新叫少的展示型网站。 </p>
-<p>静态网页的内容相对稳定，因此容易被搜索引擎检索。 </p>
-<p>静态网页没有数据库的支持，在网站制作和维护方面工作量较大，因此当网站信息量很 大时完全依靠静态网页制作方式比较困难。静态网页的交互性较差，在功能方面有较大的限 制。页面浏览速度迅速，过程无需连接数据库，开启页面速度快于动态页面。</p>
-<p>（2 ）动态网页 </p>
-<p>动态网页是与静态网页相对应的，网页 URL 的后缀不是.htm 、.html 、.shtml 、xml 等静 态网页的常见形式，而是以.aspx 、.asp 、.jsp 、.php 、.perl 、.cgi 等形式为后缀，并且在动态 网页网址中有一个标志性的符号——“?” </p>
-<p>动态网页显示的内容可以随着时间、环境或者数据库操作的结果而发生改变。动态网页 与网页上的各种动画、滚动字幕等视觉上的动态效果没有直接关系，只要是采用了动态网站 技术生产的网页都可以称为“动态网页”。</p>
-<p>动态网页是基本的 html 语法与 Java、PHP 等高级程序设计语言、数据库编程等多种技 术的融合，以实现对网站内容和风格的高效、动态和交互式管理。 </p>
-<p>动态网页一般以数据库技术为基础，可以大大降低网站维护的工作量。采用动态网页技 术的网站可以实现更多的功能，如用户注册、用户登录、在线调查、用户管理、订单管理等</p>
-<h2 id="http"><strong>http协议分析</strong><a class="headerlink" href="#http" title="Permanent link">&para;</a></h2>
-<p>一. HTTP 协议概述</p>
-<p>每天都有数以亿万计的 JPEG 图片、 HTML 页面、文本文件、 MPEG 电影、 WAV 音频文件、 JAVA 小程序和其他资源在因特网上游弋。 HTTP 可以通过遍布全世界的 Web 服务器上将这些 信息快迅速、便捷、可靠地搬移到人们桌面上的 Web 浏览器上去。 </p>
-<p>Web 服务器所使用的是 HTTP 协议，因此经常会被称为 HTTP 服务器。 HTTP 服务器存储 了因特网中的数据，如果 HTTP 客户端发出请求的话，它们会提供数据，客户端向服务器发送 HTTP 请求，服务器会在 HTTP 响应中回送所有请求的数据。 </p>
-<p>二. HTTP 协议版本</p>
-<p>HTTP 协议是互联网上应用最为广泛的一种网络协议，设计这个协议的目的是为了发布和接收 Web 服务器上的 HTML 页面。</p>
-<p>HTTP 协议的版本： </p>
-<p><strong>HTTP 0.9</strong> </p>
-<p>已过时。只接受  GET  一种请求方法，没有在通讯中指定版本号，且不支持请求头。由 于该版本不支持  POST  方法，所以客户端无法向服务器传递太多信息。 </p>
-<p><strong>HTTP 1.0</strong> </p>
-<p>这是第一个在通讯中指定版本号的 HTTP  协议版本，至今仍被广泛采用，特别是在代理 服务器中。 </p>
-<p><strong>HTTP 1.1</strong> </p>
-<p>当前版本。持久连接被默认采用，并能很好地配合代理服务器工作。还支持以管道方式 同时发送多个请求，以便降低线路负载，提高传输速度。 </p>
-<p><strong>HTTP/1.1</strong> 相较于  <strong>HTTP/1.0</strong>  协议的区别主要体现在： </p>
-<p>1  缓存处理 </p>
-<p>2  带宽优化及网络连接的使用 </p>
-<p>3  错误通知的管理 </p>
-<p>4  消息在网络中的发送 </p>
-<p>5  互联网地址的维护 </p>
-<p>6  安全性及完整性 </p>
-<p>三. HTTP方法</p>
-<p>HTTP 支持几种不同的请求命令，这些命令被称为 HTTP 方法（ HTTP method）每条 HTTP 请求报文会包含一个方法，告诉服务器要执行什么动作： </p>
+<div class="highlight"><pre><span></span><code>由于python环境我已经预制了，如果没有python环境可以使用
+brew install python@3.11
+pip3 install mkdocs-material==8.0.0
+</code></pre></div>
+<p><strong>报错:</strong></p>
+<div class="highlight"><pre><span></span><code>mkdocs serve  启动mkdocs 报错
+ERROR    -  Config value &#39;plugins&#39;: The &quot;minify&quot; plugin is not installed
+Aborted with 1 Configuration Errors!
+</code></pre></div>
+<p><strong>解决:</strong></p>
+<p>这是因为配置文件中使用到了minify这个插件，但是这里没有安装，需要通过<code>pip3 install mkdocs-minify-plugin</code>进行安装。</p>
+<h2 id="_2"><strong>文章参考</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <ul>
-<li>获取一个 Web 页面 </li>
-<li>运行一个网关程序 </li>
-<li>删除一个文件等 </li>
+<li>https://squidfunk.github.io/mkdocs-material/</li>
 </ul>
-<p>HTTP 协议有多种获得 Web 资源的方法，常用的有两种：GET 和 POST </p>
-<p><img alt="20231030111012" src="https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231030111012.png" /></p>
-<p><strong>GET</strong> 和 <strong>POST</strong> </p>
-<p>例如访问： http://www.test.com/a.php?Id=123 就是一个 GET 请求，如果访问正常，我们 会从服务器的日志中获取 200 状态码。 </p>
-<p>假如此请求使用 POST 方法，那么我们会传递给 a.php 的 Id 参数依旧是 123，但是浏览 器的 URL 将不会显示后面的 Id=123 字样，因此表单类或者有用户名、密码等内容提交时建议使用 POST 方式。 </p>
-<p>不管使用哪种方式，最终 a.php 获取到的值是一样的。 </p>
 
               
             </article>
@@ -2435,6 +2427,41 @@
       </main>
       
         <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="页脚">
+      
+        
+        <a href="../../error/centos-dns-error-docs/" class="md-footer__link md-footer__link--prev" aria-label="上一页: dns 文件权限调整" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              dns 文件权限调整
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../mylife/2021-life-docs/" class="md-footer__link md-footer__link--next" aria-label="下一页: 我的2021" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              我的2021
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

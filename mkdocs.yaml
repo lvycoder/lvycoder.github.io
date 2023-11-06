@@ -201,6 +201,8 @@ nav:
         - 误删除监控数据: error/delete-prometheus-db.md
         - Kubernetes pvc ubound: error/kubernetes-pvc-ubound-doc.md
         - dns 文件权限调整: error/centos-dns-error-docs.md
+        - 如何利用Mac 写博客文章: other/mac-docs.md
+        
 
     - 关于我:
         - 我的2021: mylife/2021-life-docs.md
