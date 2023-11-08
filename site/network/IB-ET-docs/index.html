@@ -12,14 +12,14 @@
         <meta name="author" content="Li">
       
       
-        <link rel="canonical" href="https://barry-boy.github.io/k3s/k3s-install/">
+        <link rel="canonical" href="https://barry-boy.github.io/network/IB-ET-docs/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.0.0">
     
     
       
-        <title>k3s 边缘计算 - Kubernetes 进阶训练营</title>
+        <title>网络 网卡模式调整 - Kubernetes 进阶训练营</title>
       
     
     
@@ -71,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#ib-" class="md-skip">
           跳转至
         </a>
       
@@ -105,7 +105,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              k3s 边缘计算
+              网络 网卡模式调整
             
           </span>
         </div>
@@ -207,13 +207,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../network/Tcp-ip-docs/" class="md-tabs__link">
+      <a href="../Tcp-ip-docs/" class="md-tabs__link md-tabs__link--active">
         0、网络基础
       </a>
     </li>
@@ -351,15 +353,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../Macuse/mac-kubeconfig/" class="md-tabs__link md-tabs__link--active">
+      <a href="../../Macuse/mac-kubeconfig/" class="md-tabs__link">
         9、其他
       </a>
     </li>
@@ -454,12 +454,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
       
       
       
@@ -500,7 +502,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../network/Tcp-ip-docs/" class="md-nav__link">
+      <a href="../Tcp-ip-docs/" class="md-nav__link">
         网络 Tcp/IP
       </a>
     </li>
@@ -514,7 +516,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../network/5g-docs/" class="md-nav__link">
+      <a href="../5g-docs/" class="md-nav__link">
         网络 思科设备
       </a>
     </li>
@@ -526,11 +528,75 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../network/IB-ET-docs/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          网络 网卡模式调整
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         网络 网卡模式调整
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ib-" class="md-nav__link">
+    网络模式调整(IB-&gt;以太网)
+  </a>
+  
+    <nav class="md-nav" aria-label="网络模式调整(IB-&gt;以太网)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    下载驱动程序
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    安装:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#infinibandibethernet" class="md-nav__link">
+    Infiniband卡切换IB/Ethernet模式
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -556,7 +622,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../network/ZeroTier/" class="md-nav__link">
+      <a href="../ZeroTier/" class="md-nav__link">
         ZeroTier组网
       </a>
     </li>
@@ -570,7 +636,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../network/frp/" class="md-nav__link">
+      <a href="../frp/" class="md-nav__link">
         frp 内网穿透
       </a>
     </li>
@@ -584,7 +650,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../network/3-network-docs/" class="md-nav__link">
+      <a href="../3-network-docs/" class="md-nav__link">
         kubernetes 网络组件
       </a>
     </li>
@@ -598,7 +664,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../network/4-network-docs/" class="md-nav__link">
+      <a href="../4-network-docs/" class="md-nav__link">
         科学上网
       </a>
     </li>
@@ -2058,14 +2124,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" >
       
       
       
@@ -2128,7 +2192,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../k3s-docs/" class="md-nav__link">
+      <a href="../../k3s/k3s-docs/" class="md-nav__link">
         k3s 大纲介绍
       </a>
     </li>
@@ -2140,123 +2204,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          k3s 边缘计算
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../k3s/k3s-install/" class="md-nav__link">
         k3s 边缘计算
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    前言
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#k3s" class="md-nav__link">
-    什么是 K3S
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    基础环境
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#master" class="md-nav__link">
-    单Master节点集群
-  </a>
-  
-    <nav class="md-nav" aria-label="单Master节点集群">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    安装脚本:
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#k3s_1" class="md-nav__link">
-    高可用k3s集群
-  </a>
-  
-    <nav class="md-nav" aria-label="高可用k3s集群">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    环境准备:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    高可用部署:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#k3s_2" class="md-nav__link">
-    卸载k3s
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    参考文章
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2490,165 +2442,68 @@
             <article class="md-content__inner md-typeset">
               
                 
-<a href="https://github.com/barry-boy/barry-boy.github.io/edit/master/docs/k3s/k3s-install.md" title="编辑此页" class="md-content__button md-icon">
+<a href="https://github.com/barry-boy/barry-boy.github.io/edit/master/docs/network/IB-ET-docs.md" title="编辑此页" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
 
-  <h1>k3s 边缘计算</h1>
+  <h1>网络 网卡模式调整</h1>
 
-<h2 id="_1"><strong>前言</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>在工作中,经常遇到很多小环境(小于等于 5 台机器),对于这种环境,就可以尝试使用k3s,原因就是因为 k3s 设计很小巧.它相对于标准的 k8s 所用的内存资源要减半，非常适合比较小型的设备.对于我们测试的 demo 环境,大可不必要安装标准 k8s,就可以用到几乎所有 k8s 的功能和特性.这就让他适用于很多的边缘计算场景.Edge,IoT,Development....等等~</p>
-<h2 id="k3s"><strong>什么是 K3S</strong><a class="headerlink" href="#k3s" title="Permanent link">&para;</a></h2>
-<p>K3s 是一个完全兼容的 Kubernetes 发行版，具有以下增强功能：</p>
-<ul>
-<li>打包为单个二进制文件。</li>
-<li>使用基于 sqlite3 作为默认存储机制的轻量级存储后端。同时支持使用 etcd3、MySQL 和 Postgres。</li>
-<li>封装在简单的启动程序中，可以处理很多复杂的 TLS 和选项。</li>
-<li>默认情况下是安全的，对轻量级环境有合理的默认值。</li>
-<li>添加了简单但强大的 <code>batteries-included</code> 功能，例如</li>
-</ul>
-<p>功能，例如：</p>
-<ul>
-<li>本地存储提供程序</li>
-<li>service load balancer</li>
-<li>Helm controller</li>
-<li>Traefik ingress controller
-  ......等</li>
-</ul>
-<h2 id="_2"><strong>基础环境</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<div class="admonition info 环境要求">
-<p class="admonition-title">Info</p>
-<ul>
-<li>如果要使用 docker 做为容器运行时,需要提前预安装docker环境.对于 docker,在 k3s 官方上有一键安装脚本.</li>
-</ul>
-</div>
-<p>一键安装docker脚本：
-<div class="highlight"><pre><span></span><code>curl https://releases.rancher.com/install-docker/20.10.sh | sh
-</code></pre></div></p>
-<h2 id="master"><strong>单Master节点集群</strong><a class="headerlink" href="#master" title="Permanent link">&para;</a></h2>
-<p>嵌入式数据库的单服务器</p>
-<p>下图显示了具有嵌入式 SQLite 数据库的单节点 K3s Server 集群示例。</p>
-<p>在此配置中，每个 Agent 节点都注册到同一个 Server 节点。K3s 用户可以通过调用 Server 节点上的 K3s API 来操作 Kubernetes 资源。</p>
-<p><img alt="20231010154321" src="https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231010154321.png" /></p>
-<h3 id="_3"><strong>安装脚本:</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>中国用户，可以使用以下方法加速安装 Server端：
-<div class="highlight"><pre><span></span><code>curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | \
-INSTALL_K3S_MIRROR=cn sh -
-</code></pre></div></p>
-<p>安装其他 Agent 节点并将它们添加到集群</p>
-<div class="highlight"><pre><span></span><code>curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | \
-INSTALL_K3S_MIRROR=cn K3S_URL=https://myserver:6443 K3S_TOKEN=mynodetoken sh -
+<h2 id="ib-"><strong>网络模式调整(IB-&gt;以太网)</strong><a class="headerlink" href="#ib-" title="Permanent link">&para;</a></h2>
+<h3 id="_1"><strong>下载驱动程序</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>官网地址: https://developer.nvidia.com/networking/infiniband-software</p>
+<p>根据自己系统的版本进行选择</p>
+<p>连接地址: https://network.nvidia.com/products/infiniband-drivers/linux/mlnx_ofed/</p>
+<p><img alt="" src="https://pic.imgdb.cn/item/63ed9eeaf144a010078b5a7f.jpg" /></p>
+<h3 id="_2"><strong>安装:</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>将我们下载好的驱动程序上传到服务器上，并解压。</p>
+<p>1.设置 MLNX_OFED apt-get 存储库</p>
+<p>使用以下内容创建名为“/etc/apt/sources.list.d/mlnx_ofed.list”的 apt-get 存储库配置文件</p>
+<div class="highlight"><pre><span></span><code>deb<span class="w"> </span>file:/home/openbayes/MLNX_OFED_LINUX-23.07-0.5.1.2-ubuntu22.04-x86_64/DEBS<span class="w"> </span>./
 </code></pre></div>
-<p>K3S_URL 参数会导致安装程序将 K3s 配置为 Agent 而不是 Server。K3s Agent 将注册到在 URL 上监听的 K3s Server。K3S_TOKEN 使用的值存储在 Server 节点上的 <code>/var/lib/rancher/k3s/server/node-token</code> 中</p>
-<h2 id="k3s_1"><strong>高可用k3s集群</strong><a class="headerlink" href="#k3s_1" title="Permanent link">&para;</a></h2>
-<p>单服务器集群可以满足各种用例，但如果你的环境对 Kubernetes control plane 的正常运行时间有要求，你可以在 HA 配置中运行 K3s。一个高可用 K3s 集群包括：</p>
-<ul>
-<li>三个或多个 Server 节点为 Kubernetes API 提供服务并运行其他 control plane 服务</li>
-<li>嵌入式 etcd 数据存储（与单节点设置中使用的嵌入式 SQLite 数据存储相反）</li>
-</ul>
-<p>如下图所示: (使用内嵌 etcd 作为存储)</p>
-<ul>
-<li>我们可以使用 Ucloud 或者其他云的 ulb 作为负载均衡,在创建三台机器作为 k3s-server,一台机器作为 k3s-agent</li>
-</ul>
-<p><img alt="20231010142750" src="https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231010142750.png" /></p>
-<h3 id="_4"><strong>环境准备:</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<ul>
-<li>ucloud 的内网 ulb 是需要在每台 master 做额外的设置的</li>
-</ul>
-<p>步骤:
-- 需要在每台机器下增加文件 /etc/netplan/lo-cloud-init.yaml，其中 <code>$VIP</code> 为 ulb 的内网 IP</p>
-<div class="highlight"><pre><span></span><code>network:
-    ethernets:
-        lo:
-            addresses:
-            - $VIP/32
+<p>2.下载并安装 Mellanox Technologies GPG-KEY</p>
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>-qO<span class="w"> </span>-<span class="w"> </span>http://www.mellanox.com/downloads/ofed/RPM-GPG-KEY-Mellanox<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>apt-key<span class="w"> </span>add<span class="w"> </span>-
 </code></pre></div>
-<ul>
-<li>执行命令 sudo netplan apply</li>
-</ul>
-<p>通过命令 ip a 可以看到 lo 的网卡已经增加了 $VIP。如果没有生效可以尝试重启试试.</p>
+<p>3.更新 apt-get 缓存</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+</code></pre></div>
+<p>4.使用 apt-get 工具安装 MLNX_OFED</p>
+<div class="highlight"><pre><span></span><code>apt-get<span class="w"> </span>install<span class="w"> </span>mlnx-ofed-all
+</code></pre></div>
+<p>5.更新到固件</p>
+<div class="highlight"><pre><span></span><code>apt-get<span class="w"> </span>install<span class="w"> </span>mlnx-fw-updater
+</code></pre></div>
+<p>5.使用 mlnxofedinstall 脚本安装</p>
+<div class="highlight"><pre><span></span><code>/opt/mlnxofedinstall
+</code></pre></div>
+<h3 id="infinibandibethernet"><strong>Infiniband卡切换IB/Ethernet模式</strong><a class="headerlink" href="#infinibandibethernet" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>root@bayes:/home/lixie#<span class="w"> </span>mst<span class="w"> </span>status
+MST<span class="w"> </span>modules:
+------------
+<span class="w">    </span>MST<span class="w"> </span>PCI<span class="w"> </span>module<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>loaded
+<span class="w">    </span>MST<span class="w"> </span>PCI<span class="w"> </span>configuration<span class="w"> </span>module<span class="w"> </span>loaded
+
+MST<span class="w"> </span>devices:
+------------
+/dev/mst/mt4119_pciconf0<span class="w">         </span>-<span class="w"> </span>PCI<span class="w"> </span>configuration<span class="w"> </span>cycles<span class="w"> </span>access.
+<span class="w">                                   </span>domain:bus:dev.fn<span class="o">=</span><span class="m">0000</span>:06:00.0<span class="w"> </span>addr.reg<span class="o">=</span><span class="m">88</span><span class="w"> </span>data.reg<span class="o">=</span><span class="m">92</span><span class="w"> </span>cr_bar.gw_offset<span class="o">=</span>-1
+<span class="w">                                   </span>Chip<span class="w"> </span>revision<span class="w"> </span>is:<span class="w"> </span><span class="m">00</span>
+</code></pre></div>
+<p>首先，启动mst 工具，通过 mst工具查看自己的MST devices：/dev/mst/mt4119_pciconf0  （没有mst工具，需要下载安装）</p>
+<div class="highlight"><pre><span></span><code>root@bayes:/home/lixie# mlxconfig -d /dev/mst/mt4119_pciconf0 query
+
+
+         LINK_TYPE_P1                                IB(1)
+         LINK_TYPE_P2                                IB(1)
+</code></pre></div>
+<p>工作模式修改:</p>
+<div class="highlight"><pre><span></span><code>Ethernet模式： mlxconfig -d /dev/mst/mt4119_pciconf0 set LINK_TYPE_P1=2
+IB模式： mlxconfig -d /dev/mst/mt4119_pciconf0 set LINK_TYPE_P1=1
+</code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">温馨提示</p>
-<p>k3s 默认使用的容器运行时是 containerd,我不太习惯,仍然使用 docker 作为容器运行时.</p>
-<ul>
-<li>可以使用: <code>curl https://releases.rancher.com/install-docker/20.10.sh | sh</code></li>
-</ul>
+<p>调整之后，需要重新启动服务器。</p>
 </div>
-<h3 id="_5"><strong>高可用部署:</strong><a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<ul>
-<li>创建一个 master 节点</li>
-<li>然后将后续的两个 master 加入到集群</li>
-<li>最后加入 work 节点,加入节点的时候就需要指定 ulb 的ip 了</li>
-</ul>
-<p>第一步: master0 需要执行:</p>
-<div class="highlight"><pre><span></span><code>curl -sfL https://get.k3s.io | INSTALL_K3S_MIRROR=cn sh -s - server -c /home/lixie/master0-config.yaml
-</code></pre></div>
-<p>采用了 k3s server 下一个 -c 的参数，这个参数可以将命令参数以 yaml 的形式传进来</p>
-<p>其中<code>master0-config.yaml</code>如下所示</p>
-<div class="highlight"><pre><span></span><code>root@10-0-0-118:/home/lixie# cat master0-config.yaml
-write-kubeconfig-mode: &quot;0644&quot;
-tls-san:
-- 10.0.0.118    # m1.k3s.k3s.in.openbayes.com m1.k3s
-- 10.0.0.182    # m2.k3s.k3s.in.openbayes.com m2.k3s
-- 10.0.0.106    # m3.k3s.k3s.in.openbayes.com m3.k3s
-- 10.0.0.150    # node1.k3s.k3s.in.openbayes.com node1.k3s
-- 10.0.0.46
-- 106.75.6.119
-- 106.75.8.51
-- 106.75.77.106
-docker: true
-cluster-init: true
-token: VNVIyKGNPtSKTfhi
-disable: servicelb
-</code></pre></div>
-<p><strong>文件说明:</strong></p>
-<ul>
-<li>把所有 master 的内网和外网 ip 都放进了 tls-san 同时把内网负载均衡节点 ip 也放了进来。</li>
-<li>k3s 默认使用 containerd 作为容器运行环境，不过我还是用惯了 docker 所以添加了参数 docker: true。</li>
-<li>第一台 master 采用 cluster-init 的方式启动。</li>
-<li>token 就是一个随机字符串，后面添加 master 节点和 worker 节点只要保持一致就好。</li>
-<li>disable 参数关掉了 k3s 默认添加的 servicelb 如果想要同时关掉 traefik 就可以写成 disable: servicelb,traefik；注意 像配置 tls-san 那样用 yaml 的数组的语法是不行的，这也是让我多花了点时间的地方。</li>
-</ul>
-<p>等 master0 的命令执行成功后输入命令 k3s kubectl get nodes -w 等待第一个节点准备完毕后在第二台 master 执行如下命令：</p>
-<div class="highlight"><pre><span></span><code>curl -sfL https://get.k3s.io | INSTALL_K3S_MIRROR=cn sh -s - server -c /home/lixie/master-others.config.yaml
-</code></pre></div>
-<p>其中 <code>master-others.config.yaml</code> 内容如下：
-<div class="highlight"><pre><span></span><code>root@10-0-0-182:/home/lixie# cat master-others.config.yaml
-write-kubeconfig-mode: &quot;0644&quot;
-tls-san:
-- 10.0.0.118    # m1.k3s.k3s.in.openbayes.com m1.k3s
-- 10.0.0.182    # m2.k3s.k3s.in.openbayes.com m2.k3s
-- 10.0.0.106    # m3.k3s.k3s.in.openbayes.com m3.k3s
-- 10.0.0.150    # node1.k3s.k3s.in.openbayes.com node1.k3s
-- 10.0.0.46     # ULB
-- 106.75.6.119
-- 106.75.8.51
-- 106.75.77.106
-docker: true
-server: https://10.0.0.118:6443
-token: VNVIyKGNPtSKTfhi
-disable: servicelb
-</code></pre></div></p>
-<p>Node 节点加入集群:</p>
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.k3s.io<span class="w"> </span><span class="se">\</span>
-<span class="p">|</span><span class="w"> </span><span class="nv">K3S_TOKEN</span><span class="o">=</span>VNVIyKGNPtSKTfhi<span class="w"> </span>sh<span class="w"> </span>-s<span class="w"> </span>-<span class="w"> </span>agent<span class="w"> </span>--server<span class="w"> </span>https://10.0.0.118:6443
-</code></pre></div>
-<p>在 node 节点,拿 master 的 kubeconfig 配置,地址指到 ULB 测试</p>
-<div class="highlight"><pre><span></span><code>root@10-0-0-150:/home/lixie# kubectl get nodes
-NAME         STATUS   ROLES                       AGE    VERSION
-10-0-0-106   Ready    control-plane,etcd,master   137m   v1.27.6+k3s1
-10-0-0-118   Ready    control-plane,etcd,master   170m   v1.27.6+k3s1
-10-0-0-150   Ready    &lt;none&gt;                      12s    v1.27.6+k3s1
-10-0-0-182   Ready    control-plane,etcd,master   138m   v1.27.6+k3s1
-</code></pre></div>
-<h3 id="k3s_2"><strong>卸载k3s</strong><a class="headerlink" href="#k3s_2" title="Permanent link">&para;</a></h3>
-<p>这里可以通过<a href="https://docs.rancher.cn/docs/k3s/installation/uninstall/_index">k3s</a>官方方式删除</p>
-<h3 id="_6"><strong>参考文章</strong><a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<ul>
-<li>https://docs.rancher.cn/docs/k3s/quick-start/_index</li>
-<li>https://aisensiy.me/k3s-ha-in-cloud/</li>
-</ul>
 
               
             </article>
@@ -2667,7 +2522,7 @@ NAME         STATUS   ROLES                       AGE    VERSION
     <nav class="md-footer__inner md-grid" aria-label="页脚">
       
         
-        <a href="../k3s-docs/" class="md-footer__link md-footer__link--prev" aria-label="上一页: k3s 大纲介绍" rel="prev">
+        <a href="../5g-docs/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 网络 思科设备" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -2676,20 +2531,20 @@ NAME         STATUS   ROLES                       AGE    VERSION
               <span class="md-footer__direction">
                 上一页
               </span>
-              k3s 大纲介绍
+              网络 思科设备
             </div>
           </div>
         </a>
       
       
         
-        <a href="../../Macuse/mac-k9s-doc/" class="md-footer__link md-footer__link--next" aria-label="下一页: k9s 实践应用" rel="next">
+        <a href="../../ubuntu/huasuo-docs/" class="md-footer__link md-footer__link--next" aria-label="下一页: 设备 华硕服务器" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 下一页
               </span>
-              k9s 实践应用
+              设备 华硕服务器
             </div>
           </div>
           <div class="md-footer__button md-icon">
