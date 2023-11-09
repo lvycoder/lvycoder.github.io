@@ -104,7 +104,7 @@ nav:
         - Linux 云计算手册大纲: ubuntu/linux-docs.md
         - Linux 带外管理: ubuntu/ubuntu-bmc.md
         - Linux 系统管理: ubuntu/0-system-docs.md
-        - Linux 网络服务: ubuntu/network/1-network-docs.md
+        - Linux 网络服务: ubuntu/1-network-docs.md
 
     - 2、kubernetes:
         - 云原生简介及CNCF: basic/cncf-docs.md
@@ -115,6 +115,8 @@ nav:
         - kubernetes 简介: k8s/base/k8s-overview.md
         - kubernetes 集群部署: k8s/3-k8s-systeminit-docs.md
         - kubernetes 集群升级: basic/k8s-update.md
+        - kubernetes pod 基础原理: k8s/pod-base-docs.md
+        - kubernetes pod 生命周期: k8s/pod-hook-docs.md
         - kubernetes etcd 简介与实践: basic/6-kubernetes-etcd-docs.md
         - kubernetes coredns 简介与实践: basic/7-kubernetes-coredns-docs.md
         - kubernetes calico 网络: k8s/k8s-calico-docs.md
@@ -204,6 +206,7 @@ nav:
         - Kubernetes pvc ubound: error/kubernetes-pvc-ubound-doc.md
         - dns 文件权限调整: error/centos-dns-error-docs.md
         - 如何利用Mac 写博客文章: other/mac-docs.md
+        - 高效利用谷歌来搜索: other/google-docs.md
     
     # - 10、机器学习: 
     #     - 
