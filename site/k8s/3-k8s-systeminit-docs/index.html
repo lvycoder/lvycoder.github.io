@@ -2672,7 +2672,8 @@ kubeadm join 192.168.1.11:6443 --token bv4kei.ozbuoivuj8jxaa6q \
 <p class="admonition-title">Warning</p>
 <ul>
 <li>新令牌,默认的令牌24小时候失效
-kubeadm token create --print-join-command  </li>
+kubeadm token create --print-join-command<br />
+如果在1.24之后的k8s版本使用docker，需要指定--cri-socket=/run/cri-dockerd.sock</li>
 </ul>
 </div>
 <h3 id="mac">Mac连接集群报错<a class="headerlink" href="#mac" title="Permanent link">&para;</a></h3>
