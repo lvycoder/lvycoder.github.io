@@ -246,6 +246,21 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://barry-boy.github.io/chatgpt/chatgpt-docs/</loc>
+         <lastmod>2023-11-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://barry-boy.github.io/chatgpt/google-ai-docs/</loc>
+         <lastmod>2023-11-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://barry-boy.github.io/chatgpt/gpts-docs/</loc>
+         <lastmod>2023-11-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://barry-boy.github.io/cks/cka/</loc>
          <lastmod>2023-11-15</lastmod>
          <changefreq>daily</changefreq>
@@ -482,6 +497,11 @@
     </url>
     <url>
          <loc>https://barry-boy.github.io/network/frp/</loc>
+         <lastmod>2023-11-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://barry-boy.github.io/other/discord-docs/</loc>
          <lastmod>2023-11-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
