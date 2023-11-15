@@ -207,10 +207,13 @@ nav:
         - dns 文件权限调整: error/centos-dns-error-docs.md
         - 如何利用Mac 写博客文章: other/mac-docs.md
         - 高效利用谷歌来搜索: other/google-docs.md
-    
-    # - 10、机器学习: 
-    #     - 
+        - Discord 新手教程: other/discord-docs.md
 
+    - 10、Chatgpt: 
+        - 注册chatgpt: chatgpt/chatgpt-docs.md
+        - 搜索技术记录: chatgpt/google-ai-docs.md
+        - 如何使用Chatgpt来制作专属gpt: chatgpt/gpts-docs.md
+        
     - 关于我:
         - 我的2021: mylife/2021-life-docs.md
         - 我的2022: mylife/2022-life-docs.md
