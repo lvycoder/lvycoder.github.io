@@ -229,7 +229,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../linux-docs/" class="md-tabs__link">
+      <a href="../../os/ubuntu/kjc-doc/" class="md-tabs__link">
         1、Linux
       </a>
     </li>
@@ -556,7 +556,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../huasuo-docs/" class="md-nav__link">
+      <a href="../huasuo-docs.md" class="md-nav__link">
         设备 华硕服务器
       </a>
     </li>
@@ -650,6 +650,10 @@
         
           
         
+          
+        
+          
+        
       
       
         <label class="md-nav__link" for="__nav_3">
@@ -670,7 +674,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../linux-docs/" class="md-nav__link">
+      <a href="../../os/ubuntu/kjc-doc/" class="md-nav__link">
         Linux 云计算手册大纲
       </a>
     </li>
@@ -684,7 +688,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ubuntu-bmc/" class="md-nav__link">
+      <a href="../../os/ubuntu/ubuntu-bmc-doc/" class="md-nav__link">
         Linux 带外管理
       </a>
     </li>
@@ -698,8 +702,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../0-system-docs/" class="md-nav__link">
-        Linux 系统管理
+      <a href="../../os/ubuntu/ubuntu-install-doc/" class="md-nav__link">
+        Linux 系统安装
       </a>
     </li>
   
@@ -712,7 +716,35 @@
   
   
     <li class="md-nav__item">
-      <a href="../1-network-docs/" class="md-nav__link">
+      <a href="../../os/ubuntu/ubuntu-cli-doc/" class="md-nav__link">
+        Linux 系统命令
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../os/ubuntu/ubuntu-mirror-doc/" class="md-nav__link">
+        Linux 国内apt源
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../os/ubuntu/ubuntu-network-doc/" class="md-nav__link">
         Linux 网络服务
       </a>
     </li>
@@ -2545,101 +2577,8 @@
 
   <h1>Ubuntu system</h1>
 
-<h2 id="_1"><strong>系统安装</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>正所谓不会装系统的运维就不是好运维的理念，下面介绍一下ubuntu系统安装</p>
-<div class="admonition info">
-<p class="admonition-title">准备工作</p>
-<ul>
-<li>步骤一: 下载iso镜像<ul>
-<li>下载地址: https://mirrors.aliyun.com/ubuntu-releases/</li>
-</ul>
-</li>
-<li>步骤二: 制作系统盘<ul>
-<li>可以参考使用技巧中的Mac制作系统盘这篇文章</li>
-</ul>
-</li>
-<li>步骤三: 装就完事了</li>
-</ul>
-</div>
-<p>1.1. 选择语言
-<img alt="第一步" src="https://pic.imgdb.cn/item/632d192516f2c2beb1185a77.png" /></p>
-<p>1.2. 选择键盘（本步骤直接默认按回车即可。）
-<img alt="第二步" src="https://pic.imgdb.cn/item/632d192616f2c2beb1185a80.png" /></p>
-<p>1.3. 配置网络（一般情况会直接跳过这一步）
-<img alt="第三步" src="https://pic.imgdb.cn/item/632d192616f2c2beb1185a8b.png" /></p>
-<p>1.4. 选择代理（默认回车跳过）
-<img alt="第四步" src="https://pic.imgdb.cn/item/632d192616f2c2beb1185a94.png" /></p>
-<p>1.5. 配置镜像源（跳过）</p>
-<p>1.6. 选择磁盘（这个步骤比较关键）
-<img alt="第五步" src="https://pic.imgdb.cn/item/632d192616f2c2beb1185a9e.png" /></p>
-<p>选择磁盘这一步需要注意，需要所有磁盘空间分给根分区
-<img alt="第五步" src="https://pic.imgdb.cn/item/632d193416f2c2beb1186a6c.png" /></p>
-<p><img alt="第五步" src="https://pic.imgdb.cn/item/632d193416f2c2beb1186a7d.png" /></p>
-<p>1.7. 用户信息
-<img alt="第六步" src="https://pic.imgdb.cn/item/632d193416f2c2beb1186a90.png" /></p>
-<p>1.8. openssh server 切记要选择上 (<code>切记</code>)
-<img alt="第七步" src="https://pic.imgdb.cn/item/632d193416f2c2beb1186aa0.png" /></p>
-<h2 id="_2"><strong>系统初始化</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<div class="admonition tip">
-<p class="admonition-title">初始化步骤</p>
-<ul>
-<li>
-<p>添加hosts信息</p>
-</li>
-<li>
-<p>修改国内apt源</p>
-<ul>
-<li>清华源</li>
-<li>阿里源</li>
-</ul>
-</li>
-<li>添加管理员用户<ul>
-<li>通常几个管理人员几个管理用户</li>
-</ul>
-</li>
-<li>修改内核参数</li>
-<li>安装基础软件，gpu驱动</li>
-<li>安装docker<ul>
-<li>安装容器运行时</li>
-</ul>
-</li>
-<li>安装kubernetes<ul>
-<li>安装指定kubeadm版本</li>
-</ul>
-</li>
-</ul>
-</div>
-<p>以上初始化可以通过跑ansible来实现，下面具体拆分来配置一下</p>
-<div class="admonition warning">
-<p class="admonition-title">温馨提示</p>
-<ul>
-<li>以下操作系统版本是以最新的ubuntu22.04 为例子来演示</li>
-</ul>
-</div>
-<h3 id="_3"><strong>更换国内源</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<div class="admonition info">
-<p class="admonition-title">ubuntu22.04 清华源</p>
-<ul>
-<li>需要注意一下，如果apt update 报错，就将https改成http</li>
-<li>如果需要添加其他的版本的源可以访问: https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/
-<div class="highlight"><pre><span></span><code># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
-deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse
-deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse
-deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse
-deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-security main restricted universe multiverse
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-security main restricted universe multiverse
-
-# 预发布软件源，不建议启用
-# deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse
-</code></pre></div></li>
-</ul>
-</div>
-<h2 id="_4"><strong>安全</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<h3 id="_5"><strong>五: 系统安全</strong><a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h2 id="_1"><strong>安全</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="_2"><strong>五: 系统安全</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>通常在企业中，服务器会遭受外来的很多的恶意攻击，那么服务器的安全就显得格外的重要。首先肯定想到的是服务器的帐号和密码管理，通常的情况下会禁止root这样的管理员用户登陆，也会禁止密码这样的方式登陆。</p>
 <p><strong>原因:</strong></p>
 <ul>
@@ -2793,16 +2732,11 @@ network:
 <p>apt install -y  package_name  //安装</p>
 <p>apt remove  package_name   //卸载</p>
 <p>apt update  //列出所有可更新的软件清单命令</p>
-<h4 id="3_1"><strong>（3）案例</strong><a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>//<span class="w"> </span>过滤出来以rc开头和nvidia的包并卸载
 dpkg<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span>grep<span class="w"> </span>nvidia<span class="w"> </span><span class="p">|</span>grep<span class="w"> </span><span class="s2">&quot;^rc&quot;</span><span class="w"> </span><span class="p">|</span>awk<span class="w"> </span><span class="s1">&#39;{print $2}&#39;</span><span class="w"> </span><span class="p">|</span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">&#39;nvidia&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>dpkg<span class="w">  </span>--purge
 
 dpkg<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span>grep<span class="w"> </span>nvidia<span class="w"> </span><span class="p">|</span>grep<span class="w"> </span><span class="s2">&quot;^ii&quot;</span><span class="w"> </span><span class="p">|</span>awk<span class="w"> </span><span class="s1">&#39;{print $2}&#39;</span><span class="w"> </span><span class="p">|</span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">&#39;^nvidia&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>dpkg<span class="w"> </span>--force-all<span class="w">  </span>-r
 </code></pre></div>
-<h4 id="_6"><strong>附件:</strong><a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<ul>
-<li>文章地址: <a href="https://www.cnblogs.com/mefj/p/14964416.html">ubuntu安装参考:</a> </li>
-</ul>
 
               
             </article>

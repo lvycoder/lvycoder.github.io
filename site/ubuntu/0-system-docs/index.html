@@ -19,7 +19,7 @@
     
     
       
-        <title>Linux 系统管理 - Kubernetes 进阶训练营</title>
+        <title>0 system docs - Kubernetes 进阶训练营</title>
       
     
     
@@ -105,7 +105,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Linux 系统管理
+              0 system docs
             
           </span>
         </div>
@@ -223,15 +223,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../linux-docs/" class="md-tabs__link md-tabs__link--active">
+      <a href="../../os/ubuntu/kjc-doc/" class="md-tabs__link">
         1、Linux
       </a>
     </li>
@@ -558,7 +556,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../huasuo-docs/" class="md-nav__link">
+      <a href="../huasuo-docs.md" class="md-nav__link">
         设备 华硕服务器
       </a>
     </li>
@@ -634,17 +632,19 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
       
       
       
+        
+          
+        
+          
         
           
         
@@ -674,7 +674,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../linux-docs/" class="md-nav__link">
+      <a href="../../os/ubuntu/kjc-doc/" class="md-nav__link">
         Linux 云计算手册大纲
       </a>
     </li>
@@ -688,7 +688,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ubuntu-bmc/" class="md-nav__link">
+      <a href="../../os/ubuntu/ubuntu-bmc-doc/" class="md-nav__link">
         Linux 带外管理
       </a>
     </li>
@@ -700,278 +700,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Linux 系统管理
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        Linux 系统管理
+    <li class="md-nav__item">
+      <a href="../../os/ubuntu/ubuntu-install-doc/" class="md-nav__link">
+        Linux 系统安装
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    系统安装
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    系统初始化
-  </a>
-  
-    <nav class="md-nav" aria-label="系统初始化">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    更换国内源
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    安全
-  </a>
-  
-    <nav class="md-nav" aria-label="安全">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    五: 系统安全
-  </a>
-  
-    <nav class="md-nav" aria-label="五: 系统安全">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#51-root-centosubuntu" class="md-nav__link">
-    5.1: 禁止root用户: （centos/ubuntu都适用）
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#52" class="md-nav__link">
-    5.2: 密钥对来登陆服务器
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ubuntu" class="md-nav__link">
-    Ubuntu 系统管理 &amp;&amp; 安装及管理程序:
-  </a>
-  
-    <nav class="md-nav" aria-label="Ubuntu 系统管理 &amp;&amp; 安装及管理程序:">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#dpkg" class="md-nav__link">
-    dpkg 包安装
-  </a>
-  
-    <nav class="md-nav" aria-label="dpkg 包安装">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    （1）格式
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    （2）用法
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    （3）辅助选项
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#apt" class="md-nav__link">
-    apt 包安装 卸载
-  </a>
-  
-    <nav class="md-nav" aria-label="apt 包安装 卸载">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
-    （1）格式
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2_1" class="md-nav__link">
-    （2）用法
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3_1" class="md-nav__link">
-    （3）案例
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ubuntu_1" class="md-nav__link">
-    ubuntu 关机或者重启
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#linux-" class="md-nav__link">
-    六: Linux系统管理-磁盘管理
-  </a>
-  
-    <nav class="md-nav" aria-label="六: Linux系统管理-磁盘管理">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#61" class="md-nav__link">
-    6.1. 磁盘结构
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#62" class="md-nav__link">
-    6.2. 磁盘接口
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#63-mbr" class="md-nav__link">
-    6.3. MBR
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#64" class="md-nav__link">
-    6.4. 磁盘分区表示
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#65-parted" class="md-nav__link">
-    6.5. parted 命令
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#66-nvme" class="md-nav__link">
-    6.6. nvme 模块
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#linux07-lvm" class="md-nav__link">
-    Linux系统管理07-文件系统与LVM
-  </a>
-  
-    <nav class="md-nav" aria-label="Linux系统管理07-文件系统与LVM">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#inode" class="md-nav__link">
-    inode 知识点补充
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    附件:
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -983,7 +716,35 @@
   
   
     <li class="md-nav__item">
-      <a href="../1-network-docs/" class="md-nav__link">
+      <a href="../../os/ubuntu/ubuntu-cli-doc/" class="md-nav__link">
+        Linux 系统命令
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../os/ubuntu/ubuntu-mirror-doc/" class="md-nav__link">
+        Linux 国内apt源
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../os/ubuntu/ubuntu-network-doc/" class="md-nav__link">
         Linux 网络服务
       </a>
     </li>
@@ -2814,92 +2575,10 @@
 </a>
 
 
-  <h1>Linux 系统管理</h1>
+  <h1>0 system docs</h1>
 
-<h2 id="_1"><strong>系统安装</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>正所谓不会装系统的运维就不是好运维的理念，下面介绍一下ubuntu系统安装</p>
-<div class="admonition info">
-<p class="admonition-title">准备工作</p>
-<ul>
-<li>步骤一: 下载iso镜像<ul>
-<li>下载地址: https://mirrors.aliyun.com/ubuntu-releases/</li>
-</ul>
-</li>
-<li>步骤二: 制作系统盘<ul>
-<li>可以参考使用技巧中的Mac制作系统盘这篇文章</li>
-</ul>
-</li>
-<li>步骤三: 装就完事了</li>
-</ul>
-</div>
-<p>1.1. 选择语言
-<img alt="第一步" src="https://pic.imgdb.cn/item/632d192516f2c2beb1185a77.png" /></p>
-<p>1.2. 选择键盘（本步骤直接默认按回车即可。）
-<img alt="第二步" src="https://pic.imgdb.cn/item/632d192616f2c2beb1185a80.png" /></p>
-<p>1.3. 配置网络（一般情况会直接跳过这一步）
-<img alt="第三步" src="https://pic.imgdb.cn/item/632d192616f2c2beb1185a8b.png" /></p>
-<p>1.4. 选择代理（默认回车跳过）
-<img alt="第四步" src="https://pic.imgdb.cn/item/632d192616f2c2beb1185a94.png" /></p>
-<p>1.5. 配置镜像源（跳过）</p>
-<p>1.6. 选择磁盘（这个步骤比较关键）
-<img alt="第五步" src="https://pic.imgdb.cn/item/632d192616f2c2beb1185a9e.png" /></p>
-<p>选择磁盘这一步需要注意，需要所有磁盘空间分给根分区</p>
-<p><img alt="第五步" src="https://pic.imgdb.cn/item/632d193416f2c2beb1186a6c.png" /></p>
-<p><img alt="第五步" src="https://pic.imgdb.cn/item/632d193416f2c2beb1186a7d.png" /></p>
-<p>1.7. 用户信息</p>
-<p><img alt="第六步" src="https://pic.imgdb.cn/item/632d193416f2c2beb1186a90.png" /></p>
-<p>1.8. openssh server 切记要选择上 (<code>切记</code>)
-<img alt="第七步" src="https://pic.imgdb.cn/item/632d193416f2c2beb1186aa0.png" /></p>
-<h2 id="_2"><strong>系统初始化</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<div class="admonition tip">
-<p class="admonition-title">初始化步骤</p>
-<ul>
-<li>优化内核参数；添加hosts信息；</li>
-<li>修改国内apt源</li>
-<li>修改内核参数</li>
-<li>安装基础软件，gpu驱动</li>
-<li>安装docker<ul>
-<li>安装容器运行时</li>
-</ul>
-</li>
-<li>安装kubernetes<ul>
-<li>安装指定kubeadm版本</li>
-</ul>
-</li>
-</ul>
-</div>
-<p>以上初始化可以通过跑ansible来实现，下面具体拆分来配置一下</p>
-<div class="admonition warning">
-<p class="admonition-title">温馨提示</p>
-<ul>
-<li>以下操作系统版本是以最新的ubuntu22.04 为例子来演示</li>
-</ul>
-</div>
-<h3 id="_3"><strong>更换国内源</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<div class="admonition info">
-<p class="admonition-title">ubuntu22.04 清华源</p>
-<ul>
-<li>需要注意一下，如果apt update 报错，就将https改成http</li>
-<li>如果需要添加其他的版本的源可以访问: https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/</li>
-</ul>
-</div>
-<p>Ubuntu 软件仓库镜像
-<div class="highlight"><pre><span></span><code>cat &lt;&lt;EOF&gt;&gt; /etc/apt/sources.list 
-deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse
-# deb-src http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse
-deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse
-# deb-src http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse
-deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse
-# deb-src http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse
-
-# deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-security main restricted universe multiverse
-# # deb-src http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-security main restricted universe multiverse
-
-deb http://security.ubuntu.com/ubuntu/ jammy-security main restricted universe multiverse
-EOF
-</code></pre></div></p>
-<h2 id="_4"><strong>安全</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<h3 id="_5"><strong>五: 系统安全</strong><a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h2 id="_1"><strong>安全</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="_2"><strong>五: 系统安全</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>通常在企业中，服务器会遭受外来的很多的恶意攻击，那么服务器的安全就显得格外的重要。首先肯定想到的是服务器的帐号和密码管理，通常的情况下会禁止root这样的管理员用户登陆，也会禁止密码这样的方式登陆。</p>
 <p><strong>原因:</strong></p>
 <ul>
@@ -3067,16 +2746,6 @@ E:<span class="w"> </span>Unable<span class="w"> </span>to<span class="w"> </spa
 <div class="highlight"><pre><span></span><code>ps<span class="w"> </span>aux<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>apt<span class="w">  </span>//过滤出来apt进程，如果没有用可以kill掉，或者等待进程结束
 </code></pre></div></p>
 </div>
-<h4 id="3_1"><strong>（3）案例</strong><a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>//<span class="w"> </span>过滤出来以rc开头和nvidia的包并卸载
-dpkg<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span>grep<span class="w"> </span>nvidia<span class="w"> </span><span class="p">|</span>grep<span class="w"> </span><span class="s2">&quot;^rc&quot;</span><span class="w"> </span><span class="p">|</span>awk<span class="w"> </span><span class="s1">&#39;{print $2}&#39;</span><span class="w"> </span><span class="p">|</span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">&#39;nvidia&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>dpkg<span class="w">  </span>--purge
-
-dpkg<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span>grep<span class="w"> </span>nvidia<span class="w"> </span><span class="p">|</span>grep<span class="w"> </span><span class="s2">&quot;^ii&quot;</span><span class="w"> </span><span class="p">|</span>awk<span class="w"> </span><span class="s1">&#39;{print $2}&#39;</span><span class="w"> </span><span class="p">|</span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">&#39;^nvidia&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>dpkg<span class="w"> </span>--force-all<span class="w">  </span>-r
-
-dpkg<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>nvidia<span class="w">  </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $2}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>apt<span class="w"> </span>remove<span class="w"> </span>-y
-
-dpkg<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>nvidia<span class="w">  </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $2}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>apt<span class="w"> </span>purge<span class="w"> </span>-y
-</code></pre></div>
 <h3 id="ubuntu_1"><strong>ubuntu 关机或者重启</strong><a class="headerlink" href="#ubuntu_1" title="Permanent link">&para;</a></h3>
 <p><div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span>b<span class="w"> </span>&gt;<span class="w"> </span>/proc/sysrq-trigger<span class="w"> </span><span class="c1"># 强制重启</span>
 </code></pre></div>
@@ -3175,7 +2844,7 @@ total<span class="w"> </span><span class="m">2097232</span>
 <span class="m">655362</span><span class="w"> </span>drwxr-xr-x<span class="w">   </span><span class="m">6</span><span class="w"> </span>root<span class="w"> </span>root<span class="w">       </span><span class="m">4096</span><span class="w"> </span>Feb<span class="w"> </span><span class="m">23</span><span class="w">  </span><span class="m">2022</span><span class="w"> </span>snap/<span class="w"> </span>
 find<span class="w">  </span>.<span class="w"> </span>-inum<span class="w"> </span>inode号<span class="w"> </span>-delete<span class="w">    </span>//<span class="w"> </span>根据inode来删除该目录
 </code></pre></div>
-<h4 id="_6"><strong>附件:</strong><a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<h4 id="_3"><strong>附件:</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <ul>
 <li>文章地址: <a href="https://www.cnblogs.com/mefj/p/14964416.html">ubuntu安装参考:</a> </li>
 <li>文章地址: <a href="https://hoxis.github.io/linux%E4%B8%8B%E5%A4%A7%E4%BA%8E2TB%E7%A1%AC%E7%9B%98%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%8F%8A%E6%8C%82%E8%BD%BD.html">parted文章</a></li>
@@ -3194,41 +2863,6 @@ find<span class="w">  </span>.<span class="w"> </span>-inum<span class="w"> </sp
       </main>
       
         <footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="页脚">
-      
-        
-        <a href="../ubuntu-bmc/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Linux 带外管理" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                上一页
-              </span>
-              Linux 带外管理
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../1-network-docs/" class="md-footer__link md-footer__link--next" aria-label="下一页: Linux 网络服务" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                下一页
-              </span>
-              Linux 网络服务
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

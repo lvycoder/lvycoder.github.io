@@ -101,10 +101,12 @@ nav:
 
 
     - 1、Linux:
-        - Linux 云计算手册大纲: ubuntu/linux-docs.md
-        - Linux 带外管理: ubuntu/ubuntu-bmc.md
-        - Linux 系统管理: ubuntu/0-system-docs.md
-        - Linux 网络服务: ubuntu/1-network-docs.md
+        - Linux 云计算手册大纲: os/ubuntu/kjc-doc.md
+        - Linux 带外管理: os/ubuntu/ubuntu-bmc-doc.md
+        - Linux 系统安装: os/ubuntu/ubuntu-install-doc.md
+        - Linux 系统命令: os/ubuntu/ubuntu-cli-doc.md
+        - Linux 国内apt源: os/ubuntu/ubuntu-mirror-doc.md
+        - Linux 网络服务: os/ubuntu/ubuntu-network-doc.md
 
     - 2、kubernetes:
         - 云原生简介及CNCF: basic/cncf-docs.md
