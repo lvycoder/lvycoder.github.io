@@ -208,3 +208,22 @@ clent:
 iperf -c 172.16.240.204 -p 1234 -i 1 -t 20 -w 20w
 ```
 
+
+!!! info "修改网卡配置"
+    
+```
+root@ubuntu:/home/ubuntu# cat /etc/netplan/00-installer-config.yaml
+# This is the network config written by 'subiquity'
+network:
+  ethernets:
+    ens18:
+      addresses:
+      - 192.168.1.114/24
+      gateway4: 192.168.1.1
+      nameservers:
+        addresses:
+        - 192.168.1.1
+        search:
+        - 202.106.46.151
+  version: 2
+```

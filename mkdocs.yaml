@@ -106,6 +106,10 @@ nav:
         - Linux 系统安装: os/ubuntu/ubuntu-install-doc.md
         - Linux 系统命令: os/ubuntu/ubuntu-cli-doc.md
         - Linux 国内apt源: os/ubuntu/ubuntu-mirror-doc.md
+        - Linux nvme磁盘管理: os/ubuntu/ubuntu-nvme-doc.md
+        - Linux parted磁盘管理: os/ubuntu/ubuntu-parted-doc.md
+        - Linux 系统强制重启: os/ubuntu/ubuntu-reboot-doc.md
+        - Linux 磁盘管理: os/ubuntu/ubuntu-disk-doc.md
         - Linux 网络服务: os/ubuntu/ubuntu-network-doc.md
 
     - 2、kubernetes:
