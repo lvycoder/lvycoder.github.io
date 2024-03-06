@@ -256,9 +256,6 @@ Hello! 大家好，今天是2022的最后一天，从去年开始有了以文章
 
 ![](https://pic.imgdb.cn/item/63b2a8315d94efb26f192ee3.jpg)
 
-还有个未满月的女朋友
-![](https://pic.imgdb.cn/item/63b2a8495d94efb26f194cf5.jpg)
-
 钓鱼遇到的钓友（钓友的朋友太卷了，我跑了10公里没有位置......）
 ![](https://pic.imgdb.cn/item/63b2a9e65d94efb26f1b29a7.jpg)
 
