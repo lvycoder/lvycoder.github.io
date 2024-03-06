@@ -61,6 +61,63 @@ Hello，大家好，2022已经过去，如今疫情也过去了，终于不用�
 
 ![20231007160040](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231007160040.png)
 
+### **《深圳篇》**
+
+国庆之后来的深圳，记忆很深刻，北京是冬天，深圳是夏天。
+
+![20240306185330](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20240306185330.png)
+
+因为来的比较早，就去深圳湾逛了逛，@我生病的大怨种同事一起去的
+
+![20240306185446](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20240306185446.png)
+
+![20240306185727](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20240306185727.png)
+
+不得不说，深圳确实非常的漂亮。特别值得去。
+![20240306185755](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20240306185755.png)
+
+
+在深圳招商局上的一拍
+
+![20240306190047](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20240306190047.png)
+
+![20240306190110](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20240306190110.png)
+
+工作结束去爬了南山公园（免费的很重要）
+
+![20240306190147](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20240306190147.png)
+
+![20240306190200](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20240306190200.png)
+
+真的超级漂亮，不过需要爬很久～
+
+![20240306190350](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20240306190350.png)
+
+![20240306190440](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20240306190440.png)
+
+![20240306190450](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20240306190450.png)
+
+
+### **《天津篇》**
+
+影响很深刻的图书馆，真的大......
+
+![20240306190553](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20240306190553.png)
+
+吃烧烤还有驻唱
+
+![20240306190539](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20240306190539.png)
+
+![20240306190727](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20240306190727.png)
+
+
+
+
+
+
+
+
+
 ### **《公司篇》**
 年后刚刚来,老王的红包
 ![20231001112320](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231001112320.png)
@@ -104,6 +161,27 @@ Hello，大家好，2022已经过去，如今疫情也过去了，终于不用�
 
 换了一个教练,第一次练倒库,还不错
 ![20230930225432](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog20230930225432.png)
+
+
+功夫不负有心人，一次没有挂。
+![20240306184721](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20240306184721.png)
+
+![20240306184850](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20240306184850.png)
+
+
+### **《搬家篇》**
+
+公司从12楼搬到现在的26楼啦
+
+![20240306191043](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20240306191043.png)
+
+![20240306191056](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20240306191056.png)
+
+![20240306191104](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20240306191104.png)
+
+来着老王的发言
+
+![20240306191112](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20240306191112.png)
 
 
 ### **《成就篇》**
@@ -165,6 +243,14 @@ kubecon 大会展台
 
 ![20231001111542](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231001111542.png)
 
+小周请吃的自足大餐
+
+![20240306191358](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20240306191358.png)
+
+![20240306191412](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20240306191412.png)
+
+来小周家玩
+![20240306191523](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20240306191523.png)
 
 就是吃吃吃
 ![20231001111609](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231001111609.png)
