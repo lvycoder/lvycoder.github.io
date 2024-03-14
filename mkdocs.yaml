@@ -93,7 +93,7 @@ nav:
         - 网络 Tcp/IP: network/Tcp-ip-docs.md
         - 网络 思科设备: network/5g-docs.md
         - 网络 网卡模式调整: network/IB-ET-docs.md
-        - 设备 华硕服务器: ubuntu/huasuo-docs.md 
+        - 华硕服务器: os/asus/asus-docs.md
         - ZeroTier组网: network/ZeroTier.md
         - frp 内网穿透: network/frp.md
         - kubernetes 网络组件: network/3-network-docs.md
