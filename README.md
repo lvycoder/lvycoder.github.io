@@ -1,30 +1,16 @@
-# 阿勰的博客
+## 阿勰的博客
   Hello，大家好！
     我叫阿勰，北漂一族。在弄这个网站的初衷主要是为了记录自己工作和生活的内容。
     大家可以点击进入[《Kubernetes 进阶训练营》](https://barry-boy.github.io/site/)以后也将持续更新～
 
   - 主要记录工作以及生活内容
   - 把工作和生活的事情列清楚，为了以后做复盘
+  - 做运维需要记录一些遇到的问题用来总结经验
 
 
 <!-- |微信（勰哥本人）|公众号|
 |:----:|:----:|
 |<img src="https://github.com/barry-boy/barry-boy.github.io/blob/main/png/weixin.pic.jpg" width="115">|<img src="https://github.com/barry-boy/barry-boy.github.io/blob/main/png/qrcode_for_gh_1330095f1c05_860.jpg" width="125"> -->
-
-
-**我的2022目标:**
-
-  - 生活/进度:
-      - 维护一个自己的博客平台（进行中）
-      - 每天坚持写笔记（进行中）
-
-**我的2023目标**
-
-  - 生活/进度:
-      - 去上海(已完成)
-      - 考驾照(进行中)   
-      - 持续学习 
-      - 写 Issues 记录遇到的问题
 
 ## 博客离线：Mac 部署
 
@@ -55,4 +41,6 @@ mkdocs serve
 浏览器测试：http://127.0.0.1:8000
 
 
+## 文章参考
 
+- https://squidfunk.github.io/mkdocs-material/
