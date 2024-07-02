@@ -21,3 +21,29 @@ wordpress/
 ```
 
 另外 Helm 会保留 charts/、crds/ 以及 templates/ 目录以及上面列出的文件名的使用。
+
+
+## 使用 Helm 管理Chart
+
+helm 工具有几个用于操作 charts 的命令，如下所示。
+
+创建一个新的 chart 包：
+
+```
+➜ helm create mychart
+```
+
+一旦你已经编辑了一个 chart 包，Helm 可以将其打包到一个独立文件中：
+
+```
+➜ helm package mychart
+Archived mychart-0.1.-.tgz
+```
+
+你还可以使用 helm 帮助你查找 chart 包的格式要求方面或其他问题：
+
+
+```
+➜ helm lint mychart
+No issues found
+```

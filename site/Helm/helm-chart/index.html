@@ -213,7 +213,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../network/Tcp-ip-docs.md" class="md-tabs__link">
+      <a href="../../0.Internet/Tcp-ip-docs.md" class="md-tabs__link">
         0、网络基础
       </a>
     </li>
@@ -516,7 +516,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../network/Tcp-ip-docs.md" class="md-nav__link">
+      <a href="../../0.Internet/Tcp-ip-docs.md" class="md-nav__link">
         网络 Tcp/IP
       </a>
     </li>
@@ -530,7 +530,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../network/5g-docs.md" class="md-nav__link">
+      <a href="../../0.Internet/5g-docs.md" class="md-nav__link">
         网络 思科设备
       </a>
     </li>
@@ -544,7 +544,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../network/IB-ET-docs.md" class="md-nav__link">
+      <a href="../../0.Internet/IB-ET-docs.md" class="md-nav__link">
         网络 网卡模式调整
       </a>
     </li>
@@ -572,7 +572,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../network/ZeroTier.md" class="md-nav__link">
+      <a href="../../0.Internet/ZeroTier.md" class="md-nav__link">
         ZeroTier组网
       </a>
     </li>
@@ -586,7 +586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../network/frp.md" class="md-nav__link">
+      <a href="../../0.Internet/frp.md" class="md-nav__link">
         frp 内网穿透
       </a>
     </li>
@@ -600,7 +600,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../network/3-network-docs.md" class="md-nav__link">
+      <a href="../../0.Internet/3-0.Internet-docs.md" class="md-nav__link">
         kubernetes 网络组件
       </a>
     </li>
@@ -614,7 +614,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../network/4-network-docs.md" class="md-nav__link">
+      <a href="../../0.Internet/4-network-docs.md" class="md-nav__link">
         科学上网
       </a>
     </li>
@@ -1338,6 +1338,13 @@
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     文件结构
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#helm-chart" class="md-nav__link">
+    使用 Helm 管理Chart
   </a>
   
 </li>
@@ -2746,6 +2753,19 @@
 <span class="w">  </span>templates/NOTES.txt<span class="w"> </span><span class="c1"># 可选: 包含简短使用使用的文本文件</span>
 </code></pre></div>
 <p>另外 Helm 会保留 charts/、crds/ 以及 templates/ 目录以及上面列出的文件名的使用。</p>
+<h2 id="helm-chart">使用 Helm 管理Chart<a class="headerlink" href="#helm-chart" title="Permanent link">&para;</a></h2>
+<p>helm 工具有几个用于操作 charts 的命令，如下所示。</p>
+<p>创建一个新的 chart 包：</p>
+<div class="highlight"><pre><span></span><code>➜ helm create mychart
+</code></pre></div>
+<p>一旦你已经编辑了一个 chart 包，Helm 可以将其打包到一个独立文件中：</p>
+<div class="highlight"><pre><span></span><code>➜ helm package mychart
+Archived mychart-0.1.-.tgz
+</code></pre></div>
+<p>你还可以使用 helm 帮助你查找 chart 包的格式要求方面或其他问题：</p>
+<div class="highlight"><pre><span></span><code>➜ helm lint mychart
+No issues found
+</code></pre></div>
 
               
             </article>

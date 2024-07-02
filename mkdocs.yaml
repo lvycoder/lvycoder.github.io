@@ -90,14 +90,14 @@ markdown_extensions:
 nav:
     - 首页: index.md
     - 0、网络基础:
-        - 网络 Tcp/IP: network/Tcp-ip-docs.md
-        - 网络 思科设备: network/5g-docs.md
-        - 网络 网卡模式调整: network/IB-ET-docs.md
+        - 网络 Tcp/IP: 0.Internet/Tcp-ip-docs.md
+        - 网络 思科设备: 0.Internet/5g-docs.md
+        - 网络 网卡模式调整: 0.Internet/IB-ET-docs.md
         - 华硕服务器: 1.os/asus/asus-docs.md
-        - ZeroTier组网: network/ZeroTier.md
-        - frp 内网穿透: network/frp.md
-        - kubernetes 网络组件: network/3-network-docs.md
-        - 科学上网: network/4-network-docs.md
+        - ZeroTier组网: 0.Internet/ZeroTier.md
+        - frp 内网穿透: 0.Internet/frp.md
+        - kubernetes 网络组件: 0.Internet/3-0.Internet-docs.md
+        - 科学上网: 0.Internet/4-network-docs.md
 
 
     - 1、Linux:

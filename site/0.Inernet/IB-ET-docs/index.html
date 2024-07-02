@@ -12,14 +12,14 @@
         <meta name="author" content="Li">
       
       
-        <link rel="canonical" href="https://barry-boy.github.io/0.network/5g-docs/">
+        <link rel="canonical" href="https://barry-boy.github.io/0.Inernet/IB-ET-docs/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.0.0">
     
     
       
-        <title>5g docs - Kubernetes 进阶训练营</title>
+        <title>IB ET docs - Kubernetes 进阶训练营</title>
       
     
     
@@ -71,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#ib-" class="md-skip">
           跳转至
         </a>
       
@@ -105,7 +105,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              5g docs
+              IB ET docs
             
           </span>
         </div>
@@ -213,7 +213,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../network/Tcp-ip-docs.md" class="md-tabs__link">
+      <a href="../../0.Internet/Tcp-ip-docs.md" class="md-tabs__link">
         0、网络基础
       </a>
     </li>
@@ -514,7 +514,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../network/Tcp-ip-docs.md" class="md-nav__link">
+      <a href="../../0.Internet/Tcp-ip-docs.md" class="md-nav__link">
         网络 Tcp/IP
       </a>
     </li>
@@ -528,7 +528,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../network/5g-docs.md" class="md-nav__link">
+      <a href="../../0.Internet/5g-docs.md" class="md-nav__link">
         网络 思科设备
       </a>
     </li>
@@ -542,7 +542,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../network/IB-ET-docs.md" class="md-nav__link">
+      <a href="../../0.Internet/IB-ET-docs.md" class="md-nav__link">
         网络 网卡模式调整
       </a>
     </li>
@@ -570,7 +570,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../network/ZeroTier.md" class="md-nav__link">
+      <a href="../../0.Internet/ZeroTier.md" class="md-nav__link">
         ZeroTier组网
       </a>
     </li>
@@ -584,7 +584,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../network/frp.md" class="md-nav__link">
+      <a href="../../0.Internet/frp.md" class="md-nav__link">
         frp 内网穿透
       </a>
     </li>
@@ -598,7 +598,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../network/3-network-docs.md" class="md-nav__link">
+      <a href="../../0.Internet/3-0.Internet-docs.md" class="md-nav__link">
         kubernetes 网络组件
       </a>
     </li>
@@ -612,7 +612,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../network/4-network-docs.md" class="md-nav__link">
+      <a href="../../0.Internet/4-network-docs.md" class="md-nav__link">
         科学上网
       </a>
     </li>
@@ -2682,62 +2682,68 @@
             <article class="md-content__inner md-typeset">
               
                 
-<a href="https://github.com/barry-boy/barry-boy.github.io/edit/master/docs/0.network/5g-docs.md" title="编辑此页" class="md-content__button md-icon">
+<a href="https://github.com/barry-boy/barry-boy.github.io/edit/master/docs/0.Inernet/IB-ET-docs.md" title="编辑此页" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
 
-  <h1>5g docs</h1>
+  <h1>IB ET docs</h1>
 
-<h2 id="_1"><strong>网络 思科设备</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<h3 id="_2"><strong>路由器</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<ul>
-<li>cisco 路由设备的基本配置</li>
-</ul>
-<div class="highlight"><pre><span></span><code>en
-conf<span class="w"> </span>t
-no<span class="w"> </span>ip<span class="w"> </span>domain-lo
-line<span class="w"> </span>con<span class="w"> </span><span class="m">0</span><span class="w"> </span>
-exec-t<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
-logg<span class="w"> </span>syn
-end
+<h2 id="ib-"><strong>网络模式调整(IB-&gt;以太网)</strong><a class="headerlink" href="#ib-" title="Permanent link">&para;</a></h2>
+<h3 id="_1"><strong>下载驱动程序</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>官网地址: https://developer.nvidia.com/networking/infiniband-software</p>
+<p>根据自己系统的版本进行选择</p>
+<p>连接地址: https://network.nvidia.com/products/infiniband-drivers/linux/mlnx_ofed/</p>
+<p><img alt="" src="https://pic.imgdb.cn/item/63ed9eeaf144a010078b5a7f.jpg" /></p>
+<h3 id="_2"><strong>安装:</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>将我们下载好的驱动程序上传到服务器上，并解压。</p>
+<p>1.设置 MLNX_OFED apt-get 存储库</p>
+<p>使用以下内容创建名为“/etc/apt/sources.list.d/mlnx_ofed.list”的 apt-get 存储库配置文件</p>
+<div class="highlight"><pre><span></span><code>deb<span class="w"> </span>file:/home/openbayes/MLNX_OFED_LINUX-23.07-0.5.1.2-ubuntu22.04-x86_64/DEBS<span class="w"> </span>./
 </code></pre></div>
-<ul>
-<li>配置IP(实现互通)</li>
-</ul>
-<div class="highlight"><pre><span></span><code>int<span class="w"> </span>f<span class="w"> </span><span class="m">0</span>/1
-ip<span class="w"> </span>address<span class="w"> </span>ip_address<span class="w"> </span>subnet_mask
-no<span class="w"> </span>shutdown
+<p>2.下载并安装 Mellanox Technologies GPG-KEY</p>
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>-qO<span class="w"> </span>-<span class="w"> </span>http://www.mellanox.com/downloads/ofed/RPM-GPG-KEY-Mellanox<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>apt-key<span class="w"> </span>add<span class="w"> </span>-
+</code></pre></div>
+<p>3.更新 apt-get 缓存</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+</code></pre></div>
+<p>4.使用 apt-get 工具安装 MLNX_OFED</p>
+<div class="highlight"><pre><span></span><code>apt-get<span class="w"> </span>install<span class="w"> </span>mlnx-ofed-all
+</code></pre></div>
+<p>5.更新到固件</p>
+<div class="highlight"><pre><span></span><code>apt-get<span class="w"> </span>install<span class="w"> </span>mlnx-fw-updater
+</code></pre></div>
+<p>5.使用 mlnxofedinstall 脚本安装</p>
+<div class="highlight"><pre><span></span><code>/opt/mlnxofedinstall
+</code></pre></div>
+<h3 id="infinibandibethernet"><strong>Infiniband卡切换IB/Ethernet模式</strong><a class="headerlink" href="#infinibandibethernet" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>root@bayes:/home/lixie#<span class="w"> </span>mst<span class="w"> </span>status
+MST<span class="w"> </span>modules:
+------------
+<span class="w">    </span>MST<span class="w"> </span>PCI<span class="w"> </span>module<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>loaded
+<span class="w">    </span>MST<span class="w"> </span>PCI<span class="w"> </span>configuration<span class="w"> </span>module<span class="w"> </span>loaded
+
+MST<span class="w"> </span>devices:
+------------
+/dev/mst/mt4119_pciconf0<span class="w">         </span>-<span class="w"> </span>PCI<span class="w"> </span>configuration<span class="w"> </span>cycles<span class="w"> </span>access.
+<span class="w">                                   </span>domain:bus:dev.fn<span class="o">=</span><span class="m">0000</span>:06:00.0<span class="w"> </span>addr.reg<span class="o">=</span><span class="m">88</span><span class="w"> </span>data.reg<span class="o">=</span><span class="m">92</span><span class="w"> </span>cr_bar.gw_offset<span class="o">=</span>-1
+<span class="w">                                   </span>Chip<span class="w"> </span>revision<span class="w"> </span>is:<span class="w"> </span><span class="m">00</span>
+</code></pre></div>
+<p>首先，启动mst 工具，通过 mst工具查看自己的MST devices：/dev/mst/mt4119_pciconf0  （没有mst工具，需要下载安装）</p>
+<div class="highlight"><pre><span></span><code>root@bayes:/home/lixie# mlxconfig -d /dev/mst/mt4119_pciconf0 query
+
+
+         LINK_TYPE_P1                                IB(1)
+         LINK_TYPE_P2                                IB(1)
+</code></pre></div>
+<p>工作模式修改:</p>
+<div class="highlight"><pre><span></span><code>Ethernet模式： mlxconfig -d /dev/mst/mt4119_pciconf0 set LINK_TYPE_P1=2
+IB模式： mlxconfig -d /dev/mst/mt4119_pciconf0 set LINK_TYPE_P1=1
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">温馨提示</p>
-<p>一般来说，路由器的物理接口默认都是关闭的，需要用“no shutdown” 命令开启；但交换机的物理接口默认都是开启</p>
+<p>调整之后，需要重新启动服务器。</p>
 </div>
-<h3 id="_3"><strong>静态路由</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p><img alt="20231103152941" src="https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231103152941.png" /></p>
-<ul>
-<li>
-<p>静态路由</p>
-</li>
-<li>
-<p>默认路由</p>
-</li>
-</ul>
-<p>两种配置方式:
-<div class="highlight"><pre><span></span><code># 静态路由
-ip route 未知网段 子网掩码 下一跳 
-
-# 默认路由
-ip route 0.0.0.0 0.0.0.0 下一跳 
-</code></pre></div></p>
-<h3 id="_4"><strong>交换机</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>给交换机配置IP地址并不像路由器那样配置在物理接口上，而是配置在虚拟接口上，这样，无论任何一个物理接口连接交换机都可以访问虚拟接口的IP地址，从而实现对交换机的管理</p>
-<div class="highlight"><pre><span></span><code>int vlan 1
-ip address ip_address subnet_address
-no shutdown
-</code></pre></div>
-<h2 id="_5"><strong>虚拟局域网</strong><a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<p>简介: 随着网络规模的不断扩大，接入的主机越来越多，网络中的广播流量也随之加大。这样就会加重交换机的负担，甚至可能导致交换机死机，那么有没有一种方法来分割交换机上的广播域呢? 本章将要讲解的 VLAN (Virtual Local Area Network，虚拟局域网) 技术，可以从逻辑上将一个大的网络划分成若干小的虚拟局域网。VLAN 技术不仅能够控制广播，还可以增强网络的安全性</p>
 
               
             </article>
