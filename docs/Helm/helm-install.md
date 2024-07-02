@@ -113,6 +113,13 @@ nodeSelector:   # 固定到master1节点（该节点才可以访问外网）
   kubernetes.io/hostname: "master"
 ```
 
+
+### 查看渲染结果
+
+```
+helm template -f ./values.yaml mysql . -n default > mysql.yaml
+```
+
 部署traefik
 ```
 helm upgrade --install traefik traefik/traefik -f ./traefik/values/sjtu-traefik.yaml --namespace kube-system
@@ -127,6 +134,8 @@ $ helm list -A
 NAME            	NAMESPACE          	REVISION	UPDATED                                	STATUS  	CHART                                                                                  	APP VERSION
 traefik         	kube-system        	5       	2022-07-08 19:08:15.393244 +0800 CST   	deployed	traefik-10.24.0                                                                        	2.8.0
 ```
+
+
 
 ## **Helm 升级回滚**
 

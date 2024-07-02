@@ -141,6 +141,7 @@ nav:
         - kubernetes Rancher 升级: k8s/ui/rancher-update-docs.md
         - kubernetes 节点维护: basic/7-kubernetes-update-docs.md
         - kubernetes Helm 实践: Helm/helm-install.md
+        - kubernetes Helm chart包: Helm/helm-chart.md
         # - Helm 配置grafana: Helm/helm.md
         - kubernetes 处理k8s证书过期: k8s/other/k8s-ca-docs.md
         - kubernetes 自动化安装:  k8s/ansible-install-k8s-docs.md
