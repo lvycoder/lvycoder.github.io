@@ -143,6 +143,7 @@ nav:
         - kubernetes Helm 实践: Helm/helm-install.md
         - kubernetes Helm chart包: Helm/helm-chart.md
         # - Helm 配置grafana: Helm/helm.md
+        - kubernetes Cert-manager 安装: cert-manager/cert-manager-doc.md
         - kubernetes 处理k8s证书过期: k8s/other/k8s-ca-docs.md
         - kubernetes 自动化安装:  k8s/ansible-install-k8s-docs.md
         - kubernetes 项目一: basic/4-ansible-install-k8s.md
