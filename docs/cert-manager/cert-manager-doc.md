@@ -21,7 +21,7 @@ extraArgs:
   - --dns01-recursive-nameservers=8.8.8.8:53,1.1.1.1:53
 ```
 
-!!! warning 温馨提示
+!!! warning "温馨提示"
     在使用cert-manager对接cloudflare时，出现了DNS无法验证的情况，具体内容可以看下来的issues，解决办法解释加上values中的内容。
 
 ## 问题处理

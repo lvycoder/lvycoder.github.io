@@ -93,7 +93,7 @@ nav:
         - 网络 Tcp/IP: network/Tcp-ip-docs.md
         - 网络 思科设备: network/5g-docs.md
         - 网络 网卡模式调整: network/IB-ET-docs.md
-        - 华硕服务器: os/asus/asus-docs.md
+        - 华硕服务器: 1.os/asus/asus-docs.md
         - ZeroTier组网: network/ZeroTier.md
         - frp 内网穿透: network/frp.md
         - kubernetes 网络组件: network/3-network-docs.md
@@ -101,16 +101,16 @@ nav:
 
 
     - 1、Linux:
-        - Linux 云计算手册大纲: os/ubuntu/kjc-doc.md
-        - Linux 带外管理: os/ubuntu/ubuntu-bmc-doc.md
-        - Linux 系统安装: os/ubuntu/ubuntu-install-doc.md
-        - Linux 系统命令: os/ubuntu/ubuntu-cli-doc.md
-        - Linux 国内apt源: os/ubuntu/ubuntu-mirror-doc.md
-        - Linux nvme磁盘管理: os/ubuntu/ubuntu-nvme-doc.md
-        - Linux parted磁盘管理: os/ubuntu/ubuntu-parted-doc.md
-        - Linux 系统强制重启: os/ubuntu/ubuntu-reboot-doc.md
-        - Linux 磁盘管理: os/ubuntu/ubuntu-disk-doc.md
-        - Linux 网络服务: os/ubuntu/ubuntu-network-doc.md
+        - Linux 云计算手册大纲: 1.os/ubuntu/kjc-doc.md
+        - Linux 带外管理: 1.os/ubuntu/ubuntu-bmc-doc.md
+        - Linux 系统安装: 1.os/ubuntu/ubuntu-install-doc.md
+        - Linux 系统命令: 1.1.os/ubuntu/ubuntu-cli-doc.md
+        - Linux 国内apt源: 1.1.os/ubuntu/ubuntu-mirror-doc.md
+        - Linux nvme磁盘管理: 1.1.os/ubuntu/ubuntu-nvme-doc.md
+        - Linux parted磁盘管理: 1.1.os/ubuntu/ubuntu-parted-doc.md
+        - Linux 系统强制重启: 1.1.os/ubuntu/ubuntu-reboot-doc.md
+        - Linux 磁盘管理: 1.1.os/ubuntu/ubuntu-disk-doc.md
+        - Linux 网络服务: 1.1.os/ubuntu/ubuntu-network-doc.md
 
     - 2、kubernetes:
         - 云原生简介及CNCF: basic/cncf-docs.md
@@ -212,7 +212,7 @@ nav:
         - Dev环境集群: error/dev.md
         - 误删除监控数据: error/delete-prometheus-db.md
         - Kubernetes pvc ubound: error/kubernetes-pvc-ubound-doc.md
-        - dns 文件权限调整: error/centos-dns-error-docs.md
+        - dns 文件权限调整: error/cent1.os-dns-error-docs.md
         - 如何利用Mac 写博客文章: other/mac-docs.md
         - 高效利用谷歌来搜索: other/google-docs.md
         - Discord 新手教程: other/discord-docs.md
@@ -236,7 +236,7 @@ plugins:
 #      minify_html: true
 
   # - pdf-export:
-  #     verbose: true
+  #     verb1.ose: true
   #     media_type: print
   #     enabled_if_env: ENABLE_PDF_EXPORT
   #     theme_handler_path: cinder.py

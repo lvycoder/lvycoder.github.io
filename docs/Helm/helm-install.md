@@ -54,6 +54,12 @@ openbayes	https://dev.openbayes.com/charts
 root@k8s-master:/opt/linux-amd64# helm repo remove aliyun
 ```
 
+#### **下载chart包**
+
+```
+root@k8s-master:/opt/# helm fetch grafana/grafana
+```
+
 ## **Helm 部署应用:**
 
 ### **Helm 部署traefix**
