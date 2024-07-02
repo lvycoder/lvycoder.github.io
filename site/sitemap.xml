@@ -256,6 +256,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://barry-boy.github.io/cert-manager/cert-manager-doc/</loc>
+         <lastmod>2024-07-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://barry-boy.github.io/chatgpt/chatgpt-docs/</loc>
          <lastmod>2024-07-02</lastmod>
          <changefreq>daily</changefreq>
