@@ -12,14 +12,14 @@
         <meta name="author" content="Li">
       
       
-        <link rel="canonical" href="https://barry-boy.github.io/Helm/helm-chart/">
+        <link rel="canonical" href="https://barry-boy.github.io/Helm/helmfile-doc/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.0.0">
     
     
       
-        <title>kubernetes Helm chart包 - Kubernetes 进阶训练营</title>
+        <title>kubernetes Helmfile 文件 - Kubernetes 进阶训练营</title>
       
     
     
@@ -71,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#helmfile" class="md-skip">
           跳转至
         </a>
       
@@ -105,7 +105,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              kubernetes Helm chart包
+              kubernetes Helmfile 文件
             
           </span>
         </div>
@@ -1306,6 +1306,20 @@
               
   
   
+  
+    <li class="md-nav__item">
+      <a href="../helm-chart/" class="md-nav__link">
+        kubernetes Helm chart包
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
     
   
   
@@ -1316,12 +1330,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          kubernetes Helm chart包
+          kubernetes Helmfile 文件
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        kubernetes Helm chart包
+        kubernetes Helmfile 文件
       </a>
       
         
@@ -1338,15 +1352,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    文件结构
+  <a href="#helmfile" class="md-nav__link">
+    Helmfile
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#helm-chart" class="md-nav__link">
-    使用 Helm 管理Chart
+  <a href="#_1" class="md-nav__link">
+    安装
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    使用
   </a>
   
 </li>
@@ -1355,20 +1376,6 @@
   
 </nav>
       
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../helmfile-doc/" class="md-nav__link">
-        kubernetes Helmfile 文件
-      </a>
     </li>
   
 
@@ -2746,41 +2753,86 @@
             <article class="md-content__inner md-typeset">
               
                 
-<a href="https://github.com/barry-boy/barry-boy.github.io/edit/master/docs/Helm/helm-chart.md" title="编辑此页" class="md-content__button md-icon">
+<a href="https://github.com/barry-boy/barry-boy.github.io/edit/master/docs/Helm/helmfile-doc.md" title="编辑此页" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
 
-  <h1>kubernetes Helm chart包</h1>
+  <h1>kubernetes Helmfile 文件</h1>
 
-<p>Helm 使用一种名为 charts 的包格式，一个 chart 是描述一组相关的 Kubernetes 资源的文件集合，单个 chart 可能用于部署简单的应用，比如 memcached pod，或者复杂的应用，比如一个带有 HTTP 服务、数据库、缓存等等功能的完整 web 应用程序。</p>
-<p>Charts 是创建在特定目录下面的文件集合，然后可以将它们打包到一个版本化的存档中来部署。接下来我们就来看看使用 Helm 构建 charts 的一些基本方法。</p>
-<h2 id="_1">文件结构<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>chart 被组织为一个目录中的文件集合，目录名称就是 chart 的名称（不包含版本信息），下面是一个 WordPress 的 chart，会被存储在 wordpress/ 目录下面，基本结构如下所示：</p>
-<div class="highlight"><pre><span></span><code>wordpress/
-<span class="w">  </span>Chart.yaml<span class="w">          </span><span class="c1"># 包含当前 chart 信息的 YAML 文件</span>
-<span class="w">  </span>LICENSE<span class="w">             </span><span class="c1"># 可选：包含 chart 的 license 的文本文件</span>
-<span class="w">  </span>README.md<span class="w">           </span><span class="c1"># 可选：一个可读性高的 README 文件</span>
-<span class="w">  </span>values.yaml<span class="w">         </span><span class="c1"># 当前 chart 的默认配置 values</span>
-<span class="w">  </span>values.schema.json<span class="w">  </span><span class="c1"># 可选: 一个作用在 values.yaml 文件上的 JSON 模式</span>
-<span class="w">  </span>charts/<span class="w">             </span><span class="c1"># 包含该 chart 依赖的所有 chart 的目录</span>
-<span class="w">  </span>crds/<span class="w">               </span><span class="c1"># Custom Resource Definitions</span>
-<span class="w">  </span>templates/<span class="w">          </span><span class="c1"># 模板目录，与 values 结合使用时，将渲染生成 Kubernetes 资源清单文件</span>
-<span class="w">  </span>templates/NOTES.txt<span class="w"> </span><span class="c1"># 可选: 包含简短使用使用的文本文件</span>
+<h2 id="helmfile">Helmfile<a class="headerlink" href="#helmfile" title="Permanent link">&para;</a></h2>
+<p>前面我们已经了解了 Helm 的使用，但在实际使用场景中的一些需求 Helm 并不能很好的满足，需要进行一些修改和适配，比如当我们需要同时部署多个 chart、不同部署环境的区分以及 chart 的版本控制的时候，这个时候我们可以使用一个 Helmfile 的工具来解决这些场景的问题。</p>
+<p>Helmfile 是一个声明式 Helm Chart 管理工具，通过一个 helmfile.yaml 文件来帮助用户管理和维护众多的 Helm Chat，其最主要作用是：</p>
+<p>● 集成在 CI/CD 系统中，提高部署的可观测性和可重复性，区分环境，免去各种 --set 造成的困扰。
+● 方便对 helm chart 进行版本控制，如指定版本范围、锁定版本等。
+● 定期同步，避免环境中出现不符合预期的配置。</p>
+<p>Helmfile 的主要特点有：</p>
+<p>● 声明式：编写、版本控制、应用所需的状态文件以实现可见性和可再现性。
+● 模块：将基础架构的通用模式模块化，通过 Git、S3 等进行分发，以便在整个公司复用。
+● 多功能性：管理由 charts、kustomizations 和 Kubernetes 资源目录组成的集群，将所有内容转换为 Helm releases。
+● Patch：JSON/Strategic-Merge 在 helm 安装之前 patch Kubernetes 资源，无需分叉上游 charts。</p>
+<h2 id="_1">安装<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>helmfile 提供了多种安装方式，我们可以直接在 release 页面 https://github.com/helmfile/helmfile/ 选择合适的包下载，比如我们这里是 Mac m1 环境就选择 darwin_arm64 的包：</p>
+<div class="highlight"><pre><span></span><code>$ wget https://github.com/helmfile/helmfile/releases/download/v0.151.0/helmfile_0.151.0_darwin_arm64.tar.gz
+$ tar -xvf helmfile_0.151.0_darwin_arm64.tar.gz
+x LICENSE
+x README-zh_CN.md
+x README.md
+x helmfile
+$ chmod +x helmfile &amp;&amp; sudo mv helmfile /usr/local/bin
+$ helmfile -v
+helmfile version 0.151.0
 </code></pre></div>
-<p>另外 Helm 会保留 charts/、crds/ 以及 templates/ 目录以及上面列出的文件名的使用。</p>
-<h2 id="helm-chart">使用 Helm 管理Chart<a class="headerlink" href="#helm-chart" title="Permanent link">&para;</a></h2>
-<p>helm 工具有几个用于操作 charts 的命令，如下所示。</p>
-<p>创建一个新的 chart 包：</p>
-<div class="highlight"><pre><span></span><code>➜ helm create mychart
+<p>安装一些插件</p>
+<div class="highlight"><pre><span></span><code>$ helmfile -v                                                                                                         (bj-k8s/default)
+(base)
+# beiyiwangdejiyi @ beiyiwangdejiyideMacBook-Pro in ~/Desktop/tools/Helm-tools on git:main x [10:55:35] C:130
+$ helmfile init                                                                                                       (bj-k8s/default)
+helm version is too low, the current version is 3.12.2+g1e210a2, the required version is 3.14.4
+use: &#39;https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3&#39; [y/n]: y
+Downloading https://get.helm.sh/helm-v3.15.2-darwin-arm64.tar.gz
+Verifying checksum... Done.
+Preparing to install helm into /usr/local/bin
+helm installed into /usr/local/bin/helm
+The helm plugin &quot;diff&quot; version is too low, do you want to update it? [y/n]: y
+Update helm plugin diff
+Downloading https://github.com/databus23/helm-diff/releases/latest/download/helm-diff-macos-arm64.tgz
+Preparing to install into /Users/beiyiwangdejiyi/Library/helm/plugins/helm-diff
+Updated plugin: diff
+
+The helm plugin &quot;secrets&quot; is not installed, do you want to install it? [y/n]: y
+Install helm plugin secrets
+Installed plugin: secrets
+
+The helm plugin &quot;s3&quot; is not installed, do you want to install it? [y/n]: y
+Install helm plugin s3
+Downloading and installing helm-s3 v0.16.0 ...
+Checksum is valid.
+Installed plugin: s3
+
+The helm plugin &quot;helm-git&quot; is not installed, do you want to install it? [y/n]: y
+Install helm plugin helm-git
+Installed plugin: helm-git
+
+helmfile initialization completed!
 </code></pre></div>
-<p>一旦你已经编辑了一个 chart 包，Helm 可以将其打包到一个独立文件中：</p>
-<div class="highlight"><pre><span></span><code>➜ helm package mychart
-Archived mychart-0.1.-.tgz
+<p>如果没有执行 init 命令则需要手动安装 helm-diff 插件，该插件是必须的，其他插件可以根据需要选择安装</p>
+<div class="highlight"><pre><span></span><code>$ helm plugin install https://github.com/databus23/helm-diff
 </code></pre></div>
-<p>你还可以使用 helm 帮助你查找 chart 包的格式要求方面或其他问题：</p>
-<div class="highlight"><pre><span></span><code>➜ helm lint mychart
-No issues found
+<h2 id="_2">使用<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>接下来我们来了解下 Helmfile 的具体使用，首先我们从一个简单的示例开始，假设 helmfile.yaml 表示你的 Helm release 的期望状态如下所示：</p>
+<div class="highlight"><pre><span></span><code># helmfile.yaml
+repositories:
+  - name: prometheus-community
+    url: https://prometheus-community.github.io/helm-charts
+
+releases:
+  - name: prom-norbac-ubuntu
+    namespace: prometheus
+    chart: prometheus-community/prometheus
+    set:
+      - name: rbac.create
+        value: false
 </code></pre></div>
 
               
@@ -2800,7 +2852,7 @@ No issues found
     <nav class="md-footer__inner md-grid" aria-label="页脚">
       
         
-        <a href="../helm-install/" class="md-footer__link md-footer__link--prev" aria-label="上一页: kubernetes Helm 实践" rel="prev">
+        <a href="../helm-chart/" class="md-footer__link md-footer__link--prev" aria-label="上一页: kubernetes Helm chart包" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -2809,20 +2861,20 @@ No issues found
               <span class="md-footer__direction">
                 上一页
               </span>
-              kubernetes Helm 实践
+              kubernetes Helm chart包
             </div>
           </div>
         </a>
       
       
         
-        <a href="../helmfile-doc/" class="md-footer__link md-footer__link--next" aria-label="下一页: kubernetes Helmfile 文件" rel="next">
+        <a href="../../cert-manager/cert-manager-doc/" class="md-footer__link md-footer__link--next" aria-label="下一页: kubernetes Cert-manager 安装" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 下一页
               </span>
-              kubernetes Helmfile 文件
+              kubernetes Cert-manager 安装
             </div>
           </div>
           <div class="md-footer__button md-icon">
