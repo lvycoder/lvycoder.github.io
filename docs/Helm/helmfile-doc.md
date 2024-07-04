@@ -4,16 +4,16 @@
 
 Helmfile 是一个声明式 Helm Chart 管理工具，通过一个 helmfile.yaml 文件来帮助用户管理和维护众多的 Helm Chat，其最主要作用是：
 
-● 集成在 CI/CD 系统中，提高部署的可观测性和可重复性，区分环境，免去各种 --set 造成的困扰。
-● 方便对 helm chart 进行版本控制，如指定版本范围、锁定版本等。
-● 定期同步，避免环境中出现不符合预期的配置。
+- 集成在 CI/CD 系统中，提高部署的可观测性和可重复性，区分环境，免去各种 --set 造成的困扰。
+- 方便对 helm chart 进行版本控制，如指定版本范围、锁定版本等。
+- 定期同步，避免环境中出现不符合预期的配置。
 
 Helmfile 的主要特点有：
 
-● 声明式：编写、版本控制、应用所需的状态文件以实现可见性和可再现性。
-● 模块：将基础架构的通用模式模块化，通过 Git、S3 等进行分发，以便在整个公司复用。
-● 多功能性：管理由 charts、kustomizations 和 Kubernetes 资源目录组成的集群，将所有内容转换为 Helm releases。
-● Patch：JSON/Strategic-Merge 在 helm 安装之前 patch Kubernetes 资源，无需分叉上游 charts。
+- 声明式：编写、版本控制、应用所需的状态文件以实现可见性和可再现性。
+- 模块：将基础架构的通用模式模块化，通过 Git、S3 等进行分发，以便在整个公司复用。
+- 多功能性：管理由 charts、kustomizations 和 Kubernetes 资源目录组成的集群，将所有内容转换为 Helm releases。
+- Patch：JSON/Strategic-Merge 在 helm 安装之前 patch Kubernetes 资源，无需分叉上游 charts。
 
 
 ## 安装
