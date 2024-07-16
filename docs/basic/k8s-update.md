@@ -9,19 +9,21 @@
 
 - https://mirrors.tuna.tsinghua.edu.cn/help/kubernetes/
 - 这里我们使用清华的源，阿里云的源对于kubeadm 的包不齐全
-1. 首先导入 gpg key：
+
+
+1.首先导入 gpg key：
 
 ```bash
 curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 ```
 
-2. 新建 `/etc/apt/sources.list.d/kubernetes.list`，内容为
+2.新建 `/etc/apt/sources.list.d/kubernetes.list`，内容为
 
 ```bash
 deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] http://mirrors.tuna.tsinghua.edu.cn/kubernetes/core:/stable:/v1.26/deb/ /
 ```
 
-3. 更新 apt
+3.更新 apt
 ```
 apt update
 ```

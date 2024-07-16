@@ -2792,20 +2792,16 @@
 <ul>
 <li>https://mirrors.tuna.tsinghua.edu.cn/help/kubernetes/</li>
 <li>这里我们使用清华的源，阿里云的源对于kubeadm 的包不齐全</li>
-<li>首先导入 gpg key：</li>
 </ul>
+<p>1.首先导入 gpg key：</p>
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key<span class="w"> </span><span class="p">|</span><span class="w"> </span>gpg<span class="w"> </span>--dearmor<span class="w"> </span>-o<span class="w"> </span>/etc/apt/keyrings/kubernetes-apt-keyring.gpg
 </code></pre></div>
-<ol>
-<li>新建 <code>/etc/apt/sources.list.d/kubernetes.list</code>，内容为</li>
-</ol>
+<p>2.新建 <code>/etc/apt/sources.list.d/kubernetes.list</code>，内容为</p>
 <div class="highlight"><pre><span></span><code>deb<span class="w"> </span><span class="o">[</span>signed-by<span class="o">=</span>/etc/apt/keyrings/kubernetes-apt-keyring.gpg<span class="o">]</span><span class="w"> </span>http://mirrors.tuna.tsinghua.edu.cn/kubernetes/core:/stable:/v1.26/deb/<span class="w"> </span>/
 </code></pre></div>
-<ol>
-<li>更新 apt
+<p>3.更新 apt
 <div class="highlight"><pre><span></span><code>apt update
-</code></pre></div></li>
-</ol>
+</code></pre></div></p>
 <h2 id="masterkubeadm"><strong>Master安装指定新版本kubeadm</strong><a class="headerlink" href="#masterkubeadm" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code># kubeadm config images list --config kubeadm.yaml
 # kubeadm config images pull --config kubeadm.yaml
