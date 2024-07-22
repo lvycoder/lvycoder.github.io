@@ -261,6 +261,4 @@ kubecon 大会展台
 
 ![20231001105335](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231001105335.png)
 
-国庆快乐
-![20231001104026](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20231001104026.png)
 
