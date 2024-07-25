@@ -12,14 +12,14 @@
         <meta name="author" content="Li">
       
       
-        <link rel="canonical" href="https://barry-boy.github.io/Storage/s3-client-docs/">
+        <link rel="canonical" href="https://barry-boy.github.io/docker/docker-image-clash-docs/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.0.0">
     
     
       
-        <title>ceph s3cmd管理 - Kubernetes 进阶训练营</title>
+        <title>docker Clash代理 - Kubernetes 进阶训练营</title>
       
     
     
@@ -70,6 +70,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#docker-clash" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -100,7 +105,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ceph s3cmd管理
+              docker Clash代理
             
           </span>
         </div>
@@ -234,13 +239,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../basic/cncf-docs/" class="md-tabs__link">
+      <a href="../../basic/cncf-docs/" class="md-tabs__link md-tabs__link--active">
         2、kubernetes
       </a>
     </li>
@@ -282,15 +289,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../disk-ssd-docs/" class="md-tabs__link md-tabs__link--active">
+      <a href="../../Storage/disk-ssd-docs/" class="md-tabs__link">
         5、存储服务
       </a>
     </li>
@@ -825,12 +830,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
       
       
       
@@ -939,7 +946,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../docker/docker-docs/" class="md-nav__link">
+      <a href="../docker-docs/" class="md-nav__link">
         Docker 基本管理
       </a>
     </li>
@@ -953,7 +960,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../docker/lxcfs.md" class="md-nav__link">
+      <a href="../lxcfs.md" class="md-nav__link">
         lxcfs 介绍
       </a>
     </li>
@@ -967,7 +974,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../docker/docker-images-docs/" class="md-nav__link">
+      <a href="../docker-images-docs/" class="md-nav__link">
         docker 镜像构建
       </a>
     </li>
@@ -981,7 +988,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../docker/docker-proxy-docs/" class="md-nav__link">
+      <a href="../docker-proxy-docs/" class="md-nav__link">
         docker proxy代理
       </a>
     </li>
@@ -993,11 +1000,62 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../docker/docker-image-clash-docs/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          docker Clash代理
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         docker Clash代理
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#docker-clash" class="md-nav__link">
+    Docker 部署clash 代理翻墙
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    测试
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    文献参考
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1191,7 +1249,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../pv-rep/" class="md-nav__link">
+      <a href="../../Storage/pv-rep/" class="md-nav__link">
         kubernetes pv/pvc简介
       </a>
     </li>
@@ -1653,7 +1711,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../redis-docs/" class="md-nav__link">
+      <a href="../../Storage/redis-docs/" class="md-nav__link">
         redis 缓存加速
       </a>
     </li>
@@ -1667,7 +1725,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../redis-cluster-docs/" class="md-nav__link">
+      <a href="../../Storage/redis-cluster-docs/" class="md-nav__link">
         redis 集群篇
       </a>
     </li>
@@ -1701,14 +1759,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
       
       
       
@@ -1767,7 +1823,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../disk-ssd-docs/" class="md-nav__link">
+      <a href="../../Storage/disk-ssd-docs/" class="md-nav__link">
         存储分类
       </a>
     </li>
@@ -1781,7 +1837,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ceph-base/" class="md-nav__link">
+      <a href="../../Storage/ceph-base/" class="md-nav__link">
         ceph 基础
       </a>
     </li>
@@ -1795,7 +1851,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../rook-ceph/" class="md-nav__link">
+      <a href="../../Storage/rook-ceph/" class="md-nav__link">
         ceph 分布式存储
       </a>
     </li>
@@ -1809,7 +1865,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../rbd-docs/" class="md-nav__link">
+      <a href="../../Storage/rbd-docs/" class="md-nav__link">
         ceph RBD使用
       </a>
     </li>
@@ -1823,7 +1879,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cephfs-docs/" class="md-nav__link">
+      <a href="../../Storage/cephfs-docs/" class="md-nav__link">
         ceph 文件系统使用
       </a>
     </li>
@@ -1837,7 +1893,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ceph-cli-docs/" class="md-nav__link">
+      <a href="../../Storage/ceph-cli-docs/" class="md-nav__link">
         ceph 命令用法
       </a>
     </li>
@@ -1851,7 +1907,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../osd/" class="md-nav__link">
+      <a href="../../Storage/osd/" class="md-nav__link">
         ceph 性能测试
       </a>
     </li>
@@ -1865,7 +1921,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ceph-bucket/" class="md-nav__link">
+      <a href="../../Storage/ceph-bucket/" class="md-nav__link">
         ceph 对象存储
       </a>
     </li>
@@ -1877,19 +1933,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../Storage/s3-client-docs/" class="md-nav__link">
         ceph s3cmd管理
       </a>
-      
     </li>
   
 
@@ -1901,7 +1949,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../5-dev-docs/" class="md-nav__link">
+      <a href="../../Storage/5-dev-docs/" class="md-nav__link">
         ceph 存储修复
       </a>
     </li>
@@ -1915,7 +1963,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../expand-docs/" class="md-nav__link">
+      <a href="../../Storage/expand-docs/" class="md-nav__link">
         ceph 存储扩容
       </a>
     </li>
@@ -1929,7 +1977,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ceph-tools/" class="md-nav__link">
+      <a href="../../Storage/ceph-tools/" class="md-nav__link">
         ceph 外部环境连接集群
       </a>
     </li>
@@ -1943,7 +1991,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../clean-ceph-docs/" class="md-nav__link">
+      <a href="../../Storage/clean-ceph-docs/" class="md-nav__link">
         ceph 集群清理
       </a>
     </li>
@@ -1957,7 +2005,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ceph-error/" class="md-nav__link">
+      <a href="../../Storage/ceph-error/" class="md-nav__link">
         ceph 错误指南
       </a>
     </li>
@@ -1971,7 +2019,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../6-ceph-crush-docs/" class="md-nav__link">
+      <a href="../../Storage/6-ceph-crush-docs/" class="md-nav__link">
         ceph 高级参数
       </a>
     </li>
@@ -1985,7 +2033,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Juicefs/" class="md-nav__link">
+      <a href="../../Storage/Juicefs/" class="md-nav__link">
         Juicefs存储方案
       </a>
     </li>
@@ -1999,7 +2047,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../juicefs-update/" class="md-nav__link">
+      <a href="../../Storage/juicefs-update/" class="md-nav__link">
         Juicefs版本升级
       </a>
     </li>
@@ -2721,34 +2769,137 @@
             <article class="md-content__inner md-typeset">
               
                 
-<a href="https://github.com/barry-boy/barry-boy.github.io/edit/master/docs/Storage/s3-client-docs.md" title="编辑此页" class="md-content__button md-icon">
+<a href="https://github.com/barry-boy/barry-boy.github.io/edit/master/docs/docker/docker-image-clash-docs.md" title="编辑此页" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
 
-  <h1>ceph s3cmd管理</h1>
+  <h1>docker Clash代理</h1>
 
-<p>在运维的过程中，经常会遇到要清理对象存储中的数据，在rook中推荐了一个s3的工具，叫s3cmd，那么可以利用这个工具对
-对象存储中的数据进行上传，下载，删除等操作.</p>
-<ul>
-<li>s3cmd 命令用法:</li>
-</ul>
-<div class="admonition warning">
-<p class="admonition-title">温馨提示</p>
-<p>在使用 s3cmd 命令,需要对桶有权限,具体配置可以参考:  https://github.com/barry-boy/note-k8s/issues/115</p>
-</div>
-<ul>
-<li>查看 bucket</li>
-</ul>
-<div class="highlight"><pre><span></span><code>root@rbd-demo-c5fc7f94-89l5k:/# s3cmd ls
-2023-08-12 17:18  s3://ceph-bkt-a0842637-c874-4dc7-b0d5-639d6aa825a2
+<h2 id="docker-clash">Docker 部署clash 代理翻墙<a class="headerlink" href="#docker-clash" title="Permanent link">&para;</a></h2>
+<ol>
+<li>准备一个<code>docker-compose</code>文件</li>
+</ol>
+<div class="highlight"><pre><span></span><code>$ cat docker-compose.yml
+version: &#39;3&#39;
+services:
+  clash:
+    container_name: clash_proxy
+    image: centralx/clash:1.18.0
+    restart: always
+    ports:
+      - &quot;7890:7890&quot;
+      - &quot;8090:80&quot;
+    volumes:
+      - ./config/clash/config.yaml:/home/runner/.config/clash/config.yaml
 </code></pre></div>
+<ol>
+<li>
+<p>获取clash config文件</p>
+</li>
+<li>
+<p>Mac 和 Windows 获取方式是一致的</p>
+</li>
+</ol>
+<p>Clash -- 配置 -- 文件（每个人的配置文件都是不一样的。我的文件是以下截图所示）</p>
+<p><img alt="20240725151642" src="https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20240725151642.png" /></p>
+<p><img alt="20240725151810" src="https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20240725151810.png" /></p>
 <ul>
-<li>s3cmd 递归删除</li>
+<li>将配置文件中的内容拷贝到一个文件中，并命名为config.yaml</li>
 </ul>
-<div class="highlight"><pre><span></span><code>s3cmd del --recursive s3://ceph-bkt-a0842637-c874-4dc7-b0d5-639d6aa825a2/juicefs-sc/
-s3cmd del --recursive s3://ceph-bkt-a0842637-c874-4dc7-b0d5-639d6aa825a2/openbayes-jfs/
+<div class="highlight"><pre><span></span><code>cat config.yaml
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: info
+ipv6: true
+external-controller: :9090
+secret: xxxxxxxxxxxxxxxxxx  //需要注意这一段的内容为密钥。容器起来需要输入
+profile:
+  store-selected: true
+.......
 </code></pre></div>
+<ol>
+<li>
+<p>docker-compose 启动容器
+<div class="highlight"><pre><span></span><code>[cpu] root@node5:/home/lixie/Docker-proxy-clash# tree
+.
+├── config
+│   └── clash
+│       └── config.yaml
+├── docker-compose.yml
+└── run.sh
+
+2 directories, 3 files
+
+
+$ docker-compose up -d 
+</code></pre></div></p>
+</li>
+<li>
+<p>浏览器测试访问：{IP-address:8090},输入secret中密钥。</p>
+</li>
+</ol>
+<p><img alt="20240725152553" src="https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20240725152553.png" /></p>
+<p>看到以上的内容，我们的内容代理节点就搞定了。</p>
+<h2 id="_1"><strong>测试</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>5.1 docker 配置代理拉镜像测试。
+<div class="highlight"><pre><span></span><code>[cpu] root@node5:/home/lixie/Docker-proxy-clash# cat /etc/docker/daemon.json
+{
+    &quot;proxies&quot;: {
+        &quot;http-proxy&quot;: &quot;http://10.0.10.158:7890&quot;,
+        &quot;https-proxy&quot;: &quot;http://10.0.10.158:7890&quot;,
+        &quot;no-proxy&quot;: &quot;*.test.example.com,.example.org,127.0.0.0/8&quot;
+    },
+    &quot;default-ulimits&quot;: {
+        &quot;memlock&quot;: {
+            &quot;Hard&quot;: 4294967296,
+            &quot;Name&quot;: &quot;memlock&quot;,
+            &quot;Soft&quot;: 4294967296
+        },
+        &quot;nofile&quot;: {
+            &quot;Hard&quot;: 1048576,
+            &quot;Name&quot;: &quot;nofile&quot;,
+            &quot;Soft&quot;: 1048576
+        }
+    },
+    &quot;exec-opts&quot;: [
+        &quot;native.cgroupdriver=systemd&quot;
+    ],
+    &quot;insecure-registries&quot;: [],
+    &quot;log-driver&quot;: &quot;json-file&quot;,
+    &quot;log-opts&quot;: {
+        &quot;max-file&quot;: &quot;3&quot;,
+        &quot;max-size&quot;: &quot;50m&quot;
+    },
+    &quot;registry-mirrors&quot;: []
+}
+</code></pre></div></p>
+<p>5.2 linux 配置代理
+可以在 ~/.bash_profile 定义 proxy_on 和 proxy_off 函数，用于快速开启和关闭代理:
+<div class="highlight"><pre><span></span><code>function proxy_off() {
+unset no_proxy
+unset http_proxy
+unset https_proxy
+unset all_proxy
+echo -e &quot;Proxy Disabled&quot;
+}
+
+function proxy_on() {
+    # CIDR 网段表示法只在部份受支持的程序里起效
+    # 如果不起效，那么需要直接设置具体的 IP 地址
+    export no_proxy=localhost,127.0.0.1,127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
+    export http_proxy=http://&lt;host&gt;:7890
+    export https_proxy=http://&lt;host&gt;:7890
+    export all_proxy=socks://&lt;host&gt;:7890
+    echo -e &quot;Proxy Enabled&quot;
+}
+</code></pre></div></p>
+<h2 id="_2">文献参考<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li>https://hub.docker.com/r/centralx/clash</li>
+</ul>
 
               
             </article>
@@ -2767,7 +2918,7 @@ s3cmd del --recursive s3://ceph-bkt-a0842637-c874-4dc7-b0d5-639d6aa825a2/openbay
     <nav class="md-footer__inner md-grid" aria-label="页脚">
       
         
-        <a href="../ceph-bucket/" class="md-footer__link md-footer__link--prev" aria-label="上一页: ceph 对象存储" rel="prev">
+        <a href="../docker-proxy-docs/" class="md-footer__link md-footer__link--prev" aria-label="上一页: docker proxy代理" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -2776,20 +2927,20 @@ s3cmd del --recursive s3://ceph-bkt-a0842637-c874-4dc7-b0d5-639d6aa825a2/openbay
               <span class="md-footer__direction">
                 上一页
               </span>
-              ceph 对象存储
+              docker proxy代理
             </div>
           </div>
         </a>
       
       
         
-        <a href="../5-dev-docs/" class="md-footer__link md-footer__link--next" aria-label="下一页: ceph 存储修复" rel="next">
+        <a href="../../k8s/base/k8s-overview/" class="md-footer__link md-footer__link--next" aria-label="下一页: kubernetes 简介" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 下一页
               </span>
-              ceph 存储修复
+              kubernetes 简介
             </div>
           </div>
           <div class="md-footer__button md-icon">

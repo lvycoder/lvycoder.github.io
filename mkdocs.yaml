@@ -116,8 +116,9 @@ nav:
         - 云原生简介及CNCF: basic/cncf-docs.md
         - Docker 基本管理: docker/docker-docs.md
         - lxcfs 介绍: docker/lxcfs.md
-        - docker proxy代理: docker/docker-proxy-docs.md
         - docker 镜像构建: docker/docker-images-docs.md
+        - docker proxy代理: docker/docker-proxy-docs.md
+        - docker Clash代理: docker/docker-image-clash-docs.md
         - kubernetes 简介: k8s/base/k8s-overview.md
         - kubernetes 集群部署: k8s/3-k8s-systeminit-docs.md
         - kubernetes 集群升级: basic/k8s-update.md
