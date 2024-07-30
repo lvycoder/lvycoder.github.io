@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://barry-boy.github.io/k8s/mysql-operator/3-mysql-backup-error-docs/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.0.0">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-8.0.0">
     
     
       
@@ -726,7 +726,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../1.1.os/ubuntu/ubuntu-cli-doc.md" class="md-nav__link">
+      <a href="../../../1.os/ubuntu/ubuntu-cli-doc/" class="md-nav__link">
         Linux 系统命令
       </a>
     </li>
@@ -740,7 +740,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../1.1.os/ubuntu/ubuntu-mirror-doc.md" class="md-nav__link">
+      <a href="../../../1.os/ubuntu/ubuntu-mirror-doc/" class="md-nav__link">
         Linux 国内apt源
       </a>
     </li>
@@ -754,7 +754,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../1.1.os/ubuntu/ubuntu-nvme-doc.md" class="md-nav__link">
+      <a href="../../../1.os/ubuntu/ubuntu-nvme-doc/" class="md-nav__link">
         Linux nvme磁盘管理
       </a>
     </li>
@@ -768,7 +768,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../1.1.os/ubuntu/ubuntu-parted-doc.md" class="md-nav__link">
+      <a href="../../../1.os/ubuntu/ubuntu-parted-doc/" class="md-nav__link">
         Linux parted磁盘管理
       </a>
     </li>
@@ -782,7 +782,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../1.1.os/ubuntu/ubuntu-reboot-doc.md" class="md-nav__link">
+      <a href="../../../1.os/ubuntu/ubuntu-reboot-doc/" class="md-nav__link">
         Linux 系统强制重启
       </a>
     </li>
@@ -796,7 +796,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../1.1.os/ubuntu/ubuntu-disk-doc.md" class="md-nav__link">
+      <a href="../../../1.os/ubuntu/ubuntu-disk-doc/" class="md-nav__link">
         Linux 磁盘管理
       </a>
     </li>
@@ -810,7 +810,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../1.1.os/ubuntu/ubuntu-network-doc.md" class="md-nav__link">
+      <a href="../../../1.os/ubuntu/ubuntu-network-doc/" class="md-nav__link">
         Linux 网络服务
       </a>
     </li>
@@ -2777,7 +2777,7 @@
 
 <h2 id="_1"><strong>前言</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>我们本地环境遇到一次ceph集群挂了，导致整个环境的数据丢失，当然mysql数据也丢了。我们的开始希望我们将线上的数据恢复到本地。为此记录一下恢复数据遇到的一些头大的问题。</p>
-<p><strong>恢复步骤: </strong></p>
+<p>**恢复步骤: **</p>
 <ul>
 <li>首先需要下载下来数据库的备份数据，但是我发现如果从ucloud将备份文件下载解压还原后无法启动数据库</li>
 <li>即使还原成功，<code>show tables;</code> 无法查看任何表</li>

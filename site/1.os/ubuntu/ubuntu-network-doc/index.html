@@ -15,11 +15,11 @@
         <link rel="canonical" href="https://barry-boy.github.io/1.os/ubuntu/ubuntu-network-doc/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.0.0">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-8.0.0">
     
     
       
-        <title>Ubuntu network doc - Kubernetes 进阶训练营</title>
+        <title>Linux 网络服务 - Kubernetes 进阶训练营</title>
       
     
     
@@ -105,7 +105,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Ubuntu network doc
+              Linux 网络服务
             
           </span>
         </div>
@@ -223,13 +223,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../kjc-doc/" class="md-tabs__link">
+      <a href="../kjc-doc/" class="md-tabs__link md-tabs__link--active">
         1、Linux
       </a>
     </li>
@@ -632,12 +634,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
       
       
       
@@ -724,7 +728,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../1.1.os/ubuntu/ubuntu-cli-doc.md" class="md-nav__link">
+      <a href="../ubuntu-cli-doc/" class="md-nav__link">
         Linux 系统命令
       </a>
     </li>
@@ -738,7 +742,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../1.1.os/ubuntu/ubuntu-mirror-doc.md" class="md-nav__link">
+      <a href="../ubuntu-mirror-doc/" class="md-nav__link">
         Linux 国内apt源
       </a>
     </li>
@@ -752,7 +756,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../1.1.os/ubuntu/ubuntu-nvme-doc.md" class="md-nav__link">
+      <a href="../ubuntu-nvme-doc/" class="md-nav__link">
         Linux nvme磁盘管理
       </a>
     </li>
@@ -766,7 +770,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../1.1.os/ubuntu/ubuntu-parted-doc.md" class="md-nav__link">
+      <a href="../ubuntu-parted-doc/" class="md-nav__link">
         Linux parted磁盘管理
       </a>
     </li>
@@ -780,7 +784,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../1.1.os/ubuntu/ubuntu-reboot-doc.md" class="md-nav__link">
+      <a href="../ubuntu-reboot-doc/" class="md-nav__link">
         Linux 系统强制重启
       </a>
     </li>
@@ -794,7 +798,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../1.1.os/ubuntu/ubuntu-disk-doc.md" class="md-nav__link">
+      <a href="../ubuntu-disk-doc/" class="md-nav__link">
         Linux 磁盘管理
       </a>
     </li>
@@ -806,11 +810,129 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../../1.1.os/ubuntu/ubuntu-network-doc.md" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Linux 网络服务
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Linux 网络服务
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    1.1 查看及测试网络
+  </a>
+  
+    <nav class="md-nav" aria-label="1.1 查看及测试网络">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111" class="md-nav__link">
+    1.1.1 查看网络配置
+  </a>
+  
+    <nav class="md-nav" aria-label="1.1.1 查看网络配置">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 查看网络接口地址
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 查看主机名称
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 查看路由表条目
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4. 查看网络连接情况
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112" class="md-nav__link">
+    1.1.2 测试网络连接
+  </a>
+  
+    <nav class="md-nav" aria-label="1.1.2 测试网络连接">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    1. 测试网络连通性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-dns" class="md-nav__link">
+    2. 测试DNS解析
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-iperf" class="md-nav__link">
+    **3. iperf 网络测试 **
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2719,7 +2841,7 @@
 </a>
 
 
-  <h1>Ubuntu network doc</h1>
+  <h1>Linux 网络服务</h1>
 
 <h2 id="11"><strong>1.1 查看及测试网络</strong><a class="headerlink" href="#11" title="Permanent link">&para;</a></h2>
 <p>查看及测试网络配置是管理 Linux 网络服务的第一步，本节将学习 Linux 操作系统中的 网络查看及测试命令。其中讲解的大多数命令以普通用户权限就可以完成操作，但普通用户 在执行/sbin/目录中的命令时需要指定命令文件的绝对路径。</p>
@@ -2882,7 +3004,7 @@ www.google.com.<span class="w">     </span><span class="m">133</span><span class
 <span class="p">;;</span><span class="w"> </span>WHEN:<span class="w"> </span>五<span class="w"> </span>11月<span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">15</span>:51:47<span class="w"> </span>CST<span class="w"> </span><span class="m">2022</span>
 <span class="p">;;</span><span class="w"> </span>MSG<span class="w"> </span>SIZE<span class="w">  </span>rcvd:<span class="w"> </span><span class="m">48</span>
 </code></pre></div>
-<h4 id="3-iperf"><strong>3. iperf 网络测试 </strong><a class="headerlink" href="#3-iperf" title="Permanent link">&para;</a></h4>
+<h4 id="3-iperf">**3. iperf 网络测试 **<a class="headerlink" href="#3-iperf" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>server:
 iperf<span class="w"> </span>-s<span class="w"> </span>-p<span class="w"> </span><span class="m">1234</span><span class="w"> </span>-i<span class="w"> </span><span class="m">1</span>
 
@@ -2921,6 +3043,41 @@ network:
       </main>
       
         <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="页脚">
+      
+        
+        <a href="../ubuntu-disk-doc/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Linux 磁盘管理" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              Linux 磁盘管理
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../../basic/cncf-docs/" class="md-footer__link md-footer__link--next" aria-label="下一页: 云原生简介及CNCF" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              云原生简介及CNCF
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
