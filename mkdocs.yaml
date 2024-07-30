@@ -104,13 +104,13 @@ nav:
         - Linux 云计算手册大纲: 1.os/ubuntu/kjc-doc.md
         - Linux 带外管理: 1.os/ubuntu/ubuntu-bmc-doc.md
         - Linux 系统安装: 1.os/ubuntu/ubuntu-install-doc.md
-        - Linux 系统命令: 1.1.os/ubuntu/ubuntu-cli-doc.md
-        - Linux 国内apt源: 1.1.os/ubuntu/ubuntu-mirror-doc.md
-        - Linux nvme磁盘管理: 1.1.os/ubuntu/ubuntu-nvme-doc.md
-        - Linux parted磁盘管理: 1.1.os/ubuntu/ubuntu-parted-doc.md
-        - Linux 系统强制重启: 1.1.os/ubuntu/ubuntu-reboot-doc.md
-        - Linux 磁盘管理: 1.1.os/ubuntu/ubuntu-disk-doc.md
-        - Linux 网络服务: 1.1.os/ubuntu/ubuntu-network-doc.md
+        - Linux 系统命令: 1.os/ubuntu/ubuntu-cli-doc.md
+        - Linux 国内apt源: 1.os/ubuntu/ubuntu-mirror-doc.md
+        - Linux nvme磁盘管理: 1.os/ubuntu/ubuntu-nvme-doc.md
+        - Linux parted磁盘管理: 1.os/ubuntu/ubuntu-parted-doc.md
+        - Linux 系统强制重启: 1.os/ubuntu/ubuntu-reboot-doc.md
+        - Linux 磁盘管理: 1.os/ubuntu/ubuntu-disk-doc.md
+        - Linux 网络服务: 1.os/ubuntu/ubuntu-network-doc.md
 
     - 2、kubernetes:
         - 云原生简介及CNCF: basic/cncf-docs.md
