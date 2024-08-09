@@ -157,7 +157,7 @@ nav:
          - GO开发-环境安装: go/go-base-docs.md
          - GO 开发-操作符和表达式: go/2-go-docs.md
          - 模块: python/module-docs.md
-        
+
     - 4、数据库:
         - Mysql 数据库: k8s/mysql-operator/0-mysql-docs.md
         - Mysql operator: k8s/mysql-operator/1-install-mysql-operator.md
@@ -167,8 +167,8 @@ nav:
         - redis 缓存加速: Storage/redis-docs.md
         - redis 集群篇: Storage/redis-cluster-docs.md
         - redis 持久化: redis/redis-save-docs.md
- 
-    - 5、存储服务: 
+
+    - 5、存储服务:
         - 存储分类: Storage/disk-ssd-docs.md
         - ceph 基础: Storage/ceph-base.md
         - ceph 分布式存储: Storage/rook-ceph.md
@@ -189,7 +189,7 @@ nav:
 
 
     - 6、虚拟化:
-        - Proxmox虚拟化: vm/promox.md  
+        - Proxmox虚拟化: vm/promox.md
 
     - 7、Devops:
         - Git 报错指南: Devops/git-error-docs.md
@@ -203,7 +203,7 @@ nav:
         - Ansible 安装: ansible/ansible-install-docs.md
         - Ansible playbook: ansible/ansible-playbook.md
 
-    - 9、其他: 
+    - 9、其他:
         - kubeconfig 实践应用: Macuse/mac-kubeconfig.md
         - k3s 大纲介绍: k3s/k3s-docs.md
         - k3s 边缘计算: k3s/k3s-install.md
@@ -219,16 +219,16 @@ nav:
         - 高效利用谷歌来搜索: other/google-docs.md
         - Discord 新手教程: other/discord-docs.md
 
-    - 10、Chatgpt: 
+    - 10、Chatgpt:
         - 注册chatgpt: chatgpt/chatgpt-docs.md
         - 搜索技术记录: chatgpt/google-ai-docs.md
         - 如何使用Chatgpt来制作专属gpt: chatgpt/gpts-docs.md
-        
+
     - 关于我:
-        - 我的2021: mylife/2021-life-docs.md
-        - 我的2022: mylife/2022-life-docs.md
-        - 我的2023: mylife/2023-life-docs.md
-        - 我的2024: mylife/2024-life-docs.md
+        - 我的2021: 20.mylife/2021-life-docs.md
+        - 我的2022: 20.mylife/2022-life-docs.md
+        - 我的2023: 20.mylife/2023-life-docs.md
+        - 我的2024: 20.mylife/2024-life-docs.md
 
 
 plugins:

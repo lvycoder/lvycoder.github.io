@@ -106,6 +106,26 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://barry-boy.github.io/20.mylife/2021-life-docs/</loc>
+         <lastmod>2024-08-09</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://barry-boy.github.io/20.mylife/2022-life-docs/</loc>
+         <lastmod>2024-08-09</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://barry-boy.github.io/20.mylife/2023-life-docs/</loc>
+         <lastmod>2024-08-09</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://barry-boy.github.io/20.mylife/2024-life-docs/</loc>
+         <lastmod>2024-08-09</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://barry-boy.github.io/Devops/3-github-docs/</loc>
          <lastmod>2024-08-09</lastmod>
          <changefreq>daily</changefreq>
@@ -577,26 +597,6 @@
     </url>
     <url>
          <loc>https://barry-boy.github.io/k8s/yaml/yaml/</loc>
-         <lastmod>2024-08-09</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://barry-boy.github.io/mylife/2021-life-docs/</loc>
-         <lastmod>2024-08-09</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://barry-boy.github.io/mylife/2022-life-docs/</loc>
-         <lastmod>2024-08-09</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://barry-boy.github.io/mylife/2023-life-docs/</loc>
-         <lastmod>2024-08-09</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://barry-boy.github.io/mylife/2024-life-docs/</loc>
          <lastmod>2024-08-09</lastmod>
          <changefreq>daily</changefreq>
     </url>
