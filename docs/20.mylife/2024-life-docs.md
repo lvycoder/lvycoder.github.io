@@ -66,3 +66,14 @@
 </p>
 
 
+下面的两张图也能看的出来，外凸有点严重，我特意问了医生。说我这个整牙的难度属于哪一级别。两个医生都说的中等。
+
+<p align="center">
+  <img src="https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20240809164909.png" width="300"/>
+</p>
+
+<p align="center">
+  <img src="https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20240809164858.png" width="300"/>
+</p>
+
+整牙一直是参加工作之后的要解决的问题，有些事情还是需要自己来做决策。也是希望可以最终将牙齿整的很好。我也比较期待。
