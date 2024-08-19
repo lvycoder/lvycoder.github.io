@@ -133,7 +133,7 @@ nav:
         - kubernetes 配置管理: k8s/k8s-configmap-docs.md
         - Kubernetes UI: basic/5-kubernetes-UI-docs.md
         - kubernetes 控制器: k8s/deploy-sts-ds-docs.md
-        - kubernetes pv/pvc简介: Storage/pv-rep.md
+        - kubernetes pv/pvc简介: 5.Storage/pv-rep.md
         - kubernetes 监控服务: k8s/k8s-mon-docs.md
         - kubernetes 日志管理: k8s/k8s-logs-docs.md
         - kubernetes 服务网格: k8s/k8s-istio-docs.md
@@ -164,28 +164,28 @@ nav:
         - Mysql 备份恢复: k8s/mysql-operator/2-mysql-backup-docs.md
         - 数据库问题处理: k8s/mysql-operator/3-mysql-backup-error-docs.md
         - redis 大纲: redis/redis-class-docs.md
-        - redis 缓存加速: Storage/redis-docs.md
-        - redis 集群篇: Storage/redis-cluster-docs.md
+        - redis 缓存加速: 5.Storage/redis-docs.md
+        - redis 集群篇: 5.Storage/redis-cluster-docs.md
         - redis 持久化: redis/redis-save-docs.md
 
     - 5、存储服务:
-        - 存储分类: Storage/disk-ssd-docs.md
-        - ceph 基础: Storage/ceph-base.md
-        - ceph 分布式存储: Storage/rook-ceph.md
-        - ceph RBD使用: Storage/rbd-docs.md
-        - ceph 文件系统使用: Storage/cephfs-docs.md
-        - ceph 命令用法: Storage/ceph-cli-docs.md
-        - ceph 性能测试: Storage/osd.md
-        - ceph 对象存储: Storage/ceph-bucket.md
-        - ceph s3cmd管理: Storage/s3-client-docs.md
-        - ceph 存储修复: Storage/5-dev-docs.md
-        - ceph 存储扩容: Storage/expand-docs.md
-        - ceph 外部环境连接集群: Storage/ceph-tools.md
-        - ceph 集群清理: Storage/clean-ceph-docs.md
-        - ceph 错误指南: Storage/ceph-error.md
-        - ceph 高级参数: Storage/6-ceph-crush-docs.md
-        - Juicefs存储方案: Storage/Juicefs.md
-        - Juicefs版本升级: Storage/juicefs-update.md
+        - 存储分类: 5.Storage/disk-ssd-docs.md
+        - ceph 基础: 5.Storage/ceph-base.md
+        - ceph 分布式存储: 5.Storage/rook-ceph.md
+        - ceph RBD使用: 5.Storage/rbd-docs.md
+        - ceph 文件系统使用: 5.Storage/cephfs-docs.md
+        - ceph 命令用法: 5.Storage/ceph-cli-docs.md
+        - ceph 性能测试: 5.Storage/osd.md
+        - ceph 对象存储: 5.Storage/ceph-bucket.md
+        - ceph s3cmd管理: 5.Storage/s3-client-docs.md
+        - ceph 存储修复: 5.Storage/5-dev-docs.md
+        - ceph 存储扩容: 5.Storage/expand-docs.md
+        - ceph 外部环境连接集群: 5.Storage/ceph-tools.md
+        - ceph 集群清理: 5.Storage/clean-ceph-docs.md
+        - ceph 错误指南: 5.Storage/ceph-error.md
+        - ceph 高级参数: 5.Storage/6-ceph-crush-docs.md
+        - Juicefs存储方案: 5.Storage/Juicefs.md
+        - Juicefs版本升级: 5.Storage/juicefs-update.md
 
 
     - 6、虚拟化:
