@@ -2799,31 +2799,36 @@
 <h2 id="_1">前言<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>Ceph是一种开源的分布式存储系统，用于存储和管理海量数据。以下是一些常用的ceph命令案例：</p>
 <h3 id="ceph"><strong>ceph 相关命令</strong><a class="headerlink" href="#ceph" title="Permanent link">&para;</a></h3>
-<ul>
-<li>查看cluster状态</li>
-</ul>
-<div class="highlight"><pre><span></span><code>ceph -s
-</code></pre></div>
-<ul>
-<li>查看所有pool</li>
-</ul>
-<div class="highlight"><pre><span></span><code>ceph osd lspools
-</code></pre></div>
-<ul>
-<li>设置pool副本数量</li>
-</ul>
-<div class="highlight"><pre><span></span><code>ceph osd pool set .mgr size 1 --yes-i-really-mean-it
-</code></pre></div>
-<ul>
-<li>查看 pool 副本数量</li>
-</ul>
-<div class="highlight"><pre><span></span><code>ceph osd pool get &lt;pool-name&gt; size
-</code></pre></div>
-<ul>
-<li>查看 ceph 集群中每个 pool 的副本数量</li>
-</ul>
-<div class="highlight"><pre><span></span><code>ceph osd pool ls detail
-</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>查看 cluster 状态</td>
+<td><code>ceph -s</code></td>
+</tr>
+<tr>
+<td>查看所有 pool</td>
+<td><code>ceph osd lspools</code></td>
+</tr>
+<tr>
+<td>设置 pool 副本数量</td>
+<td><code>ceph osd pool set .mgr size 1 --yes-i-really-mean-it</code></td>
+</tr>
+<tr>
+<td>查看 pool 副本数量</td>
+<td><code>ceph osd pool get &lt;pool-name&gt; size</code></td>
+</tr>
+<tr>
+<td>查看 ceph 集群中每个 pool 的副本数量</td>
+<td><code>ceph osd pool ls detail</code></td>
+</tr>
+</tbody>
+</table>
 <ul>
 <li>查看pool使用率</li>
 </ul>

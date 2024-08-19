@@ -5,35 +5,13 @@ Ceph是一种开源的分布式存储系统，用于存储和管理海量数据�
 
 ### **ceph 相关命令**
 
-- 查看cluster状态
-
-```
-ceph -s
-```
-
-- 查看所有pool
-
-```
-ceph osd lspools
-```
-
-- 设置pool副本数量
-
-```
-ceph osd pool set .mgr size 1 --yes-i-really-mean-it
-```
-
-- 查看 pool 副本数量
-  
-```
-ceph osd pool get <pool-name> size
-```
-
-- 查看 ceph 集群中每个 pool 的副本数量
-  
-```
-ceph osd pool ls detail
-```
+| 操作                             | 命令                                                         |
+|----------------------------------|--------------------------------------------------------------|
+| 查看 cluster 状态                 | `ceph -s`                                                    |
+| 查看所有 pool                     | `ceph osd lspools`                                           |
+| 设置 pool 副本数量               | `ceph osd pool set .mgr size 1 --yes-i-really-mean-it`        |
+| 查看 pool 副本数量               | `ceph osd pool get <pool-name> size`                         |
+| 查看 ceph 集群中每个 pool 的副本数量 | `ceph osd pool ls detail`                                     |w
 
 - 查看pool使用率
 
@@ -78,7 +56,7 @@ $ ceph versions
 ```
 
 - 查看集群存储状态详情
-  
+
 ```
 $ ceph df detail
 --- RAW STORAGE ---
@@ -102,14 +80,14 @@ my-store.rgw.buckets.data    11   32   20 GiB   20 GiB      0 B   93.05k   20 Gi
 ```
 
 - 查看osd状态
-  
+
 ```
 $ ceph osd stat
 ```
 
 
 - 查看osd状态
-  
+
 ```
 $ ceph osd dump
 ```
