@@ -9,9 +9,11 @@ Ceph是一种开源的分布式存储系统，用于存储和管理海量数据�
 |----------------------------------|--------------------------------------------------------------|
 | 查看 cluster 状态                 | `ceph -s`                                                    |
 | 查看所有 pool                     | `ceph osd lspools`                                           |
+| 删除 pool              |  `ceph osd pool delete {pool-name} [{pool-name} --yes-i-really-really-mean-it]`   |
 | 设置 pool 副本数量               | `ceph osd pool set .mgr size 1 --yes-i-really-mean-it`        |
 | 查看 pool 副本数量               | `ceph osd pool get <pool-name> size`                         |
-| 查看 ceph 集群中每个 pool 的副本数量 | `ceph osd pool ls detail`                                     |w
+| 查看 ceph 集群中每个 pool 的副本数量 | `ceph osd pool ls detail`                                     |
+
 
 - 查看pool使用率
 
