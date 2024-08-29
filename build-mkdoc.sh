@@ -1,5 +1,5 @@
 #!/bin/bash
-mkdocs build
+#mkdocs build
 git add .
 git commit -m "feat(docs):update docs"
-git push -f 
+git push origin lixie -f 
