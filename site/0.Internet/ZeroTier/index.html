@@ -12,14 +12,14 @@
         <meta name="author" content="Li">
       
       
-        <link rel="canonical" href="https://barry-boy.github.io/0.Inernet/frp/">
+        <link rel="canonical" href="https://barry-boy.github.io/0.Internet/ZeroTier/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-8.0.0">
     
     
       
-        <title>Frp - Kubernetes 进阶训练营</title>
+        <title>ZeroTier组网 - Kubernetes 进阶训练营</title>
       
     
     
@@ -71,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#frp" class="md-skip">
+        <a href="#zerotier" class="md-skip">
           跳转至
         </a>
       
@@ -105,7 +105,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Frp
+              ZeroTier组网
             
           </span>
         </div>
@@ -207,13 +207,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../0.Internet/Tcp-ip-docs.md" class="md-tabs__link">
+      <a href="../Tcp-ip-docs/" class="md-tabs__link md-tabs__link--active">
         0、网络基础
       </a>
     </li>
@@ -468,12 +470,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
       
       
       
@@ -514,7 +518,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../0.Internet/Tcp-ip-docs.md" class="md-nav__link">
+      <a href="../Tcp-ip-docs/" class="md-nav__link">
         网络 Tcp/IP
       </a>
     </li>
@@ -528,7 +532,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../0.Internet/5g-docs.md" class="md-nav__link">
+      <a href="../5g-docs/" class="md-nav__link">
         网络 思科设备
       </a>
     </li>
@@ -542,7 +546,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../0.Internet/IB-ET-docs.md" class="md-nav__link">
+      <a href="../IB-ET-docs/" class="md-nav__link">
         网络 网卡模式调整
       </a>
     </li>
@@ -568,11 +572,80 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../0.Internet/ZeroTier.md" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          ZeroTier组网
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         ZeroTier组网
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    背景
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    原理
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linux-debrpm" class="md-nav__link">
+    Linux (DEB/RPM)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#macos" class="md-nav__link">
+    macOS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    安装
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -584,7 +657,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../0.Internet/frp.md" class="md-nav__link">
+      <a href="../frp/" class="md-nav__link">
         frp 内网穿透
       </a>
     </li>
@@ -598,7 +671,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../0.Internet/3-0.Internet-docs.md" class="md-nav__link">
+      <a href="../3-0.Internet-docs.md" class="md-nav__link">
         kubernetes 网络组件
       </a>
     </li>
@@ -612,7 +685,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../0.Internet/4-network-docs.md" class="md-nav__link">
+      <a href="../4-network-docs/" class="md-nav__link">
         科学上网
       </a>
     </li>
@@ -2714,388 +2787,58 @@
             <article class="md-content__inner md-typeset">
               
                 
-<a href="https://github.com/barry-boy/barry-boy.github.io/edit/master/docs/0.Inernet/frp.md" title="编辑此页" class="md-content__button md-icon">
+<a href="https://github.com/barry-boy/barry-boy.github.io/edit/master/docs/0.Internet/ZeroTier.md" title="编辑此页" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
 
-  <h1>Frp</h1>
-
-<h3 id="frp">一、内网穿透Frp：<a class="headerlink" href="#frp" title="Permanent link">&para;</a></h3>
-<p><strong>下载地址：</strong><a href="https://github.com/fatedier/frp/releases">https://github.com/fatedier/frp/releases</a></p>
-<h3 id="11">1.1、概述：<a class="headerlink" href="#11" title="Permanent link">&para;</a></h3>
-<h4 id="111frp">1.1.1：frp内网穿透工具：<a class="headerlink" href="#111frp" title="Permanent link">&para;</a></h4>
-<p>是一个高性能的反向代理应用，可以帮助您轻松地进行内网穿透，对外网提供服务，支持 tcp, http, https 等协议类型，并且 web 服务支持根据域名进行路由转发。</p>
-<h4 id="112frp">1.1.2：frp的作用：<a class="headerlink" href="#112frp" title="Permanent link">&para;</a></h4>
-<p>利用处于内网或防火墙后的机器，对外网环境提供 http 或 https 服务。
-对于 http 服务支持基于域名的虚拟主机，支持自定义域名绑定，使多个域名可以共用一个80端口。
-利用处于内网或防火墙后的机器，对外网环境提供 tcp 服务，例如在家里通过 ssh 访问处于公司内网环境内的主机。
-可查看通过代理的所有 http 请求和响应的详细信息。（待开发）</p>
-<h3 id="21">2.1、项目思路及重难点内容<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
-<div class="admonition warning">
-<p class="admonition-title">温馨提示</p>
+<h1 id="zerotier">ZeroTier 内网<a class="headerlink" href="#zerotier" title="Permanent link">&para;</a></h1>
+<h2 id="_1"><strong>背景</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>随着互联网的普及，可用的公网 IPv4 地址越来越少，现在的运营商基本不给家用宽带分配公网 IP 了。如果你想通过外网访问到内网的资源，目前只能采用内网穿透的软件来实现。常见的内网穿透如: frp 这样的工具，但是如果要使用这样的工具需要有一台具备公网地址的服务器才可以。</p>
+<p>做为一名优秀的技术人员，当然是能白嫖就白嫖，下面主要来介绍一款不需要公网的P2P工具ZeroTier
+<img alt="" src="https://pic1.imgdb.cn/item/63355b9316f2c2beb149496a.jpg" /></p>
+<h2 id="_2"><strong>原理</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>ZeroTier 这一类 P2P VPN 是在互联网的基础上将自己的所有设备组成一个私有的网络，可以理解为互联网连接的局域网。</p>
+<p>大白话就是一堆服务器安装上这个软件就组建了一个内网，大家通过这个特定网段内网可以互相访问。</p>
+<div class="admonition info">
+<p class="admonition-title">优点</p>
 <ul>
-<li>以下步骤只针对针对于centos 操作系统</li>
+<li>内网穿透工具（免费）</li>
+<li>ZeroTier 支持 Windows、macOS、Linux 三大主流平台，iOS、Android 两大移动平台</li>
 </ul>
 </div>
-<h4 id="211">2.1.1：项目拓扑图：<a class="headerlink" href="#211" title="Permanent link">&para;</a></h4>
-<h4 id="212">2.1.2：实验思路：<a class="headerlink" href="#212" title="Permanent link">&para;</a></h4>
-<table>
-<thead>
-<tr>
-<th>第一步</th>
-<th>购买一台云服务器作为frp-server端，主要是需要一个固定公网地址，如果公司有固定公网地址最好</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>第二步</td>
-<td>在公司或者内网准备一台主机作为frp-client端</td>
-</tr>
-<tr>
-<td>第三步</td>
-<td>在公司或者内网准备一台主机来部署vpn</td>
-</tr>
-<tr>
-<td>第四步</td>
-<td>利用穿透来实现连接VPN</td>
-</tr>
-</tbody>
-</table>
-<h4 id="213frp">2.1.3：frp配置文件说明：<a class="headerlink" href="#213frp" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="o">[</span>root@localhost<span class="w"> </span>frpc<span class="o">]</span><span class="c1"># ll</span>
-总用量<span class="w"> </span><span class="m">21136</span>
--rwxr-xr-x<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w"> </span><span class="m">10466752</span><span class="w"> </span>8月<span class="w">  </span><span class="m">18</span><span class="w"> </span><span class="m">2021</span><span class="w"> </span>frpc
--rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w">     </span><span class="m">6818</span><span class="w"> </span>8月<span class="w">  </span><span class="m">18</span><span class="w"> </span><span class="m">2021</span><span class="w"> </span>frpc_full.ini
--rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w">      </span><span class="m">283</span><span class="w"> </span>5月<span class="w">   </span><span class="m">2</span><span class="w"> </span><span class="m">23</span>:35<span class="w"> </span>frpc.ini
--rwxr-xr-x<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w"> </span><span class="m">11133376</span><span class="w"> </span>8月<span class="w">  </span><span class="m">18</span><span class="w"> </span><span class="m">2021</span><span class="w"> </span>frps
--rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w">     </span><span class="m">2199</span><span class="w"> </span>8月<span class="w">  </span><span class="m">18</span><span class="w"> </span><span class="m">2021</span><span class="w"> </span>frps_full.ini
--rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w">       </span><span class="m">26</span><span class="w"> </span>8月<span class="w">  </span><span class="m">18</span><span class="w"> </span><span class="m">2021</span><span class="w"> </span>frps.ini
--rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w">    </span><span class="m">11358</span><span class="w"> </span>8月<span class="w">  </span><span class="m">18</span><span class="w"> </span><span class="m">2021</span><span class="w"> </span>LICENSE
--rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w">       </span><span class="m">21</span><span class="w"> </span>8月<span class="w">  </span><span class="m">18</span><span class="w"> </span><span class="m">2021</span><span class="w"> </span>run.sh
-drwxrwxr-x<span class="w"> </span><span class="m">2</span><span class="w"> </span>root<span class="w"> </span>root<span class="w">       </span><span class="m">88</span><span class="w"> </span>8月<span class="w">  </span><span class="m">18</span><span class="w"> </span><span class="m">2021</span><span class="w"> </span>systemd
-
-文件说明：
-frpc<span class="w">                    </span><span class="c1"># 客户端二进制文件</span>
-frpc_full.ini<span class="w">           </span><span class="c1"># 客户端配置文件完整示例</span>
-frpc.ini<span class="w">                </span><span class="c1"># 客户端配置文件</span>
-frps<span class="w">                    </span><span class="c1"># 服务端二进制文件</span>
-frps_full.ini<span class="w">           </span><span class="c1"># 服务端配置文件完整示例</span>
-frps.in1<span class="w">                </span><span class="c1"># 服务端配置文件</span>
+<p>我们正在逐步用 Tailscale 替换掉 ZeroTier 网络，ZeroTier 将作为 Tailscale 不可用时的备选方案</p>
+<p>官网地址: https://www.zerotier.com/</p>
+<p>下载客户端: https://www.zerotier.com/download/</p>
+<h2 id="linux-debrpm"><strong>Linux (DEB/RPM)</strong><a class="headerlink" href="#linux-debrpm" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-s<span class="w"> </span>https://install.zerotier.com<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>bash
 </code></pre></div>
-<h3 id="31frp">3.1、Frp部署：<a class="headerlink" href="#31frp" title="Permanent link">&para;</a></h3>
-<h4 id="311frps">3.1.1：部署frps：<a class="headerlink" href="#311frps" title="Permanent link">&para;</a></h4>
-<blockquote>
-<p>注释：一般frps 是公网上的一台云服务器，这里可以是任意的云平台，注意一定记得开安全组！！！</p>
-</blockquote>
-<div class="highlight"><pre><span></span><code><span class="o">[</span>root@VM-16-9-centos<span class="w"> </span>frps<span class="o">]</span><span class="c1"># cat frps.ini </span>
-<span class="o">[</span>common<span class="o">]</span>
-<span class="nv">bind_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">50070</span>
-<span class="nv">vhost_http_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">50080</span>
-<span class="nv">vhost_https_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">50443</span>
-<span class="nv">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">$pF</span>@7zz^LDuh7^xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<span class="w">    </span>这个token是用于服务端和客户端连接
-
-
-
-<span class="c1"># 启动</span>
-./frps<span class="w"> </span>-c<span class="w"> </span>./frps.ini
+<h2 id="macos"><strong>macOS</strong><a class="headerlink" href="#macos" title="Permanent link">&para;</a></h2>
+<p>可选择官方的 DMG 安装，或从 Homebrew 进行安装：</p>
+<div class="highlight"><pre><span></span><code>brew<span class="w"> </span>cask<span class="w"> </span>install<span class="w"> </span>zerotier-one
 </code></pre></div>
-<h4 id="312frpc">3.1.2：部署frpc：<a class="headerlink" href="#312frpc" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="o">[</span>root@moban<span class="w"> </span>frp_0.38.0_linux_amd64<span class="o">]</span><span class="c1"># cat frpc.ini</span>
-<span class="o">[</span>common<span class="o">]</span>
-<span class="nv">server_addr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">115</span>.29.189.57
-<span class="c1"># server_addr表示与frps连接的地址</span>
-<span class="nv">server_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">50081</span>
-<span class="c1"># 与frps连接的端口</span>
-<span class="nv">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>pass@word1
-<span class="c1"># 配置token用来验证</span>
-
-<span class="o">[</span>openvpn<span class="o">]</span>
-<span class="nb">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>udp
-<span class="nv">local_ip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">192</span>.168.8.82
-<span class="nv">local_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">51194</span>
-<span class="nv">remote_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">51194</span>
-
-<span class="c1"># remote_port表示用户访问公网地址+端口,就反向代理到local_ip+端口</span>
-
-
-<span class="c1"># 启动</span>
-./frps<span class="w"> </span>-c<span class="w"> </span>./frps.ini
+<div class="admonition warning">
+<p class="admonition-title">温馨提示</p>
+<p>我这边主要是以使用linux和mac为主，其他平台请直接访问上方的 Zerotier 官网进行下载</p>
+</div>
+<h2 id="_3"><strong>安装</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<div class="admonition info">
+<p class="admonition-title">操作步骤</p>
+<ul>
+<li>Linux或者Mac安装zerotier</li>
+<li>加入到zerotier网络</li>
+<li>zerotier的UI界面勾选刚刚添加的节点</li>
+</ul>
+</div>
+<p><strong>安装:</strong> <a href="https://www.zerotier.com/download/">参考官网</a></p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-s<span class="w"> </span>https://install.zerotier.com<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>bash
 </code></pre></div>
-<h4 id="313nj192165020">3.1.3：nj地区：192.165.0.20<a class="headerlink" href="#313nj192165020" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="o">[</span>root@moban<span class="w"> </span>frp_0.26.0_linux_amd64<span class="o">]</span><span class="c1"># cat frpc.ini</span>
-<span class="o">[</span>common<span class="o">]</span>
-<span class="nv">tls_enable</span><span class="o">=</span><span class="nb">true</span>
-<span class="nv">server_addr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">39</span>.104.160.84
-<span class="nv">server_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">50070</span>
-<span class="nv">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">$pF</span>@xxxxxx
-<span class="o">[</span>openvpn-nj<span class="o">]</span>
-<span class="nv">type</span><span class="o">=</span>udp
-<span class="nv">local_ip</span><span class="o">=</span><span class="m">192</span>.165.0.21
-<span class="nv">local_port</span><span class="o">=</span><span class="m">31194</span>
-<span class="nv">remote_port</span><span class="o">=</span><span class="m">31194</span>
-
-
-<span class="o">[</span>root@moban<span class="w"> </span>frp_0.26.0_linux_amd64<span class="o">]</span><span class="c1"># cat frp.sh </span>
-./frpc<span class="w"> </span>-c<span class="w"> </span>./frpc.ini
+<p>节点加入zerotier网络，加入网络之前需要提前创建这个网络</p>
+<div class="highlight"><pre><span></span><code>root@user:/home/user#<span class="w"> </span>zerotier-cli<span class="w"> </span>join<span class="w"> </span>b15644912ebd050d
+<span class="m">200</span><span class="w"> </span>join<span class="w"> </span>OK
 </code></pre></div>
-<h4 id="314bj">3.1.4：bj地区：<a class="headerlink" href="#314bj" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="o">[</span>root@frp-40<span class="w"> </span>frpc<span class="o">]</span><span class="c1"># cat frpc.ini</span>
-<span class="o">[</span>common<span class="o">]</span>
-<span class="nv">tls_enable</span><span class="o">=</span><span class="nb">true</span>
-<span class="nv">server_addr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">39</span>.104.160.84
-<span class="nv">server_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">50070</span>
-<span class="nv">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">$pF</span>@7zz^LDuh7^X0Uxxxxx
-</code></pre></div>
-<h3 id="41vpn">4.1、vpn部署：<a class="headerlink" href="#41vpn" title="Permanent link">&para;</a></h3>
-<h4 id="441vpn">4.4.1：vpn部署脚本：<a class="headerlink" href="#441vpn" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-<span class="c1"># 搭建vpenvpn脚本</span>
-<span class="c1"># 作者:lixie</span>
-<span class="c1"># 日期:2021-10-19</span>
-
-
-<span class="c1"># openvpn是服务端,easy-rsa是证书管理工具</span>
-
-yum<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>wget
-mkdir<span class="w"> </span>-p<span class="w"> </span>/etc/yum.repos.d/backup
-mv<span class="w"> </span>/etc/yum.repos.d/*.repo<span class="w"> </span>/etc/yum.repos.d/backup/
-wget<span class="w"> </span>-O<span class="w"> </span>/etc/yum.repos.d/CentOS-Base.repo<span class="w"> </span>https://mirrors.aliyun.com/repo/Centos-7.repo
-wget<span class="w"> </span>-O<span class="w"> </span>/etc/yum.repos.d/epel.repo<span class="w"> </span>http://mirrors.aliyun.com/repo/epel-7.repo
-
-yum<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>openvpn<span class="w"> </span>easy-rsa<span class="w"> </span><span class="p">&amp;</span>&gt;<span class="w"> </span>/dev/null
-
-<span class="c1"># 获取openvpn和easy-rsa的版本</span>
-<span class="nv">OPENVER</span><span class="o">=</span><span class="k">$(</span>rpm<span class="w"> </span>-qi<span class="w"> </span>openvpn<span class="w">  </span><span class="p">|</span>awk<span class="w"> </span>-F<span class="s2">&quot;: &quot;</span><span class="w">  </span><span class="s1">&#39;NR==2{print $2}&#39;</span><span class="k">)</span>
-<span class="nv">EASYVER</span><span class="o">=</span><span class="k">$(</span>rpm<span class="w"> </span>-qi<span class="w"> </span>easy-rsa<span class="w">  </span><span class="p">|</span>awk<span class="w"> </span>-F<span class="s2">&quot;: &quot;</span><span class="w">  </span><span class="s1">&#39;NR==2{print $2}&#39;</span><span class="k">)</span>
-
-<span class="c1">#echo &quot;openvpn-$OPENVER&quot;</span>
-<span class="c1">#echo &quot;easy-rsa-$EASYVER&quot;</span>
-
-<span class="c1">#生成服务器配置文件</span>
-<span class="c1">#cp /usr/share/doc/openvpn-$OPENVER/sample/sample-config-files/server.conf  /etc/openvpn/</span>
-
-cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt;&gt;  /etc/openvpn/server/server.conf</span>
-<span class="s">local 0.0.0.0</span>
-<span class="s">port 41194</span>
-<span class="s">proto udp</span>
-<span class="s">dev tun</span>
-<span class="s">ca /etc/openvpn/certs/ca.crt</span>
-<span class="s">cert /etc/openvpn/certs/server.crt</span>
-<span class="s">dh /etc/openvpn/certs/dh.pem</span>
-<span class="s">push &quot;route 192.168.0.0 255.255.0.0&quot;</span>
-<span class="s">server 10.10.0.0 255.255.255.0</span>
-<span class="s">ifconfig-pool-persist /var/log/openvpn/ipp.txt</span>
-<span class="s">client-to-client</span>
-<span class="s">keepalive 10 120</span>
-<span class="s">comp-lzo</span>
-<span class="s">max-clients 100</span>
-<span class="s">persist-key</span>
-<span class="s">persist-tun</span>
-<span class="s">status /var/log/openvpn/openvpn-status.log</span>
-<span class="s">log-append  /var/log/openvpn/openvpn.log</span>
-<span class="s">verb 3</span>
-<span class="s">key /etc/openvpn/certs/server.key</span>
-<span class="s">cipher AES-256-CBC</span>
-<span class="s">client-config-dir /etc/openvpn/ccd</span>
-<span class="s">auth-user-pass-verify /etc/openvpn/checkpsw.sh via-env</span>
-<span class="s">username-as-common-name</span>
-<span class="s">script-security 3</span>
-<span class="s">verify-client-cert none</span>
-
-
-<span class="s">EOF</span>
-
-<span class="c1"># 注意！！！ 这里创建完配置文件后，需要做个配置文件的软连接，因为当前版本的 openvpn systemd 启动文件中读取的是.service.conf配置</span>
-<span class="nb">cd</span><span class="w"> </span>/etc/openvpn/server/<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>ln<span class="w"> </span>-sf<span class="w"> </span>server.conf<span class="w"> </span>.service.conf
-
-
-<span class="c1">#准备证书签发相关文件</span>
-
-cp<span class="w"> </span>-r<span class="w"> </span>/usr/share/easy-rsa/<span class="w"> </span>/etc/openvpn/easy-rsa-server
-
-<span class="c1">#准备签发证书相关变量的配置文件</span>
-cp<span class="w"> </span>/usr/share/doc/easy-rsa-<span class="nv">$EASYVER</span>/vars.example<span class="w"> </span>/etc/openvpn/easy-rsa-server/3/vars
-
-
-<span class="c1">#CA的证书有效期默为为10年,可以适当延长,比如:36500天</span>
-sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;/3650/ s/3650/36500/g&#39;</span><span class="w"> </span>/etc/openvpn/easy-rsa-server/3/vars
-
-<span class="c1">#服务器证书默为为825天</span>
-sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;/825/ s/825/82500/g&#39;</span><span class="w"> </span>/etc/openvpn/easy-rsa-server/3/vars
-
-
-<span class="w"> </span>初始化数据,在当前目录下生成pki目录及相关文件
-<span class="nb">cd</span><span class="w"> </span>/etc/openvpn/easy-rsa-server/3/
-<span class="nb">pwd</span>
-./easyrsa<span class="w"> </span>init-pki
-
-
-<span class="w"> </span>创建CA机构
-<span class="nb">cd</span><span class="w"> </span>/etc/openvpn/easy-rsa-server/3
-./easyrsa<span class="w"> </span>build-ca<span class="w"> </span>nopass<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
-
-
-<span class="s">EOF</span>
-
-
-<span class="c1"># 创建服务端证书申请</span>
-
-<span class="nb">cd</span><span class="w"> </span>/etc/openvpn/easy-rsa-server/3
-./easyrsa<span class="w"> </span>gen-req<span class="w"> </span>server<span class="w"> </span>nopass<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
-
-
-<span class="s">EOF</span>
-
-<span class="c1">## 颁发服务端证书</span>
-<span class="c1">#</span>
-<span class="nb">cd</span><span class="w"> </span>/etc/openvpn/easy-rsa-server/3
-./easyrsa<span class="w"> </span>sign<span class="w"> </span>server<span class="w"> </span>server<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
-<span class="s">yes</span>
-
-<span class="s">EOF</span>
-
-
-
-<span class="c1"># 创建 Diffie-Hellman 密钥,这个步骤完了服务器部分就完成了</span>
-<span class="nb">cd</span><span class="w"> </span>/etc/openvpn/easy-rsa-server/3
-./easyrsa<span class="w"> </span>gen-dh
-
-
-<span class="c1">#为客户端准备证书环境</span>
-cp<span class="w"> </span>-r<span class="w"> </span>/usr/share/easy-rsa/<span class="w"> </span>/etc/openvpn/easy-rsa-client
-cp<span class="w"> </span>/usr/share/doc/easy-rsa-<span class="nv">$EASYVER</span>/vars.example<span class="w"> </span>/etc/openvpn/easy-rsa-client/3/vars
-<span class="nb">cd</span><span class="w"> </span>/etc/openvpn/easy-rsa-client/3/
-./easyrsa<span class="w"> </span>init-pki
-
-
-<span class="c1"># 将CA和服务器证书相关文件复制到服务器相应的目录</span>
-
-mkdir<span class="w"> </span>/etc/openvpn/certs
-cp<span class="w"> </span>/etc/openvpn/easy-rsa-server/3/pki/ca.crt<span class="w">  </span>/etc/openvpn/certs/
-cp<span class="w"> </span>/etc/openvpn/easy-rsa-server/3/pki/issued/server.crt<span class="w">  </span>/etc/openvpn/certs/
-cp<span class="w"> </span>/etc/openvpn/easy-rsa-server/3/pki/private/server.key<span class="w">  </span>/etc/openvpn/certs/
-cp<span class="w"> </span>/etc/openvpn/easy-rsa-server/3/pki/dh.pem<span class="w">  </span>/etc/openvpn/certs/
-
-
-<span class="c1"># 修改服务器端配置文件</span>
-
-
-<span class="c1"># 创建日志目录</span>
-
-mkdir<span class="w"> </span>/etc/openvpn/ccd
-mkdir<span class="w"> </span>/var/log/openvpn
-chown<span class="w"> </span>openvpn.openvpn<span class="w"> </span>/var/log/openvpn
-
-cat<span class="w"> </span><span class="s">&lt;&lt;EOF&gt;&gt; /etc/openvpn/psw-file</span>
-<span class="s">LIXIE ABC123,</span>
-<span class="s">EOF</span>
-chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>/etc/openvpn/psw-file
-chown<span class="w"> </span>openvpn:openvpn<span class="w"> </span>/etc/openvpn/psw-file
-
-
-
-
-
-chmod<span class="w"> </span>+x<span class="w"> </span>/etc/openvpn/checkpsw.sh
-chown<span class="w"> </span>-R<span class="w"> </span>openvpn:openvpn<span class="w"> </span>/etc/openvpn/
-
-
-<span class="c1">#在服务器开启ip_forward转发功能</span>
-<span class="nb">echo</span><span class="w"> </span>net.ipv4.ip_forward<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/sysctl.conf<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sysctl<span class="w"> </span>-p<span class="w"> </span><span class="p">&amp;</span>&gt;<span class="w"> </span>/dev/null
-<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;iptables -t nat -A POSTROUTING -s 10.10.0.0/24 -j MASQUERADE&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/rc.d/rc.local
-chmod<span class="w"> </span>+x<span class="w"> </span>/etc/rc.d/rc.local
-/etc/rc.d/rc.local
-
-
-
-systemctl<span class="w"> </span>daemon-reload
-systemctl<span class="w"> </span>start<span class="w"> </span>openvpn-server@.service.service
-systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>openvpn-server@.service.service
-</code></pre></div>
-<h4 id="442">4.4.2：新增用户脚本：<a class="headerlink" href="#442" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>cat<span class="w"> </span><span class="s">&lt;&lt;EOF&gt;&gt; /etc/openvpn/checkpsw.sh</span>
-<span class="s">#!/bin/sh</span>
-<span class="s">###########################################################</span>
-<span class="s"># checkpsw.sh (C) 2004 Mathias Sundman &lt;mathias@openvpn.se&gt;</span>
-<span class="s">#</span>
-<span class="s"># This script will authenticate OpenVPN users against</span>
-<span class="s"># a plain text file. The passfile should simply contain</span>
-<span class="s"># one row per user with the username first followed by</span>
-<span class="s"># one or more space(s) or tab(s) and then the password.</span>
-<span class="s">PASSFILE=&quot;/etc/openvpn/psw-file&quot;</span>
-<span class="s">LOG_FILE=&quot;/var/log/openvpn/password.log&quot;</span>
-<span class="s">TIME_STAMP=`date &quot;+%Y-%m-%d %T&quot;`</span>
-<span class="s">###########################################################</span>
-<span class="s">if [ ! -r &quot;${PASSFILE}&quot; ]; then</span>
-<span class="s">  echo &quot;${TIME_STAMP}: Could not open password file \&quot;${PASSFILE}\&quot; for reading.&quot; &gt;&gt;  ${LOG_FILE}</span>
-<span class="s">  exit 1</span>
-<span class="s">fi</span>
-<span class="s">CORRECT_PASSWORD=`awk &#39;!/^;/&amp;&amp;!/^#/&amp;&amp;$1==&quot;&#39;${username}&#39;&quot;{print $2;exit}&#39; ${PASSFILE}`</span>
-<span class="s">if [ &quot;${CORRECT_PASSWORD}&quot; = &quot;&quot; ]; then</span>
-<span class="s">  echo &quot;${TIME_STAMP}: User does not exist: username=\&quot;${username}\&quot;, password=</span>
-<span class="s">\&quot;${password}\&quot;.&quot; &gt;&gt; ${LOG_FILE}</span>
-<span class="s">  exit 1</span>
-<span class="s">fi</span>
-<span class="s">if [ &quot;${password}&quot; = &quot;${CORRECT_PASSWORD}&quot; ]; then</span>
-<span class="s">  echo &quot;${TIME_STAMP}: Successful authentication: username=\&quot;${username}\&quot;.&quot; &gt;&gt; ${LOG_FILE}</span>
-<span class="s">  exit 0</span>
-<span class="s">fi</span>
-<span class="s">echo &quot;${TIME_STAMP}: Incorrect password: username=\&quot;${username}\&quot;, password=</span>
-<span class="s">\&quot;${password}\&quot;.&quot; &gt;&gt; ${LOG_FILE}</span>
-<span class="s">exit 1</span>
-<span class="s">EOF</span>
-</code></pre></div>
-<blockquote>
-<p>注意：需要给这个脚本一个执行权限</p>
-</blockquote>
-<h4 id="443iptables">4.4.3：部署iptables：<a class="headerlink" href="#443iptables" title="Permanent link">&para;</a></h4>
-<blockquote>
-<p>防火墙配置（firewalld配置或者iptables配置选一个）</p>
-</blockquote>
-<div class="highlight"><pre><span></span><code><span class="c1"># firewalld配置</span>
-firewall-cmd<span class="w"> </span>--permanent<span class="w"> </span>--add-masquerade
-firewall-cmd<span class="w"> </span>--permanent<span class="w"> </span>--add-service<span class="o">=</span>openvpn
-<span class="c1"># 或者添加自定义端口</span>
-<span class="c1"># firewall-cmd --permanent  --add-port=1194/tcp</span>
-firewall-cmd<span class="w"> </span>--permanent<span class="w"> </span>--direct<span class="w"> </span>--passthrough<span class="w"> </span>ipv4<span class="w"> </span>-t<span class="w"> </span>nat<span class="w"> </span>-A<span class="w"> </span>POSTROUTING<span class="w"> </span>-s<span class="w"> </span><span class="m">10</span>.8.0.0/24<span class="w"> </span>-o<span class="w"> </span>eth0<span class="w"> </span>-j<span class="w"> </span>MASQUERADE
-firewall-cmd<span class="w"> </span>--reload
-<span class="c1"># iptables （和上面的网段配置不同，修改下面的网段即可）</span>
-yum<span class="w"> </span>install<span class="w"> </span>iptables-services
-systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>iptables
-iptables<span class="w"> </span>-X
-iptables<span class="w"> </span>-F
-iptables<span class="w"> </span>-Z
-iptables<span class="w"> </span>-P<span class="w"> </span>INPUT<span class="w"> </span>ACCEPT
-iptables<span class="w"> </span>-P<span class="w"> </span>OUTPUT<span class="w"> </span>ACCEPT
-iptables<span class="w"> </span>-P<span class="w"> </span>FORWARD<span class="w"> </span>ACCEPT
-service<span class="w"> </span>iptables<span class="w"> </span>save
-iptables<span class="w"> </span>-t<span class="w"> </span>nat<span class="w"> </span>-A<span class="w"> </span>POSTROUTING<span class="w"> </span>-s<span class="w"> </span><span class="m">10</span>.10.0.0/255.255.255.0<span class="w"> </span>-o<span class="w"> </span>eth0<span class="w"> </span>-j<span class="w"> </span>MASQUERADE
-iptables<span class="w"> </span>-A<span class="w"> </span>FORWARD<span class="w"> </span>-s<span class="w"> </span><span class="m">10</span>.10.0.0/24<span class="w"> </span>-d<span class="w"> </span><span class="m">192</span>.168.0.0/24<span class="w"> </span>-i<span class="w"> </span>tun0<span class="w"> </span>-j<span class="w"> </span>ACCEPT
-iptables<span class="w"> </span>-A<span class="w"> </span>FORWARD<span class="w"> </span>-s<span class="w"> </span><span class="m">192</span>.168.0.0/24<span class="w"> </span>-d<span class="w"> </span><span class="m">10</span>.10.0.0/24<span class="w"> </span>-i<span class="w"> </span>eth0<span class="w"> </span>-j<span class="w"> </span>ACCEPT
-service<span class="w"> </span>iptables<span class="w"> </span>save
-</code></pre></div>
-<h4 id="444">4.4.4：准备客户端证书：<a class="headerlink" href="#444" title="Permanent link">&para;</a></h4>
-<p>备注：安装openvpn客户端软件：config配置文件中添加ca证书和.opvn
-<div class="highlight"><pre><span></span><code>client
-dev<span class="w"> </span>tun
-proto<span class="w"> </span>udp
-<span class="c1"># 公网ip需要修改</span>
-remote<span class="w">  </span>公网地址<span class="w">  </span><span class="m">41194</span><span class="w">       </span>
-resolv-retry<span class="w"> </span>infinite
-nobind
-persist-key
-persist-tun
-ca<span class="w"> </span>ca.crt
-
-comp-lzo
-verb<span class="w"> </span><span class="m">3</span>
-cipher<span class="w"> </span>AES-256-CBC
-auth-user-pass
-</code></pre></div></p>
-<h3 id="51">5.1：其他案例配置：<a class="headerlink" href="#51" title="Permanent link">&para;</a></h3>
-<h4 id="_1"><strong>附件：</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h4>
-<p>学习博客：<a href="https://www.jianshu.com/p/09603d9e0b6c">https://www.jianshu.com/p/09603d9e0b6c</a></p>
+<p><img alt="" src="https://pic1.imgdb.cn/item/63355da416f2c2beb14ba07e.jpg" />
+登陆自己的zerotier帐号，勾选允许对应机器就可以了，这里推荐使用github帐号。</p>
 
               
             </article>
@@ -3110,6 +2853,41 @@ auth-user-pass
       </main>
       
         <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="页脚">
+      
+        
+        <a href="../../1.os/asus/asus-docs/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 华硕服务器" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              华硕服务器
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../frp/" class="md-footer__link md-footer__link--next" aria-label="下一页: frp 内网穿透" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              frp 内网穿透
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

@@ -12,14 +12,14 @@
         <meta name="author" content="Li">
       
       
-        <link rel="canonical" href="https://barry-boy.github.io/0.Inernet/ZeroTier/">
+        <link rel="canonical" href="https://barry-boy.github.io/0.Internet/IB-ET-docs/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-8.0.0">
     
     
       
-        <title>ZeroTier 内网 - Kubernetes 进阶训练营</title>
+        <title>网络 网卡模式调整 - Kubernetes 进阶训练营</title>
       
     
     
@@ -71,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#zerotier" class="md-skip">
+        <a href="#ib-" class="md-skip">
           跳转至
         </a>
       
@@ -105,7 +105,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ZeroTier 内网
+              网络 网卡模式调整
             
           </span>
         </div>
@@ -207,13 +207,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../0.Internet/Tcp-ip-docs.md" class="md-tabs__link">
+      <a href="../Tcp-ip-docs/" class="md-tabs__link md-tabs__link--active">
         0、网络基础
       </a>
     </li>
@@ -468,12 +470,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
       
       
       
@@ -514,7 +518,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../0.Internet/Tcp-ip-docs.md" class="md-nav__link">
+      <a href="../Tcp-ip-docs/" class="md-nav__link">
         网络 Tcp/IP
       </a>
     </li>
@@ -528,7 +532,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../0.Internet/5g-docs.md" class="md-nav__link">
+      <a href="../5g-docs/" class="md-nav__link">
         网络 思科设备
       </a>
     </li>
@@ -540,11 +544,75 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../0.Internet/IB-ET-docs.md" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          网络 网卡模式调整
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         网络 网卡模式调整
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ib-" class="md-nav__link">
+    网络模式调整(IB-&gt;以太网)
+  </a>
+  
+    <nav class="md-nav" aria-label="网络模式调整(IB-&gt;以太网)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    下载驱动程序
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    安装:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#infinibandibethernet" class="md-nav__link">
+    Infiniband卡切换IB/Ethernet模式
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -570,7 +638,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../0.Internet/ZeroTier.md" class="md-nav__link">
+      <a href="../ZeroTier/" class="md-nav__link">
         ZeroTier组网
       </a>
     </li>
@@ -584,7 +652,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../0.Internet/frp.md" class="md-nav__link">
+      <a href="../frp/" class="md-nav__link">
         frp 内网穿透
       </a>
     </li>
@@ -598,7 +666,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../0.Internet/3-0.Internet-docs.md" class="md-nav__link">
+      <a href="../3-0.Internet-docs.md" class="md-nav__link">
         kubernetes 网络组件
       </a>
     </li>
@@ -612,7 +680,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../0.Internet/4-network-docs.md" class="md-nav__link">
+      <a href="../4-network-docs/" class="md-nav__link">
         科学上网
       </a>
     </li>
@@ -2714,58 +2782,68 @@
             <article class="md-content__inner md-typeset">
               
                 
-<a href="https://github.com/barry-boy/barry-boy.github.io/edit/master/docs/0.Inernet/ZeroTier.md" title="编辑此页" class="md-content__button md-icon">
+<a href="https://github.com/barry-boy/barry-boy.github.io/edit/master/docs/0.Internet/IB-ET-docs.md" title="编辑此页" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
 
-<h1 id="zerotier">ZeroTier 内网<a class="headerlink" href="#zerotier" title="Permanent link">&para;</a></h1>
-<h2 id="_1"><strong>背景</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>随着互联网的普及，可用的公网 IPv4 地址越来越少，现在的运营商基本不给家用宽带分配公网 IP 了。如果你想通过外网访问到内网的资源，目前只能采用内网穿透的软件来实现。常见的内网穿透如: frp 这样的工具，但是如果要使用这样的工具需要有一台具备公网地址的服务器才可以。</p>
-<p>做为一名优秀的技术人员，当然是能白嫖就白嫖，下面主要来介绍一款不需要公网的P2P工具ZeroTier
-<img alt="" src="https://pic1.imgdb.cn/item/63355b9316f2c2beb149496a.jpg" /></p>
-<h2 id="_2"><strong>原理</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>ZeroTier 这一类 P2P VPN 是在互联网的基础上将自己的所有设备组成一个私有的网络，可以理解为互联网连接的局域网。</p>
-<p>大白话就是一堆服务器安装上这个软件就组建了一个内网，大家通过这个特定网段内网可以互相访问。</p>
-<div class="admonition info">
-<p class="admonition-title">优点</p>
-<ul>
-<li>内网穿透工具（免费）</li>
-<li>ZeroTier 支持 Windows、macOS、Linux 三大主流平台，iOS、Android 两大移动平台</li>
-</ul>
-</div>
-<p>我们正在逐步用 Tailscale 替换掉 ZeroTier 网络，ZeroTier 将作为 Tailscale 不可用时的备选方案</p>
-<p>官网地址: https://www.zerotier.com/</p>
-<p>下载客户端: https://www.zerotier.com/download/</p>
-<h2 id="linux-debrpm"><strong>Linux (DEB/RPM)</strong><a class="headerlink" href="#linux-debrpm" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-s<span class="w"> </span>https://install.zerotier.com<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>bash
+  <h1>网络 网卡模式调整</h1>
+
+<h2 id="ib-"><strong>网络模式调整(IB-&gt;以太网)</strong><a class="headerlink" href="#ib-" title="Permanent link">&para;</a></h2>
+<h3 id="_1"><strong>下载驱动程序</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>官网地址: https://developer.nvidia.com/networking/infiniband-software</p>
+<p>根据自己系统的版本进行选择</p>
+<p>连接地址: https://network.nvidia.com/products/infiniband-drivers/linux/mlnx_ofed/</p>
+<p><img alt="" src="https://pic.imgdb.cn/item/63ed9eeaf144a010078b5a7f.jpg" /></p>
+<h3 id="_2"><strong>安装:</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>将我们下载好的驱动程序上传到服务器上，并解压。</p>
+<p>1.设置 MLNX_OFED apt-get 存储库</p>
+<p>使用以下内容创建名为“/etc/apt/sources.list.d/mlnx_ofed.list”的 apt-get 存储库配置文件</p>
+<div class="highlight"><pre><span></span><code>deb<span class="w"> </span>file:/home/openbayes/MLNX_OFED_LINUX-23.07-0.5.1.2-ubuntu22.04-x86_64/DEBS<span class="w"> </span>./
 </code></pre></div>
-<h2 id="macos"><strong>macOS</strong><a class="headerlink" href="#macos" title="Permanent link">&para;</a></h2>
-<p>可选择官方的 DMG 安装，或从 Homebrew 进行安装：</p>
-<div class="highlight"><pre><span></span><code>brew<span class="w"> </span>cask<span class="w"> </span>install<span class="w"> </span>zerotier-one
+<p>2.下载并安装 Mellanox Technologies GPG-KEY</p>
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>-qO<span class="w"> </span>-<span class="w"> </span>http://www.mellanox.com/downloads/ofed/RPM-GPG-KEY-Mellanox<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>apt-key<span class="w"> </span>add<span class="w"> </span>-
+</code></pre></div>
+<p>3.更新 apt-get 缓存</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+</code></pre></div>
+<p>4.使用 apt-get 工具安装 MLNX_OFED</p>
+<div class="highlight"><pre><span></span><code>apt-get<span class="w"> </span>install<span class="w"> </span>mlnx-ofed-all
+</code></pre></div>
+<p>5.更新到固件</p>
+<div class="highlight"><pre><span></span><code>apt-get<span class="w"> </span>install<span class="w"> </span>mlnx-fw-updater
+</code></pre></div>
+<p>5.使用 mlnxofedinstall 脚本安装</p>
+<div class="highlight"><pre><span></span><code>/opt/mlnxofedinstall
+</code></pre></div>
+<h3 id="infinibandibethernet"><strong>Infiniband卡切换IB/Ethernet模式</strong><a class="headerlink" href="#infinibandibethernet" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>root@bayes:/home/lixie#<span class="w"> </span>mst<span class="w"> </span>status
+MST<span class="w"> </span>modules:
+------------
+<span class="w">    </span>MST<span class="w"> </span>PCI<span class="w"> </span>module<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>loaded
+<span class="w">    </span>MST<span class="w"> </span>PCI<span class="w"> </span>configuration<span class="w"> </span>module<span class="w"> </span>loaded
+
+MST<span class="w"> </span>devices:
+------------
+/dev/mst/mt4119_pciconf0<span class="w">         </span>-<span class="w"> </span>PCI<span class="w"> </span>configuration<span class="w"> </span>cycles<span class="w"> </span>access.
+<span class="w">                                   </span>domain:bus:dev.fn<span class="o">=</span><span class="m">0000</span>:06:00.0<span class="w"> </span>addr.reg<span class="o">=</span><span class="m">88</span><span class="w"> </span>data.reg<span class="o">=</span><span class="m">92</span><span class="w"> </span>cr_bar.gw_offset<span class="o">=</span>-1
+<span class="w">                                   </span>Chip<span class="w"> </span>revision<span class="w"> </span>is:<span class="w"> </span><span class="m">00</span>
+</code></pre></div>
+<p>首先，启动mst 工具，通过 mst工具查看自己的MST devices：/dev/mst/mt4119_pciconf0  （没有mst工具，需要下载安装）</p>
+<div class="highlight"><pre><span></span><code>root@bayes:/home/lixie# mlxconfig -d /dev/mst/mt4119_pciconf0 query
+
+
+         LINK_TYPE_P1                                IB(1)
+         LINK_TYPE_P2                                IB(1)
+</code></pre></div>
+<p>工作模式修改:</p>
+<div class="highlight"><pre><span></span><code>Ethernet模式： mlxconfig -d /dev/mst/mt4119_pciconf0 set LINK_TYPE_P1=2
+IB模式： mlxconfig -d /dev/mst/mt4119_pciconf0 set LINK_TYPE_P1=1
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">温馨提示</p>
-<p>我这边主要是以使用linux和mac为主，其他平台请直接访问上方的 Zerotier 官网进行下载</p>
+<p>调整之后，需要重新启动服务器。</p>
 </div>
-<h2 id="_3"><strong>安装</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<div class="admonition info">
-<p class="admonition-title">操作步骤</p>
-<ul>
-<li>Linux或者Mac安装zerotier</li>
-<li>加入到zerotier网络</li>
-<li>zerotier的UI界面勾选刚刚添加的节点</li>
-</ul>
-</div>
-<p><strong>安装:</strong> <a href="https://www.zerotier.com/download/">参考官网</a></p>
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-s<span class="w"> </span>https://install.zerotier.com<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>bash
-</code></pre></div>
-<p>节点加入zerotier网络，加入网络之前需要提前创建这个网络</p>
-<div class="highlight"><pre><span></span><code>root@user:/home/user#<span class="w"> </span>zerotier-cli<span class="w"> </span>join<span class="w"> </span>b15644912ebd050d
-<span class="m">200</span><span class="w"> </span>join<span class="w"> </span>OK
-</code></pre></div>
-<p><img alt="" src="https://pic1.imgdb.cn/item/63355da416f2c2beb14ba07e.jpg" />
-登陆自己的zerotier帐号，勾选允许对应机器就可以了，这里推荐使用github帐号。</p>
 
               
             </article>
@@ -2780,6 +2858,41 @@
       </main>
       
         <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="页脚">
+      
+        
+        <a href="../5g-docs/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 网络 思科设备" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              网络 思科设备
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../1.os/asus/asus-docs/" class="md-footer__link md-footer__link--next" aria-label="下一页: 华硕服务器" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              华硕服务器
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
