@@ -6,21 +6,37 @@
 ![](https://pic.imgdb.cn/item/63a3d41fb1fccdcd36701698.jpg)
 WgetCloud （原GaCloud ）是一家精品机场，线路数量不算多，但都是十分优质的低延迟BGP中转线路。
 
-WgetCloud 同时有香港自建机房，线路独享，可以保证高峰期稳定翻墙，所有代理服务器都支持流畅解锁当地流媒体服务。
-
-如何在iPhone、安卓手机和电脑上使用 WgetCloud 全球加速？
-
-WgetCloud 也是目前个人使用后觉得最稳定的翻墙服务，但套餐流量不多，价格最低￥468一年，享受流量翻倍200G每月，由于稳定性出色，非常适合商务办公外贸群体。
-
 我个人使用测试过，还是很给力,给工作和生活带来了很大便利
 
-- WgetCloud推荐: https://invite.wgetcloud.ltd/auth/register?code=Apl0
+- WgetCloud推荐: https://invite.wgetcloud.ltd/auth/register?code=Apl0   (缺点就是很贵)
+- FLYINGBIRD: https://fbinv02.fbaff.cc/auth/register?code=Ov2hXwwW (便宜)
+
 
 ## 如何科学上网
-- 对于学习和找资料，我们很多的时候都要访问外国网站，但是由于防火墙限制，就需要通过科学上网来实现访问。
+- 对于学习和找资料，我们很多的时候都要访问外国网站，但是由于防火墙限制，就需要通过科学上网来实现访问。以上两种方式都可以，我现在目前使用的方式二。
 
-## 推荐一种方式：
-- 购买机场订阅+clash 科学上网（稳定性比较好）
-- 机场网站：https://barry-boy.github.io/site/network/4-network-docs/ 查看注册
-- 安装clash：https://install.appcenter.ms/users/clashx/apps/clashx-pro/distribution_groups/public
-- 配置clash，并测试访问外网。
+1. 下载翻墙工具（工具推荐clash）
+   - 工具安装: https://fbdoc.cloudnovaco.com/flyingbird-docs/macosclashx-pro-shi-yong-jiao-cheng
+
+![20240913145953](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20240913145953.png)
+
+2. 购买之后你就会获得订阅地址，可以复制，也可以直接倒入
+![20240913150206](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20240913150206.png)
+
+倒入之后就会有机场显示，一般选择Rule
+
+![20240913150429](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20240913150429.png)
+
+打开系统代理
+
+![20240913150654](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20240913150654.png)
+
+3. 验证翻墙（youtube可以正常访问就翻墙成功）
+![20240913150914](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20240913150914.png)（）
+
+
+## 文章参考
+
+- 教程安装: https://fbdoc.cloudnovaco.com/flyingbird-docs/macosclashx-pro-shi-yong-jiao-cheng
+- windows 软件安装：https://fbdoc.cloudnovaco.com/flyingbird-docs/windowsclash-shi-yong-jiao-cheng
+- Mac 软件安装： https://fbdoc.cloudnovaco.com/flyingbird-docs/macosclashx-pro-shi-yong-jiao-cheng
