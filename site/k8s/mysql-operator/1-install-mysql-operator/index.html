@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://barry-boy.github.io/k8s/mysql-operator/1-install-mysql-operator/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-8.0.0">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.0.0">
     
     
       
@@ -1647,10 +1647,10 @@
         
           <li class="md-nav__item">
   <a href="#operator" class="md-nav__link">
-    **安装operator **
+    安装operator
   </a>
   
-    <nav class="md-nav" aria-label="**安装operator **">
+    <nav class="md-nav" aria-label="安装operator">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1674,7 +1674,7 @@
         
           <li class="md-nav__item">
   <a href="#mysql" class="md-nav__link">
-    **安装mysql **
+    安装mysql
   </a>
   
 </li>
@@ -2816,7 +2816,7 @@
 </div>
 <h2 id="_1"><strong>安装</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>Helm和rook-ceph这里就不进行演示安装了，可以通过之前的文章来安装</p>
-<h3 id="operator">**安装operator **<a class="headerlink" href="#operator" title="Permanent link">&para;</a></h3>
+<h3 id="operator"><strong>安装operator </strong><a class="headerlink" href="#operator" title="Permanent link">&para;</a></h3>
 <p>github上有一个项目可以帮我们快速的来安装    <a href="https://github.com/bitpoke/mysql-operator">mysql</a></p>
 <p><strong>优势:</strong></p>
 <ul>
@@ -2877,7 +2877,7 @@ NAME<span class="w">                </span>READY<span class="w">   </span>STATUS
 mysql-operator-0<span class="w">    </span><span class="m">2</span>/2<span class="w">     </span>Running<span class="w">   </span><span class="m">2</span><span class="w"> </span><span class="o">(</span>6m46s<span class="w"> </span>ago<span class="o">)</span><span class="w">   </span>6m47s
 </code></pre></div>
 这时，mysql-operator就安装好了，第二步就安装Mysql</p>
-<h3 id="mysql">**安装mysql **<a class="headerlink" href="#mysql" title="Permanent link">&para;</a></h3>
+<h3 id="mysql"><strong>安装mysql </strong><a class="headerlink" href="#mysql" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>k<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span><span class="m">2</span>-openbayes-mysql.yaml
 secret/openbayes-db-secret<span class="w"> </span>created
 mysqlcluster.mysql.presslabs.org/openbayes<span class="w"> </span>created
