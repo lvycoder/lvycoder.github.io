@@ -119,36 +119,36 @@ nav:
         - docker 镜像构建: docker/docker-images-docs.md
         - docker proxy代理: docker/docker-proxy-docs.md
         - docker Clash代理: docker/docker-image-clash-docs.md
-        - kubernetes 简介: k8s/base/k8s-overview.md
-        - kubernetes 集群部署: k8s/3-k8s-systeminit-docs.md
+        - kubernetes 简介: 3.k8s/base/k8s-overview.md
+        - kubernetes 集群部署: 3.k8s/3-k8s-systeminit-docs.md
         - kubernetes 集群升级: basic/k8s-update.md
-        - kubernetes pod 基础原理: k8s/pod-base-docs.md
-        - kubernetes pod 生命周期: k8s/pod-hook-docs.md
+        - kubernetes pod 基础原理: 3.k8s/pod-base-docs.md
+        - kubernetes pod 生命周期: 3.k8s/pod-hook-docs.md
         - kubernetes etcd 简介与实践: basic/6-kubernetes-etcd-docs.md
         - kubernetes coredns 简介与实践: basic/7-kubernetes-coredns-docs.md
         - kubernetes calico 网络: k8s/k8s-calico-docs.md
        # - ETCD备份还原: basic/etcd.md
-        - kubernetes 资源清单: k8s/yaml/yaml.md
-        - kubernetes 资源限制: k8s/base/k8s-limit-docs.md
-        - kubernetes 配置管理: k8s/k8s-configmap-docs.md
+        - kubernetes 资源清单: 3.k8s/yaml/yaml.md
+        - kubernetes 资源限制: 3.k8s/base/k8s-limit-docs.md
+        - kubernetes 配置管理: 3.k8s/k8s-configmap-docs.md
         - Kubernetes UI: basic/5-kubernetes-UI-docs.md
-        - kubernetes 控制器: k8s/deploy-sts-ds-docs.md
+        - kubernetes 控制器: 3.k8s/deploy-sts-ds-docs.md
         - kubernetes pv/pvc简介: 5.Storage/pv-rep.md
-        - kubernetes 监控服务: k8s/k8s-mon-docs.md
-        - kubernetes 日志管理: k8s/k8s-logs-docs.md
-        - kubernetes 服务网格: k8s/k8s-istio-docs.md
+        - kubernetes 监控服务: 3.k8s/k8s-mon-docs.md
+        - kubernetes 日志管理: 3.k8s/k8s-logs-docs.md
+        - kubernetes 服务网格: 3.k8s/k8s-istio-docs.md
         - kubernetes CKA考题: cks/cka.md
         - kubernetes CKS考题: cks/cks.md
-        - kubernetes Rancher 升级: k8s/ui/rancher-update-docs.md
+        - kubernetes Rancher 升级: 3.k8s/ui/rancher-update-docs.md
         - kubernetes 节点维护: basic/7-kubernetes-update-docs.md
         - kubernetes Helm 实践: Helm/helm-install.md
         - kubernetes Helm chart包: Helm/helm-chart.md
         - kubernetes Helmfile 文件: Helm/helmfile-doc.md
         # - Helm 配置grafana: Helm/helm.md
         - kubernetes Cert-manager 安装: cert-manager/cert-manager-doc.md
-        - kubernetes 处理k8s证书过期: k8s/other/k8s-ca-docs.md
-        - kubernetes 自动化安装:  k8s/ansible-install-k8s-docs.md
-        - kubernetes 项目一: basic/4-ansible-install-k8s.md
+        - kubernetes 处理k8s证书过期: 3.k8s/other/k8s-ca-docs.md
+        - kubernetes 自动化安装:  3.k8s/ansible-install-k8s-docs.md
+        - kubernetes 项目一: 3.k8s/4-ansible-install-k8s.md
         - kubernetes 项目二: basic/9-install-keepalived-cluster.md
 
     - 3、运维开发:
