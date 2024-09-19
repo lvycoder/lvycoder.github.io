@@ -171,6 +171,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://barry-boy.github.io/3.k8s/k8s-update/</loc>
+         <lastmod>2024-09-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://barry-boy.github.io/3.k8s/pod-base-docs/</loc>
          <lastmod>2024-09-19</lastmod>
          <changefreq>daily</changefreq>
@@ -477,11 +482,6 @@
     </url>
     <url>
          <loc>https://barry-boy.github.io/basic/etcd/</loc>
-         <lastmod>2024-09-19</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://barry-boy.github.io/basic/k8s-update/</loc>
          <lastmod>2024-09-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
