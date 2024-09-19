@@ -33,7 +33,7 @@ pip3 install mkdocs-material==8.0.0
 启动测试
 
 ```
-git clone https://github.com/barry-boy/barry-boy.github.io.git
+git clone https://github.com/lvycoder/lvycoder.github.io.git
 cd barry-boy.github.io
 mkdocs serve
 ```
