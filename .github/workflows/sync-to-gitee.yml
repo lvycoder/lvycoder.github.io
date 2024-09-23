@@ -14,7 +14,7 @@ jobs:
 
       - name: Sync to Gitee
         run: |
-          git remote add gitee https://gitee.com/awxie/lvycoder.github.io.git
+          git remote add gitee https://oauth2:${{ secrets.GITEE_TOKEN }}@gitee.com/awxie/lvycoder.github.io.git
           git push gitee master --force
         env:
           GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
