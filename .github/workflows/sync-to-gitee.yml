@@ -1,8 +1,8 @@
 name: sync-gitee
-
 on:
-  - push
-  - delete
+  push:
+    branches:
+      - '**'
 
 jobs:
   sync:
