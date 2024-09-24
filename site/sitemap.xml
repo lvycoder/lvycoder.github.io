@@ -136,6 +136,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://barry-boy.github.io/3.k8s/2024-9-24-helmfile-docs/</loc>
+         <lastmod>2024-09-24</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://barry-boy.github.io/3.k8s/3-k8s-systeminit-docs/</loc>
          <lastmod>2024-09-24</lastmod>
          <changefreq>daily</changefreq>
@@ -402,11 +407,6 @@
     </url>
     <url>
          <loc>https://barry-boy.github.io/Helm/helm/</loc>
-         <lastmod>2024-09-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://barry-boy.github.io/Helm/helmfile-doc/</loc>
          <lastmod>2024-09-24</lastmod>
          <changefreq>daily</changefreq>
     </url>

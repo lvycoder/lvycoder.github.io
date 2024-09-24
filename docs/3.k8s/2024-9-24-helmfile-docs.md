@@ -21,15 +21,28 @@ Helmfile 的主要特点有：
 helmfile 提供了多种安装方式，我们可以直接在 release 页面 https://github.com/helmfile/helmfile/ 选择合适的包下载，比如我们这里是 Mac m1 环境就选择 darwin_arm64 的包：
 
 ```
-$ wget https://github.com/helmfile/helmfile/releases/download/v0.151.0/helmfile_0.151.0_darwin_arm64.tar.gz
-$ tar -xvf helmfile_0.151.0_darwin_arm64.tar.gz
-x LICENSE
-x README-zh_CN.md
-x README.md
-x helmfile
+$ wget https://github.com/helmfile/helmfile/releases/download/v0.168.0/helmfile_0.168.0_linux_arm64.tar.gz
+$ tar -xvf helmfile_0.168.0_linux_arm64.tar.gz
 $ chmod +x helmfile && sudo mv helmfile /usr/local/bin
-$ helmfile -v
-helmfile version 0.151.0
+$ helmfile version                                                                                                         (csg/infra)
+🌴 OPENBAYES_ENV: ()
+📫 KUBECONFIG: (), file ()
+
+>>> HELM_DIFF_USE_UPGRADE_DRY_RUN=true helmfile version
+
+
+▓▓▓ helmfile
+
+  Version            0.166.0
+  Git Commit         655e1f9
+  Build Date         26 Jun 24 21:33 CST (2 months ago)
+  Commit Date        26 Jun 24 15:40 CST (2 months ago)
+  Dirty Build        no
+  Go version         1.22.4
+  Compiler           gc
+  Platform           darwin/arm64
+
+  │ A new release is available: 0.166.0 → v0.168.0
 ```
 
 安装一些插件
@@ -92,3 +105,6 @@ releases:
       - name: rbac.create
         value: false
 ```
+
+## 文章参考
+- [Helmfile 官方文档](https://helmfile.readthedocs.io/en/latest/)

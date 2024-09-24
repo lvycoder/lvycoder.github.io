@@ -143,7 +143,7 @@ nav:
         - kubernetes 节点维护: basic/7-kubernetes-update-docs.md
         - kubernetes Helm 实践: Helm/helm-install.md
         - kubernetes Helm chart包: Helm/helm-chart.md
-        - kubernetes Helmfile 文件: Helm/helmfile-doc.md
+        - kubernetes Helmfile 文件: 3.k8s/2024-9-24-helmfile-docs.md
         # - Helm 配置grafana: Helm/helm.md
         - kubernetes Cert-manager 安装: cert-manager/cert-manager-doc.md
         - kubernetes 处理k8s证书过期: 3.k8s/other/k8s-ca-docs.md
