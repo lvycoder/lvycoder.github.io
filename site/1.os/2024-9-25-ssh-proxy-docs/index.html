@@ -884,6 +884,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#ansible" class="md-nav__link">
+    Ansible自动化配置
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2814,11 +2821,13 @@
 
   <h1>Linux SSH 转发代理实现</h1>
 
-<h2 id="ssh">SSH 转发代理<a class="headerlink" href="#ssh" title="Permanent link">&para;</a></h2>
-<p>在工作中，常常会遇见一些恶心的环境，例如可以通过VPN的方式连接到客户的机器上，但是却无法上网。导致安装难度较大。
-- 客户还会说：
-  - 人们就应该来我们这里干活和出差......
-  - 针对以上这种客户，只要我们可以连接上他们的linux机器，我们就可以同过ssh转发的代理的形式，让他们的机器上网。</p>
+<h2 id="ssh"><strong>SSH 转发代理</strong><a class="headerlink" href="#ssh" title="Permanent link">&para;</a></h2>
+<p>在工作中，常常会遇见一些恶心的环境，例如可以通过VPN的方式连接到客户的机器上，但是却无法上网。导致安装难度较大。</p>
+<ul>
+<li>客户还会说：</li>
+<li>人们就应该来我们这里干活和出差......</li>
+<li>针对以上这种客户，只要我们可以连接上他们的linux机器，我们就可以同过ssh转发的代理的形式，让他们的机器上网。</li>
+</ul>
 <h2 id="_1">实践操作<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>首先，我们需要指定一台ssh 转发的服务器。通过我们本地的Mac，来实现ssh的转发</p>
 <h4 id="mac">我的Mac电脑<a class="headerlink" href="#mac" title="Permanent link">&para;</a></h4>
@@ -2837,7 +2846,7 @@ curl<span class="w"> </span>https://openbayes.com/api/users/lixie/keys.txt
 </code></pre></div>
 把监听端口127.0.0.1:7890绑定到 0.0.0.0:7890 地址上,这样外部的所有机器都能访问到这个监听端口，然后保存退出。重启ssh服务</p>
 <p><img alt="20240925162718" src="https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20240925162718.png" /></p>
-<p>其他同网段的机器就可以通过这种方式来实现上网
+<p>主要的改动其实就是以下两个地方，其他同网段的机器就可以通过这种方式来实现上网
 <div class="highlight"><pre><span></span><code>[ningbo] root@gtx1070-1:/home/lixie# cat /etc/systemd/system/docker.service.d/http-proxy.conf
 [Service]
 Environment=&quot;HTTP_PROXY=http://master.nb:7890&quot;
@@ -2849,6 +2858,47 @@ Environment=&quot;NO_PROXY=localhost,10.2.4.52&quot;
 Acquire::http { Proxy &quot;http://master.ningbo:nb&quot; }
 Acquire::https { Proxy &quot;http://master.ningbo:nb&quot; }
 </code></pre></div></p>
+<h2 id="ansible">Ansible自动化配置<a class="headerlink" href="#ansible" title="Permanent link">&para;</a></h2>
+<p>以上的脚本可以通过ansible来自动化的，配置上，这样所有的节点就都可以上网了。(这个脚本可以帮组我们来配置apt，docker的proxy)</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gather facts about the system</span>
+<span class="w">  </span><span class="nt">ansible.builtin.setup</span><span class="p">:</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Check if Docker is installed</span>
+<span class="w">  </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker --version</span>
+<span class="w">  </span><span class="nt">register</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker_installed</span>
+<span class="w">  </span><span class="nt">ignore_errors</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ensure the Docker proxy directory exists (only if Docker is installed)</span>
+<span class="w">  </span><span class="nt">file</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">dest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/systemd/system/docker.service.d</span>
+<span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">directory</span>
+<span class="w">  </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker_installed.rc == 0</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Add Docker proxy settings (only if Docker is installed)</span>
+<span class="w">  </span><span class="nt">copy</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">directory_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yes</span>
+<span class="w">    </span><span class="nt">dest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/systemd/system/docker.service.d/http-proxy.conf</span>
+<span class="w">    </span><span class="nt">content</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no">[Service]</span>
+<span class="w">      </span><span class="no">Environment=&quot;HTTP_PROXY={{ http_proxy }}&quot;</span>
+<span class="w">      </span><span class="no">Environment=&quot;HTTPS_PROXY={{ https_proxy }}&quot;</span>
+<span class="w">      </span><span class="no">Environment=&quot;NO_PROXY={{ no_proxy }}&quot;</span>
+<span class="w">  </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker_installed.rc == 0</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Reload Docker (only if Docker is installed)</span>
+<span class="w">  </span><span class="nt">service</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker</span>
+<span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">restarted</span>
+<span class="w">    </span><span class="nt">daemon_reload</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yes</span>
+<span class="w">  </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker_installed.rc == 0</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Add proxy for apt</span>
+<span class="w">  </span><span class="nt">copy</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">dest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/apt/apt.conf.d/02proxy</span>
+<span class="w">    </span><span class="nt">content</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no">Acquire::http { Proxy &quot;{{ http_proxy }}&quot; }</span>
+<span class="w">      </span><span class="no">Acquire::https { Proxy &quot;{{ https_proxy }}&quot; }</span>
+</code></pre></div>
 
               
             </article>

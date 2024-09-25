@@ -1,7 +1,8 @@
 
-## SSH 转发代理
+## **SSH 转发代理**
 
 在工作中，常常会遇见一些恶心的环境，例如可以通过VPN的方式连接到客户的机器上，但是却无法上网。导致安装难度较大。
+
 - 客户还会说：
   - 人们就应该来我们这里干活和出差......
   - 针对以上这种客户，只要我们可以连接上他们的linux机器，我们就可以同过ssh转发的代理的形式，让他们的机器上网。
@@ -38,7 +39,7 @@ GatewayPorts yes
 ![20240925162718](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20240925162718.png)
 
 
-其他同网段的机器就可以通过这种方式来实现上网
+主要的改动其实就是以下两个地方，其他同网段的机器就可以通过这种方式来实现上网
 ```
 [ningbo] root@gtx1070-1:/home/lixie# cat /etc/systemd/system/docker.service.d/http-proxy.conf
 [Service]
@@ -50,4 +51,49 @@ Environment="NO_PROXY=localhost,10.2.4.52"
 [ningbo] root@gtx1070-1:/home/lixie# cat /etc/apt/apt.conf.d/02proxy
 Acquire::http { Proxy "http://master.ningbo:nb" }
 Acquire::https { Proxy "http://master.ningbo:nb" }
+```
+
+## Ansible自动化配置
+
+以上的脚本可以通过ansible来自动化的，配置上，这样所有的节点就都可以上网了。(这个脚本可以帮组我们来配置apt，docker的proxy)
+
+```yaml
+- name: Gather facts about the system
+  ansible.builtin.setup:
+
+- name: Check if Docker is installed
+  command: docker --version
+  register: docker_installed
+  ignore_errors: true
+
+- name: Ensure the Docker proxy directory exists (only if Docker is installed)
+  file:
+    dest: /etc/systemd/system/docker.service.d
+    state: directory
+  when: docker_installed.rc == 0
+
+- name: Add Docker proxy settings (only if Docker is installed)
+  copy:
+    directory_mode: yes
+    dest: /etc/systemd/system/docker.service.d/http-proxy.conf
+    content: |
+      [Service]
+      Environment="HTTP_PROXY={{ http_proxy }}"
+      Environment="HTTPS_PROXY={{ https_proxy }}"
+      Environment="NO_PROXY={{ no_proxy }}"
+  when: docker_installed.rc == 0
+
+- name: Reload Docker (only if Docker is installed)
+  service:
+    name: docker
+    state: restarted
+    daemon_reload: yes
+  when: docker_installed.rc == 0
+
+- name: Add proxy for apt
+  copy:
+    dest: /etc/apt/apt.conf.d/02proxy
+    content: |
+      Acquire::http { Proxy "{{ http_proxy }}" }
+      Acquire::https { Proxy "{{ https_proxy }}" }
 ```
