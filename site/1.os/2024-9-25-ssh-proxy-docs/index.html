@@ -12,14 +12,14 @@
         <meta name="author" content="Li">
       
       
-        <link rel="canonical" href="https://barry-boy.github.io/docker/docker-image-clash-docs/">
+        <link rel="canonical" href="https://barry-boy.github.io/1.os/2024-9-25-ssh-proxy-docs/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-8.0.0">
     
     
       
-        <title>docker Clash代理 - Kubernetes 进阶训练营</title>
+        <title>Linux SSH 转发代理实现 - Kubernetes 进阶训练营</title>
       
     
     
@@ -71,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#docker-clash" class="md-skip">
+        <a href="#ssh" class="md-skip">
           跳转至
         </a>
       
@@ -105,7 +105,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              docker Clash代理
+              Linux SSH 转发代理实现
             
           </span>
         </div>
@@ -223,13 +223,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../1.os/ubuntu/kjc-doc/" class="md-tabs__link">
+      <a href="../ubuntu/kjc-doc/" class="md-tabs__link md-tabs__link--active">
         1、Linux
       </a>
     </li>
@@ -239,15 +241,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../basic/cncf-docs/" class="md-tabs__link md-tabs__link--active">
+      <a href="../../basic/cncf-docs/" class="md-tabs__link">
         2、kubernetes
       </a>
     </li>
@@ -558,7 +558,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../1.os/asus/asus-docs/" class="md-nav__link">
+      <a href="../asus/asus-docs/" class="md-nav__link">
         华硕服务器
       </a>
     </li>
@@ -634,12 +634,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
       
       
       
@@ -686,7 +688,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../1.os/ubuntu/kjc-doc/" class="md-nav__link">
+      <a href="../ubuntu/kjc-doc/" class="md-nav__link">
         Linux 云计算手册大纲
       </a>
     </li>
@@ -700,7 +702,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../1.os/ubuntu/ubuntu-bmc-doc/" class="md-nav__link">
+      <a href="../ubuntu/ubuntu-bmc-doc/" class="md-nav__link">
         Linux 带外管理
       </a>
     </li>
@@ -714,7 +716,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../1.os/ubuntu/ubuntu-install-doc/" class="md-nav__link">
+      <a href="../ubuntu/ubuntu-install-doc/" class="md-nav__link">
         Linux 系统安装
       </a>
     </li>
@@ -728,7 +730,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../1.os/ubuntu/ubuntu-cli-doc/" class="md-nav__link">
+      <a href="../ubuntu/ubuntu-cli-doc/" class="md-nav__link">
         Linux 系统命令
       </a>
     </li>
@@ -742,7 +744,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../1.os/ubuntu/ubuntu-mirror-doc/" class="md-nav__link">
+      <a href="../ubuntu/ubuntu-mirror-doc/" class="md-nav__link">
         Linux 国内apt源
       </a>
     </li>
@@ -756,7 +758,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../1.os/ubuntu/ubuntu-nvme-doc/" class="md-nav__link">
+      <a href="../ubuntu/ubuntu-nvme-doc/" class="md-nav__link">
         Linux nvme磁盘管理
       </a>
     </li>
@@ -770,7 +772,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../1.os/ubuntu/ubuntu-parted-doc/" class="md-nav__link">
+      <a href="../ubuntu/ubuntu-parted-doc/" class="md-nav__link">
         Linux parted磁盘管理
       </a>
     </li>
@@ -784,7 +786,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../1.os/ubuntu/ubuntu-reboot-doc/" class="md-nav__link">
+      <a href="../ubuntu/ubuntu-reboot-doc/" class="md-nav__link">
         Linux 系统强制重启
       </a>
     </li>
@@ -798,7 +800,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../1.os/ubuntu/ubuntu-disk-doc/" class="md-nav__link">
+      <a href="../ubuntu/ubuntu-disk-doc/" class="md-nav__link">
         Linux 磁盘管理
       </a>
     </li>
@@ -812,7 +814,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../1.os/ubuntu/ubuntu-network-doc/" class="md-nav__link">
+      <a href="../ubuntu/ubuntu-network-doc/" class="md-nav__link">
         Linux 网络服务
       </a>
     </li>
@@ -824,11 +826,68 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../1.os/2024-9-25-ssh-proxy-docs/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Linux SSH 转发代理实现
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Linux SSH 转发代理实现
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ssh" class="md-nav__link">
+    SSH 转发代理
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    实践操作
+  </a>
+  
+    <nav class="md-nav" aria-label="实践操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mac" class="md-nav__link">
+    我的Mac电脑
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -846,14 +905,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
       
       
       
@@ -962,7 +1019,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docker-docs/" class="md-nav__link">
+      <a href="../../docker/docker-docs/" class="md-nav__link">
         Docker 基本管理
       </a>
     </li>
@@ -976,7 +1033,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../lxcfs.md" class="md-nav__link">
+      <a href="../../docker/lxcfs.md" class="md-nav__link">
         lxcfs 介绍
       </a>
     </li>
@@ -990,7 +1047,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docker-images-docs/" class="md-nav__link">
+      <a href="../../docker/docker-images-docs/" class="md-nav__link">
         docker 镜像构建
       </a>
     </li>
@@ -1004,7 +1061,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docker-proxy-docs/" class="md-nav__link">
+      <a href="../../docker/docker-proxy-docs/" class="md-nav__link">
         docker proxy代理
       </a>
     </li>
@@ -1016,62 +1073,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          docker Clash代理
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../docker/docker-image-clash-docs/" class="md-nav__link">
         docker Clash代理
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#docker-clash" class="md-nav__link">
-    Docker 部署clash 代理翻墙
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    测试
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    文献参考
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2801,137 +2807,48 @@
             <article class="md-content__inner md-typeset">
               
                 
-<a href="https://github.com/barry-boy/barry-boy.github.io/edit/master/docs/docker/docker-image-clash-docs.md" title="编辑此页" class="md-content__button md-icon">
+<a href="https://github.com/barry-boy/barry-boy.github.io/edit/master/docs/1.os/2024-9-25-ssh-proxy-docs.md" title="编辑此页" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
 
-  <h1>docker Clash代理</h1>
+  <h1>Linux SSH 转发代理实现</h1>
 
-<h2 id="docker-clash"><strong>Docker 部署clash 代理翻墙</strong><a class="headerlink" href="#docker-clash" title="Permanent link">&para;</a></h2>
-<ol>
-<li>准备一个<code>docker-compose</code>文件</li>
-</ol>
-<div class="highlight"><pre><span></span><code>$ cat docker-compose.yml
-version: &#39;3&#39;
-services:
-  clash:
-    container_name: clash_proxy
-    image: centralx/clash:1.18.0
-    restart: always
-    ports:
-      - &quot;7890:7890&quot;
-      - &quot;8090:80&quot;
-    volumes:
-      - ./config/clash/config.yaml:/home/runner/.config/clash/config.yaml
+<h2 id="ssh">SSH 转发代理<a class="headerlink" href="#ssh" title="Permanent link">&para;</a></h2>
+<p>在工作中，常常会遇见一些恶心的环境，例如可以通过VPN的方式连接到客户的机器上，但是却无法上网。导致安装难度较大。
+- 客户还会说：
+  - 人们就应该来我们这里干活和出差......
+  - 针对以上这种客户，只要我们可以连接上他们的linux机器，我们就可以同过ssh转发的代理的形式，让他们的机器上网。</p>
+<h2 id="_1">实践操作<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>首先，我们需要指定一台ssh 转发的服务器。通过我们本地的Mac，来实现ssh的转发</p>
+<h4 id="mac">我的Mac电脑<a class="headerlink" href="#mac" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># 这条命令主要的作用通过 SSH 隧道进行远程端口转发，并将本地的端口映射到远程服务器上（其中master.nb就是我们的远程服务器）</span>
+ssh<span class="w"> </span>-R<span class="w"> </span><span class="m">7890</span>:localhost:7890<span class="w"> </span>master.nb
 </code></pre></div>
-<ol>
-<li>
-<p>获取clash config文件</p>
-</li>
-<li>
-<p>Mac 和 Windows 获取方式是一致的</p>
-</li>
-</ol>
-<p>Clash -- 配置 -- 文件（每个人的配置文件都是不一样的。我的文件是以下截图所示）</p>
-<p><img alt="20240725151642" src="https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20240725151642.png" /></p>
-<p><img alt="20240725151810" src="https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20240725151810.png" /></p>
-<ul>
-<li>将配置文件中的内容拷贝到一个文件中，并命名为config.yaml</li>
-</ul>
-<div class="highlight"><pre><span></span><code>cat config.yaml
-port: 7890
-socks-port: 7891
-allow-lan: true
-mode: rule
-log-level: info
-ipv6: true
-external-controller: :9090
-secret: xxxxxxxxxxxxxxxxxx  //需要注意这一段的内容为密钥。容器起来需要输入
-profile:
-  store-selected: true
-.......
+<p>通过以上的方式，我们就可以让我们的master.nb上网了。接下来是测试步骤(这个需要声明一下环境变量)</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 这个时候我们其实就能访问外网了</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">http_proxy</span><span class="o">=</span>http://127.0.0.1:7890<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">https_proxy</span><span class="o">=</span>http://127.0.0.1:7890
+curl<span class="w"> </span>https://openbayes.com/api/users/lixie/keys.txt
 </code></pre></div>
-<ol>
-<li>
-<p>docker-compose 启动容器
-<div class="highlight"><pre><span></span><code>[cpu] root@node5:/home/lixie/Docker-proxy-clash# tree
-.
-├── config
-│   └── clash
-│       └── config.yaml
-├── docker-compose.yml
-└── run.sh
+<p>检查端口：（这个时候我们会显示7890端口只限制在了本地回环127.0.0.1上，也就是说和master.nb相同网段的机器无法通过master.nb代理出去）
+<img alt="20240925161648" src="https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20240925161648.png" /></p>
+<p>所以，很重要的两个参数配置 (修改master.nb /etc/ssh/sshd_config)
+<div class="highlight"><pre><span></span><code>GatewayPorts yes
+</code></pre></div>
+把监听端口127.0.0.1:7890绑定到 0.0.0.0:7890 地址上,这样外部的所有机器都能访问到这个监听端口，然后保存退出。重启ssh服务</p>
+<p><img alt="20240925162718" src="https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20240925162718.png" /></p>
+<p>其他同网段的机器就可以通过这种方式来实现上网
+<div class="highlight"><pre><span></span><code>[ningbo] root@gtx1070-1:/home/lixie# cat /etc/systemd/system/docker.service.d/http-proxy.conf
+[Service]
+Environment=&quot;HTTP_PROXY=http://master.nb:7890&quot;
+Environment=&quot;HTTPS_PROXY=http://master.nb:7890&quot;
+Environment=&quot;NO_PROXY=localhost,10.2.4.52&quot;
 
-2 directories, 3 files
 
-
-$ docker-compose up -d 
+[ningbo] root@gtx1070-1:/home/lixie# cat /etc/apt/apt.conf.d/02proxy
+Acquire::http { Proxy &quot;http://master.ningbo:nb&quot; }
+Acquire::https { Proxy &quot;http://master.ningbo:nb&quot; }
 </code></pre></div></p>
-</li>
-<li>
-<p>浏览器测试访问：{IP-address:8090},输入secret中密钥。</p>
-</li>
-</ol>
-<p><img alt="20240725152553" src="https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20240725152553.png" /></p>
-<p>看到以上的内容，我们的内容代理节点就搞定了。</p>
-<h2 id="_1"><strong>测试</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>5.1 docker 配置代理拉镜像测试。
-<div class="highlight"><pre><span></span><code>[cpu] root@node5:/home/lixie/Docker-proxy-clash# cat /etc/docker/daemon.json
-{
-    &quot;proxies&quot;: {
-        &quot;http-proxy&quot;: &quot;http://10.0.10.158:7890&quot;,
-        &quot;https-proxy&quot;: &quot;http://10.0.10.158:7890&quot;,
-        &quot;no-proxy&quot;: &quot;*.test.example.com,.example.org,127.0.0.0/8&quot;
-    },
-    &quot;default-ulimits&quot;: {
-        &quot;memlock&quot;: {
-            &quot;Hard&quot;: 4294967296,
-            &quot;Name&quot;: &quot;memlock&quot;,
-            &quot;Soft&quot;: 4294967296
-        },
-        &quot;nofile&quot;: {
-            &quot;Hard&quot;: 1048576,
-            &quot;Name&quot;: &quot;nofile&quot;,
-            &quot;Soft&quot;: 1048576
-        }
-    },
-    &quot;exec-opts&quot;: [
-        &quot;native.cgroupdriver=systemd&quot;
-    ],
-    &quot;insecure-registries&quot;: [],
-    &quot;log-driver&quot;: &quot;json-file&quot;,
-    &quot;log-opts&quot;: {
-        &quot;max-file&quot;: &quot;3&quot;,
-        &quot;max-size&quot;: &quot;50m&quot;
-    },
-    &quot;registry-mirrors&quot;: []
-}
-</code></pre></div></p>
-<p>5.2 linux 配置代理
-可以在 ~/.bash_profile 定义 proxy_on 和 proxy_off 函数，用于快速开启和关闭代理:
-<div class="highlight"><pre><span></span><code>function proxy_off() {
-unset no_proxy
-unset http_proxy
-unset https_proxy
-unset all_proxy
-echo -e &quot;Proxy Disabled&quot;
-}
-
-function proxy_on() {
-    # CIDR 网段表示法只在部份受支持的程序里起效
-    # 如果不起效，那么需要直接设置具体的 IP 地址
-    export no_proxy=localhost,127.0.0.1,127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
-    export http_proxy=http://&lt;host&gt;:7890
-    export https_proxy=http://&lt;host&gt;:7890
-    export all_proxy=socks://&lt;host&gt;:7890
-    echo -e &quot;Proxy Enabled&quot;
-}
-</code></pre></div></p>
-<h2 id="_2">文献参考<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<ul>
-<li>https://hub.docker.com/r/centralx/clash</li>
-</ul>
 
               
             </article>
@@ -2950,7 +2867,7 @@ function proxy_on() {
     <nav class="md-footer__inner md-grid" aria-label="页脚">
       
         
-        <a href="../docker-proxy-docs/" class="md-footer__link md-footer__link--prev" aria-label="上一页: docker proxy代理" rel="prev">
+        <a href="../ubuntu/ubuntu-network-doc/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Linux 网络服务" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -2959,20 +2876,20 @@ function proxy_on() {
               <span class="md-footer__direction">
                 上一页
               </span>
-              docker proxy代理
+              Linux 网络服务
             </div>
           </div>
         </a>
       
       
         
-        <a href="../../3.k8s/base/k8s-overview/" class="md-footer__link md-footer__link--next" aria-label="下一页: kubernetes 简介" rel="next">
+        <a href="../../basic/cncf-docs/" class="md-footer__link md-footer__link--next" aria-label="下一页: 云原生简介及CNCF" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 下一页
               </span>
-              kubernetes 简介
+              云原生简介及CNCF
             </div>
           </div>
           <div class="md-footer__button md-icon">

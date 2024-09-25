@@ -111,6 +111,7 @@ nav:
         - Linux 系统强制重启: 1.os/ubuntu/ubuntu-reboot-doc.md
         - Linux 磁盘管理: 1.os/ubuntu/ubuntu-disk-doc.md
         - Linux 网络服务: 1.os/ubuntu/ubuntu-network-doc.md
+        - Linux SSH 转发代理实现: 1.os/2024-9-25-ssh-proxy-docs.md
 
     - 2、kubernetes:
         - 云原生简介及CNCF: basic/cncf-docs.md
