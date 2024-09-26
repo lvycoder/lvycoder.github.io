@@ -188,9 +188,11 @@ nav:
         - Juicefs存储方案: 5.Storage/Juicefs.md
         - Juicefs版本升级: 5.Storage/juicefs-update.md
 
+    - 6、Gitops:
+        - Git Commit 问题: 6.Gitops/2024-9-26-Git-docs.md
 
-    - 6、虚拟化:
-        - Proxmox虚拟化: vm/promox.md
+    # - 6、虚拟化:
+    #     - Proxmox虚拟化: vm/promox.md
 
     - 7、Devops:
         - Git 报错指南: Devops/git-error-docs.md
