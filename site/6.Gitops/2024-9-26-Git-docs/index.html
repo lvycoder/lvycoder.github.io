@@ -2806,8 +2806,14 @@
 <h2 id="_1">问题处理<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>通过以下 git reflog 来找到自己本地所有的 commit 记录
 <div class="highlight"><pre><span></span><code>git reflog
-git reset --hard
+git reset --hard commit-id
+
+git reset --hard ac729e2a7
 </code></pre></div></p>
+<ul>
+<li>通过 git reflog 查看所有的 commit 提交,红色这是我要恢复的 commit id</li>
+</ul>
+<p><img alt="企业微信截图_13aa607a-66b4-4bc9-bf59-abaab7c143fc" src="https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/企业微信截图_13aa607a-66b4-4bc9-bf59-abaab7c143fc.png" /></p>
 
               
             </article>
