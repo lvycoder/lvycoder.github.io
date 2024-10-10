@@ -2779,7 +2779,8 @@
 <p>国内由于网络的原因需要科学上网才能访问 github 的仓库,但是我又想把我的仓库同步一份到我们国内的 gitee 上.(利用 github action 来实现)
 1. 实时备份(github 提交代码之后会直接同步 gitee),代码的安全性可以保证
 2. 在国内部署 gitops 服务可以通过拉取 gitee 的代码实现自动化的 gitops 流程,来自动部署或者发布.</p>
-<p>首先你需要注册一个 gitee 的账号.</p>
+<p>首先你需要注册一个 gitee 的账号.
+- 注册之后需要获取一个 token 来方便我们 github action 使用</p>
 <p>我的项目目录结构
 <div class="highlight"><pre><span></span><code>cd .github/workflows
 $ tree                                                                                                                                                                                                                                           (csg/infra)
@@ -2788,10 +2789,12 @@ $ tree                                                                          
 └── sync-to-gitee.yml
 </code></pre></div></p>
 <p>其中 sync-to-gitee 就是我们同步的配置文件</p>
-<p>需要添加:
-- target-url
-- target-username
-- target-token</p>
+<p>需要添加:</p>
+<ul>
+<li>target-url</li>
+<li>target-username</li>
+<li>target-token</li>
+</ul>
 <div class="highlight"><pre><span></span><code>$ cat sync-to-gitee.yml                                                                                                                                                                                                                          (csg/infra)
 name: sync-gitee
 on:

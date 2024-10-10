@@ -3,6 +3,7 @@
 2. 在国内部署 gitops 服务可以通过拉取 gitee 的代码实现自动化的 gitops 流程,来自动部署或者发布.
 
 首先你需要注册一个 gitee 的账号.
+- 注册之后需要获取一个 token 来方便我们 github action 使用
 
 我的项目目录结构
 ```
@@ -17,6 +18,7 @@ $ tree                                                                          
 其中 sync-to-gitee 就是我们同步的配置文件
 
 需要添加:
+
 - target-url
 - target-username
 - target-token
