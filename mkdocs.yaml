@@ -190,6 +190,7 @@ nav:
 
     - 6、Gitops:
         - Git Commit 问题: 6.Gitops/2024-9-26-Git-docs.md
+        - Github Rysnc 同步 Gitee: 6.Gitops/2024-10-10-Github-rsync-Gitee.md
 
     # - 6、虚拟化:
     #     - Proxmox虚拟化: vm/promox.md
