@@ -5,7 +5,8 @@
 
 - 客户还会说：
   - 人们就应该来我们这里干活和出差......
-  - 针对以上这种客户，只要我们可以连接上他们的linux机器，我们就可以同过ssh转发的代理的形式，让他们的机器上网。
+  - 针对以上这种客户，只要我们可以连接上他们的linux机器，我们就可以同过ssh转发的代理的形式，让他们的机器上网。(实现一些骚操作)
+
 
 ## 实践操作
 
@@ -38,6 +39,22 @@ GatewayPorts yes
 
 ![20240925162718](https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20240925162718.png)
 
+
+
+### 演示测试:
+
+```
+$ ip route del default via 10.0.10.1 dev ens33 proto static # 删除本地的默认路由,这样模拟无法上网的环境
+
+# 我们需要声明将代理指向代理服务器.我们就能实现上网,甚至是翻墙
+[cpu] root@nfs-server:~# export http_proxy=http://{proxy-ip-address}:7890
+[cpu] root@nfs-server:~# export https_proxy=http://{proxy-ip-address}:7890
+[cpu] root@nfs-server:~# curl https://openbayes.com/api/users/lixie/keys.txt
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDwWSc73tyq4TAkXxt3rWmGggbpgdm+egc8mOSDu0hauuvPdieIe1qUbKsIKC1O93KyDPlsfP5gcwqdEmf5Di0S6CCxRh6ENyZ9mtN+s1pCDeHiKbjhPyG4o71tafIDOjhcbpEtCwPA0YTrp5i1oO466qYHeFmTCmkcDFhuEKZx78EZdTwbFH0vhOGTymLFgUVauzmd45ZxpTzaZHrd093nFHWg6FeZWk2axkDiijLALNxiAAaECn2S69y5SxXgKSqpe4Z25b2cKKySlM1lBv1eI7CSxAUoxuXSpcgoRiVUx5VgJwkixKvq8NpihYEkV5pFRjB8W0ssu1YF6d+3MlzOkwa+kir9JJlLq+F/rrBTfF2mCLBgg0KE+voDd8vjEkqSmweNs2gEO7Gi/fUEfcabNAOuNNPL2dhdFl+BH2TCofDYvZcWd8Wrl/0qoW5nbUdCaC7aznb0lpVgseB/gj6ah3adCzfA/W8S+1znD9VMHDdMNy+AN8eeQQ6d2t05SOc=[cpu] root@nfs-server:~#
+```
+
+
+### 案例
 
 主要的改动其实就是以下两个地方，其他同网段的机器就可以通过这种方式来实现上网
 ```
