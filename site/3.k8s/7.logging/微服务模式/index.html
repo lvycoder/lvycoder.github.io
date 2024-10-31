@@ -1,0 +1,3909 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Project documentation with Markdown.">
+      
+      
+        <meta name="author" content="Li">
+      
+      
+        <link rel="canonical" href="https://barry-boy.github.io/3.k8s/7.logging/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%A8%A1%E5%BC%8F/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-8.0.0">
+    
+    
+      
+        <title>kubernetes 日志微服务模式 - Kubernetes 进阶训练营</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ad626c1e.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9204c3b2.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,400i,700%7CUbuntu+Mono&display=fallback">
+        <style>:root{--md-text-font:"Ubuntu";--md-code-font:"Ubuntu Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>function __md_scope(e,t,_){return new URL(_||(t===localStorage?"../../..":"../../.."),location).pathname+"."+e}function __md_get(e,t=localStorage,_){return JSON.parse(t.getItem(__md_scope(e,t,_)))}function __md_set(e,t,_=localStorage,o){try{_.setItem(__md_scope(e,_,o),JSON.stringify(t))}catch(e){}}</script>
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="Kubernetes 进阶训练营" class="md-header__button md-logo" aria-label="Kubernetes 进阶训练营" data-md-component="logo">
+      
+  <img src="../../../material/logo.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Kubernetes 进阶训练营
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              kubernetes 日志微服务模式
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换暗色主题"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="切换暗色主题" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="切换亮色主题"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="切换亮色主题" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/barry-boy/barry-boy.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      首页
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../0.Internet/Tcp-ip-docs/" class="md-tabs__link">
+        0、网络基础
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../1.os/ubuntu/kjc-doc/" class="md-tabs__link">
+        1、Linux
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../basic/cncf-docs/" class="md-tabs__link md-tabs__link--active">
+        2、kubernetes
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../python/1-python-docs/" class="md-tabs__link">
+        3、运维开发
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../k8s/mysql-operator/0-mysql-docs.md" class="md-tabs__link">
+        4、数据库
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../5.Storage/disk-ssd-docs/" class="md-tabs__link">
+        5、存储服务
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../6.Gitops/2024-9-26-Git-docs/" class="md-tabs__link">
+        6、Gitops
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../Devops/git-error-docs/" class="md-tabs__link">
+        7、Devops
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../ansible/ansible-case1/" class="md-tabs__link">
+        8、运维自动化
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../Macuse/mac-kubeconfig/" class="md-tabs__link">
+        9、其他
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../chatgpt/chatgpt-docs/" class="md-tabs__link">
+        10、Chatgpt
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../20.mylife/2024-9-24-myblog-life-docs/" class="md-tabs__link">
+        关于我
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Kubernetes 进阶训练营" class="md-nav__button md-logo" aria-label="Kubernetes 进阶训练营" data-md-component="logo">
+      
+  <img src="../../../material/logo.jpg" alt="logo">
+
+    </a>
+    Kubernetes 进阶训练营
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/barry-boy/barry-boy.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        首页
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          0、网络基础
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="0、网络基础" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          0、网络基础
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../0.Internet/Tcp-ip-docs/" class="md-nav__link">
+        网络 Tcp/IP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../0.Internet/5g-docs/" class="md-nav__link">
+        网络 思科设备
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../0.Internet/IB-ET-docs/" class="md-nav__link">
+        网络 网卡模式调整
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/asus/asus-docs/" class="md-nav__link">
+        华硕服务器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../0.Internet/ZeroTier/" class="md-nav__link">
+        ZeroTier组网
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../0.Internet/frp/" class="md-nav__link">
+        frp 内网穿透
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../0.Internet/3-0.Internet-docs.md" class="md-nav__link">
+        kubernetes 网络组件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../0.Internet/4-network-docs/" class="md-nav__link">
+        科学上网
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          1、Linux
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="1、Linux" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          1、Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/kjc-doc/" class="md-nav__link">
+        Linux 云计算手册大纲
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-bmc-doc/" class="md-nav__link">
+        Linux 带外管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-install-doc/" class="md-nav__link">
+        Linux 系统安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-cli-doc/" class="md-nav__link">
+        Linux 系统命令
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-mirror-doc/" class="md-nav__link">
+        Linux 国内apt源
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-nvme-doc/" class="md-nav__link">
+        Linux nvme磁盘管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-parted-doc/" class="md-nav__link">
+        Linux parted磁盘管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-reboot-doc/" class="md-nav__link">
+        Linux 系统强制重启
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-disk-doc/" class="md-nav__link">
+        Linux 磁盘管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-network-doc/" class="md-nav__link">
+        Linux 网络服务
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/2024-9-25-ssh-proxy-docs/" class="md-nav__link">
+        Linux SSH 转发代理实现
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          2、kubernetes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="2、kubernetes" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          2、kubernetes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic/cncf-docs/" class="md-nav__link">
+        云原生简介及CNCF
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/docker-docs/" class="md-nav__link">
+        Docker 基本管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/lxcfs.md" class="md-nav__link">
+        lxcfs 介绍
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/docker-images-docs/" class="md-nav__link">
+        docker 镜像构建
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/docker-proxy-docs/" class="md-nav__link">
+        docker proxy代理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/docker-image-clash-docs/" class="md-nav__link">
+        docker Clash代理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../base/k8s-overview/" class="md-nav__link">
+        kubernetes 简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-k8s-systeminit-docs/" class="md-nav__link">
+        kubernetes 集群部署
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2024-9-19-k8s-update/" class="md-nav__link">
+        kubernetes 集群升级
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pod-base-docs/" class="md-nav__link">
+        kubernetes pod 基础原理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pod-hook-docs/" class="md-nav__link">
+        kubernetes pod 生命周期
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic/6-kubernetes-etcd-docs/" class="md-nav__link">
+        kubernetes etcd 简介与实践
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic/7-kubernetes-coredns-docs/" class="md-nav__link">
+        kubernetes coredns 简介与实践
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../k8s/k8s-calico-docs.md" class="md-nav__link">
+        kubernetes calico 网络
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../yaml/yaml/" class="md-nav__link">
+        kubernetes 资源清单
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../base/k8s-limit-docs/" class="md-nav__link">
+        kubernetes 资源限制
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../k8s-configmap-docs/" class="md-nav__link">
+        kubernetes 配置管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic/5-kubernetes-UI-docs/" class="md-nav__link">
+        Kubernetes UI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy-sts-ds-docs/" class="md-nav__link">
+        kubernetes 控制器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/pv-rep/" class="md-nav__link">
+        kubernetes pv/pvc简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../k8s-mon-docs/" class="md-nav__link">
+        kubernetes 监控服务
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../k8s-logs-docs/" class="md-nav__link">
+        kubernetes 日志管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../k8s-istio-docs/" class="md-nav__link">
+        kubernetes 服务网格
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cks/cka/" class="md-nav__link">
+        kubernetes CKA考题
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cks/cks/" class="md-nav__link">
+        kubernetes CKS考题
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ui/rancher-update-docs/" class="md-nav__link">
+        kubernetes Rancher 升级
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic/7-kubernetes-update-docs/" class="md-nav__link">
+        kubernetes 节点维护
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Helm/helm-install/" class="md-nav__link">
+        kubernetes Helm 实践
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Helm/helm-chart/" class="md-nav__link">
+        kubernetes Helm chart包
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2024-9-24-helmfile-docs/" class="md-nav__link">
+        kubernetes Helmfile 文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cert-manager/cert-manager-doc/" class="md-nav__link">
+        kubernetes Cert-manager 安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/k8s-ca-docs/" class="md-nav__link">
+        kubernetes 处理k8s证书过期
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86%E6%9E%B6%E6%9E%84/" class="md-nav__link">
+        kubernete 日志架构
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%90%AD%E5%BB%BA-efk-%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        kubernetes EFK日志系统
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/3.k8s/7.logging/fluentd.md" class="md-nav__link">
+        kubernete 日志fluentd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../loki/" class="md-nav__link">
+        kubernete Loki
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB%E6%A8%A1%E5%BC%8F/" class="md-nav__link">
+        kubernetes 日志读写分离模式
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        kubernetes 日志微服务模式
+      </a>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        kubernetes 日志配置文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%97%A5%E5%BF%97%E6%8A%A5%E8%AD%A6/" class="md-nav__link">
+        kubernetes 日志报警
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logql/" class="md-nav__link">
+        kubernetes 日志 Logql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ansible-install-k8s-docs/" class="md-nav__link">
+        kubernetes 自动化安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-ansible-install-k8s/" class="md-nav__link">
+        kubernetes 项目一
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic/9-install-keepalived-cluster/" class="md-nav__link">
+        kubernetes 项目二
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          3、运维开发
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="3、运维开发" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          3、运维开发
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/1-python-docs/" class="md-nav__link">
+        Python 开发-基础语法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/2-python-docs/" class="md-nav__link">
+        Python 开发-用户交互
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../go/go-base-docs/" class="md-nav__link">
+        GO开发-环境安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../go/2-go-docs/" class="md-nav__link">
+        GO 开发-操作符和表达式
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/module-docs/" class="md-nav__link">
+        模块
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          4、数据库
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="4、数据库" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          4、数据库
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../k8s/mysql-operator/0-mysql-docs.md" class="md-nav__link">
+        Mysql 数据库
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../k8s/mysql-operator/1-install-mysql-operator.md" class="md-nav__link">
+        Mysql operator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../k8s/mysql-operator/2-mysql-backup-docs.md" class="md-nav__link">
+        Mysql 备份恢复
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../k8s/mysql-operator/3-mysql-backup-error-docs.md" class="md-nav__link">
+        数据库问题处理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../redis/redis-class-docs/" class="md-nav__link">
+        redis 大纲
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/redis-docs/" class="md-nav__link">
+        redis 缓存加速
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/redis-cluster-docs/" class="md-nav__link">
+        redis 集群篇
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../redis/redis-save-docs/" class="md-nav__link">
+        redis 持久化
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          5、存储服务
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="5、存储服务" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          5、存储服务
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/disk-ssd-docs/" class="md-nav__link">
+        存储分类
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/ceph-base/" class="md-nav__link">
+        ceph 基础
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/rook-ceph/" class="md-nav__link">
+        ceph 分布式存储
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/rbd-docs/" class="md-nav__link">
+        ceph RBD使用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/cephfs-docs/" class="md-nav__link">
+        ceph 文件系统使用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/ceph-cli-docs/" class="md-nav__link">
+        ceph 命令用法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/osd/" class="md-nav__link">
+        ceph 性能测试
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/ceph-bucket/" class="md-nav__link">
+        ceph 对象存储
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/s3-client-docs/" class="md-nav__link">
+        ceph s3cmd管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/5-dev-docs/" class="md-nav__link">
+        ceph 存储修复
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/expand-docs/" class="md-nav__link">
+        ceph 存储扩容
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/ceph-tools/" class="md-nav__link">
+        ceph 外部环境连接集群
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/clean-ceph-docs/" class="md-nav__link">
+        ceph 集群清理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/ceph-error/" class="md-nav__link">
+        ceph 错误指南
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/6-ceph-crush-docs/" class="md-nav__link">
+        ceph 高级参数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/Juicefs/" class="md-nav__link">
+        Juicefs存储方案
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/juicefs-update/" class="md-nav__link">
+        Juicefs版本升级
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          6、Gitops
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="6、Gitops" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          6、Gitops
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../6.Gitops/2024-9-26-Git-docs/" class="md-nav__link">
+        Git Commit 问题
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../6.Gitops/2024-10-10-Github-rsync-Gitee/" class="md-nav__link">
+        Github Rysnc 同步 Gitee
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          7、Devops
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="7、Devops" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          7、Devops
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Devops/git-error-docs/" class="md-nav__link">
+        Git 报错指南
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Devops/github/" class="md-nav__link">
+        Github
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Devops/4-github-gitee-doc/" class="md-nav__link">
+        Github仓库同步至Gitee
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Devops/3-github-docs/" class="md-nav__link">
+        Google 浏览器扩展
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_10">
+          8、运维自动化
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="8、运维自动化" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          8、运维自动化
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ansible/ansible-case1/" class="md-nav__link">
+        Ansible 应用基础
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ansible/ansible-docs2/" class="md-nav__link">
+        Ansible 高级用法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ansible/ansible-install-docs/" class="md-nav__link">
+        Ansible 安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ansible/ansible-playbook/" class="md-nav__link">
+        Ansible playbook
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_11">
+          9、其他
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="9、其他" data-md-level="1">
+        <label class="md-nav__title" for="__nav_11">
+          <span class="md-nav__icon md-icon"></span>
+          9、其他
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Macuse/mac-kubeconfig/" class="md-nav__link">
+        kubeconfig 实践应用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../k3s/k3s-docs/" class="md-nav__link">
+        k3s 大纲介绍
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../k3s/k3s-install/" class="md-nav__link">
+        k3s 边缘计算
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Macuse/mac-k9s-doc/" class="md-nav__link">
+        k9s 实践应用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Macuse/mac-usb-system/" class="md-nav__link">
+        Mac 制作ubuntu系统盘
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Macuse/mac-vscode/" class="md-nav__link">
+        Mac vscode使用技巧
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../error/tjtu/" class="md-nav__link">
+        天津集群
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../error/dev/" class="md-nav__link">
+        Dev环境集群
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../error/delete-prometheus-db/" class="md-nav__link">
+        误删除监控数据
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../error/kubernetes-pvc-ubound-doc/" class="md-nav__link">
+        Kubernetes pvc ubound
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../error/cent1.os-dns-error-docs.md" class="md-nav__link">
+        dns 文件权限调整
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/mac-docs/" class="md-nav__link">
+        如何利用Mac 写博客文章
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/google-docs/" class="md-nav__link">
+        高效利用谷歌来搜索
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/discord-docs/" class="md-nav__link">
+        Discord 新手教程
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_12">
+          10、Chatgpt
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="10、Chatgpt" data-md-level="1">
+        <label class="md-nav__title" for="__nav_12">
+          <span class="md-nav__icon md-icon"></span>
+          10、Chatgpt
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../chatgpt/chatgpt-docs/" class="md-nav__link">
+        注册chatgpt
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../chatgpt/google-ai-docs/" class="md-nav__link">
+        搜索技术记录
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../chatgpt/gpts-docs/" class="md-nav__link">
+        如何使用Chatgpt来制作专属gpt
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" type="checkbox" id="__nav_13" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_13">
+          关于我
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="关于我" data-md-level="1">
+        <label class="md-nav__title" for="__nav_13">
+          <span class="md-nav__icon md-icon"></span>
+          关于我
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../20.mylife/2024-9-24-myblog-life-docs/" class="md-nav__link">
+        我的博客
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../20.mylife/2021-life-docs/" class="md-nav__link">
+        我的2021
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../20.mylife/2022-life-docs/" class="md-nav__link">
+        我的2022
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../20.mylife/2023-life-docs/" class="md-nav__link">
+        我的2023
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../20.mylife/2024-life-docs/" class="md-nav__link">
+        我的2024
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/barry-boy/barry-boy.github.io/edit/master/docs/3.k8s/7.logging/微服务模式.md" title="编辑此页" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="_1">微服务模式<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p><a href="https://github.com/cnych/qikqiak.com/edit/master/docs/logging/loki/distributed.md" title="编辑此页"> </a></p>
+<h1 id="_2">微服务模式<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h1>
+<p>前面我们提到了 Loki 部署的单体模式和读写分离两种模式，当你的每天日志规模超过了 TB 的量级，那么可能我们就需要使用到微服务模式来部署 Loki 了。</p>
+<p>微服务部署模式将 Loki 的组件实例化为不同的进程，每个进程都被调用并指定其目标，每个组件都会产生一个用于内部请求的 gRPC 服务器和一个用于外部 API 请求的 HTTP 服务。</p>
+<ul>
+<li>ingester</li>
+<li>distributor</li>
+<li>query-frontend</li>
+<li>query-scheduler</li>
+<li>querier</li>
+<li>index-gateway</li>
+<li>ruler</li>
+<li>compactor</li>
+</ul>
+<p><img alt="微服务模式" src="https://picdn.youdianzhishi.com/images/1655438370835.jpg" /></p>
+<p>将组件作为单独的微服务运行允许通过增加微服务的数量来进行扩展，定制的集群对各个组件具有更好的可观察性。微服务模式部署是最高效的 Loki 安装，但是，它们的设置和维护也是最复杂的。</p>
+<blockquote>
+<p>对于超大的 Loki 集群或需要对扩展和集群操作进行更多控制的集群，建议使用微服务模式。</p>
+</blockquote>
+<p>微服务模式最适合在 Kubernetes 集群中部署，提供了 Jsonnet 和 Helm Chart 两种安装方式。</p>
+<h2 id="_3">安装<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>同样这里我们还是使用 Helm Chart 的方式来安装微服务模式的 Loki，在安装之前记得将前面章节安装的 Loki 相关服务删除。</p>
+<p>首先获取微服务模式的 Chart 包：</p>
+<div class="highlight"><pre><span></span><code>$ helm repo add grafana https://grafana.github.io/helm-charts
+$ helm pull grafana/loki-distributed --untar --version 0.48.4
+$ cd loki-simple-scalable
+</code></pre></div>
+<p>该 Chart 包支持下表中显示的组件，Ingester、distributor、querier 和 query-frontend 组件是始终安装的，其他组件是可选的。</p>
+<table>
+<thead>
+<tr>
+<th>组件</th>
+<th>可选</th>
+<th>默认开启？</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gateway</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>ingester</td>
+<td>❎</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>distributor</td>
+<td>❎</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>querier</td>
+<td>❎</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>query-frontend</td>
+<td>❎</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>table-manager</td>
+<td>✅</td>
+<td>❎</td>
+</tr>
+<tr>
+<td>compactor</td>
+<td>✅</td>
+<td>❎</td>
+</tr>
+<tr>
+<td>ruler</td>
+<td>✅</td>
+<td>❎</td>
+</tr>
+<tr>
+<td>index-gateway</td>
+<td>✅</td>
+<td>❎</td>
+</tr>
+<tr>
+<td>memcached-chunks</td>
+<td>✅</td>
+<td>❎</td>
+</tr>
+<tr>
+<td>memcached-frontend</td>
+<td>✅</td>
+<td>❎</td>
+</tr>
+<tr>
+<td>memcached-index-queries</td>
+<td>✅</td>
+<td>❎</td>
+</tr>
+<tr>
+<td>memcached-index-writes</td>
+<td>✅</td>
+<td>❎</td>
+</tr>
+</tbody>
+</table>
+<p>该 Chart 包在微服务模式下配置 Loki，已经过测试，可以与 <code>boltdb-shipper</code> 和 <code>memberlist</code> 一起使用，而其他存储和发现选项也可以使用，但是，该图表不支持设置 Consul 或 Etcd 以进行发现，它们需要进行单独配置，相反，可以使用不需要单独的键/值存储的 <code>memberlist</code>。默认情况下该 Chart 包会为成员列表创建了一个 Headless Service，ingester、distributor、querier 和 ruler 是其中的一部分。</p>
+<h3 id="minio">安装 minio<a class="headerlink" href="#minio" title="Permanent link">&para;</a></h3>
+<p>比如我们这里使用 memberlist、boltdb-shipper 和 minio 来作存储，由于这个 Chart 包没有包含 minio，所以需要我们先单独安装 minio：</p>
+<div class="highlight"><pre><span></span><code>$ helm repo add minio https://helm.min.io/
+$ helm pull minio/minio --untar --version 8.0.10
+$ cd minio
+</code></pre></div>
+<p>创建一个如下所示的 values 文件：</p>
+<div class="highlight"><pre><span></span><code># ci/loki-values.yaml
+accessKey: &quot;myaccessKey&quot;
+secretKey: &quot;mysecretKey&quot;
+
+persistence:
+  enabled: true
+  storageClass: &quot;local-path&quot;
+  accessMode: ReadWriteOnce
+  size: 5Gi
+
+service:
+  type: NodePort
+  port: 9000
+  nodePort: 32000
+
+resources:
+  requests:
+    memory: 1Gi
+</code></pre></div>
+<p>直接使用上面配置的 values 文件安装 minio：</p>
+<div class="highlight"><pre><span></span><code>$ helm upgrade --install minio -n logging -f ci/loki-values.yaml .
+Release &quot;minio&quot; does not exist. Installing it now.
+NAME: minio
+LAST DEPLOYED: Sun Jun 19 16:56:28 2022
+NAMESPACE: logging
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+Minio can be accessed via port 9000 on the following DNS name from within your cluster:
+minio.logging.svc.cluster.local
+
+To access Minio from localhost, run the below commands:
+
+  1. export POD_NAME=$(kubectl get pods --namespace logging -l &quot;release=minio&quot; -o jsonpath=&quot;{.items[0].metadata.name}&quot;)
+
+  2. kubectl port-forward $POD_NAME 9000 --namespace logging
+
+Read more about port forwarding here: http://kubernetes.io/docs/user-guide/kubectl/kubectl_port-forward/
+
+You can now access Minio server on http://localhost:9000. Follow the below steps to connect to Minio server with mc client:
+
+  1. Download the Minio mc client - https://docs.minio.io/docs/minio-client-quickstart-guide
+
+  2. Get the ACCESS_KEY=$(kubectl get secret minio -o jsonpath=&quot;{.data.accesskey}&quot; | base64 --decode) and the SECRET_KEY=$(kubectl get secret minio -o jsonpath=&quot;{.data.secretkey}&quot; | base64 --decode)
+
+  3. mc alias set minio-local http://localhost:9000 &quot;$ACCESS_KEY&quot; &quot;$SECRET_KEY&quot; --api s3v4
+
+  4. mc ls minio-local
+
+Alternately, you can use your browser or the Minio SDK to access the server - https://docs.minio.io/categories/17
+</code></pre></div>
+<p>安装完成后查看对应的 Pod 状态：</p>
+<div class="highlight"><pre><span></span><code>$ kubectl get pods -n logging
+NAME                     READY   STATUS    RESTARTS   AGE
+minio-548656f786-gctk9   1/1     Running   0          2m45s
+$ kubectl get svc -n logging
+NAME    TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+minio   NodePort   10.111.58.196   &lt;none&gt;        9000:32000/TCP   3h16m
+</code></pre></div>
+<p>可以通过指定的 <code>32000</code> 端口来访问 minio：</p>
+<p><img alt="minio" src="https://picdn.youdianzhishi.com/images/1655640859264.png" /></p>
+<p>然后记得创建一个名为 <code>loki-data</code> 的 bucket。</p>
+<h3 id="loki">安装 Loki<a class="headerlink" href="#loki" title="Permanent link">&para;</a></h3>
+<p>现在将我们的对象存储准备好后，接下来我们来安装微服务模式的 Loki，首先创建一个如下所示的 values 文件：</p>
+<div class="highlight"><pre><span></span><code># ci/minio-values.yaml
+loki:
+  structuredConfig:
+    ingester:
+      max_transfer_retries: 0
+      chunk_idle_period: 1h
+      chunk_target_size: 1536000
+      max_chunk_age: 1h
+    storage_config:
+      aws:
+        endpoint: minio.logging.svc.cluster.local:9000
+        insecure: true
+        bucketnames: loki-data
+        access_key_id: myaccessKey
+        secret_access_key: mysecretKey
+        s3forcepathstyle: true
+      boltdb_shipper:
+        shared_store: s3
+    schema_config:
+      configs:
+        - from: 2022-06-21
+          store: boltdb-shipper
+          object_store: s3
+          schema: v12
+          index:
+            prefix: loki_index_
+            period: 24h
+
+distributor:
+  replicas: 2
+
+ingester:
+  replicas: 2
+  persistence:
+    enabled: true
+    size: 1Gi
+    storageClass: local-path
+
+querier:
+  replicas: 2
+  persistence:
+    enabled: true
+    size: 1Gi
+    storageClass: local-path
+
+queryFrontend:
+  replicas: 2
+
+gateway:
+  nginxConfig:
+    httpSnippet: |-
+      client_max_body_size 100M;
+    serverSnippet: |-
+      client_max_body_size 100M;
+</code></pre></div>
+<p>上述配置会选择性地覆盖 <code>loki.config</code> 模板文件中的默认值，使用 <code>loki.structuredConfig</code> 可以在外部设置大多数配置参数。<code>loki.config</code>、<code>loki.schemaConfig</code> 和 <code>loki.storageConfig</code> 也可以与 <code>loki.structuredConfig</code> 结合使用。 <code>loki.structuredConfig</code> 中的值优先级更高。</p>
+<p>这里我们通过 <code>loki.structuredConfig.storage_config.aws</code> 指定了用于保存数据的 minio 配置，为了高可用，核心的几个组件我们配置了 2 个副本，<code>ingester</code> 和 <code>querier</code> 配置了持久化存储。</p>
+<p>现在使用上面的 values 文件进行一键安装：</p>
+<div class="highlight"><pre><span></span><code>$ helm upgrade --install loki -n logging -f ci/minio-values.yaml .
+Release &quot;loki&quot; does not exist. Installing it now.
+NAME: loki
+LAST DEPLOYED: Tue Jun 21 16:20:10 2022
+NAMESPACE: logging
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+***********************************************************************
+ Welcome to Grafana Loki
+ Chart version: 0.48.4
+ Loki version: 2.5.0
+***********************************************************************
+
+Installed components:
+* gateway
+* ingester
+* distributor
+* querier
+* query-frontend
+</code></pre></div>
+<p>上面会分别安装几个组件：gateway、ingester、distributor、querier、query-frontend，对应的 Pod 状态如下所示：</p>
+<div class="highlight"><pre><span></span><code>$ kubectl get pods -n logging
+NAME                                                    READY   STATUS    RESTARTS       AGE
+loki-loki-distributed-distributor-5dfdd5bd78-nxdq8      1/1     Running   0              2m40s
+loki-loki-distributed-distributor-5dfdd5bd78-rh4gz      1/1     Running   0              116s
+loki-loki-distributed-gateway-6f4cfd898c-hpszv          1/1     Running   0              21m
+loki-loki-distributed-ingester-0                        1/1     Running   0              96s
+loki-loki-distributed-ingester-1                        1/1     Running   0              2m38s
+loki-loki-distributed-querier-0                         1/1     Running   0              2m2s
+loki-loki-distributed-querier-1                         1/1     Running   0              2m33s
+loki-loki-distributed-query-frontend-6d9845cb5b-p4vns   1/1     Running   0              4s
+loki-loki-distributed-query-frontend-6d9845cb5b-sq5hr   1/1     Running   0              2m40s
+minio-548656f786-gctk9                                  1/1     Running   1 (123m ago)   47h
+$ kubectl get svc -n logging
+NAME                                      TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)                      AGE
+loki-loki-distributed-distributor         ClusterIP   10.102.156.127   &lt;none&gt;        3100/TCP,9095/TCP            22m
+loki-loki-distributed-gateway             ClusterIP   10.111.73.138    &lt;none&gt;        80/TCP                       22m
+loki-loki-distributed-ingester            ClusterIP   10.98.238.236    &lt;none&gt;        3100/TCP,9095/TCP            22m
+loki-loki-distributed-ingester-headless   ClusterIP   None             &lt;none&gt;        3100/TCP,9095/TCP            22m
+loki-loki-distributed-memberlist          ClusterIP   None             &lt;none&gt;        7946/TCP                     22m
+loki-loki-distributed-querier             ClusterIP   10.101.117.137   &lt;none&gt;        3100/TCP,9095/TCP            22m
+loki-loki-distributed-querier-headless    ClusterIP   None             &lt;none&gt;        3100/TCP,9095/TCP            22m
+loki-loki-distributed-query-frontend      ClusterIP   None             &lt;none&gt;        3100/TCP,9095/TCP,9096/TCP   22m
+minio                                     NodePort    10.111.58.196    &lt;none&gt;        9000:32000/TCP               47h
+</code></pre></div>
+<p>Loki 对应的配置文件如下所示：</p>
+<div class="highlight"><pre><span></span><code>$ kubectl get cm -n logging loki-loki-distributed -o yaml
+apiVersion: v1
+data:
+  config.yaml: |
+    auth_enabled: false
+    chunk_store_config:
+      max_look_back_period: 0s
+    compactor:
+      shared_store: filesystem
+    distributor:
+      ring:
+        kvstore:
+          store: memberlist
+    frontend:
+      compress_responses: true
+      log_queries_longer_than: 5s
+      tail_proxy_url: http://loki-loki-distributed-querier:3100
+    frontend_worker:
+      frontend_address: loki-loki-distributed-query-frontend:9095
+    ingester:
+      chunk_block_size: 262144
+      chunk_encoding: snappy
+      chunk_idle_period: 1h
+      chunk_retain_period: 1m
+      chunk_target_size: 1536000
+      lifecycler:
+        ring:
+          kvstore:
+            store: memberlist
+          replication_factor: 1
+      max_chunk_age: 1h
+      max_transfer_retries: 0
+      wal:
+        dir: /var/loki/wal
+    limits_config:
+      enforce_metric_name: false
+      max_cache_freshness_per_query: 10m
+      reject_old_samples: true
+      reject_old_samples_max_age: 168h
+      split_queries_by_interval: 15m
+    memberlist:
+      join_members:
+      - loki-loki-distributed-memberlist
+    query_range:
+      align_queries_with_step: true
+      cache_results: true
+      max_retries: 5
+      results_cache:
+        cache:
+          enable_fifocache: true
+          fifocache:
+            max_size_items: 1024
+            validity: 24h
+    ruler:
+      alertmanager_url: https://alertmanager.xx
+      external_url: https://alertmanager.xx
+      ring:
+        kvstore:
+          store: memberlist
+      rule_path: /tmp/loki/scratch
+      storage:
+        local:
+          directory: /etc/loki/rules
+        type: local
+    schema_config:
+      configs:
+      - from: &quot;2022-06-21&quot;
+        index:
+          period: 24h
+          prefix: loki_index_
+        object_store: s3
+        schema: v12
+        store: boltdb-shipper
+    server:
+      http_listen_port: 3100
+    storage_config:
+      aws:
+        access_key_id: myaccessKey
+        bucketnames: loki-data
+        endpoint: minio.logging.svc.cluster.local:9000
+        insecure: true
+        s3forcepathstyle: true
+        secret_access_key: mysecretKey
+      boltdb_shipper:
+        active_index_directory: /var/loki/index
+        cache_location: /var/loki/cache
+        cache_ttl: 168h
+        shared_store: s3
+      filesystem:
+        directory: /var/loki/chunks
+    table_manager:
+      retention_deletes_enabled: false
+      retention_period: 0s
+kind: ConfigMap
+# ......
+</code></pre></div>
+<p>同样其中有一个 gateway 组件会来帮助我们将请求路由到正确的组件中去，该组件同样就是一个 nginx 服务，对应的配置如下所示：</p>
+<div class="highlight"><pre><span></span><code>$ kubectl -n logging exec -it loki-loki-distributed-gateway-6f4cfd898c-hpszv -- cat /etc/nginx/nginx.conf
+worker_processes  5;  ## Default: 1
+error_log  /dev/stderr;
+pid        /tmp/nginx.pid;
+worker_rlimit_nofile 8192;
+
+events {
+  worker_connections  4096;  ## Default: 1024
+}
+
+http {
+  client_body_temp_path /tmp/client_temp;
+  proxy_temp_path       /tmp/proxy_temp_path;
+  fastcgi_temp_path     /tmp/fastcgi_temp;
+  uwsgi_temp_path       /tmp/uwsgi_temp;
+  scgi_temp_path        /tmp/scgi_temp;
+
+  default_type application/octet-stream;
+  log_format   main &#39;$remote_addr - $remote_user [$time_local]  $status &#39;
+        &#39;&quot;$request&quot; $body_bytes_sent &quot;$http_referer&quot; &#39;
+        &#39;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#39;;
+  access_log   /dev/stderr  main;
+
+  sendfile     on;
+  tcp_nopush   on;
+  resolver kube-dns.kube-system.svc.cluster.local;
+
+  client_max_body_size 100M;
+
+  server {
+    listen             8080;
+
+    location = / {
+      return 200 &#39;OK&#39;;
+      auth_basic off;
+    }
+
+    location = /api/prom/push {
+      proxy_pass       http://loki-loki-distributed-distributor.logging.svc.cluster.local:3100$request_uri;
+    }
+
+    location = /api/prom/tail {
+      proxy_pass       http://loki-loki-distributed-querier.logging.svc.cluster.local:3100$request_uri;
+      proxy_set_header Upgrade $http_upgrade;
+      proxy_set_header Connection &quot;upgrade&quot;;
+    }
+
+    # Ruler
+    location ~ /prometheus/api/v1/alerts.* {
+      proxy_pass       http://loki-loki-distributed-ruler.logging.svc.cluster.local:3100$request_uri;
+    }
+    location ~ /prometheus/api/v1/rules.* {
+      proxy_pass       http://loki-loki-distributed-ruler.logging.svc.cluster.local:3100$request_uri;
+    }
+    location ~ /api/prom/rules.* {
+      proxy_pass       http://loki-loki-distributed-ruler.logging.svc.cluster.local:3100$request_uri;
+    }
+    location ~ /api/prom/alerts.* {
+      proxy_pass       http://loki-loki-distributed-ruler.logging.svc.cluster.local:3100$request_uri;
+    }
+
+    location ~ /api/prom/.* {
+      proxy_pass       http://loki-loki-distributed-query-frontend.logging.svc.cluster.local:3100$request_uri;
+    }
+
+    location = /loki/api/v1/push {
+      proxy_pass       http://loki-loki-distributed-distributor.logging.svc.cluster.local:3100$request_uri;
+    }
+
+    location = /loki/api/v1/tail {
+      proxy_pass       http://loki-loki-distributed-querier.logging.svc.cluster.local:3100$request_uri;
+      proxy_set_header Upgrade $http_upgrade;
+      proxy_set_header Connection &quot;upgrade&quot;;
+    }
+
+    location ~ /loki/api/.* {
+      proxy_pass       http://loki-loki-distributed-query-frontend.logging.svc.cluster.local:3100$request_uri;
+    }
+
+    client_max_body_size 100M;
+  }
+}
+</code></pre></div>
+<p>从上面配置可以看出对应的 Push 端点 <code>/api/prom/push</code> 与 <code>/loki/api/v1/push</code> 会转发给 <code>http://loki-loki-distributed-distributor.logging.svc.cluster.local:3100$request_uri;</code>，也就是对应的 <code>distributor</code> 服务：</p>
+<div class="highlight"><pre><span></span><code>$ kubectl get pods -n logging -l app.kubernetes.io/component=distributor,app.kubernetes.io/instance=loki,app.kubernetes.io/name=loki-distributed
+NAME                                                 READY   STATUS    RESTARTS   AGE
+loki-loki-distributed-distributor-5dfdd5bd78-nxdq8   1/1     Running   0          8m20s
+loki-loki-distributed-distributor-5dfdd5bd78-rh4gz   1/1     Running   0          7m36s
+</code></pre></div>
+<p>所以如果我们要写入日志数据，自然现在是写入到 gateway 的 Push 端点上去。为了验证应用是否正常，接下来我们再安装 Promtail 和 Grafana 来进行数据的读写。</p>
+<h3 id="promtail">安装 Promtail<a class="headerlink" href="#promtail" title="Permanent link">&para;</a></h3>
+<p>获取 <code>promtail</code> 的 Chart 包并解压：</p>
+<div class="highlight"><pre><span></span><code>$ helm pull grafana/promtail --untar
+$ cd promtail
+</code></pre></div>
+<p>创建一个如下所示的 values 文件：</p>
+<div class="highlight"><pre><span></span><code># ci/minio-values.yaml
+rbac:
+  pspEnabled: false
+config:
+  clients:
+    - url: http://loki-loki-distributed-gateway/loki/api/v1/push
+</code></pre></div>
+<p>注意我们需要将 Promtail 中配置的 Loki 地址为 <code>http://loki-loki-distributed-gateway/loki/api/v1/push</code>，这样就是 Promtail 将日志数据首先发送到 gateway 上面去，然后 gateway 根据我们的 Endpoints 去转发给 write 节点，使用上面的 values 文件来安装 Promtail：</p>
+<div class="highlight"><pre><span></span><code>$ helm upgrade --install promtail -n logging -f ci/minio-values.yaml .
+Release &quot;promtail&quot; does not exist. Installing it now.
+NAME: promtail
+LAST DEPLOYED: Tue Jun 21 16:31:34 2022
+NAMESPACE: logging
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+***********************************************************************
+ Welcome to Grafana Promtail
+ Chart version: 5.1.0
+ Promtail version: 2.5.0
+***********************************************************************
+
+Verify the application is working by running these commands:
+
+* kubectl --namespace logging port-forward daemonset/promtail 3101
+* curl http://127.0.0.1:3101/metrics
+</code></pre></div>
+<p>正常安装完成后会在每个节点上运行一个 promtail：</p>
+<div class="highlight"><pre><span></span><code>$ kubectl get pods -n logging -l app.kubernetes.io/name=promtail
+NAME             READY   STATUS    RESTARTS   AGE
+promtail-gbjzs   1/1     Running   0          38s
+promtail-gjn5p   1/1     Running   0          38s
+promtail-z6vhd   1/1     Running   0          38s
+</code></pre></div>
+<p>正常 promtail 就已经在开始采集所在节点上的所有容器日志了，然后将日志数据 Push 给 gateway，gateway 转发给 write 节点，我们可以查看 gateway 的日志：</p>
+<div class="highlight"><pre><span></span><code>$ kubectl logs -f loki-loki-distributed-gateway-6f4cfd898c-hpszv -n logging
+10.244.2.26 - - [21/Jun/2022:08:41:24 +0000]  204 &quot;POST /loki/api/v1/push HTTP/1.1&quot; 0 &quot;-&quot; &quot;promtail/2.5.0&quot; &quot;-&quot;
+10.244.2.1 - - [21/Jun/2022:08:41:24 +0000]  200 &quot;GET / HTTP/1.1&quot; 2 &quot;-&quot; &quot;kube-probe/1.22&quot; &quot;-&quot;
+10.244.2.26 - - [21/Jun/2022:08:41:25 +0000]  204 &quot;POST /loki/api/v1/push HTTP/1.1&quot; 0 &quot;-&quot; &quot;promtail/2.5.0&quot; &quot;-&quot;
+10.244.1.28 - - [21/Jun/2022:08:41:26 +0000]  204 &quot;POST /loki/api/v1/push HTTP/1.1&quot; 0 &quot;-&quot; &quot;promtail/2.5.0&quot; &quot;-&quot;
+......
+</code></pre></div>
+<p>可以看到 gateway 现在在一直接接收着 <code>/loki/api/v1/push</code> 的请求，也就是 promtail 发送过来的，正常来说现在日志数据已经分发给 write 节点了，write 节点将数据存储在了 minio 中，可以去查看下 minio 中已经有日志数据了，前面安装的时候为 minio 服务指定了一个 32000 的 NodePort 端口：</p>
+<p><img alt="chunks bucket" src="https://picdn.youdianzhishi.com/images/1655801942988.png" /></p>
+<p>到这里可以看到数据已经可以正常写入了。</p>
+<h3 id="grafana">安装 Grafana<a class="headerlink" href="#grafana" title="Permanent link">&para;</a></h3>
+<p>下面我们来验证下读取路径，安装 Grafana 对接 Loki：</p>
+<div class="highlight"><pre><span></span><code>$ helm pull grafana/grafana --untar
+$ cd grafana
+</code></pre></div>
+<p>创建如下所示的 values 配置文件：</p>
+<div class="highlight"><pre><span></span><code># ci/minio-values.yaml
+service:
+  type: NodePort
+  nodePort: 32001
+rbac:
+  pspEnabled: false
+persistence:
+  enabled: true
+  storageClassName: local-path
+  accessModes:
+    - ReadWriteOnce
+  size: 1Gi
+</code></pre></div>
+<p>直接使用上面的 values 文件安装 Grafana：</p>
+<div class="highlight"><pre><span></span><code>$ helm upgrade --install grafana -n logging -f ci/minio-values.yaml .
+Release &quot;grafana&quot; does not exist. Installing it now.
+NAME: grafana
+LAST DEPLOYED: Tue Jun 21 16:47:54 2022
+NAMESPACE: logging
+STATUS: deployed
+REVISION: 1
+NOTES:
+1. Get your &#39;admin&#39; user password by running:
+
+   kubectl get secret --namespace logging grafana -o jsonpath=&quot;{.data.admin-password}&quot; | base64 --decode ; echo
+
+2. The Grafana server can be accessed via port 80 on the following DNS name from within your cluster:
+
+   grafana.logging.svc.cluster.local
+
+   Get the Grafana URL to visit by running these commands in the same shell:
+export NODE_PORT=$(kubectl get --namespace logging -o jsonpath=&quot;{.spec.ports[0].nodePort}&quot; services grafana)
+     export NODE_IP=$(kubectl get nodes --namespace logging -o jsonpath=&quot;{.items[0].status.addresses[0].address}&quot;)
+     echo http://$NODE_IP:$NODE_PORT
+
+
+3. Login with the password from step 1 and the username: admin
+</code></pre></div>
+<p>可以通过上面提示中的命令获取登录密码：</p>
+<div class="highlight"><pre><span></span><code>$ kubectl get secret --namespace logging grafana -o jsonpath=&quot;{.data.admin-password}&quot; | base64 --decode ; echo
+</code></pre></div>
+<p>然后使用上面的密码和 <code>admin</code> 用户名登录 Grafana：</p>
+<p><img alt="grafana login" src="https://picdn.youdianzhishi.com/images/1655456615424.png" /></p>
+<p>登录后进入 Grafana 添加一个数据源，这里需要注意要填写 gateway 的地址 <code>http://loki-loki-distributed-gateway</code>：</p>
+<p><img alt="loki datasource" src="https://picdn.youdianzhishi.com/images/1655801603939.png" /></p>
+<p>保存数据源后，可以进入 <code>Explore</code> 页面过滤日志，比如我们这里来实时查看 gateway 这个应用的日志，如下图所示：</p>
+<p><img alt="logs" src="https://picdn.youdianzhishi.com/images/1655802196279.png" /></p>
+<p>如果你能看到最新的日志数据那说明我们部署成功了微服务模式的 Loki，这种模式灵活性非常高，可以根据需要对不同的组件做扩缩容，但是运维成本也会增加很多。</p>
+<h2 id="_4">缓存<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>上面虽然我们完成了 Loki 的微服务模式部署，当在海量日志数据的情况下我们可能需要启用缓存来提升查询性能。这里我们使用的 <code>grafana/loki-distributed</code> 这个 Chart 包可以为 Loki 使用的各种缓存配置 Memcached 实例，所有缓存的配置都相同，但是目前该包中的 <code>Memcached</code> 缓存方式还有一些问题，我们这里就以 redis 为例来配置缓存。</p>
+<p>首先当然需要一个可用的 redis 服务，直接使用下面的资源清单部署 redis 应用。</p>
+<div class="highlight"><pre><span></span><code># loki-redis.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis
+  namespace: logging
+spec:
+  selector:
+    matchLabels:
+      app: redis
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      containers:
+        - name: redis
+          image: redis:4
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+          ports:
+            - containerPort: 6379
+        - name: redis-exporter # 它只会提供监控指标数据，主应用的metrics
+          image: oliver006/redis_exporter:latest
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+          ports:
+            - containerPort: 9121
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: redis
+  namespace: logging
+  labels:
+    app: redis
+spec:
+  selector:
+    app: redis
+  ports:
+    - name: redis
+      port: 6379
+      targetPort: 6379
+    - name: prom
+      port: 9121
+      targetPort: 9121
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: redis
+  namespace: logging
+spec:
+  endpoints:
+    - port: prom
+  selector:
+    matchLabels:
+      app: redis
+</code></pre></div>
+<p>部署完成后接下来我们为 Loki 集群添加 redis 缓存，定制如下所示的 values 文件：</p>
+<div class="highlight"><pre><span></span><code># cache-values.yaml
+loki:
+  config: |
+    auth_enabled: false
+
+    server:
+      http_listen_port: 3100
+
+    distributor:
+      ring:
+        kvstore:
+          store: memberlist
+
+    memberlist:
+      join_members:
+        - {{ include &quot;loki.fullname&quot; . }}-memberlist
+
+    ingester:
+      lifecycler:
+        ring:
+          kvstore:
+            store: memberlist
+          replication_factor: 1
+      chunk_idle_period: 30m
+      chunk_block_size: 262144
+      chunk_retain_period: 1m
+      max_transfer_retries: 0
+      wal:
+        dir: /var/loki/wal
+
+    limits_config:
+      enforce_metric_name: false
+      reject_old_samples: true
+      reject_old_samples_max_age: 168h
+      ingestion_burst_size_mb: 20
+      ingestion_rate_mb: 10
+      split_queries_by_interval: 24h
+
+    schema_config:
+      configs:
+        - from: 2020-09-07
+          store: boltdb-shipper
+          object_store: filesystem
+          schema: v11
+          index:
+            prefix: loki_index_
+            period: 24h
+
+    storage_config:
+      aws:
+        access_key_id: myaccessKey
+        bucketnames: loki-data
+        endpoint: minio.logging.svc.cluster.local:9000
+        insecure: true
+        s3forcepathstyle: true
+        secret_access_key: mysecretKey
+      boltdb_shipper:
+        shared_store: filesystem
+        active_index_directory: /var/loki/index
+        cache_location: /var/loki/cache
+        cache_ttl: 168h
+      filesystem:
+        directory: /var/loki/chunks
+      index_queries_cache_config:
+        redis:
+          endpoint: redis:6379
+          expiration: 1h
+
+    chunk_store_config:
+      max_look_back_period: 0
+      chunk_cache_config:
+        redis:
+          endpoint: redis:6379
+          expiration: 1h
+      write_dedupe_cache_config:
+        redis:
+          endpoint: redis:6379
+          expiration: 1h
+
+    query_range:
+      cache_results: true
+      results_cache:
+        cache:
+          redis:
+            endpoint: redis:6379
+            expiration: 1h
+
+    frontend_worker:
+      frontend_address: {{ include &quot;loki.queryFrontendFullname&quot; . }}:9095
+
+    frontend:
+      log_queries_longer_than: 5s
+      compress_responses: true
+
+    ruler:
+      storage:
+        type: local
+        local:
+          directory: /etc/loki/rules
+      ring:
+        kvstore:
+          store: memberlist
+      rule_path: /tmp/loki/scratch
+      alertmanager_url: http://alertmanager-main.monitoring.svc.cluster.local:9093  # alertmanager的地址
+      external_url: http://192.168.0.106：31918
+
+distributor:
+  replicas: 2
+
+ingester: # WAL（replay）
+  replicas: 2
+  persistence:
+    enabled: true
+    size: 1Gi
+    storageClass: local-path
+
+querier:
+  replicas: 2
+  persistence:
+    enabled: true
+    size: 1Gi
+    storageClass: local-path
+
+queryFrontend:
+  replicas: 2
+
+gateway: # nginx容器 -&gt; 路由日志写/读的请求
+  nginxConfig:
+    httpSnippet: |-
+      client_max_body_size 100M;
+    serverSnippet: |-
+      client_max_body_size 100M;
+
+ruler:
+  enabled: true
+  kind: Deployment
+  replicas: 1
+  persistence:
+    enabled: true
+    size: 1Gi
+    storageClass: local-path
+  # -- Directories containing rules files
+  directories:
+    tenant_no:
+      rules1.txt: |
+        groups:
+          - name: nginx-rate
+            rules:
+            - alert: LokiNginxRate
+              expr: sum(rate({app=&quot;nginx&quot;} |= &quot;error&quot; [1m])) by (job)
+                    /
+                  sum(rate({app=&quot;nginx&quot;}[1m])) by (job)
+                    &gt; 0.01
+              for: 1m
+              labels:
+                severity: critical
+              annotations:
+                summary: loki nginx rate
+                description: high request latency
+</code></pre></div>
+<p>上面的 values 中我们为 Loki 添加了一些缓存配置，核心配置如下所示：</p>
+<div class="highlight"><pre><span></span><code>......
+query_range:
+  results_cache:
+    cache:
+      redis:
+        endpoint: redis:6379
+        expiration: 1h
+  cache_results: true
+storage_config:
+  index_queries_cache_config:
+    redis:
+      endpoint: redis:6379
+      expiration: 1h
+chunk_store_config:
+  chunk_cache_config:
+    redis:
+      endpoint: redis:6379
+      expiration: 1h
+  write_dedupe_cache_config:
+    redis:
+      endpoint: redis:6379
+      expiration: 1h
+......
+</code></pre></div>
+<p>直接使用上面的 values 重新覆盖 Loki 即可：</p>
+<div class="highlight"><pre><span></span><code>$ helm upgrade --install loki -n logging -f ci/cache-values.yaml .
+</code></pre></div>
+<p>安装完成后总体的 Pod 如下所示：</p>
+<div class="highlight"><pre><span></span><code>$ kubectl get pods -n logging
+NAME                                                    READY   STATUS    RESTARTS        AGE
+grafana-55d8779dc6-mm5f2                                1/1     Running   0               70m
+loki-loki-distributed-distributor-77f8f99dbb-7snns      1/1     Running   0               38m
+loki-loki-distributed-distributor-77f8f99dbb-rsn7l      1/1     Running   0               38m
+loki-loki-distributed-gateway-6f4cfd898c-p9xxf          1/1     Running   2 (4h9m ago)    3d1h
+loki-loki-distributed-ingester-0                        1/1     Running   0               37m
+loki-loki-distributed-ingester-1                        1/1     Running   0               38m
+loki-loki-distributed-querier-0                         1/1     Running   0               38m
+loki-loki-distributed-querier-1                         1/1     Running   0               38m
+loki-loki-distributed-query-frontend-78c4ccc99b-4t85w   1/1     Running   0               38m
+loki-loki-distributed-query-frontend-78c4ccc99b-cgh8d   1/1     Running   0               38m
+loki-loki-distributed-ruler-5654f8cf59-pjb8p            1/1     Running   0               38m
+minio-548656f786-mjd4c                                  1/1     Running   3 (4h10m ago)   6d22h
+promtail-ddz27                                          1/1     Running   1 (4h10m ago)   3d1h
+promtail-lzr6v                                          1/1     Running   1 (4h10m ago)   3d1h
+promtail-nldqx                                          1/1     Running   2 (4h4m ago)    3d1h
+redis-7fb8ff6779-m26m6                                  2/2     Running   0               30m
+</code></pre></div>
+<p>正常现在 Redis 服务就已经再使用了，下图展示了 redis 的运行状态，可以看出压力也并不大。</p>
+<p><img alt="redis" src="https://picdn.youdianzhishi.com/images/1656414200611.jpg" /></p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="页脚">
+      
+        
+        <a href="../%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB%E6%A8%A1%E5%BC%8F/" class="md-footer__link md-footer__link--prev" aria-label="上一页: kubernetes 日志读写分离模式" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              kubernetes 日志读写分离模式
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" class="md-footer__link md-footer__link--next" aria-label="下一页: kubernetes 日志配置文件" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              kubernetes 日志配置文件
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 lixie
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/cnych" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://hub.docker.com/r/cnych/" target="_blank" rel="noopener" title="hub.docker.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M349.9 236.3h-66.1v-59.4h66.1v59.4zm0-204.3h-66.1v60.7h66.1V32zm78.2 144.8H362v59.4h66.1v-59.4zm-156.3-72.1h-66.1v60.1h66.1v-60.1zm78.1 0h-66.1v60.1h66.1v-60.1zm276.8 100c-14.4-9.7-47.6-13.2-73.1-8.4-3.3-24-16.7-44.9-41.1-63.7l-14-9.3-9.3 14c-18.4 27.8-23.4 73.6-3.7 103.8-8.7 4.7-25.8 11.1-48.4 10.7H2.4c-8.7 50.8 5.8 116.8 44 162.1 37.1 43.9 92.7 66.2 165.4 66.2 157.4 0 273.9-72.5 328.4-204.2 21.4.4 67.6.1 91.3-45.2 1.5-2.5 6.6-13.2 8.5-17.1l-13.3-8.9zm-511.1-27.9h-66v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm-78.1-72.1h-66.1v60.1h66.1v-60.1z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/cnych" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://instagram.com/cnych" target="_blank" rel="noopener" title="instagram.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["header.autohide", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.top", "toc.integrate", "search.suggest", "search.highlight", "content.code.annotate", "navigation.instant", "navigation.instant.prefetch", "navigation.path", "navigation.prune"], "search": "../../../assets/javascripts/workers/search.01824240.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.e8a254df.min.js"></script>
+      
+        <script src="../../../js/extra.js"></script>
+      
+        <script src="../../../js/baidu-tongji.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

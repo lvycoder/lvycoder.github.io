@@ -148,26 +148,16 @@ nav:
         # - Helm 配置grafana: Helm/helm.md
         - kubernetes Cert-manager 安装: cert-manager/cert-manager-doc.md
         - kubernetes 处理k8s证书过期: 3.k8s/other/k8s-ca-docs.md
-        - kubernete 日志架构: 7.logging/日志收集架构.md
-        - kubernetes EFK日志系统: 7.logging/搭建-efk-日志系统.md
-        - kubernete 日志fluentd: docs/7.logging/fluentd.md
-        - kubernete Loki: 7.logging/loki.md
-        - kubernetes 日志读写分离模式: 7.logging/读写分离模式.md
-        - kubernetes 日志微服务模式: 7.logging/微服务模式.md
-        - kubernetes 日志配置文件: 7.logging/配置文件.md
-        - kubernetes 日志报警: 7.logging/日志报警.md
-        - kubernetes 日志 Logql: 7.logging/logql.md
+        - kubernete 日志架构: 3.k8s/7.logging/日志收集架构.md
+        - kubernetes EFK日志系统: 3.k8s/7.logging/搭建-efk-日志系统.md
+        - kubernete 日志fluentd: docs/3.k8s/7.logging/fluentd.md
+        - kubernete Loki: 3.k8s/7.logging/loki.md
+        - kubernetes 日志读写分离模式: 3.k8s/7.logging/读写分离模式.md
+        - kubernetes 日志微服务模式: 3.k8s/7.logging/微服务模式.md
+        - kubernetes 日志配置文件: 3.k8s/7.logging/配置文件.md
+        - kubernetes 日志报警: 3.k8s/7.logging/日志报警.md
+        - kubernetes 日志 Logql: 3.k8s/7.logging/logql.md
 
-        # - 'EFK': 'logging/efk.md'
-        # - 'Fluentd': 'logging/fluentd.md'
-        # - 'Loki':
-        # - 'Loki': 'logging/loki/overview.md'
-        # - 'Promtail': 'logging/loki/promtail.md'
-        # - '读写分离模式': 'logging/loki/simple-scalable.md'
-        # - '微服务模式': 'logging/loki/distributed.md'
-        # - '配置文件': 'logging/loki/config.md'
-        # - '日志报警': 'logging/loki/alert.md'
-        # - 'LogQL': 'logging/loki/logql.md'
         - kubernetes 自动化安装:  3.k8s/ansible-install-k8s-docs.md
         - kubernetes 项目一: 3.k8s/4-ansible-install-k8s.md
         - kubernetes 项目二: basic/9-install-keepalived-cluster.md

@@ -1,0 +1,47 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: test-vm-1
+spec:
+  running: true
+  template:
+    metadata:
+      labels:
+        kubevirt.io/size: small
+        kubevirt.io/domain: test-vm2
+    spec:
+      # nodeSelector:
+      #   phy.kvm: "true"
+      domain:
+        devices:
+          disks:
+          - name: containerdisk
+            disk:
+              bus: virtio
+          - name: cloudinitdisk
+            disk:
+              bus: virtio
+          interfaces:
+          - name: default
+            masquerade: {}
+        resources:
+          requests:
+            memory: 32G
+      networks:
+      - name: default
+        pod: {}
+      volumes:
+      - name: containerdisk
+        containerDisk:
+          #image: quay.io/kubevirt/cirros-container-disk-demo
+          # image: quay.io/kubevirt/fedora-cloud-container-disk-demo:latest
+          image: windows10:20230104
+      - name: cloudinitdisk
+        cloudInitNoCloud:
+          userData: |
+            #cloud-config
+            hostname: test-test-vm2
+            password: fedora
+            chpasswd: { expire: False }
+            ssh_pwauth: True
+            disable_root: false

@@ -1,0 +1,3811 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Project documentation with Markdown.">
+      
+      
+        <meta name="author" content="Li">
+      
+      
+        <link rel="canonical" href="https://barry-boy.github.io/3.k8s/7.logging/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-8.0.0">
+    
+    
+      
+        <title>kubernetes 日志配置文件 - Kubernetes 进阶训练营</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ad626c1e.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9204c3b2.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,400i,700%7CUbuntu+Mono&display=fallback">
+        <style>:root{--md-text-font:"Ubuntu";--md-code-font:"Ubuntu Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>function __md_scope(e,t,_){return new URL(_||(t===localStorage?"../../..":"../../.."),location).pathname+"."+e}function __md_get(e,t=localStorage,_){return JSON.parse(t.getItem(__md_scope(e,t,_)))}function __md_set(e,t,_=localStorage,o){try{_.setItem(__md_scope(e,_,o),JSON.stringify(t))}catch(e){}}</script>
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="Kubernetes 进阶训练营" class="md-header__button md-logo" aria-label="Kubernetes 进阶训练营" data-md-component="logo">
+      
+  <img src="../../../material/logo.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Kubernetes 进阶训练营
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              kubernetes 日志配置文件
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换暗色主题"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="切换暗色主题" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="切换亮色主题"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="切换亮色主题" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/barry-boy/barry-boy.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      首页
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../0.Internet/Tcp-ip-docs/" class="md-tabs__link">
+        0、网络基础
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../1.os/ubuntu/kjc-doc/" class="md-tabs__link">
+        1、Linux
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../basic/cncf-docs/" class="md-tabs__link md-tabs__link--active">
+        2、kubernetes
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../python/1-python-docs/" class="md-tabs__link">
+        3、运维开发
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../k8s/mysql-operator/0-mysql-docs.md" class="md-tabs__link">
+        4、数据库
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../5.Storage/disk-ssd-docs/" class="md-tabs__link">
+        5、存储服务
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../6.Gitops/2024-9-26-Git-docs/" class="md-tabs__link">
+        6、Gitops
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../Devops/git-error-docs/" class="md-tabs__link">
+        7、Devops
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../ansible/ansible-case1/" class="md-tabs__link">
+        8、运维自动化
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../Macuse/mac-kubeconfig/" class="md-tabs__link">
+        9、其他
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../chatgpt/chatgpt-docs/" class="md-tabs__link">
+        10、Chatgpt
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../20.mylife/2024-9-24-myblog-life-docs/" class="md-tabs__link">
+        关于我
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Kubernetes 进阶训练营" class="md-nav__button md-logo" aria-label="Kubernetes 进阶训练营" data-md-component="logo">
+      
+  <img src="../../../material/logo.jpg" alt="logo">
+
+    </a>
+    Kubernetes 进阶训练营
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/barry-boy/barry-boy.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        首页
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          0、网络基础
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="0、网络基础" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          0、网络基础
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../0.Internet/Tcp-ip-docs/" class="md-nav__link">
+        网络 Tcp/IP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../0.Internet/5g-docs/" class="md-nav__link">
+        网络 思科设备
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../0.Internet/IB-ET-docs/" class="md-nav__link">
+        网络 网卡模式调整
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/asus/asus-docs/" class="md-nav__link">
+        华硕服务器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../0.Internet/ZeroTier/" class="md-nav__link">
+        ZeroTier组网
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../0.Internet/frp/" class="md-nav__link">
+        frp 内网穿透
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../0.Internet/3-0.Internet-docs.md" class="md-nav__link">
+        kubernetes 网络组件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../0.Internet/4-network-docs/" class="md-nav__link">
+        科学上网
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          1、Linux
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="1、Linux" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          1、Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/kjc-doc/" class="md-nav__link">
+        Linux 云计算手册大纲
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-bmc-doc/" class="md-nav__link">
+        Linux 带外管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-install-doc/" class="md-nav__link">
+        Linux 系统安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-cli-doc/" class="md-nav__link">
+        Linux 系统命令
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-mirror-doc/" class="md-nav__link">
+        Linux 国内apt源
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-nvme-doc/" class="md-nav__link">
+        Linux nvme磁盘管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-parted-doc/" class="md-nav__link">
+        Linux parted磁盘管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-reboot-doc/" class="md-nav__link">
+        Linux 系统强制重启
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-disk-doc/" class="md-nav__link">
+        Linux 磁盘管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-network-doc/" class="md-nav__link">
+        Linux 网络服务
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/2024-9-25-ssh-proxy-docs/" class="md-nav__link">
+        Linux SSH 转发代理实现
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          2、kubernetes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="2、kubernetes" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          2、kubernetes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic/cncf-docs/" class="md-nav__link">
+        云原生简介及CNCF
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/docker-docs/" class="md-nav__link">
+        Docker 基本管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/lxcfs.md" class="md-nav__link">
+        lxcfs 介绍
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/docker-images-docs/" class="md-nav__link">
+        docker 镜像构建
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/docker-proxy-docs/" class="md-nav__link">
+        docker proxy代理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/docker-image-clash-docs/" class="md-nav__link">
+        docker Clash代理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../base/k8s-overview/" class="md-nav__link">
+        kubernetes 简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-k8s-systeminit-docs/" class="md-nav__link">
+        kubernetes 集群部署
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2024-9-19-k8s-update/" class="md-nav__link">
+        kubernetes 集群升级
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pod-base-docs/" class="md-nav__link">
+        kubernetes pod 基础原理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pod-hook-docs/" class="md-nav__link">
+        kubernetes pod 生命周期
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic/6-kubernetes-etcd-docs/" class="md-nav__link">
+        kubernetes etcd 简介与实践
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic/7-kubernetes-coredns-docs/" class="md-nav__link">
+        kubernetes coredns 简介与实践
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../k8s/k8s-calico-docs.md" class="md-nav__link">
+        kubernetes calico 网络
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../yaml/yaml/" class="md-nav__link">
+        kubernetes 资源清单
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../base/k8s-limit-docs/" class="md-nav__link">
+        kubernetes 资源限制
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../k8s-configmap-docs/" class="md-nav__link">
+        kubernetes 配置管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic/5-kubernetes-UI-docs/" class="md-nav__link">
+        Kubernetes UI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy-sts-ds-docs/" class="md-nav__link">
+        kubernetes 控制器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/pv-rep/" class="md-nav__link">
+        kubernetes pv/pvc简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../k8s-mon-docs/" class="md-nav__link">
+        kubernetes 监控服务
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../k8s-logs-docs/" class="md-nav__link">
+        kubernetes 日志管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../k8s-istio-docs/" class="md-nav__link">
+        kubernetes 服务网格
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cks/cka/" class="md-nav__link">
+        kubernetes CKA考题
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cks/cks/" class="md-nav__link">
+        kubernetes CKS考题
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ui/rancher-update-docs/" class="md-nav__link">
+        kubernetes Rancher 升级
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic/7-kubernetes-update-docs/" class="md-nav__link">
+        kubernetes 节点维护
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Helm/helm-install/" class="md-nav__link">
+        kubernetes Helm 实践
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Helm/helm-chart/" class="md-nav__link">
+        kubernetes Helm chart包
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2024-9-24-helmfile-docs/" class="md-nav__link">
+        kubernetes Helmfile 文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cert-manager/cert-manager-doc/" class="md-nav__link">
+        kubernetes Cert-manager 安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/k8s-ca-docs/" class="md-nav__link">
+        kubernetes 处理k8s证书过期
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86%E6%9E%B6%E6%9E%84/" class="md-nav__link">
+        kubernete 日志架构
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%90%AD%E5%BB%BA-efk-%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        kubernetes EFK日志系统
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/3.k8s/7.logging/fluentd.md" class="md-nav__link">
+        kubernete 日志fluentd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../loki/" class="md-nav__link">
+        kubernete Loki
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB%E6%A8%A1%E5%BC%8F/" class="md-nav__link">
+        kubernetes 日志读写分离模式
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%A8%A1%E5%BC%8F/" class="md-nav__link">
+        kubernetes 日志微服务模式
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        kubernetes 日志配置文件
+      </a>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%97%A5%E5%BF%97%E6%8A%A5%E8%AD%A6/" class="md-nav__link">
+        kubernetes 日志报警
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logql/" class="md-nav__link">
+        kubernetes 日志 Logql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ansible-install-k8s-docs/" class="md-nav__link">
+        kubernetes 自动化安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-ansible-install-k8s/" class="md-nav__link">
+        kubernetes 项目一
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic/9-install-keepalived-cluster/" class="md-nav__link">
+        kubernetes 项目二
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          3、运维开发
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="3、运维开发" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          3、运维开发
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/1-python-docs/" class="md-nav__link">
+        Python 开发-基础语法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/2-python-docs/" class="md-nav__link">
+        Python 开发-用户交互
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../go/go-base-docs/" class="md-nav__link">
+        GO开发-环境安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../go/2-go-docs/" class="md-nav__link">
+        GO 开发-操作符和表达式
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/module-docs/" class="md-nav__link">
+        模块
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          4、数据库
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="4、数据库" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          4、数据库
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../k8s/mysql-operator/0-mysql-docs.md" class="md-nav__link">
+        Mysql 数据库
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../k8s/mysql-operator/1-install-mysql-operator.md" class="md-nav__link">
+        Mysql operator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../k8s/mysql-operator/2-mysql-backup-docs.md" class="md-nav__link">
+        Mysql 备份恢复
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../k8s/mysql-operator/3-mysql-backup-error-docs.md" class="md-nav__link">
+        数据库问题处理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../redis/redis-class-docs/" class="md-nav__link">
+        redis 大纲
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/redis-docs/" class="md-nav__link">
+        redis 缓存加速
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/redis-cluster-docs/" class="md-nav__link">
+        redis 集群篇
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../redis/redis-save-docs/" class="md-nav__link">
+        redis 持久化
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          5、存储服务
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="5、存储服务" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          5、存储服务
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/disk-ssd-docs/" class="md-nav__link">
+        存储分类
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/ceph-base/" class="md-nav__link">
+        ceph 基础
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/rook-ceph/" class="md-nav__link">
+        ceph 分布式存储
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/rbd-docs/" class="md-nav__link">
+        ceph RBD使用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/cephfs-docs/" class="md-nav__link">
+        ceph 文件系统使用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/ceph-cli-docs/" class="md-nav__link">
+        ceph 命令用法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/osd/" class="md-nav__link">
+        ceph 性能测试
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/ceph-bucket/" class="md-nav__link">
+        ceph 对象存储
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/s3-client-docs/" class="md-nav__link">
+        ceph s3cmd管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/5-dev-docs/" class="md-nav__link">
+        ceph 存储修复
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/expand-docs/" class="md-nav__link">
+        ceph 存储扩容
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/ceph-tools/" class="md-nav__link">
+        ceph 外部环境连接集群
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/clean-ceph-docs/" class="md-nav__link">
+        ceph 集群清理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/ceph-error/" class="md-nav__link">
+        ceph 错误指南
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/6-ceph-crush-docs/" class="md-nav__link">
+        ceph 高级参数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/Juicefs/" class="md-nav__link">
+        Juicefs存储方案
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/juicefs-update/" class="md-nav__link">
+        Juicefs版本升级
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          6、Gitops
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="6、Gitops" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          6、Gitops
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../6.Gitops/2024-9-26-Git-docs/" class="md-nav__link">
+        Git Commit 问题
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../6.Gitops/2024-10-10-Github-rsync-Gitee/" class="md-nav__link">
+        Github Rysnc 同步 Gitee
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          7、Devops
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="7、Devops" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          7、Devops
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Devops/git-error-docs/" class="md-nav__link">
+        Git 报错指南
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Devops/github/" class="md-nav__link">
+        Github
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Devops/4-github-gitee-doc/" class="md-nav__link">
+        Github仓库同步至Gitee
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Devops/3-github-docs/" class="md-nav__link">
+        Google 浏览器扩展
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_10">
+          8、运维自动化
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="8、运维自动化" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          8、运维自动化
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ansible/ansible-case1/" class="md-nav__link">
+        Ansible 应用基础
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ansible/ansible-docs2/" class="md-nav__link">
+        Ansible 高级用法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ansible/ansible-install-docs/" class="md-nav__link">
+        Ansible 安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ansible/ansible-playbook/" class="md-nav__link">
+        Ansible playbook
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_11">
+          9、其他
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="9、其他" data-md-level="1">
+        <label class="md-nav__title" for="__nav_11">
+          <span class="md-nav__icon md-icon"></span>
+          9、其他
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Macuse/mac-kubeconfig/" class="md-nav__link">
+        kubeconfig 实践应用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../k3s/k3s-docs/" class="md-nav__link">
+        k3s 大纲介绍
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../k3s/k3s-install/" class="md-nav__link">
+        k3s 边缘计算
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Macuse/mac-k9s-doc/" class="md-nav__link">
+        k9s 实践应用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Macuse/mac-usb-system/" class="md-nav__link">
+        Mac 制作ubuntu系统盘
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Macuse/mac-vscode/" class="md-nav__link">
+        Mac vscode使用技巧
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../error/tjtu/" class="md-nav__link">
+        天津集群
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../error/dev/" class="md-nav__link">
+        Dev环境集群
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../error/delete-prometheus-db/" class="md-nav__link">
+        误删除监控数据
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../error/kubernetes-pvc-ubound-doc/" class="md-nav__link">
+        Kubernetes pvc ubound
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../error/cent1.os-dns-error-docs.md" class="md-nav__link">
+        dns 文件权限调整
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/mac-docs/" class="md-nav__link">
+        如何利用Mac 写博客文章
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/google-docs/" class="md-nav__link">
+        高效利用谷歌来搜索
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/discord-docs/" class="md-nav__link">
+        Discord 新手教程
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_12">
+          10、Chatgpt
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="10、Chatgpt" data-md-level="1">
+        <label class="md-nav__title" for="__nav_12">
+          <span class="md-nav__icon md-icon"></span>
+          10、Chatgpt
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../chatgpt/chatgpt-docs/" class="md-nav__link">
+        注册chatgpt
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../chatgpt/google-ai-docs/" class="md-nav__link">
+        搜索技术记录
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../chatgpt/gpts-docs/" class="md-nav__link">
+        如何使用Chatgpt来制作专属gpt
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" type="checkbox" id="__nav_13" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_13">
+          关于我
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="关于我" data-md-level="1">
+        <label class="md-nav__title" for="__nav_13">
+          <span class="md-nav__icon md-icon"></span>
+          关于我
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../20.mylife/2024-9-24-myblog-life-docs/" class="md-nav__link">
+        我的博客
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../20.mylife/2021-life-docs/" class="md-nav__link">
+        我的2021
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../20.mylife/2022-life-docs/" class="md-nav__link">
+        我的2022
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../20.mylife/2023-life-docs/" class="md-nav__link">
+        我的2023
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../20.mylife/2024-life-docs/" class="md-nav__link">
+        我的2024
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/barry-boy/barry-boy.github.io/edit/master/docs/3.k8s/7.logging/配置文件.md" title="编辑此页" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="_1">配置文件<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p><a href="https://github.com/cnych/qikqiak.com/edit/master/docs/logging/loki/config.md" title="编辑此页"> </a></p>
+<h1 id="_2">配置文件<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h1>
+<p>Loki 的配置文件非常复杂，配置起来有一定难度，所以我们非常有必要对 Loki 配置文件进行专门的分析。Loki 配置文件 <code>loki.yaml</code> 支持的内容和默认值数据：</p>
+<div class="highlight"><pre><span></span><code># 用逗号分隔组件列表运行，默认的值 all 运行 Loki 在单个二进制文件中。
+# 值 read 是一个别名，用于仅在同一进程中运行与读取路径相关的组件，如 querier 和 query-frontend。
+# 值 write 同样是一个别名，用于仅在同一进程中运行与写路径相关的组件，如 ingester 和 distributor。
+# 支持的值包括：all, compactor, distributor, ingester, querier, query-scheduler,
+#  ingester-querier, query-frontend, index-gateway, ruler, table-manager, read, write。
+# 当使用 `-list-target` 命令行标志运行 Loki 时，可以打印可用目标的完整列表。
+[target: &lt;string&gt; | default = &quot;all&quot;]
+
+# 通过 X-Scope-OrgID Header 启用身份验证，如果为 true，该 Header 必须存在。
+# 如果为 false，OrgID 将始终设置为 &quot;fake&quot;。
+[auth_enabled: &lt;boolean&gt; | default = true]
+
+[ballast_bytes: &lt;int&gt; | default = 0]
+
+# 配置已启动服务的 HTTP 和 gRPC 服务器通信。
+[server: &lt;server&gt;]
+
+# 配置 distributor。
+[distributor: &lt;distributor&gt;]
+
+# 配置 querier，仅在运行所有模块或 querier 时适用。
+[querier: &lt;querier&gt;]
+
+# query_scheduler 块配置 Loki 查询调度程序。
+# 配置后，它将租户查询队列与查询前端分离
+[query_scheduler: &lt;query_scheduler&gt;]
+
+# 配置 Loki query-frontend 模块
+[frontend: &lt;frontend&gt;]
+
+# 在 Loki query-frontend 配置查询分割和缓存。
+[query_range: &lt;query_range&gt;]
+
+# 配置 Loki ruler 模块
+[ruler: &lt;ruler&gt;]
+
+# 配置 distributor 如何连接到 ingester。
+# 仅在运行所有组件、distributor 或 querier 时适用。
+[ingester_client: &lt;ingester_client&gt;]
+
+# 配置 ingester 以及 ingester 如何将自己注册到 kv 存储。
+[ingester: &lt;ingester&gt;]
+
+# 配置 Loki 存储数据的地方
+[storage_config: &lt;storage_config&gt;]
+
+# 配置 Loki 在指定的存储中如何存储数据
+[chunk_store_config: &lt;chunk_store_config&gt;]
+
+# 配置 chunk 索引 schema 和存储的位置
+[schema_config: &lt;schema_config&gt;]
+
+# 配置 compactor 组件，该组件压缩索引分片以提高性能
+[compactor: &lt;compactor&gt;]
+
+# 配置每个租户或全局的限制
+[limits_config: &lt;limits_config&gt;]
+
+# 配置在 Loki querier 中运行的 worker - 拾取并执行查询前端排队的查询。
+[frontend_worker: &lt;frontend_worker&gt;]
+
+# 配置用于保留的 table manager。
+[table_manager: &lt;table_manager&gt;]
+
+# 配置 runtime config 模块，负责重新加载运行时配置文件。
+[runtime_config: &lt;runtime_config&gt;]
+
+# 配置 tracing
+[tracing: &lt;tracing&gt;]
+
+# 多个模块之间共享的通用配置。
+# 如果在其他部分中给出了更具体的配置，则将忽略此部分中的相关配置。
+[common: &lt;common&gt;]
+
+# 使用情况报告的配置
+[analytics: &lt;analytics&gt;]
+</code></pre></div>
+<p>这里我们主要介绍几个核心的配置块。</p>
+<h2 id="common">common<a class="headerlink" href="#common" title="Permanent link">&para;</a></h2>
+<p>通用配置块 <code>common</code> 是由不同组件共享的公共定义，这样，就不必在多个地方重复配置了，下面是该配置块的相关属性：</p>
+<div class="highlight"><pre><span></span><code># 不同 Loki 组件使用的公共存储配置
+[storage: &lt;storage&gt;]
+
+# 定义后，指定前缀将出现在端点路径的前面
+[path_prefix: &lt;string&gt;]
+
+# 传入的数据应该被复制到 ingester 组件多少次
+[replication_factor: &lt;int&gt; | default = 3]
+
+# 如果为 true，则 ingester、compactor 和 query_scheduler 的 ring tokens 将保存到 path_prefix 目录中的文件中。如果将其设置为 true 且 path_prefix 前缀为空，Loki 将出错。
+[persist_tokens: &lt;boolean&gt;: default = false]
+
+# 用于内部查找地址的通用的网络接口列表。
+# 如果设置了更具体的 &quot;instance_interface_names&quot;，则忽略此选项。
+# 如果在公共的 ring 模块下配置了 &quot;instance_interface_names&quot;，则该通用配置 &quot;instance_interface_names&quot; 只适用于前端，而不适用于与 ring 相关的组件（比如：distributor、ruler 等等）
+[instance_interface_names: &lt;list of string&gt; | default = [&lt;private network interfaces&gt;]]
+
+# Loki 组件用于暴露其地址的公共地址。
+# 如果配置了更具体的 &quot;instance_addr&quot; 地址，该配置会被忽略。
+# 如果 &quot;instance_addr&quot; 在公共 ring 部分下配置了，则该通用 &quot;instance_addr&quot; 配置只适用于前端，而不适用于与 ring 相关的组件（比如：distributor、ruler 等等）。
+[instance_addr: &lt;string&gt;]
+
+# 所有 Loki rings 使用的通用 ring 配置。
+# 如果指定了通用的 ring 环，则其值用于定义任何未定义的 ring 值。
+# 例如，你可以期望 distributor 的 ring 环使用公共部分中定义的 `heartbeat_period`，但前提是 distributor 的 ring 本身没有配置 `heartbeat_period`。
+[ring: &lt;ring&gt;]
+</code></pre></div>
+<p>上面的通用配置块中有一个 <code>storage</code> 的配置项，用来定义 Loki 不同组件使用的公共存储配置。如果在配置文件的其他位置提供了对象存储客户端的任何特定配置，则该特定配置将取代通用存储配置，对应的属性如下所示：</p>
+<div class="highlight"><pre><span></span><code># azure 配置
+[azure: &lt;azure_storage_config&gt;]
+
+# gcs 配置
+[gcs: &lt;gcs_storage_config&gt;]
+
+# s3 配置
+[s3: &lt;s3_storage_config&gt;]
+
+# swift 配置
+[swift: &lt;swift_storage_config&gt;]
+
+# 配置一个（本地）文件系统
+[filesystem: &lt;filesystem&gt;]
+
+[hedging: &lt;hedging_config&gt;]
+</code></pre></div>
+<h2 id="storage_config">storage_config<a class="headerlink" href="#storage_config" title="Permanent link">&para;</a></h2>
+<p>Loki 的存储引擎配置，这个配置块里面主要定义的是各类存储的一些基本信息。如下所示：</p>
+<div class="highlight"><pre><span></span><code># 在 AWS 中的 chunks 存储的配置。必需的选项只有在 aws 出现时才需要。
+aws:
+  # S3 或 S3 兼容的 endpoint URL 地址，带有编码的 Key 和 Secret。
+  # 如果仅将 region 配置为主机，则将推断出正确的端点。
+  # CLI flag: -s3.url
+  [s3: &lt;string&gt;]
+
+  # 设置为 true 可强制请求使用 path-style 寻址
+  # CLI flag: -s3.force-path-style
+  [s3forcepathstyle: &lt;boolean&gt; | default = false]
+
+  # 以逗号分隔的 buckets 名称列表，用于均匀分布 chunks。
+  # 在 s3.url 标志中覆盖任意的 buckets
+  # CLI flag: -s3.buckets
+  [bucketnames: &lt;string&gt; | default = &quot;&quot;]
+
+  # 连接的 S3 Endpoint
+  # CLI flag: -s3.endpoint
+  [endpoint: &lt;string&gt; | default = &quot;&quot;]
+
+  # AWS 使用的区域
+  # CLI flag: -s3.region
+  [region: &lt;string&gt; | default = &quot;&quot;]
+
+  # AWS Access Key ID.
+  # CLI flag: -s3.access-key-id
+  [access_key_id: &lt;string&gt; | default = &quot;&quot;]
+
+  # AWS Secret Access Key.
+  # CLI flag: -s3.secret-access-key
+  [secret_access_key: &lt;string&gt; | default = &quot;&quot;]
+
+  # 禁用 https
+  # CLI flag: -s3.insecure
+  [insecure: &lt;boolean&gt; | default = false]
+
+  # 启用 AES256 AWS 服务器端加密
+  # CLI flag: -s3.sse-encryption
+  [sse_encryption: &lt;boolean&gt; | default = false]
+
+  # ... 省略其他配置
+
+  # 配置 DynamoDB 连接
+  dynamodb:
+    # DynamoDB URL 地址
+    # CLI flag: -dynamodb.url
+    dynamodb_url: &lt;string&gt;
+    # ...... 省略 dynamodb 配置
+
+# 在 Bigtable 中配置存储索引。只有在配置中定义了 bigtable 时，才需要必填字段。
+bigtable:
+  # BigTable project ID
+   # CLI flag: -bigtable.project
+  project: &lt;string&gt;
+
+  # BigTable instance ID
+  # CLI flag: -bigtable.instance
+  instance: &lt;string&gt;
+
+  # 配置连接到 Bigtable 的 gRPC 客户端
+  [grpc_client_config: &lt;grpc_client_config&gt;]
+
+# 配置存储 chunks 在 GCS 中，只有在配置中定义了 gcs 时才需要该字段
+gcs:
+  # 要放入 chunks 的 GCS 存储桶的名称。
+  # CLI flag: -gcs.bucketname
+  bucket_name: &lt;string&gt;
+
+  # GCS客户端用于每个 PUT 请求的缓冲区大小，0表示禁用 buffer。
+  # to disable buffering.
+  # CLI flag: -gcs.chunk-buffer-size
+  [chunk_buffer_size: &lt;int&gt; | default = 0]
+
+  # 对 GCS 的请求超时的时间。
+  # CLI flag: -gcs.request-timeout
+  [request_timeout: &lt;duration&gt; | default = 0s]
+
+# 在 Cassandra 中存储 chunks 和/或 索引的配置
+cassandra:
+  # 用逗号分隔的 Cassandra 实例的主机名或 IPs
+  # CLI flag: -cassandra.addresses
+  addresses: &lt;string&gt;
+  # cassandra 端口
+  # CLI flag: -cassandra.port
+  [port: &lt;int&gt; | default = 9042]
+
+  # ...... 省略
+
+swift:
+#   ...... 省略
+
+# 存储索引在 BoltDB 中的配置。
+boltdb:
+  # BoltDB 索引文件路径
+  # CLI flag: -boltdb.dir
+  directory: &lt;string&gt;
+
+# 存储 chunks 在本地文件系统
+filesystem:
+  # chunks 存储的路径
+  # CLI flag: -local.chunk-directory
+  directory: &lt;string&gt;
+
+# 以 boltdb 文件的形式在对象存储（GCS/S3/Azure/Swift/Filesystem）中配置存储索引。
+boltdb_shipper:
+  # ingesters 将数据写入 boltdb 文件的目录，然后由 shipper 上传到配置的存储中
+  # CLI flag: -boltdb.shipper.active-index-directory
+  [active_index_directory: &lt;string&gt; | default = &quot;&quot;]
+
+  # 用于保存 boltdb 文件的共享存储，支持的类型有：gcs、s3、azure、filesystem
+  # CLI flag: -boltdb.shipper.shared-store
+  [shared_store: &lt;string&gt; | default = &quot;&quot;]
+
+  # 用于恢复查询的 boltDB 文件的缓存位置
+  # CLI flag: -boltdb.shipper.cache-location
+  [cache_location: &lt;string&gt; | default = &quot;&quot;]
+
+  # 查询缓存中恢复的 boltDB 文件的 TTL
+  # CLI flag: -boltdb.shipper.cache-ttl
+  [cache_ttl: &lt;duration&gt; | default = 24h]
+
+  # 将下载的文件与存储重新同步的频率
+  # CLI flag: -boltdb.shipper.resync-interval
+  [resync_interval: &lt;duration&gt; | default = 5m]
+
+  # 为查询保留下载索引的天数，仅适用于以24小时周期创建的表。
+  # CLI flag: -boltdb.shipper.query-ready-num-days
+  [query_ready_num_days: &lt;int&gt; | default = 0]
+
+  index_gateway_client:
+    # Index Gateway gRPC 服务地址
+    # CLI flag: -boltdb.shipper.index-gateway-client.server-address
+    [server_address: &lt;string&gt; | default = &quot;&quot;]
+    # 连接 Index Gateway gRPC 服务的 gRPC 客户端
+    [grpc_client_config: &lt;grpc_client_config&gt;]
+
+# 活跃索引的缓存有效期，不应高于 ingester 设置中的 `chunk_idle_period`。
+# CLI flag: -store.index-cache-validity
+[index_cache_validity: &lt;duration&gt; | default = 5m]
+
+# 每批获取的最大 chunks 数。
+# CLI flag: -store.max-chunk-batch-size
+[max_chunk_batch_size: &lt;int&gt; | default = 50]
+
+# 配置如何构建索引查询的缓存。
+index_queries_cache_config: &lt;cache_config&gt;
+</code></pre></div>
+<h2 id="distributor">distributor<a class="headerlink" href="#distributor" title="Permanent link">&para;</a></h2>
+<p><code>distributor</code> 配置块用于配置 distributor 组件，该配置块对应的属性有：</p>
+<div class="highlight"><pre><span></span><code># 配置 distributors ring，在启用 &quot;global&quot; 摄取率策略时使用。
+ring:
+  kvstore:
+    # ring 使用的后端存储，支持的值包括：consul、etcd、inmemory、memberlist
+    # memberlist 使用的是 gossip 协议来让集群内的所有节点达到最终一致性的
+    # CLI flag: -distributor.ring.store
+    store: &lt;string&gt;
+
+    # 存储中 key 的前缀， 应以 `/` 结尾。
+    # CLI flag: -distributor.ring.prefix
+    [prefix: &lt;string&gt; | default = &quot;collectors/&quot;]
+
+    # Consul 客户端配置，只有当 store 配置为 `consul` 的时候才适用
+    # 此块配置的 CLI 标志前缀为：distributor.ring
+    [consul: &lt;consul_config&gt;]
+
+    # ETCD v3 客户端配置，只有当 store 配置为 `etcd` 的时候才适用
+    # 此块配置的 CLI 标志前缀为：distributor.ring
+    [etcd: &lt;etcd_config&gt;]
+
+  # 心跳超时，在此超时之后，ring 内的 distributor 被视为不健康，0表示never
+  # CLI flag: -distributor.ring.heartbeat-timeout
+  [heartbeat_timeout: &lt;duration&gt; | default = 1m]
+</code></pre></div>
+<h2 id="ingester">ingester<a class="headerlink" href="#ingester" title="Permanent link">&para;</a></h2>
+<p><code>ingester</code> 配置块用于配置 loki ingester 组件，该配置块对应的属性有：</p>
+<div class="highlight"><pre><span></span><code># 配置 ingester 的生命周期 - 将如何运行以及在何处注册以进行发现。
+lifecycler:
+  ring:
+    kvstore:
+      # ring 使用的后端存储，支持的值包括：consul、etcd、inmemory、memberlist
+      # CLI flag: -ring.store
+      [store: &lt;string&gt; | default = &quot;consul&quot;]
+
+      # 存储中 key 的前缀， 应以 `/` 结尾。
+      # CLI flag: -ring.prefix
+      [prefix: &lt;string&gt; | default = &quot;collectors/&quot;]
+
+      # consul 客户端配置
+      # CLI flag: &lt;no prefix&gt;
+      [consul: &lt;consul_config&gt;]
+
+      # etcd 客户端配置
+      # CLI flag: &lt;no prefix&gt;
+      [etcd: &lt;etcd_config&gt;]
+
+    # 心跳🏪后将跳过 ingesters 的读/写操作。
+    # CLI flag: -ring.heartbeat-timeout
+    [heartbeat_timeout: &lt;duration&gt; | default = 1m]
+
+    # 要写入和读取的 ingesters 数。
+    # CLI flag: -distributor.replication-factor
+    [replication_factor: &lt;int&gt; | default = 3]
+
+  # lifecycler 将生成并放入 ring 中的 tokens 数
+  # 如果它加入 ring 而不从另一个 lifecycler 转移 token。
+  # CLI flag: -ingester.num-tokens
+  [num_tokens: &lt;int&gt; | default = 128]
+
+  # 底层 ring 的心跳周期
+  # CLI flag: -ingester.heartbeat-period
+  [heartbeat_period: &lt;duration&gt; | default = 5s]
+
+  # 当另一个成员离开时，要等待多长时间才能从另外成员处声明 tokens 和 chunks。将在到期后自动加入。
+  # CLI flag: -ingester.join-after
+  [join_after: &lt;duration&gt; | default = 0s]
+
+  # 生成后观察 tokens 以解决冲突。当使用 gossip ring 的时候非常有用
+  # CLI flag: -ingester.observe-period
+  [observe_period: &lt;duration&gt; | default = 0s]
+
+  # 准备就绪前的最短等待时间。这是为了解决 ingesters 退出和更新环的 race conditions。
+  # CLI flag: -ingester.min-ready-duration
+  [min_ready_duration: &lt;duration&gt; | default = 15s]
+
+  # 要从中读取地址的网络接口的名称。
+  # CLI flag: -ingester.lifecycler.interface
+  interface_names:
+    - [&lt;string&gt; ... | default = [&lt;private network interfaces&gt;]]
+
+  # 退出前的 sleep 时间，以确保指标被正常抓取。
+  # CLI flag: -ingester.final-sleep
+  [final_sleep: &lt;duration&gt; | default = 30s]
+
+# 最大转移 chunks 重试次数
+# CLI flag: -ingester.max-transfer-retries
+[max_transfer_retries: &lt;int&gt; | default = 0]
+
+# flush 操作并发数
+# CLI flag: -ingester.concurrent-flushes
+[concurrent_flushes: &lt;int&gt; | default = 32]
+
+# ingester 应多久检查一次是否有数据堵塞需要 flush
+# CLI flag: -ingester.flush-check-period
+[flush_check_period: &lt;duration&gt; | default = 30s]
+
+# flush被取消前的超时时间
+# CLI flag: -ingester.flush-op-timeout
+[flush_op_timeout: &lt;duration&gt; | default = 10m]
+
+# flush chunk 后，应在内存中保留多长时间。
+# CLI flag: -ingester.chunks-retain-period
+[chunk_retain_period: &lt;duration&gt; | default = 0s]
+
+# 如果 chunk 没有达到最大块大小，则在刷新之前，chunk 应该在内存中保留多长时间，并且没有更新。
+# 这意味着，只要 half-empty 的 chunks 没有接收到进一步的内容，它们在某个时间段之后仍将被刷新。
+# CLI flag: -ingester.chunks-idle-period
+[chunk_idle_period: &lt;duration&gt; | default = 30m]
+
+# 一个 chunk block 未压缩的大小
+# 当超过该阈值后，head block 会被裁剪并压缩到 chunk 中去。
+# CLI flag: -ingester.chunks-block-size
+[chunk_block_size: &lt;int&gt; | default = 262144]
+
+# chunks 压缩后的大小
+# 这是一个理想的大小，而不是一个确切的大小，如果因为其他原因（比如 chunk_idle_period）被 flush，chunks 可能会稍微大一些或者明显小一些。
+# 值为0时，将创建固定10个blocks的块，非0值将创建具有可变 blocks 的块，以满足目标大小。
+# CLI flag: -ingester.chunk-target-size
+[chunk_target_size: &lt;int&gt; | default = 1572864]
+
+# chunks的压缩算法(支持的值: gzip, lz4, snappy)
+# 根据需求选择合适的算法:
+# - `gzip` 最高的压缩率但是也是最慢的压缩速度 (144 kB/chunk)
+# - `lz4` 最快的压缩速度 (188 kB/chunk)
+# - `snappy` 快速流行的压缩算法 (272 kB/chunk)
+# CLI flag: -ingester.chunk-encoding
+[chunk_encoding: &lt;string&gt; | default = gzip]
+
+# 用于同步 ingesters 以同时切割 chunks 的参数。
+# 同步周期用于将传入条目滚动到新的 chunk，如果 chunk 的利用率不够高（例如 当 sync_min_utilization 被设置为0.5，小于50%），那么 chunk 的滚动就不会发生。
+# CLI flag: -ingester.sync-period
+[sync_period: &lt;duration&gt; | default = 0]
+
+# 最小的同步利用率
+# CLI flag: -ingester.sync-min-utilization
+[sync_min_utilization: &lt;float&gt; | Default = 0]
+
+# 当 push 失败后，流将向用户报告的最大错误数，0表示没限制。
+# CLI flag: -ingester.max-ignored-stream-errors
+[max_returned_stream_errors: &lt;int&gt; | default = 10]
+
+# 内存中 timeseries chunk 的最大持续时间。
+# 如果一个 timeseries 运行时间超过该值，当前 chunk 将刷新到存储，并创建一个新区块。
+# CLI flag: -ingester.max-chunk-age
+[max_chunk_age: &lt;duration&gt; | default = 2h]
+
+# 过去多长时间 ingester 可以查询存储中的数据。
+# 这只适用于使用 `filesystem` 存储的共享 ring 运行的多个 Loki 二进制文件，不会在二进制文件之间共享。
+# 当使用任何共享存储比如S3、GCS的时候，该值必须设置为0。
+# 使用除 `filesystem` 以外的任何对象存储时，将其配置为非零值是错误的。
+# 使用值 -1 允许 ingester 在时间上无限远地查询存储。
+# CLI flag: -ingester.query-store-max-look-back-period
+[query_store_max_look_back_period: &lt;duration&gt; | default = 0]
+
+# 忘记 ingesters 的心跳时间戳，比 `ring.kvstore.heartbeat_timeout` 还要早。
+# 这相当于单击UI中的`/ring`、`forget` 按钮：
+# ingester 将会从 ring 中移出掉。
+# 当你确定不健康的节点不会返回时，这是一个有用的设置。
+# 一个示例是当不使用有状态集时。
+# 使用 `memberlist.rejoin_interval` &gt; 0 来处理网络分区情况当使用成员列表时。
+# CLI flag: -ingester.autoforget-unhealthy
+[autoforget_unhealthy: &lt;boolean&gt; | default = false]
+
+# ingester WAL 记录传入的日志和存储他们在本地文件系统为了保证已确认数据的持久性在进程崩溃的情况下。
+wal:
+  # 启用对 WAL 的写操作。
+  # CLI flag: -ingester.wal-enabled
+  [enabled: &lt;boolean&gt; | default = true]
+
+  # WAL 数据目录
+  # CLI flag: -ingester.wal-dir
+  [dir: &lt;filename&gt; | default = &quot;wal&quot;]
+
+  # 启用 WAL 时，应在关机时将 chunks 刷新到长期存储中
+  # CLI flag: -ingester.flush-on-shutdown
+  [flush_on_shutdown: &lt;boolean&gt; | default = false]
+
+  # checkpoints 被创建的间隔
+  # CLI flag: ingester.checkpoint-duration
+  [checkpoint_duration: &lt;duration&gt; | default = 5m]
+
+  # WAL 在重放期间可能使用的最大内存大小。
+  # 达到后，在继续之前将数据刷新到存储中去。
+  # 可以使用的单位后缀包括：KB、MB、GB。
+  [replay_memory_ceiling: &lt;string&gt; | default = 4GB]
+
+# ingesters 中用于进程内倒排索引的分片。
+# 这必须被所有 schema 中的 shard factors 整除，否则 Loki 将不会启动。
+[index_shards: &lt;int&gt; | default = 32]
+</code></pre></div>
+<h2 id="querier">querier<a class="headerlink" href="#querier" title="Permanent link">&para;</a></h2>
+<p><code>querier</code> 配置块用于配置 querier 组件，包含的属性有：</p>
+<div class="highlight"><pre><span></span><code># 在执行查询请求期间查询 ingesters 或存储的超时时间。
+# CLI flag: -querier.query-timeout
+[query_timeout: &lt;duration&gt; | default = 1m]
+
+# 为实时跟踪请求提供服务的最长持续时间。
+# CLI flag: -querier.tail-max-duration
+[tail_max_duration: &lt;duration&gt; | default = 1h]
+
+# 发送超过最小成功查询请求之前的等待时间。
+# CLI flag: -querier.extra-query-delay
+[extra_query_delay: &lt;duration&gt; | default = 0s]
+
+# 最大回溯期，超过该值，查询不会发送到 ingester。
+# 0 意味着所有的 queries 被发送到 ingester。
+# CLI flag: -querier.query-ingesters-within
+[query_ingesters_within: &lt;duration&gt; | default = 3h]
+
+# 允许的最大并发查询数
+# CLI flag: -querier.max-concurrent
+[max_concurrent: &lt;int&gt; | default = 10]
+
+# 仅查询存储中的数据，不尝试查询任何 ingesters
+# CLI flag: -querier.query-store-only
+[query_store_only: &lt;boolean&gt; | default = false]
+
+# 是否允许查询多个租户
+# CLI flag: -querier.multi-tenant-queries-enabled
+[multi_tenant_queries_enabled: &lt;boolean&gt; | default = false]
+
+# LogQL 引擎配置选项
+engine:
+  # 查询执行超时时间
+  # CLI flag: -querier.engine.timeout
+  [timeout: &lt;duration&gt; | default = 3m]
+
+  # 查找日志行的最长时间，仅适用于即时日志查询。
+  # CLI flag: -querier.engine.max-lookback-period
+  [max_look_back_period: &lt;duration&gt; | default = 30s]
+</code></pre></div>
+<h2 id="query_range">query_range<a class="headerlink" href="#query_range" title="Permanent link">&para;</a></h2>
+<p>用于在 Loki 查询前端配置查询分割和缓存。</p>
+<div class="highlight"><pre><span></span><code># 不推荐: 按日拆分查询并行执行。
+# 用 -querier.split-queries-by-interval 代替.
+# CLI flag: -querier.split-queries-by-day
+[split_queries_by_day: &lt;boolean&gt; | default = false]
+
+# 对传入查询进行变更，使其开始和结束与其步长保持一致。
+# CLI flag: -querier.align-querier-with-step
+[align_queries_with_step: &lt;boolean&gt; | default = false]
+
+results_cache:  # 缓存
+  cache: &lt;cache_config&gt;
+
+# 缓存查询结果
+# CLI flag: -querier.cache-results
+[cache_results: &lt;boolean&gt; | default = false]
+
+# 单个请求的最大重试次数
+# CLI flag: -querier.max-retries-per-request
+[max_retries: &lt;int&gt; | default = 5]
+
+# 根据存储分片配置执行查询并行化，并查询AST。此功能仅由 chunks 存储引擎支持。
+# CLI flag: -querier.parallelise-shardable-queries
+[parallelise_shardable_queries: &lt;boolean&gt; | default = true]
+</code></pre></div>
+<h2 id="schema_config">schema_config<a class="headerlink" href="#schema_config" title="Permanent link">&para;</a></h2>
+<p>这里面主要定义的是 Loki 数据存储的策略，从默认的配置里面可以得到的信息是 Loki 里面保存的是2018年4月15日之后的数据，同时原始文件（chunks）存在 filesystem 中，index 存在 boltdb 当中且保存的周期是168小时。</p>
+<div class="highlight"><pre><span></span><code># 用于 chunk 索引 schemas 配置
+configs:
+- [&lt;period_config&gt;]
+</code></pre></div>
+<p>其中就包含一个 <code>period_config</code> 列表，该配置块用于配置从特定的时间段应该使用哪些索引模式。</p>
+<div class="highlight"><pre><span></span><code># 应该创建索引 buckets 的第一天的日期。
+# 如果这是唯一的 `period_config`，则使用过去的日期，否则在希望模式切换时使用日期。
+# YYYY-MM-DD 格式, 例如: 2018-04-15.
+[from: &lt;daytime&gt;]
+
+# 下面的 store 和 object_store 会决定使用哪个 &lt;storage_config&gt; key。
+
+# 用于索引的存储：aws、aws-dynamo、gcp、bigtable、bigtable-hashed、cassandra、boltdb 或者 boltdb-shipper。
+store: &lt;string&gt;
+
+# 用于 chunks 的存储：aws、azure、gcp、bigtable、gcs、cassandra、swift 或者 filesystem
+# 如果省略，则默认为与 store 相同的值。
+[object_store: &lt;string&gt;]
+
+# schema 使用的版本
+schema: &lt;string&gt;
+
+# 配置索引如何更新和存储
+index:
+  # 所有周期表的表前缀。
+  prefix: &lt;string&gt;
+  # Table 周期.
+  [period: &lt;duration&gt; | default = 168h]
+  # 要添加到所有管理的表中的标签。
+  tags:
+    [&lt;string&gt;: &lt;string&gt; ...]
+
+# 配置 chunks 的更新和存储方式。
+chunks:
+  prefix: &lt;string&gt;
+  [period: &lt;duration&gt; | default = 168h]
+  tags:
+    [&lt;string&gt;: &lt;string&gt; ...]
+
+# 将创建多少个分片。仅当 schema 为 v10 或更高版本时使用。
+[row_shards: &lt;int&gt; | default = 16]
+</code></pre></div>
+<p>Loki 对于数据存储的目标是向后兼容，通过修改 Schema 配置允许以增量方式升级到新的存储模式。首先，我们需要在<code>schema_config</code> 中创建一个新的 configs 条目，要记住的是新加的存储模式起始时间必须是将来的某个时间点，这样 Table Manager 就可以在之前创建所需的表，并确保不会查询现有数据。否则在查询时会因丢失旧的日志索引造成无法检索。例如我们要把2022年6月18日之后的 Loki 日志切换到 cassandra 和 S3 上，那么按照如下配置后，重启服务即可。</p>
+<div class="highlight"><pre><span></span><code>schema_config:
+  configs:
+  - from: 2018-04-15
+    store: boltdb
+    object_store: filesystem
+    schema: v10
+    index:
+      prefix: index_
+      period: 168h
+  - from: 2022-06-18
+    store: cassandra
+    object_store: aws
+    schema: v11
+    index:
+      prefix: index_
+      period: 720h
+    chunks:
+      prefix: chunks_
+      period: 720h
+storage_config:
+  boltdb:
+    directory: /data/loki/index
+  filesystem:
+    directory: /data/loki/chunks
+  cassandra:
+    username: cassandra
+    password: cassandra
+    addresses: cassandra
+    auth: true
+    keyspace: lokiindex
+  aws:
+    s3: s3://&lt;accessKey&gt;:&lt;secretKey&gt;@&lt;s3_url&gt;/&lt;buckets&gt;
+    s3forcepathstyle: true
+</code></pre></div>
+<p>上面的配置意思就是对于2022年6月18日之前保存的所有数据，Loki 使用 <code>v10</code> 的 schema，到点之后就采用 <code>v11</code> 的 schema 策略来存储日志。</p>
+<p><strong>cache_config</strong></p>
+<p><code>cache_config</code> 块用来配置 Loki 将如何缓存 requests、chunks 和索引到一个后端缓存存储中去。</p>
+<div class="highlight"><pre><span></span><code># 开启内存缓存
+# CLI flag: -&lt;prefix&gt;.cache.enable-fifocache
+[enable_fifocache: &lt;boolean&gt;]
+
+# 缓存的默认有效期（除非重写）。
+# CLI flag: -&lt;prefix&gt;.default-validity
+[default_validity: &lt;duration&gt;]
+
+# 在使用 memcached 时配置后台缓存
+background:
+  # 有多少 goroutines 用来写回 memcached。
+  # CLI flag: -&lt;prefix&gt;.background.write-back-concurrency
+  [writeback_goroutines: &lt;int&gt; | default = 10]
+
+  # 后台写回 memcached 需要缓存多少 chunks。
+  # CLI flagL -&lt;prefix&gt;.background.write-back-buffer
+  [writeback_buffer: &lt;int&gt; = 10000]
+
+# 配置 memcached
+memcached:
+  # 配置 memcached 中的 key 有效期
+  # CLI flag: -&lt;prefix&gt;.memcached.expiration
+  expiration: &lt;duration&gt;
+
+  # 配置每个批处理请求中要获取的 keys 数量。
+  # CLI flag: -&lt;prefix&gt;.memcached.batchsize
+  batch_size: &lt;int&gt; | default = 1024
+
+  # 对 memcached 的最大活动请求数。
+  # CLI flag: -&lt;prefix&gt;.memcached.parallelism
+  [parallelism: &lt;int&gt; | default = 100]
+
+# 配置如何连接到一个或多个 memcached 服务器
+memcached_client:
+  # 缓存 chunks 时用于 memcached 服务的主机名。
+  # 如果为空，没有 memcached 会被使用。将使用 SRV 查找。
+  # CLI flag: -&lt;prefix&gt;.memcached.hostname
+  [host: &lt;string&gt;]
+
+  # 用于发现 memcached 服务器的 SRV 服务。
+  # CLI flag: -&lt;prefix&gt;.memcached.service
+  [service: &lt;string&gt; | default = &quot;memcached&quot;]
+
+  # (实验性的) DNS 服务发现地址列表(逗号分隔)
+  # https://cortexmetrics.io/docs/configuration/arguments/#dns-service-discovery
+  # CLI flag: -&lt;prefix&gt;.memcached.addresses
+  [addresses: &lt;string&gt; | default = &quot;&quot;]
+
+  # memcached 请求超时时间
+  # CLI flag: -&lt;prefix&gt;.memcached.timeout
+  [timeout: &lt;duration&gt; | default = 100ms]
+
+  # memcached 客户端池中的最大空闲连接数。
+  # CLI flag: -&lt;prefix&gt;.memcached.max-idle-conns
+  [max_idle_conns: &lt;int&gt; | default = 16]
+
+  # 轮询 memcached 服务器的 DNS 的时间间隔。
+  # CLI flag: -&lt;prefix&gt;.memcached.update-interval
+  [update_interval: &lt;duration&gt; | default = 1m]
+
+  # 是否使用一致哈希来发现多个 memcached 服务器。
+  # CLI flag: -&lt;prefix&gt;.memcached.consistent-hash
+  [consistent_hash: &lt;boolean&gt; | default = true]
+
+  # CLI flag: -&lt;prefix&gt;.memcached.max-item-size
+  [max_item_size: &lt;int&gt; | default = 0]
+  # ...... 省略
+
+redis:
+  # 用于缓存的 Redis Server 或 Cluster 配置
+  # CLI flag: -&lt;prefix&gt;.redis.endpoint
+  [endpoint: &lt;string&gt;]
+  # ...... 省略
+
+fifocache:
+  # 最大缓存大小（bytes）
+  # CLI flag: -&lt;prefix&gt;.fifocache.max-size-bytes
+  [max_size_bytes: &lt;string&gt; | default = &quot;1GB&quot;]
+
+  # 最多缓存多少 items
+  # CLI flag: -&lt;prefix&gt;.fifocache.max-size-items
+  [max_size_items: &lt;int&gt; | default = 0]
+
+  # 缓存有效期
+  # The value of 0 disables auto-expiration.
+  # CLI flag: -&lt;prefix&gt;.fifocache.ttl
+  [ttl: &lt;duration&gt; | default = 1h]
+</code></pre></div>
+<p><strong>table_manager</strong></p>
+<p><code>Table Manager</code> 是 Loki的一个组件，主要负责在其时间段开始之前创建周期表，并在其数据时间范围超出保留期限时将其删除。它当前支持的后端包含如下</p>
+<div class="highlight"><pre><span></span><code># 用于表容量更新的主“关闭开关”，例如故障排除时。
+# CLI flag: -table-manager.throughput-updates-disabled
+[throughput_updates_disabled: &lt;boolean&gt; | default = false]
+
+# 用于表保留删除的主开关
+# CLI flag: -table-manager.retention-deletes-enabled
+[retention_deletes_enabled: &lt;boolean&gt; | default = false]
+
+# 在删除表之前，它们将保留多长时间，0s表示禁用删除。
+# 保留期必须是 index / chunks 表 &quot;period&quot; 的倍数。
+# CLI flag: -table-manager.retention-period
+[retention_period: &lt;duration&gt; | default = 0s]
+
+# 表管理器轮询表的时间间隔。
+# CLI flag: -table-manager.poll-interval
+[poll_interval: &lt;duration&gt; | default = 2m]
+
+# 在需要创建表之前的持续时间。
+# CLI flag: -table-manager.periodic-table.grace-period
+[creation_grace_period: &lt;duration&gt; | default = 10m]
+
+# 配置 DynamoDB 索引表。
+# The CLI flags prefix for this block config is: table-manager.index-table
+index_tables_provisioning: &lt;provision_config&gt;
+
+# 配置 DynamoDB chunk 表。
+# The CLI flags prefix for this block config is: table-manager.chunk-table
+chunk_tables_provisioning: &lt;provision_config&gt;
+</code></pre></div>
+<p>默认情况下，原始日志文件除了使用 filesystem 的存储有周期删除旧日志文件外，Loki 的其他 chunk 存储均不会删除旧日志文件 ，如果你的日志原始文件存储在 S3 上，那么我们可以直接找到旧的文件删除，这个动作仅仅只会影响我们查询不到这个时间区域的日志内容。如果你的 Loki 存储用了 table-based 的存储服务，那么日志的留存策略就会受到 <code>Table Manager</code> 的节制，它当前支持的后端包含如下：</p>
+<ul>
+<li>Index 日志索引</li>
+<li>Amazon DynamoDB</li>
+<li>Google Bigtable</li>
+<li>Apache Cassandra</li>
+<li>BoltDB (主要用于本地环境)</li>
+<li>Chunk 日志原始文件</li>
+<li>Amazon DynamoDB</li>
+<li>Google Bigtable</li>
+<li>Apache Cassandra</li>
+<li>Filesystem (主要用于本地环境)</li>
+</ul>
+<p>由于具有破坏性，默认情况下 <code>Table Manager</code> 功能被禁用，我们可以在配置中显式启用数据删除策略并将其保留期设置为大于0。</p>
+<div class="highlight"><pre><span></span><code>table_manager:
+  retention_deletes_enabled: true
+  retention_period: 336h
+</code></pre></div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="页脚">
+      
+        
+        <a href="../%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%A8%A1%E5%BC%8F/" class="md-footer__link md-footer__link--prev" aria-label="上一页: kubernetes 日志微服务模式" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              kubernetes 日志微服务模式
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../%E6%97%A5%E5%BF%97%E6%8A%A5%E8%AD%A6/" class="md-footer__link md-footer__link--next" aria-label="下一页: kubernetes 日志报警" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              kubernetes 日志报警
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 lixie
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/cnych" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://hub.docker.com/r/cnych/" target="_blank" rel="noopener" title="hub.docker.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M349.9 236.3h-66.1v-59.4h66.1v59.4zm0-204.3h-66.1v60.7h66.1V32zm78.2 144.8H362v59.4h66.1v-59.4zm-156.3-72.1h-66.1v60.1h66.1v-60.1zm78.1 0h-66.1v60.1h66.1v-60.1zm276.8 100c-14.4-9.7-47.6-13.2-73.1-8.4-3.3-24-16.7-44.9-41.1-63.7l-14-9.3-9.3 14c-18.4 27.8-23.4 73.6-3.7 103.8-8.7 4.7-25.8 11.1-48.4 10.7H2.4c-8.7 50.8 5.8 116.8 44 162.1 37.1 43.9 92.7 66.2 165.4 66.2 157.4 0 273.9-72.5 328.4-204.2 21.4.4 67.6.1 91.3-45.2 1.5-2.5 6.6-13.2 8.5-17.1l-13.3-8.9zm-511.1-27.9h-66v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm-78.1-72.1h-66.1v60.1h66.1v-60.1z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/cnych" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://instagram.com/cnych" target="_blank" rel="noopener" title="instagram.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["header.autohide", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.top", "toc.integrate", "search.suggest", "search.highlight", "content.code.annotate", "navigation.instant", "navigation.instant.prefetch", "navigation.path", "navigation.prune"], "search": "../../../assets/javascripts/workers/search.01824240.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.e8a254df.min.js"></script>
+      
+        <script src="../../../js/extra.js"></script>
+      
+        <script src="../../../js/baidu-tongji.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
