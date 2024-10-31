@@ -1,0 +1,4940 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Project documentation with Markdown.">
+      
+      
+        <meta name="author" content="Li">
+      
+      
+        <link rel="canonical" href="https://barry-boy.github.io/3.k8s/network/apisix/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-8.0.0">
+    
+    
+      
+        <title>APISIX - Kubernetes 进阶训练营</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ad626c1e.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9204c3b2.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,400i,700%7CUbuntu+Mono&display=fallback">
+        <style>:root{--md-text-font:"Ubuntu";--md-code-font:"Ubuntu Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>function __md_scope(e,t,_){return new URL(_||(t===localStorage?"../../..":"../../.."),location).pathname+"."+e}function __md_get(e,t=localStorage,_){return JSON.parse(t.getItem(__md_scope(e,t,_)))}function __md_set(e,t,_=localStorage,o){try{_.setItem(__md_scope(e,_,o),JSON.stringify(t))}catch(e){}}</script>
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#apisix" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="Kubernetes 进阶训练营" class="md-header__button md-logo" aria-label="Kubernetes 进阶训练营" data-md-component="logo">
+      
+  <img src="../../../material/logo.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Kubernetes 进阶训练营
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              APISIX
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换暗色主题"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="切换暗色主题" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="切换亮色主题"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="切换亮色主题" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/barry-boy/barry-boy.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      首页
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../0.Internet/Tcp-ip-docs/" class="md-tabs__link">
+        0、网络基础
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../1.os/ubuntu/kjc-doc/" class="md-tabs__link">
+        1、Linux
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../basic/cncf-docs/" class="md-tabs__link md-tabs__link--active">
+        2、kubernetes
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../python/1-python-docs/" class="md-tabs__link">
+        3、运维开发
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../k8s/mysql-operator/0-mysql-docs.md" class="md-tabs__link">
+        4、数据库
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../5.Storage/disk-ssd-docs/" class="md-tabs__link">
+        5、存储服务
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../6.Gitops/2024-9-26-Git-docs/" class="md-tabs__link">
+        6、Gitops
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../Devops/git-error-docs/" class="md-tabs__link">
+        7、Devops
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../ansible/ansible-case1/" class="md-tabs__link">
+        8、运维自动化
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../Macuse/mac-kubeconfig/" class="md-tabs__link">
+        9、其他
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../chatgpt/chatgpt-docs/" class="md-tabs__link">
+        10、Chatgpt
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../20.mylife/2024-9-24-myblog-life-docs/" class="md-tabs__link">
+        关于我
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Kubernetes 进阶训练营" class="md-nav__button md-logo" aria-label="Kubernetes 进阶训练营" data-md-component="logo">
+      
+  <img src="../../../material/logo.jpg" alt="logo">
+
+    </a>
+    Kubernetes 进阶训练营
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/barry-boy/barry-boy.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        首页
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          0、网络基础
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="0、网络基础" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          0、网络基础
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../0.Internet/Tcp-ip-docs/" class="md-nav__link">
+        网络 Tcp/IP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../0.Internet/5g-docs/" class="md-nav__link">
+        网络 思科设备
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../0.Internet/IB-ET-docs/" class="md-nav__link">
+        网络 网卡模式调整
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/asus/asus-docs/" class="md-nav__link">
+        华硕服务器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../0.Internet/ZeroTier/" class="md-nav__link">
+        ZeroTier组网
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../0.Internet/frp/" class="md-nav__link">
+        frp 内网穿透
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../0.Internet/3-0.Internet-docs.md" class="md-nav__link">
+        kubernetes 网络组件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../0.Internet/4-network-docs/" class="md-nav__link">
+        科学上网
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          1、Linux
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="1、Linux" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          1、Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/kjc-doc/" class="md-nav__link">
+        Linux 云计算手册大纲
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-bmc-doc/" class="md-nav__link">
+        Linux 带外管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-install-doc/" class="md-nav__link">
+        Linux 系统安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-cli-doc/" class="md-nav__link">
+        Linux 系统命令
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-mirror-doc/" class="md-nav__link">
+        Linux 国内apt源
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-nvme-doc/" class="md-nav__link">
+        Linux nvme磁盘管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-parted-doc/" class="md-nav__link">
+        Linux parted磁盘管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-reboot-doc/" class="md-nav__link">
+        Linux 系统强制重启
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-disk-doc/" class="md-nav__link">
+        Linux 磁盘管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-network-doc/" class="md-nav__link">
+        Linux 网络服务
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/2024-9-25-ssh-proxy-docs/" class="md-nav__link">
+        Linux SSH 转发代理实现
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          2、kubernetes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="2、kubernetes" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          2、kubernetes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic/cncf-docs/" class="md-nav__link">
+        云原生简介及CNCF
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/docker-docs/" class="md-nav__link">
+        Docker 基本管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/lxcfs.md" class="md-nav__link">
+        lxcfs 介绍
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/docker-images-docs/" class="md-nav__link">
+        docker 镜像构建
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/docker-proxy-docs/" class="md-nav__link">
+        docker proxy代理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/docker-image-clash-docs/" class="md-nav__link">
+        docker Clash代理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../base/k8s-overview/" class="md-nav__link">
+        kubernetes 简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3-k8s-systeminit-docs/" class="md-nav__link">
+        kubernetes 集群部署
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2024-9-19-k8s-update/" class="md-nav__link">
+        kubernetes 集群升级
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pod-base-docs/" class="md-nav__link">
+        kubernetes pod 基础原理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pod-hook-docs/" class="md-nav__link">
+        kubernetes pod 生命周期
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic/6-kubernetes-etcd-docs/" class="md-nav__link">
+        kubernetes etcd 简介与实践
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic/7-kubernetes-coredns-docs/" class="md-nav__link">
+        kubernetes coredns 简介与实践
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../k8s/k8s-calico-docs.md" class="md-nav__link">
+        kubernetes calico 网络
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../yaml/yaml/" class="md-nav__link">
+        kubernetes 资源清单
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../base/k8s-limit-docs/" class="md-nav__link">
+        kubernetes 资源限制
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../k8s-configmap-docs/" class="md-nav__link">
+        kubernetes 配置管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic/5-kubernetes-UI-docs/" class="md-nav__link">
+        Kubernetes UI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deploy-sts-ds-docs/" class="md-nav__link">
+        kubernetes 控制器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ingress-%E6%B5%81%E9%87%8F/" class="md-nav__link">
+        Ingress 流量
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0/" class="md-nav__link">
+        服务发现
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gateway-api/" class="md-nav__link">
+        Gateway API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dns-%E4%BC%98%E5%8C%96/" class="md-nav__link">
+        DNS 优化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ingress-nginx/" class="md-nav__link">
+        ingress-nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../service-profiles/" class="md-nav__link">
+        Service Profiles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-network-docs.md" class="md-nav__link">
+        科学上网
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        APISIX
+      </a>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../service/" class="md-nav__link">
+        Service
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../traefik/" class="md-nav__link">
+        Traefik
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ingress/" class="md-nav__link">
+        Ingress
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/pv-rep/" class="md-nav__link">
+        kubernetes pv/pvc简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../k8s-mon-docs/" class="md-nav__link">
+        kubernetes 监控服务
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../k8s-logs-docs/" class="md-nav__link">
+        kubernetes 日志管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../k8s-istio-docs/" class="md-nav__link">
+        kubernetes 服务网格
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cks/cka/" class="md-nav__link">
+        kubernetes CKA考题
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cks/cks/" class="md-nav__link">
+        kubernetes CKS考题
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ui/rancher-update-docs/" class="md-nav__link">
+        kubernetes Rancher 升级
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic/7-kubernetes-update-docs/" class="md-nav__link">
+        kubernetes 节点维护
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Helm/helm-install/" class="md-nav__link">
+        kubernetes Helm 实践
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Helm/helm-chart/" class="md-nav__link">
+        kubernetes Helm chart包
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2024-9-24-helmfile-docs/" class="md-nav__link">
+        kubernetes Helmfile 文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cert-manager/cert-manager-doc/" class="md-nav__link">
+        kubernetes Cert-manager 安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../other/k8s-ca-docs/" class="md-nav__link">
+        kubernetes 处理k8s证书过期
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../monitoring/prometheus/" class="md-nav__link">
+        Prometheus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../monitoring/victoriametrics/" class="md-nav__link">
+        VictoriaMetrics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../monitoring/promql/" class="md-nav__link">
+        PromQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../monitoring/%E9%BB%91%E7%9B%92%E7%9B%91%E6%8E%A7/" class="md-nav__link">
+        黑盒监控
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../monitoring/prometheus-operator/" class="md-nav__link">
+        Prometheus Operator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../monitoring/%E9%AB%98%E7%BA%A7%E9%85%8D%E7%BD%AE/" class="md-nav__link">
+        高级配置
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../monitoring/grafana/" class="md-nav__link">
+        Grafana
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../monitoring/%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%91%E6%8E%A7%E6%8A%A5%E8%AD%A6/" class="md-nav__link">
+        自定义监控报警
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../monitoring/alertmanager/" class="md-nav__link">
+        Alertmanager
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.logging/%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86%E6%9E%B6%E6%9E%84/" class="md-nav__link">
+        kubernete 日志架构
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.logging/%E6%90%AD%E5%BB%BA-efk-%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        kubernetes EFK日志系统
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/3.k8s/7.logging/fluentd.md" class="md-nav__link">
+        kubernete 日志fluentd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.logging/loki/" class="md-nav__link">
+        kubernete Loki
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.logging/%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB%E6%A8%A1%E5%BC%8F/" class="md-nav__link">
+        kubernetes 日志读写分离模式
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.logging/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%A8%A1%E5%BC%8F/" class="md-nav__link">
+        kubernetes 日志微服务模式
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.logging/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        kubernetes 日志配置文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.logging/%E6%97%A5%E5%BF%97%E6%8A%A5%E8%AD%A6/" class="md-nav__link">
+        kubernetes 日志报警
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../7.logging/logql/" class="md-nav__link">
+        kubernetes 日志 Logql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ansible-install-k8s-docs/" class="md-nav__link">
+        kubernetes 自动化安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4-ansible-install-k8s/" class="md-nav__link">
+        kubernetes 项目一
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic/9-install-keepalived-cluster/" class="md-nav__link">
+        kubernetes 项目二
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          3、运维开发
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="3、运维开发" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          3、运维开发
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/1-python-docs/" class="md-nav__link">
+        Python 开发-基础语法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/2-python-docs/" class="md-nav__link">
+        Python 开发-用户交互
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../go/go-base-docs/" class="md-nav__link">
+        GO开发-环境安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../go/2-go-docs/" class="md-nav__link">
+        GO 开发-操作符和表达式
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/module-docs/" class="md-nav__link">
+        模块
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          4、数据库
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="4、数据库" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          4、数据库
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../k8s/mysql-operator/0-mysql-docs.md" class="md-nav__link">
+        Mysql 数据库
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../k8s/mysql-operator/1-install-mysql-operator.md" class="md-nav__link">
+        Mysql operator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../k8s/mysql-operator/2-mysql-backup-docs.md" class="md-nav__link">
+        Mysql 备份恢复
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../k8s/mysql-operator/3-mysql-backup-error-docs.md" class="md-nav__link">
+        数据库问题处理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../redis/redis-class-docs/" class="md-nav__link">
+        redis 大纲
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/redis-docs/" class="md-nav__link">
+        redis 缓存加速
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/redis-cluster-docs/" class="md-nav__link">
+        redis 集群篇
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../redis/redis-save-docs/" class="md-nav__link">
+        redis 持久化
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          5、存储服务
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="5、存储服务" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          5、存储服务
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/disk-ssd-docs/" class="md-nav__link">
+        存储分类
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/ceph-base/" class="md-nav__link">
+        ceph 基础
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/rook-ceph/" class="md-nav__link">
+        ceph 分布式存储
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/rbd-docs/" class="md-nav__link">
+        ceph RBD使用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/cephfs-docs/" class="md-nav__link">
+        ceph 文件系统使用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/ceph-cli-docs/" class="md-nav__link">
+        ceph 命令用法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/osd/" class="md-nav__link">
+        ceph 性能测试
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/ceph-bucket/" class="md-nav__link">
+        ceph 对象存储
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/s3-client-docs/" class="md-nav__link">
+        ceph s3cmd管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/5-dev-docs/" class="md-nav__link">
+        ceph 存储修复
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/expand-docs/" class="md-nav__link">
+        ceph 存储扩容
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/ceph-tools/" class="md-nav__link">
+        ceph 外部环境连接集群
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/clean-ceph-docs/" class="md-nav__link">
+        ceph 集群清理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/ceph-error/" class="md-nav__link">
+        ceph 错误指南
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/6-ceph-crush-docs/" class="md-nav__link">
+        ceph 高级参数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/Juicefs/" class="md-nav__link">
+        Juicefs存储方案
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/juicefs-update/" class="md-nav__link">
+        Juicefs版本升级
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          6、Gitops
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="6、Gitops" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          6、Gitops
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../6.Gitops/2024-9-26-Git-docs/" class="md-nav__link">
+        Git Commit 问题
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../6.Gitops/2024-10-10-Github-rsync-Gitee/" class="md-nav__link">
+        Github Rysnc 同步 Gitee
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          7、Devops
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="7、Devops" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          7、Devops
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Devops/git-error-docs/" class="md-nav__link">
+        Git 报错指南
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Devops/github/" class="md-nav__link">
+        Github
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Devops/4-github-gitee-doc/" class="md-nav__link">
+        Github仓库同步至Gitee
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Devops/3-github-docs/" class="md-nav__link">
+        Google 浏览器扩展
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_10">
+          8、运维自动化
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="8、运维自动化" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          8、运维自动化
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ansible/ansible-case1/" class="md-nav__link">
+        Ansible 应用基础
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ansible/ansible-docs2/" class="md-nav__link">
+        Ansible 高级用法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ansible/ansible-install-docs/" class="md-nav__link">
+        Ansible 安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ansible/ansible-playbook/" class="md-nav__link">
+        Ansible playbook
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_11">
+          9、其他
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="9、其他" data-md-level="1">
+        <label class="md-nav__title" for="__nav_11">
+          <span class="md-nav__icon md-icon"></span>
+          9、其他
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Macuse/mac-kubeconfig/" class="md-nav__link">
+        kubeconfig 实践应用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../k3s/k3s-docs/" class="md-nav__link">
+        k3s 大纲介绍
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../k3s/k3s-install/" class="md-nav__link">
+        k3s 边缘计算
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Macuse/mac-k9s-doc/" class="md-nav__link">
+        k9s 实践应用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Macuse/mac-usb-system/" class="md-nav__link">
+        Mac 制作ubuntu系统盘
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Macuse/mac-vscode/" class="md-nav__link">
+        Mac vscode使用技巧
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../error/tjtu/" class="md-nav__link">
+        天津集群
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../error/dev/" class="md-nav__link">
+        Dev环境集群
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../error/delete-prometheus-db/" class="md-nav__link">
+        误删除监控数据
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../error/kubernetes-pvc-ubound-doc/" class="md-nav__link">
+        Kubernetes pvc ubound
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../error/cent1.os-dns-error-docs.md" class="md-nav__link">
+        dns 文件权限调整
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/mac-docs/" class="md-nav__link">
+        如何利用Mac 写博客文章
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/google-docs/" class="md-nav__link">
+        高效利用谷歌来搜索
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/discord-docs/" class="md-nav__link">
+        Discord 新手教程
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/jenkins/" class="md-nav__link">
+        Jenkins
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/%E4%BD%BF%E7%94%A8-mtls-%E4%BF%9D%E6%8A%A4%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1/" class="md-nav__link">
+        使用 mTLS 保护应用程序通信
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/%E7%A4%BA%E4%BE%8B/" class="md-nav__link">
+        示例
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/%E5%87%BD%E6%95%B0%E5%92%8C%E7%AE%A1%E9%81%93/" class="md-nav__link">
+        函数和管道
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/chart-hooks/" class="md-nav__link">
+        Chart Hooks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/dapr/" class="md-nav__link">
+        Dapr
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/configmap/" class="md-nav__link">
+        ConfigMap
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/kubernetes-进阶训练营第3期课程文档.md" class="md-nav__link">
+        Kubernetes 进阶训练营第3期课程文档
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/gitops-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F/" class="md-nav__link">
+        GitOps 是什么？
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/linkerd/" class="md-nav__link">
+        Linkerd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/secrets-store/" class="md-nav__link">
+        Secrets store
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/tekton/" class="md-nav__link">
+        Tekton
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/secret/" class="md-nav__link">
+        Secret
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/%E8%AE%BF%E9%97%AE%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        访问文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/argo-rollouts/" class="md-nav__link">
+        Argo Rollouts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/%E5%8D%87%E7%BA%A7-linkerd/" class="md-nav__link">
+        升级 Linkerd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/%E6%B5%81%E6%B0%B4%E7%BA%BF/" class="md-nav__link">
+        流水线
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E4%BD%BF%E7%94%A8-linkerd/" class="md-nav__link">
+        生产环境使用 Linkerd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/%E6%9C%8D%E5%8A%A1%E8%B4%A8%E9%87%8F/" class="md-nav__link">
+        服务质量
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/%E8%B0%83%E5%BA%A6/" class="md-nav__link">
+        调度
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/helm/" class="md-nav__link">
+        Helm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/argo-cd/" class="md-nav__link">
+        Argo CD
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/notes.txt-%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        NOTES.txt 文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85/" class="md-nav__link">
+        发布订阅
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/jenkins-pipeline/" class="md-nav__link">
+        Jenkins Pipeline
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/subcharts-%E5%92%8C-global-values/" class="md-nav__link">
+        Subcharts 和 Global Values
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/%E5%AE%9E%E6%88%98-tekton-%E6%B5%81%E6%B0%B4%E7%BA%BF/" class="md-nav__link">
+        实战 Tekton 流水线
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/%E9%BB%84%E9%87%91%E6%8C%87%E6%A0%87/" class="md-nav__link">
+        黄金指标
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/" class="md-nav__link">
+        流程控制
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/%E8%A7%A6%E5%8F%91%E5%99%A8%E5%92%8C%E4%BA%8B%E4%BB%B6%E7%9B%91%E5%90%AC%E5%99%A8/" class="md-nav__link">
+        触发器和事件监听器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/%E6%A8%A1%E6%9D%BF%E8%B0%83%E8%AF%95/" class="md-nav__link">
+        模板调试
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7/" class="md-nav__link">
+        可观测性
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/dapr-bindings/" class="md-nav__link">
+        Dapr Bindings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/charts/" class="md-nav__link">
+        Charts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1/" class="md-nav__link">
+        内置对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/%E4%B8%AD%E9%97%B4%E4%BB%B6/" class="md-nav__link">
+        中间件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/%E5%8F%98%E9%87%8F/" class="md-nav__link">
+        变量
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/%E5%91%BD%E5%90%8D%E6%A8%A1%E6%9D%BF/" class="md-nav__link">
+        命名模板
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/values-%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        Values 文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/harbor/" class="md-nav__link">
+        Harbor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/descheduler/" class="md-nav__link">
+        Descheduler
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/%E4%BB%BB%E5%8A%A1/" class="md-nav__link">
+        任务
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/%E8%B0%83%E5%BA%A6%E5%99%A8/" class="md-nav__link">
+        调度器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/crane/" class="md-nav__link">
+        Crane
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/%E6%B5%81%E9%87%8F%E6%8B%86%E5%88%86/" class="md-nav__link">
+        流量拆分
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/documentation-that-simply-works/" class="md-nav__link">
+        Documentation that simply works
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/zadig/" class="md-nav__link">
+        Zadig
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../other/misc/gitlab/" class="md-nav__link">
+        Gitlab
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_12">
+          10、Chatgpt
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="10、Chatgpt" data-md-level="1">
+        <label class="md-nav__title" for="__nav_12">
+          <span class="md-nav__icon md-icon"></span>
+          10、Chatgpt
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../chatgpt/chatgpt-docs/" class="md-nav__link">
+        注册chatgpt
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../chatgpt/google-ai-docs/" class="md-nav__link">
+        搜索技术记录
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../chatgpt/gpts-docs/" class="md-nav__link">
+        如何使用Chatgpt来制作专属gpt
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" type="checkbox" id="__nav_13" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_13">
+          关于我
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="关于我" data-md-level="1">
+        <label class="md-nav__title" for="__nav_13">
+          <span class="md-nav__icon md-icon"></span>
+          关于我
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../20.mylife/2024-9-24-myblog-life-docs/" class="md-nav__link">
+        我的博客
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../20.mylife/2021-life-docs/" class="md-nav__link">
+        我的2021
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../20.mylife/2022-life-docs/" class="md-nav__link">
+        我的2022
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../20.mylife/2023-life-docs/" class="md-nav__link">
+        我的2023
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../20.mylife/2024-life-docs/" class="md-nav__link">
+        我的2024
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/barry-boy/barry-boy.github.io/edit/master/docs/3.k8s/network/apisix.md" title="编辑此页" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="apisix">APISIX<a class="headerlink" href="#apisix" title="Permanent link">&para;</a></h1>
+<p><a href="https://github.com/cnych/qikqiak.com/edit/master/docs/network/apisix.md" title="编辑此页"> </a></p>
+<h1 id="apisix_1">APISIX<a class="headerlink" href="#apisix_1" title="Permanent link">&para;</a></h1>
+<p><a href="https://apisix.apache.org/">Apache APISIX</a> 是一个基于 <code>OpenResty</code> 和 Etcd 实现的动态、实时、高性能的 API 网关，目前已经是 Apache 顶级项目。提供了丰富的流量管理功能，如负载均衡、动态路由、动态 upstream、A/B 测试、金丝雀发布、限速、熔断、防御恶意攻击、认证、监控指标、服务可观测性、服务治理等。可以使用 APISIX 来处理传统的南北流量以及服务之间的东西向流量。</p>
+<p>APISIX 基于 Nginx 和 etcd，与传统 API 网关相比，APISIX 具有动态路由和热加载插件功能，避免了配置之后的 reload 操作，同时 APISIX 支持 HTTP(S)、HTTP2、Dubbo、QUIC、MQTT、TCP/UDP 等更多的协议。而且还内置了 Dashboard，提供强大而灵活的界面。同样也提供了丰富的插件支持功能，而且还可以让用户自定义插件。</p>
+<p><img alt="APISIX 架构图" src="https://picdn.youdianzhishi.com/images/20211230145321.png" /></p>
+<p>上图是 APISIX 的架构图，整体上分成数据面和控制面两个部分，控制面用来管理路由，主要通过 etcd 来实现配置中心，数据面用来处理客户端请求，通过 APISIX 自身来实现，会不断去 watch etcd 中的 route、upstream 等数据。</p>
+<h2 id="apisix-ingress">APISIX Ingress<a class="headerlink" href="#apisix-ingress" title="Permanent link">&para;</a></h2>
+<p>同样作为一个 API 网关，APISIX 也支持作为 Kubernetes 的一个 Ingress 控制器进行使用。APISIX Ingress 在架构上分成了两部分，一部分是 APISIX Ingress Controller，作为控制面它将完成配置管理与分发。另一部分 APISIX(代理) 负责承载业务流量。</p>
+<p><img alt="apisix-ingress-controller" src="https://picdn.youdianzhishi.com/images/20211230152050.png" /></p>
+<p>当 Client 发起请求，到达 Apache APISIX 后，会直接把相应的业务流量传输到后端（如 Service Pod），从而完成转发过程。此过程不需要经过 Ingress Controller，这样做可以保证一旦有问题出现，或者是进行变更、扩缩容或者迁移处理等，都不会影响到用户和业务流量。</p>
+<p>同时在配置端，用户通过 <code>kubectl apply</code> 创建资源，可将自定义 CRD 配置应用到 K8s 集群，Ingress Controller 会持续 watch 这些资源变更，来将相应配置应用到 Apache APISIX（通过 admin api）。</p>
+<p>从上图可以看出 APISIX Ingress 采用了数据面与控制面的分离架构，所以用户可以选择将数据面部署在 K8s 集群内部或外部。但 Ingress Nginx 是将控制面和数据面放在了同一个 Pod 中，如果 Pod 或控制面出现一点闪失，整个 Pod 就会挂掉，进而影响到业务流量。这种架构分离，给用户提供了比较方便的部署选择，同时在业务架构调整场景下，也方便进行相关数据的迁移与使用。</p>
+<p>APISIX Ingress 控制器目前支持的核心特性包括：</p>
+<ul>
+<li>全动态，支持高级路由匹配规则，可与 Apache APISIX 官方 50 多个插件 &amp; 客户自定义插件进行扩展使用</li>
+<li>支持 CRD，更容易理解声明式配置</li>
+<li>兼容原生 Ingress 资源对象</li>
+<li>支持流量切分</li>
+<li>服务自动注册发现，无惧扩缩容</li>
+<li>更灵活的负载均衡策略，自带健康检查功能</li>
+<li>支持 gRPC plaintext 与 TCP 4 层代理</li>
+</ul>
+<h2 id="_1">安装<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>我们这里在 Kubernetes 集群中来使用 APISIX，可以通过 Helm Chart 来进行安装，首先添加官方提供的 Helm Chart 仓库：</p>
+<div class="highlight"><pre><span></span><code>➜ helm repo add apisix https://charts.apiseven.com
+➜ helm repo update
+</code></pre></div>
+<p>由于 APISIX 的 Chart 包中包含 dashboard 和 ingress 控制器的依赖，我们只需要在 values 中启用即可安装 ingress 控制器了：</p>
+<div class="highlight"><pre><span></span><code>➜ helm fetch apisix/apisix
+➜ tar -xvf apisix-0.7.2.tgz
+➜ mkdir -p apisix/ci
+</code></pre></div>
+<p>在 <code>apisix/ci</code> 目录中新建一个用于安装的 values 文件，内容如下所示：</p>
+<div class="highlight"><pre><span></span><code># ci/prod.yaml
+apisix:
+  enabled: true
+
+  nodeSelector: # 固定在node2节点上
+    kubernetes.io/hostname: node2
+
+gateway:
+  type: NodePort
+  externalTrafficPolicy: Cluster
+  http:
+    enabled: true
+    servicePort: 80
+    containerPort: 9080
+  tls:
+    enabled: true # 启用 tls
+    servicePort: 443
+    containerPort: 9443
+
+etcd:
+  enabled: true # 会自动创建3个节点的etcd集群
+  replicaCount: 1 # 多副本需要修改下模板，这里暂时运行一个etcd pod
+
+dashboard:
+  enabled: true
+
+ingress-controller:
+  enabled: true
+  config:
+    apisix:
+      serviceName: apisix-admin
+      serviceNamespace: apisix # 指定命名空间，如果不是 ingress-apisix 需要重新指定
+</code></pre></div>
+<blockquote>
+<p>经测试官方的 Helm Chart 包对 etcd 多节点集群支持不是很好，我测试跑 3 个节点会出问题，另外对外部的 etcd tls 集群兼容度也不好，比如 dashboard 的 Chart 需要自己修改模板去支持 tls，所以这里我们测试先改成 1 个副本的 etcd 集群。</p>
+</blockquote>
+<p>APISIX 需要依赖 etcd，默认情况下 Helm Chart 会自动安装一个 3 副本的 etcd 集群，需要提供一个默认的 StorageClass（存储章节会详细讲解），如果你已经有默认的存储类则可以忽略下面的步骤，这里我们安装一个 nfs 的 provisioner，用下面的命令可以安装一个默认的 StorageClass：</p>
+<div class="highlight"><pre><span></span><code>➜ helm repo add nfs-subdir-external-provisioner https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner/
+➜ helm upgrade --install nfs-subdir-external-provisioner nfs-subdir-external-provisioner/nfs-subdir-external-provisioner \
+--set nfs.server=192.168.31.31 \
+--set nfs.path=/var/lib/k8s/data \
+--set image.repository=cnych/nfs-subdir-external-provisioner \
+--set storageClass.defaultClass=true -n kube-system
+</code></pre></div>
+<p>安装完成后会自动创建一个 StorageClass：</p>
+<div class="highlight"><pre><span></span><code>➜ kubectl get sc
+NAME                   PROVISIONER                                     RECLAIMPOLICY   VOLUMEBINDINGMODE      ALLOWVOLUMEEXPANSION   AGE
+nfs-client (default)   cluster.local/nfs-subdir-external-provisioner   Delete          Immediate              true                   35s
+</code></pre></div>
+<p>然后直接执行下面的命令进行一键安装：</p>
+<div class="highlight"><pre><span></span><code>➜ helm upgrade --install apisix ./apisix -f ./apisix/ci/prod.yaml -n apisix
+Release &quot;apisix&quot; does not exist. Installing it now.
+NAME: apisix
+LAST DEPLOYED: Thu Dec 30 16:28:38 2021
+NAMESPACE: apisix
+STATUS: deployed
+REVISION: 1
+NOTES:
+1. Get the application URL by running these commands:
+  export NODE_PORT=$(kubectl get --namespace apisix -o jsonpath=&quot;{.spec.ports[0].nodePort}&quot; services apisix-gateway)
+  export NODE_IP=$(kubectl get nodes --namespace apisix -o jsonpath=&quot;{.items[0].status.addresses[0].address}&quot;)
+  echo http://$NODE_IP:$NODE_PORT
+</code></pre></div>
+<p>正常就可以成功部署 apisix 了：</p>
+<div class="highlight"><pre><span></span><code>➜ kubectl get pods -n apisix
+NAME                                         READY   STATUS    RESTARTS   AGE
+apisix-dashboard-b69d5c768-r6tqk             1/1     Running   0          85m
+apisix-etcd-0                                1/1     Running   0          90m
+apisix-fb8cdb569-wz9gq                       1/1     Running   0          87m
+apisix-ingress-controller-7d5bbf5dd5-r6khq   1/1     Running   0          85m
+➜ kubectl get svc -n apisix
+NAME                        TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)                      AGE
+apisix-admin                ClusterIP   10.97.108.252    &lt;none&gt;        9180/TCP                     24h
+apisix-dashboard            ClusterIP   10.108.202.136   &lt;none&gt;        80/TCP                       24h
+apisix-etcd                 ClusterIP   10.107.150.100   &lt;none&gt;        2379/TCP,2380/TCP            24h
+apisix-etcd-headless        ClusterIP   None             &lt;none&gt;        2379/TCP,2380/TCP            24h
+apisix-gateway              NodePort    10.97.214.188    &lt;none&gt;        80:32200/TCP,443:31417/TCP   24h
+apisix-ingress-controller   ClusterIP   10.103.176.26    &lt;none&gt;        80/TCP                       24h
+</code></pre></div>
+<h2 id="dashboard">Dashboard<a class="headerlink" href="#dashboard" title="Permanent link">&para;</a></h2>
+<p>现在我们可以为 Dashboard 创建一个路由规则，新建一个如下所示的 <code>ApisixRoute</code> 资源对象即可：</p>
+<div class="highlight"><pre><span></span><code>apiVersion: apisix.apache.org/v2beta2
+kind: ApisixRoute
+metadata:
+  name: dashboard
+  namespace: apisix
+spec:
+  http:
+    - name: root
+      match:
+        hosts:
+          - apisix.qikqiak.com
+        paths:
+          - &quot;/*&quot;
+      backends:
+        - serviceName: apisix-dashboard
+          servicePort: 80
+</code></pre></div>
+<p>创建后 <code>apisix-ingress-controller</code> 会将上面的资源对象通过 admin api 映射成 APISIX 中的配置：</p>
+<div class="highlight"><pre><span></span><code>➜ kubectl get apisixroute -n apisixNAME        HOSTS                    URIS     AGE
+dashboard   [&quot;apisix.qikqiak.com&quot;]   [&quot;/*&quot;]   75m
+</code></pre></div>
+<p>所以其实我们的访问入口是 APISIX，而 <code>apisix-ingress-controller</code> 只是一个用于监听 crds，然后将 crds 翻译成 APISIX 的配置的工具而已，现在就可以通过 <code>apisix-gateway</code> 的 NodePort 端口去访问我们的 dashboard 了：</p>
+<p><img alt="dashboard" src="https://picdn.youdianzhishi.com/images/20220106204704.png" /></p>
+<p>当然如果不想在访问的时候域名后面带上端口，在云端环境可以直接将 <code>apisix-gateway</code> 这个 Service 设置成 LoadBalancer 模式，在本地测试的时候可以使用 <code>kubectl port-forward</code> 将服务暴露在节点的 80 端口上：</p>
+<div class="highlight"><pre><span></span><code># node2 节点暴露 apisix-gateway 服务
+➜ kubectl port-forward --address 0.0.0.0 svc/apisix-gateway 80:80 443:443 -n apisix
+</code></pre></div>
+<p>默认登录用户名和密码都是 admin，登录后在<code>路由</code>菜单下正常可以看到上面我们创建的这个 dashboard 的路由信息：</p>
+<p><img alt="dashboard route" src="https://picdn.youdianzhishi.com/images/20220106204824.png" /></p>
+<p>点击<code>更多</code>下面的<code>查看</code>就可以看到在 APISIX 下面真正的路由配置信息：</p>
+<p><img alt="apisix config" src="https://picdn.youdianzhishi.com/images/20220106205210.png" /></p>
+<p>所以我们要使用 APISIX，也一定要理解其中的路由 Route 这个概念，路由（Route）是请求的入口点，它定义了客户端请求与服务之间的匹配规则，路由可以与服务（Service）、上游（Upstream）关联，一个服务可对应一组路由，一个路由可以对应一个上游对象（一组后端服务节点），因此，每个匹配到路由的请求将被网关代理到路由绑定的上游服务中。</p>
+<p>理解了路由后自然就知道了我们还需要一个上游 Upstream 进行关联，这个概念和 Nginx 中的 Upstream 基本是一致的，在<code>上游</code>菜单下可以看到我们上面创建的 dashboard 对应的上游服务：</p>
+<p><img alt="Upstream" src="https://picdn.youdianzhishi.com/images/20220106210148.png" /></p>
+<p>其实就是将 Kubernetes 中的 Endpoints 映射成 APISIX 中的 Upstream，然后我们可以自己在 APISIX 这边进行负载。</p>
+<p>APISIX 提供的 Dashboard 功能还是非常全面的，我们甚至都可以直接在页面上进行所有的配置，包括插件这些，非常方便。</p>
+<p><img alt="插件" src="https://picdn.youdianzhishi.com/images/20220106210535.png" /></p>
+<p>当然还有很多其他高级的功能，比如流量切分、请求认证等等，这些高级功能在 crds 中去使用则更加方便了，当然也是支持原生的 Ingress 资源对象的，关于 APISIX 的更多用法，后续再进行说明。</p>
+<h2 id="url-rewrite">URL Rewrite<a class="headerlink" href="#url-rewrite" title="Permanent link">&para;</a></h2>
+<p>同样我们来介绍下如何使用 APISIX 来实现 URL Rewrite 操作，同样还是以前面测试用过的 Nexus 应用为例进行说明，通过 <code>ApisixRoute</code> 对象来配置服务路由，对应的资源清单如下所示：</p>
+<div class="highlight"><pre><span></span><code># nexus.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nexus
+  labels:
+    app: nexus
+spec:
+  selector:
+    matchLabels:
+      app: nexus
+  template:
+    metadata:
+      labels:
+        app: nexus
+    spec:
+      containers:
+        - image: cnych/nexus:3.20.1
+          imagePullPolicy: IfNotPresent
+          name: nexus
+          ports:
+            - containerPort: 8081
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: nexus
+  name: nexus
+spec:
+  ports:
+    - name: nexusport
+      port: 8081
+      targetPort: 8081
+  selector:
+    app: nexus
+---
+apiVersion: apisix.apache.org/v2beta2
+kind: ApisixRoute
+metadata:
+  name: nexus
+  namespace: default
+spec:
+  http:
+    - name: root
+      match:
+        hosts:
+          - ops.qikqiak.com
+        paths:
+          - &quot;/*&quot;
+      backends:
+        - serviceName: nexus
+          servicePort: 8081
+</code></pre></div>
+<p>直接创建上面的资源对象即可：</p>
+<div class="highlight"><pre><span></span><code>➜ kubectl apply -f nexus.yaml
+➜ kubectl get apisixroute
+NAME    HOSTS                   URIS     AGE
+nexus   [&quot;ops.qikqiak.com&quot;]   [&quot;/*&quot;]   39s
+➜ kubectl get pods -l app=nexus
+NAME                     READY   STATUS    RESTARTS   AGE
+nexus-6f78b79d4c-b79r4   1/1     Running   0          48s
+➜ kubectl get svc -l app=nexus
+NAME    TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+nexus   ClusterIP   10.102.53.243   &lt;none&gt;        8081/TCP   58s
+</code></pre></div>
+<p>部署完成后，我们根据 <code>ApisixRoute</code> 对象中的配置，只需要将域名 <code>ops.qikqiak.com</code> 解析到 node2 节点（上面通过 port-forward 暴露了 80 端口）即可访问：</p>
+<p><img alt="nexus" src="https://picdn.youdianzhishi.com/images/20220107153823.png" /></p>
+<p>同样如果现在需要通过一个子路径来访问 Nexus 应用的话又应该怎么来实现呢？比如通过 <code>http://ops.qikqiak.com/nexus</code> 来访问我们的应用，首先我们肯定需要修改 <code>ApisixRoute</code> 对象中匹配的 paths 路径，将其修改为 <code>/nexus</code>：</p>
+<div class="highlight"><pre><span></span><code>apiVersion: apisix.apache.org/v2beta2
+kind: ApisixRoute
+metadata:
+  name: nexus
+  namespace: default
+spec:
+  http:
+    - name: root
+      match:
+        hosts:
+          - ops.qikqiak.com
+        paths:
+          - &quot;/nexus*&quot;
+      backends:
+        - serviceName: nexus
+          servicePort: 8081
+</code></pre></div>
+<p>更新后我们可以通过 <code>http://ops.qikqiak.com/nexus</code> 访问应用：</p>
+<p><img alt="nexus 404" src="https://picdn.youdianzhishi.com/images/20220107154431.png" /></p>
+<p>仔细分析发现很多静态资源 404 了，这是因为现在我们只匹配了 <code>/nexus</code> 的请求，而我们的静态资源是 <code>/static</code> 路径开头的，当然就匹配不到了，所以就出现了 404，所以我们只需要加上这个 <code>/static</code> 路径的匹配就可以了，同样更新 ApisixRoute 对象，新增 <code>/static/*</code> 路径支持：</p>
+<div class="highlight"><pre><span></span><code>apiVersion: apisix.apache.org/v2beta2
+kind: ApisixRoute
+metadata:
+  name: nexus
+  namespace: default
+spec:
+  http:
+    - name: root
+      match:
+        hosts:
+          - ops.qikqiak.com
+        paths:
+          - &quot;/nexus*&quot;
+          - &quot;/static/*&quot;
+      backends:
+        - serviceName: nexus
+          servicePort: 8081
+</code></pre></div>
+<p>更新后发现虽然静态资源可以正常访问了，但是当我们访问 <code>http://ops.qikqiak.com/nexus</code> 的时候依然会出现 404 错误。</p>
+<p><img alt="nexus 404" src="https://picdn.youdianzhishi.com/images/20220107164101.png" /></p>
+<p>这是因为我们这里是将 <code>/nexus</code> 路径的请求直接路由到后端服务去了，而后端服务没有对该路径做任何处理，所以也就是 404 的响应了，在之前 ingress-nginx 或者 traefik 中我们是通过 url 重写来实现的，而在 APISIX 中同样可以实现这个处理，相当于在请求在真正到达上游服务之前将请求的 url 重写到根目录就可以了，这里我们需要用到 <a href="https://apisix.apache.org/zh/docs/apisix/plugins/proxy-rewrite">proxy-rewrite</a> 这个插件（需要确保在安装的时候已经包含了该插件），<code>proxy-rewrite</code> 是上游代理信息重写插件，支持对 scheme、uri、host 等信息的重写，该插件可配置的属性如下表所示：</p>
+<p><img alt="proxy-rewrite 属性" src="https://picdn.youdianzhishi.com/images/20220107165657.png" /></p>
+<p>我们现在的需求是希望将所有 <code>/nexus</code> 下面的请求都重写到根路径 <code>/</code> 下面去，所以我们应该使用 <code>regex_uri</code> 属性，转发到上游的新 uri 地址, 使用正则表达式匹配来自客户端的 uri，当匹配成功后使用模板替换转发到上游的 uri, 未匹配成功时将客户端请求的 uri 转发至上游，重新修改后的 <code>ApisixRoute</code> 对象如下所示，新增 <code>plugins</code> 属性来配置插件：</p>
+<div class="highlight"><pre><span></span><code>apiVersion: apisix.apache.org/v2beta2
+kind: ApisixRoute
+metadata:
+  name: nexus
+  namespace: default
+spec:
+  http:
+    - name: root
+      match:
+        hosts:
+          - ops.qikqiak.com
+        paths:
+          - &quot;/nexus*&quot;
+          - &quot;/static/*&quot;
+      plugins:
+        - name: proxy-rewrite
+          enable: true
+          config:
+            regex_uri: [&quot;^/nexus(/|$)(.*)&quot;, &quot;/$2&quot;]
+      backends:
+        - serviceName: nexus
+          servicePort: 8081
+</code></pre></div>
+<p>这里我们启用一个 <code>proxy-rewrite</code> 插件，并且将所有 <code>/nexus</code> 路径的请求都重写到了 <code>/</code> 跟路径下，重新更新后再次访问 <code>http://ops.qikqiak.com/nexus</code> 应该就可以正常访问了：</p>
+<p><img alt="nexus" src="https://picdn.youdianzhishi.com/images/20220107170211.png" /></p>
+<p>只有最后一个小问题了，从浏览器网络请求中可以看出我们没有去匹配 <code>/service</code> 这个路径的请求，只需要配置上该路径即可，如下所示：</p>
+<div class="highlight"><pre><span></span><code>apiVersion: apisix.apache.org/v2beta2
+kind: ApisixRoute
+metadata:
+  name: nexus
+  namespace: default
+spec:
+  http:
+    - name: root
+      match:
+        hosts:
+          - ops.qikqiak.com
+        paths:
+          - &quot;/nexus*&quot;
+          - &quot;/static/*&quot;
+          - &quot;/service/*&quot;
+      plugins:
+        - name: proxy-rewrite
+          enable: true
+          config:
+            regex_uri: [&quot;^/nexus(/|$)(.*)&quot;, &quot;/$2&quot;]
+      backends:
+        - serviceName: nexus
+          servicePort: 8081
+</code></pre></div>
+<p>现在重新访问子路径就完成正常了：</p>
+<p><img alt="子路径" src="https://picdn.youdianzhishi.com/images/20220107171802.png" /></p>
+<h2 id="redirect">redirect<a class="headerlink" href="#redirect" title="Permanent link">&para;</a></h2>
+<p>现在当我们访问 <code>http://ops.qikqiak.com/nexus</code> 或者 <code>http://ops.qikqiak.com/nexus/</code> 的时候都可以得到正常的结果，一般来说我们可能希望能够统一访问路径，比如访问 <code>/nexus</code> 子路径的时候可以自动跳转到 <code>/nexus/</code> 以 Splash 结尾的路径上去。同样要实现该需求我们只需要使用一个名为 <code>redirect</code> 的插件即可，该插件是 URI 重定向插件，可配置的属性如下所示：</p>
+<p><img alt="redirect 插件" src="https://picdn.youdianzhishi.com/images/20220107174345.png" /></p>
+<p>要实现我们的需求直接使用 <code>regex_uri</code> 这个属性即可，只需要去匹配 <code>/nexus</code> 的请求，然后进行跳转即可，更新 <code>ApisixRoute</code> 对象：</p>
+<div class="highlight"><pre><span></span><code>apiVersion: apisix.apache.org/v2beta2
+kind: ApisixRoute
+metadata:
+  name: nexus
+  namespace: default
+spec:
+  http:
+    - name: root
+      match:
+        hosts:
+          - ops.qikqiak.com
+        paths:
+          - &quot;/nexus*&quot;
+          - &quot;/static/*&quot;
+          - &quot;/service/*&quot;
+      plugins:
+        - name: proxy-rewrite
+          enable: true
+          config:
+            regex_uri: [&quot;^/nexus(/|$)(.*)&quot;, &quot;/$2&quot;]
+        - name: redirect
+          enable: true
+          config:
+            regex_uri: [&quot;^(/nexus)$&quot;, &quot;$1/&quot;]
+      backends:
+        - serviceName: nexus
+          servicePort: 8081
+</code></pre></div>
+<p>我们新启用了一个 <code>redirect</code> 插件，并配置 <code>regex_uri: ["^(/nexus)$", "$1/"]</code>，这样当访问 <code>/nexus</code> 的时候会自动跳转到 <code>/nexus/</code> 路径下面去。</p>
+<p>同样如果我们想要重定向到 https，只需要在该插件下面设置 <code>config.http_to_https=true</code> 即可：</p>
+<div class="highlight"><pre><span></span><code># ... 其他部分省略
+- name: redirect
+  enable: true
+  config:
+    http_to_https: true
+</code></pre></div>
+<h2 id="tls">tls<a class="headerlink" href="#tls" title="Permanent link">&para;</a></h2>
+<p>通过使用上面的 <code>redirect</code> 插件配置 <code>http_to_https</code> 可以将请求重定向到 https 上去，但是我们现在并没有对我们的 <code>ops.qikqiak.com</code> 配置 https 证书，这里我们就需要使用 <code>ApisixTls</code> 对象来进行证书管理。</p>
+<p>我们先使用 <code>openssl</code> 创建一个自签名的证书，当然你有正规 CA 机构购买的证书的话直接将证书下载下来使用即可：</p>
+<div class="highlight"><pre><span></span><code>➜ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj &quot;/CN=ops.qikqiak.com&quot;
+</code></pre></div>
+<p>然后通过 Secret 对象来引用上面创建的证书文件：</p>
+<div class="highlight"><pre><span></span><code># 要注意证书文件名称必须是 tls.crt 和 tls.key
+➜ kubectl create secret tls ops-tls --cert=tls.crt --key=tls.key
+</code></pre></div>
+<p>然后就可以创建一个 <code>ApisixTls</code> 资源对象，引用上面的 Secret 即可：</p>
+<div class="highlight"><pre><span></span><code>apiVersion: apisix.apache.org/v1
+kind: ApisixTls
+metadata:
+  name: ops-tls
+spec:
+  hosts:
+    - ops.qikqiak.com
+  secret:
+    name: ops-tls
+    namespace: default
+</code></pre></div>
+<p>同时 APISIX TLS 还可以配置 <code>spec.client</code>，用于进行 mTLS 双向认证的配置。上面的资源对象创建完成后，即可访问 https 服务了（chrome 浏览器默认会限制不安全的证书，只需要在页面上输入 <code>thisisunsafe</code> 即可访问了）：</p>
+<p><img alt="https" src="https://picdn.youdianzhishi.com/images/20220107182859.png" /></p>
+<p>而且当访问 http 的时候也会自动跳转到 https 上面去，此外我们还可以结合 cert-manager 来实现自动化的 https。</p>
+<h2 id="auth">auth<a class="headerlink" href="#auth" title="Permanent link">&para;</a></h2>
+<p>身份认证在日常生活当中是非常常见的一项功能，大家平时基本都会接触到。比如用支付宝消费时的人脸识别确认、公司上班下班时的指纹/面部打卡以及网站上进行账号密码登录操作等，其实都是身份认证的场景体现。</p>
+<p><img alt="auth" src="https://picdn.youdianzhishi.com/images/20220111150328.png" /></p>
+<p>如上图，Jack 通过账号密码请求服务端应用，服务端应用中需要有一个专门用做身份认证的模块来处理这部分的逻辑。请求处理完毕子后，如果使用 JWT Token 认证方式，服务器会反馈一个 Token 去标识这个用户为 Jack。如果登录过程中账号密码输入错误，就会导致身份认证失败。</p>
+<p>但是每个应用服务模块去开发一个单独的身份认证模块，用来支持身份认证的一套流程处理，当服务量多了之后，就会发现这些模块的开发工作量都是非常巨大且重复的。这个时候，我们可以通过把这部分的开发逻辑放置到 Apache APISIX 的网关层来实现统一，减少开发量。</p>
+<p><img alt="apisix auth" src="https://picdn.youdianzhishi.com/images/20220111150551.png" /></p>
+<p>如上图所示，用户或应用方直接去请求 Apache APISIX，然后 Apache APISIX 通过识别并认证通过后，会将鉴别的身份信息传递到上游应用服务，之后上游应用服务就可以从请求头中读到这部分信息，然后进行后续的逻辑处理。</p>
+<p>Apache APISIX 作为一个 API 网关，目前已开启与各种插件功能的适配合作，插件库也比较丰富。目前已经可与大量身份认证相关的插件进行搭配处理，如下图所示。</p>
+<p><img alt="API 网关认证插件" src="https://picdn.youdianzhishi.com/images/20220111150813.png" /></p>
+<p>基础认证插件比如 <code>Key-Auth</code>、<code>Basic-Auth</code>，他们是通过账号密码的方式进行认证。复杂一些的认证插件如 <code>Hmac-Auth</code>、<code>JWT-Auth</code>，如 <code>Hmac-Auth</code> 通过对请求信息做一些加密，生成一个签名，当 API 调用方将这个签名携带到 Apache APISIX，Apache APISIX 会以相同的算法计算签名，只有当签名方和应用调用方认证相同时才予以通过。其他则是一些通用认证协议和联合第三方组件进行合作的认证协议，例如 <code>OpenID-Connect</code> 身份认证机制，以及 <code>LDAP</code> 认证等。</p>
+<p>Apache APISIX 还可以针对每一个 Consumer （即调用方应用）去做不同级别的插件配置。如下图所示，我们创建了两个消费者 Consumer A、Consumer B，我们将 Consumer A 应用到应用 1，则后续应用 1 的访问将会开启 Consumer A 的这部分插件，例如 IP 黑白名单，限制并发数量等。将 Consumer B 应用到应用 2 ，由于开启了 http-log 插件，则应用 2 的访问日志将会通过 HTTP 的方式发送到日志系统进行收集。</p>
+<p><img alt="配置灵活" src="https://picdn.youdianzhishi.com/images/20220111151051.png" /></p>
+<p>总体说来 APISIX 的认证系统功能非常强大，我们非常有必要掌握。</p>
+<h3 id="basic-auth">basic-auth<a class="headerlink" href="#basic-auth" title="Permanent link">&para;</a></h3>
+<p>首先我们来了解下最简单的基本认证在 APISIX 中是如何使用的。<code>basic-auth</code> 是一个认证插件，它需要与 Consumer 一起配合才能工作。添加 Basic Auth 到一个 Service 或 Route，然后 Consumer 将其用户名和密码添加到请求头中以验证其请求。</p>
+<p>首先我们需要在 APISIX Consumer 消费者中增加 basic auth 认证配置，为其指定用户名和密码，我们这里在 APISIX Ingress 中，可以通过 <code>ApisixConsumer</code> 资源对象进行配置，比如这里我们为前面的 nexus 实例应用添加一个基本认证，如下所示：</p>
+<div class="highlight"><pre><span></span><code># nexus-basic-auth.yaml
+apiVersion: apisix.apache.org/v2alpha1
+kind: ApisixConsumer
+metadata:
+  name: nexusBauth
+spec:
+  authParameter:
+    basicAuth:
+      value:
+        username: admin
+        password: admin321
+</code></pre></div>
+<p><code>ApisixConsumer</code> 资源对象中只需要配置 <code>authParameter</code> 认证参数即可，目前只支持 <code>BasicAuth</code> 与 <code>KeyAuth</code> 两种认证类型，在 basicAuth 下面可以通过 value 可直接去配置相关的 username 和 password，也可以直接使用 Secret 资源对象进行配置，比起明文配置会更安全一些。</p>
+<p>然后在 <code>ApisixRoute</code> 中添加 authentication，将其开启并指定认证类型即可，就可以实现使用 Consumer 去完成相关配置认证，如下所示：</p>
+<div class="highlight"><pre><span></span><code>apiVersion: apisix.apache.org/v2beta2
+kind: ApisixRoute
+metadata:
+  name: nexus
+  namespace: default
+spec:
+  http:
+    - name: root
+      match:
+        hosts:
+          - ops.qikqiak.com
+        paths:
+          - &quot;/nexus*&quot;
+          - &quot;/static/*&quot;
+          - &quot;/service/*&quot;
+      plugins:
+        - name: proxy-rewrite
+          enable: true
+          config:
+            regex_uri: [&quot;^/nexus(/|$)(.*)&quot;, &quot;/$2&quot;]
+        - name: redirect
+          enable: true
+          config:
+            regex_uri: [&quot;^(/nexus)$&quot;, &quot;$1/&quot;]
+        - name: redirect
+          enable: true
+          config:
+            http_to_https: true
+      backends:
+        - serviceName: nexus
+          servicePort: 8081
+      authentication: # 开启 basic auth 认证
+        enable: true
+        type: basicAuth
+</code></pre></div>
+<p>直接更新上面的资源即可开启 basic auth 认证了，在 Dashboard 上也可以看到创建了一个 Consumer：</p>
+<p><img alt="consumer" src="https://picdn.youdianzhishi.com/images/20220111160306.png" /></p>
+<p>然后我们可以进行如下的测试来进行验证：</p>
+<div class="highlight"><pre><span></span><code># 缺少 Authorization header
+➜ curl -i http://ops.qikqiak.com/nexus/
+HTTP/1.1 401 Unauthorized
+Date: Tue, 11 Jan 2022 07:44:49 GMT
+Content-Type: text/plain; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+WWW-Authenticate: Basic realm=&#39;.&#39;
+Server: APISIX/2.10.0
+
+{&quot;message&quot;:&quot;Missing authorization in request&quot;}
+# 用户名不存在
+➜ curl -i -ubar:bar http://ops.qikqiak.com/nexus/
+HTTP/1.1 401 Unauthorized
+Date: Tue, 11 Jan 2022 07:45:07 GMT
+Content-Type: text/plain; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Server: APISIX/2.10.0
+
+{&quot;message&quot;:&quot;Invalid user key in authorization&quot;}
+# 成功请求
+➜ curl -uadmin:admin321 http://ops.qikqiak.com/nexus/
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;301 Moved Permanently&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;center&gt;&lt;h1&gt;301 Moved Permanently&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;openresty&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div>
+<h3 id="consumer-restriction">consumer-restriction<a class="headerlink" href="#consumer-restriction" title="Permanent link">&para;</a></h3>
+<p>不过这里大家可能会有一个疑问，在 Route 上面我们并没有去指定具体的一个 Consumer，然后就可以进行 Basic Auth 认证了，那如果我们有多个 Consumer 都定义了 Basic Auth 岂不是都会生效的？确实是这样的，这就是 APISIX 的实现方式，所有的 Consumer 对启用对应插件的 Route 都会生效的，如果我们只想 Consumer A 应用在 Route A、Consumer B 应用在 Route B 上面的话呢？要实现这个功能就需要用到另外一个插件：<a href="https://apisix.apache.org/zh/docs/apisix/plugins/consumer-restriction/">consumer-restriction</a>。</p>
+<p><code>consumer-restriction</code> 插件可以根据选择的不同对象做相应的访问限制，该插件可配置的属性如下表所示：</p>
+<p><img alt="consumer restriction" src="https://picdn.youdianzhishi.com/images/20220113151055.png" /></p>
+<p>其中的 type 字段是个枚举类型，它可以是 <code>consumer_name</code> 或 <code>service_id</code>，分别代表以下含义：</p>
+<ul>
+<li><code>consumer_name</code>：把 consumer 的 username 列入白名单或黑名单（支持单个或多个 consumer）来限制对服务或路由的访问。</li>
+<li><code>service_id</code>：把 service 的 id 列入白名单或黑名单（支持一个或多个 service）来限制 service 的访问，需要结合授权插件一起使用。</li>
+</ul>
+<p>比如现在我们有两个 Consumer：jack1 和 jack2，这两个 Consumer 都配置了 Basic Auth 认证，配置如下所示：</p>
+<p>Conumer <code>jack1</code> 的认证配置：</p>
+<div class="highlight"><pre><span></span><code>➜ curl http://192.168.31.46/apisix/admin/consumers -H &#39;X-API-KEY: edd1c9f034335f136f87ad84b625c8f1&#39; -X PUT -i -d &#39;
+{
+    &quot;username&quot;: &quot;jack1&quot;,
+    &quot;plugins&quot;: {
+        &quot;basic-auth&quot;: {
+            &quot;username&quot;:&quot;jack2019&quot;,
+            &quot;password&quot;: &quot;123456&quot;
+        }
+    }
+}&#39;
+</code></pre></div>
+<p>Conumer <code>jack2</code> 的认证配置：</p>
+<div class="highlight"><pre><span></span><code>➜ curl http://192.168.31.46/apisix/admin/consumers -H &#39;X-API-KEY: edd1c9f034335f136f87ad84b625c8f1&#39; -X PUT -i -d &#39;
+{
+    &quot;username&quot;: &quot;jack2&quot;,
+    &quot;plugins&quot;: {
+        &quot;basic-auth&quot;: {
+            &quot;username&quot;:&quot;jack2020&quot;,
+            &quot;password&quot;: &quot;123456&quot;
+        }
+    }
+}&#39;
+</code></pre></div>
+<p>现在我们只想给一个 Route 路由对象启用 jack1 这个 Consumer 的认证配置，则除了启用 <code>basic-auth</code> 插件之外，还需要在 <code>consumer-restriction</code> 插件中配置一个 <code>whitelist</code> 白名单（当然配置黑名单也是可以的），如下所示：</p>
+<div class="highlight"><pre><span></span><code>➜ curl http://192.168.31.46/apisix/admin/routes/1 -H &#39;X-API-KEY: edd1c9f034335f136f87ad84b625c8f1&#39; -X PUT -d &#39;
+{
+    &quot;uri&quot;: &quot;/index.html&quot;,
+    &quot;upstream&quot;: {
+        &quot;type&quot;: &quot;roundrobin&quot;,
+        &quot;nodes&quot;: {
+            &quot;127.0.0.1:1980&quot;: 1
+        }
+    },
+    &quot;plugins&quot;: {
+        &quot;basic-auth&quot;: {},
+        &quot;consumer-restriction&quot;: {
+            &quot;whitelist&quot;: [
+                &quot;jack1&quot;
+            ]
+        }
+    }
+}&#39;
+</code></pre></div>
+<p>然后我们使用 jack1 去访问我们的路由进行验证：</p>
+<div class="highlight"><pre><span></span><code>➜ curl -u jack2019:123456 http://127.0.0.1:9080/index.html -i
+HTTP/1.1 200 OK
+...
+</code></pre></div>
+<p>正常使用 jack2 访问就会认证失败了：</p>
+<div class="highlight"><pre><span></span><code>➜ curl -u jack2020:123456 http://127.0.0.1:9080/index.html -i
+HTTP/1.1 403 Forbidden
+...
+{&quot;message&quot;:&quot;The consumer_name is forbidden.&quot;}
+</code></pre></div>
+<p>所以当你只想让一个 Route 对象关联指定的 Consumer 的时候，记得使用 <code>consumer-restriction</code> 插件。</p>
+<h3 id="jwt-auth">jwt-auth<a class="headerlink" href="#jwt-auth" title="Permanent link">&para;</a></h3>
+<p>在平时的应用中可能使用 jwt 认证的场景是最多的，同样在 APISIX 中也有提供 <code>jwt-auth</code> 的插件，它同样需要与 Consumer 一起配合才能工作，我们只需要添加 JWT Auth 到一个 Service 或 Route，然后 Consumer 将其密钥添加到查询字符串参数、请求头或 cookie 中以验证其请求即可。</p>
+<p>由于目前 <code>ApisixConsumer</code> 还不支持 <code>jwt-auth</code> 配置，所以需要我们去 APISIX 手动创建一个 Consumer，可以通过 APISIX 的 API 进行创建，当然也可以直接通过 Dashboard 页面操作。在 Dashboard 消费者页面点击创建消费者：</p>
+<p><img alt="创建消费者" src="https://picdn.youdianzhishi.com/images/20220111164118.png" /></p>
+<p>点击<strong>下一步</strong> 进入插件配置页面，这里我们需要启用 <code>jwt-auth</code> 这个插件：</p>
+<p><img alt="启用jwt-auth" src="https://picdn.youdianzhishi.com/images/20220111164300.png" /></p>
+<p>在插件配置页面配置 <code>jwt-auth</code> 相关属性，可参考插件文档 <a href="https://apisix.apache.org/zh/docs/apisix/plugins/jwt-auth/">https://apisix.apache.org/zh/docs/apisix/plugins/jwt-auth/</a>:</p>
+<p><img alt="配置jwt-auth" src="https://picdn.youdianzhishi.com/images/20220111164443.png" /></p>
+<p>可配置的属性如下表所示：</p>
+<p><img alt="jwt 属性" src="https://picdn.youdianzhishi.com/images/20220111184501.png" /></p>
+<p>然后提交即可创建完成 Consumer，然后我们只需要在需要的 Service 或者 Route 上开启 <code>jwt-auth</code> 即可，比如同样还是针对上面的 nexus 应用，我们只需要在 <code>ApisixRoute</code> 对象中启用一个 <code>jwt-auth</code> 插件即可：</p>
+<div class="highlight"><pre><span></span><code>apiVersion: apisix.apache.org/v2beta2
+kind: ApisixRoute
+metadata:
+  name: nexus
+  namespace: default
+spec:
+  http:
+    - name: root
+      match:
+        hosts:
+          - ops.qikqiak.com
+        paths:
+          - &quot;/nexus*&quot;
+          - &quot;/static/*&quot;
+          - &quot;/service/*&quot;
+      plugins:
+        - name: jwt-auth
+          enable: true
+        - name: redirect
+          enable: true
+          config:
+            http_to_https: true
+        - name: redirect
+          enable: true
+          config:
+            regex_uri: [&quot;^(/nexus)$&quot;, &quot;$1/&quot;]
+        - name: proxy-rewrite
+          enable: true
+          config:
+            regex_uri: [&quot;^/nexus(/|$)(.*)&quot;, &quot;/$2&quot;]
+      backends:
+        - serviceName: nexus
+          servicePort: 8081
+</code></pre></div>
+<p>需要注意的是 <code>authentication</code> 属性也不支持 <code>jwt-auth</code>，所以这里我们通过 <code>plugins</code> 进行启用，重新更新上面的对象后我们同样来测试验证下：</p>
+<div class="highlight"><pre><span></span><code>➜ curl -i http://ops.qikqiak.com/nexus/
+HTTP/1.1 401 Unauthorized
+Date: Tue, 11 Jan 2022 08:54:30 GMT
+Content-Type: text/plain; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Server: APISIX/2.10.0
+
+{&quot;message&quot;:&quot;Missing JWT token in request&quot;}
+</code></pre></div>
+<p>要正常访问我们的服务就需要先进行登录获取 <code>jwt-auth</code> 的 token，通过 APISIX 的 <code>apisix/plugin/jwt/sign</code> 可以获取：</p>
+<div class="highlight"><pre><span></span><code>➜ curl -i http://192.168.31.46/apisix/plugin/jwt/sign\?key\=user-key
+HTTP/1.1 200 OK
+Date: Tue, 11 Jan 2022 09:01:29 GMT
+Content-Type: text/plain; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Server: APISIX/2.10.0
+
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXkiOiJ1c2VyLWtleSIsImV4cCI6MTY0MTk3ODA4OX0.rdzMxM4QAKI444c3SC3u3ZqfW9rKnsqrdorLHCGqrQg
+</code></pre></div>
+<p>要注意上面我们在获取 token 的时候需要传递创建消费者的标识 key，因为可能有多个不同的 Consumer 消费者，然后我们将上面获得的 token 放入到 Header 头中进行访问：</p>
+<div class="highlight"><pre><span></span><code>➜ curl -i http://ops.qikqiak.com/nexus/ -H &#39;Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXkiOiJ1c2VyLWtleSIsImV4cCI6MTY0MTk3ODA4OX0.rdzMxM4QAKI444c3SC3u3ZqfW9rKnsqrdorLHCGqrQg&#39;
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=utf-8
+Content-Length: 8802
+Connection: keep-alive
+......
+Expires: 0
+Server: APISIX/2.10.0
+
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+......
+</code></pre></div>
+<p>可以看到可以正常访问。同样也可以放到请求参数中验证：</p>
+<div class="highlight"><pre><span></span><code>➜ curl -i http://ops.qikqiak.com/nexus/?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXkiOiJ1c2VyLWtleSIsImV4cCI6MTY0MTk3ODA4OX0.rdzMxM4QAKI444c3SC3u3ZqfW9rKnsqrdorLHCGqrQg
+HTTP/1.1 200 OK
+......
+</code></pre></div>
+<p>此外还可以放到 cookie 中进行验证：</p>
+<div class="highlight"><pre><span></span><code>➜ curl -i http://ops.qikqiak.com/nexus/ --cookie jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXkiOiJ1c2VyLWtleSIsImV4cCI6MTY0MTk3ODA4OX0.rdzMxM4QAKI444c3SC3u3ZqfW9rKnsqrdorLHCGqrQg
+HTTP/1.1 200 OK
+......
+</code></pre></div>
+<h2 id="_2">自定义插件<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>除了 APISIX 官方内置的插件之外，我们也可以根据自己的需求去自定义插件，要自定义插件需要使用到 APISIX 提供的 Runner，目前已经支持 Java、Go 和 Python 语言的 Runner，这个 Runner 相当于是 APISIX 和自定义插件之间的桥梁，比如 <code>apache-apisix-python-runner</code> 这个项目通过 Python Runner 可以把 Python 直接应用到 APISIX 的插件开发中，整体架构如下所示：</p>
+<p><img alt="Apache APISIX work flow" src="https://picdn.youdianzhishi.com/images/20220112114451.png" /></p>
+<p>左边是 APISIX 的工作流程，右边的 <code>Plugin Runner</code> 是各语言的插件运行器，当在 APISIX 中配置一个 Plugin Runner 时，APISIX 会启动一个子进程运行 Plugin Runner，该子进程与 APISIX 进程属于同一个用户，当我们重启或重新加载 APISIX 时，Plugin Runner 也将被重启。</p>
+<p>如果你为一个给定的路由配置了 <code>ext-plugin-*</code> 插件，请求命中该路由时将触发 APISIX 通过 <code>Unix Socket</code> 向 Plugin Runner 发起 RPC 调用。调用分为两个阶段：</p>
+<ul>
+<li><code>ext-plugin-pre-req</code>：在执行 APISIX 内置插件之前</li>
+<li><code>ext-plugin-post-req</code>：在执行 APISIX 内置插件之后</li>
+</ul>
+<p>接下来我们就以 Python 为例来说明如何自定义插件，首先获取 <code>apache-apisix-python-runner</code> 项目：</p>
+<div class="highlight"><pre><span></span><code>➜ git clone https://github.com/apache/apisix-python-plugin-runner.git
+➜ cd apisix-python-plugin-runner
+➜ git checkout 0.1.0  # 切换刀0.1.0版本
+</code></pre></div>
+<p>如果是开发模式，则我们可以直接使用下面的命令启动 Python Runner：</p>
+<div class="highlight"><pre><span></span><code>➜ APISIX_LISTEN_ADDRESS=unix:/tmp/runner.sock python3 apisix/main.py start
+</code></pre></div>
+<p>启动后需要在 APISIX 配置文件中新增外部插件配置，如下所示：</p>
+<div class="highlight"><pre><span></span><code>➜ vim /path/to/apisix/conf/config.yaml
+apisix:
+  admin_key:
+    - name: &quot;admin&quot;
+      key: edd1c9f034335f136f87ad84b625c8f1
+      role: admin
+
+ext-plugin:
+  path_for_test: /tmp/runner.sock
+</code></pre></div>
+<p>通过 <code>ext-plugin.path_for_test</code> 指定 Python Runner 的 unix socket 文件路径即可，如果是生产环境则可以通过 <code>ext-plugin.cmd</code> 来指定 Runner 的启动命令即可：</p>
+<div class="highlight"><pre><span></span><code>ext-plugin:
+  cmd: [ &quot;python3&quot;, &quot;/path/to/apisix-python-plugin-runner/apisix/main.py&quot;, &quot;start&quot; ]
+</code></pre></div>
+<p>我们这里的 APISIX 是运行 Kubernetes 集群中的，所以要在 APISIX 的 Pod 中去执行 Python Runner 的代码，我们自然需要将我们的 Python 代码放到 APISIX 的容器中去，然后安装自定义插件的相关依赖，直接在 APISIX 配置文件中添加上面的配置即可，所以我们这里基于 APISIX 的镜像来重新定制包含插件的镜像，在 <code>apisix-python-plugin-runner</code> 项目根目录下新增如下所示的 Dockerfile 文件：</p>
+<div class="highlight"><pre><span></span><code>FROM apache/apisix:2.10.0-alpine
+
+ADD . /apisix-python-plugin-runner
+
+RUN apk add --update python3 py3-pip &amp;&amp; \
+    cd /apisix-python-plugin-runner &amp;&amp; \
+    python3 -m pip install --upgrade pip &amp;&amp; \
+    python3 -m pip install -r requirements.txt --ignore-installed &amp;&amp; \
+    python3 setup.py install --force
+</code></pre></div>
+<p>基于上面 Dockerfile 构建一个新的镜像，推送到 Docker Hub：</p>
+<div class="highlight"><pre><span></span><code>➜ docker build -t cnych/apisix:py3-plugin-2.10.0-alpine .
+# 推送到DockerHub
+➜ docker push cnych/apisix:py3-plugin-2.10.0-alpine
+</code></pre></div>
+<p>接下来我们需要使用上面构建的镜像来安装 APISIX，我们这里使用的是 Helm Chart 进行安装的，所以需要通过 Values 文件进行覆盖，如下所示：</p>
+<div class="highlight"><pre><span></span><code># ci/prod.yaml
+apisix:
+  enabled: true
+
+  image:
+    repository: cnych/apisix
+    tag: py3-plugin-2.10.0-alpine
+......
+</code></pre></div>
+<p>由于官方的 Helm Chart 没有提供对 <code>ext-plugin</code> 配置的支持，所以需要我们手动修改模板文件 <code>templates/configmap.yaml</code>，在 <code>apisix</code> 属性同级目录下面新增 <code>ext-plugin</code> 相关配置，如下所示：</p>
+<div class="highlight"><pre><span></span><code>{{- if .Values.extPlugins.enabled }}
+ext-plugin:
+  {{- if .Values.extPlugins.pathForTest }}
+  path_for_test: {{ .Values.extPlugins.pathForTest }}
+  {{- end }}
+  {{- if .Values.extPlugins.cmds }}
+  cmd:
+  {{- range $cmd := .Values.extPlugins.cmds }}
+  - {{ $cmd }}
+  {{- end }}
+  {{- end }}
+{{- end }}
+
+nginx_config:
+  user: root  # fix 执行 python runner没权限的问题
+</code></pre></div>
+<p>然后在定制的 Values 文件中添加如下所示的配置：</p>
+<div class="highlight"><pre><span></span><code># ci/prod.yaml
+extPlugins:
+  enabled: true
+  cmds: [&quot;python3&quot;, &quot;/apisix-python-plugin-runner/apisix/main.py&quot;, &quot;start&quot;]
+</code></pre></div>
+<p>接着就可以重新部署 APISIX 了：</p>
+<div class="highlight"><pre><span></span><code>➜ helm upgrade --install apisix ./apisix -f ./apisix/ci/prod.yaml -n apisix
+</code></pre></div>
+<p>部署完成后在 APISIX 的 Pod 中可以看到会启动一个 Python Runner 的子进程：</p>
+<p><img alt="apisix top" src="https://picdn.youdianzhishi.com/images/20220113152636.png" /></p>
+<p>在插件目录 <code>/apisix-python-plugin-runner/apisix/plugins</code> 中的 <code>.py</code> 文件都会被自动加载，上面示例中有两个插件 <code>stop.py</code> 和 <code>rewrite.py</code>，我们以 <code>stop.py</code> 为例进行说明，该插件代码如下所示：</p>
+<div class="highlight"><pre><span></span><code>from apisix.runner.plugin.base import Base
+from apisix.runner.http.request import Request
+from apisix.runner.http.response import Response
+
+
+class Stop(Base):
+    def __init__(self):
+        super(Stop, self).__init__(self.__class__.__name__)
+
+    def filter(self, request: Request, response: Response):
+        # 可以通过 `self.config` 获取配置信息，如果插件配置为JSON将自动转换为字典结构
+        # print(self.config)
+
+        # 设置响应 Header 头
+        response.headers[&quot;X-Resp-A6-Runner&quot;] = &quot;Python&quot;
+        # 设置响应body
+        response.body = &quot;Hello, Python Runner of APISIX&quot;
+        # 设置响应状态码
+        response.status_code = 201
+
+        # 通过调用 `self.stop()` 中断请求流程，此时将立即响应请求给客户端
+        # 如果未显示调用 `self.stop()` 或 显示调用 `self.rewrite()`将继续将请求
+        # 默认为 `self.rewrite()`
+        self.stop()
+</code></pre></div>
+<p>实现插件首先必须要继承 <code>Base</code> 类，必须实现 <code>filter</code> 函数，插件执行核心业务逻辑就是在 <code>filter</code> 函数中，该函数只包含 <code>Request</code> 和 <code>Response</code> 类对象作为参数，<code>Request</code> 对象参数可以获取请求信息，<code>Response</code> 对象参数可以设置响应信息 ，<code>self.config</code> 可以获取插件配置信息，在 <code>filter</code> 函数中调用 <code>self.stop()</code> 时将马上中断请求，响应数据，调用 <code>self.rewrite()</code> 时，将会继续请求。</p>
+<p>然后我们在前面的 Nexus 应用中新增一个路由来测试我们上面的 <code>stop</code> 插件，在 <code>ApisixRoute</code> 对象中新增一个路由规则，如下所示：</p>
+<div class="highlight"><pre><span></span><code>apiVersion: apisix.apache.org/v2beta2
+kind: ApisixRoute
+metadata:
+  name: nexus
+  namespace: default
+spec:
+  http:
+    - name: ext
+      match:
+        hosts:
+          - ops.qikqiak.com
+        paths:
+          - &quot;/extPlugin&quot;
+      plugins:
+        - name: ext-plugin-pre-req # 启用ext-plugin-pre-req插件
+          enable: true
+          config:
+            conf:
+              - name: &quot;stop&quot; # 使用 stop 这个自定义插件
+                value: &#39;{&quot;body&quot;:&quot;hello&quot;}&#39;
+      backends:
+        - serviceName: nexus
+          servicePort: 8081
+</code></pre></div>
+<p>直接创建上面的路由即可，核心配置是启用 <code>ext-plugin-pre-req</code> 插件（前提是在配置文件中已经启用该插件，在 Helm Chart 的 Values 中添加上），然后在 <code>config</code> 下面使用 <code>conf</code> 属性进行配置，<code>conf</code> 为数组格式可以同时设置多个插件，插件配置对象中 <code>name</code> 为插件名称，该名称需要与插件代码文件和对象名称一致，<code>value</code> 为插件配置，可以为 JSON 字符串。</p>
+<p>创建后同样在 Dashboard 中也可以看到 APISIX 中的路由配置格式：</p>
+<p><img alt="apisix ext plugin" src="https://picdn.youdianzhishi.com/images/20220112182659.png" /></p>
+<p>接着我们可以来访问 <code>http://ops.qikqiak.com/extPlugin</code> 这个路径来验证我们的自定义插件：</p>
+<div class="highlight"><pre><span></span><code>➜ curl -i http://ops.qikqiak.com/extPlugin
+HTTP/1.1 201 Created
+Date: Thu, 13 Jan 2022 07:04:50 GMT
+Content-Type: text/plain; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+accept: */*
+user-agent: curl/7.64.1
+host: ops.qikqiak.com
+X-Resp-A6-Runner: Python
+Server: APISIX/2.10.0
+
+Hello, Python Runner of APISIX
+</code></pre></div>
+<p>访问请求结果中有一个 <code>X-Resp-A6-Runner: Python</code> 头信息，返回的 body 数据为 <code>Hello, Python Runner of APISIX</code>，和我们在插件中的定义是符合的。到这里就完成了使用 Python 进行 APISIX 自定义插件，我们有任何的业务逻辑需要处理直接去定义一个对应的插件即可。</p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="页脚">
+      
+        
+        <a href="../service-profiles/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Service Profiles" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              Service Profiles
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../service/" class="md-footer__link md-footer__link--next" aria-label="下一页: Service" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              Service
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 lixie
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/cnych" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://hub.docker.com/r/cnych/" target="_blank" rel="noopener" title="hub.docker.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M349.9 236.3h-66.1v-59.4h66.1v59.4zm0-204.3h-66.1v60.7h66.1V32zm78.2 144.8H362v59.4h66.1v-59.4zm-156.3-72.1h-66.1v60.1h66.1v-60.1zm78.1 0h-66.1v60.1h66.1v-60.1zm276.8 100c-14.4-9.7-47.6-13.2-73.1-8.4-3.3-24-16.7-44.9-41.1-63.7l-14-9.3-9.3 14c-18.4 27.8-23.4 73.6-3.7 103.8-8.7 4.7-25.8 11.1-48.4 10.7H2.4c-8.7 50.8 5.8 116.8 44 162.1 37.1 43.9 92.7 66.2 165.4 66.2 157.4 0 273.9-72.5 328.4-204.2 21.4.4 67.6.1 91.3-45.2 1.5-2.5 6.6-13.2 8.5-17.1l-13.3-8.9zm-511.1-27.9h-66v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm-78.1-72.1h-66.1v60.1h66.1v-60.1z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/cnych" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://instagram.com/cnych" target="_blank" rel="noopener" title="instagram.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["header.autohide", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.top", "toc.integrate", "search.suggest", "search.highlight", "content.code.annotate", "navigation.instant", "navigation.instant.prefetch", "navigation.path", "navigation.prune"], "search": "../../../assets/javascripts/workers/search.01824240.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.e8a254df.min.js"></script>
+      
+        <script src="../../../js/extra.js"></script>
+      
+        <script src="../../../js/baidu-tongji.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

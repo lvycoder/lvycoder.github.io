@@ -1,0 +1,5762 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Project documentation with Markdown.">
+      
+      
+        <meta name="author" content="Li">
+      
+      
+        <link rel="canonical" href="https://barry-boy.github.io/other/misc/crane/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-8.0.0">
+    
+    
+      
+        <title>Crane - Kubernetes 进阶训练营</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ad626c1e.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9204c3b2.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,400i,700%7CUbuntu+Mono&display=fallback">
+        <style>:root{--md-text-font:"Ubuntu";--md-code-font:"Ubuntu Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>function __md_scope(e,t,_){return new URL(_||(t===localStorage?"../../..":"../../.."),location).pathname+"."+e}function __md_get(e,t=localStorage,_){return JSON.parse(t.getItem(__md_scope(e,t,_)))}function __md_set(e,t,_=localStorage,o){try{_.setItem(__md_scope(e,_,o),JSON.stringify(t))}catch(e){}}</script>
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#crane" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="Kubernetes 进阶训练营" class="md-header__button md-logo" aria-label="Kubernetes 进阶训练营" data-md-component="logo">
+      
+  <img src="../../../material/logo.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Kubernetes 进阶训练营
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Crane
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换暗色主题"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="切换暗色主题" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="切换亮色主题"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="切换亮色主题" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/barry-boy/barry-boy.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      首页
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../0.Internet/Tcp-ip-docs/" class="md-tabs__link">
+        0、网络基础
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../1.os/ubuntu/kjc-doc/" class="md-tabs__link">
+        1、Linux
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../basic/cncf-docs/" class="md-tabs__link">
+        2、kubernetes
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../python/1-python-docs/" class="md-tabs__link">
+        3、运维开发
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../k8s/mysql-operator/0-mysql-docs.md" class="md-tabs__link">
+        4、数据库
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../5.Storage/disk-ssd-docs/" class="md-tabs__link">
+        5、存储服务
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../6.Gitops/2024-9-26-Git-docs/" class="md-tabs__link">
+        6、Gitops
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../Devops/git-error-docs/" class="md-tabs__link">
+        7、Devops
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../ansible/ansible-case1/" class="md-tabs__link">
+        8、运维自动化
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../Macuse/mac-kubeconfig/" class="md-tabs__link md-tabs__link--active">
+        9、其他
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../chatgpt/chatgpt-docs/" class="md-tabs__link">
+        10、Chatgpt
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../20.mylife/2024-9-24-myblog-life-docs/" class="md-tabs__link">
+        关于我
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Kubernetes 进阶训练营" class="md-nav__button md-logo" aria-label="Kubernetes 进阶训练营" data-md-component="logo">
+      
+  <img src="../../../material/logo.jpg" alt="logo">
+
+    </a>
+    Kubernetes 进阶训练营
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/barry-boy/barry-boy.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        首页
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          0、网络基础
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="0、网络基础" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          0、网络基础
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../0.Internet/Tcp-ip-docs/" class="md-nav__link">
+        网络 Tcp/IP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../0.Internet/5g-docs/" class="md-nav__link">
+        网络 思科设备
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../0.Internet/IB-ET-docs/" class="md-nav__link">
+        网络 网卡模式调整
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/asus/asus-docs/" class="md-nav__link">
+        华硕服务器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../0.Internet/ZeroTier/" class="md-nav__link">
+        ZeroTier组网
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../0.Internet/frp/" class="md-nav__link">
+        frp 内网穿透
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../0.Internet/3-0.Internet-docs.md" class="md-nav__link">
+        kubernetes 网络组件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../0.Internet/4-network-docs/" class="md-nav__link">
+        科学上网
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          1、Linux
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="1、Linux" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          1、Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/kjc-doc/" class="md-nav__link">
+        Linux 云计算手册大纲
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-bmc-doc/" class="md-nav__link">
+        Linux 带外管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-install-doc/" class="md-nav__link">
+        Linux 系统安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-cli-doc/" class="md-nav__link">
+        Linux 系统命令
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-mirror-doc/" class="md-nav__link">
+        Linux 国内apt源
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-nvme-doc/" class="md-nav__link">
+        Linux nvme磁盘管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-parted-doc/" class="md-nav__link">
+        Linux parted磁盘管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-reboot-doc/" class="md-nav__link">
+        Linux 系统强制重启
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-disk-doc/" class="md-nav__link">
+        Linux 磁盘管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-network-doc/" class="md-nav__link">
+        Linux 网络服务
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/2024-9-25-ssh-proxy-docs/" class="md-nav__link">
+        Linux SSH 转发代理实现
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          2、kubernetes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="2、kubernetes" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          2、kubernetes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic/cncf-docs/" class="md-nav__link">
+        云原生简介及CNCF
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/docker-docs/" class="md-nav__link">
+        Docker 基本管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/lxcfs.md" class="md-nav__link">
+        lxcfs 介绍
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/docker-images-docs/" class="md-nav__link">
+        docker 镜像构建
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/docker-proxy-docs/" class="md-nav__link">
+        docker proxy代理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/docker-image-clash-docs/" class="md-nav__link">
+        docker Clash代理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/base/k8s-overview/" class="md-nav__link">
+        kubernetes 简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/3-k8s-systeminit-docs/" class="md-nav__link">
+        kubernetes 集群部署
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/2024-9-19-k8s-update/" class="md-nav__link">
+        kubernetes 集群升级
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/pod-base-docs/" class="md-nav__link">
+        kubernetes pod 基础原理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/pod-hook-docs/" class="md-nav__link">
+        kubernetes pod 生命周期
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic/6-kubernetes-etcd-docs/" class="md-nav__link">
+        kubernetes etcd 简介与实践
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic/7-kubernetes-coredns-docs/" class="md-nav__link">
+        kubernetes coredns 简介与实践
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../k8s/k8s-calico-docs.md" class="md-nav__link">
+        kubernetes calico 网络
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/yaml/yaml/" class="md-nav__link">
+        kubernetes 资源清单
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/base/k8s-limit-docs/" class="md-nav__link">
+        kubernetes 资源限制
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/k8s-configmap-docs/" class="md-nav__link">
+        kubernetes 配置管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic/5-kubernetes-UI-docs/" class="md-nav__link">
+        Kubernetes UI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/deploy-sts-ds-docs/" class="md-nav__link">
+        kubernetes 控制器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/network/ingress-%E6%B5%81%E9%87%8F/" class="md-nav__link">
+        Ingress 流量
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/network/%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0/" class="md-nav__link">
+        服务发现
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/network/gateway-api/" class="md-nav__link">
+        Gateway API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/network/dns-%E4%BC%98%E5%8C%96/" class="md-nav__link">
+        DNS 优化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/network/ingress-nginx/" class="md-nav__link">
+        ingress-nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/network/service-profiles/" class="md-nav__link">
+        Service Profiles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/network/4-network-docs.md" class="md-nav__link">
+        科学上网
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/network/apisix/" class="md-nav__link">
+        APISIX
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/network/service/" class="md-nav__link">
+        Service
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/network/traefik/" class="md-nav__link">
+        Traefik
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/network/ingress/" class="md-nav__link">
+        Ingress
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/pv-rep/" class="md-nav__link">
+        kubernetes pv/pvc简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/k8s-mon-docs/" class="md-nav__link">
+        kubernetes 监控服务
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/k8s-logs-docs/" class="md-nav__link">
+        kubernetes 日志管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/k8s-istio-docs/" class="md-nav__link">
+        kubernetes 服务网格
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cks/cka/" class="md-nav__link">
+        kubernetes CKA考题
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cks/cks/" class="md-nav__link">
+        kubernetes CKS考题
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/ui/rancher-update-docs/" class="md-nav__link">
+        kubernetes Rancher 升级
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic/7-kubernetes-update-docs/" class="md-nav__link">
+        kubernetes 节点维护
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Helm/helm-install/" class="md-nav__link">
+        kubernetes Helm 实践
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Helm/helm-chart/" class="md-nav__link">
+        kubernetes Helm chart包
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/2024-9-24-helmfile-docs/" class="md-nav__link">
+        kubernetes Helmfile 文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cert-manager/cert-manager-doc/" class="md-nav__link">
+        kubernetes Cert-manager 安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/other/k8s-ca-docs/" class="md-nav__link">
+        kubernetes 处理k8s证书过期
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/monitoring/prometheus/" class="md-nav__link">
+        Prometheus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/monitoring/victoriametrics/" class="md-nav__link">
+        VictoriaMetrics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/monitoring/promql/" class="md-nav__link">
+        PromQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/monitoring/%E9%BB%91%E7%9B%92%E7%9B%91%E6%8E%A7/" class="md-nav__link">
+        黑盒监控
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/monitoring/prometheus-operator/" class="md-nav__link">
+        Prometheus Operator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/monitoring/%E9%AB%98%E7%BA%A7%E9%85%8D%E7%BD%AE/" class="md-nav__link">
+        高级配置
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/monitoring/grafana/" class="md-nav__link">
+        Grafana
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/monitoring/%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%91%E6%8E%A7%E6%8A%A5%E8%AD%A6/" class="md-nav__link">
+        自定义监控报警
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/monitoring/alertmanager/" class="md-nav__link">
+        Alertmanager
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/7.logging/%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86%E6%9E%B6%E6%9E%84/" class="md-nav__link">
+        kubernete 日志架构
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/7.logging/%E6%90%AD%E5%BB%BA-efk-%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        kubernetes EFK日志系统
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/3.k8s/7.logging/fluentd.md" class="md-nav__link">
+        kubernete 日志fluentd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/7.logging/loki/" class="md-nav__link">
+        kubernete Loki
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/7.logging/%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB%E6%A8%A1%E5%BC%8F/" class="md-nav__link">
+        kubernetes 日志读写分离模式
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/7.logging/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%A8%A1%E5%BC%8F/" class="md-nav__link">
+        kubernetes 日志微服务模式
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/7.logging/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        kubernetes 日志配置文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/7.logging/%E6%97%A5%E5%BF%97%E6%8A%A5%E8%AD%A6/" class="md-nav__link">
+        kubernetes 日志报警
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/7.logging/logql/" class="md-nav__link">
+        kubernetes 日志 Logql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/ansible-install-k8s-docs/" class="md-nav__link">
+        kubernetes 自动化安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/4-ansible-install-k8s/" class="md-nav__link">
+        kubernetes 项目一
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic/9-install-keepalived-cluster/" class="md-nav__link">
+        kubernetes 项目二
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          3、运维开发
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="3、运维开发" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          3、运维开发
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/1-python-docs/" class="md-nav__link">
+        Python 开发-基础语法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/2-python-docs/" class="md-nav__link">
+        Python 开发-用户交互
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../go/go-base-docs/" class="md-nav__link">
+        GO开发-环境安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../go/2-go-docs/" class="md-nav__link">
+        GO 开发-操作符和表达式
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/module-docs/" class="md-nav__link">
+        模块
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          4、数据库
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="4、数据库" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          4、数据库
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../k8s/mysql-operator/0-mysql-docs.md" class="md-nav__link">
+        Mysql 数据库
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../k8s/mysql-operator/1-install-mysql-operator.md" class="md-nav__link">
+        Mysql operator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../k8s/mysql-operator/2-mysql-backup-docs.md" class="md-nav__link">
+        Mysql 备份恢复
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../k8s/mysql-operator/3-mysql-backup-error-docs.md" class="md-nav__link">
+        数据库问题处理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../redis/redis-class-docs/" class="md-nav__link">
+        redis 大纲
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/redis-docs/" class="md-nav__link">
+        redis 缓存加速
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/redis-cluster-docs/" class="md-nav__link">
+        redis 集群篇
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../redis/redis-save-docs/" class="md-nav__link">
+        redis 持久化
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          5、存储服务
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="5、存储服务" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          5、存储服务
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/disk-ssd-docs/" class="md-nav__link">
+        存储分类
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/ceph-base/" class="md-nav__link">
+        ceph 基础
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/rook-ceph/" class="md-nav__link">
+        ceph 分布式存储
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/rbd-docs/" class="md-nav__link">
+        ceph RBD使用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/cephfs-docs/" class="md-nav__link">
+        ceph 文件系统使用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/ceph-cli-docs/" class="md-nav__link">
+        ceph 命令用法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/osd/" class="md-nav__link">
+        ceph 性能测试
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/ceph-bucket/" class="md-nav__link">
+        ceph 对象存储
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/s3-client-docs/" class="md-nav__link">
+        ceph s3cmd管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/5-dev-docs/" class="md-nav__link">
+        ceph 存储修复
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/expand-docs/" class="md-nav__link">
+        ceph 存储扩容
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/ceph-tools/" class="md-nav__link">
+        ceph 外部环境连接集群
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/clean-ceph-docs/" class="md-nav__link">
+        ceph 集群清理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/ceph-error/" class="md-nav__link">
+        ceph 错误指南
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/6-ceph-crush-docs/" class="md-nav__link">
+        ceph 高级参数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/Juicefs/" class="md-nav__link">
+        Juicefs存储方案
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/juicefs-update/" class="md-nav__link">
+        Juicefs版本升级
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          6、Gitops
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="6、Gitops" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          6、Gitops
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../6.Gitops/2024-9-26-Git-docs/" class="md-nav__link">
+        Git Commit 问题
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../6.Gitops/2024-10-10-Github-rsync-Gitee/" class="md-nav__link">
+        Github Rysnc 同步 Gitee
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          7、Devops
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="7、Devops" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          7、Devops
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Devops/git-error-docs/" class="md-nav__link">
+        Git 报错指南
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Devops/github/" class="md-nav__link">
+        Github
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Devops/4-github-gitee-doc/" class="md-nav__link">
+        Github仓库同步至Gitee
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Devops/3-github-docs/" class="md-nav__link">
+        Google 浏览器扩展
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_10">
+          8、运维自动化
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="8、运维自动化" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          8、运维自动化
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ansible/ansible-case1/" class="md-nav__link">
+        Ansible 应用基础
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ansible/ansible-docs2/" class="md-nav__link">
+        Ansible 高级用法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ansible/ansible-install-docs/" class="md-nav__link">
+        Ansible 安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ansible/ansible-playbook/" class="md-nav__link">
+        Ansible playbook
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_11">
+          9、其他
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="9、其他" data-md-level="1">
+        <label class="md-nav__title" for="__nav_11">
+          <span class="md-nav__icon md-icon"></span>
+          9、其他
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Macuse/mac-kubeconfig/" class="md-nav__link">
+        kubeconfig 实践应用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../k3s/k3s-docs/" class="md-nav__link">
+        k3s 大纲介绍
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../k3s/k3s-install/" class="md-nav__link">
+        k3s 边缘计算
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Macuse/mac-k9s-doc/" class="md-nav__link">
+        k9s 实践应用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Macuse/mac-usb-system/" class="md-nav__link">
+        Mac 制作ubuntu系统盘
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Macuse/mac-vscode/" class="md-nav__link">
+        Mac vscode使用技巧
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../error/tjtu/" class="md-nav__link">
+        天津集群
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../error/dev/" class="md-nav__link">
+        Dev环境集群
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../error/delete-prometheus-db/" class="md-nav__link">
+        误删除监控数据
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../error/kubernetes-pvc-ubound-doc/" class="md-nav__link">
+        Kubernetes pvc ubound
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../error/cent1.os-dns-error-docs.md" class="md-nav__link">
+        dns 文件权限调整
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mac-docs/" class="md-nav__link">
+        如何利用Mac 写博客文章
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../google-docs/" class="md-nav__link">
+        高效利用谷歌来搜索
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../discord-docs/" class="md-nav__link">
+        Discord 新手教程
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jenkins/" class="md-nav__link">
+        Jenkins
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%BD%BF%E7%94%A8-mtls-%E4%BF%9D%E6%8A%A4%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1/" class="md-nav__link">
+        使用 mTLS 保护应用程序通信
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%A4%BA%E4%BE%8B/" class="md-nav__link">
+        示例
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%87%BD%E6%95%B0%E5%92%8C%E7%AE%A1%E9%81%93/" class="md-nav__link">
+        函数和管道
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chart-hooks/" class="md-nav__link">
+        Chart Hooks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dapr/" class="md-nav__link">
+        Dapr
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configmap/" class="md-nav__link">
+        ConfigMap
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes-进阶训练营第3期课程文档.md" class="md-nav__link">
+        Kubernetes 进阶训练营第3期课程文档
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gitops-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F/" class="md-nav__link">
+        GitOps 是什么？
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linkerd/" class="md-nav__link">
+        Linkerd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../secrets-store/" class="md-nav__link">
+        Secrets store
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tekton/" class="md-nav__link">
+        Tekton
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../secret/" class="md-nav__link">
+        Secret
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%BF%E9%97%AE%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        访问文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../argo-rollouts/" class="md-nav__link">
+        Argo Rollouts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%8D%87%E7%BA%A7-linkerd/" class="md-nav__link">
+        升级 Linkerd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%81%E6%B0%B4%E7%BA%BF/" class="md-nav__link">
+        流水线
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E4%BD%BF%E7%94%A8-linkerd/" class="md-nav__link">
+        生产环境使用 Linkerd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%9C%8D%E5%8A%A1%E8%B4%A8%E9%87%8F/" class="md-nav__link">
+        服务质量
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%B0%83%E5%BA%A6/" class="md-nav__link">
+        调度
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helm/" class="md-nav__link">
+        Helm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../argo-cd/" class="md-nav__link">
+        Argo CD
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notes.txt-%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        NOTES.txt 文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85/" class="md-nav__link">
+        发布订阅
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jenkins-pipeline/" class="md-nav__link">
+        Jenkins Pipeline
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../subcharts-%E5%92%8C-global-values/" class="md-nav__link">
+        Subcharts 和 Global Values
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%AE%9E%E6%88%98-tekton-%E6%B5%81%E6%B0%B4%E7%BA%BF/" class="md-nav__link">
+        实战 Tekton 流水线
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E9%BB%84%E9%87%91%E6%8C%87%E6%A0%87/" class="md-nav__link">
+        黄金指标
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/" class="md-nav__link">
+        流程控制
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%A7%A6%E5%8F%91%E5%99%A8%E5%92%8C%E4%BA%8B%E4%BB%B6%E7%9B%91%E5%90%AC%E5%99%A8/" class="md-nav__link">
+        触发器和事件监听器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%A8%A1%E6%9D%BF%E8%B0%83%E8%AF%95/" class="md-nav__link">
+        模板调试
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7/" class="md-nav__link">
+        可观测性
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dapr-bindings/" class="md-nav__link">
+        Dapr Bindings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../charts/" class="md-nav__link">
+        Charts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1/" class="md-nav__link">
+        内置对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%B8%AD%E9%97%B4%E4%BB%B6/" class="md-nav__link">
+        中间件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%8F%98%E9%87%8F/" class="md-nav__link">
+        变量
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%91%BD%E5%90%8D%E6%A8%A1%E6%9D%BF/" class="md-nav__link">
+        命名模板
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../values-%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        Values 文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../harbor/" class="md-nav__link">
+        Harbor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../descheduler/" class="md-nav__link">
+        Descheduler
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%BB%BB%E5%8A%A1/" class="md-nav__link">
+        任务
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%B0%83%E5%BA%A6%E5%99%A8/" class="md-nav__link">
+        调度器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Crane
+      </a>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%81%E9%87%8F%E6%8B%86%E5%88%86/" class="md-nav__link">
+        流量拆分
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../documentation-that-simply-works/" class="md-nav__link">
+        Documentation that simply works
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../zadig/" class="md-nav__link">
+        Zadig
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gitlab/" class="md-nav__link">
+        Gitlab
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_12">
+          10、Chatgpt
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="10、Chatgpt" data-md-level="1">
+        <label class="md-nav__title" for="__nav_12">
+          <span class="md-nav__icon md-icon"></span>
+          10、Chatgpt
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../chatgpt/chatgpt-docs/" class="md-nav__link">
+        注册chatgpt
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../chatgpt/google-ai-docs/" class="md-nav__link">
+        搜索技术记录
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../chatgpt/gpts-docs/" class="md-nav__link">
+        如何使用Chatgpt来制作专属gpt
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" type="checkbox" id="__nav_13" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_13">
+          关于我
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="关于我" data-md-level="1">
+        <label class="md-nav__title" for="__nav_13">
+          <span class="md-nav__icon md-icon"></span>
+          关于我
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../20.mylife/2024-9-24-myblog-life-docs/" class="md-nav__link">
+        我的博客
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../20.mylife/2021-life-docs/" class="md-nav__link">
+        我的2021
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../20.mylife/2022-life-docs/" class="md-nav__link">
+        我的2022
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../20.mylife/2023-life-docs/" class="md-nav__link">
+        我的2023
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../20.mylife/2024-life-docs/" class="md-nav__link">
+        我的2024
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/barry-boy/barry-boy.github.io/edit/master/docs/other/misc/crane.md" title="编辑此页" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="crane">Crane<a class="headerlink" href="#crane" title="Permanent link">&para;</a></h1>
+<p><a href="https://github.com/cnych/qikqiak.com/edit/master/docs/skill/crane.md" title="编辑此页"> </a></p>
+<h1 id="crane_1">Crane<a class="headerlink" href="#crane_1" title="Permanent link">&para;</a></h1>
+<p><a href="https://gocrane.io/">Crane</a> 是一个基于 FinOps 的云资源分析与成本优化平台，它的愿景是在保证客户应用运行质量的前提下实现极致的降本。Crane 已经在腾讯内部自研业务实现了大规模落地，部署数百个 Kubernetes 集群、管控 CPU 核数达百万，在降本增效方面取得了阶段性成果。以腾讯某部门集群优化为例，通过使用 FinOps Crane，该部门在保障业务稳定的情况下，资源利用率提升了 3 倍；腾讯另一自研业务落地 Crane 后，在一个月内实现了总 CPU 规模 40 万核的节省量，相当于成本节约超 1000 万元/月。</p>
+<p><img alt="FinOps" src="https://picdn.youdianzhishi.com/images/1666249414588.png" /></p>
+<blockquote>
+<p>FinOps 是将 DevOps、财务和业务整合在一起的变革，其目标在于优化一个组织在云计算上的支出的财务规范和技术解决方案，即根据支出的历史记录和来自预期负载的信息，FinOps 可以在需要时预分配资源或估算成本。FinOps 可以称为“财务运维” ，或者更直白地称为“成本优化”，是将财务问责制引入云的 IT 支持，进行调整以优化质量和支出。</p>
+</blockquote>
+<p><code>Crane</code> 会通过下面 3 个方面来开启成本优化之旅：</p>
+<ul>
+<li>成本展示: Kubernetes 资源( Deployments, StatefulSets )的多维度聚合与展示。</li>
+<li>成本分析: 周期性的分析集群资源的状态并提供优化建议。</li>
+<li>成本优化: 通过丰富的优化工具更新配置达成降本的目标。</li>
+</ul>
+<p><img alt="Crane整体架构" src="https://picdn.youdianzhishi.com/images/1666249357026.jpg" /></p>
+<p><strong>成本可视化和优化评估</strong></p>
+<ul>
+<li>提供一组 Exporter 计算集群云资源的计费和账单数据并存储到你的监控系统，比如 Prometheus。</li>
+<li>多维度的成本洞察，优化评估。通过 Cloud Provider 支持多云计费。</li>
+</ul>
+<p><strong>推荐框架</strong></p>
+<ul>
+<li>提供了一个可扩展的推荐框架以支持多种云资源的分析，内置了多种推荐器：<code>资源推荐</code>、<code>副本推荐</code>、<code>闲置资源推荐</code>。</li>
+</ul>
+<p><strong>基于预测的水平弹性器</strong></p>
+<ul>
+<li><code>EffectiveHorizontalPodAutoscaler</code> 支持预测驱动的弹性。它基于社区 HPA 做底层的弹性控制，支持更丰富的弹性触发策略（预测、观测、周期），让弹性更加高效，并保障了服务的质量。</li>
+</ul>
+<p><strong>负载感知的调度器</strong></p>
+<ul>
+<li>动态调度器根据实际的节点利用率构建了一个简单但高效的模型，并过滤掉那些负载高的节点来平衡集群。</li>
+</ul>
+<p><strong>基于 QOS 的混部</strong></p>
+<ul>
+<li><code>QOS</code> 相关能力保证了运行在 Kubernetes 上的 Pod 的稳定性。具有多维指标条件下的干扰检测和主动回避能力，支持精确操作和自定义指标接入；具有预测算法增强的弹性资源超卖能力，复用和限制集群内的空闲资源；具备增强的旁路 cpuset 管理能力，在绑核的同时提升资源利用效率。</li>
+</ul>
+<h2 id="_1">架构<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>Crane 的整体架构如下图所示：</p>
+<p><img alt="架构" src="https://picdn.youdianzhishi.com/images/1666249962271.jpg" /></p>
+<p><strong>Craned</strong> ：Craned 是 Crane 的最核心组件，它管理了 CRDs 的生命周期以及 API，Craned 通过 Deployment 方式部署且由两个容器组成：</p>
+<ul>
+<li>Craned: 运行了 Operators 用来管理 CRDs，向 Dashboard 提供 WebApi，Predictors 提供了 TimeSeries API</li>
+<li>Dashboard: 基于 TDesign's Starter 脚手架研发的前端项目，提供了易于上手的产品功能</li>
+</ul>
+<p><strong>Fadvisor</strong> ：<code>Fadvisor</code> 提供一组 Exporter 计算集群云资源的计费和账单数据并存储到你的监控系统，比如 Prometheus。Fadvisor 通过 Cloud Provider 支持了多云计费的 API。</p>
+<p><strong>Metric Adapter</strong> ：<code>Metric Adapter</code> 实现了一个 Custom Metric Apiserver，Metric Adapter 读取 CRDs 信息并提供基于 Custom/External Metric API 的 HPA Metric 的数据。</p>
+<p><strong>Crane Agent</strong> ：Crane Agent 通过 DaemonSet 部署在集群的节点上。</p>
+<h2 id="_2">安装<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>我们这里使用 Helm 的方式来进行安装，首先需要安装 Prometheus 和 Grafana（如果您已经在环境中部署了 Prometheus 和 Grafana，可以跳过该步骤）。</p>
+<p><code>Crane</code> 使用 Prometheus 获取集群工作负载对资源的使用情况，可以使用如下所示命令安装 Prometheus：</p>
+<div class="highlight"><pre><span></span><code>$ helm repo add prometheus-community https://finops-helm.pkg.coding.net/gocrane/prometheus-community
+$ helm upgrade --install prometheus -n crane-system \
+    --set pushgateway.enabled=false \
+    --set alertmanager.enabled=false \
+    --set server.persistentVolume.enabled=false \
+    -f https://gitee.com/finops/helm-charts/raw/main/integration/prometheus/override_values.yaml \
+    --create-namespace  prometheus-community/prometheus
+</code></pre></div>
+<p>由于 Crane 的 <code>Fadvisor</code> 会使用 Grafana 来展示成本预估，所以我们也需要安装 Grafana：</p>
+<div class="highlight"><pre><span></span><code>$ helm repo add grafana https://finops-helm.pkg.coding.net/gocrane/grafana
+$ helm upgrade --install grafana \
+    -f https://gitee.com/finops/helm-charts/raw/main/integration/grafana/override_values.yaml \
+    -n crane-system \
+    --create-namespace grafana/grafana
+</code></pre></div>
+<p>上面我们指定的 values 文件中配置了 Prometheus 数据源以及一些相关的 Dashboard，直接安装后即可使用。</p>
+<p>然后接下来安装 crane 与 fadvisor，同样直接使用 Helm Chart 安装即可，如下命令所示：</p>
+<div class="highlight"><pre><span></span><code>$ helm repo add crane https://finops-helm.pkg.coding.net/gocrane/gocrane
+$ helm upgrade --install crane -n crane-system --create-namespace crane/crane
+$ helm upgrade --install fadvisor -n crane-system --create-namespace crane/fadvisor
+</code></pre></div>
+<p>安装后可以查看 Pod 列表了解应用状态：</p>
+<div class="highlight"><pre><span></span><code>$ kubectl get pods -n crane-system
+NAME                                             READY   STATUS             RESTARTS         AGE
+crane-agent-8jrs5                                0/1     CrashLoopBackOff   71 (2m26s ago)   3h23m
+crane-agent-t2rpz                                0/1     CrashLoopBackOff   71 (65s ago)     3h23m
+craned-776c7b6c75-gx8cp                          2/2     Running            0                3h28m
+fadvisor-56fcc547b6-zvf6r                        1/1     Running            0                158m
+grafana-5cd57f9f6b-d7nk5                         1/1     Running            0                3h32m
+metric-adapter-887f6548d-qcbb8                   1/1     Running            0                3h28m
+prometheus-kube-state-metrics-5f6f856ffb-4lrrr   1/1     Running            0                3h34m
+prometheus-node-exporter-97vmz                   1/1     Running            0                3h27m
+prometheus-node-exporter-m2gr9                   1/1     Running            0                3h27m
+prometheus-server-7744f66fb4-lw2sz               2/2     Running            0                3h34m
+</code></pre></div>
+<p>需要注意我们这里 crane-agent 启动失败了，这是因为我的 K8s 集群使用的是 containerd 这种容器运行时，需要明确声明指定使用的运行时 endpoint：</p>
+<div class="highlight"><pre><span></span><code>$ kubectl edit ds crane-agent -n crane-system
+# ......
+    spec:
+      containers:
+      - args:
+        - --v=2
+        - --runtime-endpoint=/run/containerd/containerd.sock  # 指定有containerd的sock文件
+        command:
+        - /crane-agent
+# ......
+</code></pre></div>
+<p>此外还需要更新 crane-agent 的 rbac 权限：</p>
+<div class="highlight"><pre><span></span><code>$ kubectl edit clusterrole crane-agent
+# ......
+- apiGroups:
+  - ensurance.crane.io
+  resources:
+  - podqosensurancepolicies
+  - nodeqoss  # 增加 nodeqoss 和 podqoss 资源的权限
+  - podqoss
+# ......
+</code></pre></div>
+<p>然后我们可以再创建一个 Ingress 对象来暴露 crane 的 dashboard 服务：</p>
+<div class="highlight"><pre><span></span><code>apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-crane-dashboard
+  namespace: crane-system
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: crane.k8s.local # change to your domain
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: craned
+                port:
+                  number: 9090
+</code></pre></div>
+<p>直接应用该 ingress 资源对象即可，当然前提是你已经安装了 ingress-nginx：</p>
+<div class="highlight"><pre><span></span><code>$ kubectl get pods -n ingress-nginx
+NAME                                            READY   STATUS    RESTARTS      AGE
+ingress-nginx-controller-7647c44fb9-6gcsf       1/1     Running   8 (44m ago)   21d
+ingress-nginx-defaultbackend-7fc5bfd66c-gqmmj   1/1     Running   8 (44m ago)   21d
+$ kubectl get ingress -n crane-system
+NAME                      CLASS   HOSTS             ADDRESS        PORTS   AGE
+ingress-crane-dashboard   nginx   crane.k8s.local   192.168.0.52   80      11s
+</code></pre></div>
+<p>将 <code>crane.k8s.local</code> 映射到 <code>192.168.0.52</code> 后就可以访问 crane 的 dashboard 了：</p>
+<p><img alt="crane dashboard" src="https://picdn.youdianzhishi.com/images/1666251698513.png" /></p>
+<p>第一次访问 dashboard 的时候需要添加一个 K8s 集群，添加<code>添加集群</code>按钮开始添加，填入正确的 <code>CRNE Endpoint</code> 地址即可。</p>
+<p><img alt="添加集群" src="https://picdn.youdianzhishi.com/images/1666251839866.png" /></p>
+<p>然后切换到<code>集群总览</code>可以查看到当前集群的一些成本相关数据，由于目前数据还不足，所以会有一些空的图表。</p>
+<p><img alt="集群总览" src="https://picdn.youdianzhishi.com/images/1666256619382.png" /></p>
+<p>在成本分布页面可以按照维度成本、集群成本和利用率指标以及命名空间成本来展示成本的分布情况。</p>
+<p><img alt="成本分布" src="https://picdn.youdianzhishi.com/images/1666260576817.jpg" /></p>
+<h2 id="_3">智能推荐<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>在 dasbhoard 中开箱后就可以看到相关的成本数据，是因为在添加集群的时候我们安装了推荐的规则。</p>
+<p>推荐框架会自动分析集群的各种资源的运行情况并给出优化建议。<code>Crane</code> 的推荐模块会定期检测发现集群资源配置的问题，并给出优化建议。智能推荐提供了多种 Recommender 来实现面向不同资源的优化推荐。</p>
+<p>在<code>成本分析&gt;推荐规则</code>页面可以看到我们安装的两个推荐规则。</p>
+<p><img alt="推荐规则" src="https://picdn.youdianzhishi.com/images/1666252873850.jpg" /></p>
+<p>这些推荐规则实际上是安装在 K8s 集群上的 <code>RecommendationRule CRD</code> 对象：</p>
+<div class="highlight"><pre><span></span><code>$ kubectl get RecommendationRule
+NAME             RUNINTERVAL   AGE
+idlenodes-rule   24h           16m
+workloads-rule   24h           16m
+</code></pre></div>
+<p><code>workloads-rule</code> 这个推荐规则的资源对象如下所示：</p>
+<div class="highlight"><pre><span></span><code>apiVersion: analysis.crane.io/v1alpha1
+kind: RecommendationRule
+metadata:
+  name: workloads-rule
+  labels:
+    analysis.crane.io/recommendation-rule-preinstall: &quot;true&quot;
+spec:
+  resourceSelectors:
+    - kind: Deployment
+      apiVersion: apps/v1
+    - kind: StatefulSet
+      apiVersion: apps/v1
+  namespaceSelector:
+    any: true
+  runInterval: 24h
+  recommenders:
+    - name: Replicas
+    - name: Resource
+</code></pre></div>
+<p><code>RecommendationRule</code> 是一个全部范围内的对象，该推荐规则会对所有命名空间中的 Deployments 和 StatefulSets 做资源推荐和副本数推荐。相关规范属性如下所示：</p>
+<ul>
+<li>每隔 24 小时运行一次分析推荐，<code>runInterval</code> 格式为时间间隔，比如: 1h，1m，设置为空表示只运行一次。</li>
+<li>待分析的资源通过配置 <code>resourceSelectors</code> 数组设置，每个 <code>resourceSelector</code> 通过 <code>kind</code>、<code>apiVersion</code>、<code>name</code> 选择 K8s 中的资源，当不指定 name 时表示在 <code>namespaceSelector</code> 基础上的所有资源。</li>
+<li><code>namespaceSelector</code> 定义了待分析资源的命名空间，<code>any: true</code> 表示选择所有命名空间。</li>
+<li>
+<p><code>recommenders</code> 定义了待分析的资源需要通过哪些 <code>Recommender</code> 进行分析。目前支持两种 <code>Recommender</code>：</p>
+</li>
+<li>
+<p>资源推荐(Resource): 通过 VPA 算法分析应用的真实用量推荐更合适的资源配置</p>
+</li>
+<li>
+<p>副本数推荐(Replicas): 通过 HPA 算法分析应用的真实用量推荐更合适的副本数量</p>
+</li>
+</ul>
+<p><strong>资源推荐</strong></p>
+<p>Kubernetes 用户在创建应用资源时常常是基于经验值来设置 request 和 limit，通过资源推荐的算法分析应用的真实用量推荐更合适的资源配置，你可以参考并采纳它提升集群的资源利用率。该推荐算法模型采用了 VPA 的滑动窗口（Moving Window）算法进行推荐：</p>
+<ul>
+<li>通过监控数据，获取 Workload 过去一周（可配置）的 CPU 和内存的历史用量。</li>
+<li>算法考虑数据的时效性，较新的数据采样点会拥有更高的权重。</li>
+<li>CPU 推荐值基于用户设置的目标百分位值计算，内存推荐值基于历史数据的最大值。</li>
+</ul>
+<p><strong>副本数推荐</strong></p>
+<p>Kubernetes 用户在创建应用资源时常常是基于经验值来设置副本数。通过副本数推荐的算法分析应用的真实用量推荐更合适的副本配置，同样可以参考并采纳它提升集群的资源利用率。其实现的基本算法是基于工作负载历史 CPU 负载，找到过去七天内每小时负载最低的 CPU 用量，计算按 50%（可配置）利用率和工作负载 CPU Request 应配置的副本数。</p>
+<p>当我们部署 crane 的时候会在同一个命名空间中创建一个名为 <code>recommendation-configuration</code> 的 ConfigMap 对象，包含一个 yaml 格式的 <code>RecommendationConfiguration</code>，该配置订阅了 <code>recommender</code> 的配置，如下所示：</p>
+<div class="highlight"><pre><span></span><code>$ kubectl get cm recommendation-configuration -n crane-system -oyaml
+apiVersion: v1
+data:
+  config.yaml: |-
+    apiVersion: analysis.crane.io/v1alpha1
+    kind: RecommendationConfiguration
+    recommenders:
+      - name: Replicas  # 副本数推荐
+        acceptedResources:
+          - kind: Deployment
+            apiVersion: apps/v1
+          - kind: StatefulSet
+            apiVersion: apps/v1
+      - name: Resource  # 资源推荐
+        acceptedResources:
+          - kind: Deployment
+            apiVersion: apps/v1
+          - kind: StatefulSet
+            apiVersion: apps/v1
+kind: ConfigMap
+metadata:
+  name: recommendation-configuration
+  namespace: crane-system
+</code></pre></div>
+<p>需要注意的是资源类型和 recommenders 需要可以匹配，比如 Resource 推荐默认只支持 Deployments 和 StatefulSets。</p>
+<p>同样的也可以再查看一次闲置节点推荐规则的资源对象，如下所示：</p>
+<div class="highlight"><pre><span></span><code>$ kubectl get recommendationrule idlenodes-rule -oyaml
+apiVersion: analysis.crane.io/v1alpha1
+kind: RecommendationRule
+metadata:
+  labels:
+    analysis.crane.io/recommendation-rule-preinstall: &quot;true&quot;
+  name: idlenodes-rule
+spec:
+  namespaceSelector:
+    any: true
+  recommenders:
+  - name: IdleNode
+  resourceSelectors:
+  - apiVersion: v1
+    kind: Node
+  runInterval: 24h
+</code></pre></div>
+<p>创建 <code>RecommendationRule</code> 配置后，RecommendationRule 控制器会根据配置定期运行推荐任务，给出优化建议生成 <code>Recommendation</code> 对象，然后我们可以根据优化建议 <code>Recommendation</code> 调整资源配置。</p>
+<p>比如我们这里集群中已经生成了多个优化建议 <code>Recommendation</code> 对象。</p>
+<div class="highlight"><pre><span></span><code>$ kubectl get recommendations
+NAME                            TYPE       TARGETKIND    TARGETNAMESPACE   TARGETNAME       STRATEGY   PERIODSECONDS   ADOPTIONTYPE          AGE
+workloads-rule-resource-8whzs   Resource   StatefulSet   default           nacos            Once                       StatusAndAnnotation   34m
+workloads-rule-resource-hx4cp   Resource   StatefulSet   default           redis-replicas   Once                       StatusAndAnnotation   34m
+# ......
+</code></pre></div>
+<p>可以随便查看任意一个优化建议对象。</p>
+<div class="highlight"><pre><span></span><code>$ kubectl get recommend workloads-rule-resource-g7nwp -n crane-system -oyaml
+apiVersion: analysis.crane.io/v1alpha1
+kind: Recommendation
+metadata:
+  name: workloads-rule-resource-g7nwp
+  namespace: crane-system
+spec:
+  adoptionType: StatusAndAnnotation
+  completionStrategy:
+    completionStrategyType: Once
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: fadvisor
+    namespace: crane-system
+  type: Resource
+status:
+  action: Patch
+  conditions:
+  - lastTransitionTime: &quot;2022-10-20T07:43:49Z&quot;
+    message: Recommendation is ready
+    reason: RecommendationReady
+    status: &quot;True&quot;
+    type: Ready
+  currentInfo: &#39;{&quot;spec&quot;:{&quot;template&quot;:{&quot;spec&quot;:{&quot;containers&quot;:[{&quot;name&quot;:&quot;fadvisor&quot;,&quot;resources&quot;:{&quot;requests&quot;:{&quot;cpu&quot;:&quot;0&quot;,&quot;memory&quot;:&quot;0&quot;}}}]}}}}&#39;
+  lastUpdateTime: &quot;2022-10-20T07:43:49Z&quot;
+  recommendedInfo: &#39;{&quot;spec&quot;:{&quot;template&quot;:{&quot;spec&quot;:{&quot;containers&quot;:[{&quot;name&quot;:&quot;fadvisor&quot;,&quot;resources&quot;:{&quot;requests&quot;:{&quot;cpu&quot;:&quot;114m&quot;,&quot;memory&quot;:&quot;120586239&quot;}}}]}}}}&#39;
+  recommendedValue: |
+    resourceRequest:
+      containers:
+      - containerName: fadvisor
+        target:
+          cpu: 114m
+          memory: &quot;120586239&quot;
+  targetRef: {}
+</code></pre></div>
+<p>在 dashboard 的<code>资源推荐</code>页面也能查看到优化建议列表。</p>
+<p><img alt="资源推荐" src="https://picdn.youdianzhishi.com/images/1666253982497.jpg" /></p>
+<p>在页面中可以看到当前资源(容器/CPU/Memory)与推荐的资源数据，点击<code>采纳建议</code>即可获取优化的执行命令。</p>
+<p><img alt="查看优化命令" src="https://picdn.youdianzhishi.com/images/1666254060338.png" /></p>
+<p>执行命令即可完成优化，其实就是修改资源对象的 <code>resources</code> 资源数据。</p>
+<div class="highlight"><pre><span></span><code>patchData=`kubectl get recommend workloads-rule-resource-g7nwp -n crane-system -o jsonpath=&#39;{.status.recommendedInfo}&#39;`;kubectl patch Deployment fadvisor -n crane-system --patch &quot;${patchData}&quot;
+</code></pre></div>
+<p>对于闲置节点推荐，由于节点的下线在不同平台上的步骤不同，用户可以根据自身需求进行节点的下线或者缩容。</p>
+<p>应用在监控系统（比如 Prometheus）中的历史数据越久，推荐结果就越准确，建议生产上超过两周时间。对新建应用的预测往往不准。</p>
+<h3 id="_4">自定义推荐<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>Recommendation Framework 提供了一套可扩展的 Recommender 框架并支持了内置的 Recommender，用户可以实现一个自定义的 Recommender，或者修改一个已有的 Recommender。</p>
+<p>和 K8s 调度框架类似，Recommender 接口定义了一次推荐需要实现的<strong>四个阶段和八个扩展点</strong> ，这些扩展点会在推荐过程中按顺序被调用。这些扩展点中的一些可以改变推荐决策，而另一些仅用来提供信息。</p>
+<p><img alt="推荐框架架构" src="https://picdn.youdianzhishi.com/images/1666260761709.jpg" /></p>
+<p>Recommender 接口定义如下所示：</p>
+<div class="highlight"><pre><span></span><code>type Recommender interface {
+    Name() string
+    framework.Filter
+    framework.PrePrepare
+    framework.Prepare
+    framework.PostPrepare
+    framework.PreRecommend
+    framework.Recommend
+    framework.PostRecommend
+    framework.Observe
+}
+
+// Phase: Filter
+type Filter interface {
+    // Filter 将过滤无法通过目标推荐器推荐的资源
+    Filter(ctx *RecommendationContext) error
+}
+
+// Phase: Prepare
+type PrePrepare interface {
+    CheckDataProviders(ctx *RecommendationContext) error
+}
+
+type Prepare interface {
+    CollectData(ctx *RecommendationContext) error
+}
+
+type PostPrepare interface {
+    PostProcessing(ctx *RecommendationContext) error
+}
+
+type PreRecommend interface {
+    PreRecommend(ctx *RecommendationContext) error
+}
+
+// Phase: Recommend
+type Recommend interface {
+    Recommend(ctx *RecommendationContext) error
+}
+
+type PostRecommend interface {
+    Policy(ctx *RecommendationContext) error
+}
+
+// Phase: Observe
+type Observe interface {
+    Observe(ctx *RecommendationContext) error
+}
+</code></pre></div>
+<p>整个推荐过程分成了四个阶段：<code>Filter</code>、<code>Prepare</code>、<code>Recommend</code>、<code>Observe</code>，阶段的输入是需要分析的 Kubernetes 资源，输出是推荐的优化建议。接口中的 <code>RecommendationContext</code> 保存了一次推荐过程中的上下文，包括推荐目标、RecommendationConfiguration 等信息，我们可以根据自身需求增加更多的内容。</p>
+<ul>
+<li><strong>Filter</strong> ：Filter 阶段用于预处理推荐数据，通常，在预处理时需判断推荐目标是否和 Recommender 匹配，比如资源推荐默认只支持处理 Deployment 和 StatefulSet。除此之外，还可以判断推荐目标状态是否适合推荐，比如是否删除中，是否刚创建等。当返回 error 会终止此次推荐。</li>
+<li>
+<p><strong>Prepare</strong> ：Prepare 阶段用于数据准备，请求外部监控系统并将时序数据保存在上下文中。</p>
+</li>
+<li>
+<p><code>PrePrepare</code> 扩展点用于检测监控系统的链接情况</p>
+</li>
+<li>
+<p><code>Prepare</code> 扩展点用于查询时序数据</p>
+</li>
+<li>
+<p><code>PostPrepare</code> 扩展点用于对时序数据的数据处理，比如：应用冷启动的异常数据，部分数据的缺失，数据聚合，异常数据清理等。</p>
+</li>
+<li>
+<p><strong>Recommend</strong> ：Recommend 阶段用于基于时序数据和资源配置进行优化建议，优化建议的类型取决于推荐的类型。比如，如果是资源推荐，那么输出就是 K8s workload 的资源配置。</p>
+</li>
+<li>
+<p><code>Recommend</code> 扩展点用于采用 Crane 的算法模块对数据进行分析计算</p>
+</li>
+<li>
+<p><code>PostRecommend</code> 扩展点对分析结果进行最后处理</p>
+</li>
+<li>
+<p><code>Observe</code>：Observe 阶段用于推荐结果的可观测。比如，在资源推荐时，将优化建议的信息通过 Metric 保存到监控系统，再通过 Dashboard 观测优化建议带来的收益。</p>
+</li>
+</ul>
+<p>比如资源推荐就实现了 Recommender 接口，主要做了下面 3 个阶段的处理：</p>
+<ul>
+<li>Filter 阶段：过滤没有 Pod 的工作负载</li>
+<li>Recommend 推荐：采用 VPA 的滑动窗口算法分别计算每个容器的 CPU 和内存并给出对应的推荐值</li>
+<li>Observe 推荐：将推荐资源配置记录到 <code>crane_analytics_replicas_recommendation</code> 指标</li>
+</ul>
+<p>除了核心的智能推荐功能之外，Crane 还有很多高级特性，比如可以根据实际的节点利用率的动态调度器、基于流量预测的弹性 HPA 等等。</p>
+<h2 id="_5">智能调度器<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p><code>Crane</code> 除了提供了智能推荐功能之外，还提供了一个调度器插件 <code>Crane-scheduler</code> 可以实现智能调度和完成拓扑感知调度与资源分配的工作。</p>
+<h3 id="_6">动态调度器<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>K8s 的原生调度器只能通过资源的 requests 值来调度 pod，这很容易造成一系列负载不均的问题：</p>
+<ul>
+<li>对于某些节点，实际负载与资源请求相差不大，这会导致很大概率出现稳定性问题。</li>
+<li>对于其他节点来说，实际负载远小于资源请求，这将导致资源的巨大浪费。</li>
+</ul>
+<p>为了解决这些问题，动态调度器根据实际的节点利用率构建了一个简单但高效的模型，并过滤掉那些负载高的节点来平衡集群。</p>
+<p><img alt="动态调度器架构" src="https://picdn.youdianzhishi.com/images/1666261847798.jpg" /></p>
+<p>动态调度器依赖于 prometheus 和 node-exporter 收集汇总指标数据，它由两个组件组成：</p>
+<ul>
+<li><code>Node-annotator</code> 定期从 Prometheus 拉取数据，并以 annotations 的形式在节点上用时间戳标记它们。</li>
+<li><code>Dynamic plugin</code> 直接从节点的 annotations 中读取负载数据，过滤并基于简单的算法对候选节点进行评分。</li>
+</ul>
+<p>动态调度器提供了一个默认值调度策略，配置文件如下所示：</p>
+<div class="highlight"><pre><span></span><code># policy.yaml
+apiVersion: scheduler.policy.crane.io/v1alpha1
+ kind: DynamicSchedulerPolicy
+ spec:
+   syncPolicy:
+     ##cpu usage
+     - name: cpu_usage_avg_5m
+       period: 3m
+     - name: cpu_usage_max_avg_1h
+       period: 15m
+     - name: cpu_usage_max_avg_1d
+       period: 3h
+     ##memory usage
+     - name: mem_usage_avg_5m
+       period: 3m
+     - name: mem_usage_max_avg_1h
+       period: 15m
+     - name: mem_usage_max_avg_1d
+       period: 3h
+
+   predicate:
+     ##cpu usage
+     - name: cpu_usage_avg_5m
+       maxLimitPecent: 0.65
+     - name: cpu_usage_max_avg_1h
+       maxLimitPecent: 0.75
+     ##memory usage
+     - name: mem_usage_avg_5m
+       maxLimitPecent: 0.65
+     - name: mem_usage_max_avg_1h
+       maxLimitPecent: 0.75
+
+   priority:
+     ##cpu usage
+     - name: cpu_usage_avg_5m
+       weight: 0.2
+     - name: cpu_usage_max_avg_1h
+       weight: 0.3
+     - name: cpu_usage_max_avg_1d
+       weight: 0.5
+     ##memory usage
+     - name: mem_usage_avg_5m
+       weight: 0.2
+     - name: mem_usage_max_avg_1h
+       weight: 0.3
+     - name: mem_usage_max_avg_1d
+       weight: 0.5
+
+   hotValue:
+     - timeRange: 5m
+       count: 5
+     - timeRange: 1m
+       count: 2
+</code></pre></div>
+<p>我们可以根据实际需求自定义该策略配置，默认策略依赖于以下指标：</p>
+<ul>
+<li>cpu_usage_avg_5m</li>
+<li>cpu_usage_max_avg_1h</li>
+<li>cpu_usage_max_avg_1d</li>
+<li>mem_usage_avg_5m</li>
+<li>mem_usage_max_avg_1h</li>
+<li>mem_usage_max_avg_1d</li>
+</ul>
+<p>这几个指标我们这里是通过记录规则创建的，可以查看 Prometheus 的配置文件来了解详细信息：</p>
+<div class="highlight"><pre><span></span><code>$ kubectl get cm -n crane-system prometheus-server -oyaml
+apiVersion: v1
+data:
+  alerting_rules.yml: |
+    {}
+  alerts: |
+    {}
+  allow-snippet-annotations: &quot;false&quot;
+  prometheus.yml: |
+    global:
+      evaluation_interval: 1m
+      scrape_interval: 1m
+      scrape_timeout: 10s
+    rule_files:
+    - /etc/config/recording_rules.yml
+    - /etc/config/alerting_rules.yml
+    - /etc/config/rules
+    - /etc/config/alerts
+    scrape_configs:
+    - job_name: prometheus
+      static_configs:
+      - targets:
+        - localhost:9090
+    # ......
+  recording_rules.yml: |
+    groups:
+    - interval: 3600s
+      name: costs.rules
+      rules:
+    #   ......
+    - interval: 30s
+      name: scheduler.rules.30s
+      rules:
+      - expr: 100 - (avg by (instance) (irate(node_cpu_seconds_total{mode=&quot;idle&quot;}[90s]))
+          * 100)
+        record: cpu_usage_active
+      - expr: 100*(1-node_memory_MemAvailable_bytes/node_memory_MemTotal_bytes)
+        record: mem_usage_active
+    - interval: 1m
+      name: scheduler.rules.1m
+      rules:
+      - expr: avg_over_time(cpu_usage_active[5m])
+        record: cpu_usage_avg_5m
+      - expr: avg_over_time(mem_usage_active[5m])
+        record: mem_usage_avg_5m
+    - interval: 5m
+      name: scheduler.rules.5m
+      rules:
+      - expr: max_over_time(cpu_usage_avg_5m[1h])
+        record: cpu_usage_max_avg_1h
+      - expr: max_over_time(cpu_usage_avg_5m[1d])
+        record: cpu_usage_max_avg_1d
+      - expr: max_over_time(mem_usage_avg_5m[1h])
+        record: mem_usage_max_avg_1h
+      - expr: max_over_time(mem_usage_avg_5m[1d])
+        record: mem_usage_max_avg_1d
+  rules: |
+    {}
+kind: ConfigMap
+metadata:
+  name: prometheus-server
+  namespace: crane-system
+</code></pre></div>
+<p>在调度的 Filter 阶段，如果该节点的实际使用率大于上述任一指标的阈值，则该节点将被过滤。而在 Score 阶段，最终得分是这些指标值的加权和。</p>
+<p>在生产集群中，可能会频繁出现调度热点，因为创建 Pod 后节点的负载不能立即增加。因此，我们定义了一个额外的指标，名为 <code>hotValue</code>，表示节点最近几次的调度频率，并且节点的最终优先级是最终得分减去 hotValue。</p>
+<p>我们可以在 K8s 集群中安装 <code>Crane-scheduler</code> 作为第二个调度器来进行验证：</p>
+<div class="highlight"><pre><span></span><code>$ helm repo add crane https://finops-helm.pkg.coding.net/gocrane/gocrane
+$ helm upgrade --install scheduler -n crane-system --create-namespace --set global.prometheusAddr=&quot;http://prometheus-server.crane-system.svc.cluster.local:8080&quot; crane/scheduler
+</code></pre></div>
+<p>安装后会创建一个名为 <code>scheduler-config</code> 的 ConfigMap 对象，里面包含的就是调度器的配置文件，我们会在配置中启用 Dynamic 动态调度插件：</p>
+<div class="highlight"><pre><span></span><code>$ kubectl get cm -n crane-system scheduler-config -oyaml
+apiVersion: v1
+data:
+  scheduler-config.yaml: |
+    apiVersion: kubescheduler.config.k8s.io/v1beta2
+    kind: KubeSchedulerConfiguration
+    leaderElection:
+      leaderElect: false
+    profiles:
+    - schedulerName: crane-scheduler
+      plugins:
+        filter:
+          enabled:
+          - name: Dynamic
+        score:
+          enabled:
+          - name: Dynamic
+            weight: 3
+      pluginConfig:
+      - name: Dynamic
+        args:
+          policyConfigPath: /etc/kubernetes/policy.yaml
+kind: ConfigMap
+metadata:
+  name: scheduler-config
+  namespace: crane-system
+</code></pre></div>
+<p>安装完成后我们可以任意创建一个 Pod，并通过设置 <code>schedulerName: crane-scheduler</code> 属性明确指定使用该调度器进行调度，如下所示：</p>
+<div class="highlight"><pre><span></span><code>apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cpu-stress
+spec:
+  selector:
+    matchLabels:
+      app: cpu-stress
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: cpu-stress
+    spec:
+      schedulerName: crane-scheduler
+      hostNetwork: true
+      tolerations:
+        - key: node.kubernetes.io/network-unavailable
+          operator: Exists
+          effect: NoSchedule
+      containers:
+        - name: stress
+          image: docker.io/gocrane/stress:latest
+          command: [&quot;stress&quot;, &quot;-c&quot;, &quot;1&quot;]
+          resources:
+            requests:
+              memory: &quot;1Gi&quot;
+              cpu: &quot;1&quot;
+            limits:
+              memory: &quot;1Gi&quot;
+              cpu: &quot;1&quot;
+</code></pre></div>
+<p>直接创建上面的资源对象，正常创建的 Pod 就会通过 <code>Crane Scheduler</code> 调度器进行调度了：</p>
+<div class="highlight"><pre><span></span><code>Events:
+  Type    Reason     Age   From             Message
+  ----    ------     ----  ----             -------
+  Normal  Scheduled  22s   crane-scheduler  Successfully assigned default/cpu-stress-cc8656b6c-hsqdg to node2
+  Normal  Pulling    22s   kubelet          Pulling image &quot;docker.io/gocrane/stress:latest&quot;
+</code></pre></div>
+<p>如果想默认使用该动态调度器，则可以使用该调度器去替换掉默认的调度器即可。</p>
+<h3 id="pod">使用拓扑感知调度对 Pod 进行精细化调度<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h3>
+<p>Crane-Scheduler 和 Crane-Agent 配合工作可以完成拓扑感知调度与资源分配的工作。Crane-Agent 从节点采集资源拓扑，包括 NUMA、Socket、设备等信息，汇总到 <code>NodeResourceTopology</code> 这个自定义资源对象中。</p>
+<p><img alt="CPU 拓扑感知" src="https://picdn.youdianzhishi.com/images/1666938840993.jpg" /></p>
+<p>Crane-Scheduler 在调度时会参考节点的 <code>NodeResourceTopology</code> 对象获取到节点详细的资源拓扑结构，在调度到节点的同时还会为 Pod 分配拓扑资源，并将结果写到 Pod 的 annotations 中。Crane-Agent 在节点上 Watch 到 Pod 被调度后，从 Pod 的 annotations 中获取到拓扑分配结果，并按照用户给定的 CPU 绑定策略进行 CPUSet 的细粒度分配。</p>
+<p>Crane 中提供了四种 CPU 分配策略，分别如下：</p>
+<ul>
+<li><code>none</code>：该策略不进行特别的 CPUSet 分配，Pod 会使用节点 CPU 共享池。</li>
+<li><code>exclusive</code>：该策略对应 kubelet 的 static 策略，Pod 会独占 CPU 核心，其他任何 Pod 都无法使用。</li>
+<li><code>numa</code>：该策略会指定 NUMA Node，Pod 会使用该 NUMA Node 上的 CPU 共享池。</li>
+<li><code>immovable</code>：该策略会将 Pod 固定在某些 CPU 核心上，但这些核心属于共享池，其他 Pod 仍可使用。</li>
+</ul>
+<p>首先需要在 Crane-Agent 启动参数中添加 <code>--feature-gates=NodeResourceTopology=true,CraneCPUManager=true</code> 开启拓扑感知调度特性。然后安装下面的步骤修改 K8s 集群默认的调度器。</p>
+<ol>
+<li>
+<p>备份 <code>/etc/kubernetes/manifests/kube-scheduler.yaml</code></p>
+<p>cp /etc/kubernetes/manifests/kube-scheduler.yaml /etc/kubernetes/</p>
+</li>
+<li>
+<p>通过修改 kube-scheduler 的配置文件（<code>scheduler-config.yaml</code> ) 启用动态调度插件并配置插件参数：</p>
+<p>apiVersion: kubescheduler.config.k8s.io/v1beta2
+kind: KubeSchedulerConfiguration
+leaderElection:
+  leaderElect: true
+clientConnection:
+  kubeconfig: "REPLACE_ME_WITH_KUBE_CONFIG_PATH"
+profiles:
+  - schedulerName: default-scheduler
+    plugins:
+      preFilter:
+        enabled:
+          - name: NodeResourceTopologyMatch
+      filter:
+        enabled:
+          - name: NodeResourceTopologyMatch
+      score:
+        enabled:
+          - name: NodeResourceTopologyMatch
+            weight: 2
+      reserve:
+        enabled:
+          - name: NodeResourceTopologyMatch
+      preBind:
+        enabled:
+          - name: NodeResourceTopologyMatch</p>
+</li>
+<li>
+<p>添加 RBAC 规则</p>
+<p>apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: system:kube-scheduler:plugins
+rules:
+  - apiGroups:
+      - topology.crane.io
+    resources:
+      - "*"
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - ""
+    resources:
+      - pods
+    verbs:
+      - patch</p>
+<hr />
+<p>kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: system:kube-scheduler:plugins
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: system:kube-scheduler:plugins
+subjects:
+  - kind: User
+    apiGroup: rbac.authorization.k8s.io
+    name: system:kube-scheduler</p>
+</li>
+<li>
+<p>修改 <code>kube-scheduler.yaml</code> 并用 Crane-scheduler 的镜像替换 kube-scheduler 镜像</p>
+</li>
+</ol>
+<p>正确安装组件后，每个节点均会生成 <code>NodeResourceTopology</code> 对象。</p>
+<div class="highlight"><pre><span></span><code>$ kubectl get nrt
+NAME    CRANE CPU MANAGER POLICY   CRANE TOPOLOGY MANAGER POLICY   AGE
+node1   Static                     SingleNUMANodePodLevel          35d
+</code></pre></div>
+<p>可以看出集群中节点 <code>node1</code> 已生成对应的 NRT 对象，此时 Crane 的 CPU Manager Policy 为 <code>Static</code>，节点默认的 Topology Manager Policy 为 <code>SingleNUMANodePodLevel</code>，代表节点不允许跨 NUMA 分配资源。</p>
+<p>使用以下实例进行调度测试：</p>
+<div class="highlight"><pre><span></span><code>apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      annotations:
+        topology.crane.io/topology-awareness: &quot;true&quot; # 添加注解，表示Pod需要感知CPU拓扑，资源分配不允许跨NUMA。若不指定，则拓扑策略默认继承节点上的topology.crane.io/topology-awareness标签
+        topology.crane.io/cpu-policy: &quot;exclusive&quot; # 添加注解，表示Pod的CPU分配策略为exclusive策略。
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - image: nginx
+          name: nginx
+          resources:
+            limits:
+              cpu: &quot;2&quot; # 需要limits.cpu值，如果要开启绑核，则该值必须等于requests.cpu。
+              memory: 2Gi
+</code></pre></div>
+<p>应用后可以从 annotations 中查看 Pod 的拓扑分配结果，发现 Pod 在 NUMA Node0 上被分配了 2 个 CPU 核心。</p>
+<div class="highlight"><pre><span></span><code>$ kubectl get pod -o custom-columns=name:metadata.name,topology-result:metadata.annotations.&quot;topology\.crane\.io/topology-result&quot;
+name                                topology-result
+nginx-deployment-754d99dcdf-mtcdp   [{&quot;name&quot;:&quot;node0&quot;,&quot;type&quot;:&quot;Node&quot;,&quot;resources&quot;:{&quot;capacity&quot;:{&quot;cpu&quot;:&quot;2&quot;}}}]
+</code></pre></div>
+<h2 id="_7">实现基于流量预测的弹性<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>Kubernetes HPA 支持了丰富的弹性扩展能力，Kubernetes 平台开发者部署服务实现自定义 Metric 的服务，Kubernetes 用户配置多项内置的资源指标或者自定义 Metric 指标实现自定义水平弹性。</p>
+<p><code>EffectiveHorizontalPodAutoscaler</code>（简称 <code>EHPA</code>）是 Crane 提供的弹性伸缩产品，它基于社区 HPA 做底层的弹性控制，支持更丰富的弹性触发策略（预测，观测，周期），让弹性更加高效，并保障了服务的质量。</p>
+<ul>
+<li>提前扩容，保证服务质量：通过算法预测未来的流量洪峰提前扩容，避免扩容不及时导致的雪崩和服务稳定性故障。</li>
+<li>减少无效缩容：通过预测未来可减少不必要的缩容，稳定工作负载的资源使用率，消除突刺误判。</li>
+<li>支持 Cron 配置：支持 Cron-based 弹性配置，应对大促等异常流量洪峰。</li>
+<li>兼容社区：使用社区 HPA 作为弹性控制的执行层，能力完全兼容社区。</li>
+</ul>
+<p>Effective HPA 兼容社区的 Kubernetes HPA 的能力，提供了更智能的弹性策略，比如基于预测的弹性和基于 Cron 周期的弹性等。</p>
+<h3 id="_8">基于自定义指标的容器弹性伸缩<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>在了解如何使用 EHPA 之前，我们有必要来详细了解下 K8s 中的 HPA 对象。通过此伸缩组件，Kubernetes 集群可以利用监控指标（CPU 使用率等）自动扩容或者缩容服务中的 Pod 数量，当业务需求增加时，HPA 将自动增加服务的 Pod 数量，提高系统稳定性，而当业务需求下降时，HPA 将自动减少服务的 Pod 数量，减少对集群资源的请求量，甚至还可以配合 Cluster Autoscaler 实现集群规模的自动伸缩，节省 IT 成本。</p>
+<p>不过目前默认的 HPA 对象只能支持根据 CPU 和内存的阈值检测扩缩容，但也可以通过 custom metric api 来调用 Prometheus 实现自定义 metric，这样就可以实现更加灵活的监控指标实现弹性伸缩了。</p>
+<p>默认情况下，HPA 会通过 <code>metrics.k8s.io</code> 这个接口服务来获取 Pod 的 CPU、内存指标，CPU 和内存这两者属于核心指标，<code>metrics.k8s.io</code> 服务对应的后端服务一般是 metrics-server，所以在使用 HPA 的时候需要安装该应用。</p>
+<p>如果 HPA 要通过非 CPU、内存的其他指标来伸缩容器，我们则需要部署一套监控系统如 Prometheus，让 Prometheus 采集各种指标，但是 Prometheus 采集到的 metrics 指标并不能直接给 K8s 使用，因为两者数据格式是不兼容的，因此需要使用到另外一个组件 <code>prometheus-adapter</code>，该组件可以将 Prometheus 的 metrics 指标数据格式转换成 K8s API 接口能识别的格式，另外我们还需要在 K8s 注册一个服务（即 <code>custom.metrics.k8s.io</code>），以便 HPA 能通过 <code>/apis/</code> 进行访问。</p>
+<p>需要注意的是 Crane 提供了一个 <code>metric-adapter</code> 组件，该组件和 <code>prometheus-adapter</code> 都基于 <code>custom-metric-apiserver</code> 实现了 Custom Metric 和 External Metric 的 <code>ApiService</code>，在安装 Crane 时会将对应的 <code>ApiService</code> 安装为 Crane 的 <code>metric-adapter</code>，所以它会和 <code>prometheus-adapter</code> 冲突，因为 Prometheus 是当下最流行的开源监控系统，所以我们更愿意使用它来获取用户的自定义指标，那么我们就需要去安装 <code>prometheus-adapter</code>，但是在安装之前需要删除 Crane 提供的 <code>ApiService</code>。</p>
+<div class="highlight"><pre><span></span><code># 查看当前集群 ApiService
+$ kubectl get apiservice |grep crane-system
+v1beta1.custom.metrics.k8s.io          crane-system/metric-adapter                    True                      3h51m
+v1beta1.external.metrics.k8s.io        crane-system/metric-adapter                    True                      3h51m
+
+# 删除 crane 安装的 ApiService
+$ kubectl delete apiservice v1beta1.custom.metrics.k8s.io
+$ kubectl delete apiservice v1beta1.external.metrics.k8s.io
+</code></pre></div>
+<p>然后通过 Helm Chart 来安装 Prometheus Adapter：</p>
+<div class="highlight"><pre><span></span><code>$ helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+$ helm repo update
+# 指定有 prometheus 地址
+$ helm upgrade --install prometheus-adapter -n crane-system prometheus-community/prometheus-adapter --set image.repository=cnych/prometheus-adapter,prometheus.url=http://prometheus-server.crane-system.svc,prometheus.port=8080
+</code></pre></div>
+<p>当 <code>prometheus-adapter</code> 安装成功后我们再将 ApiService 改回 Crane 的 <code>metric-adapter</code>，应用下面的资源清单即可：</p>
+<div class="highlight"><pre><span></span><code>apiVersion: apiregistration.k8s.io/v1
+kind: APIService
+metadata:
+  name: v1beta1.custom.metrics.k8s.io
+spec:
+  service:
+    name: metric-adapter
+    namespace: crane-system
+  group: custom.metrics.k8s.io
+  version: v1beta1
+  insecureSkipTLSVerify: true
+  groupPriorityMinimum: 100
+  versionPriority: 100
+---
+apiVersion: apiregistration.k8s.io/v1
+kind: APIService
+metadata:
+  name: v1beta1.external.metrics.k8s.io
+spec:
+  service:
+    name: metric-adapter
+    namespace: crane-system
+  group: external.metrics.k8s.io
+  version: v1beta1
+  insecureSkipTLSVerify: true
+  groupPriorityMinimum: 100
+  versionPriority: 100
+</code></pre></div>
+<p>应用了上面的对象后，ApiService 改回了 Crane 的 <code>metric-adapter</code>，那么就不能使用 <code>prometheus-adapter</code> 的自定义 Metrics 功能，我们可以通过 Crane 的 <code>metric-adapter</code> 提供的 <code>RemoteAdapter</code> 功能将请求转发给 <code>prometheus-adapter</code>。</p>
+<p>修改 <code>metric-adapter</code> 的配置，将 <code>prometheus-adapter</code> 的 Service 配置成 Crane Metric Adapter 的 <code>RemoteAdapter</code>。</p>
+<div class="highlight"><pre><span></span><code>$ kubectl edit deploy metric-adapter -n crane-system
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: metric-adapter
+  namespace: crane-system
+spec:
+  template:
+    spec:
+      containers:
+      - args:
+        # 添加外部 Adapter 配置
+        - --remote-adapter=true
+        - --remote-adapter-service-namespace=crane-system
+        - --remote-adapter-service-name=prometheus-adapter
+        - --remote-adapter-service-port=443
+# ......
+</code></pre></div>
+<p>这是因为 Kubernetes <strong>限制一个 ApiService 只能配置一个后端服务</strong> ，为了在一个集群内使用 Crane 提供的 Metric 和 <code>prometheus-adapter</code> 提供的 Metric，Crane 支持了 <code>RemoteAdapter</code> 来解决该问题：</p>
+<ul>
+<li>Crane Metric-Adapter 支持配置一个 Kubernetes Service 作为一个远程 Adapter</li>
+<li>Crane Metric-Adapter 处理请求时会先检查是否是 Crane 提供的 Local Metric，如果不是，则转发给远程 Adapter</li>
+</ul>
+<p>下面我们来部署一个示例应用，用来测试自定义指标的容器弹性伸缩。如下所示的应用暴露了 Metric 展示每秒收到的 http 请求数量。</p>
+<div class="highlight"><pre><span></span><code># sample-app.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-app
+  labels:
+    app: sample-app
+spec:
+  selector:
+    matchLabels:
+      app: sample-app
+  template:
+    metadata:
+      labels:
+        app: sample-app
+    spec:
+      containers:
+        - image: luxas/autoscale-demo:v0.1.2
+          name: metrics-provider
+          resources:
+            limits:
+              cpu: 500m
+            requests:
+              cpu: 200m
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: sample-app
+  name: sample-app
+spec:
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
+  selector:
+    app: sample-app
+  type: NodePort
+</code></pre></div>
+<p>当应用部署完成后，我们可以通过命令检查 <code>http_requests_total</code> 指标数据：</p>
+<div class="highlight"><pre><span></span><code>$ curl http://$(kubectl get service sample-app -o jsonpath=&#39;{ .spec.clusterIP }&#39;)/metrics
+# HELP http_requests_total The amount of requests served by the server in total
+# TYPE http_requests_total counter
+http_requests_total 1
+</code></pre></div>
+<p>然后我们需要在 Prometheus 中配置抓取 <code>sample-app</code> 的指标，我们这里使用如下所示命令添加抓取配置：</p>
+<div class="highlight"><pre><span></span><code>$ kubectl edit cm -n crane-system prometheus-server
+# 添加抓取 sample-app 配置
+- job_name: sample-app
+  kubernetes_sd_configs:
+  - role: pod
+  relabel_configs:
+  - action: keep
+    regex: default;sample-app-(.+)
+    source_labels:
+    - __meta_kubernetes_namespace
+    - __meta_kubernetes_pod_name
+  - action: labelmap
+    regex: __meta_kubernetes_pod_label_(.+)
+  - action: replace
+    source_labels:
+    - __meta_kubernetes_namespace
+    target_label: namespace
+  - source_labels: [__meta_kubernetes_pod_name]
+    action: replace
+    target_label: pod
+</code></pre></div>
+<p>配置生效后我们可以在 Prometheus Dashboard 中查询对应的指标：</p>
+<p><img alt="查询指标" src="https://picdn.youdianzhishi.com/images/1666422933054.png" /></p>
+<p>为了让 HPA 能够用到 Prometheus 采集到的指标，<code>prometheus-adapter</code> 通过使用 promql 语句来获取指标，然后修改数据格式，并把重新组装的指标和值通过自己的接口暴露。而 HPA 会通过 <code>/apis/custom.metrics.k8s.io/</code> 代理到 <code>prometheus-adapter</code> 的 service 上来获取这些指标。</p>
+<p>如果把 Prometheus 的所有指标到获取一遍并重新组装，那 adapter 的效率必然十分低下，因此 adapter 将需要读取的指标设计成可配置，让用户通过 ConfigMap 来决定读取 Prometheus 的哪些监控指标。</p>
+<p>我们这里使用 Helm Chart 方式安装的 <code>prometheus-adapter</code>，其默认的 Rule 配置如下所示：</p>
+<div class="highlight"><pre><span></span><code>$ kubectl get cm -n crane-system prometheus-adapter -oyaml
+apiVersion: v1
+data:
+  config.yaml: |
+    rules:
+    - seriesQuery: &#39;{__name__=~&quot;^container_.*&quot;,container!=&quot;POD&quot;,namespace!=&quot;&quot;,pod!=&quot;&quot;}&#39;
+      seriesFilters: []
+      resources:
+        overrides:
+          namespace:
+            resource: namespace
+          pod:
+            resource: pod
+      name:
+        matches: ^container_(.*)_seconds_total$
+        as: &quot;&quot;
+      metricsQuery: sum(rate(&lt;&lt;.Series&gt;&gt;{&lt;&lt;.LabelMatchers&gt;&gt;,container!=&quot;POD&quot;}[5m]))
+        by (&lt;&lt;.GroupBy&gt;&gt;)
+    - seriesQuery: &#39;{__name__=~&quot;^container_.*&quot;,container!=&quot;POD&quot;,namespace!=&quot;&quot;,pod!=&quot;&quot;}&#39;
+      seriesFilters:
+      - isNot: ^container_.*_seconds_total$
+      resources:
+        overrides:
+          namespace:
+            resource: namespace
+          pod:
+            resource: pod
+      name:
+        matches: ^container_(.*)_total$
+        as: &quot;&quot;
+      metricsQuery: sum(rate(&lt;&lt;.Series&gt;&gt;{&lt;&lt;.LabelMatchers&gt;&gt;,container!=&quot;POD&quot;}[5m]))
+        by (&lt;&lt;.GroupBy&gt;&gt;)
+    - seriesQuery: &#39;{__name__=~&quot;^container_.*&quot;,container!=&quot;POD&quot;,namespace!=&quot;&quot;,pod!=&quot;&quot;}&#39;
+      seriesFilters:
+      - isNot: ^container_.*_total$
+      resources:
+        overrides:
+          namespace:
+            resource: namespace
+          pod:
+            resource: pod
+      name:
+        matches: ^container_(.*)$
+        as: &quot;&quot;
+      metricsQuery: sum(&lt;&lt;.Series&gt;&gt;{&lt;&lt;.LabelMatchers&gt;&gt;,container!=&quot;POD&quot;}) by (&lt;&lt;.GroupBy&gt;&gt;)
+    - seriesQuery: &#39;{namespace!=&quot;&quot;,__name__!~&quot;^container_.*&quot;}&#39;
+      seriesFilters:
+      - isNot: .*_total$
+      resources:
+        template: &lt;&lt;.Resource&gt;&gt;
+      name:
+        matches: &quot;&quot;
+        as: &quot;&quot;
+      metricsQuery: sum(&lt;&lt;.Series&gt;&gt;{&lt;&lt;.LabelMatchers&gt;&gt;}) by (&lt;&lt;.GroupBy&gt;&gt;)
+    - seriesQuery: &#39;{namespace!=&quot;&quot;,__name__!~&quot;^container_.*&quot;}&#39;
+      seriesFilters:
+      - isNot: .*_seconds_total
+      resources:
+        template: &lt;&lt;.Resource&gt;&gt;
+      name:
+        matches: ^(.*)_total$
+        as: &quot;&quot;
+      metricsQuery: sum(rate(&lt;&lt;.Series&gt;&gt;{&lt;&lt;.LabelMatchers&gt;&gt;}[5m])) by (&lt;&lt;.GroupBy&gt;&gt;)
+    - seriesQuery: &#39;{namespace!=&quot;&quot;,__name__!~&quot;^container_.*&quot;}&#39;
+      seriesFilters: []
+      resources:
+        template: &lt;&lt;.Resource&gt;&gt;
+      name:
+        matches: ^(.*)_seconds_total$
+        as: &quot;&quot;
+      metricsQuery: sum(rate(&lt;&lt;.Series&gt;&gt;{&lt;&lt;.LabelMatchers&gt;&gt;}[5m])) by (&lt;&lt;.GroupBy&gt;&gt;)
+kind: ConfigMap
+metadata:
+  name: prometheus-adapter
+  namespace: crane-system
+</code></pre></div>
+<p>Prometheus adapter 的配置文件格式如上所示，它分为两个部分，第一个是 <code>rules</code>，用于 custom metrics，另一个是 <code>resourceRules</code>，用于 metrics，如果你只用 Prometheus adapter 做 HPA，那么 <code>resourceRules</code> 就可以省略。</p>
+<p>我们可以看到 <code>rules</code> 规则下面有很多的查询语句，这些查询语句的作用就是尽可能多的获取指标，从而让这些指标都可以用于 HPA。也就是说通过 <code>prometheus-adapter</code> 可以将 Prometheus 中的任何一个指标都用于 HPA，但是前提是你得通过查询语句将它拿到（包括指标名称和其对应的值）。也就是说，如果你只需要使用一个指标做 HPA，那么你完全就可以只写一条查询，而不像上面使用了好多个查询。</p>
+<p>整体上每个规则大致可以分为 4 个部分：</p>
+<ul>
+<li><code>Discovery</code>：它指定 Adapter 应该如何找到该规则的所有 Prometheus 指标</li>
+<li><code>Association</code>：指定 Adapter 应该如何确定和特定的指标关联的 Kubernetes 资源</li>
+<li><code>Naming</code>：指定 Adapter 应该如何在自定义指标 API 中暴露指标</li>
+<li><code>Querying</code>：指定如何将对一个获多个 Kubernetes 对象上的特定指标的请求转换为对 Prometheus 的查询</li>
+</ul>
+<p><strong>Discovery</strong></p>
+<p>指定待转换的 Prometheus 指标，你可以通过 <code>seriesFilters</code> 精确过滤指标，<code>seriesQuery</code> 可以根据标签进行查找(如下)，也可以直接指定 metric name 查找。</p>
+<div class="highlight"><pre><span></span><code>seriesQuery: http_requests_total{namespace!=&quot;&quot;,pod!=&quot;&quot;}
+seriesFilters:
+  - isNot: &quot;^container_.*_seconds_total&quot;
+</code></pre></div>
+<p>其中 <code>seriesFilters</code> 为非必填项，用来过滤指标：</p>
+<ul>
+<li><code>is：&lt;regex&gt;</code>：匹配包含该正则表达式的指标。</li>
+<li><code>isNot：&lt;regex&gt;</code>：匹配不包含该正则表达式的指标。</li>
+</ul>
+<p><strong>Association</strong></p>
+<p>设置 Prometheus 指标标签与 Kubernetes 中的资源映射关系，Kubernetes Resources 可以通过 <code>kubectl api-resources</code> 命令查看。<code>overrides</code> 会将 Prometheus metric label 与一个 Kubernetes resource(下例为 deployment)关联。需要注意的是该 label 必须是一个真实的 Kubernetes resource，如 metric 的 pod 标签可以映射为 Kubernetes 的 pod resource，但不能将 container_image 映射为 Kubernetes 的 pod resource，映射错误会导致无法通过 custom metrics API 获取正确的值，这也表示 metric 中必须存在一个真实的 resource 名称，将其映射为 Kubernetes resource。</p>
+<div class="highlight"><pre><span></span><code># microservice 标签对应于 apps.deployment 资源
+resources:
+  overrides:
+    # 此处 resource 为 Kubernetes 的 API Resource，可通过 kubectl api-resources -o wide 查看。
+    microservice: { group: &quot;apps&quot;, resource: &quot;deployment&quot; }
+    # 此处 key(microservice)对应 Prometheus 数据中的 LabelName，请确认 Prometheus 指标数据中有此 LabelName。
+</code></pre></div>
+<p><strong>Naming</strong></p>
+<p>将 Prometheus 指标名称转换为自定义指标 API 中的指标的过程，它由 <code>name</code> 字段控制。命名通过指定一种模式来控制的，以从 Prometheus 名称中提取 API 名称，并可能对该提取的值进行转换。</p>
+<p>模式在 <code>matches</code> 字段中指定，并且只是一个正则表达式。如果未指定，则默认为 <code>.*</code>。转换由 <code>as</code> 字段指定，可以使用 <code>matches</code> 字段中定义的任何捕获组，如果 <code>matches</code> 字段不包含捕获组，则 <code>as</code> 字段默认为 <code>$0</code>，如果它包含单个捕获组，则 <code>as</code> 字段默认为 <code>$1</code>，<code>as</code> 为空就是使用默认值的意思。例如：</p>
+<div class="highlight"><pre><span></span><code># 将任意名称 `＜name＞_total` 转换为 `＜name＞_per_second`
+# e.g. http_requests_total 变成 http_requests_per_second
+name:
+  matches: &quot;^(.*)_total$&quot;
+  as: &quot;${1}_per_second&quot;
+</code></pre></div>
+<p><strong>Querying</strong></p>
+<p>处理调用 custom metrics API 获取到的 metrics 的 value，该值最终提供给 HPA 进行扩缩容，它由 <code>metricsQuery</code> 字段控制。<code>metricsQuery</code> 字段使用 Go template 将 URL 请求转变为 Prometheus 的请求，它会提取 custom metrics API 请求中的字段，并将其划分为 metric name、group-resource 以及 group-resource 中的一个或多个 objects，对应如下字段：</p>
+<ul>
+<li><code>Series</code>: metric 名称</li>
+<li><code>LabelMatchers</code>: 以逗号分割的 objects，当前表示特定 group-resource 加上命名空间的 label(如果该 group-resource 是 namespaced 的)</li>
+<li><code>GroupBy</code>：以逗号分割的 label 的集合，当前表示 <code>LabelMatchers</code> 中的 group-resource label</li>
+</ul>
+<p>假设有一个如下所示的 <code>http_requests_per_second</code> 指标：</p>
+<div class="highlight"><pre><span></span><code>http_requests_per_second{pod=&quot;pod1&quot;,service=&quot;nginx1&quot;,namespace=&quot;somens&quot;}
+http_requests_per_second{pod=&quot;pod2&quot;,service=&quot;nginx2&quot;,namespace=&quot;somens&quot;}
+</code></pre></div>
+<p>当调用 <code>kubectl get --raw "/apis/{APIService-name}/v1beta1/namespaces/somens/pods/*/http_request_per_second"</code> 时，<code>metricsQuery</code> 字段的模板的实际内容如下：</p>
+<ul>
+<li>Series: "http_requests_total"</li>
+<li>LabelMatchers: "pod=~\"pod1|pod2", namespace="somens"</li>
+<li>GroupBy:pod</li>
+</ul>
+<p>我们这里使用的 sample-app 应用的指标名叫 <code>http_requests_total</code>，通过上面的规则后会将 <code>http_requests_total</code> 转换成 Pods 类型的 Custom Metric，可以获得类似于 <code>pods/http_requests</code> 这样的数据。</p>
+<p>执行以下命令，通过 Custom Metrics 指标查询方式，查看 HPA 可用指标详情。</p>
+<div class="highlight"><pre><span></span><code>$ kubectl get --raw &quot;/apis/custom.metrics.k8s.io/v1beta1/namespaces/default/pods/*/http_requests&quot; | jq .
+{
+  &quot;kind&quot;: &quot;MetricValueList&quot;,
+  &quot;apiVersion&quot;: &quot;custom.metrics.k8s.io/v1beta1&quot;,
+  &quot;metadata&quot;: {
+    &quot;selfLink&quot;: &quot;/apis/custom.metrics.k8s.io/v1beta1/namespaces/default/pods/%2A/http_requests&quot;
+  },
+  &quot;items&quot;: [
+    {
+      &quot;describedObject&quot;: {
+        &quot;kind&quot;: &quot;Pod&quot;,
+        &quot;namespace&quot;: &quot;default&quot;,
+        &quot;name&quot;: &quot;sample-app-6876d5585b-wv8fl&quot;,
+        &quot;apiVersion&quot;: &quot;/v1&quot;
+      },
+      &quot;metricName&quot;: &quot;http_requests&quot;,
+      &quot;timestamp&quot;: &quot;2022-10-27T11:19:05Z&quot;,
+      &quot;value&quot;: &quot;18m&quot;,
+      &quot;selector&quot;: null
+    }
+  ]
+}
+</code></pre></div>
+<p>然后我们可以创建一个如下所示的 HPA 对象：</p>
+<div class="highlight"><pre><span></span><code># sample-app-hpa.yaml
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: sample-app-hpa
+spec:
+  # HPA的伸缩对象描述，HPA 会动态修改该对象的 Pod 数量。
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: sample-app
+  # HPA 的最小 Pod 数量和最大 Pod 数量。
+  minReplicas: 1
+  maxReplicas: 10
+  # 监控的指标数组，支持多种类型的指标共存。
+  metrics:
+    - type: Pods
+      pods:
+        #使用指标：pods/http_requests。
+        metricName: http_requests
+        # AverageValue 类型的目标值，Pods 指标类型下只支持 AverageValue 类型的目标值。
+        targetAverageValue: 500m # 当出现了小数点，K8s 又需要高精度时，会使用单位 m 或k。例如1001m=1.001，1k=1000。
+</code></pre></div>
+<p>直接应用该资源对象即可：</p>
+<div class="highlight"><pre><span></span><code>$ kubectl apply -f sample-app-hpa.yaml
+horizontalpodautoscaler.autoscaling/sample-app-hpa created
+$ kubectl get hpa
+NAME             REFERENCE               TARGETS   MINPODS   MAXPODS   REPLICAS   AGE
+sample-app-hpa   Deployment/sample-app   16m/50m   1         10        1          25s
+</code></pre></div>
+<p>然后针对 <code>sample-app</code> 服务做压力测试：</p>
+<div class="highlight"><pre><span></span><code>$ kubectl get svc sample-app
+NAME         TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
+sample-app   NodePort   10.104.163.144   &lt;none&gt;        80:31941/TCP   3h59m
+$ ab -c 50 -n 2000 http://192.168.0.106:31941/
+</code></pre></div>
+<p>然后查看 HPA 的状态。</p>
+<div class="highlight"><pre><span></span><code>$ kubectl get hpa
+NAME             REFERENCE               TARGETS     MINPODS   MAXPODS   REPLICAS   AGE
+sample-app-hpa   Deployment/sample-app   8001m/50m   1         10        4          7m58s
+$ kubectl describe hpa sample-app-hpa
+Name:                       sample-app-hpa
+Namespace:                  default
+Labels:                     &lt;none&gt;
+Annotations:                &lt;none&gt;
+CreationTimestamp:          Thu, 27 Oct 2022 19:24:16 +0800
+Reference:                  Deployment/sample-app
+Metrics:                    ( current / target )
+  &quot;http_requests&quot; on pods:  2093m / 50m
+Min replicas:               1
+Max replicas:               10
+Deployment pods:            10 current / 10 desired
+Conditions:
+  Type            Status  Reason            Message
+  ----            ------  ------            -------
+  AbleToScale     True    ReadyForNewScale  recommended size matches current size
+  ScalingActive   True    ValidMetricFound  the HPA was able to successfully calculate a replica count from pods metric http_requests
+  ScalingLimited  True    TooManyReplicas   the desired replica count is more than the maximum replica count
+Events:
+  Type    Reason             Age   From                       Message
+  ----    ------             ----  ----                       -------
+  Normal  SuccessfulRescale  105s  horizontal-pod-autoscaler  New size: 4; reason: pods metric http_requests above target
+  Normal  SuccessfulRescale  90s   horizontal-pod-autoscaler  New size: 8; reason: pods metric http_requests above target
+  Normal  SuccessfulRescale  75s   horizontal-pod-autoscaler  New size: 10; reason: pods metric http_requests above target
+</code></pre></div>
+<p>可以看到基于我们自定义的指标实现容器的弹性已经成功了。</p>
+<h3 id="_9">基于流量预测的容器弹性伸缩<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>接下来我们再来测试下基于流量预测的容器弹性伸缩，这就需要用到 Crane 的 EHPA 对象了。我们可以使用上面的 <code>pods/http_requests</code> 自定义指标来实现弹性功能。</p>
+<p>许多业务在时间序列上天然存在周期性的，尤其是对于那些直接或间接为“人”服务的业务。这种周期性是由人们日常活动的规律性决定的。例如，人们习惯于中午和晚上点外卖；早晚总有交通高峰；即使是搜索等模式不那么明显的服务，夜间的请求量也远低于白天时间。对于这类业务相关的应用来说，从过去几天的历史数据中推断出次日的指标，或者从上周一的数据中推断出下周一的访问量是很自然的想法。通过预测未来 24 小时内的指标或流量模式，我们可以更好地管理我们的应用程序实例，稳定我们的系统，同时降低成本。EHPA 对象可以使用 DSP 算法来预测应用未来的时间序列数据，DSP 是一种预测时间序列的算法，它基于 FFT（快速傅里叶变换），擅长预测一些具有季节性和周期的时间序列。</p>
+<p>接下来我们创建一个如下所示的 EHPA 资源对象，并开启预测功能：</p>
+<div class="highlight"><pre><span></span><code># sample-app-ehpa.yaml
+apiVersion: autoscaling.crane.io/v1alpha1
+kind: EffectiveHorizontalPodAutoscaler
+metadata:
+  name: sample-app-ehpa
+  annotations:
+    # metric-query.autoscaling.crane.io 是固定的前缀
+    # 后面是 prefix.Metrics，前缀支持 pods、resource、external 类型
+    metric-query.autoscaling.crane.io/pods.http_requests: &quot;sum(rate(http_requests_total[5m])) by (pod)&quot;
+spec:
+  # ScaleTargetRef 是对需要缩放的工作负载的引用
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: sample-app
+  # minReplicas 是可以缩小到的缩放目标的最小副本数
+  minReplicas: 1
+  # maxReplicas 是可以扩大到的缩放目标的最大副本数
+  maxReplicas: 10
+  # scaleStrategy 表示缩放目标的策略，值可以是 Auto 或 Manual
+  scaleStrategy: Auto
+  # metrics 包含用于计算所需副本数的规范。
+  metrics:
+    # 在使用预测算法预测时，你可能会担心预测数据不准带来一定的风险，EHPA 在计算副本数时，不仅会按预测数据计算，同时也会考虑实际监控数据来兜底，提升弹性的安全性，所以可以定义下面的 Resource 监控数据来兜底
+    # - type: Resource
+    #   resource:
+    #     name: cpu
+    #     target:
+    #       type: Utilization
+    #       averageUtilization: 50
+    - type: Pods
+      pods:
+        metric:
+          name: http_requests # 和上面注解中的 metric-query.autoscaling.crane.io/pods.(.*) 必须一致
+        target:
+          type: AverageValue
+          averageValue: 500m # 当出现了小数点，K8s 又需要高精度时，会使用单位 m 或k。例如1001m=1.001，1k=1000。
+  # prediction 定义了预测资源的配置，如果未指定，则默认不启用预测功能
+  prediction:
+    predictionWindowSeconds: 3600 # PredictionWindowSeconds 是预测未来指标的时间窗口
+    predictionAlgorithm:
+      algorithmType: dsp # 指定dsp为预测算法
+      dsp:
+        sampleInterval: &quot;60s&quot; # 监控数据的采样间隔为1分钟
+        historyLength: &quot;7d&quot; # 拉取过去7天的监控指标作为预测的依据
+</code></pre></div>
+<p>在上面的资源对象中添加了一个 <code>metric-query.autoscaling.crane.io/pods.http_requests: "sum(rate(http_requests_total[5m])) by (pod)"</code> 的注解，这样就可以开启自定义指标的预测功能了，该注解的前缀 <code>metric-query.autoscaling.crane.io/</code> 是固定不变的，后面的 <code>pods.http_requests</code> 需要根据我们指定的指标类型而定，注意的是我们这里是指定 Pods 类型的指标，所以这里的注解 key 后面是 <code>pods.http_requests</code>，后面的 <code>http_requests</code> 就是配置的指标名称。</p>
+<p>相应的在规范中定义了 <code>spec.prediction</code> 属性，用来指定预测资源的配置，其中的 <code>predictionWindowSeconds</code> 属性用来指定预测未来指标的时间窗口，<code>predictionAlgorithm</code> 属性用来指定预测的算法，比如我们这里配置的 <code>algorithmType: dsp</code> 表示使用 DSP（Digital Signal Processing）算法进行预测，该算法使用在数字信号处理领域中常用的的离散傅里叶变换、自相关函数等手段来识别、预测周期性的时间序列，关于该算法的实现原理可以查看官方文档 <code>https://gocrane.io/zh-cn/docs/tutorials/timeseriees-forecasting-by-dsp/</code> 的相关介绍，或者查看源码以了解背后原理，相关代码位于 <code>pkg/prediction/dsp</code> 目录下。此外在 <code>prediction.predictionAlgorithm.dsp</code> 下面还可以配置 dsp 算法的相关参数，比如我们这里配置的 <code>sampleInterval: "60s"</code> 表示监控数据的采样间隔为 1 分钟，<code>historyLength: "7d"</code> 表示拉取过去 7 天的监控指标作为预测的依据，此外还可以配置预测方式等。</p>
+<p>然后核心的配置就是 <code>spec.metrics</code> 了，用来指定计算所需副本数的规范，我们这里指定了基于 <code>Pods</code> 指标的计算方式。</p>
+<div class="highlight"><pre><span></span><code>- type: Pods
+  pods:
+    metric:
+      name: http_requests
+    target:
+      type: AverageValue
+      averageValue: 500m
+</code></pre></div>
+<p>上面的配置表示当 <code>pods/http_requests</code> 的自定义指标平均值达到 500m 后就可以触发 HPA 缩放，这里有一个点需要注意自定义指标的 <code>pods.metric.name</code> 的值必须和 annotations 注解 <code>metric-query.autoscaling.crane.io/&lt;metric name&gt;</code> 指标名保持一致。</p>
+<p>EHPA 对象水平弹性的执行流程如下所示：</p>
+<ul>
+<li><code>EffectiveHPAController</code> 创建 <code>HorizontalPodAutoscaler</code> 和 <code>TimeSeriesPrediction</code> 对象</li>
+<li><code>PredictionCore</code> 从 Prometheus 获取历史 metric 通过预测算法计算，将结果记录到 <code>TimeSeriesPrediction</code></li>
+<li><code>HPAController</code> 通过 metric client 从 KubeApiServer 读取 metric 数据</li>
+<li><code>KubeApiServer</code> 将请求路由到 Crane 的 Metric-Adapter。</li>
+<li><code>HPAController</code> 计算所有的 Metric 返回的结果得到最终的弹性副本推荐。</li>
+<li><code>HPAController</code> 调用 scale API 对目标应用扩/缩容。</li>
+</ul>
+<p>整体流程如下所示：</p>
+<p><img alt="ehpa 流程" src="https://picdn.youdianzhishi.com/images/1666921205654.jpg" /></p>
+<p>直接应用上面的 EPHA 对象即可：</p>
+<div class="highlight"><pre><span></span><code>$ kubectl apply -f sample-app-ehpa.yaml
+effectivehorizontalpodautoscaler.autoscaling.crane.io/sample-app-ehpa created
+$ kubectl get ehpa
+NAME              STRATEGY   MINPODS   MAXPODS   SPECIFICPODS   REPLICAS   AGE
+sample-app-ehpa   Auto       1         10                       1          17s
+</code></pre></div>
+<p>由于我们开启了自动预测功能，所以 EPHA 对象创建后会创建一个对应的 <code>TimeSeriesPrediction</code> 对象：</p>
+<div class="highlight"><pre><span></span><code>$ kubectl get tsp
+NAME                   TARGETREFNAME   TARGETREFKIND   PREDICTIONWINDOWSECONDS   AGE
+ehpa-sample-app-ehpa   sample-app      Deployment      3600                      3m50s
+$ kubectl get tsp ehpa-sample-app-ehpa -oyaml
+apiVersion: prediction.crane.io/v1alpha1
+kind: TimeSeriesPrediction
+metadata:
+  name: ehpa-sample-app-ehpa
+  namespace: default
+spec:
+  predictionMetrics:
+  - algorithm:
+      algorithmType: dsp
+      dsp:
+        estimators: {}
+        historyLength: 7d
+        sampleInterval: 60s
+    expressionQuery:
+      expression: sum(rate(http_requests_total[5m])) by (pod)
+    resourceIdentifier: pods.http_requests
+    type: ExpressionQuery
+  predictionWindowSeconds: 3600
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: sample-app
+    namespace: default
+status:
+  conditions:
+  - lastTransitionTime: &quot;2022-10-29T06:50:46Z&quot;
+    message: not all metric predicted
+    reason: PredictPartial
+    status: &quot;False&quot;
+    type: Ready
+  predictionMetrics:
+  - ready: false
+    resourceIdentifier: pods.http_requests
+</code></pre></div>
+<p>在 status 中可以看到包含 <code>not all metric predicted</code> 这样的信息，这是因为应用运行时间较短，可能会出现无法预测的情况。同样也会自动创建一个对应的 HPA 对象：</p>
+<div class="highlight"><pre><span></span><code>$ kubectl get hpa
+NAME                   REFERENCE               TARGETS    MINPODS   MAXPODS   REPLICAS   AGE
+ehpa-sample-app-ehpa   Deployment/sample-app   16m/500m   1         10        1          69m
+</code></pre></div>
+<p>然后我们可以重新使用 <code>ab</code> 命令对 sample-app 做一次压力测试，正常也可以触发该应用的弹性扩容。</p>
+<div class="highlight"><pre><span></span><code>$ kubectl get hpa
+NAME                   REFERENCE               TARGETS      MINPODS   MAXPODS   REPLICAS   AGE
+ehpa-sample-app-ehpa   Deployment/sample-app   7291m/500m   1         10        10         71m
+$ kubectl describe hpa ehpa-sample-app-ehpa
+Name:                       ehpa-sample-app-ehpa
+Namespace:                  default
+Labels:                     app.kubernetes.io/managed-by=effective-hpa-controller
+                            app.kubernetes.io/name=ehpa-sample-app-ehpa
+                            app.kubernetes.io/part-of=sample-app-ehpa
+                            autoscaling.crane.io/effective-hpa-uid=8fad0b0b-8a53-433e-b483-9f2ff61aaa58
+Annotations:                &lt;none&gt;
+CreationTimestamp:          Thu, 27 Oct 2022 21:01:13 +0800
+Reference:                  Deployment/sample-app
+Metrics:                    ( current / target )
+  &quot;http_requests&quot; on pods:  8350m / 500m
+Min replicas:               1
+Max replicas:               10
+Deployment pods:            10 current / 10 desired
+Conditions:
+  Type            Status  Reason            Message
+  ----            ------  ------            -------
+  AbleToScale     True    ReadyForNewScale  recommended size matches current size
+  ScalingActive   True    ValidMetricFound  the HPA was able to successfully calculate a replica count from pods metric http_requests
+  ScalingLimited  True    TooManyReplicas   the desired replica count is more than the maximum replica count
+Events:
+  Type    Reason             Age   From                       Message
+  ----    ------             ----  ----                       -------
+  Normal  SuccessfulRescale  57s   horizontal-pod-autoscaler  New size: 4; reason: pods metric http_requests above target
+  Normal  SuccessfulRescale  42s   horizontal-pod-autoscaler  New size: 8; reason: pods metric http_requests above target
+  Normal  SuccessfulRescale  27s   horizontal-pod-autoscaler  New size: 10; reason: pods metric http_requests above target
+</code></pre></div>
+<p>我们可以使用如下所示命令来查看 EHPA 自动生成的 HPA 对象的资源清单：</p>
+<div class="highlight"><pre><span></span><code>$ kubectl get hpa.v2beta2.autoscaling ehpa-sample-app-ehpa -oyaml
+apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: ehpa-sample-app-ehpa
+  namespace: default
+spec:
+  maxReplicas: 10
+  metrics:
+  - pods:
+      metric:
+        name: http_requests
+      target:
+        averageValue: 500m
+        type: AverageValue
+    type: Pods
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: sample-app
+status:
+  conditions:
+  - lastTransitionTime: &quot;2022-10-27T13:01:28Z&quot;
+    message: recent recommendations were higher than current one, applying the highest
+      recent recommendation
+    reason: ScaleDownStabilized
+    status: &quot;True&quot;
+    type: AbleToScale
+  - lastTransitionTime: &quot;2022-10-27T13:01:28Z&quot;
+    message: the HPA was able to successfully calculate a replica count from pods
+      metric http_requests
+    reason: ValidMetricFound
+    status: &quot;True&quot;
+    type: ScalingActive
+  - lastTransitionTime: &quot;2022-10-27T14:11:24Z&quot;
+    message: the desired replica count is more than the maximum replica count
+    reason: TooManyReplicas
+    status: &quot;True&quot;
+    type: ScalingLimited
+  currentMetrics:
+  - pods:
+      current:
+        averageValue: 15m
+      metric:
+        name: http_requests
+    type: Pods
+  currentReplicas: 10
+  desiredReplicas: 10
+  lastScaleTime: &quot;2022-10-27T14:11:54Z&quot;
+</code></pre></div>
+<p>可以观测到已经创建出基于自定义指标预测的 Metric: <code>http_requests</code>，由于生产环境的复杂性，基于多指标的弹性（CPU/Memory/自定义指标）往往是生产应用的常见选择，因此 Effective HPA 通过预测算法覆盖了多指标的弹性，达到了帮助更多业务在生产环境落地水平弹性的成效。</p>
+<p>除此之外 EHPA 对象还支持基于 cron 的自动缩放，除了基于监控指标，有时节假日和工作日的工作负载流量存在差异，简单的预测算法可能效果不佳。然后可以通过设置周末 cron 来支持更大数量的副本来弥补预测的不足。对于一些非 web 流量的应用，比如一些应用不需要在周末使用，可以把工作负载的副本数减少到 1，也可以配置 cron 来降低你的服务成本。</p>
+<h2 id="qos">QOS 增强与混部<a class="headerlink" href="#qos" title="Permanent link">&para;</a></h2>
+<p>除了上面介绍的主要功能之外，crane 还具有很多 QOS 增强功能，QOS 相关能力保证了运行在 Kubernetes 上的 Pod 的稳定性。</p>
+<h3 id="_10">干扰检测和主动回避<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p><img alt="干扰检测和主动回避" src="https://picdn.youdianzhishi.com/images/1666938915729.jpg" /></p>
+<p>干扰检测和主动回避功能主要涉及到以下几个 CRD 对象：</p>
+<ul>
+<li><code>AvoidanceAction</code>：定义了检测到干扰后需要执行的操作，包含了 <code>Disable Scheduling</code>、<code>throttle</code>、<code>eviction</code> 等操作，并且定义了其相关的一些参数。</li>
+<li><code>NodeQOS</code>：定义了指标采集方式和参数，水位线指标相关参数，以及指标异常时关联的回避操作，同时通过 label selector 将上面的内容关联到指定的节点。</li>
+<li><code>PodQOS</code>：定义了指定 pod 可以被执行的 <code>AvoidanceAction</code>，通常和 <code>NodeQOS</code> 搭配起来，从节点和 pod 的维度共同限制执行动作的范围，<code>PodQOS</code> 支持的 seletor 包含 label selector、还支持筛选特定 QOSClass(“BestEffort”、“Guaranteed"等)、特定 Priority、特定 Namespace 的 pod，并且之间采用<strong>与</strong> 的方式关联。</li>
+</ul>
+<p><strong>Disable Scheduling</strong></p>
+<p>定义如下所示几个 <code>AvoidanceAction</code>、<code>PodQOS</code> 和 <code>NodeQOS</code> 资源对象。当节点 CPU 使用率触发回避阈值时，将该节点设置为禁用调度。</p>
+<div class="highlight"><pre><span></span><code>apiVersion: ensurance.crane.io/v1alpha1
+kind: AvoidanceAction
+metadata:
+  labels:
+    app: system
+  name: disablescheduling
+spec:
+  description: disable schedule new pods to the node
+  coolDownSeconds: 300 # 节点从禁止调度状态到正常状态的最小等待时间
+---
+apiVersion: ensurance.crane.io/v1alpha1
+kind: NodeQOS
+metadata:
+  name: &quot;watermark1&quot;
+  labels:
+    app: &quot;system&quot;
+spec:
+  nodeQualityProbe:
+    timeoutSeconds: 10
+    nodeLocalGet:
+      localCacheTTLSeconds: 60
+  rules:
+    - name: &quot;cpu-usage&quot;
+      avoidanceThreshold: 2 # 当达到阈值并持续多次，那么我们认为规则被触发
+      restoreThreshold: 2 # 当阈值未达到并继续多次, 那么我们认为规则已恢复
+      actionName: &quot;disablescheduling&quot; # 关联到 AvoidanceAction 名称
+      strategy: &quot;None&quot; # 动作的策略，你可以将其设置为“Preview”以不实际执行
+      metricRule:
+        name: &quot;cpu_total_usage&quot; # 指标名称
+        value: 4000 # 指标的阈值
+---
+apiVersion: ensurance.crane.io/v1alpha1
+kind: PodQOS
+metadata:
+  name: all-elastic-pods
+spec:
+  allowedActions: # 被该PodQOS关联的pod允许被执行的action为eviction
+    - eviction
+  labelSelector: # 通过label selector关联具有preemptible_job: “true&quot;的pod
+    matchLabels:
+      preemptible_job: &quot;true&quot;
+</code></pre></div>
+<p><strong>Throttle</strong></p>
+<p>定义 <code>AvoidanceAction</code> 和 <code>NodeQOS</code>。当节点 CPU 使用率触发回避阈值时，将执行节点的 Throttle Action。示例 YAML 如下所示：</p>
+<div class="highlight"><pre><span></span><code>apiVersion: ensurance.crane.io/v1alpha1
+kind: AvoidanceAction
+metadata:
+  name: throttle
+  labels:
+    app: system
+spec:
+  coolDownSeconds: 300
+  throttle:
+    cpuThrottle:
+      minCPURatio: 10 # CPU 配额的最小比例，如果 pod 被限制低于这个比例，就会被设置为这个
+      stepCPURatio: 10 # 该配置设置给Throttle Action。它将在每个触发的回避动作中减少这个 CPU 配额占比。它会在每个恢复动作中增加这个 CPU 配额占比
+  description: &quot;throttle low priority pods&quot;
+
+
+
+apiVersion: ensurance.crane.io/v1alpha1
+kind: NodeQOS
+metadata:
+  name: &quot;watermark2&quot;
+  labels:
+    app: &quot;system&quot;
+spec:
+  nodeQualityProbe:
+    timeoutSeconds: 10
+    nodeLocalGet:
+      localCacheTTLSeconds: 60
+  rules:
+    - name: &quot;cpu-usage&quot;
+      avoidanceThreshold: 2
+      restoredThreshold: 2
+      actionName: &quot;throttle&quot;
+      strategy: &quot;None&quot;
+      metricRule:
+        name: &quot;cpu_total_usage&quot;
+        value: 6000
+
+
+
+apiVersion: ensurance.crane.io/v1alpha1
+kind: PodQOS
+metadata:
+  name: all-be-pods
+spec:
+  allowedActions:
+    - throttle
+  scopeSelector:
+    matchExpressions:
+      - operator: In
+        scopeName: QOSClass
+        values:
+          - BestEffort
+</code></pre></div>
+<p><strong>Eviction</strong></p>
+<p>下面的 YAML 是另一种情况，当节点 CPU 使用率触发阈值时，节点上的低优先级 pod 将被驱逐。</p>
+<div class="highlight"><pre><span></span><code>apiVersion: ensurance.crane.io/v1alpha1
+kind: AvoidanceAction
+metadata:
+  name: eviction
+  labels:
+    app: system
+spec:
+  coolDownSeconds: 300
+  eviction:
+    terminationGracePeriodSeconds: 30 # pod 需要优雅终止的持续时间（以秒为单位）
+  description: &quot;evict low priority pods&quot;
+
+
+
+apiVersion: ensurance.crane.io/v1alpha1
+kind: NodeQOS
+metadata:
+  name: &quot;watermark3&quot;
+  labels:
+    app: &quot;system&quot;
+spec:
+  nodeQualityProbe:
+    timeoutSeconds: 10
+    nodeLocalGet:
+      localCacheTTLSeconds: 60
+  rules:
+    - name: &quot;cpu-usage&quot;
+      avoidanceThreshold: 2
+      restoreThreshold: 2
+      actionName: &quot;eviction&quot;
+      strategy: &quot;Preview&quot; # 回避动作策略。当设置为Preview时，将不会被实际执行
+      metricRule:
+        name: &quot;cpu_total_usage&quot;
+        value: 6000
+</code></pre></div>
+<p><strong>支持的水位线指标</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cpu_total_usage</td>
+<td>node cpu usage</td>
+</tr>
+<tr>
+<td>cpu_total_utilization</td>
+<td>node cpu utilization percent</td>
+</tr>
+<tr>
+<td>memory_total_usage</td>
+<td>node mem usage</td>
+</tr>
+<tr>
+<td>memory_total_utilization</td>
+<td>node mem utilization percent</td>
+</tr>
+</tbody>
+</table>
+<p><strong>灵活的异常规则配置与可自定义的主动回避规则</strong></p>
+<p>针对异常规则的配置，Crane 支持静态阈值，基于 OPA 的灵活定义和多种算法支持，用户也可以根据接口自行定义自己的异常判断逻辑，实现灵活配置，具有较好的扩展能力；</p>
+<p>针对主动回避规则，可以为业务设置优先级和 QoS 质量保障，在资源紧张时对低优业务进行抢占和压制，通过 NodeQOS 和 PodQOS 的配合，保障节点和业务的稳定性。 PodQOS 定义了可以选择 pod 被执行的具体 AvoidanceAction，同时支持具有如指定 QOSClass,priority 或具体 label 等丰富的 pod 关联方式，通过这两种方式，即可实现丰富和精确的回避策略，精准操作 workload，避免误伤。</p>
+<p>比如可以结合弹性资源回收，只允许离线作业被执行驱逐等操作，避免主动回避操作对于高优先级业务的影响，误驱逐了重要业务，从而在资源紧张时将低优或者使用扩展资源的 pod 优先回收，保证了节点上的核心业务的稳定。</p>
+<p>如下面的例子，为打有 <code>preemptible_job: "true"</code> 标签的 Pod 和 BestEffor pod 配置可驱逐。</p>
+<div class="highlight"><pre><span></span><code>apiVersion: ensurance.crane.io/v1alpha1
+kind: PodQOS
+metadata:
+  name: all-elastic-pods
+spec:
+  allowedActions:
+    - eviction
+  labelSelector:
+    matchLabels:
+      preemptible_job: &quot;true&quot;
+---
+apiVersion: ensurance.crane.io/v1alpha1
+kind: PodQOS
+metadata:
+  name: all-be-pods
+spec:
+  allowedActions:
+    - eviction
+  scopeSelector:
+    matchExpressions:
+      - operator: In
+        scopeName: QOSClass
+        values:
+          - BestEffort
+</code></pre></div>
+<p><strong>与弹性资源搭配使用</strong></p>
+<p>为了避免主动回避操作对于高优先级业务的影响，比如误驱逐了重要业务，建议使用 <code>PodQOS</code> 关联使用了弹性资源的 workload，这样在执行动作的时候只会影响这些使用了空闲资源的 workload，保证了节点上的核心业务的稳定。</p>
+<p><strong>自定义指标接入干扰检测框架</strong></p>
+<ul>
+<li>
+<ol>
+<li>提供了丰富的 pod 排序策略可以供自定义指标任意搭配组合，一个合适的 pod 排序策略组合，能够更快地将指标调整到水位线以下，也可以方便地实现自己的排序策略</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>能够避免过度操作，以 NodeQOS 中的指标值作为水位，操作到刚好低于水位线，能避免对低优先级服务的过度影响</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>一次操作过程兼顾多条不同指标的水位线，尽量短的时间内完成整个过程，避免对高优业务和整机的影响</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>在回避过程中考虑到实时指标暂时无法获取以及部分指标在 pod 被执行操作后无法量化的问题；由于低于水位线时会存在 restore 的反向过程，考虑到了避免指标在水位线附近来回摇摆的情况</li>
+</ol>
+</li>
+</ul>
+<p>用户按照规范完善自定义指标的一些属性和实现，即可在无需关心具体细节的情况下，复用以上能力和整个干扰检测主动回避过程，可以便捷扩展。</p>
+<p>通过便捷的自定义指标复用流程的能力，用户可以定义一些各维度的指标用来保证集群的稳定，比如将弹性资源的总体使用量作为指标，即可实现无侵入的“离线资源大框”；比如将高优业务的关键指标作为指标，即可时刻保障高优业务的稳定运行。</p>
+<h3 id="_11">预测算法增强的动态资源超卖<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p>为了提高稳定性，通常用户在部署应用的时候会设置高于实际使用量的 Request 值，造成资源的浪费，为了提高节点的资源利用率，用户会搭配部署一些 BestEffort 的应用，利用闲置资源，实现超卖。但是这些应用由于缺乏资源 limit 和 request 的约束和相关信息，调度器依旧可能将这些 pod 调度到负载较高的节点上去，这与我们的初衷是不符的，所以最好能依据节点的空闲资源量进行调度。</p>
+<p>crane 通过如下两种方式收集了节点的空闲资源量，综合后作为节点的空闲资源量，增强了资源评估的准确性：</p>
+<p>这里以 cpu 为例，同时也支持内存的空闲资源回收和计算。</p>
+<ol>
+<li>
+<p>通过本地收集的 cpu 用量信息 <code>nodeCpuCannotBeReclaimed := nodeCpuUsageTotal + exclusiveCPUIdle - extResContainerCpuUsageTotal</code></p>
+</li>
+<li>
+<p><code>exclusiveCPUIdle</code> 是指被 cpu manager policy 为 exclusive 的 pod 占用的 cpu 的空闲量，虽然这部分资源是空闲的，但是因为独占的原因，是无法被复用的，因此加上被算作已使用量</p>
+</li>
+<li>
+<p><code>extResContainerCpuUsageTotal</code> 是指被作为动态资源使用的 cpu 用量，需要减去以免被二次计算</p>
+</li>
+<li>
+<p>创建节点 cpu 使用量的 TSP，默认情况下自动创建，会根据历史预测节点 CPU 用量</p>
+<p>apiVersion: v1
+data:
+  spec: |
+    predictionMetrics:
+    - algorithm:
+        algorithmType: dsp
+        dsp:
+          estimators:
+            fft:
+            - highFrequencyThreshold: "0.05"
+              lowAmplitudeThreshold: "1.0"
+              marginFraction: "0.2"
+              maxNumOfSpectrumItems: 20
+              minNumOfSpectrumItems: 10
+          historyLength: 3d
+          sampleInterval: 60s
+      resourceIdentifier: cpu
+      type: ExpressionQuery
+      expressionQuery:
+        expression: 'sum(count(node_cpu_seconds_total{mode="idle",instance=~"({{.metadata.name}})(:\d+)?"}) by (mode, cpu)) - sum(irate(node_cpu_seconds_total{mode="idle",instance=~"({{.metadata.name}})(:\d+)?"}[5m]))'
+    predictionWindowSeconds: 3600
+kind: ConfigMap
+metadata:
+  name: noderesource-tsp-template
+  namespace: default</p>
+</li>
+</ol>
+<p>结合预测算法和当前实际用量推算节点的剩余可用资源，并将其作为拓展资源赋予节点，pod 可标明使用该扩展资源作为离线作业将空闲资源利用起来，以提升节点的资源利用率。</p>
+<p>在部署 pod 时 limit 和 request 使用 <code>gocrane.io/&lt;$ResourceName&gt;：&lt;$value&gt;</code> 即可，如下所示：</p>
+<div class="highlight"><pre><span></span><code>spec:
+  containers:
+    - image: nginx
+      imagePullPolicy: Always
+      name: extended-resource-demo-ctr
+      resources:
+        limits:
+          gocrane.io/cpu: &quot;2&quot;
+          gocrane.io/memory: &quot;2000Mi&quot;
+        requests:
+          gocrane.io/cpu: &quot;2&quot;
+          gocrane.io/memory: &quot;2000Mi&quot;
+</code></pre></div>
+<p><strong>弹性资源限制功能</strong></p>
+<p>原生的 BestEffort 应用缺乏资源用量的公平保证，Crane 保证使用动态资源的 BestEffort pod 其 cpu 使用量被限制在其允许使用的合理范围内，agent 保证使用扩展资源的 pod 实际用量也不会超过其声明限制，同时在 cpu 竞争时也能按照各自声明量公平竞争；同时使用弹性资源的 pod 也会受到水位线功能的管理。</p>
+<p>同样在部署 pod 时 limit 和 request 使用<code>gocrane.io/&lt;$ResourceName&gt;：&lt;$value&gt;</code>即可</p>
+<p><strong>适配场景</strong></p>
+<p>为了提升节点的负载，可以将一些离线作业或者重要性较低的作业通过使用弹性资源的方式调度部署到集群中，这类作业会使用空闲的弹性资源，搭配 QOS 的水位线保障，在节点出现负载较高的时候，也会优先被驱逐和压制，在保证高优先级业务稳定的前提下提升节点利用率。</p>
+<h2 id="_12">总结<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<p>2022 年，腾讯云原生 FinOps Crane 项目组，结合行业及产业的发展趋势，联动中国产业互联网发展联盟、中国信通院、中国电子节能技术协会、FinOps 基金会及中国内外众多生态合作伙伴，开展及推动技术标准、国内联盟、国际开源、双碳升级等多维度的成果落地，输出了系列白皮书和标准指南，旨在助力企业和生态更良性发展和应用先进技术，达成降本增效，节能减排目标方向。</p>
+<p><img alt="Crane 能力全景图" src="https://picdn.youdianzhishi.com/images/1666922649467.png" /></p>
+<p>我们可以自己在 Kubernetes 集群中安装 crane 来获取这些相关功能，此外这些能力也都会在腾讯云 TKE 的原生节点产品 <code>Housekeeper</code> 中提供，新推出的 TKE Housekeeper 是腾讯云推出的全新 K8s 运维范式，可以帮助企业像管理 Workload 一样声明式管理 Node 节点，高效解决节点维护、资源规划等各种各样的运维问题。</p>
+<p>毫无疑问，Crane 已经是 Kubernetes 集群中用于云资源分析和经济的最佳 FinOps 平台了。目前，腾讯云 Crane 已进入 CNCF LandScape，这意味着 Crane 已成为云原生领域的重要项目。面向未来，腾讯云还将持续反馈开源社区、共建开源生态，帮助更多企业通过云原生全面释放生产力，加速实现数字化和绿色化双转型。</p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="页脚">
+      
+        
+        <a href="../%E8%B0%83%E5%BA%A6%E5%99%A8/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 调度器" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              调度器
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../%E6%B5%81%E9%87%8F%E6%8B%86%E5%88%86/" class="md-footer__link md-footer__link--next" aria-label="下一页: 流量拆分" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              流量拆分
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 lixie
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/cnych" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://hub.docker.com/r/cnych/" target="_blank" rel="noopener" title="hub.docker.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M349.9 236.3h-66.1v-59.4h66.1v59.4zm0-204.3h-66.1v60.7h66.1V32zm78.2 144.8H362v59.4h66.1v-59.4zm-156.3-72.1h-66.1v60.1h66.1v-60.1zm78.1 0h-66.1v60.1h66.1v-60.1zm276.8 100c-14.4-9.7-47.6-13.2-73.1-8.4-3.3-24-16.7-44.9-41.1-63.7l-14-9.3-9.3 14c-18.4 27.8-23.4 73.6-3.7 103.8-8.7 4.7-25.8 11.1-48.4 10.7H2.4c-8.7 50.8 5.8 116.8 44 162.1 37.1 43.9 92.7 66.2 165.4 66.2 157.4 0 273.9-72.5 328.4-204.2 21.4.4 67.6.1 91.3-45.2 1.5-2.5 6.6-13.2 8.5-17.1l-13.3-8.9zm-511.1-27.9h-66v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm-78.1-72.1h-66.1v60.1h66.1v-60.1z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/cnych" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://instagram.com/cnych" target="_blank" rel="noopener" title="instagram.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["header.autohide", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.top", "toc.integrate", "search.suggest", "search.highlight", "content.code.annotate", "navigation.instant", "navigation.instant.prefetch", "navigation.path", "navigation.prune"], "search": "../../../assets/javascripts/workers/search.01824240.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.e8a254df.min.js"></script>
+      
+        <script src="../../../js/extra.js"></script>
+      
+        <script src="../../../js/baidu-tongji.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

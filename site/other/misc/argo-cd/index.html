@@ -1,0 +1,5519 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Project documentation with Markdown.">
+      
+      
+        <meta name="author" content="Li">
+      
+      
+        <link rel="canonical" href="https://barry-boy.github.io/other/misc/argo-cd/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-8.0.0">
+    
+    
+      
+        <title>Argo CD - Kubernetes 进阶训练营</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ad626c1e.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9204c3b2.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,400i,700%7CUbuntu+Mono&display=fallback">
+        <style>:root{--md-text-font:"Ubuntu";--md-code-font:"Ubuntu Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>function __md_scope(e,t,_){return new URL(_||(t===localStorage?"../../..":"../../.."),location).pathname+"."+e}function __md_get(e,t=localStorage,_){return JSON.parse(t.getItem(__md_scope(e,t,_)))}function __md_set(e,t,_=localStorage,o){try{_.setItem(__md_scope(e,_,o),JSON.stringify(t))}catch(e){}}</script>
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#argo-cd" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="Kubernetes 进阶训练营" class="md-header__button md-logo" aria-label="Kubernetes 进阶训练营" data-md-component="logo">
+      
+  <img src="../../../material/logo.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Kubernetes 进阶训练营
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Argo CD
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换暗色主题"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="切换暗色主题" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="切换亮色主题"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="切换亮色主题" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/barry-boy/barry-boy.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      首页
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../0.Internet/Tcp-ip-docs/" class="md-tabs__link">
+        0、网络基础
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../1.os/ubuntu/kjc-doc/" class="md-tabs__link">
+        1、Linux
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../basic/cncf-docs/" class="md-tabs__link">
+        2、kubernetes
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../python/1-python-docs/" class="md-tabs__link">
+        3、运维开发
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../k8s/mysql-operator/0-mysql-docs.md" class="md-tabs__link">
+        4、数据库
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../5.Storage/disk-ssd-docs/" class="md-tabs__link">
+        5、存储服务
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../6.Gitops/2024-9-26-Git-docs/" class="md-tabs__link">
+        6、Gitops
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../Devops/git-error-docs/" class="md-tabs__link">
+        7、Devops
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../ansible/ansible-case1/" class="md-tabs__link">
+        8、运维自动化
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../Macuse/mac-kubeconfig/" class="md-tabs__link md-tabs__link--active">
+        9、其他
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../chatgpt/chatgpt-docs/" class="md-tabs__link">
+        10、Chatgpt
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../20.mylife/2024-9-24-myblog-life-docs/" class="md-tabs__link">
+        关于我
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Kubernetes 进阶训练营" class="md-nav__button md-logo" aria-label="Kubernetes 进阶训练营" data-md-component="logo">
+      
+  <img src="../../../material/logo.jpg" alt="logo">
+
+    </a>
+    Kubernetes 进阶训练营
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/barry-boy/barry-boy.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        首页
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          0、网络基础
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="0、网络基础" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          0、网络基础
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../0.Internet/Tcp-ip-docs/" class="md-nav__link">
+        网络 Tcp/IP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../0.Internet/5g-docs/" class="md-nav__link">
+        网络 思科设备
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../0.Internet/IB-ET-docs/" class="md-nav__link">
+        网络 网卡模式调整
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/asus/asus-docs/" class="md-nav__link">
+        华硕服务器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../0.Internet/ZeroTier/" class="md-nav__link">
+        ZeroTier组网
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../0.Internet/frp/" class="md-nav__link">
+        frp 内网穿透
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../0.Internet/3-0.Internet-docs.md" class="md-nav__link">
+        kubernetes 网络组件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../0.Internet/4-network-docs/" class="md-nav__link">
+        科学上网
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          1、Linux
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="1、Linux" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          1、Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/kjc-doc/" class="md-nav__link">
+        Linux 云计算手册大纲
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-bmc-doc/" class="md-nav__link">
+        Linux 带外管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-install-doc/" class="md-nav__link">
+        Linux 系统安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-cli-doc/" class="md-nav__link">
+        Linux 系统命令
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-mirror-doc/" class="md-nav__link">
+        Linux 国内apt源
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-nvme-doc/" class="md-nav__link">
+        Linux nvme磁盘管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-parted-doc/" class="md-nav__link">
+        Linux parted磁盘管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-reboot-doc/" class="md-nav__link">
+        Linux 系统强制重启
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-disk-doc/" class="md-nav__link">
+        Linux 磁盘管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/ubuntu/ubuntu-network-doc/" class="md-nav__link">
+        Linux 网络服务
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../1.os/2024-9-25-ssh-proxy-docs/" class="md-nav__link">
+        Linux SSH 转发代理实现
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          2、kubernetes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="2、kubernetes" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          2、kubernetes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic/cncf-docs/" class="md-nav__link">
+        云原生简介及CNCF
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/docker-docs/" class="md-nav__link">
+        Docker 基本管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/lxcfs.md" class="md-nav__link">
+        lxcfs 介绍
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/docker-images-docs/" class="md-nav__link">
+        docker 镜像构建
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/docker-proxy-docs/" class="md-nav__link">
+        docker proxy代理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docker/docker-image-clash-docs/" class="md-nav__link">
+        docker Clash代理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/base/k8s-overview/" class="md-nav__link">
+        kubernetes 简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/3-k8s-systeminit-docs/" class="md-nav__link">
+        kubernetes 集群部署
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/2024-9-19-k8s-update/" class="md-nav__link">
+        kubernetes 集群升级
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/pod-base-docs/" class="md-nav__link">
+        kubernetes pod 基础原理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/pod-hook-docs/" class="md-nav__link">
+        kubernetes pod 生命周期
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic/6-kubernetes-etcd-docs/" class="md-nav__link">
+        kubernetes etcd 简介与实践
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic/7-kubernetes-coredns-docs/" class="md-nav__link">
+        kubernetes coredns 简介与实践
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../k8s/k8s-calico-docs.md" class="md-nav__link">
+        kubernetes calico 网络
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/yaml/yaml/" class="md-nav__link">
+        kubernetes 资源清单
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/base/k8s-limit-docs/" class="md-nav__link">
+        kubernetes 资源限制
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/k8s-configmap-docs/" class="md-nav__link">
+        kubernetes 配置管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic/5-kubernetes-UI-docs/" class="md-nav__link">
+        Kubernetes UI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/deploy-sts-ds-docs/" class="md-nav__link">
+        kubernetes 控制器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/network/ingress-%E6%B5%81%E9%87%8F/" class="md-nav__link">
+        Ingress 流量
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/network/%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0/" class="md-nav__link">
+        服务发现
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/network/gateway-api/" class="md-nav__link">
+        Gateway API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/network/dns-%E4%BC%98%E5%8C%96/" class="md-nav__link">
+        DNS 优化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/network/ingress-nginx/" class="md-nav__link">
+        ingress-nginx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/network/service-profiles/" class="md-nav__link">
+        Service Profiles
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/network/4-network-docs.md" class="md-nav__link">
+        科学上网
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/network/apisix/" class="md-nav__link">
+        APISIX
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/network/service/" class="md-nav__link">
+        Service
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/network/traefik/" class="md-nav__link">
+        Traefik
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/network/ingress/" class="md-nav__link">
+        Ingress
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/pv-rep/" class="md-nav__link">
+        kubernetes pv/pvc简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/k8s-mon-docs/" class="md-nav__link">
+        kubernetes 监控服务
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/k8s-logs-docs/" class="md-nav__link">
+        kubernetes 日志管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/k8s-istio-docs/" class="md-nav__link">
+        kubernetes 服务网格
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cks/cka/" class="md-nav__link">
+        kubernetes CKA考题
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cks/cks/" class="md-nav__link">
+        kubernetes CKS考题
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/ui/rancher-update-docs/" class="md-nav__link">
+        kubernetes Rancher 升级
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic/7-kubernetes-update-docs/" class="md-nav__link">
+        kubernetes 节点维护
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Helm/helm-install/" class="md-nav__link">
+        kubernetes Helm 实践
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Helm/helm-chart/" class="md-nav__link">
+        kubernetes Helm chart包
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/2024-9-24-helmfile-docs/" class="md-nav__link">
+        kubernetes Helmfile 文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cert-manager/cert-manager-doc/" class="md-nav__link">
+        kubernetes Cert-manager 安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/other/k8s-ca-docs/" class="md-nav__link">
+        kubernetes 处理k8s证书过期
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/monitoring/prometheus/" class="md-nav__link">
+        Prometheus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/monitoring/victoriametrics/" class="md-nav__link">
+        VictoriaMetrics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/monitoring/promql/" class="md-nav__link">
+        PromQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/monitoring/%E9%BB%91%E7%9B%92%E7%9B%91%E6%8E%A7/" class="md-nav__link">
+        黑盒监控
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/monitoring/prometheus-operator/" class="md-nav__link">
+        Prometheus Operator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/monitoring/%E9%AB%98%E7%BA%A7%E9%85%8D%E7%BD%AE/" class="md-nav__link">
+        高级配置
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/monitoring/grafana/" class="md-nav__link">
+        Grafana
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/monitoring/%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%91%E6%8E%A7%E6%8A%A5%E8%AD%A6/" class="md-nav__link">
+        自定义监控报警
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/monitoring/alertmanager/" class="md-nav__link">
+        Alertmanager
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/7.logging/%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86%E6%9E%B6%E6%9E%84/" class="md-nav__link">
+        kubernete 日志架构
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/7.logging/%E6%90%AD%E5%BB%BA-efk-%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        kubernetes EFK日志系统
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/3.k8s/7.logging/fluentd.md" class="md-nav__link">
+        kubernete 日志fluentd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/7.logging/loki/" class="md-nav__link">
+        kubernete Loki
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/7.logging/%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB%E6%A8%A1%E5%BC%8F/" class="md-nav__link">
+        kubernetes 日志读写分离模式
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/7.logging/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%A8%A1%E5%BC%8F/" class="md-nav__link">
+        kubernetes 日志微服务模式
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/7.logging/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        kubernetes 日志配置文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/7.logging/%E6%97%A5%E5%BF%97%E6%8A%A5%E8%AD%A6/" class="md-nav__link">
+        kubernetes 日志报警
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/7.logging/logql/" class="md-nav__link">
+        kubernetes 日志 Logql
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/ansible-install-k8s-docs/" class="md-nav__link">
+        kubernetes 自动化安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3.k8s/4-ansible-install-k8s/" class="md-nav__link">
+        kubernetes 项目一
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basic/9-install-keepalived-cluster/" class="md-nav__link">
+        kubernetes 项目二
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          3、运维开发
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="3、运维开发" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          3、运维开发
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/1-python-docs/" class="md-nav__link">
+        Python 开发-基础语法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/2-python-docs/" class="md-nav__link">
+        Python 开发-用户交互
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../go/go-base-docs/" class="md-nav__link">
+        GO开发-环境安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../go/2-go-docs/" class="md-nav__link">
+        GO 开发-操作符和表达式
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../python/module-docs/" class="md-nav__link">
+        模块
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          4、数据库
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="4、数据库" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          4、数据库
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../k8s/mysql-operator/0-mysql-docs.md" class="md-nav__link">
+        Mysql 数据库
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../k8s/mysql-operator/1-install-mysql-operator.md" class="md-nav__link">
+        Mysql operator
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../k8s/mysql-operator/2-mysql-backup-docs.md" class="md-nav__link">
+        Mysql 备份恢复
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../k8s/mysql-operator/3-mysql-backup-error-docs.md" class="md-nav__link">
+        数据库问题处理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../redis/redis-class-docs/" class="md-nav__link">
+        redis 大纲
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/redis-docs/" class="md-nav__link">
+        redis 缓存加速
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/redis-cluster-docs/" class="md-nav__link">
+        redis 集群篇
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../redis/redis-save-docs/" class="md-nav__link">
+        redis 持久化
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          5、存储服务
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="5、存储服务" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          5、存储服务
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/disk-ssd-docs/" class="md-nav__link">
+        存储分类
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/ceph-base/" class="md-nav__link">
+        ceph 基础
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/rook-ceph/" class="md-nav__link">
+        ceph 分布式存储
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/rbd-docs/" class="md-nav__link">
+        ceph RBD使用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/cephfs-docs/" class="md-nav__link">
+        ceph 文件系统使用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/ceph-cli-docs/" class="md-nav__link">
+        ceph 命令用法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/osd/" class="md-nav__link">
+        ceph 性能测试
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/ceph-bucket/" class="md-nav__link">
+        ceph 对象存储
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/s3-client-docs/" class="md-nav__link">
+        ceph s3cmd管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/5-dev-docs/" class="md-nav__link">
+        ceph 存储修复
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/expand-docs/" class="md-nav__link">
+        ceph 存储扩容
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/ceph-tools/" class="md-nav__link">
+        ceph 外部环境连接集群
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/clean-ceph-docs/" class="md-nav__link">
+        ceph 集群清理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/ceph-error/" class="md-nav__link">
+        ceph 错误指南
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/6-ceph-crush-docs/" class="md-nav__link">
+        ceph 高级参数
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/Juicefs/" class="md-nav__link">
+        Juicefs存储方案
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../5.Storage/juicefs-update/" class="md-nav__link">
+        Juicefs版本升级
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          6、Gitops
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="6、Gitops" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          6、Gitops
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../6.Gitops/2024-9-26-Git-docs/" class="md-nav__link">
+        Git Commit 问题
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../6.Gitops/2024-10-10-Github-rsync-Gitee/" class="md-nav__link">
+        Github Rysnc 同步 Gitee
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          7、Devops
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="7、Devops" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          7、Devops
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Devops/git-error-docs/" class="md-nav__link">
+        Git 报错指南
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Devops/github/" class="md-nav__link">
+        Github
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Devops/4-github-gitee-doc/" class="md-nav__link">
+        Github仓库同步至Gitee
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Devops/3-github-docs/" class="md-nav__link">
+        Google 浏览器扩展
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_10">
+          8、运维自动化
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="8、运维自动化" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          8、运维自动化
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ansible/ansible-case1/" class="md-nav__link">
+        Ansible 应用基础
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ansible/ansible-docs2/" class="md-nav__link">
+        Ansible 高级用法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ansible/ansible-install-docs/" class="md-nav__link">
+        Ansible 安装
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ansible/ansible-playbook/" class="md-nav__link">
+        Ansible playbook
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_11">
+          9、其他
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="9、其他" data-md-level="1">
+        <label class="md-nav__title" for="__nav_11">
+          <span class="md-nav__icon md-icon"></span>
+          9、其他
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Macuse/mac-kubeconfig/" class="md-nav__link">
+        kubeconfig 实践应用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../k3s/k3s-docs/" class="md-nav__link">
+        k3s 大纲介绍
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../k3s/k3s-install/" class="md-nav__link">
+        k3s 边缘计算
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Macuse/mac-k9s-doc/" class="md-nav__link">
+        k9s 实践应用
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Macuse/mac-usb-system/" class="md-nav__link">
+        Mac 制作ubuntu系统盘
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Macuse/mac-vscode/" class="md-nav__link">
+        Mac vscode使用技巧
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../error/tjtu/" class="md-nav__link">
+        天津集群
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../error/dev/" class="md-nav__link">
+        Dev环境集群
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../error/delete-prometheus-db/" class="md-nav__link">
+        误删除监控数据
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../error/kubernetes-pvc-ubound-doc/" class="md-nav__link">
+        Kubernetes pvc ubound
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../error/cent1.os-dns-error-docs.md" class="md-nav__link">
+        dns 文件权限调整
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mac-docs/" class="md-nav__link">
+        如何利用Mac 写博客文章
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../google-docs/" class="md-nav__link">
+        高效利用谷歌来搜索
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../discord-docs/" class="md-nav__link">
+        Discord 新手教程
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jenkins/" class="md-nav__link">
+        Jenkins
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%BD%BF%E7%94%A8-mtls-%E4%BF%9D%E6%8A%A4%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1/" class="md-nav__link">
+        使用 mTLS 保护应用程序通信
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%A4%BA%E4%BE%8B/" class="md-nav__link">
+        示例
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%87%BD%E6%95%B0%E5%92%8C%E7%AE%A1%E9%81%93/" class="md-nav__link">
+        函数和管道
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chart-hooks/" class="md-nav__link">
+        Chart Hooks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dapr/" class="md-nav__link">
+        Dapr
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configmap/" class="md-nav__link">
+        ConfigMap
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes-进阶训练营第3期课程文档.md" class="md-nav__link">
+        Kubernetes 进阶训练营第3期课程文档
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gitops-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F/" class="md-nav__link">
+        GitOps 是什么？
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linkerd/" class="md-nav__link">
+        Linkerd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../secrets-store/" class="md-nav__link">
+        Secrets store
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tekton/" class="md-nav__link">
+        Tekton
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../secret/" class="md-nav__link">
+        Secret
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%BF%E9%97%AE%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        访问文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../argo-rollouts/" class="md-nav__link">
+        Argo Rollouts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%8D%87%E7%BA%A7-linkerd/" class="md-nav__link">
+        升级 Linkerd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%81%E6%B0%B4%E7%BA%BF/" class="md-nav__link">
+        流水线
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E4%BD%BF%E7%94%A8-linkerd/" class="md-nav__link">
+        生产环境使用 Linkerd
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%9C%8D%E5%8A%A1%E8%B4%A8%E9%87%8F/" class="md-nav__link">
+        服务质量
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%B0%83%E5%BA%A6/" class="md-nav__link">
+        调度
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helm/" class="md-nav__link">
+        Helm
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Argo CD
+      </a>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notes.txt-%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        NOTES.txt 文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85/" class="md-nav__link">
+        发布订阅
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jenkins-pipeline/" class="md-nav__link">
+        Jenkins Pipeline
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../subcharts-%E5%92%8C-global-values/" class="md-nav__link">
+        Subcharts 和 Global Values
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%AE%9E%E6%88%98-tekton-%E6%B5%81%E6%B0%B4%E7%BA%BF/" class="md-nav__link">
+        实战 Tekton 流水线
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E9%BB%84%E9%87%91%E6%8C%87%E6%A0%87/" class="md-nav__link">
+        黄金指标
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/" class="md-nav__link">
+        流程控制
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%A7%A6%E5%8F%91%E5%99%A8%E5%92%8C%E4%BA%8B%E4%BB%B6%E7%9B%91%E5%90%AC%E5%99%A8/" class="md-nav__link">
+        触发器和事件监听器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%A8%A1%E6%9D%BF%E8%B0%83%E8%AF%95/" class="md-nav__link">
+        模板调试
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7/" class="md-nav__link">
+        可观测性
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dapr-bindings/" class="md-nav__link">
+        Dapr Bindings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../charts/" class="md-nav__link">
+        Charts
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1/" class="md-nav__link">
+        内置对象
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%B8%AD%E9%97%B4%E4%BB%B6/" class="md-nav__link">
+        中间件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%8F%98%E9%87%8F/" class="md-nav__link">
+        变量
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%91%BD%E5%90%8D%E6%A8%A1%E6%9D%BF/" class="md-nav__link">
+        命名模板
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../values-%E6%96%87%E4%BB%B6/" class="md-nav__link">
+        Values 文件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../harbor/" class="md-nav__link">
+        Harbor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../descheduler/" class="md-nav__link">
+        Descheduler
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%BB%BB%E5%8A%A1/" class="md-nav__link">
+        任务
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%B0%83%E5%BA%A6%E5%99%A8/" class="md-nav__link">
+        调度器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../crane/" class="md-nav__link">
+        Crane
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B5%81%E9%87%8F%E6%8B%86%E5%88%86/" class="md-nav__link">
+        流量拆分
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../documentation-that-simply-works/" class="md-nav__link">
+        Documentation that simply works
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../zadig/" class="md-nav__link">
+        Zadig
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gitlab/" class="md-nav__link">
+        Gitlab
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_12">
+          10、Chatgpt
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="10、Chatgpt" data-md-level="1">
+        <label class="md-nav__title" for="__nav_12">
+          <span class="md-nav__icon md-icon"></span>
+          10、Chatgpt
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../chatgpt/chatgpt-docs/" class="md-nav__link">
+        注册chatgpt
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../chatgpt/google-ai-docs/" class="md-nav__link">
+        搜索技术记录
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../chatgpt/gpts-docs/" class="md-nav__link">
+        如何使用Chatgpt来制作专属gpt
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" type="checkbox" id="__nav_13" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_13">
+          关于我
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="关于我" data-md-level="1">
+        <label class="md-nav__title" for="__nav_13">
+          <span class="md-nav__icon md-icon"></span>
+          关于我
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../20.mylife/2024-9-24-myblog-life-docs/" class="md-nav__link">
+        我的博客
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../20.mylife/2021-life-docs/" class="md-nav__link">
+        我的2021
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../20.mylife/2022-life-docs/" class="md-nav__link">
+        我的2022
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../20.mylife/2023-life-docs/" class="md-nav__link">
+        我的2023
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../20.mylife/2024-life-docs/" class="md-nav__link">
+        我的2024
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/barry-boy/barry-boy.github.io/edit/master/docs/other/misc/argo-cd.md" title="编辑此页" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="argo-cd">Argo CD<a class="headerlink" href="#argo-cd" title="Permanent link">&para;</a></h1>
+<p><a href="https://github.com/cnych/qikqiak.com/edit/master/docs/devops/gitops/argocd.md" title="编辑此页"> </a></p>
+<h1 id="argo-cd_1">Argo CD<a class="headerlink" href="#argo-cd_1" title="Permanent link">&para;</a></h1>
+<p><a href="https://argoproj.github.io/argo-cd">Argo CD</a> 是一个为 Kubernetes 而生的，遵循声明式 GitOps 理念的持续部署工具。Argo CD 可在 Git 存储库更改时自动同步和部署应用程序。</p>
+<p>Argo CD 遵循 GitOps 模式，使用 Git 仓库作为定义所需应用程序状态的真实来源，Argo CD 支持多种 Kubernetes 清单：</p>
+<ul>
+<li>kustomize</li>
+<li>helm charts</li>
+<li>ksonnet applications</li>
+<li>jsonnet files</li>
+<li>Plain directory of YAML/json manifests</li>
+<li>Any custom config management tool configured as a config management plugin</li>
+</ul>
+<p>Argo CD 可在指定的目标环境中自动部署所需的应用程序状态，应用程序部署可以在 Git 提交时跟踪对分支、标签的更新，或固定到清单的指定版本。</p>
+<h2 id="_1">架构<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p><img alt="ArgoCD架构" src="https://picdn.youdianzhishi.com/images/20210703110614.png" /></p>
+<p>Argo CD 是通过一个 Kubernetes 控制器来实现的，它持续 watch 正在运行的应用程序并将当前的实时状态与所需的目标状态（ Git 存储库中指定的）进行比较。已经部署的应用程序的实际状态与目标状态有差异，则被认为是 <code>OutOfSync</code> 状态，Argo CD 会报告显示这些差异，同时提供工具来自动或手动将状态同步到期望的目标状态。在 Git 仓库中对期望目标状态所做的任何修改都可以自动应用反馈到指定的目标环境中去。</p>
+<p>下面简单介绍下 Argo CD 中的几个主要组件：</p>
+<p><strong>API 服务</strong> ：API 服务是一个 gRPC/REST 服务，它暴露了 Web UI、CLI 和 CI/CD 系统使用的接口，主要有以下几个功能：</p>
+<ul>
+<li>应用程序管理和状态报告</li>
+<li>执行应用程序操作（例如同步、回滚、用户定义的操作）</li>
+<li>存储仓库和集群凭据管理（存储为 K8S Secrets 对象）</li>
+<li>认证和授权给外部身份提供者</li>
+<li>RBAC</li>
+<li>Git webhook 事件的侦听器/转发器</li>
+</ul>
+<p><strong>仓库服务</strong> ：存储仓库服务是一个内部服务，负责维护保存应用程序清单 Git 仓库的本地缓存。当提供以下输入时，它负责生成并返回 Kubernetes 清单：</p>
+<ul>
+<li>存储 URL</li>
+<li>revision 版本（commit、tag、branch）</li>
+<li>应用路径</li>
+<li>模板配置：参数、ksonnet 环境、helm values.yaml 等</li>
+</ul>
+<p><strong>应用控制器</strong> ：应用控制器是一个 Kubernetes 控制器，它持续 watch 正在运行的应用程序并将当前的实时状态与所期望的目标状态（ repo 中指定的）进行比较。它检测应用程序的 <code>OutOfSync</code> 状态，并采取一些措施来同步状态，它负责调用任何用户定义的生命周期事件的钩子（PreSync、Sync、PostSync）。</p>
+<h2 id="_2">功能<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li>自动部署应用程序到指定的目标环境</li>
+<li>支持多种配置管理/模板工具（Kustomize、Helm、Ksonnet、Jsonnet、plain-YAML）</li>
+<li>能够管理和部署到多个集群</li>
+<li>SSO 集成（OIDC、OAuth2、LDAP、SAML 2.0、GitHub、GitLab、Microsoft、LinkedIn）</li>
+<li>用于授权的多租户和 RBAC 策略</li>
+<li>回滚/随时回滚到 Git 存储库中提交的任何应用配置</li>
+<li>应用资源的健康状况分析</li>
+<li>自动配置检测和可视化</li>
+<li>自动或手动将应用程序同步到所需状态</li>
+<li>提供应用程序活动实时视图的 Web UI</li>
+<li>用于自动化和 CI 集成的 CLI</li>
+<li>Webhook 集成（GitHub、BitBucket、GitLab）</li>
+<li>用于自动化的 AccessTokens</li>
+<li>PreSync、Sync、PostSync Hooks，以支持复杂的应用程序部署（例如蓝/绿和金丝雀发布）</li>
+<li>应用程序事件和 API 调用的审计</li>
+<li>Prometheus 监控指标</li>
+<li>用于覆盖 Git 中的 ksonnet/helm 参数</li>
+</ul>
+<h2 id="_3">核心概念<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Application</strong> ：应用，一组由资源清单定义的 Kubernetes 资源，这是一个 CRD 资源对象</li>
+<li><strong>Application source type</strong> ：用来构建应用的工具</li>
+<li><strong>Target state</strong> ：目标状态，指应用程序所需的期望状态，由 Git 存储库中的文件表示</li>
+<li><strong>Live state</strong> ：实时状态，指应用程序实时的状态，比如部署了哪些 Pods 等真实状态</li>
+<li><strong>Sync status</strong> ：同步状态表示实时状态是否与目标状态一致，部署的应用是否与 Git 所描述的一样？</li>
+<li><strong>Sync</strong> ：同步指将应用程序迁移到其目标状态的过程，比如通过对 Kubernetes 集群应用变更</li>
+<li><strong>Sync operation status</strong> ：同步操作状态指的是同步是否成功</li>
+<li><strong>Refresh</strong> ：刷新是指将 Git 中的最新代码与实时状态进行比较，弄清楚有什么不同</li>
+<li><strong>Health</strong> ：应用程序的健康状况，它是否正常运行？能否为请求提供服务？</li>
+<li><strong>Tool</strong> ：工具指从文件目录创建清单的工具，例如 Kustomize 或 Ksonnet 等</li>
+<li><strong>Configuration management tool</strong> ：配置管理工具</li>
+<li><strong>Configuration management plugin</strong> ：配置管理插件</li>
+</ul>
+<h2 id="_4">安装<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>当然前提是需要有一个 kubectl 可访问的 Kubernetes 的集群，直接使用下面的命令即可，这里我们安装最新的稳定版 v2.4.9：</p>
+<div class="highlight"><pre><span></span><code>$ kubectl create namespace argocd
+$ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/v2.4.9/manifests/install.yaml
+</code></pre></div>
+<p>如果你要用在生产环境，则可以使用下面的命令部署一个 HA 高可用的版本：</p>
+<div class="highlight"><pre><span></span><code>$ kubectl create namespace argocd
+$ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/v2.4.9/manifests/ha/install.yaml
+</code></pre></div>
+<p>这将创建一个新的命名空间 argocd，Argo CD 的服务和应用资源都将部署到该命名空间。</p>
+<div class="highlight"><pre><span></span><code>$ kubectl get pods -n argocd
+NAME                                                READY   STATUS    RESTARTS   AGE
+argocd-application-controller-0                     1/1     Running   0          103s
+argocd-applicationset-controller-68b9bdbd8b-jzcpf   1/1     Running   0          103s
+argocd-dex-server-6b7745757-6mxwk                   1/1     Running   0          103s
+argocd-notifications-controller-5b56f6f7bb-jqpng    1/1     Running   0          103s
+argocd-redis-f4cdbff57-dr8jc                        1/1     Running   0          103s
+argocd-repo-server-c4f79b4d6-7nh6n                  1/1     Running   0          103s
+argocd-server-895675597-fr42g                       1/1     Running   0          103s
+</code></pre></div>
+<blockquote>
+<p>如果你对 UI、SSO、多集群管理这些特性不感兴趣，只想把应用变更同步到集群中，那么你可以使用 <code>--disable-auth</code> 标志来禁用认证，可以通过命令 <code>kubectl patch deploy argocd-server -n argocd -p '[{"op": "add", "path": "/spec/template/spec/containers/0/command/-", "value": "--disable-auth"}]' --type json</code> 来实现。</p>
+</blockquote>
+<p>然后我们可以在本地安装 CLI 工具方便操作 Argo CD，我们可以在 <a href="https://github.com/argoproj/argo-cd/releases/latest">Argo CD Git 仓库发布页面</a>查看最新版本的 Argo CD 或运行以下命令来获取版本：</p>
+<div class="highlight"><pre><span></span><code>VERSION=$(curl --silent &quot;https://api.github.com/repos/argoproj/argo-cd/releases/latest&quot; | grep &#39;&quot;tag_name&quot;&#39; | sed -E &#39;s/.*&quot;([^&quot;]+)&quot;.*/\1/&#39;)
+</code></pre></div>
+<p><code>VERSION</code> 在下面的命令中替换为你要下载的 Argo CD 版本：</p>
+<div class="highlight"><pre><span></span><code>$ curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/download/$VERSION/argocd-linux-amd64
+</code></pre></div>
+<p>为 argocd CLI 赋予可执行权限：</p>
+<div class="highlight"><pre><span></span><code>$ chmod +x /usr/local/bin/argocd
+</code></pre></div>
+<p>现在我们就可以使用 <code>argocd</code> 命令了。如果你是 Mac，则可以直接使用 <code>brew install argocd</code> 进行安装。</p>
+<p>Argo CD 会运行一个 gRPC 服务（由 CLI 使用）和 HTTP/HTTPS 服务（由 UI 使用），这两种协议都由 <code>argocd-server</code> 服务在以下端口进行暴露：</p>
+<ul>
+<li>443 - gRPC/HTTPS</li>
+<li>80 - HTTP（重定向到 HTTPS）</li>
+</ul>
+<p>我们可以通过配置 Ingress 的方式来对外暴露服务，其他 Ingress 控制器的配置可以参考官方文档 <a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/ingress/">https://argo-cd.readthedocs.io/en/stable/operator-manual/ingress/</a> 进行配置。</p>
+<p>Argo CD 在同一端口 (443) 上提供多个协议 (gRPC/HTTPS)，所以当我们为 argocd 服务定义单个 nginx ingress 对象和规则的时候有点麻烦，因为 <code>nginx.ingress.kubernetes.io/backend -protocol</code> 这个 annotation 只能接受一个后端协议（例如 HTTP、HTTPS、GRPC、GRPCS）。</p>
+<p>为了使用单个 ingress 规则和主机名来暴露 Argo CD APIServer，必须使用 <code>nginx.ingress.kubernetes.io/ssl-passthrough</code> 这个 annotation 来传递 TLS 连接并校验 Argo CD APIServer 上的 TLS。</p>
+<div class="highlight"><pre><span></span><code>apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: argocd-server-ingress
+  namespace: argocd
+  annotations:
+    nginx.ingress.kubernetes.io/force-ssl-redirect: &quot;true&quot;
+    nginx.ingress.kubernetes.io/ssl-passthrough: &quot;true&quot;
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: argocd.k8s.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: argocd-server
+                port:
+                  name: https
+</code></pre></div>
+<p>上述规则在 Argo CD APIServer 上校验 TLS，该服务器检测到正在使用的协议，并做出适当的响应。请注意，<code>nginx.ingress.kubernetes.io/ssl-passthrough</code> 注解要求将 <code>--enable-ssl-passthrough</code> 标志添加到 <code>nginx-ingress-controller</code> 的命令行参数中。</p>
+<p>由于 <code>ingress-nginx</code> 的每个 Ingress 对象仅支持一个协议，因此另一种方法是定义两个 Ingress 对象。一个用于 HTTP/HTTPS，另一个用于 gRPC。</p>
+<p>如下所示为 HTTP/HTTPS 的 Ingress 对象：</p>
+<div class="highlight"><pre><span></span><code>apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: argocd-server-http-ingress
+  namespace: argocd
+  annotations:
+    nginx.ingress.kubernetes.io/force-ssl-redirect: &quot;true&quot;
+    nginx.ingress.kubernetes.io/backend-protocol: &quot;HTTP&quot;
+spec:
+  ingressClassName: nginx
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: argocd-server
+                port:
+                  name: http
+      host: argocd.k8s.local
+  tls:
+    - hosts:
+        - argocd.k8s.local
+      secretName: argocd-secret # do not change, this is provided by Argo CD
+</code></pre></div>
+<p>gRPC 协议对应的 Ingress 对象如下所示：</p>
+<div class="highlight"><pre><span></span><code>apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: argocd-server-grpc-ingress
+  namespace: argocd
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: &quot;GRPC&quot;
+spec:
+  ingressClassName: nginx
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: argocd-server
+                port:
+                  name: https
+      host: grpc.argocd.k8s.local
+  tls:
+    - hosts:
+        - grpc.argocd.k8s.local
+      secretName: argocd-secret # do not change, this is provided by Argo CD
+</code></pre></div>
+<p>然后我们需要在禁用 TLS 的情况下运行 APIServer。编辑 argocd-server 这个 Deployment 以将 <code>--insecure</code> 标志添加到 argocd-server 命令，或者简单地在 <code>argocd-cmd-params-cm</code> ConfigMap 中设置 <code>server.insecure: "true"</code> 即可。</p>
+<p>创建完成后，我们就可以通过 <code>argocd.k8s.local</code> 来访问 Argo CD 服务了，不过需要注意我们这里配置的证书是自签名的，所以在第一次访问的时候会提示不安全，强制跳转即可。</p>
+<p>默认情况下 <code>admin</code> 帐号的初始密码是自动生成的，会以明文的形式存储在 Argo CD 安装的命名空间中名为 <code>argocd-initial-admin-secret</code> 的 Secret 对象下的 <code>password</code> 字段下，我们可以用下面的命令来获取：</p>
+<div class="highlight"><pre><span></span><code>$ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath=&quot;{.data.password}&quot; | base64 -d &amp;&amp; echo
+</code></pre></div>
+<p>使用用户名 <code>admin</code> 和上面输出的密码即可登录 Dashboard。</p>
+<p><img alt="argocd ui" src="https://picdn.youdianzhishi.com/images/1660377764540.png" /></p>
+<p>同样我们也可以通过 ArgoCD CLI 命令行工具进行登录：</p>
+<div class="highlight"><pre><span></span><code>$ argocd login grpc.argocd.k8s.local
+WARNING: server certificate had error: x509: “Kubernetes Ingress Controller Fake Certificate” certificate is not trusted. Proceed insecurely (y/n)? y
+Username: admin
+Password:
+&#39;admin:login&#39; logged in successfully
+Context &#39;grpc.argocd.k8s.local&#39; updated
+</code></pre></div>
+<p>需要注意的是这里登录的地址为 gRPC 暴露的服务地址。</p>
+<p>CLI 登录成功后，可以使用如下所示命令更改密码：</p>
+<div class="highlight"><pre><span></span><code>$ argocd account update-password
+*** Enter current password:
+*** Enter new password:
+*** Confirm new password:
+Password updated
+Context &#39;argocd.k8s.local&#39; updated
+$ argocd version
+argocd: v2.4.9+1ba9008
+  BuildDate: 2022-08-11T15:41:08Z
+  GitCommit: 1ba9008536b7e61414784811c431cd8da356065e
+  GitTreeState: clean
+  GoVersion: go1.18.5
+  Compiler: gc
+  Platform: darwin/arm64
+argocd-server: v2.4.9+1ba9008
+  BuildDate: 2022-08-11T15:22:41Z
+  GitCommit: 1ba9008536b7e61414784811c431cd8da356065e
+  GitTreeState: clean
+  GoVersion: go1.18.5
+  Compiler: gc
+  Platform: linux/amd64
+  Kustomize Version: v4.4.1 2021-11-11T23:36:27Z
+  Helm Version: v3.8.1+g5cb9af4
+  Kubectl Version: v0.23.1
+  Jsonnet Version: v0.18.0
+</code></pre></div>
+<h2 id="_5">配置集群<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>由于 Argo CD 支持部署应用到多集群，所以如果你要将应用部署到外部集群的时候，需要先将外部集群的认证信息注册到 Argo CD 中，如果是在内部部署（运行 Argo CD 的同一个集群，默认不需要配置），直接使用 <code>https://kubernetes.default.svc</code> 作为应用的 K8S APIServer 地址即可。</p>
+<p>首先列出当前 <code>kubeconfig</code> 中的所有集群上下文：</p>
+<div class="highlight"><pre><span></span><code>$ kubectl config get-contexts -o name
+</code></pre></div>
+<p>从列表中选择一个上下文名称并将其提供给 <code>argocd cluster add CONTEXTNAME</code>，比如对于 <code>kind-kind</code>上下文，运行：</p>
+<div class="highlight"><pre><span></span><code>$ argocd cluster add kind-kind
+</code></pre></div>
+<h2 id="_6">创建应用<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>Git 仓库 <a href="https://github.com/argoproj/argocd-example-apps.git">https://github.com/argoproj/argocd-example-apps.git</a> 是一个包含留言簿应用程序的示例库，我们可以用该应用来演示 Argo CD 的工作原理。</p>
+<h3 id="cli">通过 CLI 创建应用<a class="headerlink" href="#cli" title="Permanent link">&para;</a></h3>
+<p>我们可以通过 <code>argocd app create xxx</code> 命令来创建一个应用：</p>
+<div class="highlight"><pre><span></span><code>$ argocd app create --help
+Create an application
+
+Usage:
+  argocd app create APPNAME [flags]
+
+Examples:
+
+        # Create a directory app
+        argocd app create guestbook --repo https://github.com/argoproj/argocd-example-apps.git --path guestbook --dest-namespace default --dest-server https://kubernetes.default.svc --directory-recurse
+
+        # Create a Jsonnet app
+        argocd app create jsonnet-guestbook --repo https://github.com/argoproj/argocd-example-apps.git --path jsonnet-guestbook --dest-namespace default --dest-server https://kubernetes.default.svc --jsonnet-ext-str replicas=2
+
+        # Create a Helm app
+        argocd app create helm-guestbook --repo https://github.com/argoproj/argocd-example-apps.git --path helm-guestbook --dest-namespace default --dest-server https://kubernetes.default.svc --helm-set replicaCount=2
+
+        # Create a Helm app from a Helm repo
+        argocd app create nginx-ingress --repo https://charts.helm.sh/stable --helm-chart nginx-ingress --revision 1.24.3 --dest-namespace default --dest-server https://kubernetes.default.svc
+
+        # Create a Kustomize app
+        argocd app create kustomize-guestbook --repo https://github.com/argoproj/argocd-example-apps.git --path kustomize-guestbook --dest-namespace default --dest-server https://kubernetes.default.svc --kustomize-image gcr.io/heptio-images/ks-guestbook-demo:0.1
+
+        # Create a app using a custom tool:
+        argocd app create kasane --repo https://github.com/argoproj/argocd-example-apps.git --path plugins/kasane --dest-namespace default --dest-server https://kubernetes.default.svc --config-management-plugin kasane
+
+
+Flags:
+......
+</code></pre></div>
+<p>直接执行如下所示命令即可：</p>
+<div class="highlight"><pre><span></span><code>$ argocd app create guestbook --repo https://github.com/argoproj/argocd-example-apps.git --path guestbook --dest-server https://kubernetes.default.svc --dest-namespace default
+application &#39;guestbook&#39; created
+</code></pre></div>
+<h3 id="ui">通过 UI 创建应用<a class="headerlink" href="#ui" title="Permanent link">&para;</a></h3>
+<p>除了可以通过 CLI 工具来创建应用，我们也可以通过 UI 界面来创建，定位到 <code>argocd.k8s.local</code> 页面，登录后，点击 <code>+New App</code> 新建应用按钮，如下图：</p>
+<p><img alt="New App" src="https://picdn.youdianzhishi.com/images/1660378581536.png" /></p>
+<p>将应用命名为 guestbook，使用 default project，并将同步策略设置为 <code>Manual</code>：</p>
+<p><img alt="配置应用" src="https://picdn.youdianzhishi.com/images/1660379051015.jpg" /></p>
+<p>然后在下面配置 <code>Repository URL</code> 为 <a href="https://github.com/argoproj/argocd-example-apps.git">https://github.com/argoproj/argocd-example-apps.git</a>，由于某些原因我们这里使用的是一个 GitHub 仓库加速地址 <code>https://github.91chi.fun/https://github.com/cnych/argocd-example-apps.git</code>，将 Revision 设置为 HEAD，并将路径设置为 guestbook。然后下面的 Destination 部分，将 cluster 设置为 <code>inCluster</code> 和 namespace 为 default：</p>
+<p><img alt="配置集群" src="https://picdn.youdianzhishi.com/images/1660379593188.png" /></p>
+<p>填写完以上信息后，点击页面上方的 Create 安装，即可创建 guestbook 应用，创建完成后可以看到当前应用的处于 <code>OutOfSync</code> 状态：</p>
+<p><img alt="guestbook application" src="https://picdn.youdianzhishi.com/images/1660379147032.png" /></p>
+<p>Argo CD 默认情况下每 3 分钟会检测 Git 仓库一次，用于判断应用实际状态是否和 Git 中声明的期望状态一致，如果不一致，状态就转换为 <code>OutOfSync</code>。默认情况下并不会触发更新，除非通过 <code>syncPolicy</code> 配置了自动同步。</p>
+<h3 id="crd">通过 CRD 创建<a class="headerlink" href="#crd" title="Permanent link">&para;</a></h3>
+<p>除了可以通过 CLI 和 Dashboard 可以创建 Application 之外，其实也可以直接通过声明一个 <code>Application</code> 的资源对象来创建一个应用，如下所示：</p>
+<div class="highlight"><pre><span></span><code>apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: guestbook
+spec:
+  destination:
+    name: &quot;&quot;
+    namespace: default
+    server: &quot;https://kubernetes.default.svc&quot;
+  source:
+    path: guestbook
+    repoURL: &quot;https://github.com/cnych/argocd-example-apps&quot;
+    targetRevision: HEAD
+  project: default
+  syncPolicy:
+    automated: null
+</code></pre></div>
+<h2 id="_7">部署应用<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>由于上面我们在创建应用的时候使用的同步策略为 <code>Manual</code>，所以应用创建完成后没有自动部署，需要我们手动去部署应用。同样可以通过 CLI 和 UI 界面两种同步方式。</p>
+<h3 id="cli_1">使用 CLI 同步<a class="headerlink" href="#cli_1" title="Permanent link">&para;</a></h3>
+<p>应用创建完成后，我们可以通过如下所示命令查看其状态：</p>
+<div class="highlight"><pre><span></span><code>$ argocd app get guestbook
+Name:               guestbook
+Project:            default
+Server:             https://kubernetes.default.svc
+Namespace:          default
+URL:                https://grpc.argocd.k8s.local/applications/guestbook
+Repo:               https://github.91chi.fun/https://github.com/cnych/argocd-example-apps.git
+Target:             HEAD
+Path:               guestbook
+SyncWindow:         Sync Allowed
+Sync Policy:        &lt;none&gt;
+Sync Status:        OutOfSync from HEAD (67bda3d)
+Health Status:      Missing
+
+GROUP  KIND        NAMESPACE  NAME          STATUS     HEALTH   HOOK  MESSAGE
+       Service     default    guestbook-ui  OutOfSync  Missing
+apps   Deployment  default    guestbook-ui  OutOfSync  Missing
+</code></pre></div>
+<p>应用程序状态为初始 <code>OutOfSync</code> 状态，因为应用程序尚未部署，并且尚未创建任何 Kubernetes 资源。要同步（部署）应用程序，可以执行如下所示命令：</p>
+<div class="highlight"><pre><span></span><code>$ argocd app sync guestbook
+</code></pre></div>
+<p>此命令从 Git 仓库中检索资源清单并执行 <code>kubectl apply</code> 部署应用，执行上面命令后 guestbook 应用便会运行在集群中了，现在我们就可以查看其资源组件、日志、事件和评估其健康状态了。</p>
+<h3 id="ui_1">通过 UI 同步<a class="headerlink" href="#ui_1" title="Permanent link">&para;</a></h3>
+<p>直接添加 UI 界面上应用的 <code>Sync</code> 按钮即可开始同步：</p>
+<p><img alt="sync 操作" src="https://picdn.youdianzhishi.com/images/20210703155911.png" /></p>
+<p>同步完成后可以看到我们的资源状态：</p>
+<p><img alt="Sync 完成" src="https://picdn.youdianzhishi.com/images/1660379760740.png" /></p>
+<p>甚至还可以直接查看应用的日志信息：</p>
+<p><img alt="Sync 完成" src="https://picdn.youdianzhishi.com/images/1660379818204.png" /></p>
+<p>也可以通过 kubectl 查看到我们部署的资源：</p>
+<div class="highlight"><pre><span></span><code>➜  ~ kubectl get pods
+NAME                                 READY   STATUS      RESTARTS       AGE
+guestbook-ui-6c96fb4bdc-bdwh9        1/1     Running     0              3m3s
+➜  ~ kubectl get svc
+NAME                 TYPE           CLUSTER-IP       EXTERNAL-IP    PORT(S)                      AGE
+guestbook-ui         ClusterIP      10.100.170.117   &lt;none&gt;         80/TCP                       3m16s
+kubernetes           ClusterIP      10.96.0.1        &lt;none&gt;         443/TCP                      42d
+</code></pre></div>
+<p>和我们从 Git 仓库中同步 <code>guestbook</code> 目录下面的资源状态也是同步的，证明同步成功了。</p>
+<p><img alt="sync status" src="https://picdn.youdianzhishi.com/images/1660380018340.jpg" /></p>
+<h2 id="tekton-argo-cd">Tekton 结合 Argo CD<a class="headerlink" href="#tekton-argo-cd" title="Permanent link">&para;</a></h2>
+<p>前面我们使用 Tekton 完成了应用的 CI/CD 流程，但是 CD 是在 Tekton 的任务中去完成的，现在我们使用 GitOps 的方式来改造我们的流水线，将 CD 部分使用 Argo CD 来完成。</p>
+<p><img alt="gitops workflow" src="https://picdn.youdianzhishi.com/images/20210706185635.png" /></p>
+<p>这里我们要先去回顾下前面的 <a href="../../tekton/action/">Tekton 实战部分的内容</a>，整个流水线包括 clone、test、build、docker、deploy、rollback 几个部分的任务，最后的 deploy 和 rollback 属于 CD 部分，我们只需要这部分使用 Argo CD 来构建即可。</p>
+<p>首先我们将项目 <code>http://git.k8s.local/course/devops-demo.git</code> 仓库中的 Helm Chart 模板单独提取出来放到一个独立的仓库中 <code>http://git.k8s.local/course/devops-demo-deploy</code>，这样方便和 Argo CD 进行对接，整个项目下面只有用于应用部署的 Helm Chart 模板。</p>
+<p><img alt="devops demo deploy repo" src="https://picdn.youdianzhishi.com/images/1660380317725.png" /></p>
+<p>如果有多个团队，每个团队都要维护大量的应用，就需要用到 Argo CD 的另一个概念：项目（Project）。Argo CD 中的项目（Project）可以用来对 Application 进行分组，不同的团队使用不同的项目，这样就实现了多租户环境。项目还支持更细粒度的访问权限控制：</p>
+<ul>
+<li>限制部署内容（受信任的 Git 仓库）；</li>
+<li>限制目标部署环境（目标集群和 namespace）；</li>
+<li>限制部署的资源类型（例如 RBAC、CRD、DaemonSets、NetworkPolicy 等）；</li>
+<li>定义项目角色，为 Application 提供 RBAC（例如 OIDC group 或者 JWT 令牌绑定）。</li>
+</ul>
+<p>比如我们这里创建一个名为 <code>demo</code> 的项目，将该应用创建到该项目下，只需创建一个如下所示的 <code>AppProject</code> 对象即可：</p>
+<div class="highlight"><pre><span></span><code>apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  # 项目名
+  name: demo
+  namespace: argocd
+spec:
+  # 目标
+  destinations:
+    # 此项目的服务允许部署的 namespace，这里为全部
+    - namespace: &quot;*&quot;
+      # 此项目允许部署的集群，这里为默认集群，即为Argo CD部署的当前集群
+      server: https://kubernetes.default.svc
+  # 允许的数据源
+  sourceRepos:
+    - http://git.k8s.local/course/devops-demo-deploy.git
+</code></pre></div>
+<p>该对象中有几个核心的属性：</p>
+<ul>
+<li><code>sourceRepos</code>：项目中的应用程序可以从中获取清单的仓库引用</li>
+<li><code>destinations</code>：项目中的应用可以部署到的集群和命名空间</li>
+<li><code>roles</code>：项目内资源访问定义的角色</li>
+</ul>
+<p>直接创建该对象即可：</p>
+<div class="highlight"><pre><span></span><code>$ kubectl get AppProject -n argocd
+NAME      AGE
+default   79m
+demo      24s
+</code></pre></div>
+<p>然后前往 Argo CD 添加仓库：</p>
+<p><img alt="connect repo" src="https://picdn.youdianzhishi.com/images/1660381892625.jpg" /></p>
+<p>需要注意的是这里的密码需要使用 AccessToken，我们可以前往 GitLab 的页面 <a href="http://git.k8s.local/-/profile/personal_access_tokens">http://git.k8s.local/-/profile/personal_access_tokens</a> 创建。</p>
+<p><img alt="gitlab token" src="https://picdn.youdianzhishi.com/images/1660382852725.jpg" /></p>
+<p>更多配置信息可以前往文档 <a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/">https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/</a> 查看，项目创建完成后，在该项目下创建一个 Application，代表环境中部署的应用程序实例。</p>
+<div class="highlight"><pre><span></span><code>apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: devops-demo
+  namespace: argocd
+spec:
+  destination:
+    namespace: default
+    server: &quot;https://kubernetes.default.svc&quot;
+  project: demo
+  source:
+    path: helm # 从 Helm 存储库创建应用程序时，chart 必须指定 path
+    repoURL: &quot;http://git.k8s.local/course/devops-demo-deploy.git&quot;
+    targetRevision: HEAD
+    helm:
+      parameters:
+        - name: replicaCount
+          value: &quot;2&quot;
+      valueFiles:
+        - my-values.yaml
+</code></pre></div>
+<p>这里我们定义了一个名为 <code>devops-demo</code> 的应用，应用源来自于 helm 路径，使用的是 <code>my-values.yaml</code> 文件，此外还可以通过 <code>source.helm.parameters</code> 来配置参数，同步策略我们仍然选择使用手动的方式，我们可以在 Tekton 的任务中去手动触发同步。上面的资源对象创建完成后应用就会处于 <code>OutOfSync</code> 状态，因为集群中还没部署该应用。</p>
+<p><img alt="new app" src="https://picdn.youdianzhishi.com/images/1660382968367.jpg" /></p>
+<p>现在接下来我们去修改之前的 Tekton 流水线，之前的 Pipeline 流水线如下所示：</p>
+<div class="highlight"><pre><span></span><code># pipeline.yaml
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: pipeline
+spec:
+  workspaces: # 声明 workspaces
+    - name: go-repo-pvc
+  params:
+    # 定义代码仓库
+    - name: git_url
+    - name: revision
+      type: string
+      default: &quot;main&quot;
+    # 定义镜像参数
+    - name: image
+    - name: registry_url
+      type: string
+      default: &quot;harbor.k8s.local&quot;
+    - name: registry_mirror
+      type: string
+      default: &quot;https://dockerproxy.com&quot;
+    # 定义 helm charts 参数
+    - name: charts_dir
+    - name: release_name
+    - name: release_namespace
+      default: &quot;default&quot;
+    - name: overwrite_values
+      default: &quot;&quot;
+    - name: values_file
+      default: &quot;values.yaml&quot;
+  tasks: # 添加task到流水线中
+    - name: clone
+      taskRef:
+        name: git-clone
+      workspaces:
+        - name: output
+          workspace: go-repo-pvc
+      params:
+        - name: url
+          value: $(params.git_url)
+        - name: revision
+          value: $(params.revision)
+    - name: test
+      taskRef:
+        name: test
+      runAfter:
+        - clone
+    - name: build # 编译二进制程序
+      taskRef:
+        name: build
+      runAfter: # 测试任务执行之后才执行 build task
+        - test
+        - clone
+      workspaces: # 传递 workspaces
+        - name: go-repo
+          workspace: go-repo-pvc
+    - name: docker # 构建并推送 Docker 镜像
+      taskRef:
+        name: docker
+      runAfter:
+        - build
+      workspaces: # 传递 workspaces
+        - name: go-repo
+          workspace: go-repo-pvc
+      params: # 传递参数
+        - name: image
+          value: $(params.image)
+        - name: registry_url
+          value: $(params.registry_url)
+        - name: registry_mirror
+          value: $(params.registry_mirror)
+    - name: deploy # 部署应用
+      taskRef:
+        name: deploy
+      runAfter:
+        - docker
+      workspaces:
+        - name: source
+          workspace: go-repo-pvc
+      params:
+        - name: charts_dir
+          value: $(params.charts_dir)
+        - name: release_name
+          value: $(params.release_name)
+        - name: release_namespace
+          value: $(params.release_namespace)
+        - name: overwrite_values
+          value: $(params.overwrite_values)
+        - name: values_file
+          value: $(params.values_file)
+    - name: rollback # 回滚
+      taskRef:
+        name: rollback
+      when:
+        - input: &quot;$(tasks.deploy.results.helm-status)&quot;
+          operator: in
+          values: [&quot;failed&quot;]
+      params:
+        - name: release_name
+          value: $(params.release_name)
+        - name: release_namespace
+          value: $(params.release_namespace)
+</code></pre></div>
+<p>现在我们需要去掉最后的 deploy 和 rollback 两个任务，当 Docker 镜像构建推送完成后，我们只需要去修改部署代码仓库中的 values 文件，然后再去手动触发 ArgoCD 同步状态即可（如果开启了自动同步这一步都可以省略了），而回滚操作也是通过操作 Git 仓库来实现的，不需要定义一个单独的 Task 任务。</p>
+<p>定义一个如下所的 Taks 任务：</p>
+<div class="highlight"><pre><span></span><code>apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: sync
+spec:
+  volumes:
+    - name: argocd-secret
+      secret:
+        secretName: $(inputs.params.argocd_secret)
+  params:
+    - name: argocd_url
+      description: &quot;The URL of the ArgoCD server&quot;
+    - name: argocd_secret
+      description: &quot;The secret containing the username and password for the tekton task to connect to argo&quot;
+    - name: app_name
+      description: &quot;The name of the argo app to update&quot;
+    - name: app_revision
+      default: &quot;HEAD&quot;
+      description: &quot;The revision of the argo app to update&quot;
+  steps:
+    - name: deploy
+      image: argoproj/argocd:v2.4.9
+      volumeMounts:
+        - name: argocd-secret
+          mountPath: /var/secret
+      command:
+        - sh
+      args:
+        - -ce
+        - |
+          set -e
+          echo &quot;starting argocd sync app&quot;
+          argocd login --insecure $(params.argocd_url) --username $(/bin/cat /var/secret/username) --password $(/bin/cat /var/secret/password)
+          argocd app sync $(params.app_name) --revision $(params.app_revision)
+          argocd app wait $(params.app_name) --health
+</code></pre></div>
+<p>由于我们这里只需要修改 Helm Chart 的 Values 文件中的 <code>image.tag</code> 参数，最好的方式当然还是在一个 Task 中去修改 <code>values.yaml</code> 文件并 commit 到 Repo 仓库中去，当然也可以为了简单直接在 ArgoCD 的应用侧配置参数即可，比如可以使用 <code>argocd app set</code> 命令来为应用配置参数，然后下面再用 <code>argocd app sync</code> 命令手动触发同步操作，这里其实就可以有很多操作了，比如我们可以根据某些条件来判断是否需要部署，满足条件后再执行 sync 操作，最后使用 <code>wait</code> 命令等待应用部署完成。</p>
+<p>当然除了通过手动 <code>argocd app set</code> 的方式来配置参数之外，可能更好的方式还是直接去修改 Repo 仓库中的 values 值，这样在源代码仓库中有一个版本记录，我们可以新建如下所示的一个任务用来修改 values 值：</p>
+<div class="highlight"><pre><span></span><code>apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: change-manifests
+spec:
+  params:
+    - name: git_url
+      description: Git repository containing manifest files to update
+    - name: git_email
+      default: pipeline@k8s.local
+    - name: git_name
+      default: Tekton Pipeline
+    - name: git_manifest_dir
+      description: Manifests files dir
+    - name: tool_image
+      default: cnych/helm-kubectl-curl-git-jq-yq
+    - name: image_tag
+      description: Deploy docker image tag
+  steps:
+    - name: git-push
+      image: $(params.tool_image)
+      env:
+        - name: GIT_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: gitlab-auth
+              key: username
+              optional: true
+        - name: GIT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: gitlab-auth
+              key: password
+              optional: true
+      command: [&quot;/bin/bash&quot;]
+      args:
+        - -c
+        - |
+          set -eu
+          git config --global user.email &quot;$(params.git_email)&quot;
+          git config --global user.name &quot;$(params.git_name)&quot;
+          git clone --branch main --depth 1 http://${GIT_USERNAME}:${GIT_PASSWORD}@$(params.git_url) repo
+          cd &quot;repo/$(params.git_manifest_dir)&quot;
+          ls -l
+          echo old value:
+          cat my-values.yaml | yq r - &#39;image.tag&#39;
+          echo replacing with new value:
+          echo $(params.image_tag)
+          yq w --inplace my-values.yaml &#39;image.tag&#39; &quot;$(params.image_tag)&quot;
+          echo verifying new value
+          yq r my-values.yaml &#39;image.tag&#39;
+          if ! git diff-index --quiet HEAD --; then
+            git status
+            git add .
+            git commit -m &quot;helm values updated by tekton pipeline in change-manifests task&quot;
+            git push
+          else
+              echo &quot;no changes, git repository is up to date&quot;
+          fi
+</code></pre></div>
+<p>现在我们的流水线就变成了如下所示的清单：</p>
+<div class="highlight"><pre><span></span><code># pipeline.yaml
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: pipeline
+spec:
+  workspaces: # 声明 workspaces
+    - name: go-repo-pvc
+  params:
+    # 定义代码仓库
+    - name: git_url
+    - name: git_infra_url
+    - name: revision
+      type: string
+      default: &quot;main&quot;
+    # 定义镜像参数
+    - name: image
+    - name: image_tag
+    - name: registry_url
+      type: string
+      default: &quot;harbor.k8s.local&quot;
+    - name: registry_mirror
+      type: string
+      default: &quot;https://ot2k4d59.mirror.aliyuncs.com/&quot;
+    - name: git_manifest_dir
+      default: &quot;helm&quot;
+    # 定义 argocd 参数
+    - name: argocd_url
+    - name: argocd_secret
+    - name: app_name
+    - name: app_revision
+      type: string
+      default: &quot;HEAD&quot;
+  tasks: # 添加task到流水线中
+    - name: clone
+      taskRef:
+        name: git-clone
+      workspaces:
+        - name: output
+          workspace: go-repo-pvc
+      params:
+        - name: url
+          value: $(params.git_url)
+        - name: revision
+          value: $(params.revision)
+    - name: test
+      taskRef:
+        name: test
+      runAfter:
+        - clone
+    - name: build # 编译二进制程序
+      taskRef:
+        name: build
+      runAfter: # 测试任务执行之后才执行 build task
+        - test
+        - clone
+      workspaces: # 传递 workspaces
+        - name: go-repo
+          workspace: go-repo-pvc
+    - name: docker # 构建并推送 Docker 镜像
+      taskRef:
+        name: docker
+      runAfter:
+        - build
+      workspaces: # 传递 workspaces
+        - name: go-repo
+          workspace: go-repo-pvc
+      params: # 传递参数
+        - name: image
+          value: $(params.image):$(params.image_tag)
+        - name: registry_url
+          value: $(params.registry_url)
+        - name: registry_mirror
+          value: $(params.registry_mirror)
+    - name: manifests
+      taskRef:
+        name: change-manifests
+      runAfter:
+        - docker
+      params:
+        - name: git_url
+          value: $(params.git_infra_url)
+        - name: git_manifest_dir
+          value: $(params.git_manifest_dir)
+        - name: image_tag
+          value: $(params.image_tag)
+    - name: sync
+      taskRef:
+        name: sync
+      runAfter:
+        - manifests
+      params:
+        - name: argocd_url
+          value: $(params.argocd_url)
+        - name: argocd_secret
+          value: $(params.argocd_secret)
+        - name: app_name
+          value: $(params.app_name)
+        - name: app_revision
+          value: $(params.app_revision)
+</code></pre></div>
+<p>最后创建用于 ArgoCD 登录使用的 Secret 对象：</p>
+<div class="highlight"><pre><span></span><code>apiVersion: v1
+kind: Secret
+metadata:
+  name: argocd-auth
+type: Opaque
+stringData:
+  username: admin
+  password: admin321 # argocd 的密码
+</code></pre></div>
+<p>最后修改 Tekton Triggers 中的 Template，如下所示：</p>
+<div class="highlight"><pre><span></span><code># gitlab-template.yaml
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: TriggerTemplate
+metadata:
+  name: gitlab-template
+spec:
+  params: # 定义参数，和 TriggerBinding 中的保持一致
+    - name: gitrevision
+    - name: gitrepositoryurl
+  resourcetemplates: # 定义资源模板
+    - apiVersion: tekton.dev/v1beta1
+      kind: PipelineRun # 定义 pipeline 模板
+      metadata:
+        generateName: gitlab-run- # TaskRun 名称前缀
+      spec:
+        serviceAccountName: tekton-build-sa
+        pipelineRef:
+          name: pipeline
+        workspaces:
+          - name: go-repo-pvc
+            persistentVolumeClaim:
+              claimName: go-repo-pvc
+        params:
+          - name: git_url
+            value: $(tt.params.gitrepositoryurl)
+          - name: git_infra_url
+            value: git.k8s.local/course/devops-demo-deploy.git
+          - name: image
+            value: &quot;harbor.k8s.local/course/devops-demo&quot;
+          - name: image_tag
+            value: &quot;$(tt.params.gitrevision)&quot;
+          - name: argocd_url
+            value: argocd.k8s.local
+          - name: argocd_secret
+            value: argocd-auth
+          - name: app_name
+            value: devops-demo
+</code></pre></div>
+<p>现在我们的整个流水线就更加精简了。现在我们去应用仓库中修改下源代码并提交就可以触发我们的流水线了。</p>
+<p><img alt="sync app" src="https://picdn.youdianzhishi.com/images/1660641259148.jpg" /></p>
+<p>同样可以访问下应用来验证结果是否正确：</p>
+<div class="highlight"><pre><span></span><code>$ curl devops-demo.k8s.local
+{&quot;msg&quot;:&quot;Hello Tekton On GitLab With ArgoCD (GitOps)&quot;}
+</code></pre></div>
+<p>现在查看 Argo CD 中的应用可以发现都是已同步状态了。</p>
+<p><img alt="argo app" src="https://picdn.youdianzhishi.com/images/1660641398369.jpg" /></p>
+<p>如果需要回滚，则可以直接在 Argo CD 页面上点击 <code>HISTORY AND ROLLBACK</code> 安装查看部署的历史记录选择回滚的版本即可：</p>
+<p><img alt="history and rollback" src="https://picdn.youdianzhishi.com/images/20210706185944.png" /></p>
+<p>可以查看整个 Tekton 流水线的状态：</p>
+<div class="highlight"><pre><span></span><code>$ tkn pr describe gitlab-run-4npk7
+
+Name:              gitlab-run-4npk7
+Namespace:         default
+Pipeline Ref:      pipeline
+Service Account:   tekton-build-sa
+Timeout:           1h0m0s
+Labels:
+ tekton.dev/pipeline=pipeline
+ triggers.tekton.dev/eventlistener=gitlab-listener
+ triggers.tekton.dev/trigger=gitlab-push-events-trigger
+ triggers.tekton.dev/triggers-eventid=6e21e686-79dc-421c-951a-e1591dcfd2f8
+
+🌡️  Status
+
+STARTED          DURATION   STATUS
+10 minutes ago   4m11s      Succeeded
+
+⚓ Params
+
+ NAME              VALUE
+ ∙ git_url         http://git.k8s.local/course/devops-demo.git
+ ∙ git_infra_url   git.k8s.local/course/devops-demo-deploy.git
+ ∙ image           harbor.k8s.local/course/devops-demo
+ ∙ image_tag       1a49370f2708a01e8eef14c25688c5e0acf3a07c
+ ∙ argocd_url      grpc.argocd.k8s.local
+ ∙ argocd_secret   argocd-auth
+ ∙ app_name        devops-demo
+
+📂 Workspaces
+
+ NAME            SUB PATH   WORKSPACE BINDING
+ ∙ go-repo-pvc   ---        PersistentVolumeClaim (claimName=go-repo-pvc)
+
+🗂  Taskruns
+
+ NAME                           TASK NAME   STARTED          DURATION   STATUS
+ ∙ gitlab-run-4npk7-sync        sync        6 minutes ago    26s        Succeeded
+ ∙ gitlab-run-4npk7-manifests   manifests   7 minutes ago    19s        Succeeded
+ ∙ gitlab-run-4npk7-docker      docker      10 minutes ago   3m6s       Succeeded
+ ∙ gitlab-run-4npk7-build       build       10 minutes ago   10s        Succeeded
+ ∙ gitlab-run-4npk7-test        test        10 minutes ago   3s         Succeeded
+ ∙ gitlab-run-4npk7-clone       clone       10 minutes ago   7s         Succeeded
+</code></pre></div>
+<p>最后用一张图来总结下我们使用 Tekton 结合 Argo CD 来实现 GitOps 的工作流：</p>
+<p><img alt="tekton+argocd" src="https://picdn.youdianzhishi.com/images/tekton-argocd-workflow.png" /></p>
+<h2 id="webhook">webhook 配置<a class="headerlink" href="#webhook" title="Permanent link">&para;</a></h2>
+<p>我们知道 Argo CD 会自动检查到配置的应用变化，这是因为 Argo CD 会每个三分钟去轮询一次 Git 存储库来检测清单的变化，为了消除这种轮询延迟，我们也可以将 API 服务端配置为接收 webhook 事件的方式，这样就能实时获取到 Git 存储库中的变化了。Argo CD 支持来着 GitHub、GitLab、Bitbucket、Bitbucket Server 和 Gogs 的 Git webhook 事件，这里我们仍然以上面的 GitLab 为例来说明如果配置 Webhook。</p>
+<p>进入到 GitLab 项目仓库 <a href="http://git.k8s.local/course/devops-demo-deploy">http://git.k8s.local/course/devops-demo-deploy</a> 中配置 Webhooks：</p>
+<p><img alt="配置 Webhooks" src="https://picdn.youdianzhishi.com/images/20210708150748.png" /></p>
+<p>Webhook 的地址填写 Argo CD 的 API 接口地址 <a href="http://argocd.k8s.local/api/webhook">http://argocd.k8s.local/api/webhook</a>，下面的 Secret token 是可选的，建议添加上，任意定义即可。另外需要注意这里我们使用的是自签名的 https 证书，所以需要在下方去掉<code>启用SSL验证</code>。</p>
+<p>然后需要将上面配置的 Secret token 添加到 Argo CD 的 Secret 配置中：</p>
+<div class="highlight"><pre><span></span><code>$ kubectl edit secret argocd-secret -n argocd
+apiVersion: v1
+kind: Secret
+metadata:
+  name: argocd-secret
+  namespace: argocd
+type: Opaque
+data:
+...
+stringData:
+  # gitlab webhook secret
+  webhook.gitlab.secret: youdianzhishi
+</code></pre></div>
+<p>保存后，更改会自动生效，我们可以在 GitLab 这边测试配置的 Webhook，查看 Argo CD 的 API 服务 Pod 日志，正常就可以收到 Push 事件了：</p>
+<div class="highlight"><pre><span></span><code>➜  ~ kubectl logs -f argocd-server-76b578f79f-5zfsg -n argocd
+time=&quot;2022-08-16T09:27:12Z&quot; level=info msg=&quot;Received push event repo: http://git.k8s.local/course/devops-demo-deploy, revision: main, touchedHead: true&quot;
+time=&quot;2022-08-16T09:27:12Z&quot; level=info msg=&quot;Requested app &#39;devops-demo&#39; refresh&quot;
+</code></pre></div>
+<h2 id="metrics">Metrics 指标<a class="headerlink" href="#metrics" title="Permanent link">&para;</a></h2>
+<p>Argo CD 作为我们持续部署的关键组件，对于本身的监控也是非常有必要的，Argo CD 本身暴露了两组 Prometheus 指标，所以我们可以很方便对接监控报警。</p>
+<p>默认情况下 Metrics 指标通过端点 <code>argocd-metrics:8082/metrics</code> 获取指标，包括：</p>
+<ul>
+<li>应用健康状态指标</li>
+<li>应用同步状态指标</li>
+<li>应用同步历史记录</li>
+</ul>
+<p>关于 Argo CD 的 API 服务的 API 请求和响应相关的指标（请求数、响应码值等等...）通过端点 <code>argocd-server-metrics:8083/metrics</code> 获取。</p>
+<p>然后可以根据我们自己的需求来配置指标抓取任务，比如我们是手动维护 Prometheus 的方式，并且开启了 endpoints 这种类型的服务自动发现，那么我们可以在几个指标的 Service 上添加 <code>prometheus.io/scrape: "true"</code> 这样的 annotation：</p>
+<div class="highlight"><pre><span></span><code>$ kubectl edit svc argocd-metrics -n argocd
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    prometheus.io/scrape: &quot;true&quot;
+  labels:
+    app.kubernetes.io/component: metrics
+    app.kubernetes.io/name: argocd-metrics
+    app.kubernetes.io/part-of: argocd
+......
+$ kubectl edit svc argocd-server-metrics -n argocd
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    prometheus.io/scrape: &quot;true&quot;
+    prometheus.io/port: &quot;8083&quot;  # 指定8083端口为指标端口
+  creationTimestamp: &quot;2021-07-03T06:16:47Z&quot;
+  labels:
+    app.kubernetes.io/component: server
+    app.kubernetes.io/name: argocd-server-metrics
+    app.kubernetes.io/part-of: argocd
+......
+$ kubectl edit svc argocd-repo-server -n argocd
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    prometheus.io/scrape: &quot;true&quot;
+    prometheus.io/port: &quot;8084&quot;  # 指定8084端口为指标端口
+  creationTimestamp: &quot;2021-07-03T06:16:47Z&quot;
+  labels:
+    app.kubernetes.io/component: repo-server
+    app.kubernetes.io/name: argocd-repo-server
+    app.kubernetes.io/part-of: argocd
+......
+</code></pre></div>
+<p>配置完成后正常就可以自动发现上面的几个指标任务了：</p>
+<p><img alt="argocd metrics" src="https://picdn.youdianzhishi.com/images/1660643569746.png" /></p>
+<p>如果你使用的是 Prometheus Operator 方式，则可以手动创建 ServiceMonitor 对象来创建指标对象。</p>
+<p>然后我们可以在 Grafana 中导入 Argo CD 的 Dashboard，地址：<a href="https://github.com/argoproj/argo-cd/blob/master/examples/dashboard.json">https://github.com/argoproj/argo-cd/blob/master/examples/dashboard.json</a></p>
+<p><img alt="argocd grafana" src="https://picdn.youdianzhishi.com/images/1660645025837.jpg" /></p>
+<h2 id="_8">安全<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>GitOps 的核心理念就是<strong>一切皆代码</strong> ，意味着用户名、密码、证书、token 等敏感信息也要存储到 Git 仓库中，这显然是非常不安全的，不过我们可以通过 Vault、Keycloak、SOPS 等 Secret 管理工具来解决，最简单的方式是使用 SOPS，因为它使用 PGP 密钥来加密内容，如果你使用 kustomize 则还可以在集群内使用相同的 PGP 密钥解密 Secret。ArgoCD 虽然没有内置的 Secret 管理，但是却可以与任何 Secret 管理工具集成。</p>
+<p><code>sops</code> 是一款开源的加密文件的编辑器，支持 YAML、JSON、ENV、INI 和 BINARY 格式，同时可以用 AWS KMS、GCP KMS、Azure Key Vault、age 和 PGP 进行加密，官方推荐使用 <code>age</code> 来进行加解密，所以我们这里使用 <code>age</code>。<a href="https://github.com/FiloSottile/age/">age</a> 是一个简单、现代且安全的加密工具（和 Go 库）。</p>
+<h3 id="sops-age">SOPS 与 AGE<a class="headerlink" href="#sops-age" title="Permanent link">&para;</a></h3>
+<p>首先需要安装 <code>age</code> 工具，可以直接从 <a href="https://github.com/FiloSottile/age/releases">Release 页面</a> 下载对应的安装包：</p>
+<div class="highlight"><pre><span></span><code>$ wget https://github.91chi.fun/https://github.com//FiloSottile/age/releases/download/v1.0.0/age-v1.0.0-linux-amd64.tar.gz
+$ tar -xvf age-v1.0.0-linux-amd64.tar.gz
+$ mv age/age /usr/local/bin
+$ mv age/age-keygen /usr/local/bin
+$ age --version
+v1.0.0
+</code></pre></div>
+<p>然后安装 sops，同样直接从 <a href="https://github.com/mozilla/sops/releases/download/v3.7.3/sops-v3.7.3.linux.amd64">Release 页面</a>下载对应的安装包：</p>
+<div class="highlight"><pre><span></span><code>$ wget https://github.91chi.fun/https://github.com//mozilla/sops/releases/download/v3.7.3/sops-v3.7.3.linux.amd64
+$ mv sops-v3.7.3.linux.amd64 sops &amp;&amp; chmod +x sops
+$ mv sops /usr/local/bin
+</code></pre></div>
+<p>通过下述命令来查看安装是否成功：</p>
+<div class="highlight"><pre><span></span><code>$ sops --version
+sops 3.7.3 (latest)
+</code></pre></div>
+<p>我们先创建一个简单的 Secret 来测试下使用 sops 进行加密：</p>
+<div class="highlight"><pre><span></span><code>$ kubectl create secret generic app-secret \
+--from-literal=token=SOPS-AGE-TOKEN-TEST \
+--dry-run=client \
+-o yaml &gt; secret.yaml
+</code></pre></div>
+<p>生成的 secret 资源清单文件如下所示：</p>
+<div class="highlight"><pre><span></span><code>apiVersion: v1
+data:
+  token: U09QUy1BR0UtVE9LRU4tVEVTVA==
+kind: Secret
+metadata:
+  name: app-secret
+</code></pre></div>
+<p>接下来我们使用 <code>age-keygen</code> 命令生成加密的公钥和私钥，可以用如下命令将私钥保存到一个 <code>key.txt</code> 文件中：</p>
+<div class="highlight"><pre><span></span><code>$ age-keygen -o key.txt
+Public key: age1wvdahagxfgqc53awmmgz52njdk2zm6vkw760tc368gstsypgvusqy7zvtt
+</code></pre></div>
+<p>然后我们可以使用上面的私钥来加密生成的 <code>secret.yaml</code> 文件：</p>
+<div class="highlight"><pre><span></span><code>$ age -o secret.enc.yaml -r age1wvdahagxfgqc53awmmgz52njdk2zm6vkw760tc368gstsypgvusqy7zvtt secret.yaml
+</code></pre></div>
+<p>加密后生成的 <code>secret.enc.yaml</code> 文件内容如下所示，显示乱码：</p>
+<div class="highlight"><pre><span></span><code>age-encryption.org/v1
+-&gt; X25519 x8bynJlv6Sz03ks71Jvn92RZQ6IlTj9B8zgU3lJsOFQ
+sqrP+zq9nw93mafbBjuc5F6GWIjjzdYtQV6DtV9KiTw
+---
+6W1cpc//EBqXkF983yVBUBExiYEx/7Y0wEvHjPlmWNg
+��NY0Y���^�/A��i��.�N���=�ԦPb�ļ���҈v?-&lt;t�t�
+Ӓ/$�Zs�۸�gKz�U���Kf�aϛ��        �+
+��Y��j��g��IDP&gt;��&gt;g��2m9R�a��qfC�����߻q�n���@�O�&#39;g�P6
+</code></pre></div>
+<p>同样我们还可以对该加密文件进行解密：</p>
+<div class="highlight"><pre><span></span><code>$ age --decrypt -i key.txt secret.enc.yaml
+apiVersion: v1
+data:
+  token: U09QUy1BR0UtVE9LRU4tVEVTVA==
+kind: Secret
+metadata:
+  creationTimestamp: null
+  name: app-secret
+</code></pre></div>
+<p>同样对于 <code>sops</code> 来说也是支持和 <code>age</code> 进行集成的，我们可以使用下面的 <code>sops</code> 命令来对 <code>secret.yaml</code> 文件进行加密：</p>
+<div class="highlight"><pre><span></span><code>$ sops --encrypt --age age1wvdahagxfgqc53awmmgz52njdk2zm6vkw760tc368gstsypgvusqy7zvtt secret.yaml &gt; secret.enc.yaml
+</code></pre></div>
+<p>加密后的文件内容如下所示：</p>
+<div class="highlight"><pre><span></span><code>apiVersion: ENC[AES256_GCM,data:e7E=,iv:Pfwj3/74CygAHtWlt9tsnexrH74nfa0teNZzknzfGwA=,tag:U2yJjnalFOuGe8rQK+c7Ng==,type:str]
+data:
+  token: ENC[AES256_GCM,data:8kwq4GqETBJjHbrtS5S3AqJIPcq3Nmf8Gg1muQ==,iv:l7O1UnjzcXOkc48EVvbqGPVv0RQxxNX3aIzCU5B/7/o=,tag:XuNw/N7XDLU17BOQkjn5Rg==,type:str]
+kind: ENC[AES256_GCM,data:U4hGrF9C,iv:CloG5/RgWHXN/lNGKHGNxeZJXj8kfjw8OmFAxQblUgY=,tag:gq0wKDUa50odvRNcak+Vig==,type:str]
+metadata:
+  creationTimestamp: null
+  name: ENC[AES256_GCM,data:PEhXQdE3/vj+bA==,iv:dkWCj5cAqc4IeB2lXdxC7otmCmFn3vGe5s2Ij3uh8ag=,tag:bbUaA1dqXnrLaTnCPVnxpQ==,type:str]
+sops:
+  kms: []
+  gcp_kms: []
+  azure_kv: []
+  hc_vault: []
+  age:
+    - recipient: age1wvdahagxfgqc53awmmgz52njdk2zm6vkw760tc368gstsypgvusqy7zvtt
+      enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBwY3JKdmxVM2lFb0NpTjVj
+        cGdyc3d1QXBvN3RVdzAwMVNVMXZrS3pLYm1zCnZqTGZ5TzVBL2VSay80RkFFTlBC
+        R1NtZmxoYVlTd2RyWUl1c24wME83K00KLS0tIENlczRGb1QzRCtCeWxpMU9PTXN5
+        QnpyckI1bmZSSFliMUgyUDlkd0tWalUKK4vKJwcGLsZn5wT9WHh5tvNOEGScOlAb
+        Fx118rutRK4nVpfIhAvhfS9TDqvhaQ2wFVv3N/a/BhkYpwTrE/cjmQ==
+        -----END AGE ENCRYPTED FILE-----
+  lastmodified: &quot;2022-08-18T08:04:35Z&quot;
+  mac: ENC[AES256_GCM,data:/ujRqRKFR/5uqRBGAZzVIsdVR95In18zUrKuHFuJnHrrfRAt4WXzSUTBovIqOaGPQxXvY4jqkWnd7kqlO629CjK3SA6selEb8N6ytN5kGquGUqSYlOAjsnk575VtpMKXIr8jeaGkzJRmU6aEnbPa18kekw0FCX1aP6yubD8Ce2Y=,iv:/bRn1tk7iXplz4OGxqkUGD4UQRRtb5jUnICQyFnT4fg=,tag:kt9CzFye1OXsq+MKXTZeXA==,type:str]
+  pgp:
+    - created_at: &quot;2022-08-18T08:04:35Z&quot;
+      enc: |-
+        -----BEGIN PGP MESSAGE-----
+
+        wcFMA0Eva10jiAHJAQ/+LgUsrJKoo95yCIxbMT1OPjnJhAK/LkIwY9EdHbJewphI
+        CKwpDwvsrbdpjcmBkCt4sL4S30bPR3qdAjLxJCnGTJPZQzxjOEIzvJNAG5nC3zk/
+        UVPAWj7nV26CCPMc+/j/GHGwMphoLviMr9et0adtaWILSP0yhMuH8LVzGa04WVEz
+        AihT849sF/+WrUy4f7axI4Z2IH2mEepSqNZDQR9mmiu+nA9e+QZqsfazLJXRPsNd
+        2hQn7qSGPZ10bzy9ccA5nO5r1oU2J+GEEMYujur/RL8y5oi3BCSvWc0udfuU0dka
+        Nn77OA73zS8aziA9pj3D46wgeGYFfX7h2XKytSI15GGTAT7RmM6D2cB9xWzeQncy
+        4TN0LDvcw/7SRjxY55iDyYHPLTNlMfajKwXoKfeQX5nd0rnZRCovYDoj2OrqZDff
+        1N25EEWN6MSztZML0eE/k/p7RDBG9bJ6lntXNAXQJRjzhUYeHMnXLc9NCN5P3WdW
+        Ny155SsGK6n9Ok1SdAolqlOFRKiO8AA+2jPVS7aDUrWktqPCa8hzf/Bm1ttBoYjw
+        D5Xc5x3IcyZDIISqz/9cQYfiPusZohpGnfwoea5qhvXEY/wM5IwfLdTm8u78djho
+        HMLFdFUzuprkHZlZlP3HfPbZi5wGpmiqAuYX+i40teOEaQNGhE7HKCJZkAVS0J3S
+        UQHmBMxL1SL/JGAdSsuddB0liIIriENIxr14W04zeJ+pClxvnzxNYigOYM3Jk8wF
+        w7zmhD3IvEpSLG0f4a/c486LpNryBBz6qzBZRYqnJ87PQQ==
+        =K5dC
+        -----END PGP MESSAGE-----
+      fp: CCC4D0692165A88405EF1F579CC5737D5CCB9760
+  unencrypted_suffix: _unencrypted
+  version: 3.7.3
+</code></pre></div>
+<p>可以看到主要字段都被加密了。但是其他字段比如 kind 也被加密了，我们可以通过创建一个 <code>.sops.yaml</code> 文件来指定需要被加密的字段，如下所示：</p>
+<div class="highlight"><pre><span></span><code># .sops.yaml
+creation_rules:
+  - encrypted_regex: &quot;^(username|password|)$&quot;
+    age: &quot;CCC4D0692165A88405EF1F579CC5737D5CCB9760&quot;
+</code></pre></div>
+<p>这样的话则只会对 <code>username</code> 和 <code>password</code> 两个字段进行加密。</p>
+<h3 id="argocd-sops">ArgoCD 集成 SOPS<a class="headerlink" href="#argocd-sops" title="Permanent link">&para;</a></h3>
+<p>现在我们可以使用 <code>sops</code> 来对私密的文件进行加解密了，前面示例中我们在 ArgoCD 中使用的 Helm Chart 方式来同步应用，比如我们会在 values 文件中提供一些比较私密的信息，直接明文提供存储到 Git 仓库上显然是非常不安全的，这个时候我们就可以使用 <code>sops</code> 来对这些 values 文件进行加密，当然在同步应用的时候自然就需要 ArgoCD 能够支持对手 <code>SOPS</code> 进行解密了，这里我们还需要使用到 <a href="https://github.com/jkroepke/helm-secrets">helm-secrets</a> 这个 Helm 插件。</p>
+<p>接下来我们需要让 Argo CD 来支持 SOPS，一般来说主要有两种方法：</p>
+<ul>
+<li>使用 helm 和 sops 创建自定义的 ArgoCD Docker 镜像，并使用自定义 Docker 镜像，但是 Argo CD 的每个新版本都需要更新该镜像。</li>
+<li>在 Argo CD 存储库服务器部署中添加一个初始化容器，以获取带有 <code>sops</code> 的 helm 插件，如此处所述，并在 Pod 中使用它。即使更新了 Argo CD 版本，也不需要更新插件，除非插件版本和 Argo CD 版本存在兼容性问题。</li>
+</ul>
+<p>为了简单我们这里使用第一种自定义镜像的方式，如下所示的 Dockerfile，它将 <code>sops</code> 和 <code>helm-secrets</code> 集成到 Argo CD 镜像中：</p>
+<div class="highlight"><pre><span></span><code>ARG ARGOCD_VERSION=&quot;v2.4.9&quot;
+FROM argoproj/argocd:$ARGOCD_VERSION
+ARG SOPS_VERSION=&quot;3.7.3&quot;
+ARG VALS_VERSION=&quot;0.18.0&quot;
+ARG HELM_SECRETS_VERSION=&quot;3.15.0&quot;
+ARG KUBECTL_VERSION=&quot;1.24.3&quot;
+# In case wrapper scripts are used, HELM_SECRETS_HELM_PATH needs to be the path of the real helm binary
+ENV HELM_SECRETS_HELM_PATH=/usr/local/bin/helm \
+    HELM_PLUGINS=&quot;/home/argocd/.local/share/helm/plugins/&quot; \
+    HELM_SECRETS_VALUES_ALLOW_SYMLINKS=false \
+    HELM_SECRETS_VALUES_ALLOW_ABSOLUTE_PATH=false \
+    HELM_SECRETS_VALUES_ALLOW_PATH_TRAVERSAL=false
+
+USER root
+RUN apt-get update &amp;&amp; \
+    apt-get install -y \
+      curl &amp;&amp; \
+    apt-get clean &amp;&amp; \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN curl -fsSL https://dl.k8s.io/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl \
+    -o /usr/local/bin/kubectl &amp;&amp; chmod +x /usr/local/bin/kubectl
+
+# sops backend installation
+RUN curl -fsSL https://github.com/mozilla/sops/releases/download/v${SOPS_VERSION}/sops-v${SOPS_VERSION}.linux \
+    -o /usr/local/bin/sops &amp;&amp; chmod +x /usr/local/bin/sops
+
+# vals backend installation
+RUN curl -fsSL https://github.com/variantdev/vals/releases/download/v${VALS_VERSION}/vals_${VALS_VERSION}_linux_amd64.tar.gz \
+    | tar xzf - -C /usr/local/bin/ vals \
+    &amp;&amp; chmod +x /usr/local/bin/vals
+
+USER 999
+
+RUN helm plugin install --version ${HELM_SECRETS_VERSION} https://github.com/jkroepke/helm-secrets
+</code></pre></div>
+<p>使用上面的 Dockerfile 重新构建镜像（cnych/argocd:v2.4.9）后，重新替换 <code>argocd-repo-server</code> 应用的镜像，其他组件不需要。</p>
+<p>由于默认情况下 ArgoCD 只支持 <code>http://</code> 和 <code>https://</code> 作为远程 value 协议，所以我们需要讲 <code>helm-secrets</code> 协议也添加到 <code>argocd-cm</code> 这个 ConfigMap 中去。</p>
+<div class="highlight"><pre><span></span><code>apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    app.kubernetes.io/name: argocd-cm
+    app.kubernetes.io/part-of: argocd
+  name: argocd-cm
+data:
+  helm.valuesFileSchemes: &gt;-
+    secrets+gpg-import, secrets+gpg-import-kubernetes,
+    secrets+age-import, secrets+age-import-kubernetes,
+    secrets,
+    https
+</code></pre></div>
+<p>接下来我们还需要配置 Argo CD 存储库服务器，使它可以访问私钥来解密加密的文件。这里使用前面 <code>age-keygen</code> 命令生成的私钥文件 <code>key.txt</code> 创建一个 Kubernetes Secret 对象：</p>
+<div class="highlight"><pre><span></span><code>$ kubectl create secret generic helm-secrets-private-keys --from-file=key.txt -n argocd
+</code></pre></div>
+<p>现在我们需要将该 Secret 以 Volume 的形式挂载到 <code>argocd-repo-server</code> 中去:</p>
+<div class="highlight"><pre><span></span><code>volumes:
+  - name: helm-secrets-private-keys
+    secret:
+      secretName: helm-secrets-private-keys
+# ......
+  volumeMounts:
+    - mountPath: /helm-secrets-private-keys/
+      name: helm-secrets-private-keys
+......
+</code></pre></div>
+<p>然后更新 <code>argocd-repo-server</code> 组件，更新完成后我们就可以创建如下所示的 Argo CD 应用来对加密文件进行解密了：</p>
+<div class="highlight"><pre><span></span><code>apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app
+spec:
+  source:
+    helm:
+      valueFiles:
+        # Method 1: Mount the gpg key from a kubernetes secret as volume
+        # secrets+gpg-import://&lt;key-volume-mount&gt;/&lt;key-name&gt;.asc?&lt;relative/path/to/the/encrypted/secrets.yaml&gt;
+        # secrets+age-import://&lt;key-volume-mount&gt;/&lt;key-name&gt;.txt?&lt;relative/path/to/the/encrypted/secrets.yaml&gt;
+        # Example Method 1: (Assumptions: key-volume-mount=/helm-secrets-private-keys, key-name=app, secret.yaml is in the root folder)
+        - secrets+age-import:///helm-secrets-private-keys/key.txt?secrets.yaml
+</code></pre></div>
+<p>现在我们再次使用前面的 <code>devops-demo</code> 应用示例进行测试。</p>
+<p><img alt="devops-demo deploy" src="https://picdn.youdianzhishi.com/images/1660804972187.png" /></p>
+<p>我们使用 <code>sops</code> 将要部署的 <code>my-values.yaml</code> 文件进行加密：</p>
+<div class="highlight"><pre><span></span><code>$ sops --encrypt --age age1wvdahagxfgqc53awmmgz52njdk2zm6vkw760tc368gstsypgvusqy7zvtt my-values.yaml &gt; my-values.enc.yaml
+</code></pre></div>
+<p>加密后的文件内容如下所示：</p>
+<div class="highlight"><pre><span></span><code>image:
+  repository: ENC[AES256_GCM,data:ZDnA7yTAe2B+TbcQYhcs4yufLgXJWHzX7IUnYdOXtsqzfEo=,iv:4yn+RkQoTHNVW8Y5yDzHsY2hhpMo8yw6j/uj9g6AvMA=,tag:IPwFo2AfLT7yBwoKrvCLCg==,type:str]
+  tag: ENC[AES256_GCM,data:koDRtD5NfWn03JJLAZnYYWLgwsJr/kSKtw8WHJoeSLD8Zco4M0Doqw==,iv:DbxefZ03J7dGRviRq2DQHhRkcBiBY5FgSh1lJwjwzEg=,tag:zc6ZL5ObSymSVH+caxUzpA==,type:str]
+  pullPolicy: ENC[AES256_GCM,data:dJ+xl6llTN2NcEKL,iv:XhX3RGirpJI0Wc1Q/9ld2xWQYqE+6ZLL6laIXEI1unQ=,tag:dDwEUa7nTq9TOkYI2cE0Pg==,type:str]
+ingress:
+  enabled: ENC[AES256_GCM,data:eZB9GA==,iv:p12fWs14ATWke0IiMz0SpAb2rW+ViYcEpGRbOoNt9Uk=,tag:w371uI/KRESNP30eD9rrTQ==,type:bool]
+  ingressClassName: ENC[AES256_GCM,data:WviAhbo=,iv:Vqx0R8RVWkGipZkR2HZfyOYyZdkc+1fhFEV7AdpI4t0=,tag:fv2hf94svXOQeqfjqXN4gg==,type:str]
+  path: ENC[AES256_GCM,data:jg==,iv:cRm/OXlGEbNEHhAAm/JpPx5sP9GRmW1fyEAi+SZhfjY=,tag:QAJmQSQ5qWfjnzrm+MWLbQ==,type:str]
+  hosts:
+    - ENC[AES256_GCM,data:tb32cnmE1d2qnzzsmG2NzMVOPxkW,iv:RH57dgs0gIS28mB83YX+SQNFNjwoTfPa28YvZsCAJW4=,tag:J7SJXkZKPyydx8NvvCh22w==,type:str]
+resources:
+  limits:
+    cpu: ENC[AES256_GCM,data:uys2,iv:UfAl2lP2wLzc0GkLcBs33vl4dQqLiXWmoyyucqovuVM=,tag:yXRpMIS11s0iqVZQpJ/Bdw==,type:str]
+    memory: ENC[AES256_GCM,data:fBHSfog=,iv:lf6fTZfOPlhQVspm2BAl56ps8Q5W6Qz4tMT7A8Au9tA=,tag:XZqHEWEb2qBjWms/qTsAOQ==,type:str]
+  requests:
+    cpu: ENC[AES256_GCM,data:MDYW,iv:/j6A3oVQ4HILXFLVAr8Rjcq2CDdHrtPa70uySxQQeBI=,tag:EyWwWl0hFkTWzHFBXndFeA==,type:str]
+    memory: ENC[AES256_GCM,data:qiwPiRI=,iv:m/oFxJrcdysf26ry7LEcL6IQRRqi5B8Zsjc/YJOkO7c=,tag:3brvdx+dFUN0VyJ6KO8biQ==,type:str]
+sops:
+  kms: []
+  gcp_kms: []
+  azure_kv: []
+  hc_vault: []
+  age:
+    - recipient: age1wvdahagxfgqc53awmmgz52njdk2zm6vkw760tc368gstsypgvusqy7zvtt
+      enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAyeHNNTWJhWHZHZERJNnlh
+        L1FpMkdibERFM2ZtU2FFZ1VhMnYxVG90dUNBCmpTVEk3ODg4aWlhOEY3cDdMSWFW
+        ZmdoaGtQT3NDU0E0bEZPQlJqNXNuamsKLS0tIHhEcm5memczQTNaVGZzUGNGQmsw
+        cW1QSDd4dDdwZnI2ZzloM2tGRFJxTW8KMPU93lWiNMMaCfOUANmsv+kfi4R7NAzP
+        nV2H2EyCTQGsNTeKCS/HkmiSD4/4RLui4Z6TbPf8ALpeGHDH8rVSoA==
+        -----END AGE ENCRYPTED FILE-----
+  lastmodified: &quot;2022-08-18T08:18:05Z&quot;
+  mac: ENC[AES256_GCM,data:Z+KJTZRP6L2QEcSG6S43fvqWsROAwEVnQcVkpN/yU1Kk8x0PUXXZkdyJiykQ+7HRBNWJp1wKF1TAlqnrZyUSXx7zl5fZGbalgK8kRKzzTzdSsB+Cp4Km5uYNqWUh+RFtzRVOYwOU7fOsAxiHLFMjzaqLAE6+WsCY9xjfj67NymA=,iv:Kyckp64XCkmpbeSEiampXp47Qr9ZIJRZUWsLDhHIw/4=,tag:/eH5d5e9anLRoiCxdWPS/w==,type:str]
+  pgp:
+    - created_at: &quot;2022-08-18T08:18:05Z&quot;
+      enc: |-
+        -----BEGIN PGP MESSAGE-----
+
+        wcFMA0Eva10jiAHJAQ/9HZJck5xCbIB43fYrmnrMokwQB5HPMMCpl8gw/U4Cz/RD
+        zs6nlIXhO1U29rQT3s2G9IjfCS0ehfwA6lKGXAuK10jY9HJ7dVthWnKlNsCq35d/
+        5ZKzKIT2mvK1h6+qYai86FwGyG436nAw198oNvC4d9E46PfBcx7PXP1lRFoOJI7V
+        St81HwFTWOd88tkPyIfv2XW1bcvWo7Qz8YunNqGriD3SREwgkSlcyIL4neumWAru
+        YGzTmwEXFjwcTIzel57fI42Qd61wq1p7CKw8njs1pOGucC3uX1b99f1BaeLdQl3C
+        lJvYrP0SYKJ/JA2kPRkeJHDd39ywI8A/iNOW4nRFxbMoAHdEiwAUg2DOCfMwDgVu
+        WQiQqTF+7AycdqjpXYjYZ7SI3al6jhcDA2KxvNsPNjT8F5yl3c9MIwMdo/NRoc6G
+        XNGXqbR+8kChFQiVKCUopbCqHtFaVVV6Ldhk3fB76ht3vgJx9XFR8+KYFLHAezIO
+        VdzzWqVPv72lO3CkyqHfoL8FwxjNI9KAQkU1T3ETv5YJw7mUWWvdMVee9SVf8Qa1
+        m3JJGqcRd9kyH/u8tMKsrgfG1/KVeyx1gStlO3ioHlCyjsNBAUZ2QIsFa7gxUmQL
+        HqgCIqGC/SjFv1+5sHF807sYBBWfARQZRTum/Pg3FHpRiVhNPcvEUPIZjQhT79fS
+        UQHw1EvK5Wj4Ea3/3jNt9bim+pJrxCoUAKByU8lyjL7vOsogiM7sgp50t54oI/3V
+        G0hvOZNvWV/V0YLqXoTVEru/rqLUKzHunl9psutAXlUOkA==
+        =4l27
+        -----END PGP MESSAGE-----
+      fp: CCC4D0692165A88405EF1F579CC5737D5CCB9760
+  unencrypted_suffix: _unencrypted
+  version: 3.7.3
+</code></pre></div>
+<p>现在我们需要将该文件重新提交到 Git 仓库中去，接着我们要重新创建 Application 应用，对应的资源清单文件如下所示：</p>
+<div class="highlight"><pre><span></span><code>apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: devops-demo
+  namespace: argocd
+spec:
+  destination:
+    namespace: default
+    server: &quot;https://kubernetes.default.svc&quot;
+  project: demo
+  source:
+    path: helm # 从 Helm 存储库创建应用程序时，chart 必须指定 path
+    repoURL: &quot;http://git.k8s.local/course/devops-demo-deploy.git&quot;
+    targetRevision: HEAD
+    helm:
+      parameters:
+        - name: replicaCount
+          value: &quot;2&quot;
+      valueFiles:
+        - secrets+age-import:///helm-secrets-private-keys/key.txt?my-values.enc.yaml
+</code></pre></div>
+<p>其中核心是 <code>valuesFiles</code> 配置的 <code>secrets+age-import:///helm-secrets-private-keys/key.txt?my-values.enc.yaml</code>，表示导入 <code>/helm-secrets-private-keys/key.txt</code> 文件中的私钥来对 <code>my-values.enc.yaml</code> 文件进行解密。</p>
+<p>重新创建上面的对象后，我们可以同步应用来验证结果是否正确。</p>
+<p><img alt="应用同步" src="https://picdn.youdianzhishi.com/images/1660810844961.png" /></p>
+<h2 id="_9">消息通知<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<p>上面我们配置了 Argo CD 的监控指标，我们可以通过 AlertManager 来进行报警，但是有的时候我们可能希望将应用同步的状态发送到指定的渠道，这样方便我们了解部署流水线的结果，Argo CD 本身并没有提供内置的同步状态通知功能，但是我们可以与第三方的系统进行集成。</p>
+<ul>
+<li><a href="https://github.com/argoproj-labs/argocd-notifications">ArgoCD Notifications</a> - Argo CD 通知系统，持续监控 Argo CD 应用程序，旨在与各种通知服务集成，例如 Slack、SMTP、Telegram、Discord 等（现在已经合并到 Argo CD 主代码库去了），可以直接查看文档 <a href="https://argo-cd.readthedocs.io/en/latest/operator-manual/notifications/">https://argo-cd.readthedocs.io/en/latest/operator-manual/notifications/</a>。</li>
+<li><a href="https://github.com/argoproj-labs/argo-kube-notifier">Argo Kube Notifier</a> - 通用 Kubernetes 资源控制器，允许监控任何 Kubernetes 资源并在满足配置的规则时发送通知。</li>
+<li><a href="https://github.com/bitnami-labs/kubewatch">Kube Watch</a> - 可以向 Slack/hipchat/mattermost/flock 频道发布通知，它监视集群中的资源变更并通过 webhook 通知它们。</li>
+</ul>
+<p>我们知道 Argo CD 本身是提供 resource hook 功能的，在资源同步前、中、后提供脚本来执行相应的动作, 那么想在资源同步后获取应用的状态，然后根据状态进行通知就非常简单了，通知可以是很简单的 curl 命令：</p>
+<ul>
+<li>PreSync: 在同步之前执行相关操作，这个一般用于比如数据库操作等</li>
+<li>Sync: 同步时执行相关操作，主要用于复杂应用的编排</li>
+<li>PostSync: 同步之后且 app 状态为 health 执行相关操作</li>
+<li>SyncFail: 同步失败后执行相关操作，同步失败一般不常见</li>
+</ul>
+<p>但是对于 <code>PostSync</code> 可以发送成功的通知，但对于状态为 Processing 的无法判断，而且通知还是没有办法做到谁执行的 pipeline 谁接收通知的原则，没有办法很好地进行更细粒度的配置。<code>ArgoCD Notifications</code> 就可以来解决我们的问题，这里我们就以 <code>ArgoCD Notifications</code> 为例来说明如何使用钉钉来通知 Argo CD 的同步状态通知。</p>
+<p><code>ArgoCD Notifications</code> 默认已经随着 Argo CD 安装了：</p>
+<div class="highlight"><pre><span></span><code>$ kubectl get pods -n argocd
+NAME                                                READY   STATUS    RESTARTS       AGE
+argocd-notifications-controller-5b56f6f7bb-jqpng    1/1     Running   1 (163m ago)   3d2h
+# ......
+</code></pre></div>
+<p>然后我们需要在钉钉群中创建一个机器人，现在的机器人安全认证有几种方式，这里我们就选择关键字的方式，配置包含 <code>ArgoCD</code> 关键字的机器人：</p>
+<p><img alt="add dingtalk robot" src="https://picdn.youdianzhishi.com/images/20210708182637.png" /></p>
+<p>然后我们需要修改 <code>install.yaml</code> 文件中的 <code>argocd-notifications-cm</code> 添加相关配置才能支持钉钉。</p>
+<div class="highlight"><pre><span></span><code>apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-notifications-cm
+data:
+  service.webhook.dingtalk: |
+    url: https://oapi.dingtalk.com/robot/send?access_token=31429a8a66c8cd5beb7c4295ce592ac3221c47152085da006dd4556390d4d7e0
+    headers:
+      - name: Content-Type
+        value: application/json
+  context: |
+    argocdUrl: http://argocd.k8s.local
+  template.app-sync-change: |
+    webhook:
+      dingtalk:
+        method: POST
+        body: |
+          {
+                &quot;msgtype&quot;: &quot;markdown&quot;,
+                &quot;markdown&quot;: {
+                    &quot;title&quot;:&quot;ArgoCD同步状态&quot;,
+                    &quot;text&quot;: &quot;### ArgoCD同步状态\n&gt; - app名称: {{.app.metadata.name}}\n&gt; - app同步状态: {{ .app.status.operationState.phase}}\n&gt; - 时间:{{.app.status.operationState.startedAt}}\n&gt; - URL: [点击跳转ArgoCD]({{.context.argocdUrl}}/applications/{{.app.metadata.name}}?operation=true) \n&quot;
+                }
+            }
+  trigger.on-deployed: |
+    - description: Application is synced and healthy. Triggered once per commit.
+      oncePer: app.status.sync.revision
+      send: [app-sync-change]  # template names
+      # trigger condition
+      when: app.status.operationState.phase in [&#39;Succeeded&#39;] and app.status.health.status == &#39;Healthy&#39;
+  trigger.on-health-degraded: |
+    - description: Application has degraded
+      send: [app-sync-change]
+      when: app.status.health.status == &#39;Degraded&#39;
+  trigger.on-sync-failed: |
+    - description: Application syncing has failed
+      send: [app-sync-change]  # template names
+      when: app.status.operationState.phase in [&#39;Error&#39;, &#39;Failed&#39;]
+  trigger.on-sync-running: |
+    - description: Application is being synced
+      send: [app-sync-change]  # template names
+      when: app.status.operationState.phase in [&#39;Running&#39;]
+  trigger.on-sync-status-unknown: |
+    - description: Application status is &#39;Unknown&#39;
+      send: [app-sync-change]  # template names
+      when: app.status.sync.status == &#39;Unknown&#39;
+  trigger.on-sync-succeeded: |
+    - description: Application syncing has succeeded
+      send: [app-sync-change]  # template names
+      when: app.status.operationState.phase in [&#39;Succeeded&#39;]
+  subscriptions: |
+    - recipients: [dingtalk]  # 可能有bug，正常应该是webhook:dingtalk
+      triggers: [on-sync-running, on-deployed, on-sync-failed, on-sync-succeeded]
+</code></pre></div>
+<p>其中 <code>argocd-notifications-cm</code> 中添加了一段如下所示的配置：</p>
+<div class="highlight"><pre><span></span><code>subscriptions: |
+  - recipients: [dingtalk]
+    triggers: [on-sync-running, on-deployed, on-sync-failed, on-sync-succeeded]
+</code></pre></div>
+<p>这个是为定义的触发器添加通知订阅，正常这里的 <code>recipients</code> 是 <code>webhook:dingtalk</code>，不知道是否是因为该版本有 bug，需要去掉前缀才能正常使用。</p>
+<p>此外还可以添加一些条件判断，如下所示：</p>
+<div class="highlight"><pre><span></span><code>subscriptions:
+  # global subscription for all type of notifications
+  - recipients:
+      - slack:test1
+      - webhook:github
+  # subscription for on-sync-status-unknown trigger notifications
+  - recipients:
+      - slack:test2
+      - email:test@gmail.com
+    trigger: on-sync-status-unknown
+  # global subscription restricted to applications with matching labels only
+  - recipients:
+      - slack:test3
+    selector: test=true
+</code></pre></div>
+<p>然后可以根据不同的状态来配置不同的触发器，如下所示：</p>
+<div class="highlight"><pre><span></span><code>trigger.on-sync-status-unknown: |
+  - description: Application status is &#39;Unknown&#39;
+    send: [app-sync-change]  # template names
+    when: app.status.sync.status == &#39;Unknown&#39;
+</code></pre></div>
+<p>该触发器定义包括名称、条件和通知模板引用:</p>
+<ul>
+<li><strong>send</strong> ：表示通知内容使用的模板名称</li>
+<li><strong>description</strong> ：当前触发器的描述信息</li>
+<li><strong>when</strong> ：条件表达式，如果应发送通知，则返回 true</li>
+</ul>
+<p>然后下面就是配置发送的消息通知模板：</p>
+<div class="highlight"><pre><span></span><code>template.app-sync-change: |
+  webhook:
+    dingtalk:
+      method: POST
+      body: |
+        {
+              &quot;msgtype&quot;: &quot;markdown&quot;,
+              &quot;markdown&quot;: {
+                  &quot;title&quot;:&quot;ArgoCD同步状态&quot;,
+                  &quot;text&quot;: &quot;### ArgoCD同步状态\n&gt; - app名称: {{.app.metadata.name}}\n&gt; - app同步状态: {{ .app.status.operationState.phase}}\n&gt; - 时间:{{.app.status.operationState.startedAt}}\n&gt; - URL: [点击跳转ArgoCD]({{.context.argocdUrl}}/applications/{{.app.metadata.name}}?operation=true) \n&quot;
+              }
+          }
+</code></pre></div>
+<p>该模板用于生成通知内容，该模板利用 Golang 中的 <code>html/template</code> 包定义，允许定义通知标题和正文，可以重用，并且可以由多个触发器引用。每个模板默认都可以访问以下字段：</p>
+<ul>
+<li><code>app</code>：保存应用程序对象</li>
+<li><code>context</code>：是用户定义的字符串映射，可能包含任何字符串键和值</li>
+<li><code>notificationType</code> 保留通知服务类型名称，该字段可用于有条件地呈现服务特定字段</li>
+</ul>
+<p>然后记得使用钉钉机器人的 webhook 地址替换掉上面的 <code>argocd-notifications-secret</code> 中的 url 地址。</p>
+<p>配置完成后直接创建整个资源清单文件：</p>
+<div class="highlight"><pre><span></span><code>➜  ~ kubectl apply -f install.yaml
+➜  ~ kubectl get pods -n argocd
+NAME                                               READY   STATUS    RESTARTS   AGE
+argocd-application-controller-0                    1/1     Running   0          5d4h
+argocd-dex-server-76ff776f97-ds7mm                 1/1     Running   0          5d4h
+argocd-notifications-controller-5c548f8dc9-dx824   1/1     Running   0          9m22s
+argocd-redis-747b678f89-w99wf                      1/1     Running   0          5d4h
+argocd-repo-server-6fc4456c89-586zl                1/1     Running   0          5d4h
+argocd-server-5cc96b75b4-zws2c                     1/1     Running   0          4d22h
+</code></pre></div>
+<p>安装完成后重新去修改下应用代码触发整个 GitOps 流水线，正常就可以在钉钉中收到如下所示的消息通知了，如果没有正常收到消息，可以通过 argocd-notifications 的 CLI 命令进行调试：</p>
+<div class="highlight"><pre><span></span><code>➜  ~ kubectl exec -it argocd-notifications-controller-5c548f8dc9-dtq7h -n argocd -- /app/argocd-notifications template notify app-sync-change guestbook --recipient dingtalk
+DEBU[0000] Sending request: POST /robot/send?access_token=31429a8a66c8cd5beb7c4295ce592ac3221c47152085da006dd4556390d4d7e0 HTTP/1.1
+Host: oapi.dingtalk.com
+Content-Type: application/json
+
+{
+      &quot;msgtype&quot;: &quot;markdown&quot;,
+      &quot;markdown&quot;: {
+          &quot;title&quot;:&quot;ArgoCD同步状态&quot;,
+          &quot;text&quot;: &quot;### ArgoCD同步状态\n&gt; - app名称: guestbook\n&gt; - app同步状态: Succeeded\n&gt; - 时间:2021-07-03T12:53:44Z\n&gt; - URL: [点击跳转ArgoCD](http://argocd.k8s.local/applications/guestbook?operation=true) \n&quot;
+      }
+  }  service=dingtalk
+DEBU[0000] Received response: HTTP/2.0 200 OK
+Cache-Control: no-cache
+Content-Type: application/json
+Date: Thu, 08 Jul 2021 11:45:12 GMT
+Server: Tengine
+
+{&quot;errcode&quot;:0,&quot;errmsg&quot;:&quot;ok&quot;}  service=dingtalk
+</code></pre></div>
+<p><img alt="钉钉通知" src="https://picdn.youdianzhishi.com/images/20210708195833.png" /></p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="页脚">
+      
+        
+        <a href="../helm/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Helm" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              Helm
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../notes.txt-%E6%96%87%E4%BB%B6/" class="md-footer__link md-footer__link--next" aria-label="下一页: NOTES.txt 文件" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              NOTES.txt 文件
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 lixie
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/cnych" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://hub.docker.com/r/cnych/" target="_blank" rel="noopener" title="hub.docker.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M349.9 236.3h-66.1v-59.4h66.1v59.4zm0-204.3h-66.1v60.7h66.1V32zm78.2 144.8H362v59.4h66.1v-59.4zm-156.3-72.1h-66.1v60.1h66.1v-60.1zm78.1 0h-66.1v60.1h66.1v-60.1zm276.8 100c-14.4-9.7-47.6-13.2-73.1-8.4-3.3-24-16.7-44.9-41.1-63.7l-14-9.3-9.3 14c-18.4 27.8-23.4 73.6-3.7 103.8-8.7 4.7-25.8 11.1-48.4 10.7H2.4c-8.7 50.8 5.8 116.8 44 162.1 37.1 43.9 92.7 66.2 165.4 66.2 157.4 0 273.9-72.5 328.4-204.2 21.4.4 67.6.1 91.3-45.2 1.5-2.5 6.6-13.2 8.5-17.1l-13.3-8.9zm-511.1-27.9h-66v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm-78.1-72.1h-66.1v60.1h66.1v-60.1z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/cnych" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://instagram.com/cnych" target="_blank" rel="noopener" title="instagram.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["header.autohide", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.top", "toc.integrate", "search.suggest", "search.highlight", "content.code.annotate", "navigation.instant", "navigation.instant.prefetch", "navigation.path", "navigation.prune"], "search": "../../../assets/javascripts/workers/search.01824240.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.e8a254df.min.js"></script>
+      
+        <script src="../../../js/extra.js"></script>
+      
+        <script src="../../../js/baidu-tongji.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

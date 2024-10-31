@@ -1,0 +1,2 @@
+# Documentation that simply works
+
