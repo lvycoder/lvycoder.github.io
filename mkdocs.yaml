@@ -257,24 +257,24 @@ nav:
         - Discord 新手教程: other/discord-docs.md
         - Jenkins: other/misc/jenkins.md
         - 使用 mTLS 保护应用程序通信: other/misc/使用-mtls-保护应用程序通信.md
-        - 示例: other/misc/示例.md
-        - 函数和管道: other/misc/函数和管道.md
-        - Chart Hooks: other/misc/chart-hooks.md
-        - Dapr: other/misc/dapr.md
-        - ConfigMap: other/misc/configmap.md
-        - Kubernetes 进阶训练营第3期课程文档: other/misc/kubernetes-进阶训练营第3期课程文档.md
-        - GitOps 是什么？: other/misc/gitops-是什么？.md
-        - Linkerd: other/misc/linkerd.md
-        - Secrets store: other/misc/secrets-store.md
-        - Tekton: other/misc/tekton.md
-        - Secret: other/misc/secret.md
-        - 访问文件: other/misc/访问文件.md
-        - Argo Rollouts: other/misc/argo-rollouts.md
-        - 升级 Linkerd: other/misc/升级-linkerd.md
-        - 流水线: other/misc/流水线.md
-        - 生产环境使用 Linkerd: other/misc/生产环境使用-linkerd.md
-        - 服务质量: other/misc/服务质量.md
-        - 调度: other/misc/调度.md
+        # - 示例: other/misc/示例.md
+        # - 函数和管道: other/misc/函数和管道.md
+        # - Chart Hooks: other/misc/chart-hooks.md
+        # - Dapr: other/misc/dapr.md
+        # - ConfigMap: other/misc/configmap.md
+        # - Kubernetes 进阶训练营第3期课程文档: other/misc/kubernetes-进阶训练营第3期课程文档.md
+        # - GitOps 是什么？: other/misc/gitops.md
+        # - Linkerd: other/misc/linkerd.md
+        # - Secrets store: other/misc/secrets-store.md
+        # - Tekton: other/misc/tekton.md
+        # - Secret: other/misc/secret.md
+        # - 访问文件: other/misc/访问文件.md
+        # - Argo Rollouts: other/misc/argo-rollouts.md
+        # - 升级 Linkerd: other/misc/升级-linkerd.md
+        # - 流水线: other/misc/流水线.md
+        # - 生产环境使用 Linkerd: other/misc/生产环境使用-linkerd.md
+        # - 服务质量: other/misc/服务质量.md
+        # - 调度: other/misc/调度.md
         - Helm: other/misc/helm.md
         - Argo CD: other/misc/argo-cd.md
         - NOTES.txt 文件: other/misc/notes.txt-文件.md
