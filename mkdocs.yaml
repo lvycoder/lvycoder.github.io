@@ -256,7 +256,7 @@ nav:
         - 高效利用谷歌来搜索: other/google-docs.md
         - Discord 新手教程: other/discord-docs.md
         - Jenkins: other/misc/jenkins.md
-        - 使用 mTLS 保护应用程序通信: other/misc/使用-mtls-保护应用程序通信.md
+        # - 使用 mTLS 保护应用程序通信: other/misc/使用-mtls-保护应用程序通信.md
         # - 示例: other/misc/示例.md
         # - 函数和管道: other/misc/函数和管道.md
         # - Chart Hooks: other/misc/chart-hooks.md
@@ -275,32 +275,32 @@ nav:
         # - 生产环境使用 Linkerd: other/misc/生产环境使用-linkerd.md
         # - 服务质量: other/misc/服务质量.md
         # - 调度: other/misc/调度.md
-        - Helm: other/misc/helm.md
-        - Argo CD: other/misc/argo-cd.md
-        - NOTES.txt 文件: other/misc/notes.txt-文件.md
-        - 发布订阅: other/misc/发布订阅.md
-        - Jenkins Pipeline: other/misc/jenkins-pipeline.md
-        - Subcharts 和 Global Values: other/misc/subcharts-和-global-values.md
-        - 实战 Tekton 流水线: other/misc/实战-tekton-流水线.md
-        - 黄金指标: other/misc/黄金指标.md
-        - 流程控制: other/misc/流程控制.md
-        - 触发器和事件监听器: other/misc/触发器和事件监听器.md
-        - 模板调试: other/misc/模板调试.md
-        - 可观测性: other/misc/可观测性.md
-        - Dapr Bindings: other/misc/dapr-bindings.md
-        - Charts: other/misc/charts.md
-        - 内置对象: other/misc/内置对象.md
-        - 中间件: other/misc/中间件.md
-        - 变量: other/misc/变量.md
-        - 命名模板: other/misc/命名模板.md
-        - Values 文件: other/misc/values-文件.md
-        - Harbor: other/misc/harbor.md
-        - Descheduler: other/misc/descheduler.md
-        - 任务: other/misc/任务.md
-        - 调度器: other/misc/调度器.md
-        - Crane: other/misc/crane.md
-        - 流量拆分: other/misc/流量拆分.md
-        - Documentation that simply works: other/misc/documentation-that-simply-works.md
+        # - Helm: other/misc/helm.md
+        # - Argo CD: other/misc/argo-cd.md
+        # - NOTES.txt 文件: other/misc/notes.txt-文件.md
+        # - 发布订阅: other/misc/发布订阅.md
+        # - Jenkins Pipeline: other/misc/jenkins-pipeline.md
+        # - Subcharts 和 Global Values: other/misc/subcharts-和-global-values.md
+        # - 实战 Tekton 流水线: other/misc/实战-tekton-流水线.md
+        # - 黄金指标: other/misc/黄金指标.md
+        # - 流程控制: other/misc/流程控制.md
+        # - 触发器和事件监听器: other/misc/触发器和事件监听器.md
+        # - 模板调试: other/misc/模板调试.md
+        # - 可观测性: other/misc/可观测性.md
+        # - Dapr Bindings: other/misc/dapr-bindings.md
+        # - Charts: other/misc/charts.md
+        # - 内置对象: other/misc/内置对象.md
+        # - 中间件: other/misc/中间件.md
+        # - 变量: other/misc/变量.md
+        # - 命名模板: other/misc/命名模板.md
+        # - Values 文件: other/misc/values-文件.md
+        # - Harbor: other/misc/harbor.md
+        # - Descheduler: other/misc/descheduler.md
+        # - 任务: other/misc/任务.md
+        # - 调度器: other/misc/调度器.md
+        # - Crane: other/misc/crane.md
+        # - 流量拆分: other/misc/流量拆分.md
+        # - Documentation that simply works: other/misc/documentation-that-simply-works.md
         - Zadig: other/misc/zadig.md
         - Gitlab: other/misc/gitlab.md
     - 10、Chatgpt:
