@@ -142,10 +142,10 @@ nav:
         - ingress-nginx: 3.k8s/network/ingress-nginx.md
         - Service Profiles: 3.k8s/network/service-profiles.md
         - 科学上网: 3.k8s/network/4-network-docs.md
-        - APISIX: 3.k8s/network/apisix.md
-        - Service: 3.k8s/network/service.md
-        - Traefik: 3.k8s/network/traefik.md
-        - Ingress: 3.k8s/network/ingress.md
+        # - APISIX: 3.k8s/network/apisix.md
+        # - Service: 3.k8s/network/service.md
+        # - Traefik: 3.k8s/network/traefik.md
+        # - Ingress: 3.k8s/network/ingress.md
         - kubernetes pv/pvc简介: 5.Storage/pv-rep.md
         - kubernetes 监控服务: 3.k8s/k8s-mon-docs.md
         - kubernetes 日志管理: 3.k8s/k8s-logs-docs.md
@@ -161,15 +161,15 @@ nav:
         - kubernetes Cert-manager 安装: cert-manager/cert-manager-doc.md
         - kubernetes 处理k8s证书过期: 3.k8s/other/k8s-ca-docs.md
 
-        - Prometheus: 3.k8s/monitoring/prometheus.md
-        - VictoriaMetrics: 3.k8s/monitoring/victoriametrics.md
-        - PromQL: 3.k8s/monitoring/promql.md
-        - 黑盒监控: 3.k8s/monitoring/黑盒监控.md
-        - Prometheus Operator: 3.k8s/monitoring/prometheus-operator.md
-        - 高级配置: 3.k8s/monitoring/高级配置.md
-        - Grafana: 3.k8s/monitoring/grafana.md
-        - 自定义监控报警: 3.k8s/monitoring/自定义监控报警.md
-        - Alertmanager: 3.k8s/monitoring/alertmanager.md
+        # - Prometheus: 3.k8s/monitoring/prometheus.md
+        # - VictoriaMetrics: 3.k8s/monitoring/victoriametrics.md
+        # - PromQL: 3.k8s/monitoring/promql.md
+        # - 黑盒监控: 3.k8s/monitoring/黑盒监控.md
+        # - Prometheus Operator: 3.k8s/monitoring/prometheus-operator.md
+        # - 高级配置: 3.k8s/monitoring/高级配置.md
+        # - Grafana: 3.k8s/monitoring/grafana.md
+        # - 自定义监控报警: 3.k8s/monitoring/自定义监控报警.md
+        # - Alertmanager: 3.k8s/monitoring/alertmanager.md
 
         - kubernete 日志架构: 3.k8s/7.logging/日志收集架构.md
         - kubernetes EFK日志系统: 3.k8s/7.logging/搭建-efk-日志系统.md
@@ -301,8 +301,8 @@ nav:
         # - Crane: other/misc/crane.md
         # - 流量拆分: other/misc/流量拆分.md
         # - Documentation that simply works: other/misc/documentation-that-simply-works.md
-        - Zadig: other/misc/zadig.md
-        - Gitlab: other/misc/gitlab.md
+        # - Zadig: other/misc/zadig.md
+        # - Gitlab: other/misc/gitlab.md
     - 10、Chatgpt:
         - 注册chatgpt: chatgpt/chatgpt-docs.md
         - 搜索技术记录: chatgpt/google-ai-docs.md
