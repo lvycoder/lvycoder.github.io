@@ -255,7 +255,7 @@ nav:
         - 如何利用Mac 写博客文章: other/mac-docs.md
         - 高效利用谷歌来搜索: other/google-docs.md
         - Discord 新手教程: other/discord-docs.md
-        - Jenkins: other/misc/jenkins.md
+        # - Jenkins: other/misc/jenkins.md
         # - 使用 mTLS 保护应用程序通信: other/misc/使用-mtls-保护应用程序通信.md
         # - 示例: other/misc/示例.md
         # - 函数和管道: other/misc/函数和管道.md
