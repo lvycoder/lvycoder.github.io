@@ -16,22 +16,17 @@ theme:
   language: zh
   include_sidebar: true
   features:
-    - header.autohide
-    - navigation.instant
+    # - navigation.instant
     - navigation.sections
     - navigation.tabs
     - navigation.tabs.sticky
-    # - navigation.expand
+    - navigation.expand
     - navigation.indexes
     - navigation.top
-    - toc.integrate
+    # - toc.integrate
     - search.suggest
     - search.highlight
     - content.code.annotate
-    - navigation.instant
-    - navigation.instant.prefetch
-    - navigation.path
-    - navigation.prune
 
   palette:
    # Light mode
@@ -263,7 +258,7 @@ nav:
         # - Dapr: other/misc/dapr.md
         # - ConfigMap: other/misc/configmap.md
         # - Kubernetes 进阶训练营第3期课程文档: other/misc/kubernetes-进阶训练营第3期课程文档.md
-        # - GitOps 是什么？: other/misc/gitops.md
+        # - GitOps 是什么?: other/misc/gitops.md
         # - Linkerd: other/misc/linkerd.md
         # - Secrets store: other/misc/secrets-store.md
         # - Tekton: other/misc/tekton.md
