@@ -309,7 +309,7 @@ nav:
         - 我的2022: 20.mylife/2022-life-docs.md
         - 我的2023: 20.mylife/2023-life-docs.md
         - 我的2024: 20.mylife/2024-life-docs.md
-
+        - 我的学习: 20.mylife/2025-learning-docs.md
 
 plugins:
   - search:
