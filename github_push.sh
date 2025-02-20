@@ -1,4 +1,5 @@
 #!/bin/bash
+cd /Users/beiyiwangdejiyi/Desktop/lixie-work/lvycoder.github.io/
 
 # 切换到工作目录
 if ! cd ~/Desktop/lixie-work/lvycoder.github.io/; then
