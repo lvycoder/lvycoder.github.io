@@ -236,6 +236,7 @@ nav:
         - Ansible playbook: ansible/ansible-playbook.md
 
     - 9、其他:
+        - Nginx免费SSL解决方案: 8.nginx/certbot_ssl_doc.md
         - kubeconfig 实践应用: Macuse/mac-kubeconfig.md
         - k3s 大纲介绍: k3s/k3s-docs.md
         - k3s 边缘计算: k3s/k3s-install.md
