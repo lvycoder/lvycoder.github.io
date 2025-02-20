@@ -1,0 +1,28 @@
+name: Auto Create PR
+
+on:
+  push:
+    branches-ignore:  # 排除 master，监听其他分支
+      - master
+
+jobs:
+  create-pr:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # 赋予创建 PR 的权限
+      pull-requests: write
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Auto Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          title: "Auto PR from ${{ github.ref_name }}"  # PR 标题包含分支名
+          body: "Automated PR created from ${{ github.ref_name }} branch."
+          base: master         # 目标分支
+          branch: "auto-pr/${{ github.ref_name }}"  # 可选：临时分支（避免直接操作原分支）
+          delete-branch: true  # 可选：合并后删除临时分支
+          draft: false         # 设置为 true 可创建草稿 PR
+          labels: "auto-pr"     # 可选：添加标签便于识别
