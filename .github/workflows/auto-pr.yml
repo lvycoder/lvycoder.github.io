@@ -1,0 +1,27 @@
+name: Auto Create PR
+
+on:
+  push:
+    branches-ignore:
+      - master
+
+permissions:
+  contents: read
+  pull_requests: write
+
+jobs:
+  create-pr:
+    runs-on: Ubuntu-22.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkouts@v4
+      - name: Create PR if not exists
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const currentBranch = context.ref.replace('refs/heads/', '');
+            const prs = await github.rest.pulls.list({ owner, repo, head: currentBranch, base: 'master' });
+            if (prs.data.length == 0) {
+              await github.rest.pulls.create({ owner, repo, head: currentBranch, base: 'master', title: `Auto PR from ${currentBranch}`, body: `Automatically created PR from ${currentBranch} to master.` });
+            }

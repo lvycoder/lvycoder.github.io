@@ -2764,8 +2764,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2_1" class="md-nav__link">
-    验证方式 2
+  <a href="#dns" class="md-nav__link">
+    阿里云DNS 验证
   </a>
   
 </li>
@@ -3326,8 +3326,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2_1" class="md-nav__link">
-    验证方式 2
+  <a href="#dns" class="md-nav__link">
+    阿里云DNS 验证
   </a>
   
 </li>
@@ -3352,6 +3352,7 @@
   <h1>Nginx免费SSL解决方案</h1>
 
 <h2 id="lets-encrypt"><strong>Let's Encrypt 免费证书</strong><a class="headerlink" href="#lets-encrypt" title="Permanent link">&para;</a></h2>
+<p>在使用nginx 不想使用http 协议，而希望使用更安全的https协议，因此可以使用 Let's Encrypt 来生成免费证书</p>
 <ul>
 <li>(通过 Certbot 工具)结合 Nginx 的详细步骤</li>
 </ul>
@@ -3474,37 +3475,43 @@ tail<span class="w"> </span>-f<span class="w"> </span>/var/log/letsencrypt/letse
 <li><strong>自动续期</strong>:避免证书过期导致服务中断.</li>
 </ol>
 <p>建议定期检查证书状态(<code>sudo certbot certificates</code>)和 Nginx 日志(<code>/var/log/nginx/error.log</code>)</p>
-<h2 id="2_1">验证方式 2<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h2>
+<h2 id="dns"><strong>阿里云DNS 验证</strong><a class="headerlink" href="#dns" title="Permanent link">&para;</a></h2>
 <ol>
-<li>部署certbot-feehi-hook</li>
-<li>github 地址: https://github.com/liufee/certbot-feehi-hook</li>
-<li>安装略~</li>
+<li>
+<p>部署certbot-feehi-hook</p>
+</li>
+<li>
+<p>github 地址: <a href="https://github.com/liufee/certbot-feehi-hook">certbot-feehi-hook</a></p>
+</li>
+<li>
+<p>安装略~</p>
+</li>
 </ol>
-<div class="highlight"><pre><span></span><code>certbot<span class="w"> </span>certonly<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-d<span class="w"> </span>proxy-image.top<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--manual<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--preferred-challenges<span class="w"> </span>dns<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--non-interactive<span class="w"> </span><span class="se">\ </span><span class="w">                 </span><span class="c1"># 强制非交互模式</span>
-<span class="w">  </span>--agree-tos<span class="w"> </span><span class="se">\ </span><span class="w">                       </span><span class="c1"># 自动同意服务条款</span>
-<span class="w">  </span>--email<span class="w"> </span>lixie0215@163.com<span class="w"> </span><span class="se">\ </span><span class="w">            </span><span class="c1"># 指定通知邮箱(避免交互询问)</span>
-<span class="w">  </span>--manual-auth-hook<span class="w"> </span><span class="s2">&quot;/opt/certbot-feehi-hook --type=aliyun --action=add --ali_AccessKey_ID=xxxxxxxxxxxxxxx --ali_Access_Key_Secret=xxxxxxxxxxxxxxx&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--manual-cleanup-hook<span class="w"> </span><span class="s2">&quot;/opt/certbot-feehi-hook --type=aliyun --action=delete --ali_AccessKey_ID=xxxxxxxxxxxxxxx --ali_Access_Key_Secret=xxxxxxxxxxxxxxx&quot;</span>
+<div class="highlight"><pre><span></span><code>certbot certonly \
+  -d proxy-image.top \
+  --manual \
+  --preferred-challenges dns \
+  --non-interactive \                  # 强制非交互模式
+  --agree-tos \                        # 自动同意服务条款
+  --email lixie0215@163.com \             # 指定通知邮箱(避免交互询问)
+  --manual-auth-hook &quot;/opt/certbot-feehi-hook --type=aliyun --action=add --ali_AccessKey_ID=xxxxxxxxxxxxxxx --ali_Access_Key_Secret=xxxxxxxxxxxxxxx&quot; \
+  --manual-cleanup-hook &quot;/opt/certbot-feehi-hook --type=aliyun --action=delete --ali_AccessKey_ID=xxxxxxxxxxxxxxx --ali_Access_Key_Secret=xxxxxxxxxxxxxxx&quot;
 </code></pre></div>
 <p>创建配置文件(权限设为 600)</p>
-<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;ALI_ACCESS_KEY_ID=xxxxxxxxxxxxxxx</span>
-<span class="s2">ALI_ACCESS_KEY_SECRET=xxxxxxxxxxxxxxx&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/etc/certbot/aliyun-credentials.conf
-chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>/etc/certbot/aliyun-credentials.conf
+<p><div class="highlight"><pre><span></span><code>echo &quot;ALI_ACCESS_KEY_ID=xxxxxxxxxxxxxxx
+ALI_ACCESS_KEY_SECRET=xxxxxxxxxxxxxxx&quot; &gt; /etc/certbot/aliyun-credentials.conf
+chmod 600 /etc/certbot/aliyun-credentials.conf
 </code></pre></div>
-<p>修正后</p>
-<div class="highlight"><pre><span></span><code>certbot<span class="w"> </span>certonly<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-d<span class="w"> </span>proxy-image.top<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--manual<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--preferred-challenges<span class="w"> </span>dns<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--non-interactive<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--agree-tos<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--email<span class="w"> </span>xxxxxxxxxxxxxxx@163.com<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--manual-auth-hook<span class="w"> </span><span class="s2">&quot;/opt/certbot-feehi-hook --type=aliyun --action=add --config=/etc/certbot/aliyun-credentials.conf&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--manual-cleanup-hook<span class="w"> </span><span class="s2">&quot;/opt/certbot-feehi-hook --type=aliyun --action=delete --config=/etc/certbot/aliyun-credentials.conf&quot;</span>
+安全方式：</p>
+<div class="highlight"><pre><span></span><code>certbot certonly \
+  -d proxy-image.top \
+  --manual \
+  --preferred-challenges dns \
+  --non-interactive \
+  --agree-tos \
+  --email xxxxxxxxxxxxxxx@163.com \
+  --manual-auth-hook &quot;/opt/certbot-feehi-hook --type=aliyun --action=add --config=/etc/certbot/aliyun-credentials.conf&quot; \
+  --manual-cleanup-hook &quot;/opt/certbot-feehi-hook --type=aliyun --action=delete --config=/etc/certbot/aliyun-credentials.conf&quot;
 </code></pre></div>
 
               
