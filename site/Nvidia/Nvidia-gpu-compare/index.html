@@ -2954,6 +2954,27 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    专业可视化/虚拟化系列显卡对比
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    嵌入式/边缘计算系列显卡对比
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    数据中心网络加速卡对比
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3218,6 +3239,27 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    专业可视化/虚拟化系列显卡对比
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    嵌入式/边缘计算系列显卡对比
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    数据中心网络加速卡对比
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3476,6 +3518,17 @@
 <td>Hopper</td>
 </tr>
 <tr>
+<td>A800</td>
+<td>6912</td>
+<td>432</td>
+<td>765 MHz</td>
+<td>1410 MHz</td>
+<td>40/80 GB</td>
+<td>HBM2e</td>
+<td>400 W</td>
+<td>Ampere</td>
+</tr>
+<tr>
 <td>A100</td>
 <td>6912</td>
 <td>432</td>
@@ -3510,7 +3563,7 @@
 </tr>
 </tbody>
 </table>
-<p>NVIDIA最新的数据中心GPU是基于Hopper架构的H100,相比上一代A100有以下重要提升:</p>
+<p>NVIDIA最新的数据中心GPU是基于Hopper架构的H100/H800，相比上一代A100/A800有以下重要提升:</p>
 <ul>
 <li>CUDA核心数从6912增加到16896,提升约144%</li>
 <li>首次采用HBM3显存,带宽高达3TB/s</li>
@@ -3518,7 +3571,13 @@
 <li>第四代Tensor Core,AI推理性能提升近3倍</li>
 <li>NVLink带宽提升至900GB/s</li>
 </ul>
-<p>H800是专门为中国市场推出的版本,核心规格与H100基本一致,但在某些AI计算能力上有所限制。</p>
+<p>特别说明：
+- A800是专门为中国市场推出的A100的特供版本
+- H800是专门为中国市场推出的H100的特供版本
+- 这些特供版本在保持核心规格基本一致的同时，对部分AI计算能力做了限制：
+  - NVLink带宽从600GB/s降至400GB/s
+  - FP8训练性能有所限制
+  - 部分高级AI功能受限</p>
 <p>这些高端数据中心GPU主要应用于:
 - 大规模AI模型训练
 - 高性能计算(HPC)
@@ -3566,6 +3625,197 @@
 </tbody>
 </table>
 <p>国产GPU目前主要应用于AI训练和推理领域,在通用计算和图形渲染方面与NVIDIA还有一定差距。但随着国产GPU技术的不断进步,未来有望在更多领域与NVIDIA展开竞争。</p>
+<h2 id="_1"><strong>专业可视化/虚拟化系列显卡对比</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>型号</th>
+<th>CUDA核心数</th>
+<th>基础频率</th>
+<th>Boost频率</th>
+<th>显存容量</th>
+<th>显存类型</th>
+<th>功耗</th>
+<th>架构</th>
+<th>主要特性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A40</td>
+<td>10752</td>
+<td>1.35 GHz</td>
+<td>1.78 GHz</td>
+<td>48 GB</td>
+<td>GDDR6</td>
+<td>300 W</td>
+<td>Ampere</td>
+<td>虚拟化支持</td>
+</tr>
+<tr>
+<td>A16</td>
+<td>4x2560</td>
+<td>1.37 GHz</td>
+<td>1.69 GHz</td>
+<td>4x16 GB</td>
+<td>GDDR6</td>
+<td>250 W</td>
+<td>Ampere</td>
+<td>多显示器支持</td>
+</tr>
+<tr>
+<td>A10</td>
+<td>9216</td>
+<td>1.40 GHz</td>
+<td>1.70 GHz</td>
+<td>24 GB</td>
+<td>GDDR6</td>
+<td>150 W</td>
+<td>Ampere</td>
+<td>高性能图形</td>
+</tr>
+<tr>
+<td>A4000</td>
+<td>6144</td>
+<td>1.13 GHz</td>
+<td>1.56 GHz</td>
+<td>16 GB</td>
+<td>GDDR6</td>
+<td>140 W</td>
+<td>Ampere</td>
+<td>入门专业级</td>
+</tr>
+<tr>
+<td>A2000</td>
+<td>3584</td>
+<td>1.20 GHz</td>
+<td>1.47 GHz</td>
+<td>12 GB</td>
+<td>GDDR6</td>
+<td>70 W</td>
+<td>Ampere</td>
+<td>小型工作站</td>
+</tr>
+</tbody>
+</table>
+<p>这些显卡主要面向:
+- 专业虚拟化环境(VDI)
+- 远程工作站
+- 云渲染
+- 多显示器应用场景</p>
+<h2 id="_2"><strong>嵌入式/边缘计算系列显卡对比</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>型号</th>
+<th>CUDA核心数</th>
+<th>基础频率</th>
+<th>Boost频率</th>
+<th>显存容量</th>
+<th>显存类型</th>
+<th>功耗</th>
+<th>架构</th>
+<th>应用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Jetson AGX Orin</td>
+<td>2048</td>
+<td>1.3 GHz</td>
+<td>1.5 GHz</td>
+<td>32 GB</td>
+<td>LPDDR5</td>
+<td>15-60 W</td>
+<td>Ampere</td>
+<td>边缘AI</td>
+</tr>
+<tr>
+<td>Jetson Xavier NX</td>
+<td>384</td>
+<td>1.1 GHz</td>
+<td>1.4 GHz</td>
+<td>8 GB</td>
+<td>LPDDR4x</td>
+<td>10-15 W</td>
+<td>Volta</td>
+<td>嵌入式系统</td>
+</tr>
+<tr>
+<td>Jetson Nano</td>
+<td>128</td>
+<td>0.9 GHz</td>
+<td>1.1 GHz</td>
+<td>4 GB</td>
+<td>LPDDR4</td>
+<td>5-10 W</td>
+<td>Maxwell</td>
+<td>IoT设备</td>
+</tr>
+</tbody>
+</table>
+<p>主要特点:
+- 低功耗设计
+- 集成AI加速器
+- 支持边缘计算
+- 适合嵌入式应用</p>
+<h2 id="_3"><strong>数据中心网络加速卡对比</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>型号</th>
+<th>处理器</th>
+<th>网络端口</th>
+<th>最大吞吐量</th>
+<th>延迟</th>
+<th>功耗</th>
+<th>主要功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BlueField-3</td>
+<td>16核ARM</td>
+<td>2x200GbE</td>
+<td>400 Gb/s</td>
+<td>&lt;2μs</td>
+<td>80W</td>
+<td>DPU加速</td>
+</tr>
+<tr>
+<td>BlueField-2</td>
+<td>8核ARM</td>
+<td>2x100GbE</td>
+<td>200 Gb/s</td>
+<td>&lt;2μs</td>
+<td>70W</td>
+<td>安全加速</td>
+</tr>
+<tr>
+<td>ConnectX-7</td>
+<td>-</td>
+<td>2x400GbE</td>
+<td>800 Gb/s</td>
+<td>&lt;1μs</td>
+<td>75W</td>
+<td>网络加速</td>
+</tr>
+<tr>
+<td>ConnectX-6</td>
+<td>-</td>
+<td>2x200GbE</td>
+<td>400 Gb/s</td>
+<td>&lt;1μs</td>
+<td>65W</td>
+<td>RDMA支持</td>
+</tr>
+</tbody>
+</table>
+<p>主要应用:
+- 数据中心网络
+- 存储加速
+- 安全处理
+- 虚拟化网络</p>
 <p>总的来说,NVIDIA凭借强大的GPU性能和丰富的产品线,在游戏、设计、AI等多个领域占据领先地位。国产GPU厂商正在奋起直追,未来的竞争将更加激烈。</p>
 
               
