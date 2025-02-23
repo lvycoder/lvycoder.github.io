@@ -2,10 +2,8 @@ name: Auto Create PR
 
 on:
   push:
-    branches-ignore:
-      - master
-    branches:
-      - 'lixie'  # 匹配所有分支
+    branches: 
+      - 'lixie'  # 仅监听 lixie 分支
 
 jobs:
   create-pr:
@@ -18,17 +16,17 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # 添加此行以获取完整的git历史
+          fetch-depth: 0  # 获取完整 Git 历史
 
       - name: Auto Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
           title: "Auto PR from ${{ github.ref_name }}"
           body: "Automated PR created from ${{ github.ref_name }} branch."
-          base: master
-          branch: "auto-pr/${{ github.ref_name }}"
-          delete-branch: true
+          base: master      # PR 目标分支
+          branch: "auto-pr/${{ github.ref_name }}"  # 临时分支名
+          delete-branch: true  # 合并后删除临时分支
           draft: false
           labels: "auto-pr"
           commit-message: "Auto PR from ${{ github.ref_name }}"
-          token: ${{ secrets.GITHUB_TOKEN }}  # 明确指定token
+          token: ${{ secrets.GITHUB_TOKEN }}
