@@ -4,6 +4,8 @@ on:
   push:
     branches-ignore:
       - master
+    branches:
+      - 'lixie'  # 匹配所有分支
 
 jobs:
   create-pr:
@@ -15,6 +17,8 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # 添加此行以获取完整的git历史
 
       - name: Auto Create Pull Request
         uses: peter-evans/create-pull-request@v5
@@ -27,4 +31,4 @@ jobs:
           draft: false
           labels: "auto-pr"
           commit-message: "Auto PR from ${{ github.ref_name }}"
-          debug: true  # 启用调试模式
+          token: ${{ secrets.GITHUB_TOKEN }}  # 明确指定token
