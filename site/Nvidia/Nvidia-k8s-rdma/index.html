@@ -3480,14 +3480,14 @@
 
 
 <h1 id="rdma-kubernetes">RDMA 在 Kubernetes 中的应用实施指南<a class="headerlink" href="#rdma-kubernetes" title="Permanent link">&para;</a></h1>
-<h2 id="1-rdma">1. RDMA 技术简介<a class="headerlink" href="#1-rdma" title="Permanent link">&para;</a></h2>
+<h2 id="1-rdma"><strong>1. RDMA 技术简介</strong><a class="headerlink" href="#1-rdma" title="Permanent link">&para;</a></h2>
 <p>RDMA (Remote Direct Memory Access) 是一种高性能数据传输技术,允许网络适配器直接访问应用程序内存,绕过操作系统内核和CPU,从而实现:</p>
 <ul>
 <li>极低的延迟</li>
 <li>高带宽</li>
 <li>低CPU使用率</li>
 </ul>
-<h2 id="2">2. 环境要求<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<h2 id="2"><strong>2. 环境要求</strong><a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
 <h3 id="21">2.1 硬件要求<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
 <ul>
 <li>RDMA capable 网卡 (如Mellanox ConnectX-&#8536;/6)</li>
@@ -3520,7 +3520,7 @@
 <li>提供网络资源的细粒度控制</li>
 <li>支持自定义网络配置和资源分配</li>
 </ol>
-<h2 id="3">3. 部署步骤<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<h2 id="3"><strong>3. 部署步骤</strong><a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
 <h3 id="31-mellanox-ofed">3.1 安装 Mellanox OFED 驱动<a class="headerlink" href="#31-mellanox-ofed" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># 下载对应版本的OFED驱动</span>
 wget<span class="w"> </span>http://content.mellanox.com/ofed/MLNX_OFED-5.4-1.0.3.0/MLNX_OFED_LINUX-5.4-1.0.3.0-ubuntu20.04-x86_64.tgz
@@ -3573,7 +3573,7 @@ tar<span class="w"> </span>xzf<span class="w"> </span>MLNX_OFED_LINUX-5.4-1.0.3.
 <span class="w">          </span><span class="nt">hostPath</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/dev/</span>
 </code></pre></div>
-<h2 id="4">4. 配置和使用<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<h2 id="4"><strong>4. 配置和使用</strong><a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
 <h3 id="41">4.1 创建网络附件定义<a class="headerlink" href="#41" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;k8s.cni.cncf.io/v1&quot;</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NetworkAttachmentDefinition</span>
@@ -3612,7 +3612,7 @@ tar<span class="w"> </span>xzf<span class="w"> </span>MLNX_OFED_LINUX-5.4-1.0.3.
 <span class="w">    </span><span class="nt">securityContext</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">privileged</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
-<h2 id="5">5. 验证和测试<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<h2 id="5"><strong>5. 验证和测试</strong><a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
 <h3 id="51-rdma">5.1 验证 RDMA 设备<a class="headerlink" href="#51-rdma" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># 查看IB设备状态</span>
 ibstat
@@ -3706,7 +3706,7 @@ rdma<span class="w"> </span>stat<span class="w"> </span>show
 numactl<span class="w"> </span>--hardware
 numactl<span class="w"> </span>--show
 </code></pre></div>
-<h2 id="6">6. 常见问题和故障排除<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<h2 id="6"><strong>6. 常见问题和故障排除</strong><a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
 <ol>
 <li>RDMA 设备未被识别</li>
 <li>检查OFED驱动安装状态</li>
@@ -3728,7 +3728,7 @@ numactl<span class="w"> </span>--show
 <li>验证设备插件状态</li>
 <li>查看Kubernetes事件日志</li>
 </ol>
-<h2 id="7">7. 最佳实践<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<h2 id="7"><strong>7. 最佳实践</strong><a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
 <ol>
 <li>资源隔离</li>
 <li>使用专用的RDMA网络</li>
@@ -3750,7 +3750,7 @@ numactl<span class="w"> </span>--show
 <li>配置RDMA指标采集</li>
 <li>设置告警规则</li>
 </ol>
-<h2 id="8">8. 参考资料<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
+<h2 id="8"><strong>8. 参考资料</strong><a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://docs.mellanox.com/display/MLNXOFEDv461000/Introduction">Mellanox OFED Documentation</a></li>
 <li><a href="https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/device-plugins/">Kubernetes Device Plugin Documentation</a></li>
