@@ -20,7 +20,7 @@ if ! git diff --quiet; then
     git commit -m "Auto update: $current_time"
 
     # 推送到远程仓库
-    if git push origin lixie; then
+    if git push origin master; then
         echo "成功推送到 GitHub!"
     else
         echo "推送失败,请检查网络或权限设置"
