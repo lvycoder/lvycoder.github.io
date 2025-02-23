@@ -12,14 +12,14 @@
         <meta name="author" content="Li">
       
       
-        <link rel="canonical" href="https://barry-boy.github.io/docker/docker-docs/">
+        <link rel="canonical" href="https://barry-boy.github.io/Nvidia/Nvidia-gpu-compare/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-8.0.0">
     
     
       
-        <title>Docker 基本管理 - Kubernetes 进阶训练营</title>
+        <title>NVIDIA显卡对比 - Kubernetes 进阶训练营</title>
       
     
     
@@ -71,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#docker" class="md-skip">
+        <a href="#nvidia" class="md-skip">
           跳转至
         </a>
       
@@ -105,7 +105,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Docker 基本管理
+              NVIDIA显卡对比
             
           </span>
         </div>
@@ -239,15 +239,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../basic/cncf-docs/" class="md-tabs__link md-tabs__link--active">
+      <a href="../../basic/cncf-docs/" class="md-tabs__link">
         2、kubernetes
       </a>
     </li>
@@ -369,13 +367,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../Nvidia/Nvidia-gpu-compare/" class="md-tabs__link">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
         10、Ai
       </a>
     </li>
@@ -860,14 +860,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" data-md-state="indeterminate" type="checkbox" id="__nav_4" checked>
       
       
       
@@ -1006,175 +1004,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Docker 基本管理
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../docker/docker-docs/" class="md-nav__link">
         Docker 基本管理
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#11-docker" class="md-nav__link">
-    1.1 Docker 概述
-  </a>
-  
-    <nav class="md-nav" aria-label="1.1 Docker 概述">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#111-docker" class="md-nav__link">
-    1.1.1 什么是 Docker
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#112-docker" class="md-nav__link">
-    1.1.2 Docker 的优势
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#113" class="md-nav__link">
-    1.1.3 镜像
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#114" class="md-nav__link">
-    1.1.4 容器
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#115" class="md-nav__link">
-    1.1.5 仓库
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#12-docker" class="md-nav__link">
-    1.2 安装 Docker
-  </a>
-  
-    <nav class="md-nav" aria-label="1.2 安装 Docker">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#121-apt" class="md-nav__link">
-    1.2.1 Apt 方式安装:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#122-yum" class="md-nav__link">
-    1.2.2 YUM 方式安装:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#123" class="md-nav__link">
-    1.2.3 脚本式安装
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#13-docker" class="md-nav__link">
-    1.3 Docker 镜像操作
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#14-docker" class="md-nav__link">
-    1.4 Docker 容器操作
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#15-docker" class="md-nav__link">
-    1.5 Docker 镜像管理
-  </a>
-  
-    <nav class="md-nav" aria-label="1.5 Docker 镜像管理">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#151-docker" class="md-nav__link">
-    1.5.1 Docker镜像结构
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#152-dockerfile" class="md-nav__link">
-    1.5.2 Dockerfile介绍
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    附件:
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1186,7 +1020,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../lxcfs.md" class="md-nav__link">
+      <a href="../../docker/lxcfs.md" class="md-nav__link">
         lxcfs 介绍
       </a>
     </li>
@@ -1200,7 +1034,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docker-images-docs/" class="md-nav__link">
+      <a href="../../docker/docker-images-docs/" class="md-nav__link">
         docker 镜像构建
       </a>
     </li>
@@ -1214,7 +1048,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docker-proxy-docs/" class="md-nav__link">
+      <a href="../../docker/docker-proxy-docs/" class="md-nav__link">
         docker proxy代理
       </a>
     </li>
@@ -1228,7 +1062,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docker-image-clash-docs/" class="md-nav__link">
+      <a href="../../docker/docker-image-clash-docs/" class="md-nav__link">
         docker Clash代理
       </a>
     </li>
@@ -3010,12 +2844,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" data-md-state="indeterminate" type="checkbox" id="__nav_12" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" checked>
       
       
       
@@ -3048,11 +2884,80 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../Nvidia/Nvidia-gpu-compare/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          NVIDIA显卡对比
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         NVIDIA显卡对比
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#nvidia_1" class="md-nav__link">
+    NVIDIA 显卡系列概览
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#geforce" class="md-nav__link">
+    GeForce系列显卡对比
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quadro" class="md-nav__link">
+    Quadro系列显卡对比
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tesla" class="md-nav__link">
+    Tesla系列显卡对比
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gpu" class="md-nav__link">
+    与国产GPU的对比
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -3064,7 +2969,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Nvidia/k8s-rdma.md" class="md-nav__link">
+      <a href="../k8s-rdma.md" class="md-nav__link">
         RDMA在Kubernetes中的应用
       </a>
     </li>
@@ -3279,132 +3184,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#11-docker" class="md-nav__link">
-    1.1 Docker 概述
-  </a>
-  
-    <nav class="md-nav" aria-label="1.1 Docker 概述">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#111-docker" class="md-nav__link">
-    1.1.1 什么是 Docker
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#112-docker" class="md-nav__link">
-    1.1.2 Docker 的优势
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#113" class="md-nav__link">
-    1.1.3 镜像
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#114" class="md-nav__link">
-    1.1.4 容器
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#115" class="md-nav__link">
-    1.1.5 仓库
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#12-docker" class="md-nav__link">
-    1.2 安装 Docker
-  </a>
-  
-    <nav class="md-nav" aria-label="1.2 安装 Docker">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#121-apt" class="md-nav__link">
-    1.2.1 Apt 方式安装:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#122-yum" class="md-nav__link">
-    1.2.2 YUM 方式安装:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#123" class="md-nav__link">
-    1.2.3 脚本式安装
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#13-docker" class="md-nav__link">
-    1.3 Docker 镜像操作
+  <a href="#nvidia_1" class="md-nav__link">
+    NVIDIA 显卡系列概览
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#14-docker" class="md-nav__link">
-    1.4 Docker 容器操作
+  <a href="#geforce" class="md-nav__link">
+    GeForce系列显卡对比
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#15-docker" class="md-nav__link">
-    1.5 Docker 镜像管理
-  </a>
-  
-    <nav class="md-nav" aria-label="1.5 Docker 镜像管理">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#151-docker" class="md-nav__link">
-    1.5.1 Docker镜像结构
+  <a href="#quadro" class="md-nav__link">
+    Quadro系列显卡对比
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#152-dockerfile" class="md-nav__link">
-    1.5.2 Dockerfile介绍
+      
+        <li class="md-nav__item">
+  <a href="#tesla" class="md-nav__link">
+    Tesla系列显卡对比
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    附件:
+      
+        <li class="md-nav__item">
+  <a href="#gpu" class="md-nav__link">
+    与国产GPU的对比
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -3420,222 +3230,307 @@
             <article class="md-content__inner md-typeset">
               
                 
-<a href="https://github.com/barry-boy/barry-boy.github.io/edit/master/docs/docker/docker-docs.md" title="编辑此页" class="md-content__button md-icon">
+<a href="https://github.com/barry-boy/barry-boy.github.io/edit/master/docs/Nvidia/Nvidia-gpu-compare.md" title="编辑此页" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
 
-<h1 id="docker">Docker 基本管理<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h1>
-<p>随着计算机近几十年的蓬勃发展，产生了大量优秀系统和软件。软件开发人员可以自由选择各 种软件应用。但同时带来的问题就是需要维护一个非常庞大的开发、测试和生产环境。 面对这种 情况，Docker 容器技术横空出世，提供了简单、灵活、高效的解决方案，不需要过多地改变现有 的使用习惯，就可以和已有的工具，如 OpenStack 等配合使用。因此，掌握 Docker 相关技术也是 途经云计算的必经之路。</p>
-<p>本章将依次介绍 Docker 的三大核心概念——镜像、容器、仓库，以及安装 Docker 与介绍围 绕镜像和容器的具体操作。
-<img alt="" src="https://pic1.imgdb.cn/item/6347711c16f2c2beb1e5a99a.jpg" /></p>
-<h2 id="11-docker"><strong>1.1 Docker 概述</strong><a class="headerlink" href="#11-docker" title="Permanent link">&para;</a></h2>
-<p>因为 Docker 轻便、快速的特性，可以使应用达到快速迭代的目的。每次小的变更，马上就可 以看到效果，而不用将若干个小变更积攒到一定程度再变更。每次变更一小部分其实是一种非常安 全的方式，在开发环境中能够快速提高工作效率。</p>
-<p>Docker 容器能够帮助开发人员、系统管理员、质量管理和版本控制工程师在一个生产环节中 一起协同工作。制定一套容器标准能够使系统管理员更改容器的时候，程序员不需要关心容器的变 化，而更专注自己的应用程序代码。从而隔离开了开发和管理，简化了开发和部署的成本。</p>
-<h3 id="111-docker"><strong>1.1.1 什么是 Docker</strong><a class="headerlink" href="#111-docker" title="Permanent link">&para;</a></h3>
-<p>如果要方便的创建运行在云平台上的应用，必须要脱离底层的硬件，同时还需要任何时 间地 点可获取这些资源，这正是 Docker 所能提供的。Docker 的容器技术可以在一台主机上轻松为任何 应用创建一个轻量级的、可移植的、自给自足的容器。通过这种容器打包应用程序，意味着简化了 重新部署、调试这些琐碎的重复工作，极大的提高了工作效率。</p>
-<h3 id="112-docker"><strong>1.1.2 Docker 的优势</strong><a class="headerlink" href="#112-docker" title="Permanent link">&para;</a></h3>
-<p>Docker 容器运行速度很快，启动和停止可以在秒级实现，比传统虚拟机要快很多；Docker 核 心解决的问题是利用容器来实现类似虚拟机的功能，从而利用更加节省的硬件资源提供给用户更多 的计算资源。因此，Docker 容器除了运行其中的应用之外，基本不消耗额外的系统资源，在保证 应用性能的同时，又减小了系统开销，使得一台主机上同时运行数千个 Docker 容器成为可能。 Docker 操作方便，可以通过 Dockerfile 配置文件支持灵活的自动化创建和部署。表 1-1 将 Docker 容器技术与传统虚拟机的特性进行了比较。</p>
-<div class="admonition warning">
-<p class="admonition-title">个人理解: 虚拟机和容器的同个时代的不同产物</p>
-</div>
-<p>表1-1 Docker 容器与传统虚拟机的区别</p>
-<p><img alt="" src="https://pic1.imgdb.cn/item/63477aac16f2c2beb1f2f424.jpg" /></p>
-<p>Docker 之所以拥有众多优势，与操作系统虚拟化自身的特点是分不开的。传统虚拟机需要有 额外的虚拟机管理程序和虚拟机操作系统层，而 Docker 容器则是直接在操作系统层面之上实现的 虚拟化。图 1.2 是 Docker 与传统虚拟机架构。</p>
-<p><img alt="" src="https://pic1.imgdb.cn/item/634776ba16f2c2beb1ed6983.jpg" /></p>
-<h3 id="113"><strong>1.1.3 镜像</strong><a class="headerlink" href="#113" title="Permanent link">&para;</a></h3>
-<p>镜像、容器、仓库是 Docker 的三大核心概念。其中 Docker 的镜像是创建容器的基础，类似虚拟机的快照,可以理解为一个面向 Docker 容器引擎的只读模板。例如：一个镜像可以是一个完整 的 Cent OS 操作系统环境，称为一个 CentOS 镜像；也可以是一个安装了 MySQL 的应用程序，称之为一个 MySQL 镜像等等。</p>
-<p>所有的容器都是基于镜像来实现的～，所以image 就显得很重要！！！</p>
-<h3 id="114"><strong>1.1.4 容器</strong><a class="headerlink" href="#114" title="Permanent link">&para;</a></h3>
-<p>Docker 的容器是从镜像创建的运行实例，它可以被启动、停止和删除。所创建的每一个容器 都是相互隔离、互不可见，以保证安全性的平台。可以将容器看作是一个简易版的 Linux 环境， Docker 利用容器来运行和隔离应用。</p>
-<h3 id="115"><strong>1.1.5 仓库</strong><a class="headerlink" href="#115" title="Permanent link">&para;</a></h3>
-<p>有了镜像，当然需要有存放他的地方，Docker 仓库就是用来集中保存镜像的地方，当创建了自己的镜像之后，可以使用 push 命令将它 上传到公有仓库（Public）或者私有仓库（Private）。当下次要在另外一台机器上使用这个镜像 时，只需从仓库获取。</p>
-<p>常见的镜像仓库:</p>
+<h1 id="nvidia">NVIDIA 显卡性能对比<a class="headerlink" href="#nvidia" title="Permanent link">&para;</a></h1>
+<p>NVIDIA是全球最大的GPU(图形处理器)制造商,其显卡广泛应用于游戏、设计、人工智能等领域。本文将对NVIDIA的主要显卡系列进行性能对比,并与国产GPU厂商的部分产品做对比。</p>
+<h2 id="nvidia_1">NVIDIA 显卡系列概览<a class="headerlink" href="#nvidia_1" title="Permanent link">&para;</a></h2>
+<p>NVIDIA的显卡主要分为以下几个系列:</p>
 <ul>
-<li>阿里云镜像仓库</li>
-<li>Ucloud 镜像仓库</li>
-<li>Harbor 镜像仓库</li>
-<li>docker hub (官方库)</li>
+<li>GeForce系列:主要面向游戏玩家,强调实时光线追踪、DLSS等游戏特性的优化</li>
+<li>Quadro系列:面向专业设计、建模、渲染等工作站应用</li>
+<li>Tesla系列:专注于高性能计算和人工智能训练,常用于数据中心和超算</li>
+<li>NVIDIA TITAN系列:定位介于GeForce和Quadro之间,兼顾游戏性能和专业功能</li>
 </ul>
-<p>仓库注册服务器（Registry）是存放仓库的地方，其中包含了多个仓库。每个仓库集中存放某 一类镜像，并且使用不同的标签（tag）来区分它们。目前最大的公共仓库是 docker Hub，存放了 数量庞大的镜像供用户下载使用。</p>
-<hr />
-<h2 id="12-docker"><strong>1.2 安装 Docker</strong><a class="headerlink" href="#12-docker" title="Permanent link">&para;</a></h2>
-<p>这里主要介绍常见的几种，YUM针对于Centos系统，APT针对于ubuntu系统，脚本式快捷安装。</p>
-<p><strong>支持的平台:</strong></p>
-<p>Docker Engine 可通过 Docker Desktop 在各种Linux 平台、 macOS和Windows 10 上使用，并且可以作为静态二进制安装使用。在下方找到您首选的操作系统。</p>
-<p><img alt="" src="https://pic1.imgdb.cn/item/63477bbb16f2c2beb1f48e67.jpg" /></p>
-<p><img alt="" src="https://pic1.imgdb.cn/item/63477c1f16f2c2beb1f521b3.jpg" /></p>
-<div class="admonition warning">
-<p class="admonition-title">温馨提示</p>
-<p>这里面之前遇到一个坑，原因就是因为我们使用的Mac办公，ubuntu需要拉不来镜像，需要Mac拉好上传上去，结果Mac拉的版本是amd架构的～</p>
-<ul>
-<li>解决方法: k8s.gcr.io/nfd/node-feature-discovery:v0.11.0 <font color=red>--platform linux/amd64</font></li>
-</ul>
-</div>
-<p>官网: https://docs.docker.com/engine/install/</p>
-<h3 id="121-apt"><strong>1.2.1 Apt 方式安装:</strong><a class="headerlink" href="#121-apt" title="Permanent link">&para;</a></h3>
-<p>移除旧docker包
-<div class="highlight"><pre><span></span><code><span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>remove<span class="w"> </span>docker<span class="w"> </span>docker-engine<span class="w"> </span>docker.io<span class="w"> </span>containerd<span class="w"> </span>runc
-</code></pre></div></p>
-<p>设置存储库</p>
-<ul>
-<li>更新apt包索引并安装包以允许apt通过 HTTPS 使用存储库：</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
-<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>ca-certificates<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>curl<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>gnupg<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>lsb-release
-</code></pre></div>
-<ul>
-<li>添加 Docker 的官方 GPG 密钥：</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="w"> </span>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/etc/apt/keyrings
-<span class="w"> </span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://download.docker.com/linux/ubuntu/gpg<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>gpg<span class="w"> </span>--dearmor<span class="w"> </span>-o<span class="w"> </span>/etc/apt/keyrings/docker.gpg
-</code></pre></div>
-<ul>
-<li>使用以下命令设置存储库：</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span><span class="s2">&quot;deb [arch=</span><span class="k">$(</span>dpkg<span class="w"> </span>--print-architecture<span class="k">)</span><span class="s2"> signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \</span>
-<span class="s2">  </span><span class="k">$(</span>lsb_release<span class="w"> </span>-cs<span class="k">)</span><span class="s2"> stable&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/sources.list.d/docker.list<span class="w"> </span>&gt;<span class="w"> </span>/dev/null
-</code></pre></div>
-<p>安装docker</p>
-<div class="highlight"><pre><span></span><code><span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
-<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>docker-ce<span class="w"> </span>docker-ce-cli<span class="w"> </span>containerd.io<span class="w"> </span>docker-compose-plugin
-</code></pre></div>
-<h3 id="122-yum"><strong>1.2.2 YUM 方式安装:</strong><a class="headerlink" href="#122-yum" title="Permanent link">&para;</a></h3>
-<p>移除旧docker包
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>yum<span class="w"> </span>remove<span class="w"> </span>docker<span class="w"> </span><span class="se">\</span>
-<span class="w">                  </span>docker-client<span class="w"> </span><span class="se">\</span>
-<span class="w">                  </span>docker-client-latest<span class="w"> </span><span class="se">\</span>
-<span class="w">                  </span>docker-common<span class="w"> </span><span class="se">\</span>
-<span class="w">                  </span>docker-latest<span class="w"> </span><span class="se">\</span>
-<span class="w">                  </span>docker-latest-logrotate<span class="w"> </span><span class="se">\</span>
-<span class="w">                  </span>docker-logrotate<span class="w"> </span><span class="se">\</span>
-<span class="w">                  </span>docker-engine
-</code></pre></div></p>
-<p>配置YUM源</p>
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>yum-utils
-sudo<span class="w"> </span>yum-config-manager<span class="w"> </span><span class="se">\</span>
---add-repo<span class="w"> </span><span class="se">\</span>
-http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo<span class="w"> </span>
-</code></pre></div>
-<p>安装docker-ce</p>
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>docker-ce<span class="w"> </span>docker-ce-cli<span class="w"> </span>containerd.io
-
-
-<span class="c1">#以下是在安装k8s的时候使用</span>
-yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>docker-ce-20.10.7<span class="w"> </span>docker-ce-cli-20.10.7<span class="w">  </span>containerd.io-1.4.6
-</code></pre></div>
-<p>启动</p>
-<div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>docker<span class="w"> </span>--now
-</code></pre></div>
-<p>配置加速</p>
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/etc/docker
-sudo<span class="w"> </span>tee<span class="w"> </span>/etc/docker/daemon.json<span class="w"> </span><span class="s">&lt;&lt;-&#39;EOF&#39;</span>
-<span class="s">{</span>
-<span class="s">  &quot;registry-mirrors&quot;: [&quot;https://82m9ar63.mirror.aliyuncs.com&quot;],</span>
-<span class="s">  &quot;exec-opts&quot;: [&quot;native.cgroupdriver=systemd&quot;],</span>
-<span class="s">  &quot;log-driver&quot;: &quot;json-file&quot;,</span>
-<span class="s">  &quot;log-opts&quot;: {</span>
-<span class="s">    &quot;max-size&quot;: &quot;100m&quot;</span>
-<span class="s">  },</span>
-<span class="s">  &quot;storage-driver&quot;: &quot;overlay2&quot;</span>
-<span class="s">}</span>
-<span class="s">EOF</span>
-sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload
-sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>docker
-</code></pre></div>
-<h3 id="123"><strong>1.2.3 脚本式安装</strong><a class="headerlink" href="#123" title="Permanent link">&para;</a></h3>
-<p>官方提供:
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://get.docker.com<span class="w"> </span>-o<span class="w"> </span>get-docker.sh
-sh<span class="w"> </span>get-docker.sh
-</code></pre></div></p>
-<p>rancher提供:
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>https://releases.rancher.com/install-docker/19.03.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
-</code></pre></div></p>
-<hr />
-<p>安装好的 Docker 系统有两个程序，Docker 服务端和 Docker 客户端。其中 Docker 服务端是 一个服务进程，负责管理所有容器。Docker 客户端则扮演着 Docker 服务端的远程控制器，可以用 来控制 Docker 的服务端进程。大部分情况下 Docker 服务端和客户端运行在一台机器上。</p>
-<h2 id="13-docker"><strong>1.3 Docker 镜像操作</strong><a class="headerlink" href="#13-docker" title="Permanent link">&para;</a></h2>
-<p>运行 Docker 容器前需要本地存在对应的镜像。如果不存在本地镜像，Docker 就会尝试从默认 镜像仓库下载。镜像仓库是由 Docker 官方维护的一个公共仓库，可以满足用户的绝大部分需求。 用户也可以通过配置来使用自定义的镜像仓库。</p>
-<p><strong>帮助命令:</strong>
-<div class="highlight"><pre><span></span><code><span class="o">[</span>ucloud<span class="o">]</span><span class="w"> </span>root@master0:~#<span class="w"> </span>docker<span class="w"> </span>--help
-
-Usage:<span class="w">  </span>docker<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span><span class="w"> </span>COMMAND
-
-A<span class="w"> </span>self-sufficient<span class="w"> </span>runtime<span class="w"> </span><span class="k">for</span><span class="w"> </span>containers
-
-Options:
-<span class="w">      </span>--config<span class="w"> </span>string<span class="w">      </span>Location<span class="w"> </span>of<span class="w"> </span>client<span class="w"> </span>config<span class="w"> </span>files<span class="w"> </span><span class="o">(</span>default<span class="w"> </span><span class="s2">&quot;/root/.docker&quot;</span><span class="o">)</span>
-<span class="w">  </span>-c,<span class="w"> </span>--context<span class="w"> </span>string<span class="w">     </span>Name<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>context<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span>to<span class="w"> </span>connect<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>daemon<span class="w"> </span><span class="o">(</span>overrides<span class="w"> </span>DOCKER_HOST<span class="w"> </span>env<span class="w"> </span>var<span class="w"> </span>and<span class="w"> </span>default<span class="w"> </span>context<span class="w"> </span><span class="nb">set</span><span class="w"> </span>with<span class="w"> </span><span class="s2">&quot;docker context use&quot;</span><span class="o">)</span>
-<span class="w">  </span>-D,<span class="w"> </span>--debug<span class="w">              </span>Enable<span class="w"> </span>debug<span class="w"> </span>mode
-<span class="w">  </span>-H,<span class="w"> </span>--host<span class="w"> </span>list<span class="w">          </span>Daemon<span class="w"> </span>socket<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>to<span class="w"> </span>connect<span class="w"> </span>to
-<span class="w">  </span>-l,<span class="w"> </span>--log-level<span class="w"> </span>string<span class="w">   </span>Set<span class="w"> </span>the<span class="w"> </span>logging<span class="w"> </span>level<span class="w"> </span><span class="o">(</span><span class="s2">&quot;debug&quot;</span><span class="p">|</span><span class="s2">&quot;info&quot;</span><span class="p">|</span><span class="s2">&quot;warn&quot;</span><span class="p">|</span><span class="s2">&quot;error&quot;</span><span class="p">|</span><span class="s2">&quot;fatal&quot;</span><span class="o">)</span><span class="w"> </span><span class="o">(</span>default<span class="w"> </span><span class="s2">&quot;info&quot;</span><span class="o">)</span>
-<span class="w">      </span>--tls<span class="w">                </span>Use<span class="w"> </span>TLS<span class="p">;</span><span class="w"> </span>implied<span class="w"> </span>by<span class="w"> </span>--tlsverify
-<span class="w">      </span>--tlscacert<span class="w"> </span>string<span class="w">   </span>Trust<span class="w"> </span>certs<span class="w"> </span>signed<span class="w"> </span>only<span class="w"> </span>by<span class="w"> </span>this<span class="w"> </span>CA<span class="w"> </span><span class="o">(</span>default<span class="w"> </span><span class="s2">&quot;/root/.docker/ca.pem&quot;</span><span class="o">)</span>
-<span class="w">      </span>--tlscert<span class="w"> </span>string<span class="w">     </span>Path<span class="w"> </span>to<span class="w"> </span>TLS<span class="w"> </span>certificate<span class="w"> </span>file<span class="w"> </span><span class="o">(</span>default<span class="w"> </span><span class="s2">&quot;/root/.docker/cert.pem&quot;</span><span class="o">)</span>
-<span class="w">      </span>--tlskey<span class="w"> </span>string<span class="w">      </span>Path<span class="w"> </span>to<span class="w"> </span>TLS<span class="w"> </span>key<span class="w"> </span>file<span class="w"> </span><span class="o">(</span>default<span class="w"> </span><span class="s2">&quot;/root/.docker/key.pem&quot;</span><span class="o">)</span>
-<span class="w">      </span>--tlsverify<span class="w">          </span>Use<span class="w"> </span>TLS<span class="w"> </span>and<span class="w"> </span>verify<span class="w"> </span>the<span class="w"> </span>remote
-<span class="w">  </span>-v,<span class="w"> </span>--version<span class="w">            </span>Print<span class="w"> </span>version<span class="w"> </span>information<span class="w"> </span>and<span class="w"> </span>quit
-</code></pre></div></p>
-<p>管理CLI:
-<div class="highlight"><pre><span></span><code><span class="o">[</span>ucloud<span class="o">]</span><span class="w"> </span>root@master0:~#<span class="w"> </span>docker<span class="w"> </span>search<span class="w"> </span>nginx
-NAME<span class="w">                                              </span>DESCRIPTION<span class="w">                                     </span>STARS<span class="w">     </span>OFFICIAL<span class="w">   </span>AUTOMATED
-nginx<span class="w">                                             </span>Official<span class="w"> </span>build<span class="w"> </span>of<span class="w"> </span>Nginx.<span class="w">                        </span><span class="m">17448</span><span class="w">     </span><span class="o">[</span>OK<span class="o">]</span>
-</code></pre></div></p>
-<p>执行 docker search lamp 命令后，返回很多包含 lamp 关键字的镜像，其中返回信息包括镜像 名称（NAME）、描述（DESCRIPTION）、星级（STARS）、是否官方创建（OFFICIAL）、是 否主动创建（AUTOMATED）。默认的输出结果会按照星级评价进行排序，表示该镜像受欢迎程 度。在下载镜像时，可以参考星级。在搜索时，还可以使用-s 或者--stars=x 显示指定星级以上的镜 像，星级越高表示越受欢迎；是否官方创建是指是否是由官方项目组创建和维护的镜像，一般官方项目组维护的镜像使用单个单词作为镜像名称，称为基础镜像或者根镜像。像 reinblau/lamp 这种 命名方式的镜像，表示是由 docker Hub 的用户 reinblau 创建并维护的镜像，带有用户名为前缀； 是否主动创建是指是否允许用户验证镜像的来源和内容。</p>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>pull<span class="w"> </span>image-name<span class="w">   </span>//获取镜像
-docker<span class="w"> </span>push<span class="w"> </span>image-name<span class="w">   </span>//推送镜像
-docker<span class="w"> </span>images<span class="w">            </span>//查看镜像
-docker<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>image-name<span class="w">   </span>//强制删除镜像
-docker<span class="w"> </span>images<span class="w"> </span>-aq<span class="w">        </span>//查看所有镜像ID
-docker<span class="w"> </span>save<span class="w"> </span>-o<span class="w"> </span>存储文件名<span class="w">  </span>存储的镜像名<span class="w">  </span>//保存镜像
-docker<span class="w"> </span>load<span class="w"> </span>&lt;<span class="w"> </span>存储文件名<span class="w">   </span>//导入镜像
-</code></pre></div>
-<p>对于 Docker 镜像来说，如果下载镜像时不指定标签，则默认会下载仓库中最新版本的镜 像，即选择标签为 latest 标签，也可通过指定的标签来下载特定版本的某一镜像。这里标签 （tag）就是用来区分镜像版本的。</p>
-<div class="admonition warning">
-<p class="admonition-title">温馨提示</p>
-<ul>
-<li>在登陆ucloud的镜像仓库，需要将密码用''引起来，例如:</li>
-<li>docker login -u user-name -p 'password' uhub.service.ucloud.cn</li>
-</ul>
-</div>
-<h2 id="14-docker"><strong>1.4 Docker 容器操作</strong><a class="headerlink" href="#14-docker" title="Permanent link">&para;</a></h2>
-<p>容器是 Docker 的另一个核心概念。简单说，容器是镜像的一个运行实例，是独立运行的一个 或一组应用以及它们所必需的运行环境，包括文件系统、系统类库、shell 环境等。镜像是只读模 板，而容器会给这个只读模板添加一个额外的可写层。</p>
-<p>管理CLI:
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>stop<span class="w"> </span>容器名称/容器ID
-docker<span class="w"> </span>start<span class="w">  </span>容器名称/容器ID
-docker<span class="w"> </span>restart<span class="w"> </span>容器名称/容器ID
-docker<span class="w"> </span>ps<span class="w"> </span>-aq<span class="w">  </span>查看所有容器ID
-docker<span class="w"> </span><span class="nb">export</span><span class="w"> </span>容器ID/名称<span class="w"> </span>&gt;<span class="w"> </span>文件名<span class="w">  </span>//容器导出
-cat<span class="w"> </span>文件名<span class="w"> </span><span class="p">|</span><span class="w"> </span>docker<span class="w"> </span>import<span class="w"> </span>-<span class="w"> </span>生成的镜像名称:标签<span class="w">  </span>//容器导入
-</code></pre></div></p>
-<h2 id="15-docker"><strong>1.5 Docker 镜像管理</strong><a class="headerlink" href="#15-docker" title="Permanent link">&para;</a></h2>
-<p>Docker 镜像除了是 Docker 的核心技术之外，也是应用发布的标准格式。一个完整的 Docker 镜像可以支撑一个 Docker 容器的运行，在 Docker 的整个使用过程中，进入一个已经定型的容器之后，就可以在容器中进行操作，最常见的操作就是在容器中安装应用服务。 如果要把已经安装的服务进行迁移，就需要把环境以及搭建的服务生成新的镜像。本案例将介绍 如何创建 Docker 镜像。</p>
-<h3 id="151-docker"><strong>1.5.1 Docker镜像结构</strong><a class="headerlink" href="#151-docker" title="Permanent link">&para;</a></h3>
-<p>镜像不是一个单一的文件，而是有多层构成。可以通过 docker history 命令查看镜像中各 层内容及大小，每层对应着 Dockerfile 中的一条指令。Docker 镜像默认存储在 /var/lib/docker/<storage-driver>目录中。容器其实是在镜像的最上面加了一层读写层， 在运 行容器里做的任何文件改动，都会写到这个读写层。如果删除了容器，也就删除了其最上面的 读写层，文件改动也就丢失了。Docker 使用存储驱动管理镜像每层内容及可读写层的容器 层。Docker 镜像是分层的，下面这些知识点非常重要。</p>
-<ul>
-<li>
-<p>（1）Dockerfile 中的每个指令都会创建一个新的镜像层；</p>
-</li>
-<li>
-<p>（2）镜像层将被缓存和复用；</p>
-</li>
-<li>
-<p>（3） 当Dockerfile 的指令修改了，复制的文件变化了，或者构建镜像时指定的变量不同 了，对应的镜像层缓存就会失效；</p>
-</li>
-<li>
-<p>（4）某一层的镜像缓存失效，它之后的镜像层缓存都会失效；</p>
-</li>
-<li>
-<p>（5）镜像层是不可变的，如果在某一层中添加一个文件，然后在下一层中删除它，则镜 像中依然会包含该文件，只是这个文件在 Docker 容器中不可见了。</p>
-</li>
-</ul>
-<h3 id="152-dockerfile"><strong>1.5.2 Dockerfile介绍</strong><a class="headerlink" href="#152-dockerfile" title="Permanent link">&para;</a></h3>
-<p>Dockfile 是一种被 Docker 程序解释的脚本，Dockerfile 由多条的指令组成，每条指令对 应Linux 下面的一条命令。Docker 程序将这些Dockerfile 指令翻译成真正的Linux 命令。 Dockerfile 有自己书写格式和支持的命令，Docker 程序解决这些命令间的依赖关系，类似于 Makefile。Docker 程序将读取 Dockerfile，根据指令生成定制的镜像。相比镜像这种黑盒子， Dockerfile 这种显而易见的脚本更容易被使用者接受，它明确的表明镜像是怎么产生的。有了 Dockerfile，当有定制额外的需求时，只需在 Dockerfile 上添加或者修改指令， 重新生成镜像。</p>
-<h3 id="_1"><strong>附件:</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<h2 id="geforce">GeForce系列显卡对比<a class="headerlink" href="#geforce" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>型号</th>
+<th>CUDA核心数</th>
+<th>基础频率</th>
+<th>Boost频率</th>
+<th>显存容量</th>
+<th>显存类型</th>
+<th>功耗</th>
+<th>架构</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RTX 4090</td>
+<td>16384</td>
+<td>2.23 GHz</td>
+<td>2.52 GHz</td>
+<td>24 GB</td>
+<td>GDDR6X</td>
+<td>450 W</td>
+<td>Ada Lovelace</td>
+</tr>
+<tr>
+<td>RTX 4080</td>
+<td>9728</td>
+<td>2.21 GHz</td>
+<td>2.51 GHz</td>
+<td>16 GB</td>
+<td>GDDR6X</td>
+<td>320 W</td>
+<td>Ada Lovelace</td>
+</tr>
+<tr>
+<td>RTX 3090 Ti</td>
+<td>10752</td>
+<td>1.67 GHz</td>
+<td>1.86 GHz</td>
+<td>24 GB</td>
+<td>GDDR6X</td>
+<td>450 W</td>
+<td>Ampere</td>
+</tr>
+<tr>
+<td>RTX 3090</td>
+<td>10496</td>
+<td>1.40 GHz</td>
+<td>1.70 GHz</td>
+<td>24 GB</td>
+<td>GDDR6X</td>
+<td>350 W</td>
+<td>Ampere</td>
+</tr>
+<tr>
+<td>RTX 3080 Ti</td>
+<td>10240</td>
+<td>1.37 GHz</td>
+<td>1.67 GHz</td>
+<td>12 GB</td>
+<td>GDDR6X</td>
+<td>350 W</td>
+<td>Ampere</td>
+</tr>
+<tr>
+<td>RTX 3080</td>
+<td>8704</td>
+<td>1.44 GHz</td>
+<td>1.71 GHz</td>
+<td>10 GB</td>
+<td>GDDR6X</td>
+<td>320 W</td>
+<td>Ampere</td>
+</tr>
+<tr>
+<td>RTX 3070 Ti</td>
+<td>6144</td>
+<td>1.58 GHz</td>
+<td>1.77 GHz</td>
+<td>8 GB</td>
+<td>GDDR6X</td>
+<td>290 W</td>
+<td>Ampere</td>
+</tr>
+<tr>
+<td>RTX 3070</td>
+<td>5888</td>
+<td>1.50 GHz</td>
+<td>1.73 GHz</td>
+<td>8 GB</td>
+<td>GDDR6</td>
+<td>220 W</td>
+<td>Ampere</td>
+</tr>
+<tr>
+<td>RTX 3060 Ti</td>
+<td>4864</td>
+<td>1.41 GHz</td>
+<td>1.67 GHz</td>
+<td>8 GB</td>
+<td>GDDR6</td>
+<td>200 W</td>
+<td>Ampere</td>
+</tr>
+<tr>
+<td>RTX 3060</td>
+<td>3584</td>
+<td>1.32 GHz</td>
+<td>1.78 GHz</td>
+<td>12 GB</td>
+<td>GDDR6</td>
+<td>170 W</td>
+<td>Ampere</td>
+</tr>
+</tbody>
+</table>
+<p>从上表可以看出,NVIDIA新一代Ada Lovelace架构的RTX 40系列在CUDA核心数和频率上有大幅提升,代表了目前游戏显卡的最高性能。上一代Ampere架构的30系列虽然规格略低,但也能提供优秀的游戏体验。</p>
+<h2 id="quadro">Quadro系列显卡对比<a class="headerlink" href="#quadro" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>型号</th>
+<th>CUDA核心数</th>
+<th>Tensor核心数</th>
+<th>基础频率</th>
+<th>Boost频率</th>
+<th>显存容量</th>
+<th>显存类型</th>
+<th>功耗</th>
+<th>架构</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RTX A6000</td>
+<td>10752</td>
+<td>336</td>
+<td>1.41 GHz</td>
+<td>1.78 GHz</td>
+<td>48 GB</td>
+<td>GDDR6</td>
+<td>300 W</td>
+<td>Ampere</td>
+</tr>
+<tr>
+<td>Quadro RTX 8000</td>
+<td>4608</td>
+<td>576</td>
+<td>1.44 GHz</td>
+<td>1.77 GHz</td>
+<td>48 GB</td>
+<td>GDDR6</td>
+<td>260 W</td>
+<td>Turing</td>
+</tr>
+<tr>
+<td>Quadro RTX 6000</td>
+<td>4608</td>
+<td>576</td>
+<td>1.44 GHz</td>
+<td>1.77 GHz</td>
+<td>24 GB</td>
+<td>GDDR6</td>
+<td>260 W</td>
+<td>Turing</td>
+</tr>
+<tr>
+<td>Quadro RTX 5000</td>
+<td>3072</td>
+<td>384</td>
+<td>1.62 GHz</td>
+<td>1.92 GHz</td>
+<td>16 GB</td>
+<td>GDDR6</td>
+<td>230 W</td>
+<td>Turing</td>
+</tr>
+<tr>
+<td>Quadro RTX 4000</td>
+<td>2304</td>
+<td>288</td>
+<td>1.01 GHz</td>
+<td>1.48 GHz</td>
+<td>8 GB</td>
+<td>GDDR6</td>
+<td>160 W</td>
+<td>Turing</td>
+</tr>
+</tbody>
+</table>
+<p>Quadro系列显卡拥有更大的显存容量,并针对CAD、3D渲染等专业应用进行优化。目前性能最强的是搭载Ampere架构的RTX A6000。</p>
+<h2 id="tesla">Tesla系列显卡对比<a class="headerlink" href="#tesla" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>型号</th>
+<th>CUDA核心数</th>
+<th>Tensor核心数</th>
+<th>基础频率</th>
+<th>Boost频率</th>
+<th>显存容量</th>
+<th>显存类型</th>
+<th>功耗</th>
+<th>架构</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A100</td>
+<td>6912</td>
+<td>432</td>
+<td>765 MHz</td>
+<td>1410 MHz</td>
+<td>40 GB</td>
+<td>HBM2</td>
+<td>400 W</td>
+<td>Ampere</td>
+</tr>
+<tr>
+<td>V100</td>
+<td>5120</td>
+<td>640</td>
+<td>1230 MHz</td>
+<td>1380 MHz</td>
+<td>32 GB</td>
+<td>HBM2</td>
+<td>300 W</td>
+<td>Volta</td>
+</tr>
+<tr>
+<td>P100</td>
+<td>3584</td>
+<td>-</td>
+<td>1190 MHz</td>
+<td>1329 MHz</td>
+<td>16 GB</td>
+<td>HBM2</td>
+<td>250 W</td>
+<td>Pascal</td>
+</tr>
+</tbody>
+</table>
+<p>Tesla系列主攻人工智能训练和高性能计算,拥有强大的并行计算能力。A100是目前NVIDIA性能最强的数据中心GPU。</p>
+<h2 id="gpu">与国产GPU的对比<a class="headerlink" href="#gpu" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>厂商</th>
+<th>型号</th>
+<th>CUDA核心数</th>
+<th>基础频率</th>
+<th>Boost频率</th>
+<th>显存容量</th>
+<th>显存类型</th>
+<th>功耗</th>
+<th>架构</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>寒武纪</td>
+<td>邃思 MLU370-X8</td>
+<td>-</td>
+<td>1.1 GHz</td>
+<td>1.3 GHz</td>
+<td>32 GB</td>
+<td>HBM2</td>
+<td>350 W</td>
+<td>MLUv02</td>
+</tr>
+<tr>
+<td>昇腾</td>
+<td>910 Pro</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>32 GB</td>
+<td>HBM2</td>
+<td>350 W</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>国产GPU目前主要应用于AI训练和推理领域,在通用计算和图形渲染方面与NVIDIA还有一定差距。但随着国产GPU技术的不断进步,未来有望在更多领域与NVIDIA展开竞争。</p>
+<p>总的来说,NVIDIA凭借强大的GPU性能和丰富的产品线,在游戏、设计、AI等多个领域占据领先地位。国产GPU厂商正在奋起直追,未来的竞争将更加激烈。</p>
 
               
             </article>
@@ -3654,7 +3549,7 @@ cat<span class="w"> </span>文件名<span class="w"> </span><span class="p">|</s
     <nav class="md-footer__inner md-grid" aria-label="页脚">
       
         
-        <a href="../../basic/cncf-docs/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 云原生简介及CNCF" rel="prev">
+        <a href="../../other/discord-docs/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Discord 新手教程" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -3663,20 +3558,20 @@ cat<span class="w"> </span>文件名<span class="w"> </span><span class="p">|</s
               <span class="md-footer__direction">
                 上一页
               </span>
-              云原生简介及CNCF
+              Discord 新手教程
             </div>
           </div>
         </a>
       
       
         
-        <a href="../docker-images-docs/" class="md-footer__link md-footer__link--next" aria-label="下一页: docker 镜像构建" rel="next">
+        <a href="../../chatgpt/chatgpt-docs/" class="md-footer__link md-footer__link--next" aria-label="下一页: 注册chatgpt" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 下一页
               </span>
-              docker 镜像构建
+              注册chatgpt
             </div>
           </div>
           <div class="md-footer__button md-icon">
