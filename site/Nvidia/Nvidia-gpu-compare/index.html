@@ -2942,7 +2942,7 @@
       
         <li class="md-nav__item">
   <a href="#tesla" class="md-nav__link">
-    Tesla系列显卡对比
+    Tesla/数据中心系列显卡对比
   </a>
   
 </li>
@@ -3206,7 +3206,7 @@
       
         <li class="md-nav__item">
   <a href="#tesla" class="md-nav__link">
-    Tesla系列显卡对比
+    Tesla/数据中心系列显卡对比
   </a>
   
 </li>
@@ -3237,7 +3237,7 @@
 
 <h1 id="nvidia">NVIDIA 显卡性能对比<a class="headerlink" href="#nvidia" title="Permanent link">&para;</a></h1>
 <p>NVIDIA是全球最大的GPU(图形处理器)制造商,其显卡广泛应用于游戏、设计、人工智能等领域。本文将对NVIDIA的主要显卡系列进行性能对比,并与国产GPU厂商的部分产品做对比。</p>
-<h2 id="nvidia_1">NVIDIA 显卡系列概览<a class="headerlink" href="#nvidia_1" title="Permanent link">&para;</a></h2>
+<h2 id="nvidia_1"><strong>NVIDIA 显卡系列概览</strong><a class="headerlink" href="#nvidia_1" title="Permanent link">&para;</a></h2>
 <p>NVIDIA的显卡主要分为以下几个系列:</p>
 <ul>
 <li>GeForce系列:主要面向游戏玩家,强调实时光线追踪、DLSS等游戏特性的优化</li>
@@ -3245,7 +3245,7 @@
 <li>Tesla系列:专注于高性能计算和人工智能训练,常用于数据中心和超算</li>
 <li>NVIDIA TITAN系列:定位介于GeForce和Quadro之间,兼顾游戏性能和专业功能</li>
 </ul>
-<h2 id="geforce">GeForce系列显卡对比<a class="headerlink" href="#geforce" title="Permanent link">&para;</a></h2>
+<h2 id="geforce"><strong>GeForce系列显卡对比</strong><a class="headerlink" href="#geforce" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -3363,7 +3363,7 @@
 </tbody>
 </table>
 <p>从上表可以看出,NVIDIA新一代Ada Lovelace架构的RTX 40系列在CUDA核心数和频率上有大幅提升,代表了目前游戏显卡的最高性能。上一代Ampere架构的30系列虽然规格略低,但也能提供优秀的游戏体验。</p>
-<h2 id="quadro">Quadro系列显卡对比<a class="headerlink" href="#quadro" title="Permanent link">&para;</a></h2>
+<h2 id="quadro"><strong>Quadro系列显卡对比</strong><a class="headerlink" href="#quadro" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -3437,7 +3437,7 @@
 </tbody>
 </table>
 <p>Quadro系列显卡拥有更大的显存容量,并针对CAD、3D渲染等专业应用进行优化。目前性能最强的是搭载Ampere架构的RTX A6000。</p>
-<h2 id="tesla">Tesla系列显卡对比<a class="headerlink" href="#tesla" title="Permanent link">&para;</a></h2>
+<h2 id="tesla"><strong>Tesla/数据中心系列显卡对比</strong><a class="headerlink" href="#tesla" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -3454,13 +3454,35 @@
 </thead>
 <tbody>
 <tr>
+<td>H100</td>
+<td>16896</td>
+<td>528</td>
+<td>1.37 GHz</td>
+<td>1.79 GHz</td>
+<td>80 GB</td>
+<td>HBM3</td>
+<td>700 W</td>
+<td>Hopper</td>
+</tr>
+<tr>
+<td>H800</td>
+<td>16896</td>
+<td>528</td>
+<td>1.37 GHz</td>
+<td>1.75 GHz</td>
+<td>80 GB</td>
+<td>HBM3</td>
+<td>700 W</td>
+<td>Hopper</td>
+</tr>
+<tr>
 <td>A100</td>
 <td>6912</td>
 <td>432</td>
 <td>765 MHz</td>
 <td>1410 MHz</td>
-<td>40 GB</td>
-<td>HBM2</td>
+<td>40/80 GB</td>
+<td>HBM2e</td>
 <td>400 W</td>
 <td>Ampere</td>
 </tr>
@@ -3488,8 +3510,22 @@
 </tr>
 </tbody>
 </table>
-<p>Tesla系列主攻人工智能训练和高性能计算,拥有强大的并行计算能力。A100是目前NVIDIA性能最强的数据中心GPU。</p>
-<h2 id="gpu">与国产GPU的对比<a class="headerlink" href="#gpu" title="Permanent link">&para;</a></h2>
+<p>NVIDIA最新的数据中心GPU是基于Hopper架构的H100,相比上一代A100有以下重要提升:</p>
+<ul>
+<li>CUDA核心数从6912增加到16896,提升约144%</li>
+<li>首次采用HBM3显存,带宽高达3TB/s</li>
+<li>FP8精度训练支持,大幅提升AI训练性能</li>
+<li>第四代Tensor Core,AI推理性能提升近3倍</li>
+<li>NVLink带宽提升至900GB/s</li>
+</ul>
+<p>H800是专门为中国市场推出的版本,核心规格与H100基本一致,但在某些AI计算能力上有所限制。</p>
+<p>这些高端数据中心GPU主要应用于:
+- 大规模AI模型训练
+- 高性能计算(HPC)
+- 科学计算模拟
+- 大数据分析
+- 云游戏渲染</p>
+<h2 id="gpu"><strong>与国产GPU的对比</strong><a class="headerlink" href="#gpu" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
