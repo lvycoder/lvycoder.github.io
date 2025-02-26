@@ -105,7 +105,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              首页
+              Home
             
           </span>
         </div>
@@ -195,12 +195,10 @@
         
   
   
-    
-  
 
 
   <li class="md-tabs__item">
-    <a href="." class="md-tabs__link md-tabs__link--active">
+    <a href="custom_home.html" class="md-tabs__link">
       首页
     </a>
   </li>
@@ -453,52 +451,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          首页
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="custom_home.html" class="md-nav__link">
         首页
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    前沿
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2907,6 +2864,8 @@
         
           
         
+          
+        
       
       
         <label class="md-nav__link" for="__nav_12">
@@ -2929,6 +2888,20 @@
     <li class="md-nav__item">
       <a href="Ai-tools/cursor-latest-features/" class="md-nav__link">
         Cursor 使用技巧
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Ai-tools/cursor-model-performance/" class="md-nav__link">
+        Cursor 模型性能排行
       </a>
     </li>
   
@@ -3163,21 +3136,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    前沿
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -3193,34 +3151,633 @@
 </a>
 
 
+<!-- docs/index.md -->
+<p><meta http-equiv="refresh" content="0; url=custom_home.html" /></p>
+<!-- 以下内容仅在重定向失败时显示 -->
 <h1 id="kubernetes">Kubernetes 进阶训练营<a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h1>
-<h2 id="_1"><strong>前沿</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<hr />
-<p>Hello，大家好！
-    我叫阿勰，山西人,北漂一族。江湖人称勰哥，在弄这个网站的初衷为了记录自己工作和生活的内容。主要记录自己从事运维工作的笔记心得.大家可以点击进入<a href="https://lixie021.github.io/site/">《Kubernetes 进阶训练营》</a>以后也将持续更新～</p>
-<ul>
-<li>主要记录工作以及生活内容</li>
-<li>把工作和生活的事情列清楚，为了以后做复盘</li>
-</ul>
-<p>邮箱: lixie0215@163.com</p>
-<ul>
-<li>联系方式: </li>
-</ul>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;">微信（勰哥本人）</th>
-<th style="text-align: center;">公众号</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><img src="https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/bloglixie.jpeg" width="115"></td>
-<td style="text-align: center;"><img src="https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blogweixin.pic.jpg" width="115"></td>
-</tr>
-</tbody>
-</table>
-<p>有兴趣可以加我，一起交流学习～</p>
+<p>如果页面没有自动跳转，请<a href="custom_home.html">点击这里</a>访问首页。</p>
+<style>
+  /* 全局样式覆盖 */
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  .md-content {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .md-grid {
+    max-width: 100% !important;
+  }
+
+  .md-main__inner {
+    margin: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .md-content__inner {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .md-typeset h1 {
+    display: none;
+  }
+
+  /* 移除页脚和其他可能导致空白的元素 */
+  .md-footer, .md-footer-meta, .md-footer-nav {
+    display: none !important;
+  }
+
+  /* 确保内容区域占满整个视口 */
+  .md-main {
+    height: 100vh !important;
+    max-height: 100vh !important;
+    overflow: hidden !important;
+  }
+
+  .md-main__inner {
+    height: 100vh !important;
+  }
+
+  /* 全屏英雄区域 */
+  .fullscreen-hero {
+    background: linear-gradient(135deg, #b066fe 0%, #ff8086 100%);
+    color: white;
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* 导航栏样式 */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10%;
+    position: relative;
+    z-index: 10;
+    width: 80%;
+  }
+
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo img {
+    height: 30px;
+    margin-right: 10px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 30px;
+  }
+
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-links a i {
+    margin-right: 5px;
+  }
+
+  .user-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    max-width: 1400px;
+    position: relative;
+    z-index: 5;
+    padding: 30px 0;
+    flex: 1;
+  }
+
+  .hero-text {
+    flex: 1;
+    min-width: 300px;
+    padding-right: 2rem;
+  }
+
+  .hero-title {
+    font-size: 48px !important;
+    font-weight: bold;
+    margin-bottom: 20px !important;
+    color: white !important;
+  }
+
+  .hero-subtitle {
+    font-size: 64px !important;
+    font-weight: bold;
+    margin-bottom: 30px !important;
+    color: white !important;
+    position: relative;
+  }
+
+  .hero-subtitle::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 200px;
+    height: 5px;
+    background-color: white;
+    border-radius: 3px;
+  }
+
+  .hero-description {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    max-width: 600px;
+  }
+
+  .tech-stack {
+    font-weight: bold;
+    color: #ffcc00;
+    min-height: 24px;
+    display: inline-block;
+  }
+
+  .cursor {
+    display: inline-block;
+    width: 3px;
+    height: 24px;
+    background-color: #ffcc00;
+    margin-left: 5px;
+    animation: blink 1s infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    background-color: white;
+    color: #8a4fff !important;
+    padding: 15px 30px;
+    border-radius: 50px;
+    text-decoration: none !important;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    margin-top: 20px;
+  }
+
+  .cta-button:hover {
+    transform: translateY(-3px);
+  }
+
+  .cta-button img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+  }
+
+  .hero-image {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 300px;
+  }
+
+  .dashboard-image {
+    width: 100%;
+    max-width: 700px;
+    position: relative;
+    z-index: 2;
+    border-radius: 10px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  }
+
+  .card {
+    position: absolute;
+    background-color: #8a4fff;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    color: white;
+    z-index: 3;
+  }
+
+  .card-1 {
+    top: 20px;
+    left: 20px;
+    transform: rotate(-5deg);
+  }
+
+  .card-2 {
+    top: 100px;
+    right: 20px;
+    transform: rotate(5deg);
+  }
+
+  .card:hover {
+    transform: translateY(-10px) rotate(0deg) !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  }
+
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .card-number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    background-color: #ff7b54;
+    color: white;
+    border-radius: 50%;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+
+  .card-details {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.5s ease, opacity 0.3s ease;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .card.expanded .card-details {
+    max-height: 200px;
+    opacity: 1;
+  }
+
+  .card-time {
+    display: inline-block;
+    background-color: #ff7b54;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+
+  .contact-card {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+  }
+
+  .contact-info {
+    margin-right: 20px;
+    color: white;
+    text-align: right;
+  }
+
+  .contact-title {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+
+  .contact-subtitle {
+    font-size: 14px;
+    opacity: 0.9;
+  }
+
+  .contact-qrcode {
+    width: 120px;
+    height: 120px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .pixel-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .pixel {
+    width: 8px;
+    height: 8px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+    position: absolute;
+    opacity: 0.5;
+  }
+
+  .wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: url('https://raw.githubusercontent.com/SochavaAG/example-mycode/master/pens/elements/wave-footer/images/wave.svg');
+    background-size: 1000px 100px;
+    z-index: 2;
+  }
+
+  /* 移除底部的分隔线 */
+  hr {
+    display: none !important;
+  }
+
+  @media (max-width: 1024px) {
+    .hero-content {
+      flex-direction: column;
+    }
+
+    .hero-text, .hero-image {
+      width: 100%;
+    }
+
+    .hero-image {
+      margin-top: 50px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+    }
+
+    .hero-title {
+      font-size: 36px !important;
+    }
+
+    .hero-subtitle {
+      font-size: 48px !important;
+    }
+
+    .contact-card {
+      position: relative;
+      bottom: auto;
+      right: auto;
+      margin: 2rem auto;
+      width: 80%;
+    }
+  }
+</style>
+
+<div class="fullscreen-hero">
+  <div class="pixel-screen" id="pixel-screen"></div>
+
+  <!-- 导航栏 -->
+  <nav class="navbar">
+    <a href="https://lvycoder.github.io/site/" class="logo">
+      <img src="https://cdn-icons-png.flaticon.com/512/5969/5969059.png" alt="Kubernetes Logo">
+      KUBERNETES
+    </a>
+    <div class="nav-links">
+      <a href="https://lvycoder.github.io/site/#0-网络基础"><i class="fas fa-network-wired"></i> 网络基础</a>
+      <a href="https://lvycoder.github.io/site/#1-linux"><i class="fas fa-server"></i> Linux</a>
+      <a href="https://lvycoder.github.io/site/#2-kubernetes"><i class="fas fa-cubes"></i> Kubernetes</a>
+      <a href="https://lvycoder.github.io/site/#3-运维开发"><i class="fas fa-code"></i> 运维开发</a>
+      <a href="https://lvycoder.github.io/site/#关于我"><i class="fas fa-user"></i> 关于我</a>
+    </div>
+    <div class="user-icon">
+      <i class="fas fa-user"></i>
+    </div>
+  </nav>
+
+  <div class="hero-content">
+    <div class="hero-text">
+      <h1 class="hero-title">Promet 应用</h1>
+      <h2 class="hero-subtitle"><span id="tech-stack"></span><span class="cursor"></span> 应用</h2>
+      <p class="hero-description">
+        欢迎来到我的Kubernetes进阶训练营！这里记录了我在运维工作中的笔记心得，
+        帮助您使用Kubernetes、Docker、Python等技术构建真实的应用程序，
+        助您成为一名优秀的DevOps工程师。
+      </p>
+      <a href="https://lvycoder.github.io/site/" class="cta-button">
+        <img src="https://cdn-icons-png.flaticon.com/512/5969/5969059.png" alt="Kubernetes Icon">
+        进入训练营
+      </a>
+    </div>
+
+    <div class="hero-image">
+      <!-- 主要仪表盘图片 -->
+      <img src="https://cdn.pixabay.com/photo/2018/03/27/12/16/analytics-3265840_1280.jpg" alt="Kubernetes Dashboard" class="dashboard-image">
+
+      <!-- 卡片1 - Kubernetes -->
+      <div class="card card-1">
+        <div class="card-content">
+          <div class="card-title">
+            <div class="card-number">1</div>
+            <img src="https://cdn-icons-png.flaticon.com/512/5969/5969059.png" alt="Kubernetes" width="50">
+          </div>
+          <p>Kubernetes容器编排</p>
+          <div class="card-details">
+            <p>学习Kubernetes基础和高级应用</p>
+            <p>包含集群部署、Pod管理和服务发现</p>
+            <div class="card-time">进阶</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 卡片2 - Docker -->
+      <div class="card card-2">
+        <div class="card-content">
+          <div class="card-title">
+            <div class="card-number">2</div>
+            <img src="https://cdn-icons-png.flaticon.com/512/5969/5969059.png" alt="Docker" width="50">
+          </div>
+          <p>Docker容器技术</p>
+          <div class="card-details">
+            <p>学习Docker基础和镜像构建</p>
+            <p>掌握容器化应用的开发和部署</p>
+            <div class="card-time">基础</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 遮罩层 -->
+      <div class="overlay"></div>
+    </div>
+  </div>
+
+  <div class="contact-card">
+    <div class="contact-info">
+      <div class="contact-title">微信扫码联系我</div>
+      <div class="contact-subtitle">一起交流学习</div>
+    </div>
+    <img src="https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/bloglixie.jpeg" alt="微信二维码" class="contact-qrcode">
+  </div>
+
+  <div class="wave"></div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 确保页面占满整个视口
+  document.body.style.margin = '0';
+  document.body.style.padding = '0';
+  document.body.style.overflow = 'hidden';
+
+  const techStack = document.getElementById('tech-stack');
+  const technologies = ['Kubernetes', 'Docker', 'Python', 'DevOps', 'CICD', 'Helm', 'Prometheus', 'Grafana'];
+  let currentTechIndex = 0;
+  let currentCharIndex = 0;
+  let isDeleting = false;
+  let typingSpeed = 80; // 打字速度（毫秒）
+
+  function type() {
+    const currentTech = technologies[currentTechIndex];
+
+    if (isDeleting) {
+      // 删除文字
+      techStack.textContent = currentTech.substring(0, currentCharIndex - 1);
+      currentCharIndex--;
+      typingSpeed = 40; // 删除速度更快
+    } else {
+      // 添加文字
+      techStack.textContent = currentTech.substring(0, currentCharIndex + 1);
+      currentCharIndex++;
+      typingSpeed = 80; // 正常打字速度
+    }
+
+    // 如果完成了当前词的输入
+    if (!isDeleting && currentCharIndex === currentTech.length) {
+      isDeleting = true;
+      typingSpeed = 1000; // 暂停一会儿再开始删除
+    }
+
+    // 如果完成了当前词的删除
+    if (isDeleting && currentCharIndex === 0) {
+      isDeleting = false;
+      currentTechIndex = (currentTechIndex + 1) % technologies.length;
+      typingSpeed = 300; // 切换到下一个词之前暂停一下
+    }
+
+    setTimeout(type, typingSpeed);
+  }
+
+  // 开始打字效果
+  setTimeout(type, 1000);
+
+  // 卡片点击放大效果
+  const cards = document.querySelectorAll('.card');
+  const overlay = document.querySelector('.overlay');
+
+  cards.forEach(card => {
+    card.addEventListener('click', function() {
+      // 如果卡片已经展开，则关闭它
+      if (this.classList.contains('expanded')) {
+        this.classList.remove('expanded');
+        overlay.classList.remove('active');
+      } else {
+        // 关闭所有已展开的卡片
+        cards.forEach(c => c.classList.remove('expanded'));
+
+        // 展开当前点击的卡片
+        this.classList.add('expanded');
+        overlay.classList.add('active');
+      }
+    });
+  });
+
+  // 点击遮罩层关闭展开的卡片
+  overlay.addEventListener('click', function() {
+    cards.forEach(card => card.classList.remove('expanded'));
+    this.classList.remove('active');
+  });
+
+  // 创建像素屏幕效果
+  const pixelScreen = document.getElementById('pixel-screen');
+  const pixelCount = 300;
+
+  for (let i = 0; i < pixelCount; i++) {
+    const pixel = document.createElement('div');
+    pixel.classList.add('pixel');
+
+    // 随机位置
+    const top = Math.random() * 100 + '%';
+    const left = Math.random() * 100 + '%';
+
+    pixel.style.top = top;
+    pixel.style.left = left;
+
+    pixelScreen.appendChild(pixel);
+  }
+});
+</script>
+
+<!-- Font Awesome 图标 -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
 <hr />
 
               
@@ -3236,26 +3793,6 @@
       </main>
       
         <footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="页脚">
-      
-      
-        
-        <a href="0.Internet/Tcp-ip-docs/" class="md-footer__link md-footer__link--next" aria-label="下一页: 网络 Tcp/IP" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                下一页
-              </span>
-              网络 Tcp/IP
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

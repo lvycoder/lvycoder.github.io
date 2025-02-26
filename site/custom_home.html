@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FastClass - 独立设计开发 ChatGPT 应用</title>
+  <style>
+    /* 全局样式 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #b066fe 0%, #ff8086 100%);
+      color: white;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* 导航栏样式 */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 10%;
+      position: relative;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 30px;
+      margin-right: 10px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links a i {
+      margin-right: 5px;
+    }
+
+    .user-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* 主要内容区域 */
+    .hero {
+      display: flex;
+      padding: 50px 10%;
+      position: relative;
+      min-height: 80vh;
+    }
+
+    .hero-text {
+      flex: 1;
+      padding-top: 50px;
+    }
+
+    .hero-title {
+      font-size: 48px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .hero-subtitle {
+      font-size: 64px;
+      font-weight: bold;
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    .hero-subtitle::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 200px;
+      height: 5px;
+      background-color: white;
+      border-radius: 5px;
+    }
+
+    .hero-description {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 40px;
+      max-width: 600px;
+    }
+
+    .tech-stack {
+      font-weight: bold;
+      color: #ffcc00;
+      min-height: 24px;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 3px;
+      height: 24px;
+      background-color: #ffcc00;
+      margin-left: 5px;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0;
+      }
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      background-color: white;
+      color: #8a4fff;
+      padding: 15px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+      margin-top: 20px;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+    }
+
+    .cta-button img {
+      width: 30px;
+      height: 30px;
+      margin-right: 10px;
+    }
+
+    .hero-image {
+      flex: 1;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .dashboard-image {
+      width: 100%;
+      max-width: 700px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .card {
+      position: absolute;
+      background-color: #8a4fff;
+      border-radius: 15px;
+      padding: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, z-index 0.1s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px) rotate(0deg) !important;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    }
+
+    .card.expanded {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1.5) !important;
+      z-index: 100;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    }
+
+    .card-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .card-details {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.5s ease, opacity 0.3s ease;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .card.expanded .card-details {
+      max-height: 200px;
+      opacity: 1;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 99;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .card-time {
+      display: inline-block;
+      background-color: #ff7b54;
+      color: white;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    .card-number {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 30px;
+      height: 30px;
+      background-color: #ff7b54;
+      color: white;
+      border-radius: 50%;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    .card-title {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .wave {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 150px;
+      background: url('https://raw.githubusercontent.com/SochavaAG/example-mycode/master/pens/elements/wave-footer/images/wave.svg');
+      background-size: 1000px 100px;
+    }
+
+    /* 响应式设计 */
+    @media (max-width: 1024px) {
+      .hero {
+        flex-direction: column;
+      }
+
+      .hero-text,
+      .hero-image {
+        width: 100%;
+      }
+
+      .hero-image {
+        margin-top: 50px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-title {
+        font-size: 36px;
+      }
+
+      .hero-subtitle {
+        font-size: 48px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 导航栏 -->
+  <nav class="navbar">
+    <a href="https://lvycoder.github.io/site/" class="logo">
+      <img src="https://cdn-icons-png.flaticon.com/512/5968/5968244.png" alt="FastClass Logo">
+      FASTCLASS
+    </a>
+    <div class="nav-links">
+      <a href="https://lvycoder.github.io/site/#2-kubernetes"><i class="fas fa-book"></i> 课程</a>
+      <a href="https://lvycoder.github.io/site/#1-linux"><i class="fas fa-file-alt"></i> 文档</a>
+      <a href="https://lvycoder.github.io/site/#3-运维开发"><i class="fas fa-chalkboard-teacher"></i> 训练营</a>
+      <a href="https://lvycoder.github.io/site/#4-数据库"><i class="fas fa-tag"></i> 价格</a>
+      <a href="https://lvycoder.github.io/site/#关于我"><i class="fas fa-blog"></i> 博客</a>
+    </div>
+    <div class="user-icon">
+      <i class="fas fa-user"></i>
+    </div>
+  </nav>
+
+  <!-- 主要内容区域 -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1 class="hero-title">独立设计开发</h1>
+      <h2 class="hero-subtitle"><span id="tech-stack"></span><span class="cursor"></span> 应用</h2>
+      <p class="hero-description">
+        快速星球是一个AI全栈开发者学习网站，我们的目标是帮助您使用
+        Cursor、ChatGPT、Python、Golang、React、VUE、Flutter、Figma
+        等设计构建真实的应用程序，助你成为一个全栈独立开发者。
+      </p>
+      <a href="https://lvycoder.github.io/site/" class="cta-button">
+        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="Chat Icon">
+        立刻订阅
+        <span style="font-size: 14px; margin-left: 10px;">几毛钱/天</span>
+      </a>
+    </div>
+
+    <div class="hero-image">
+      <!-- 主要仪表盘图片 -->
+      <a href="https://lvycoder.github.io/site/">
+        <img src="https://cdn.pixabay.com/photo/2018/05/04/20/01/website-3374825_960_720.jpg" alt="Dashboard"
+          class="dashboard-image">
+      </a>
+
+      <!-- 卡片1 - Python -->
+      <div class="card card-1">
+        <div class="card-content">
+          <div class="card-title">
+            <div class="card-number">1</div>
+            <img src="https://cdn-icons-png.flaticon.com/512/5968/5968350.png" alt="Python" width="50">
+          </div>
+          <p>Python开发与应用</p>
+          <div class="card-details">
+            <p>学习Python基础语法和应用开发</p>
+            <p>包含数据结构、面向对象编程和Web开发</p>
+            <div class="card-time">5:08</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 卡片2 - React -->
+      <div class="card card-2">
+        <div class="card-content">
+          <div class="card-title">
+            <div class="card-number">1</div>
+            <img src="https://cdn-icons-png.flaticon.com/512/1126/1126012.png" alt="React" width="50">
+          </div>
+          <p>创建一个React应用程序</p>
+          <div class="card-details">
+            <p>学习React组件和Hooks的使用</p>
+            <p>构建现代化的用户界面和单页应用</p>
+            <div class="card-time">8:08</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 遮罩层 -->
+      <div class="overlay"></div>
+    </div>
+
+    <!-- 底部波浪 -->
+    <div class="wave"></div>
+  </section>
+
+  <!-- Font Awesome 图标 -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <!-- 打字机效果脚本 -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const techStack = document.getElementById('tech-stack');
+      const technologies = ['Cursor', 'ChatGPT', 'Python', 'Golang', 'React', 'VUE', 'Flutter', 'Figma'];
+      let currentTechIndex = 0;
+      let currentCharIndex = 0;
+      let isDeleting = false;
+      let typingSpeed = 80; // 打字速度（毫秒）
+
+      function type() {
+        const currentTech = technologies[currentTechIndex];
+
+        if (isDeleting) {
+          // 删除文字
+          techStack.textContent = currentTech.substring(0, currentCharIndex - 1);
+          currentCharIndex--;
+          typingSpeed = 40; // 删除速度更快
+        } else {
+          // 添加文字
+          techStack.textContent = currentTech.substring(0, currentCharIndex + 1);
+          currentCharIndex++;
+          typingSpeed = 80; // 正常打字速度
+        }
+
+        // 如果完成了当前词的输入
+        if (!isDeleting && currentCharIndex === currentTech.length) {
+          isDeleting = true;
+          typingSpeed = 1000; // 暂停一会儿再开始删除
+        }
+
+        // 如果完成了当前词的删除
+        if (isDeleting && currentCharIndex === 0) {
+          isDeleting = false;
+          currentTechIndex = (currentTechIndex + 1) % technologies.length;
+          typingSpeed = 300; // 切换到下一个词之前暂停一下
+        }
+
+        setTimeout(type, typingSpeed);
+      }
+
+      // 开始打字效果
+      techStack.style.color = '#ffcc00';
+      setTimeout(type, 1000);
+
+      // 卡片点击放大效果
+      const cards = document.querySelectorAll('.card');
+      const overlay = document.querySelector('.overlay');
+
+      cards.forEach(card => {
+        card.addEventListener('click', function () {
+          // 跳转到指定网站
+          window.location.href = 'https://lvycoder.github.io/site/';
+        });
+      });
+
+      // 点击遮罩层关闭展开的卡片
+      overlay.addEventListener('click', function () {
+        cards.forEach(card => card.classList.remove('expanded'));
+        this.classList.remove('active');
+      });
+    });
+  </script>
+</body>
+
+</html>
