@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="https://lvycoder.github.io/site/">
   <title>FastClass - 独立设计开发 ChatGPT 应用</title>
   <style>
     /* 全局样式 */
@@ -404,6 +405,17 @@
   <!-- 打字机效果脚本 -->
   <script>
     document.addEventListener('DOMContentLoaded', function () {
+      // 确保所有链接正确跳转
+      document.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (href && href.startsWith('https://lvycoder.github.io/site/')) {
+            e.preventDefault();
+            window.location.href = href;
+          }
+        });
+      });
+
       const techStack = document.getElementById('tech-stack');
       const technologies = ['Cursor', 'ChatGPT', 'Python', 'Golang', 'React', 'VUE', 'Flutter', 'Figma'];
       let currentTechIndex = 0;
@@ -451,8 +463,8 @@
       const overlay = document.querySelector('.overlay');
 
       cards.forEach(card => {
-        card.addEventListener('click', function () {
-          // 跳转到指定网站
+        card.addEventListener('click', function (e) {
+          // 直接跳转到指定网站，不执行其他操作
           window.location.href = 'https://lvycoder.github.io/site/';
         });
       });
