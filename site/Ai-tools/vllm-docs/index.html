@@ -19,7 +19,7 @@
     
     
       
-        <title>Vllm docs - Kubernetes 进阶训练营</title>
+        <title>vLLM 大模型部署运维最佳实践指南 - Kubernetes 进阶训练营</title>
       
     
     
@@ -70,6 +70,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#vllm" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -100,7 +105,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Vllm docs
+              vLLM 大模型部署运维最佳实践指南
             
           </span>
         </div>
@@ -2861,6 +2866,8 @@
         
           
         
+          
+        
       
       
         <label class="md-nav__link" for="__nav_12">
@@ -2897,6 +2904,20 @@
     <li class="md-nav__item">
       <a href="../cursor-model-performance/" class="md-nav__link">
         Cursor 模型性能排行
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vllm-Qwen2.5-VL/" class="md-nav__link">
+        vLLM 部署 Qwen2.5-VL
       </a>
     </li>
   
@@ -3118,6 +3139,290 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-vllm" class="md-nav__link">
+    1. vLLM 简介
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 环境要求
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 环境要求">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    2.1 硬件要求
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    2.2 软件要求
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 部署方案
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 部署方案">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-docker" class="md-nav__link">
+    3.1 Docker 部署（推荐）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    3.2 直接部署
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-kubernetes" class="md-nav__link">
+    3.3 Kubernetes 部署
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4. 性能优化
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 性能优化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-gpu" class="md-nav__link">
+    4.1 GPU 内存优化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    4.2 批处理优化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    4.3 分布式推理
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    5. 监控和日志
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 监控和日志">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-prometheus" class="md-nav__link">
+    5.1 Prometheus 监控
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    5.2 日志配置
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    6. 安全最佳实践
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 安全最佳实践">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    6.1 访问控制
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    6.2 网络安全
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    7. 故障排除
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 故障排除">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71" class="md-nav__link">
+    7.1 常见问题
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72" class="md-nav__link">
+    7.2 调试方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    8. 生产环境最佳实践
+  </a>
+  
+    <nav class="md-nav" aria-label="8. 生产环境最佳实践">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81" class="md-nav__link">
+    8.1 高可用配置
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82" class="md-nav__link">
+    8.2 备份和恢复
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83" class="md-nav__link">
+    8.3 更新策略
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-api" class="md-nav__link">
+    9. API 使用示例
+  </a>
+  
+    <nav class="md-nav" aria-label="9. API 使用示例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-python" class="md-nav__link">
+    9.1 Python 客户端
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-curl" class="md-nav__link">
+    9.2 CURL 示例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    10. 参考资源
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    11. 更新日志
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
@@ -3128,9 +3433,314 @@
 </a>
 
 
-  <h1>Vllm docs</h1>
+<h1 id="vllm">vLLM 大模型部署运维最佳实践指南<a class="headerlink" href="#vllm" title="Permanent link">&para;</a></h1>
+<h2 id="1-vllm">1. vLLM 简介<a class="headerlink" href="#1-vllm" title="Permanent link">&para;</a></h2>
+<p>vLLM 是一个高性能的大语言模型(LLM)推理和服务框架，具有以下特点：</p>
+<ul>
+<li>最先进的服务吞吐量</li>
+<li>使用 PagedAttention 高效管理注意力键值内存</li>
+<li>支持请求的连续批处理</li>
+<li>使用 CUDA/HIP 图进行快速模型执行</li>
+<li>支持多种量化方案：GPTQ、AWQ、SqueezeLLM、FP8 KV Cache</li>
+<li>优化的 CUDA 内核</li>
+</ul>
+<h2 id="2">2. 环境要求<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<h3 id="21">2.1 硬件要求<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
+<ul>
+<li>NVIDIA GPU (推荐 A100、H100、L4 等数据中心 GPU)</li>
+<li>显存要求：根据模型大小，通常需要 16GB-80GB</li>
+<li>支持 CUDA 11.7 及以上</li>
+<li>AMD GPU (实验性支持)</li>
+<li>MI200、MI300 系列</li>
+<li>ROCm 5.7 或 6.0</li>
+<li>CPU (实验性支持)</li>
+<li>需要支持 AVX512 指令集</li>
+<li>推荐 Intel Xeon 第三代及以上</li>
+</ul>
+<h3 id="22">2.2 软件要求<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
+<ul>
+<li>操作系统：Linux (推荐 Ubuntu 20.04/22.04)</li>
+<li>Python 3.8+</li>
+<li>CUDA Toolkit 11.7+ (使用 NVIDIA GPU 时)</li>
+<li>Docker (推荐)</li>
+<li>gcc/g++ &gt;= 12.3.0 (从源码编译时需要)</li>
+</ul>
+<h2 id="3">3. 部署方案<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<h3 id="31-docker">3.1 Docker 部署（推荐）<a class="headerlink" href="#31-docker" title="Permanent link">&para;</a></h3>
+<ol>
+<li>创建 Dockerfile：</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c"># 使用 NVIDIA CUDA 基础镜像</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">nvidia/cuda:11.8.0-devel-ubuntu22.04</span>
 
+<span class="c"># 设置工作目录</span>
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
 
+<span class="c"># 安装系统依赖</span>
+<span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>python3.10<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>python3-pip<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>git<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/var/lib/apt/lists/*
+
+<span class="c"># 安装 Python 依赖</span>
+<span class="k">RUN</span><span class="w"> </span>pip3<span class="w"> </span>install<span class="w"> </span>--no-cache-dir<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>torch<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>vllm<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>transformers<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>accelerate<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>scipy
+
+<span class="c"># 设置环境变量</span>
+<span class="k">ENV</span><span class="w"> </span><span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span>all
+<span class="k">ENV</span><span class="w"> </span><span class="nv">VLLM_USE_MODELSCOPE</span><span class="o">=</span>False
+
+<span class="c"># 暴露端口</span>
+<span class="k">EXPOSE</span><span class="w"> </span><span class="s">8000</span>
+
+<span class="c"># 启动命令</span>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;python3&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;vllm.entrypoints.openai.api_server&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--host&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--port&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;8000&quot;</span><span class="p">]</span>
+</code></pre></div>
+<ol>
+<li>创建 docker-compose.yml：</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3&#39;</span>
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">vllm-server</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span>
+<span class="w">    </span><span class="nt">runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvidia</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NVIDIA_VISIBLE_DEVICES=all</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;8000:8000&quot;</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./models:/app/models</span>
+<span class="w">    </span><span class="nt">deploy</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">reservations</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">devices</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvidia</span>
+<span class="w">              </span><span class="nt">count</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">all</span>
+<span class="w">              </span><span class="nt">capabilities</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">gpu</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<ol>
+<li>启动服务：</li>
+</ol>
+<div class="highlight"><pre><span></span><code>docker-compose<span class="w"> </span>up<span class="w"> </span>-d
+</code></pre></div>
+<h3 id="32">3.2 直接部署<a class="headerlink" href="#32" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 安装 vLLM</span>
+pip<span class="w"> </span>install<span class="w"> </span>vllm
+
+<span class="c1"># 启动 OpenAI 兼容的 API 服务器</span>
+python<span class="w"> </span>-m<span class="w"> </span>vllm.entrypoints.openai.api_server<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--model<span class="w"> </span>huggingface/mistral-7b-instruct-v0.1<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--host<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--port<span class="w"> </span><span class="m">8000</span>
+</code></pre></div>
+<h3 id="33-kubernetes">3.3 Kubernetes 部署<a class="headerlink" href="#33-kubernetes" title="Permanent link">&para;</a></h3>
+<ol>
+<li>创建 ConfigMap：</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vllm-config</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">config.yaml</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">model: huggingface/mistral-7b-instruct-v0.1</span>
+<span class="w">    </span><span class="no">tensor_parallel_size: 1</span>
+<span class="w">    </span><span class="no">gpu_memory_utilization: 0.90</span>
+<span class="w">    </span><span class="no">max_num_batched_tokens: 8192</span>
+</code></pre></div>
+<ol>
+<li>创建 Deployment：</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vllm-server</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vllm-server</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vllm-server</span>
+<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vllm-server</span>
+<span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vllm-server:latest</span>
+<span class="w">        </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
+<span class="w">        </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">nvidia.com/gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">        </span><span class="nt">volumeMounts</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">config</span>
+<span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/app/config</span>
+<span class="w">      </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">config</span>
+<span class="w">        </span><span class="nt">configMap</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vllm-config</span>
+</code></pre></div>
+<h2 id="4">4. 性能优化<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<h3 id="41-gpu">4.1 GPU 内存优化<a class="headerlink" href="#41-gpu" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 启动服务时的优化参数</span>
+<span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">vllm</span><span class="o">.</span><span class="n">entrypoints</span><span class="o">.</span><span class="n">openai</span><span class="o">.</span><span class="n">api_server</span> \
+    <span class="o">--</span><span class="n">model</span> <span class="n">huggingface</span><span class="o">/</span><span class="n">mistral</span><span class="o">-</span><span class="mi">7</span><span class="n">b</span><span class="o">-</span><span class="n">instruct</span><span class="o">-</span><span class="n">v0</span><span class="mf">.1</span> \
+    <span class="o">--</span><span class="n">gpu</span><span class="o">-</span><span class="n">memory</span><span class="o">-</span><span class="n">utilization</span> <span class="mf">0.90</span> \
+    <span class="o">--</span><span class="nb">max</span><span class="o">-</span><span class="n">num</span><span class="o">-</span><span class="n">batched</span><span class="o">-</span><span class="n">tokens</span> <span class="mi">8192</span> \
+    <span class="o">--</span><span class="n">tensor</span><span class="o">-</span><span class="n">parallel</span><span class="o">-</span><span class="n">size</span> <span class="mi">1</span>
+</code></pre></div>
+<h3 id="42">4.2 批处理优化<a class="headerlink" href="#42" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># config.yaml</span>
+<span class="nt">max_num_batched_tokens</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8192</span><span class="w">  </span><span class="c1"># 增加批处理大小</span>
+<span class="nt">max_num_seqs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">256</span><span class="w">            </span><span class="c1"># 最大序列数</span>
+<span class="nt">max_model_len</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4096</span><span class="w">          </span><span class="c1"># 最大模型长度</span>
+</code></pre></div>
+<h3 id="43">4.3 分布式推理<a class="headerlink" href="#43" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 使用张量并行</span>
+python<span class="w"> </span>-m<span class="w"> </span>vllm.entrypoints.openai.api_server<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--model<span class="w"> </span>huggingface/mistral-7b-instruct-v0.1<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--tensor-parallel-size<span class="w"> </span><span class="m">4</span>
+</code></pre></div>
+<h2 id="5">5. 监控和日志<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<h3 id="51-prometheus">5.1 Prometheus 监控<a class="headerlink" href="#51-prometheus" title="Permanent link">&para;</a></h3>
+<ol>
+<li>安装依赖：</li>
+</ol>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>prometheus_client
+</code></pre></div>
+<ol>
+<li>配置 metrics：</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">prometheus_client</span> <span class="kn">import</span> <span class="n">Counter</span><span class="p">,</span> <span class="n">Histogram</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="c1"># 定义指标</span>
+<span class="n">request_count</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="s1">&#39;vllm_requests_total&#39;</span><span class="p">,</span> <span class="s1">&#39;Total requests&#39;</span><span class="p">)</span>
+<span class="n">latency</span> <span class="o">=</span> <span class="n">Histogram</span><span class="p">(</span><span class="s1">&#39;vllm_request_latency_seconds&#39;</span><span class="p">,</span> <span class="s1">&#39;Request latency&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="52">5.2 日志配置<a class="headerlink" href="#52" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span>
+    <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+    <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%(asctime)s</span><span class="s1"> - </span><span class="si">%(name)s</span><span class="s1"> - </span><span class="si">%(levelname)s</span><span class="s1"> - </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="n">handlers</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">FileHandler</span><span class="p">(</span><span class="s1">&#39;vllm.log&#39;</span><span class="p">),</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">()</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</code></pre></div>
+<h2 id="6">6. 安全最佳实践<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<h3 id="61">6.1 访问控制<a class="headerlink" href="#61" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 添加简单的 API 密钥认证</span>
+<span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span><span class="p">,</span> <span class="n">Security</span><span class="p">,</span> <span class="n">HTTPException</span>
+<span class="kn">from</span> <span class="nn">fastapi.security.api_key</span> <span class="kn">import</span> <span class="n">APIKeyHeader</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
+<span class="n">api_key_header</span> <span class="o">=</span> <span class="n">APIKeyHeader</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;X-API-Key&quot;</span><span class="p">)</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/health&quot;</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">health_check</span><span class="p">(</span><span class="n">api_key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Security</span><span class="p">(</span><span class="n">api_key_header</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">api_key</span> <span class="o">!=</span> <span class="s2">&quot;your-secret-key&quot;</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">403</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;healthy&quot;</span><span class="p">}</span>
+</code></pre></div>
+<h3 id="62">6.2 网络安全<a class="headerlink" href="#62" title="Permanent link">&para;</a></h3>
+<ul>
+<li>使用反向代理（如 Nginx）</li>
+<li>启用 HTTPS</li>
+<li>配置防火墙规则</li>
+</ul>
+<h2 id="7">7. 故障排除<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<h3 id="71">7.1 常见问题<a class="headerlink" href="#71" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>CUDA 内存不足
+<div class="highlight"><pre><span></span><code><span class="c1"># 解决方案</span>
+--gpu-memory-utilization<span class="w"> </span><span class="m">0</span>.80<span class="w">  </span><span class="c1"># 降低内存使用率</span>
+--max-num-batched-tokens<span class="w"> </span><span class="m">4096</span><span class="w">  </span><span class="c1"># 减少批处理大小</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>模型加载失败
+<div class="highlight"><pre><span></span><code><span class="c1"># 检查模型缓存</span>
+rm<span class="w"> </span>-rf<span class="w"> </span>~/.cache/huggingface/
+<span class="c1"># 重新下载模型</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>性能问题
+<div class="highlight"><pre><span></span><code><span class="c1"># 使用 nvidia-smi 监控 GPU 使用情况</span>
+watch<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>nvidia-smi
+</code></pre></div></p>
+</li>
+</ol>
+<h3 id="72">7.2 调试方法<a class="headerlink" href="#72" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 启用调试日志</span>
+<span class="nv">VLLM_LOG_LEVEL</span><span class="o">=</span>debug<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>vllm.entrypoints.openai.api_server
+</code></pre></div>
+<h2 id="8">8. 生产环境最佳实践<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
+<h3 id="81">8.1 高可用配置<a class="headerlink" href="#81" title="Permanent link">&para;</a></h3>
+<ul>
+<li>使用多个 GPU 实例</li>
+<li>配置负载均衡器</li>
+<li>实现健康检查和自动重启</li>
+</ul>
+<h3 id="82">8.2 备份和恢复<a class="headerlink" href="#82" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 备份模型和配置</span>
+tar<span class="w"> </span>-czf<span class="w"> </span>backup.tar.gz<span class="w"> </span>models/<span class="w"> </span>config/
+
+<span class="c1"># 定期清理缓存</span>
+rm<span class="w"> </span>-rf<span class="w"> </span>/tmp/vllm-cache/*
+</code></pre></div>
+<h3 id="83">8.3 更新策略<a class="headerlink" href="#83" title="Permanent link">&para;</a></h3>
+<ol>
+<li>蓝绿部署</li>
+<li>滚动更新</li>
+<li>版本控制</li>
+</ol>
+<h2 id="9-api">9. API 使用示例<a class="headerlink" href="#9-api" title="Permanent link">&para;</a></h2>
+<h3 id="91-python">9.1 Python 客户端<a class="headerlink" href="#91-python" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">openai</span> <span class="kn">import</span> <span class="n">OpenAI</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">OpenAI</span><span class="p">(</span><span class="n">base_url</span><span class="o">=</span><span class="s2">&quot;http://localhost:8000/v1&quot;</span><span class="p">,</span> <span class="n">api_key</span><span class="o">=</span><span class="s2">&quot;dummy&quot;</span><span class="p">)</span>
+
+<span class="n">completion</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;mistral-7b-instruct&quot;</span><span class="p">,</span>
+    <span class="n">messages</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;Hello! How are you?&quot;</span><span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">completion</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="92-curl">9.2 CURL 示例<a class="headerlink" href="#92-curl" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>http://localhost:8000/v1/chat/completions<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
+<span class="s1">    &quot;model&quot;: &quot;mistral-7b-instruct&quot;,</span>
+<span class="s1">    &quot;messages&quot;: [{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Hello! How are you?&quot;}]</span>
+<span class="s1">  }&#39;</span>
+</code></pre></div>
+<h2 id="10">10. 参考资源<a class="headerlink" href="#10" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://docs.vllm.ai/">vLLM 官方文档</a></li>
+<li><a href="https://github.com/vllm-project/vllm">GitHub 仓库</a></li>
+<li><a href="https://docs.vllm.ai/en/latest/getting_started/performance.html">性能优化指南</a></li>
+<li><a href="https://docs.vllm.ai/en/latest/getting_started/api_reference.html">API 参考</a></li>
+</ul>
+<h2 id="11">11. 更新日志<a class="headerlink" href="#11" title="Permanent link">&para;</a></h2>
+<ul>
+<li>2024-03-20: 初始版本</li>
+<li>2024-03-21: 添加 Kubernetes 部署说明</li>
+<li>2024-03-22: 更新性能优化建议</li>
+</ul>
 
               
             </article>
