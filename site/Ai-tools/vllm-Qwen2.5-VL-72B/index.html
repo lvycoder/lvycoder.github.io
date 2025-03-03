@@ -3296,11 +3296,23 @@
   <h1>vLLM 部署 Qwen2.5-VL-72B</h1>
 
 <h2 id="openbayes-qwen25-vl">Openbayes 部署 Qwen2.5-VL<a class="headerlink" href="#openbayes-qwen25-vl" title="Permanent link">&para;</a></h2>
+<ol>
+<li>启动容器</li>
+</ol>
+<p><img alt="20250303190310" src="https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20250303190310.png" /></p>
+<ol>
+<li>配置说明</li>
+<li>这个 7B 的模型不是很大,一个 4090/a6000 跑起来足够了</li>
+</ol>
+<p><img alt="20250303190448" src="https://barry-boy-1311671045.cos.ap-beijing.myqcloud.com/blog/20250303190448.png" /></p>
+<p>安装依赖软件
 <div class="highlight"><pre><span></span><code>pip install git+https://github.com/huggingface/transformers@f3f6c86582611976e72be054675e2bf0abb5f775
 pip install accelerate
 pip install qwen-vl-utils
 pip install &#39;vllm&gt;0.7.2&#39;
-</code></pre></div>
+</code></pre></div></p>
+<p>温馨提示:</p>
+<p>由于我们是自己在本地 「download」的模型,里面有些模型的位置路径,需要替换成自己的</p>
 <h2 id="openai-api">启动 OpenAI API 服务<a class="headerlink" href="#openai-api" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>vllm serve Qwen/Qwen2.5-VL-7B-Instruct --port 8000 --host 0.0.0.0 --dtype bfloat16 --limit-mm-per-prompt image=5,video=5
 </code></pre></div>
