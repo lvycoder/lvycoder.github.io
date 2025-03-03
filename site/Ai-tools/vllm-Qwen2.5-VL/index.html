@@ -2872,6 +2872,8 @@
         
           
         
+          
+        
       
       
         <label class="md-nav__link" for="__nav_12">
@@ -3065,7 +3067,14 @@
         
           <li class="md-nav__item">
   <a href="#23" class="md-nav__link">
-    2.3 直接部署
+    2.3 使用本地模型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    2.4 直接部署
   </a>
   
 </li>
@@ -3147,6 +3156,20 @@
   
 </nav>
       
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vllm-Qwen2.5-VL-72B/" class="md-nav__link">
+        vLLM 部署 Qwen2.5-VL-72B
+      </a>
     </li>
   
 
@@ -3498,7 +3521,14 @@
         
           <li class="md-nav__item">
   <a href="#23" class="md-nav__link">
-    2.3 直接部署
+    2.3 使用本地模型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    2.4 直接部署
   </a>
   
 </li>
@@ -3776,7 +3806,78 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot
 </ol>
 <div class="highlight"><pre><span></span><code>docker-compose<span class="w"> </span>up<span class="w"> </span>-d
 </code></pre></div>
-<h3 id="23">2.3 直接部署<a class="headerlink" href="#23" title="Permanent link">&para;</a></h3>
+<h3 id="23">2.3 使用本地模型<a class="headerlink" href="#23" title="Permanent link">&para;</a></h3>
+<p>如果您已经将模型下载到本地，可以通过以下方式使用：</p>
+<ol>
+<li>直接使用本地路径：</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># 启动服务时指定本地模型路径</span>
+python<span class="w"> </span>-m<span class="w"> </span>vllm.entrypoints.openai.api_server<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--model<span class="w"> </span>/path/to/local/Qwen2.5-VL<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--trust-remote-code<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--host<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--port<span class="w"> </span><span class="m">8000</span>
+</code></pre></div>
+<ol>
+<li>Docker 部署时挂载本地模型：</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3&#39;</span>
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">qwen-vl-vllm</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span>
+<span class="w">    </span><span class="nt">runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvidia</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NVIDIA_VISIBLE_DEVICES=all</span>
+<span class="w">      </span><span class="c1"># 使用本地模型</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VLLM_MODEL_PATH=/app/models/Qwen2.5-VL</span>
+<span class="w">      </span><span class="c1"># 如果使用 ModelScope，设置缓存目录</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODELSCOPE_CACHE=/app/models</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;8000:8000&quot;</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># 挂载本地模型目录</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path/to/local/models:/app/models</span>
+<span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">      </span><span class="no">python3 -m vllm.entrypoints.openai.api_server</span>
+<span class="w">      </span><span class="no">--model /app/models/Qwen2.5-VL</span>
+<span class="w">      </span><span class="no">--trust-remote-code</span>
+<span class="w">      </span><span class="no">--host 0.0.0.0</span>
+<span class="w">      </span><span class="no">--port 8000</span>
+</code></pre></div>
+<ol>
+<li>使用环境变量配置：</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># 设置模型路径环境变量</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">VLLM_MODEL_PATH</span><span class="o">=</span>/path/to/local/Qwen2.5-VL
+<span class="c1"># 如果使用 ModelScope，设置缓存目录</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">MODELSCOPE_CACHE</span><span class="o">=</span>/path/to/models/cache
+
+<span class="c1"># 启动服务</span>
+python<span class="w"> </span>-m<span class="w"> </span>vllm.entrypoints.openai.api_server<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--model<span class="w"> </span><span class="nv">$VLLM_MODEL_PATH</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--trust-remote-code<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--host<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--port<span class="w"> </span><span class="m">8000</span>
+</code></pre></div>
+<ol>
+<li>本地模型目录结构示例：</li>
+</ol>
+<div class="highlight"><pre><span></span><code>/path/to/local/Qwen2.5-VL/
+├── config.json
+├── configuration.json
+├── generation_config.json
+├── model.safetensors
+├── pytorch_model.bin
+├── special_tokens_map.json
+├── tokenizer.json
+└── tokenizer_config.json
+</code></pre></div>
+<p>注意事项：
+1. 确保模型文件权限正确（读取权限）
+2. Docker 部署时注意挂载目录的权限
+3. 建议使用绝对路径避免路径解析问题
+4. 如果模型文件较大，确保磁盘空间充足</p>
+<h3 id="24">2.4 直接部署<a class="headerlink" href="#24" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># 下载模型</span>
 pip<span class="w"> </span>install<span class="w"> </span>modelscope
 python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;from modelscope import snapshot_download; snapshot_download(&#39;qwen/Qwen2.5-VL&#39;)&quot;</span>
@@ -4076,13 +4177,13 @@ curl<span class="w"> </span>http://localhost:8000/v1/chat/completions<span class
       
       
         
-        <a href="../../Nvidia/Nvidia-gpu-compare/" class="md-footer__link md-footer__link--next" aria-label="下一页: NVIDIA显卡对比" rel="next">
+        <a href="../vllm-Qwen2.5-VL-72B/" class="md-footer__link md-footer__link--next" aria-label="下一页: vLLM 部署 Qwen2.5-VL-72B" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 下一页
               </span>
-              NVIDIA显卡对比
+              vLLM 部署 Qwen2.5-VL-72B
             </div>
           </div>
           <div class="md-footer__button md-icon">
