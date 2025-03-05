@@ -40,7 +40,7 @@
       
     
     
-      <link rel="stylesheet" href="../../docs/stylesheets/custom.css">
+      <link rel="stylesheet" href="../../stylesheets/custom.css">
     
     <script>function __md_scope(e,t,_){return new URL(_||(t===localStorage?"../..":"../.."),location).pathname+"."+e}function __md_get(e,t=localStorage,_){return JSON.parse(t.getItem(__md_scope(e,t,_)))}function __md_set(e,t,_=localStorage,o){try{_.setItem(__md_scope(e,_,o),JSON.stringify(t))}catch(e){}}</script>
     
@@ -3761,7 +3761,7 @@
 <p>开源的分布式存储系统，支持对象存储，块设备，文件系统</p>
 <ul>
 <li>块存储</li>
-<li>CephFs </li>
+<li>CephFs</li>
 <li>对象存储</li>
 </ul>
 <h3 id="ceph">ceph 的版本历史<a class="headerlink" href="#ceph" title="Permanent link">&para;</a></h3>
@@ -3933,10 +3933,10 @@ node/node1 labeled
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vdc&quot;</span>
 </code></pre></div></p>
 <h3 id="toolbox"><strong>toolbox客户端</strong><a class="headerlink" href="#toolbox" title="Permanent link">&para;</a></h3>
-<p>apply以下中两个文件的一个就可以，一般选择toolbox.yaml 
+<p>apply以下中两个文件的一个就可以，一般选择toolbox.yaml
 <div class="highlight"><pre><span></span><code>$ ll tool*
 -rw-r--r--  1 beiyiwangdejiyi  staff   1.7K  7 19 17:26 toolbox-job.yaml     # 一次性任务
--rw-r--r--  1 beiyiwangdejiyi  staff   1.4K  7 19 17:26 toolbox.yaml   
+-rw-r--r--  1 beiyiwangdejiyi  staff   1.4K  7 19 17:26 toolbox.yaml
 
 kubectl apply -f toolbox.yaml
 </code></pre></div></p>
@@ -3983,7 +3983,7 @@ key = AQCRS+NijUeiIxAAhFtv6je2FmMEAVHAJJqPwg==
 </code></pre></div>
 <h4 id="2-pool">2. 在pool上创建块设备<a class="headerlink" href="#2-pool" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span><span class="nv">root@rook-ceph-tools-65c94d77bb-xg6xs /</span><span class="p p-Indicator">]</span><span class="c1"># rbd create -p rook --image rook-rbd.img --size 10G</span>
-<span class="p p-Indicator">[</span><span class="nv">root@rook-ceph-tools-65c94d77bb-xg6xs /</span><span class="p p-Indicator">]</span><span class="c1"># rbd ls -p rook                   </span>
+<span class="p p-Indicator">[</span><span class="nv">root@rook-ceph-tools-65c94d77bb-xg6xs /</span><span class="p p-Indicator">]</span><span class="c1"># rbd ls -p rook</span>
 <span class="l l-Scalar l-Scalar-Plain">rook-rbd.img</span>
 <span class="l l-Scalar l-Scalar-Plain">[root@rook-ceph-tools-65c94d77bb-xg6xs /]# rbd info rook/rook-rbd.img</span><span class="w">       </span><span class="c1"># 查看详细信息</span>
 <span class="l l-Scalar l-Scalar-Plain">rbd image &#39;rook-rbd.img&#39;</span><span class="p p-Indicator">:</span>
@@ -4074,13 +4074,13 @@ rbd: map failed: (6) No such device or address
 <span class="l l-Scalar l-Scalar-Plain">csi-rbdplugin-metrics                   ClusterIP   10.97.0.194    &lt;none&gt;        8080/TCP,8081/TCP   579d</span>
 <span class="l l-Scalar l-Scalar-Plain">rook-ceph-mgr                           ClusterIP   10.97.15.77    &lt;none&gt;        9283/TCP            579d</span>
 <span class="l l-Scalar l-Scalar-Plain">rook-ceph-mgr-dashboard                 ClusterIP   10.97.4.98     &lt;none&gt;        7000/TCP            579d</span>
-<span class="l l-Scalar l-Scalar-Plain">rook-ceph-mgr-dashboard-external-http   NodePort    10.97.10.172   &lt;none&gt;        7000:31926/TCP      8m18s</span><span class="w">  </span>
+<span class="l l-Scalar l-Scalar-Plain">rook-ceph-mgr-dashboard-external-http   NodePort    10.97.10.172   &lt;none&gt;        7000:31926/TCP      8m18s</span>
 </code></pre></div></p>
 <p>默认mgr创建了⼀个admin的⽤户，其密码存放在rook-ceph-dashboard-password的secrets对象中，通过如下⽅式可以获取到</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl get secrets -n rook-ceph rook-ceph-dashboard-password -oyaml</span>
 <span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">data</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">XTBndS0iREN1bE9UMGpQY2JQSSE=</span><span class="w">   </span><span class="c1"># 采用base64加密 </span>
+<span class="w">  </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">XTBndS0iREN1bE9UMGpQY2JQSSE=</span><span class="w">   </span><span class="c1"># 采用base64加密</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">creationTimestamp</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2020-12-16T18:01:16Z&quot;</span>
@@ -4104,13 +4104,12 @@ rbd: map failed: (6) No such device or address
 <div class="admonition success">
 <p class="admonition-title">测试登陆</p>
 <ul>
-<li>URL: http://106.75.119.241:31926/ </li>
-<li>帐号: admin </li>
-<li>密码: ]0gu-"DCulOT0jPcbPI! </li>
+<li>URL: http://106.75.119.241:31926/</li>
+<li>帐号: admin</li>
+<li>密码: ]0gu-"DCulOT0jPcbPI!</li>
 </ul>
 </div>
 <p>进入就可以看到一下界面</p>
-<p><img alt="ceph" src="/Users/beiyiwangdejiyi/hugo/docs/src/ceph-dashboard.png" /></p>
 <h3 id="dashboard-ceph"><strong>Dashboard 监控ceph</strong><a class="headerlink" href="#dashboard-ceph" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>$ k get svc -n rook-ceph
 NAME                                    TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)             AGE

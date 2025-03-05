@@ -40,7 +40,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../docs/stylesheets/custom.css">
+      <link rel="stylesheet" href="../../../stylesheets/custom.css">
     
     <script>function __md_scope(e,t,_){return new URL(_||(t===localStorage?"../../..":"../../.."),location).pathname+"."+e}function __md_get(e,t=localStorage,_){return JSON.parse(t.getItem(__md_scope(e,t,_)))}function __md_set(e,t,_=localStorage,o){try{_.setItem(__md_scope(e,_,o),JSON.stringify(t))}catch(e){}}</script>
     
@@ -3204,7 +3204,6 @@
 <h1 id="service_1">Service<a class="headerlink" href="#service_1" title="Permanent link">&para;</a></h1>
 <p>我们前面的课程中学习了一些常用控制器的基本用法，我们也了解到 Pod 的生命是有限的，死亡过后不会复活了。然后我们知道可以用 ReplicaSet 和 Deployment 来动态的创建和销毁 Pod，每个 Pod 都有自己的 IP 地址，但是如果 Pod 重建了的话那么他的 IP 很有可能也就变化了。这就会带来一个问题：比如我们有一些后端的 Pod 集合为集群中的其他应用提供 API 服务，如果我们在前端应用中把所有的这些后端的 Pod 的地址都写死，然后以某种方式去访问其中一个 Pod 的服务，这样看上去是可以工作的，对吧？但是如果这个 Pod 挂掉了，然后重新启动起来了，是不是 IP 地址非常有可能就变了，这个时候前端就极大可能访问不到后端的服务了。</p>
 <p>遇到这样的问题该怎么解决呢？在没有使用 Kubernetes 之前，我相信可能很多同学都遇到过这样的问题，不一定是 IP 变化的问题，比如我们在部署一个 WEB 服务的时候，前端一般部署一个 Nginx 作为服务的入口，然后 Nginx 后面肯定就是挂载的这个服务的大量后端服务，很早以前我们可能是去手动更改Nginx 配置中的 upstream 选项，来动态改变提供服务的数量，到后面出现了一些服务发现的工具，比如 Consul、ZooKeeper 还有我们熟悉的 etcd 等工具，有了这些工具过后我们就可以只需要把我们的服务注册到这些服务发现中心去就可以，然后让这些工具动态的去更新 Nginx 的配置就可以了，我们完全不用去手工的操作了，是不是非常方便。</p>
-<p><img alt="nginx consul" src="../../assets/img/network/nginx-consul.png" /></p>
 <p>同样的，要解决我们上面遇到的问题是不是实现一个服务发现的工具也可以解决？没错的，当我们 Pod 被销毁或者新建过后，我们可以把这个 Pod 的地址注册到这个服务发现中心去就可以，但是这样的话我们的前端应用就不能直接去连接后台的 Pod 集合了，应该连接到一个能够做服务发现的中间件上面，对吧？</p>
 <p>为解决这个问题 Kubernetes 就为我们提供了这样的一个对象 - Service，Service 是一种抽象的对象，它定义了一组 Pod 的逻辑集合和一个用于访问它们的策略，其实这个概念和微服务非常类似。一个 Serivce 下面包含的 Pod 集合是由 Label Selector 来决定的。</p>
 <p>比如我们上面的例子，假如我们后端运行了3个副本，这些副本都是可以替代的，因为前端并不关心它们使用的是哪一个后端服务。尽管由于各种原因后端的 Pod 集合会发送变化，但是前端却不需要知道这些变化，也不需要自己用一个列表来记录这些后端的服务，Service 的这种抽象就可以帮我们达到这种解耦的目的。</p>
@@ -3240,7 +3239,6 @@ spec:
 <p>前面我们讲到过，在 Kubernetes 集群中，每个 Node 会运行一个 kube-proxy 进程, 负责为 Service 实现一种 VIP（虚拟 IP，就是我们上面说的 clusterIP）的代理形式，现在的 Kubernetes 中默认是使用的 iptables 这种模式来代理。</p>
 <h3 id="iptables">iptables<a class="headerlink" href="#iptables" title="Permanent link">&para;</a></h3>
 <p>这种模式，kube-proxy 会 watch apiserver 对 Service 对象和 Endpoints 对象的添加和移除。对每个 Service，它会添加上 iptables 规则，从而捕获到达该 Service 的 clusterIP（虚拟 IP）和端口的请求，进而将请求重定向到 Service 的一组 backend 中的某一个 Pod 上面。我们还可以使用 <code>Pod readiness 探针</code> 验证后端 Pod 可以正常工作，以便 iptables 模式下的 kube-proxy 仅看到测试正常的后端，这样做意味着可以避免将流量通过 <code>kube-proxy</code> 发送到已知失败的 Pod 中，所以对于线上的应用来说一定要做 readiness 探针。</p>
-<p><img alt="service iptables" src="../../assets/img/network/services-iptables-overview.svg" /></p>
 <p>iptables 模式的 kube-proxy 默认的策略是，随机选择一个后端 Pod。</p>
 <p>比如当创建 backend Service 时，Kubernetes 会给它指派一个虚拟 IP 地址，比如 10.0.0.1。假设 Service 的端口是 1234，该 Service 会被集群中所有的 kube-proxy 实例观察到。当 kube-proxy 看到一个新的 Service，它会安装一系列的 iptables 规则，从 VIP 重定向到 <code>per-Service</code> 规则。 该 <code>per-Service</code> 规则连接到 <code>per-Endpoint</code> 规则，该 <code>per-Endpoint</code> 规则会重定向（目标 <code>NAT</code>）到后端的 Pod。</p>
 <h3 id="ipvs">ipvs<a class="headerlink" href="#ipvs" title="Permanent link">&para;</a></h3>
@@ -3256,7 +3254,6 @@ spec:
 <li>nq: never queue</li>
 </ul>
 <p>不过现在只能整体修改策略，可以通过 kube-proxy 中配置 <code>–ipvs-scheduler</code> 参数来实现，暂时不支持特定的 Service 进行配置。</p>
-<p><img alt="service ipvs" src="../../assets/img/network/services-ipvs-overview.svg" /></p>
 <p>我们也可以实现基于客户端 IP 的会话亲和性，可以将 service.spec.sessionAffinity 的值设置为 "ClientIP" （默认值为 "None"）即可，此外还可以通过适当设置 <code>service.spec.sessionAffinityConfig.clientIP.timeoutSeconds</code> 来设置最大会话停留时间（默认值为 10800 秒，即 3 小时）:</p>
 <div class="highlight"><pre><span></span><code>apiVersion: v1
 kind: Service

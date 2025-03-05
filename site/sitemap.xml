@@ -841,6 +841,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://barry-boy.github.io/openbayes/tju-doc/</loc>
+         <lastmod>2025-03-05</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://barry-boy.github.io/other/discord-docs/</loc>
          <lastmod>2025-03-05</lastmod>
          <changefreq>daily</changefreq>
@@ -852,11 +857,6 @@
     </url>
     <url>
          <loc>https://barry-boy.github.io/other/mac-docs/</loc>
-         <lastmod>2025-03-05</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://barry-boy.github.io/other/misc/argo-cd/</loc>
          <lastmod>2025-03-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -1026,11 +1026,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://barry-boy.github.io/other/misc/%E5%AE%9E%E6%88%98-tekton-%E6%B5%81%E6%B0%B4%E7%BA%BF/</loc>
-         <lastmod>2025-03-05</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://barry-boy.github.io/other/misc/%E6%9C%8D%E5%8A%A1%E8%B4%A8%E9%87%8F/</loc>
          <lastmod>2025-03-05</lastmod>
          <changefreq>daily</changefreq>
@@ -1057,11 +1052,6 @@
     </url>
     <url>
          <loc>https://barry-boy.github.io/other/misc/%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E4%BD%BF%E7%94%A8-linkerd/</loc>
-         <lastmod>2025-03-05</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://barry-boy.github.io/other/misc/%E7%A4%BA%E4%BE%8B/</loc>
          <lastmod>2025-03-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
