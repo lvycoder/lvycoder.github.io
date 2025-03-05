@@ -12,21 +12,21 @@
         <meta name="author" content="Li">
       
       
-        <link rel="canonical" href="https://barry-boy.github.io/other/misc/jenkins/">
+        <link rel="canonical" href="https://barry-boy.github.io/python/pip-offline-packages/">
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-8.0.0">
     
     
       
-        <title>Jenkins - Kubernetes 进阶训练营</title>
+        <title>Python pip-离线安装软件包 - Kubernetes 进阶训练营</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ad626c1e.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ad626c1e.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.9204c3b2.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.9204c3b2.min.css">
         
       
     
@@ -40,9 +40,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../docs/stylesheets/custom.css">
+      <link rel="stylesheet" href="../../docs/stylesheets/custom.css">
     
-    <script>function __md_scope(e,t,_){return new URL(_||(t===localStorage?"../../..":"../../.."),location).pathname+"."+e}function __md_get(e,t=localStorage,_){return JSON.parse(t.getItem(__md_scope(e,t,_)))}function __md_set(e,t,_=localStorage,o){try{_.setItem(__md_scope(e,_,o),JSON.stringify(t))}catch(e){}}</script>
+    <script>function __md_scope(e,t,_){return new URL(_||(t===localStorage?"../..":"../.."),location).pathname+"."+e}function __md_get(e,t=localStorage,_){return JSON.parse(t.getItem(__md_scope(e,t,_)))}function __md_set(e,t,_=localStorage,o){try{_.setItem(__md_scope(e,_,o),JSON.stringify(t))}catch(e){}}</script>
     
       
 
@@ -71,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#jenkins" class="md-skip">
+        <a href="#1" class="md-skip">
           跳转至
         </a>
       
@@ -87,9 +87,9 @@
 
 <header class="md-header md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../../.." title="Kubernetes 进阶训练营" class="md-header__button md-logo" aria-label="Kubernetes 进阶训练营" data-md-component="logo">
+    <a href="../.." title="Kubernetes 进阶训练营" class="md-header__button md-logo" aria-label="Kubernetes 进阶训练营" data-md-component="logo">
       
-  <img src="../../../material/logo.jpg" alt="logo">
+  <img src="../../material/logo.jpg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -105,7 +105,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Jenkins
+              Python pip-离线安装软件包
             
           </span>
         </div>
@@ -198,7 +198,7 @@
 
 
   <li class="md-tabs__item">
-    <a href="../../../custom_home.html" class="md-tabs__link">
+    <a href="../../custom_home.html" class="md-tabs__link">
       首页
     </a>
   </li>
@@ -213,7 +213,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../0.Internet/Tcp-ip-docs/" class="md-tabs__link">
+      <a href="../../0.Internet/Tcp-ip-docs/" class="md-tabs__link">
         0、网络基础
       </a>
     </li>
@@ -229,7 +229,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../1.os/ubuntu/kjc-doc/" class="md-tabs__link">
+      <a href="../../1.os/ubuntu/kjc-doc/" class="md-tabs__link">
         1、Linux
       </a>
     </li>
@@ -245,7 +245,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../basic/cncf-docs/" class="md-tabs__link">
+      <a href="../../basic/cncf-docs/" class="md-tabs__link">
         2、kubernetes
       </a>
     </li>
@@ -255,13 +255,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../../python/1-python-docs/" class="md-tabs__link">
+      <a href="../1-python-docs/" class="md-tabs__link md-tabs__link--active">
         3、运维开发
       </a>
     </li>
@@ -277,7 +279,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../k8s/mysql-operator/0-mysql-docs.md" class="md-tabs__link">
+      <a href="../../k8s/mysql-operator/0-mysql-docs.md" class="md-tabs__link">
         4、数据库
       </a>
     </li>
@@ -293,7 +295,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../5.Storage/disk-ssd-docs/" class="md-tabs__link">
+      <a href="../../5.Storage/disk-ssd-docs/" class="md-tabs__link">
         5、存储服务
       </a>
     </li>
@@ -309,7 +311,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../6.Gitops/2024-9-26-Git-docs/" class="md-tabs__link">
+      <a href="../../6.Gitops/2024-9-26-Git-docs/" class="md-tabs__link">
         6、Gitops
       </a>
     </li>
@@ -325,7 +327,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../Devops/git-error-docs/" class="md-tabs__link">
+      <a href="../../Devops/git-error-docs/" class="md-tabs__link">
         7、Devops
       </a>
     </li>
@@ -341,7 +343,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../ansible/ansible-case1/" class="md-tabs__link">
+      <a href="../../ansible/ansible-case1/" class="md-tabs__link">
         8、运维自动化
       </a>
     </li>
@@ -357,7 +359,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../8.nginx/certbot_ssl_doc/" class="md-tabs__link">
+      <a href="../../8.nginx/certbot_ssl_doc/" class="md-tabs__link">
         9、其他
       </a>
     </li>
@@ -373,7 +375,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../Ai-tools/cursor-latest-features/" class="md-tabs__link">
+      <a href="../../Ai-tools/cursor-latest-features/" class="md-tabs__link">
         10、Ai
       </a>
     </li>
@@ -389,7 +391,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../20.mylife/2024-9-24-myblog-life-docs/" class="md-tabs__link">
+      <a href="../../20.mylife/2024-9-24-myblog-life-docs/" class="md-tabs__link">
         关于我
       </a>
     </li>
@@ -423,9 +425,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Kubernetes 进阶训练营" class="md-nav__button md-logo" aria-label="Kubernetes 进阶训练营" data-md-component="logo">
+    <a href="../.." title="Kubernetes 进阶训练营" class="md-nav__button md-logo" aria-label="Kubernetes 进阶训练营" data-md-component="logo">
       
-  <img src="../../../material/logo.jpg" alt="logo">
+  <img src="../../material/logo.jpg" alt="logo">
 
     </a>
     Kubernetes 进阶训练营
@@ -453,7 +455,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../custom_home.html" class="md-nav__link">
+      <a href="../../custom_home.html" class="md-nav__link">
         首页
       </a>
     </li>
@@ -512,7 +514,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../0.Internet/Tcp-ip-docs/" class="md-nav__link">
+      <a href="../../0.Internet/Tcp-ip-docs/" class="md-nav__link">
         网络 Tcp/IP
       </a>
     </li>
@@ -526,7 +528,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../0.Internet/5g-docs/" class="md-nav__link">
+      <a href="../../0.Internet/5g-docs/" class="md-nav__link">
         网络 思科设备
       </a>
     </li>
@@ -540,7 +542,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../0.Internet/IB-ET-docs/" class="md-nav__link">
+      <a href="../../0.Internet/IB-ET-docs/" class="md-nav__link">
         网络 网卡模式调整
       </a>
     </li>
@@ -554,7 +556,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../1.os/asus/asus-docs/" class="md-nav__link">
+      <a href="../../1.os/asus/asus-docs/" class="md-nav__link">
         华硕服务器
       </a>
     </li>
@@ -568,7 +570,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../0.Internet/ZeroTier/" class="md-nav__link">
+      <a href="../../0.Internet/ZeroTier/" class="md-nav__link">
         ZeroTier组网
       </a>
     </li>
@@ -582,7 +584,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../0.Internet/frp/" class="md-nav__link">
+      <a href="../../0.Internet/frp/" class="md-nav__link">
         frp 内网穿透
       </a>
     </li>
@@ -596,7 +598,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../0.Internet/3-0.Internet-docs.md" class="md-nav__link">
+      <a href="../../0.Internet/3-0.Internet-docs.md" class="md-nav__link">
         kubernetes 网络组件
       </a>
     </li>
@@ -610,7 +612,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../0.Internet/4-network-docs/" class="md-nav__link">
+      <a href="../../0.Internet/4-network-docs/" class="md-nav__link">
         科学上网
       </a>
     </li>
@@ -684,7 +686,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../1.os/ubuntu/kjc-doc/" class="md-nav__link">
+      <a href="../../1.os/ubuntu/kjc-doc/" class="md-nav__link">
         Linux 云计算手册大纲
       </a>
     </li>
@@ -698,7 +700,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../1.os/hardware/cpu-doc/" class="md-nav__link">
+      <a href="../../1.os/hardware/cpu-doc/" class="md-nav__link">
         Linux 硬件 CPU
       </a>
     </li>
@@ -712,7 +714,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../1.os/ubuntu/ubuntu-bmc-doc/" class="md-nav__link">
+      <a href="../../1.os/ubuntu/ubuntu-bmc-doc/" class="md-nav__link">
         Linux 带外管理
       </a>
     </li>
@@ -726,7 +728,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../1.os/ubuntu/ubuntu-install-doc/" class="md-nav__link">
+      <a href="../../1.os/ubuntu/ubuntu-install-doc/" class="md-nav__link">
         Linux 系统安装
       </a>
     </li>
@@ -740,7 +742,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../1.os/ubuntu/ubuntu-cli-doc/" class="md-nav__link">
+      <a href="../../1.os/ubuntu/ubuntu-cli-doc/" class="md-nav__link">
         Linux 系统命令
       </a>
     </li>
@@ -754,7 +756,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../1.os/ubuntu/ubuntu-mirror-doc/" class="md-nav__link">
+      <a href="../../1.os/ubuntu/ubuntu-mirror-doc/" class="md-nav__link">
         Linux 国内apt源
       </a>
     </li>
@@ -768,7 +770,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../1.os/ubuntu/ubuntu-nvme-doc/" class="md-nav__link">
+      <a href="../../1.os/ubuntu/ubuntu-nvme-doc/" class="md-nav__link">
         Linux nvme磁盘管理
       </a>
     </li>
@@ -782,7 +784,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../1.os/ubuntu/ubuntu-parted-doc/" class="md-nav__link">
+      <a href="../../1.os/ubuntu/ubuntu-parted-doc/" class="md-nav__link">
         Linux parted磁盘管理
       </a>
     </li>
@@ -796,7 +798,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../1.os/ubuntu/ubuntu-reboot-doc/" class="md-nav__link">
+      <a href="../../1.os/ubuntu/ubuntu-reboot-doc/" class="md-nav__link">
         Linux 系统强制重启
       </a>
     </li>
@@ -810,7 +812,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../1.os/ubuntu/ubuntu-disk-doc/" class="md-nav__link">
+      <a href="../../1.os/ubuntu/ubuntu-disk-doc/" class="md-nav__link">
         Linux 磁盘管理
       </a>
     </li>
@@ -824,7 +826,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../1.os/ubuntu/ubuntu-network-doc/" class="md-nav__link">
+      <a href="../../1.os/ubuntu/ubuntu-network-doc/" class="md-nav__link">
         Linux 网络服务
       </a>
     </li>
@@ -838,7 +840,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../1.os/2024-9-25-ssh-proxy-docs/" class="md-nav__link">
+      <a href="../../1.os/2024-9-25-ssh-proxy-docs/" class="md-nav__link">
         Linux SSH 转发代理实现
       </a>
     </li>
@@ -990,7 +992,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../basic/cncf-docs/" class="md-nav__link">
+      <a href="../../basic/cncf-docs/" class="md-nav__link">
         云原生简介及CNCF
       </a>
     </li>
@@ -1004,7 +1006,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docker/docker-docs/" class="md-nav__link">
+      <a href="../../docker/docker-docs/" class="md-nav__link">
         Docker 基本管理
       </a>
     </li>
@@ -1018,7 +1020,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docker/lxcfs.md" class="md-nav__link">
+      <a href="../../docker/lxcfs.md" class="md-nav__link">
         lxcfs 介绍
       </a>
     </li>
@@ -1032,7 +1034,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docker/docker-images-docs/" class="md-nav__link">
+      <a href="../../docker/docker-images-docs/" class="md-nav__link">
         docker 镜像构建
       </a>
     </li>
@@ -1046,7 +1048,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docker/docker-proxy-docs/" class="md-nav__link">
+      <a href="../../docker/docker-proxy-docs/" class="md-nav__link">
         docker proxy代理
       </a>
     </li>
@@ -1060,7 +1062,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docker/docker-image-clash-docs/" class="md-nav__link">
+      <a href="../../docker/docker-image-clash-docs/" class="md-nav__link">
         docker Clash代理
       </a>
     </li>
@@ -1074,7 +1076,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../3.k8s/base/k8s-overview/" class="md-nav__link">
+      <a href="../../3.k8s/base/k8s-overview/" class="md-nav__link">
         kubernetes 简介
       </a>
     </li>
@@ -1088,7 +1090,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../3.k8s/3-k8s-systeminit-docs/" class="md-nav__link">
+      <a href="../../3.k8s/3-k8s-systeminit-docs/" class="md-nav__link">
         kubernetes 集群部署
       </a>
     </li>
@@ -1102,7 +1104,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../3.k8s/2024-9-19-k8s-update/" class="md-nav__link">
+      <a href="../../3.k8s/2024-9-19-k8s-update/" class="md-nav__link">
         kubernetes 集群升级
       </a>
     </li>
@@ -1116,7 +1118,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../3.k8s/pod-base-docs/" class="md-nav__link">
+      <a href="../../3.k8s/pod-base-docs/" class="md-nav__link">
         kubernetes pod 基础原理
       </a>
     </li>
@@ -1130,7 +1132,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../3.k8s/pod-hook-docs/" class="md-nav__link">
+      <a href="../../3.k8s/pod-hook-docs/" class="md-nav__link">
         kubernetes pod 生命周期
       </a>
     </li>
@@ -1144,7 +1146,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../basic/6-kubernetes-etcd-docs/" class="md-nav__link">
+      <a href="../../basic/6-kubernetes-etcd-docs/" class="md-nav__link">
         kubernetes etcd 简介与实践
       </a>
     </li>
@@ -1158,7 +1160,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../basic/7-kubernetes-coredns-docs/" class="md-nav__link">
+      <a href="../../basic/7-kubernetes-coredns-docs/" class="md-nav__link">
         kubernetes coredns 简介与实践
       </a>
     </li>
@@ -1172,7 +1174,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../k8s/k8s-calico-docs.md" class="md-nav__link">
+      <a href="../../k8s/k8s-calico-docs.md" class="md-nav__link">
         kubernetes calico 网络
       </a>
     </li>
@@ -1186,7 +1188,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../3.k8s/yaml/yaml/" class="md-nav__link">
+      <a href="../../3.k8s/yaml/yaml/" class="md-nav__link">
         kubernetes 资源清单
       </a>
     </li>
@@ -1200,7 +1202,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../3.k8s/base/k8s-limit-docs/" class="md-nav__link">
+      <a href="../../3.k8s/base/k8s-limit-docs/" class="md-nav__link">
         kubernetes 资源限制
       </a>
     </li>
@@ -1214,7 +1216,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../3.k8s/k8s-configmap-docs/" class="md-nav__link">
+      <a href="../../3.k8s/k8s-configmap-docs/" class="md-nav__link">
         kubernetes 配置管理
       </a>
     </li>
@@ -1228,7 +1230,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../basic/5-kubernetes-UI-docs/" class="md-nav__link">
+      <a href="../../basic/5-kubernetes-UI-docs/" class="md-nav__link">
         Kubernetes UI
       </a>
     </li>
@@ -1242,7 +1244,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../3.k8s/deploy-sts-ds-docs/" class="md-nav__link">
+      <a href="../../3.k8s/deploy-sts-ds-docs/" class="md-nav__link">
         kubernetes 控制器
       </a>
     </li>
@@ -1256,7 +1258,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../3.k8s/network/ingress-%E6%B5%81%E9%87%8F/" class="md-nav__link">
+      <a href="../../3.k8s/network/ingress-%E6%B5%81%E9%87%8F/" class="md-nav__link">
         Ingress 流量
       </a>
     </li>
@@ -1270,7 +1272,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../3.k8s/network/%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0/" class="md-nav__link">
+      <a href="../../3.k8s/network/%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0/" class="md-nav__link">
         服务发现
       </a>
     </li>
@@ -1284,7 +1286,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../3.k8s/network/gateway-api/" class="md-nav__link">
+      <a href="../../3.k8s/network/gateway-api/" class="md-nav__link">
         Gateway API
       </a>
     </li>
@@ -1298,7 +1300,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../3.k8s/network/dns-%E4%BC%98%E5%8C%96/" class="md-nav__link">
+      <a href="../../3.k8s/network/dns-%E4%BC%98%E5%8C%96/" class="md-nav__link">
         DNS 优化
       </a>
     </li>
@@ -1312,7 +1314,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../3.k8s/network/ingress-nginx/" class="md-nav__link">
+      <a href="../../3.k8s/network/ingress-nginx/" class="md-nav__link">
         ingress-nginx
       </a>
     </li>
@@ -1326,7 +1328,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../3.k8s/network/service-profiles/" class="md-nav__link">
+      <a href="../../3.k8s/network/service-profiles/" class="md-nav__link">
         Service Profiles
       </a>
     </li>
@@ -1340,7 +1342,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../3.k8s/network/4-network-docs.md" class="md-nav__link">
+      <a href="../../3.k8s/network/4-network-docs.md" class="md-nav__link">
         科学上网
       </a>
     </li>
@@ -1354,7 +1356,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../5.Storage/pv-rep/" class="md-nav__link">
+      <a href="../../5.Storage/pv-rep/" class="md-nav__link">
         kubernetes pv/pvc简介
       </a>
     </li>
@@ -1368,7 +1370,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../3.k8s/k8s-mon-docs/" class="md-nav__link">
+      <a href="../../3.k8s/k8s-mon-docs/" class="md-nav__link">
         kubernetes 监控服务
       </a>
     </li>
@@ -1382,7 +1384,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../3.k8s/k8s-logs-docs/" class="md-nav__link">
+      <a href="../../3.k8s/k8s-logs-docs/" class="md-nav__link">
         kubernetes 日志管理
       </a>
     </li>
@@ -1396,7 +1398,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../3.k8s/k8s-istio-docs/" class="md-nav__link">
+      <a href="../../3.k8s/k8s-istio-docs/" class="md-nav__link">
         kubernetes 服务网格
       </a>
     </li>
@@ -1410,7 +1412,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cks/cka/" class="md-nav__link">
+      <a href="../../cks/cka/" class="md-nav__link">
         kubernetes CKA考题
       </a>
     </li>
@@ -1424,7 +1426,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cks/cks/" class="md-nav__link">
+      <a href="../../cks/cks/" class="md-nav__link">
         kubernetes CKS考题
       </a>
     </li>
@@ -1438,7 +1440,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../3.k8s/ui/rancher-update-docs/" class="md-nav__link">
+      <a href="../../3.k8s/ui/rancher-update-docs/" class="md-nav__link">
         kubernetes Rancher 升级
       </a>
     </li>
@@ -1452,7 +1454,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../basic/7-kubernetes-update-docs/" class="md-nav__link">
+      <a href="../../basic/7-kubernetes-update-docs/" class="md-nav__link">
         kubernetes 节点维护
       </a>
     </li>
@@ -1466,7 +1468,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Helm/helm-install/" class="md-nav__link">
+      <a href="../../Helm/helm-install/" class="md-nav__link">
         kubernetes Helm 实践
       </a>
     </li>
@@ -1480,7 +1482,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Helm/helm-chart/" class="md-nav__link">
+      <a href="../../Helm/helm-chart/" class="md-nav__link">
         kubernetes Helm chart包
       </a>
     </li>
@@ -1494,7 +1496,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../3.k8s/2024-9-24-helmfile-docs/" class="md-nav__link">
+      <a href="../../3.k8s/2024-9-24-helmfile-docs/" class="md-nav__link">
         kubernetes Helmfile 文件
       </a>
     </li>
@@ -1508,7 +1510,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cert-manager/cert-manager-doc/" class="md-nav__link">
+      <a href="../../cert-manager/cert-manager-doc/" class="md-nav__link">
         kubernetes Cert-manager 安装
       </a>
     </li>
@@ -1522,7 +1524,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../3.k8s/other/k8s-ca-docs/" class="md-nav__link">
+      <a href="../../3.k8s/other/k8s-ca-docs/" class="md-nav__link">
         kubernetes 处理k8s证书过期
       </a>
     </li>
@@ -1536,7 +1538,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../3.k8s/7.logging/%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86%E6%9E%B6%E6%9E%84/" class="md-nav__link">
+      <a href="../../3.k8s/7.logging/%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86%E6%9E%B6%E6%9E%84/" class="md-nav__link">
         kubernete 日志架构
       </a>
     </li>
@@ -1550,7 +1552,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../3.k8s/7.logging/%E6%90%AD%E5%BB%BA-efk-%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+      <a href="../../3.k8s/7.logging/%E6%90%AD%E5%BB%BA-efk-%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
         kubernetes EFK日志系统
       </a>
     </li>
@@ -1564,7 +1566,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../docs/3.k8s/7.logging/fluentd.md" class="md-nav__link">
+      <a href="../../docs/3.k8s/7.logging/fluentd.md" class="md-nav__link">
         kubernete 日志fluentd
       </a>
     </li>
@@ -1578,7 +1580,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../3.k8s/7.logging/loki/" class="md-nav__link">
+      <a href="../../3.k8s/7.logging/loki/" class="md-nav__link">
         kubernete Loki
       </a>
     </li>
@@ -1592,7 +1594,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../3.k8s/7.logging/%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB%E6%A8%A1%E5%BC%8F/" class="md-nav__link">
+      <a href="../../3.k8s/7.logging/%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB%E6%A8%A1%E5%BC%8F/" class="md-nav__link">
         kubernetes 日志读写分离模式
       </a>
     </li>
@@ -1606,7 +1608,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../3.k8s/7.logging/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%A8%A1%E5%BC%8F/" class="md-nav__link">
+      <a href="../../3.k8s/7.logging/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%A8%A1%E5%BC%8F/" class="md-nav__link">
         kubernetes 日志微服务模式
       </a>
     </li>
@@ -1620,7 +1622,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../3.k8s/7.logging/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" class="md-nav__link">
+      <a href="../../3.k8s/7.logging/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" class="md-nav__link">
         kubernetes 日志配置文件
       </a>
     </li>
@@ -1634,7 +1636,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../3.k8s/7.logging/%E6%97%A5%E5%BF%97%E6%8A%A5%E8%AD%A6/" class="md-nav__link">
+      <a href="../../3.k8s/7.logging/%E6%97%A5%E5%BF%97%E6%8A%A5%E8%AD%A6/" class="md-nav__link">
         kubernetes 日志报警
       </a>
     </li>
@@ -1648,7 +1650,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../3.k8s/7.logging/logql/" class="md-nav__link">
+      <a href="../../3.k8s/7.logging/logql/" class="md-nav__link">
         kubernetes 日志 Logql
       </a>
     </li>
@@ -1662,7 +1664,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../3.k8s/ansible-install-k8s-docs/" class="md-nav__link">
+      <a href="../../3.k8s/ansible-install-k8s-docs/" class="md-nav__link">
         kubernetes 自动化安装
       </a>
     </li>
@@ -1676,7 +1678,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../3.k8s/4-ansible-install-k8s/" class="md-nav__link">
+      <a href="../../3.k8s/4-ansible-install-k8s/" class="md-nav__link">
         kubernetes 项目一
       </a>
     </li>
@@ -1690,7 +1692,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../basic/9-install-keepalived-cluster/" class="md-nav__link">
+      <a href="../../basic/9-install-keepalived-cluster/" class="md-nav__link">
         kubernetes 项目二
       </a>
     </li>
@@ -1710,12 +1712,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" data-md-state="indeterminate" type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
       
       
       
@@ -1752,7 +1756,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../python/1-python-docs/" class="md-nav__link">
+      <a href="../1-python-docs/" class="md-nav__link">
         Python 开发-基础语法
       </a>
     </li>
@@ -1766,7 +1770,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../python/2-python-docs/" class="md-nav__link">
+      <a href="../2-python-docs/" class="md-nav__link">
         Python 开发-用户交互
       </a>
     </li>
@@ -1778,11 +1782,203 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../../python/pip-offline-packages/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Python pip-离线安装软件包
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Python pip-离线安装软件包
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 导出依赖清单
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 导出依赖清单">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    导出依赖的替代方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 下载离线包
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 下载离线包">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    平台特定包的处理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wheel" class="md-nav__link">
+    下载wheel包而非源码包
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 传输离线文件
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 传输离线文件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    创建便携式压缩包
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4. 离线安装
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 离线安装">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    使用虚拟环境进行隔离安装
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    5. 常见问题与解决方案
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 常见问题与解决方案">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    缺少编译工具
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    平台不兼容问题
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    依赖解析失败
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    6. 替代方案
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 替代方案">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conda" class="md-nav__link">
+    使用conda离线安装
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker" class="md-nav__link">
+    使用Docker容器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pip-tools" class="md-nav__link">
+    使用pip-tools优化依赖
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    7. 大型机器学习模型的离线安装
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1794,7 +1990,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../go/go-base-docs/" class="md-nav__link">
+      <a href="../../go/go-base-docs/" class="md-nav__link">
         GO开发-环境安装
       </a>
     </li>
@@ -1808,7 +2004,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../go/2-go-docs/" class="md-nav__link">
+      <a href="../../go/2-go-docs/" class="md-nav__link">
         GO 开发-操作符和表达式
       </a>
     </li>
@@ -1822,7 +2018,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../python/module-docs/" class="md-nav__link">
+      <a href="../module-docs/" class="md-nav__link">
         模块
       </a>
     </li>
@@ -1888,7 +2084,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../k8s/mysql-operator/0-mysql-docs.md" class="md-nav__link">
+      <a href="../../k8s/mysql-operator/0-mysql-docs.md" class="md-nav__link">
         Mysql 数据库
       </a>
     </li>
@@ -1902,7 +2098,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../k8s/mysql-operator/1-install-mysql-operator.md" class="md-nav__link">
+      <a href="../../k8s/mysql-operator/1-install-mysql-operator.md" class="md-nav__link">
         Mysql operator
       </a>
     </li>
@@ -1916,7 +2112,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../k8s/mysql-operator/2-mysql-backup-docs.md" class="md-nav__link">
+      <a href="../../k8s/mysql-operator/2-mysql-backup-docs.md" class="md-nav__link">
         Mysql 备份恢复
       </a>
     </li>
@@ -1930,7 +2126,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../k8s/mysql-operator/3-mysql-backup-error-docs.md" class="md-nav__link">
+      <a href="../../k8s/mysql-operator/3-mysql-backup-error-docs.md" class="md-nav__link">
         数据库问题处理
       </a>
     </li>
@@ -1944,7 +2140,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../redis/redis-class-docs/" class="md-nav__link">
+      <a href="../../redis/redis-class-docs/" class="md-nav__link">
         redis 大纲
       </a>
     </li>
@@ -1958,7 +2154,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../5.Storage/redis-docs/" class="md-nav__link">
+      <a href="../../5.Storage/redis-docs/" class="md-nav__link">
         redis 缓存加速
       </a>
     </li>
@@ -1972,7 +2168,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../5.Storage/redis-cluster-docs/" class="md-nav__link">
+      <a href="../../5.Storage/redis-cluster-docs/" class="md-nav__link">
         redis 集群篇
       </a>
     </li>
@@ -1986,7 +2182,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../redis/redis-save-docs/" class="md-nav__link">
+      <a href="../../redis/redis-save-docs/" class="md-nav__link">
         redis 持久化
       </a>
     </li>
@@ -2070,7 +2266,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../5.Storage/disk-ssd-docs/" class="md-nav__link">
+      <a href="../../5.Storage/disk-ssd-docs/" class="md-nav__link">
         存储分类
       </a>
     </li>
@@ -2084,7 +2280,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../5.Storage/ceph-base/" class="md-nav__link">
+      <a href="../../5.Storage/ceph-base/" class="md-nav__link">
         ceph 基础
       </a>
     </li>
@@ -2098,7 +2294,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../5.Storage/rook-ceph/" class="md-nav__link">
+      <a href="../../5.Storage/rook-ceph/" class="md-nav__link">
         ceph 分布式存储
       </a>
     </li>
@@ -2112,7 +2308,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../5.Storage/rbd-docs/" class="md-nav__link">
+      <a href="../../5.Storage/rbd-docs/" class="md-nav__link">
         ceph RBD使用
       </a>
     </li>
@@ -2126,7 +2322,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../5.Storage/cephfs-docs/" class="md-nav__link">
+      <a href="../../5.Storage/cephfs-docs/" class="md-nav__link">
         ceph 文件系统使用
       </a>
     </li>
@@ -2140,7 +2336,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../5.Storage/ceph-cli-docs/" class="md-nav__link">
+      <a href="../../5.Storage/ceph-cli-docs/" class="md-nav__link">
         ceph 命令用法
       </a>
     </li>
@@ -2154,7 +2350,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../5.Storage/osd/" class="md-nav__link">
+      <a href="../../5.Storage/osd/" class="md-nav__link">
         ceph 性能测试
       </a>
     </li>
@@ -2168,7 +2364,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../5.Storage/ceph-bucket/" class="md-nav__link">
+      <a href="../../5.Storage/ceph-bucket/" class="md-nav__link">
         ceph 对象存储
       </a>
     </li>
@@ -2182,7 +2378,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../5.Storage/s3-client-docs/" class="md-nav__link">
+      <a href="../../5.Storage/s3-client-docs/" class="md-nav__link">
         ceph s3cmd管理
       </a>
     </li>
@@ -2196,7 +2392,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../5.Storage/5-dev-docs/" class="md-nav__link">
+      <a href="../../5.Storage/5-dev-docs/" class="md-nav__link">
         ceph 存储修复
       </a>
     </li>
@@ -2210,7 +2406,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../5.Storage/expand-docs/" class="md-nav__link">
+      <a href="../../5.Storage/expand-docs/" class="md-nav__link">
         ceph 存储扩容
       </a>
     </li>
@@ -2224,7 +2420,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../5.Storage/ceph-tools/" class="md-nav__link">
+      <a href="../../5.Storage/ceph-tools/" class="md-nav__link">
         ceph 外部环境连接集群
       </a>
     </li>
@@ -2238,7 +2434,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../5.Storage/clean-ceph-docs/" class="md-nav__link">
+      <a href="../../5.Storage/clean-ceph-docs/" class="md-nav__link">
         ceph 集群清理
       </a>
     </li>
@@ -2252,7 +2448,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../5.Storage/ceph-error/" class="md-nav__link">
+      <a href="../../5.Storage/ceph-error/" class="md-nav__link">
         ceph 错误指南
       </a>
     </li>
@@ -2266,7 +2462,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../5.Storage/6-ceph-crush-docs/" class="md-nav__link">
+      <a href="../../5.Storage/6-ceph-crush-docs/" class="md-nav__link">
         ceph 高级参数
       </a>
     </li>
@@ -2280,7 +2476,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../5.Storage/Juicefs/" class="md-nav__link">
+      <a href="../../5.Storage/Juicefs/" class="md-nav__link">
         Juicefs存储方案
       </a>
     </li>
@@ -2294,7 +2490,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../5.Storage/juicefs-update/" class="md-nav__link">
+      <a href="../../5.Storage/juicefs-update/" class="md-nav__link">
         Juicefs版本升级
       </a>
     </li>
@@ -2348,7 +2544,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../6.Gitops/2024-9-26-Git-docs/" class="md-nav__link">
+      <a href="../../6.Gitops/2024-9-26-Git-docs/" class="md-nav__link">
         Git Commit 问题
       </a>
     </li>
@@ -2362,7 +2558,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../6.Gitops/2024-10-10-Github-rsync-Gitee/" class="md-nav__link">
+      <a href="../../6.Gitops/2024-10-10-Github-rsync-Gitee/" class="md-nav__link">
         Github Rysnc 同步 Gitee
       </a>
     </li>
@@ -2420,7 +2616,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Devops/git-error-docs/" class="md-nav__link">
+      <a href="../../Devops/git-error-docs/" class="md-nav__link">
         Git 报错指南
       </a>
     </li>
@@ -2434,7 +2630,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Devops/github/" class="md-nav__link">
+      <a href="../../Devops/github/" class="md-nav__link">
         Github
       </a>
     </li>
@@ -2448,7 +2644,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Devops/4-github-gitee-doc/" class="md-nav__link">
+      <a href="../../Devops/4-github-gitee-doc/" class="md-nav__link">
         Github仓库同步至Gitee
       </a>
     </li>
@@ -2462,7 +2658,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Devops/3-github-docs/" class="md-nav__link">
+      <a href="../../Devops/3-github-docs/" class="md-nav__link">
         Google 浏览器扩展
       </a>
     </li>
@@ -2520,7 +2716,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ansible/ansible-case1/" class="md-nav__link">
+      <a href="../../ansible/ansible-case1/" class="md-nav__link">
         Ansible 应用基础
       </a>
     </li>
@@ -2534,7 +2730,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ansible/ansible-docs2/" class="md-nav__link">
+      <a href="../../ansible/ansible-docs2/" class="md-nav__link">
         Ansible 高级用法
       </a>
     </li>
@@ -2548,7 +2744,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ansible/ansible-install-docs/" class="md-nav__link">
+      <a href="../../ansible/ansible-install-docs/" class="md-nav__link">
         Ansible 安装
       </a>
     </li>
@@ -2562,7 +2758,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ansible/ansible-playbook/" class="md-nav__link">
+      <a href="../../ansible/ansible-playbook/" class="md-nav__link">
         Ansible playbook
       </a>
     </li>
@@ -2642,7 +2838,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../8.nginx/certbot_ssl_doc/" class="md-nav__link">
+      <a href="../../8.nginx/certbot_ssl_doc/" class="md-nav__link">
         Nginx免费SSL解决方案
       </a>
     </li>
@@ -2656,7 +2852,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Macuse/mac-kubeconfig/" class="md-nav__link">
+      <a href="../../Macuse/mac-kubeconfig/" class="md-nav__link">
         kubeconfig 实践应用
       </a>
     </li>
@@ -2670,7 +2866,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../k3s/k3s-docs/" class="md-nav__link">
+      <a href="../../k3s/k3s-docs/" class="md-nav__link">
         k3s 大纲介绍
       </a>
     </li>
@@ -2684,7 +2880,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../k3s/k3s-install/" class="md-nav__link">
+      <a href="../../k3s/k3s-install/" class="md-nav__link">
         k3s 边缘计算
       </a>
     </li>
@@ -2698,7 +2894,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Macuse/mac-k9s-doc/" class="md-nav__link">
+      <a href="../../Macuse/mac-k9s-doc/" class="md-nav__link">
         k9s 实践应用
       </a>
     </li>
@@ -2712,7 +2908,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Macuse/mac-usb-system/" class="md-nav__link">
+      <a href="../../Macuse/mac-usb-system/" class="md-nav__link">
         Mac 制作ubuntu系统盘
       </a>
     </li>
@@ -2726,7 +2922,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Macuse/mac-vscode/" class="md-nav__link">
+      <a href="../../Macuse/mac-vscode/" class="md-nav__link">
         Mac vscode使用技巧
       </a>
     </li>
@@ -2740,7 +2936,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../error/tjtu/" class="md-nav__link">
+      <a href="../../error/tjtu/" class="md-nav__link">
         天津集群
       </a>
     </li>
@@ -2754,7 +2950,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../error/dev/" class="md-nav__link">
+      <a href="../../error/dev/" class="md-nav__link">
         Dev环境集群
       </a>
     </li>
@@ -2768,7 +2964,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../error/delete-prometheus-db/" class="md-nav__link">
+      <a href="../../error/delete-prometheus-db/" class="md-nav__link">
         误删除监控数据
       </a>
     </li>
@@ -2782,7 +2978,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../error/kubernetes-pvc-ubound-doc/" class="md-nav__link">
+      <a href="../../error/kubernetes-pvc-ubound-doc/" class="md-nav__link">
         Kubernetes pvc ubound
       </a>
     </li>
@@ -2796,7 +2992,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../error/cent1.os-dns-error-docs.md" class="md-nav__link">
+      <a href="../../error/cent1.os-dns-error-docs.md" class="md-nav__link">
         dns 文件权限调整
       </a>
     </li>
@@ -2810,7 +3006,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../mac-docs/" class="md-nav__link">
+      <a href="../../other/mac-docs/" class="md-nav__link">
         如何利用Mac 写博客文章
       </a>
     </li>
@@ -2824,7 +3020,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../google-docs/" class="md-nav__link">
+      <a href="../../other/google-docs/" class="md-nav__link">
         高效利用谷歌来搜索
       </a>
     </li>
@@ -2838,7 +3034,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../discord-docs/" class="md-nav__link">
+      <a href="../../other/discord-docs/" class="md-nav__link">
         Discord 新手教程
       </a>
     </li>
@@ -2906,7 +3102,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Ai-tools/cursor-latest-features/" class="md-nav__link">
+      <a href="../../Ai-tools/cursor-latest-features/" class="md-nav__link">
         Cursor 使用技巧
       </a>
     </li>
@@ -2920,7 +3116,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Ai-tools/cursor-model-performance/" class="md-nav__link">
+      <a href="../../Ai-tools/cursor-model-performance/" class="md-nav__link">
         Cursor 模型性能排行
       </a>
     </li>
@@ -2934,7 +3130,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Ai-tools/vllm-Qwen2.5-VL/" class="md-nav__link">
+      <a href="../../Ai-tools/vllm-Qwen2.5-VL/" class="md-nav__link">
         vLLM 部署 Qwen2.5-VL
       </a>
     </li>
@@ -2948,7 +3144,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Ai-tools/vllm-Qwen2.5-VL-72B/" class="md-nav__link">
+      <a href="../../Ai-tools/vllm-Qwen2.5-VL-72B/" class="md-nav__link">
         vLLM 部署 Qwen2.5-VL-72B
       </a>
     </li>
@@ -2962,7 +3158,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Nvidia/Nvidia-gpu-compare/" class="md-nav__link">
+      <a href="../../Nvidia/Nvidia-gpu-compare/" class="md-nav__link">
         NVIDIA显卡对比
       </a>
     </li>
@@ -2976,7 +3172,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Nvidia/Nvidia-k8s-rdma/" class="md-nav__link">
+      <a href="../../Nvidia/Nvidia-k8s-rdma/" class="md-nav__link">
         RDMA在Kubernetes中的应用
       </a>
     </li>
@@ -2990,7 +3186,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../chatgpt/chatgpt-docs.md" class="md-nav__link">
+      <a href="../../chatgpt/chatgpt-docs.md" class="md-nav__link">
         注册chatgpt
       </a>
     </li>
@@ -3004,7 +3200,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../chatgpt/google-ai-docs.md" class="md-nav__link">
+      <a href="../../chatgpt/google-ai-docs.md" class="md-nav__link">
         搜索技术记录
       </a>
     </li>
@@ -3018,7 +3214,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../chatgpt/gpts-docs.md" class="md-nav__link">
+      <a href="../../chatgpt/gpts-docs.md" class="md-nav__link">
         如何使用Chatgpt来制作专属gpt
       </a>
     </li>
@@ -3080,7 +3276,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../20.mylife/2024-9-24-myblog-life-docs/" class="md-nav__link">
+      <a href="../../20.mylife/2024-9-24-myblog-life-docs/" class="md-nav__link">
         我的博客
       </a>
     </li>
@@ -3094,7 +3290,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../20.mylife/2021-life-docs/" class="md-nav__link">
+      <a href="../../20.mylife/2021-life-docs/" class="md-nav__link">
         我的2021
       </a>
     </li>
@@ -3108,7 +3304,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../20.mylife/2022-life-docs/" class="md-nav__link">
+      <a href="../../20.mylife/2022-life-docs/" class="md-nav__link">
         我的2022
       </a>
     </li>
@@ -3122,7 +3318,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../20.mylife/2023-life-docs/" class="md-nav__link">
+      <a href="../../20.mylife/2023-life-docs/" class="md-nav__link">
         我的2023
       </a>
     </li>
@@ -3136,7 +3332,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../20.mylife/2024-life-docs/" class="md-nav__link">
+      <a href="../../20.mylife/2024-life-docs/" class="md-nav__link">
         我的2024
       </a>
     </li>
@@ -3150,7 +3346,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../20.mylife/2025-learning-docs/" class="md-nav__link">
+      <a href="../../20.mylife/2025-learning-docs/" class="md-nav__link">
         我的学习
       </a>
     </li>
@@ -3181,8 +3377,176 @@
   
   
   
-    
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 导出依赖清单
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 导出依赖清单">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    导出依赖的替代方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 下载离线包
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 下载离线包">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    平台特定包的处理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wheel" class="md-nav__link">
+    下载wheel包而非源码包
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 传输离线文件
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 传输离线文件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    创建便携式压缩包
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4. 离线安装
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 离线安装">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    使用虚拟环境进行隔离安装
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    5. 常见问题与解决方案
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 常见问题与解决方案">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    缺少编译工具
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    平台不兼容问题
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    依赖解析失败
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    6. 替代方案
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 替代方案">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conda" class="md-nav__link">
+    使用conda离线安装
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker" class="md-nav__link">
+    使用Docker容器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pip-tools" class="md-nav__link">
+    使用pip-tools优化依赖
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    7. 大型机器学习模型的离线安装
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -3194,411 +3558,141 @@
             <article class="md-content__inner md-typeset">
               
                 
-<a href="https://github.com/barry-boy/barry-boy.github.io/edit/master/docs/other/misc/jenkins.md" title="编辑此页" class="md-content__button md-icon">
+<a href="https://github.com/barry-boy/barry-boy.github.io/edit/master/docs/python/pip-offline-packages.md" title="编辑此页" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
 
-<h1 id="jenkins">Jenkins<a class="headerlink" href="#jenkins" title="Permanent link">&para;</a></h1>
-<p><a href="https://github.com/cnych/qikqiak.com/edit/master/docs/devops/jenkins.md" title="编辑此页"> </a></p>
-<h1 id="jenkins_1">Jenkins<a class="headerlink" href="#jenkins_1" title="Permanent link">&para;</a></h1>
-<p>提到基于 Kubernete 的 CI/CD，可以使用的工具有很多，比如 Jenkins、Gitlab CI 以及新兴的 drone 之类的，我们这里会使用大家最为熟悉的 Jenkins 来做 CI/CD 的工具。</p>
-<h2 id="_1">安装<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>既然要基于 Kubernetes 来做 CI/CD，我们这里最好还是将 Jenkins 安装到 Kubernetes 集群当中，安装的方式也很多，我们这里仍然还是使用手动的方式，这样可以了解更多细节，对应的资源清单文件如下所示：</p>
-<div class="highlight"><pre><span></span><code># jenkins.yaml
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: jenkins-pvc
-  namespace: kube-ops
-spec:
-  storageClassName: local-path # 指定一个可用的 storageclass
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 2Gi
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: jenkins
-  namespace: kube-ops
----
-kind: ClusterRole
-apiVersion: rbac.authorization.k8s.io/v1
-metadata:
-  name: jenkins
-rules:
-  - apiGroups: [&quot;extensions&quot;, &quot;apps&quot;]
-    resources: [&quot;deployments&quot;, &quot;ingresses&quot;]
-    verbs: [&quot;create&quot;, &quot;delete&quot;, &quot;get&quot;, &quot;list&quot;, &quot;watch&quot;, &quot;patch&quot;, &quot;update&quot;]
-  - apiGroups: [&quot;&quot;]
-    resources: [&quot;services&quot;]
-    verbs: [&quot;create&quot;, &quot;delete&quot;, &quot;get&quot;, &quot;list&quot;, &quot;watch&quot;, &quot;patch&quot;, &quot;update&quot;]
-  - apiGroups: [&quot;&quot;]
-    resources: [&quot;pods&quot;]
-    verbs: [&quot;create&quot;, &quot;delete&quot;, &quot;get&quot;, &quot;list&quot;, &quot;patch&quot;, &quot;update&quot;, &quot;watch&quot;]
-  - apiGroups: [&quot;&quot;]
-    resources: [&quot;pods/exec&quot;]
-    verbs: [&quot;create&quot;, &quot;delete&quot;, &quot;get&quot;, &quot;list&quot;, &quot;patch&quot;, &quot;update&quot;, &quot;watch&quot;]
-  - apiGroups: [&quot;&quot;]
-    resources: [&quot;pods/log&quot;, &quot;events&quot;]
-    verbs: [&quot;get&quot;, &quot;list&quot;, &quot;watch&quot;]
-  - apiGroups: [&quot;&quot;]
-    resources: [&quot;secrets&quot;]
-    verbs: [&quot;get&quot;]
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: jenkins
-  namespace: kube-ops
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: jenkins
-subjects:
-  - kind: ServiceAccount
-    name: jenkins
-    namespace: kube-ops
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: jenkins
-  namespace: kube-ops
-spec:
-  selector:
-    matchLabels:
-      app: jenkins
-  template:
-    metadata:
-      labels:
-        app: jenkins
-    spec:
-      serviceAccount: jenkins
-      initContainers:
-        - name: fix-permissions
-          image: busybox:1.35.0
-          command: [&quot;sh&quot;, &quot;-c&quot;, &quot;chown -R 1000:1000 /var/jenkins_home&quot;]
-          securityContext:
-            privileged: true
-          volumeMounts:
-            - name: jenkinshome
-              mountPath: /var/jenkins_home
-      containers:
-        - name: jenkins
-          image: jenkins/jenkins:2.356
-          imagePullPolicy: IfNotPresent
-          env:
-            - name: JAVA_OPTS
-              value: -Dhudson.model.DownloadService.noSignatureCheck=true
-          ports:
-            - containerPort: 8080
-              name: web
-              protocol: TCP
-            - containerPort: 50000
-              name: agent
-              protocol: TCP
-          resources:
-            limits:
-              cpu: 1500m
-              memory: 2048Mi
-            requests:
-              cpu: 1500m
-              memory: 2048Mi
-          readinessProbe:
-            httpGet:
-              path: /login
-              port: 8080
-            initialDelaySeconds: 60
-            timeoutSeconds: 5
-            failureThreshold: 12
-          volumeMounts:
-            - name: jenkinshome
-              mountPath: /var/jenkins_home
-      volumes:
-        - name: jenkinshome
-          persistentVolumeClaim:
-            claimName: jenkins-pvc
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: jenkins
-  namespace: kube-ops
-  labels:
-    app: jenkins
-spec:
-  selector:
-    app: jenkins
-  ports:
-    - name: web
-      port: 8080
-      targetPort: web
-    - name: agent
-      port: 50000
-      targetPort: agent
----
-apiVersion: apisix.apache.org/v2beta2
-kind: ApisixRoute
-metadata:
-  name: jenkins
-  namespace: kube-ops
-spec:
-  http:
-    - name: main
-      match:
-        hosts:
-          - jenkins.k8s.local
-        paths:
-          - &quot;/*&quot;
-      backends:
-        - serviceName: jenkins
-          servicePort: 8080
-# ---
-# apiVersion: extensions/v1beta1
-# kind: Ingress
-# metadata:
-#   name: jenkins
-#   namespace: kube-ops
-# spec:
-#   rules:
-#   - host: jenkins.k8s.local
-#     http:
-#       paths:
-#       - backend:
-#           serviceName: jenkins
-#           servicePort: web
----
-# apiVersion: traefik.containo.us/v1alpha1
-# kind: IngressRoute
-# metadata:
-#   name: jenkins
-#   namespace: kube-ops
-# spec:
-#   entryPoints:
-#     - web
-#   routes:
-#     - kind: Rule
-#       match: Host(`jenkins.k8s.local`)
-#       services:
-#         - name: jenkins
-#           port: 8080
+  <h1>Python pip-离线安装软件包</h1>
+
+<h2 id="1"><strong>1. 导出依赖清单</strong><a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>在联网环境中生成 <code>requirements.txt</code> 文件：</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>freeze<span class="w"> </span>&gt;<span class="w"> </span>requirements.txt
 </code></pre></div>
-<p>我们这里使用 <code>jenkins/jenkins:lts</code> 镜像，这是 jenkins 官方的 Docker 镜像，然后也有一些环境变量，当然我们也可以根据自己的需求来定制一个镜像，比如我们可以将一些插件打包在自定义的镜像当中，可以参考文档：<a href="https://github.com/jenkinsci/docker">https://github.com/jenkinsci/docker</a>，我们这里使用默认的官方镜像就行，另外一个还需要注意的数据的持久化，将容器的 <code>/var/jenkins_home</code> 目录持久化即可，我们这里使用的是一个 StorageClass。</p>
-<p>由于我们这里使用的镜像内部运行的用户 <code>uid=1000</code>，所以我们这里挂载出来后会出现权限问题，为解决这个问题，我们同样还是用一个简单的 <code>initContainer</code> 来修改下我们挂载的数据目录。</p>
-<p>另外由于 jenkens 会对 <code>update-center.json</code> 做签名校验安全检查，这里我们需要先提前关闭，否则下面更改插件源可能会失败，通过配置环境变量 <code>JAVA_OPTS=-Dhudson.model.DownloadService.noSignatureCheck=true</code> 即可。</p>
-<p>另外我们这里还需要使用到一个拥有相关权限的 <code>serviceAccount：jenkins</code>，我们这里只是给 jenkins 赋予了一些必要的权限，当然如果你对 serviceAccount 的权限不是很熟悉的话，我们给这个 sa 绑定一个 <code>cluster-admin</code> 的集群角色权限也是可以的，当然这样具有一定的安全风险。最后就是通过 IngressRoute 来暴露我们的服务，这个比较简单。</p>
-<p>我们直接来创建 jenkins 的资源清单即可：</p>
-<div class="highlight"><pre><span></span><code>$ kubectl apply -f jenkins.yaml
-$ kubectl get pods -n kube-ops -l app=jenkins
-NAME                       READY   STATUS    RESTARTS   AGE
-jenkins-556cd59c8c-2vl8m   1/1     Running   0          44s
-$ kubectl logs -f jenkins-875f5bbb9-jlr46 -n kube-ops
-Running from: /usr/share/jenkins/jenkins.war
-webroot: EnvVars.masterEnvVars.get(&quot;JENKINS_HOME&quot;)
-......
-2022-07-02 07:24:05.592+0000 [id=31]    INFO    jenkins.install.SetupWizard#init:
+<p>此文件会记录当前环境所有已安装的包及其版本</p>
+<blockquote>
+<p><strong>注意</strong>：如果你使用的是虚拟环境，<code>pip freeze</code> 只会导出该环境中的包。如果你在全局环境中执行此命令，它会导出所有全局安装的包，可能包含不需要的依赖。</p>
+</blockquote>
+<h3 id="_1"><strong>导出依赖的替代方法</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>如果你的项目使用了 <code>setup.py</code> 或 <code>pyproject.toml</code>，可以使用以下命令获取更精确的依赖列表：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 对于使用 setup.py 的项目</span>
+pip<span class="w"> </span>install<span class="w"> </span>pipreqs
+pipreqs<span class="w"> </span>/path/to/project
 
-*************************************************************
-*************************************************************
-*************************************************************
-
-Jenkins initial setup is required. An admin user has been created and a password generated.
-Please use the following password to proceed to installation:
-
-c638515e155c4eaaa193791cfbb94942
-
-This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
-
-*************************************************************
-*************************************************************
-*************************************************************
-
-2022-07-02 07:25:44.089+0000 [id=28]    INFO    jenkins.InitReactorRunner$1#onAttained: Completed initialization
-2022-07-02 07:25:44.099+0000 [id=22]    INFO    hudson.WebAppMain$3#run: Jenkins is fully up and running
+<span class="c1"># 对于使用 Poetry 的项目</span>
+poetry<span class="w"> </span><span class="nb">export</span><span class="w"> </span>-f<span class="w"> </span>requirements.txt<span class="w"> </span>&gt;<span class="w"> </span>requirements.txt
 </code></pre></div>
-<p>看到上面的 <code>run: Jenkins is fully up and running</code> 信息就证明我们的 Jenkins 应用以前启动起来了。</p>
-<p>然后我们可以通过 IngressRoute 中定义的域名 <code>jenkins.k8s.local</code>(需要做 DNS 解析或者在本地 <code>/etc/hosts</code> 中添加映射)来访问 jenkins 服务：</p>
-<p><img alt="jenkins unlock" src="https://picdn.youdianzhishi.com/images/1656749013819.png" /></p>
-<p>然后可以执行下面的命令获取解锁的管理员密码：</p>
-<div class="highlight"><pre><span></span><code>$ kubectl exec -it jenkins-875f5bbb9-jlr46 -n kube-ops -- cat /var/jenkins_home/secrets/initialAdminPassword
-35b083de1d25409eaef57255e0da481a   # jenkins启动日志里面也有
+<h2 id="2"><strong>2. 下载离线包</strong><a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<p>使用 <code>pip download</code> 下载所有依赖包：</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>download<span class="w"> </span>-d<span class="w"> </span>./offline-packages<span class="w"> </span>-r<span class="w"> </span>requirements.txt<span class="w"> </span>-i<span class="w"> </span>https://pypi.tuna.tsinghua.edu.cn/simple
 </code></pre></div>
-<p>然后跳过插件安装，选择默认安装插件过程会非常慢（也可以选择安装推荐的插件），点击右上角关闭选择插件，等配置好插件中心国内镜像源后再选择安装一些插件。</p>
-<p><img alt="ignore plugin install" src="https://picdn.youdianzhishi.com/images/20210525175154.png" /></p>
-<p>跳过后会直接进入 Jenkins 就绪页面，直接点击开始使用即可：</p>
-<p><img alt="jenkins ready" src="https://picdn.youdianzhishi.com/images/20210525175232.png" /></p>
-<p>进入主页后，首先安装中文插件，搜索 <code>Localization: Chinese</code>：</p>
-<p><img alt="Localization: Chinese" src="https://picdn.youdianzhishi.com/images/1656749451322.png" /></p>
-<p>安装重启完成后，点击最下方的 <code>Jenkins 中文社区</code> 进入页面配置插件代理：</p>
-<p><img alt="click jenkins chinese" src="https://picdn.youdianzhishi.com/images/1656750053327.png" /></p>
-<p>在页面中点击下方的 <code>设置更新中心地址</code> 链接：</p>
-<p><img alt="设置更新地址" src="https://picdn.youdianzhishi.com/images/20210525182810.png" /></p>
-<p>在新的页面最下面配置升级站点 URL 地址为 <code>https://updates.jenkins-zh.cn/update-center.json</code>（可能因为版本的问题会出现错误，可以尝试使用地址：<code>https://cdn.jsdelivr.net/gh/jenkins-zh/update-center-mirror/tsinghua/dynamic-stable-2.277.1/update-center.json</code> 进行测试），然后点击<code>提交</code>，最后点击<code>立即获取</code>：</p>
-<p><img alt="设置站点URL" src="https://picdn.youdianzhishi.com/images/1656751163865.png" /></p>
-<p>比如我们可以搜索安装 <code>Pipeline</code> 插件，配置完成后正常下载插件就应该更快了。</p>
-<p><img alt="install pipeline plugin" src="https://picdn.youdianzhishi.com/images/20210527144020.png" /></p>
-<h2 id="_2">架构<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>Jenkins 安装完成了，接下来我们不用急着就去使用，我们要了解下在 Kubernetes 环境下面使用 Jenkins 有什么好处。</p>
-<p>我们知道持续构建与发布是我们日常工作中必不可少的一个步骤，目前大多公司都采用 Jenkins 集群来搭建符合需求的 CI/CD 流程，然而传统的 Jenkins Slave 一主多从方式会存在一些痛点，比如：</p>
 <ul>
-<li>主 Master 发生单点故障时，整个流程都不可用了</li>
-<li>每个 Slave 的配置环境不一样，来完成不同语言的编译打包等操作，但是这些差异化的配置导致管理起来非常不方便，维护起来也是比较费劲</li>
-<li>资源分配不均衡，有的 Slave 要运行的 job 出现排队等待，而有的 Slave 处于空闲状态</li>
-<li>资源有浪费，每台 Slave 可能是物理机或者虚拟机，当 Slave 处于空闲状态时，也不会完全释放掉资源。</li>
+<li><strong>参数说明</strong>：<ul>
+<li><code>d</code>: 指定下载目录（如 <code>./offline-packages</code>）</li>
+<li><code>r</code>: 指定依赖文件（<code>requirements.txt</code>）</li>
+<li><code>i</code>: 使用国内镜像加速（推荐清华、阿里云等镜像源）如何可以访问也可以不加</li>
 </ul>
-<p>正因为上面的这些种种痛点，我们渴望一种更高效更可靠的方式来完成这个 CI/CD 流程，而 Docker 虚拟化容器技术能很好的解决这个痛点，又特别是在 Kubernetes 集群环境下面能够更好来解决上面的问题，下图是基于 Kubernetes 搭建 Jenkins 集群的简单示意图：</p>
-<p><img alt="k8s jenkins slave" src="https://picdn.youdianzhishi.com/images/1656750648108.png" /></p>
-<p>从图上可以看到 <code>Jenkins Master</code> 和 <code>Jenkins Slave</code> 以 Pod 形式运行在 Kubernetes 集群的 Node 上，Master 运行在其中一个节点，并且将其配置数据存储到一个 Volume 上去，Slave 运行在各个节点上，并且它不是一直处于运行状态，它会按照需求动态的创建并自动删除。</p>
-<p>这种方式的工作流程大致为：当 Jenkins Master 接受到 Build 请求时，会根据配置的 Label 动态创建一个运行在 Pod 中的 Jenkins Slave 并注册到 Master 上，当运行完 Job 后，这个 Slave 会被注销并且这个 Pod 也会自动删除，恢复到最初状态。</p>
-<p>那么我们使用这种方式带来了哪些好处呢？</p>
+</li>
+<li><strong>依赖自动处理</strong>：该命令会递归下载所有依赖包（包括次级依赖），无需手动查找</li>
+</ul>
+<h3 id="_2"><strong>平台特定包的处理</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>如果目标环境与下载环境的操作系统或Python版本不同，需要指定平台：</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>download<span class="w"> </span>-d<span class="w"> </span>./offline-packages<span class="w"> </span>-r<span class="w"> </span>requirements.txt<span class="w"> </span>--platform<span class="w"> </span>manylinux1_x86_64<span class="w"> </span>--python-version<span class="w"> </span><span class="m">3</span>.8<span class="w"> </span>--implementation<span class="w"> </span>cp<span class="w"> </span>--abi<span class="w"> </span>cp38m
+</code></pre></div>
+<h3 id="wheel"><strong>下载wheel包而非源码包</strong><a class="headerlink" href="#wheel" title="Permanent link">&para;</a></h3>
+<p>优先下载预编译的wheel包可以避免在离线环境中编译的问题：</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>download<span class="w"> </span>-d<span class="w"> </span>./offline-packages<span class="w"> </span>-r<span class="w"> </span>requirements.txt<span class="w"> </span>--only-binary<span class="o">=</span>:all:
+</code></pre></div>
+<h2 id="3"><strong>3. 传输离线文件</strong><a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<p>将整个 <code>offline-packages</code> 目录和 <code>requirements.txt</code> 复制到离线环境（如U盘、内网服务器等）。</p>
+<h3 id="_3"><strong>创建便携式压缩包</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>tar<span class="w"> </span>-czvf<span class="w"> </span>offline-packages.tar.gz<span class="w"> </span>./offline-packages<span class="w"> </span>requirements.txt
+</code></pre></div>
+<h2 id="4"><strong>4. 离线安装</strong><a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<p>在离线环境中执行：</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>--no-index<span class="w"> </span>--find-links<span class="o">=</span>./offline-packages<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</code></pre></div>
 <ul>
-<li><strong>服务高可用</strong> ，当 Jenkins Master 出现故障时，Kubernetes 会自动创建一个新的 Jenkins Master 容器，并且将 Volume 分配给新创建的容器，保证数据不丢失，从而达到集群服务高可用。</li>
-<li><strong>动态伸缩</strong> ，合理使用资源，每次运行 Job 时，会自动创建一个 Jenkins Slave，Job 完成后，Slave 自动注销并删除容器，资源自动释放，而且 Kubernetes 会根据每个资源的使用情况，动态分配 Slave 到空闲的节点上创建，降低出现因某节点资源利用率高，还排队等待在该节点的情况。</li>
-<li><strong>扩展性好</strong> ，当 Kubernetes 集群的资源严重不足而导致 Job 排队等待时，可以很容易的添加一个 Kubernetes Node 到集群中，从而实现扩展。 是不是以前我们面临的种种问题在 Kubernetes 集群环境下面是不是都没有了啊？看上去非常完美。</li>
+<li><strong>关键参数</strong>：<ul>
+<li><code>--no-index</code>: 禁止从PyPI联网下载</li>
+<li><code>--find-links</code>: 指定本地包目录</li>
 </ul>
-<h2 id="_3">配置<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>接下来我们就需要来配置 Jenkins，让他能够动态的生成 Slave 的 Pod。</p>
-<p>第 1 步. 我们需要安装 <a href="https://github.com/jenkinsci/kubernetes-plugin">kubernetes 插件</a>， 点击 Manage Jenkins -&gt; Manage Plugins -&gt; Available -&gt; Kubernetes 勾选安装即可。</p>
-<p><img alt="kubernetes plugin" src="https://picdn.youdianzhishi.com/images/1656750693236.png" /></p>
-<p>第 2 步. 安装完毕后，进入 <code>http://jenkins.k8s.local/configureClouds/</code> 页面：</p>
-<p><img alt="new kubernetes plugin config" src="https://picdn.youdianzhishi.com/images/1656751203450.png" /></p>
-<p>在该页面我们可以点击 <code>Add a new cloud</code> -&gt; 选择 <code>Kubernetes</code>，首先点击 <code>Kubernetes Cloud details...</code> 按钮进行配置：</p>
-<p><img alt="kubernetes plugin config" src="https://picdn.youdianzhishi.com/images/1656751233709.png" /></p>
-<p>首先配置连接 Kubernetes APIServer 的地址，由于我们的 Jenkins 运行在 Kubernetes 集群中，所以可以使用 Service 的 DNS 形式进行连接 <code>https://kubernetes.default.svc.cluster.local</code>：</p>
-<p><img alt="jenkins k8s apiserver" src="https://picdn.youdianzhishi.com/images/1656751314002.png" /></p>
-<p>注意 namespace，我们这里填 kube-ops，然后点击 <code>Test Connection</code>，如果出现 <code>Connected to Kubernetes...</code> 的提示信息证明 Jenkins 已经可以和 Kubernetes 系统正常通信了。</p>
-<p>然后下方的 Jenkins URL 地址：<code>http://jenkins.kube-ops.svc.cluster.local:8080</code>，这里的格式为：<code>服务名.namespace.svc.cluster.local:8080</code>，根据上面创建的 jenkins 的服务名填写，包括下面的 Jenkins 通道，默认是 50000 端口（要注意是 TCP，所以不要填写 http）：</p>
-<p><img alt="jenkins url" src="https://picdn.youdianzhishi.com/images/1656751376150.png" /></p>
-<p>第 3 步. 点击最下方的 <code>Pod Templates</code> 按钮用于配置 Jenkins Slave 运行的 Pod 模板，命名空间我们同样是用 kube-ops，Labels 这里也非常重要，对于后面执行 Job 的时候需要用到该值。</p>
-<p><img alt="slave pod template" src="https://picdn.youdianzhishi.com/images/1656751455540.png" /></p>
-<p>然后配置下面的容器模板，我们这里使用的是 <code>cnych/jenkins:jnlp6</code> 这个镜像，这个镜像是在官方的 jnlp 镜像基础上定制的，加入了 docker、kubectl 等一些实用的工具`。</p>
-<p><img alt="jnlp container template" src="https://picdn.youdianzhishi.com/images/1656751538664.png" /></p>
-<p>注意</p>
-<p>容器的名称必须是 <code>jnlp</code>，这是默认拉起的容器，另外需要将 <code>运行的命令</code> 和 <code>命令参数</code> 的值都删除掉，否则会失败。</p>
-<p>由于 jnlp 容器中只是 docker cli，需要 docker daemon 才能正常使用，我们通常情况下的做法是将宿主机上的 docker sock 文件 <code>/var/run/docker.sock</code> 挂载到容器中，但是我们现在的 Kubernetes 集群使用的是 containerd 这种容器运行时，节点上没有 docker daemon。我们可以单独以 Pod 的形式在集群中跑一个 docker daemon 的服务，对应的资源清单如下所示：</p>
-<div class="highlight"><pre><span></span><code># docker-dind.yaml
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  labels:
-    app: docker-dind
-  name: docker-dind-data
-  namespace: kube-ops
-spec:
-  accessModes:
-    - ReadWriteOnce
-  storageClassName: local-path
-  resources:
-    requests:
-      storage: 5Gi
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: docker-dind
-  namespace: kube-ops
-  labels:
-    app: docker-dind
-spec:
-  selector:
-    matchLabels:
-      app: docker-dind
-  template:
-    metadata:
-      labels:
-        app: docker-dind
-    spec:
-      containers:
-        - image: docker:dind
-          name: docker-dind
-          args:
-            - --registry-mirror=https://ot2k4d59.mirror.aliyuncs.com/ # 指定一个镜像加速器地址
-          env:
-            - name: DOCKER_DRIVER
-              value: overlay2
-            - name: DOCKER_HOST
-              value: tcp://0.0.0.0:2375
-            - name: DOCKER_TLS_CERTDIR # 禁用 TLS（最好别禁用）
-              value: &quot;&quot;
-          volumeMounts:
-            - name: docker-dind-data-vol # 持久化docker根目录
-              mountPath: /var/lib/docker/
-          ports:
-            - name: daemon-port
-              containerPort: 2375
-          securityContext:
-            privileged: true # 需要设置成特权模式
-      volumes:
-        - name: docker-dind-data-vol
-          persistentVolumeClaim:
-            claimName: docker-dind-data
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: docker-dind
-  namespace: kube-ops
-  labels:
-    app: docker-dind
-spec:
-  ports:
-    - port: 2375
-      targetPort: 2375
-  selector:
-    app: docker-dind
-</code></pre></div>
-<p>直接创建上面的资源对象即可：</p>
-<div class="highlight"><pre><span></span><code>$ kubectl apply -f docker-dind.yaml
-$ kubectl get pods -n kube-ops -l app=docker-dind
-NAME                           READY   STATUS    RESTARTS   AGE
-docker-dind-864ffd5887-zm7lr   1/1     Running   0          11m
-$ kubectl get svc -n kube-ops -l app=docker-dind
-NAME          TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)    AGE
-docker-dind   ClusterIP   10.97.122.46   &lt;none&gt;        2375/TCP   6m26s
-</code></pre></div>
-<p>然后我们可以通过设置环境变量 <code>DOCKER_HOST: tcp://docker-dind:2375</code> 去连接 docker dind 服务。</p>
-<p><img alt="docker dind 环境变量" src="https://picdn.youdianzhishi.com/images/1656752441436.png" /></p>
-<p>另外需要将目录 <code>/root/.kube</code> 挂载到容器的 <code>/root/.kube</code> 目录下面，这是为了让我们能够在 Pod 的容器中能够使用 <code>kubectl</code> 工具来访问我们的 Kubernetes 集群，方便我们后面在 <code>Slave Pod</code> 部署 Kubernetes 应用。</p>
-<p><img alt="slave pod volume" src="https://picdn.youdianzhishi.com/images/1656752521158.png" /></p>
-<p>另外如果在配置了后运行 Slave Pod 的时候出现了权限问题，这是因为 Jenkins Slave Pod 中没有配置权限，所以需要配置上 ServiceAccount，在 Slave Pod 配置的地方点击下面的高级，添加上对应的 ServiceAccount 即可：</p>
-<p><img alt="slave pod serviceAccount" src="https://picdn.youdianzhishi.com/images/20210527183334.png" /></p>
-<p>到这里我们的 Kubernetes 插件就算配置完成了，记得保存。</p>
-<h2 id="_4">测试<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p>Kubernetes 插件的配置工作完成了，接下来我们就来添加一个 Job 任务，看是否能够在 Slave Pod 中执行，任务执行完成后看 Pod 是否会被销毁。</p>
-<p>在 Jenkins 首页点击 <code>新建任务</code>，创建一个测试的任务，输入任务名称，然后我们选择 <code>构建一个自由风格的软件项目</code> 类型的任务，注意在下面的 <code>Label Expression</code> 这里要填入 <code>ydzs-jnlp</code>，就是前面我们配置的 Slave Pod 中的 Label，这两个地方必须保持一致：</p>
-<p><img alt="slave pod label" src="https://picdn.youdianzhishi.com/images/1656752727922.png" /></p>
-<p>然后往下拉，在 <code>构建</code> 区域选择 <code>执行 shell</code>：</p>
-<p><img alt="slave pod execute shell" src="https://picdn.youdianzhishi.com/images/1656752763920.png" /></p>
-<p>然后输入我们测试命令</p>
-<div class="highlight"><pre><span></span><code>echo &quot;测试 Kubernetes 动态生成 jenkins slave&quot;
-echo &quot;==============docker in docker===========&quot;
-docker info
+</li>
+</ul>
+<h3 id="_4"><strong>使用虚拟环境进行隔离安装</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 创建虚拟环境</span>
+python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
 
-echo &quot;=============kubectl=============&quot;
-kubectl get pods
+<span class="c1"># 激活虚拟环境</span>
+<span class="c1"># Windows</span>
+venv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
+<span class="c1"># Linux/Mac</span>
+<span class="nb">source</span><span class="w"> </span>venv/bin/activate
+
+<span class="c1"># 在虚拟环境中安装</span>
+pip<span class="w"> </span>install<span class="w"> </span>--no-index<span class="w"> </span>--find-links<span class="o">=</span>./offline-packages<span class="w"> </span>-r<span class="w"> </span>requirements.txt
 </code></pre></div>
-<p>最后点击保存。</p>
-<p><img alt="slave pod execute command" src="https://picdn.youdianzhishi.com/images/1656752803053.png" /></p>
-<p>现在我们直接在页面点击左侧的 <code>立即构建</code> 触发构建即可，然后观察 Kubernetes 集群中 Pod 的变化：</p>
-<div class="highlight"><pre><span></span><code>$ kubectl get pods -n kube-ops
-NAME                           READY   STATUS              RESTARTS   AGE
-docker-dind-864ffd5887-zm7lr   1/1     Running             0          18m
-jenkins-875f5bbb9-jlr46        1/1     Running             0          104m
-jenkins-agent-vm2th            0/1     ContainerCreating   0          4s
+<h2 id="5"><strong>5. 常见问题与解决方案</strong><a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<h3 id="_5"><strong>缺少编译工具</strong><a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>某些包需要在安装时编译，确保离线环境有必要的编译工具：
+- Windows: Visual C++ Build Tools
+- Linux: gcc, python-dev, 等</p>
+<h3 id="_6"><strong>平台不兼容问题</strong><a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>如果出现 <code>xxx is not a supported wheel on this platform</code> 错误：
+- 确保下载的包与目标环境的操作系统、Python版本和架构匹配
+- 考虑在目标环境相似的机器上下载包</p>
+<h3 id="_7"><strong>依赖解析失败</strong><a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>如果出现依赖冲突，可以尝试：
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>--no-index<span class="w"> </span>--find-links<span class="o">=</span>./offline-packages<span class="w"> </span>--no-dependencies<span class="w"> </span>-r<span class="w"> </span>requirements.txt
 </code></pre></div>
-<p>我们可以看到在我们点击立刻构建的时候可以看到一个新的 Pod：<code>jenkins-agent-vm2th</code> 被创建了，这就是我们的 Jenkins Slave。任务执行完成后我们可以看到任务信息:</p>
-<p><img alt="slave pod demo" src="https://picdn.youdianzhishi.com/images/1656753029702.jpg" /></p>
-<p>到这里证明我们的任务已经构建完成，然后这个时候我们再去集群查看我们的 Pod 列表，发现 kube-ops 这个 namespace 下面已经没有之前的 Slave 这个 Pod 了。</p>
-<div class="highlight"><pre><span></span><code>$ kubectl get pods -n kube-ops
-NAME                           READY   STATUS              RESTARTS   AGE
-docker-dind-864ffd5887-zm7lr   1/1     Running             0          18m
-jenkins-875f5bbb9-jlr46        1/1     Running             0          104m
+然后手动解决依赖问题。</p>
+<h2 id="6"><strong>6. 替代方案</strong><a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<h3 id="conda"><strong>使用conda离线安装</strong><a class="headerlink" href="#conda" title="Permanent link">&para;</a></h3>
+<p>如果你使用Anaconda或Miniconda，可以创建离线包：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 创建环境规范文件</span>
+conda<span class="w"> </span>env<span class="w"> </span><span class="nb">export</span><span class="w"> </span>&gt;<span class="w"> </span>environment.yml
+
+<span class="c1"># 创建离线包</span>
+conda<span class="w"> </span>pack<span class="w"> </span>-n<span class="w"> </span>your_env_name<span class="w"> </span>-o<span class="w"> </span>offline_env.tar.gz
 </code></pre></div>
-<p>到这里我们就完成了使用 Kubernetes 动态生成 Jenkins Slave 的方法。</p>
+<p>在离线环境中：
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>target_directory
+tar<span class="w"> </span>-xzf<span class="w"> </span>offline_env.tar.gz<span class="w"> </span>-C<span class="w"> </span>target_directory
+<span class="nb">source</span><span class="w"> </span>target_directory/bin/activate
+</code></pre></div></p>
+<h3 id="docker"><strong>使用Docker容器</strong><a class="headerlink" href="#docker" title="Permanent link">&para;</a></h3>
+<p>预先构建包含所有依赖的Docker镜像，然后在离线环境中加载：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 在联网环境</span>
+docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>my_python_app<span class="w"> </span>.
+docker<span class="w"> </span>save<span class="w"> </span>-o<span class="w"> </span>my_python_app.tar<span class="w"> </span>my_python_app
+
+<span class="c1"># 在离线环境</span>
+docker<span class="w"> </span>load<span class="w"> </span>-i<span class="w"> </span>my_python_app.tar
+</code></pre></div>
+<h3 id="pip-tools"><strong>使用pip-tools优化依赖</strong><a class="headerlink" href="#pip-tools" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 安装pip-tools</span>
+pip<span class="w"> </span>install<span class="w"> </span>pip-tools
+
+<span class="c1"># 生成精确的依赖</span>
+pip-compile<span class="w"> </span>requirements.in
+
+<span class="c1"># 下载依赖</span>
+pip<span class="w"> </span>download<span class="w"> </span>-d<span class="w"> </span>./offline-packages<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</code></pre></div>
+<h2 id="7"><strong>7. 大型机器学习模型的离线安装</strong><a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<p>对于需要下载大型模型文件的包（如Hugging Face的transformers模型）：</p>
+<ol>
+<li>
+<p>在联网环境中预先下载模型：
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoModel</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">AutoModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;model_name&quot;</span><span class="p">,</span> <span class="n">cache_dir</span><span class="o">=</span><span class="s2">&quot;./model_cache&quot;</span><span class="p">)</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>将<code>model_cache</code>目录复制到离线环境的相应位置</p>
+</li>
+<li>在代码中指定<code>cache_dir</code>参数指向本地模型目录</li>
+</ol>
 
               
             </article>
@@ -3613,6 +3707,41 @@ jenkins-875f5bbb9-jlr46        1/1     Running             0          104m
       </main>
       
         <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="页脚">
+      
+        
+        <a href="../2-python-docs/" class="md-footer__link md-footer__link--prev" aria-label="上一页: Python 开发-用户交互" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              Python 开发-用户交互
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../go/go-base-docs/" class="md-footer__link md-footer__link--next" aria-label="下一页: GO开发-环境安装" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              GO开发-环境安装
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -3678,14 +3807,14 @@ jenkins-875f5bbb9-jlr46        1/1     Running             0          104m
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "navigation.indexes", "navigation.top", "search.suggest", "search.highlight", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.01824240.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "navigation.indexes", "navigation.top", "search.suggest", "search.highlight", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.01824240.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.e8a254df.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e8a254df.min.js"></script>
       
-        <script src="../../../js/extra.js"></script>
+        <script src="../../js/extra.js"></script>
       
-        <script src="../../../js/baidu-tongji.js"></script>
+        <script src="../../js/baidu-tongji.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
