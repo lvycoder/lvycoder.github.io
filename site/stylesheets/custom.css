@@ -6,6 +6,6 @@
 
 /* 调整内容区域宽度 */
 .md-content {
-  max-width: 100% !important;
+  max-width: 200% !important;
   /* 根据需求调整数值 */
 }

@@ -1,0 +1,366 @@
+site_name: Kubernetes 进阶训练营
+site_url: https://barry-boy.github.io/
+repo_name: "GitHub"
+repo_url: https://github.com/barry-boy/barry-boy.github.io
+site_description: Project documentation with Markdown.
+site_author: Li
+
+theme:
+  logo: material/logo.jpg
+
+  name: "material"
+  # custom_dir: docs/theme  # 可选，用于覆盖主题模板
+# extra_css:
+#   - stylesheets/extra.css
+
+  font:
+    text: "Ubuntu"
+    code: "Ubuntu Mono"
+  language: zh
+  include_sidebar: true
+  features:
+    # - navigation.instant
+    - navigation.sections
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.expand
+    - navigation.indexes
+    - navigation.top
+    # - toc.integrate
+    - search.suggest
+    - search.highlight
+    - content.code.annotate
+
+  palette:
+   # Light mode
+   - media: "(prefers-color-scheme: light)"
+     scheme: default
+     primary: indigo
+     accent: indigo
+     toggle:
+       icon: material/toggle-switch-off-outline
+       name: 切换暗色主题
+
+   # Dark mode
+   - media: "(prefers-color-scheme: dark)"
+     scheme: slate
+     primary: blue
+     accent: blue
+     toggle:
+       icon: material/toggle-switch
+       name: 切换亮色主题
+
+copyright: "Copyright &copy; 2022 lixie"
+
+
+
+markdown_extensions:
+  - admonition #MkDocs 警告框
+  - footnotes #脚注
+  - meta #自定义文章元数据
+  - pymdownx.caret #下划线
+  - pymdownx.mark #文本高亮
+  - pymdownx.tilde #删除线
+  - def_list
+  - tables
+  - md_in_html
+  - attr_list
+  - admonition
+  - footnotes
+  - pymdownx.details
+  - pymdownx.tabbed
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.highlight:
+      use_pygments: true # hljs is used instead of pygment for TOML highlighting support
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist
+  - pymdownx.snippets:
+      check_paths: true
+  #  - markdown_include.include:
+  #      base_path: content/includes/
+  #      encoding: utf-8
+  - toc: # 大纲
+      permalink: true
+
+
+nav:
+    - 首页: custom_home.html
+    - 0、网络基础:
+        - 网络 Tcp/IP: 0.Internet/Tcp-ip-docs.md
+        - 网络 思科设备: 0.Internet/5g-docs.md
+        - 网络 网卡模式调整: 0.Internet/IB-ET-docs.md
+        - 华硕服务器: 1.os/asus/asus-docs.md
+        - ZeroTier组网: 0.Internet/ZeroTier.md
+        - frp 内网穿透: 0.Internet/frp.md
+        - kubernetes 网络组件: 0.Internet/3-0.Internet-docs.md
+        - 科学上网: 0.Internet/4-network-docs.md
+
+
+    - 1、Linux:
+        - Linux 云计算手册大纲: 1.os/ubuntu/kjc-doc.md
+        - Linux 硬件 CPU: 1.os/hardware/cpu-doc.md
+        - Linux 带外管理: 1.os/ubuntu/ubuntu-bmc-doc.md
+        - Linux 系统安装: 1.os/ubuntu/ubuntu-install-doc.md
+        - Linux 系统命令: 1.os/ubuntu/ubuntu-cli-doc.md
+        - Linux 国内apt源: 1.os/ubuntu/ubuntu-mirror-doc.md
+        - Linux nvme磁盘管理: 1.os/ubuntu/ubuntu-nvme-doc.md
+        - Linux parted磁盘管理: 1.os/ubuntu/ubuntu-parted-doc.md
+        - Linux 系统强制重启: 1.os/ubuntu/ubuntu-reboot-doc.md
+        - Linux 磁盘管理: 1.os/ubuntu/ubuntu-disk-doc.md
+        - Linux 网络服务: 1.os/ubuntu/ubuntu-network-doc.md
+        - Linux SSH 转发代理实现: 1.os/2024-9-25-ssh-proxy-docs.md
+
+    - 2、kubernetes:
+        - 云原生简介及CNCF: basic/cncf-docs.md
+        - Docker 基本管理: docker/docker-docs.md
+        - lxcfs 介绍: docker/lxcfs.md
+        - docker 镜像构建: docker/docker-images-docs.md
+        - docker proxy代理: docker/docker-proxy-docs.md
+        - docker Clash代理: docker/docker-image-clash-docs.md
+        - kubernetes 简介: 3.k8s/base/k8s-overview.md
+        - kubernetes 集群部署: 3.k8s/3-k8s-systeminit-docs.md
+        - kubernetes 集群升级: 3.k8s/2024-9-19-k8s-update.md
+        - kubernetes pod 基础原理: 3.k8s/pod-base-docs.md
+        - kubernetes pod 生命周期: 3.k8s/pod-hook-docs.md
+        - kubernetes etcd 简介与实践: basic/6-kubernetes-etcd-docs.md
+        - kubernetes coredns 简介与实践: basic/7-kubernetes-coredns-docs.md
+        - kubernetes calico 网络: k8s/k8s-calico-docs.md
+       # - ETCD备份还原: basic/etcd.md
+        - kubernetes 资源清单: 3.k8s/yaml/yaml.md
+        - kubernetes 资源限制: 3.k8s/base/k8s-limit-docs.md
+        - kubernetes 配置管理: 3.k8s/k8s-configmap-docs.md
+        - Kubernetes UI: basic/5-kubernetes-UI-docs.md
+        - kubernetes 控制器: 3.k8s/deploy-sts-ds-docs.md
+        - Ingress 流量: 3.k8s/network/ingress-流量.md
+        - 服务发现: 3.k8s/network/服务发现.md
+        - Gateway API: 3.k8s/network/gateway-api.md
+        - DNS 优化: 3.k8s/network/dns-优化.md
+        - ingress-nginx: 3.k8s/network/ingress-nginx.md
+        - Service Profiles: 3.k8s/network/service-profiles.md
+        - 科学上网: 3.k8s/network/4-network-docs.md
+        # - APISIX: 3.k8s/network/apisix.md
+        # - Service: 3.k8s/network/service.md
+        # - Traefik: 3.k8s/network/traefik.md
+        # - Ingress: 3.k8s/network/ingress.md
+        - kubernetes pv/pvc简介: 5.Storage/pv-rep.md
+        - kubernetes 监控服务: 3.k8s/k8s-mon-docs.md
+        - kubernetes 日志管理: 3.k8s/k8s-logs-docs.md
+        - kubernetes 服务网格: 3.k8s/k8s-istio-docs.md
+        - kubernetes CKA考题: cks/cka.md
+        - kubernetes CKS考题: cks/cks.md
+        - kubernetes Rancher 升级: 3.k8s/ui/rancher-update-docs.md
+        - kubernetes 节点维护: basic/7-kubernetes-update-docs.md
+        - kubernetes Helm 实践: Helm/helm-install.md
+        - kubernetes Helm chart包: Helm/helm-chart.md
+        - kubernetes Helmfile 文件: 3.k8s/2024-9-24-helmfile-docs.md
+        # - Helm 配置grafana: Helm/helm.md
+        - kubernetes Cert-manager 安装: cert-manager/cert-manager-doc.md
+        - kubernetes 处理k8s证书过期: 3.k8s/other/k8s-ca-docs.md
+
+        # - Prometheus: 3.k8s/monitoring/prometheus.md
+        # - VictoriaMetrics: 3.k8s/monitoring/victoriametrics.md
+        # - PromQL: 3.k8s/monitoring/promql.md
+        # - 黑盒监控: 3.k8s/monitoring/黑盒监控.md
+        # - Prometheus Operator: 3.k8s/monitoring/prometheus-operator.md
+        # - 高级配置: 3.k8s/monitoring/高级配置.md
+        # - Grafana: 3.k8s/monitoring/grafana.md
+        # - 自定义监控报警: 3.k8s/monitoring/自定义监控报警.md
+        # - Alertmanager: 3.k8s/monitoring/alertmanager.md
+
+        - kubernete 日志架构: 3.k8s/7.logging/日志收集架构.md
+        - kubernetes EFK日志系统: 3.k8s/7.logging/搭建-efk-日志系统.md
+        - kubernete 日志fluentd: docs/3.k8s/7.logging/fluentd.md
+        - kubernete Loki: 3.k8s/7.logging/loki.md
+        - kubernetes 日志读写分离模式: 3.k8s/7.logging/读写分离模式.md
+        - kubernetes 日志微服务模式: 3.k8s/7.logging/微服务模式.md
+        - kubernetes 日志配置文件: 3.k8s/7.logging/配置文件.md
+        - kubernetes 日志报警: 3.k8s/7.logging/日志报警.md
+        - kubernetes 日志 Logql: 3.k8s/7.logging/logql.md
+
+        - kubernetes 自动化安装:  3.k8s/ansible-install-k8s-docs.md
+        - kubernetes 项目一: 3.k8s/4-ansible-install-k8s.md
+        - kubernetes 项目二: basic/9-install-keepalived-cluster.md
+
+    - 3、运维开发:
+         - Python 开发-基础语法: python/1-python-docs.md
+         - Python 开发-用户交互: python/2-python-docs.md
+         - Python pip-离线安装软件包: python/pip-offline-packages.md
+         - GO开发-环境安装: go/go-base-docs.md
+         - GO 开发-操作符和表达式: go/2-go-docs.md
+         - 模块: python/module-docs.md
+
+    - 4、数据库:
+        - Mysql 数据库: k8s/mysql-operator/0-mysql-docs.md
+        - Mysql operator: k8s/mysql-operator/1-install-mysql-operator.md
+        - Mysql 备份恢复: k8s/mysql-operator/2-mysql-backup-docs.md
+        - 数据库问题处理: k8s/mysql-operator/3-mysql-backup-error-docs.md
+        - redis 大纲: redis/redis-class-docs.md
+        - redis 缓存加速: 5.Storage/redis-docs.md
+        - redis 集群篇: 5.Storage/redis-cluster-docs.md
+        - redis 持久化: redis/redis-save-docs.md
+
+    - 5、存储服务:
+        - 存储分类: 5.Storage/disk-ssd-docs.md
+        - ceph 基础: 5.Storage/ceph-base.md
+        - ceph 分布式存储: 5.Storage/rook-ceph.md
+        - ceph RBD使用: 5.Storage/rbd-docs.md
+        - ceph 文件系统使用: 5.Storage/cephfs-docs.md
+        - ceph 命令用法: 5.Storage/ceph-cli-docs.md
+        - ceph 性能测试: 5.Storage/osd.md
+        - ceph 对象存储: 5.Storage/ceph-bucket.md
+        - ceph s3cmd管理: 5.Storage/s3-client-docs.md
+        - ceph 存储修复: 5.Storage/5-dev-docs.md
+        - ceph 存储扩容: 5.Storage/expand-docs.md
+        - ceph 外部环境连接集群: 5.Storage/ceph-tools.md
+        - ceph 集群清理: 5.Storage/clean-ceph-docs.md
+        - ceph 错误指南: 5.Storage/ceph-error.md
+        - ceph 高级参数: 5.Storage/6-ceph-crush-docs.md
+        - Juicefs存储方案: 5.Storage/Juicefs.md
+        - Juicefs版本升级: 5.Storage/juicefs-update.md
+
+    - 6、Gitops:
+        - Git Commit 问题: 6.Gitops/2024-9-26-Git-docs.md
+        - Github Rysnc 同步 Gitee: 6.Gitops/2024-10-10-Github-rsync-Gitee.md
+
+    # - 6、虚拟化:
+    #     - Proxmox虚拟化: vm/promox.md
+
+    - 7、Devops:
+        - Git 报错指南: Devops/git-error-docs.md
+        - Github: Devops/github.md
+        - Github仓库同步至Gitee: Devops/4-github-gitee-doc.md
+        - Google 浏览器扩展: Devops/3-github-docs.md
+
+    - 8、运维自动化:
+        - Ansible 应用基础: ansible/ansible-case1.md
+        - Ansible 高级用法: ansible/ansible-docs2.md
+        - Ansible 安装: ansible/ansible-install-docs.md
+        - Ansible playbook: ansible/ansible-playbook.md
+
+    - 9、其他:
+        - Nginx免费SSL解决方案: 8.nginx/certbot_ssl_doc.md
+        - kubeconfig 实践应用: Macuse/mac-kubeconfig.md
+        - k3s 大纲介绍: k3s/k3s-docs.md
+        - k3s 边缘计算: k3s/k3s-install.md
+        - k9s 实践应用: Macuse/mac-k9s-doc.md
+        - Mac 制作ubuntu系统盘: Macuse/mac-usb-system.md
+        - Mac vscode使用技巧: Macuse/mac-vscode.md
+        - 天津集群: error/tjtu.md
+        - Dev环境集群: error/dev.md
+        - 误删除监控数据: error/delete-prometheus-db.md
+        - Kubernetes pvc ubound: error/kubernetes-pvc-ubound-doc.md
+        - dns 文件权限调整: error/cent1.os-dns-error-docs.md
+        - 如何利用Mac 写博客文章: other/mac-docs.md
+        - 高效利用谷歌来搜索: other/google-docs.md
+        - Discord 新手教程: other/discord-docs.md
+        # - Jenkins: other/misc/jenkins.md
+        # - 使用 mTLS 保护应用程序通信: other/misc/使用-mtls-保护应用程序通信.md
+        # - 示例: other/misc/示例.md
+        # - 函数和管道: other/misc/函数和管道.md
+        # - Chart Hooks: other/misc/chart-hooks.md
+        # - Dapr: other/misc/dapr.md
+        # - ConfigMap: other/misc/configmap.md
+        # - Kubernetes 进阶训练营第3期课程文档: other/misc/kubernetes-进阶训练营第3期课程文档.md
+        # - GitOps 是什么?: other/misc/gitops.md
+        # - Linkerd: other/misc/linkerd.md
+        # - Secrets store: other/misc/secrets-store.md
+        # - Tekton: other/misc/tekton.md
+        # - Secret: other/misc/secret.md
+        # - 访问文件: other/misc/访问文件.md
+        # - Argo Rollouts: other/misc/argo-rollouts.md
+        # - 升级 Linkerd: other/misc/升级-linkerd.md
+        # - 流水线: other/misc/流水线.md
+        # - 生产环境使用 Linkerd: other/misc/生产环境使用-linkerd.md
+        # - 服务质量: other/misc/服务质量.md
+        # - 调度: other/misc/调度.md
+        # - Helm: other/misc/helm.md
+        # - Argo CD: other/misc/argo-cd.md
+        # - NOTES.txt 文件: other/misc/notes.txt-文件.md
+        # - 发布订阅: other/misc/发布订阅.md
+        # - Jenkins Pipeline: other/misc/jenkins-pipeline.md
+        # - Subcharts 和 Global Values: other/misc/subcharts-和-global-values.md
+        # - 实战 Tekton 流水线: other/misc/实战-tekton-流水线.md
+        # - 黄金指标: other/misc/黄金指标.md
+        # - 流程控制: other/misc/流程控制.md
+        # - 触发器和事件监听器: other/misc/触发器和事件监听器.md
+        # - 模板调试: other/misc/模板调试.md
+        # - 可观测性: other/misc/可观测性.md
+        # - Dapr Bindings: other/misc/dapr-bindings.md
+        # - Charts: other/misc/charts.md
+        # - 内置对象: other/misc/内置对象.md
+        # - 中间件: other/misc/中间件.md
+        # - 变量: other/misc/变量.md
+        # - 命名模板: other/misc/命名模板.md
+        # - Values 文件: other/misc/values-文件.md
+        # - Harbor: other/misc/harbor.md
+        # - Descheduler: other/misc/descheduler.md
+        # - 任务: other/misc/任务.md
+        # - 调度器: other/misc/调度器.md
+        # - Crane: other/misc/crane.md
+        # - 流量拆分: other/misc/流量拆分.md
+        # - Documentation that simply works: other/misc/documentation-that-simply-works.md
+        # - Zadig: other/misc/zadig.md
+        # - Gitlab: other/misc/gitlab.md
+
+    - 10、Ai:
+        - Cursor 使用技巧: Ai-tools/cursor-latest-features.md
+        - Cursor 模型性能排行: Ai-tools/cursor-model-performance.md
+        - vLLM 部署 Qwen2.5-VL: Ai-tools/vllm-Qwen2.5-VL.md
+        - vLLM 部署 Qwen2.5-VL-72B: Ai-tools/vllm-Qwen2.5-VL-72B.md
+        - NVIDIA显卡对比: Nvidia/Nvidia-gpu-compare.md
+        - RDMA在Kubernetes中的应用: Nvidia/Nvidia-k8s-rdma.md
+        - 注册chatgpt: chatgpt/chatgpt-docs.md
+        - 搜索技术记录: chatgpt/google-ai-docs.md
+        - 如何使用Chatgpt来制作专属gpt: chatgpt/gpts-docs.md
+
+    - 关于我:
+        - 我的博客: 20.mylife/2024-9-24-myblog-life-docs.md
+        - 我的2021: 20.mylife/2021-life-docs.md
+        - 我的2022: 20.mylife/2022-life-docs.md
+        - 我的2023: 20.mylife/2023-life-docs.md
+        - 我的2024: 20.mylife/2024-life-docs.md
+        - 我的学习: 20.mylife/2025-learning-docs.md
+
+plugins:
+  - search:
+      prebuild_index: true
+#  - minify:
+#      minify_html: true
+
+  # - pdf-export:
+  #     verb1.ose: true
+  #     media_type: print
+  #     enabled_if_env: ENABLE_PDF_EXPORT
+  #     theme_handler_path: cinder.py
+
+# Customization
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/cnych
+    # - icon: fontawesome/brands/gitter
+    #   link: https://gitter.im/squidfunk/mkdocs-material
+    - icon: fontawesome/brands/docker
+      link: https://hub.docker.com/r/cnych/
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/cnych
+    - icon: fontawesome/brands/instagram
+      link: https://instagram.com/cnych
+
+
+extra_css:
+  - docs/stylesheets/custom.css
+  # - assets/stylesheets/extra.css # Our custom styles
+  # - assets/styles/atom-one-light.css # HightlightJS's CSS theme
+
+extra_javascript:
+  - 'js/extra.js'
+  - 'js/baidu-tongji.js'
+  - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
+  # - https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js
+  # - javascripts/tables.js
+  # - assets/javascripts/hljs/highlight.pack.js # Download from https://highlightjs.org/download/ and enable YAML, TOML and Dockerfile
+  # - assets/javascripts/extra.js
+
